@@ -10,6 +10,7 @@
     function hms(sec) { sec = ((Math.round(sec) % 86400) + 86400) % 86400; return p2(Math.floor(sec / 3600)) + ":" + p2(Math.floor(sec % 3600 / 60)) + ":" + p2(sec % 60); }
     function utText(ms) { var d = new Date(ms); return p2(d.getUTCHours()) + ":" + p2(d.getUTCMinutes()) + ":" + p2(d.getUTCSeconds()); }
     function alt(deg) { var s = deg < 0 ? "−" : "", a = Math.abs(deg), d = Math.floor(a + 1e-9), m = Math.round((a - d) * 600) / 10; if (m >= 60) { d++; m = 0; } return s + d + "°" + (m < 10 ? "0" : "") + m.toFixed(1) + "'"; }
+    function num(s) { s = String(s).trim().replace(",", "."); return /^\d+(\.\d*)?$|^\.\d+$/.test(s) ? parseFloat(s) : NaN; }
     function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt !== undefined) e.textContent = txt; return e; }
 
     /* ---------- the rows of sights ---------- */
@@ -77,8 +78,8 @@
         if (r.kind === "star" && !r.name) { bad.push("Row " + (i + 1) + ": choose the star."); return; }
         if (sec === null) { bad.push("Row " + (i + 1) + ": enter the time."); return; }
         var d, m, val;
-        if (r.kind === "lat") { d = parseFloat(String(r.ld).replace(",", ".")), m = r.lm === "" ? 0 : parseFloat(String(r.lm).replace(",", ".")); if (isNaN(d) || isNaN(m) || d < 0 || d > 90 || m < 0 || m >= 60) { bad.push("Row " + (i + 1) + ": check the latitude."); return; } val = (d + m / 60) * (r.ns === "S" ? -1 : 1); }
-        else { d = parseFloat(String(r.hd).replace(",", ".")); m = r.hm === "" ? 0 : parseFloat(String(r.hm).replace(",", ".")); if (isNaN(d) || isNaN(m) || d < 0 || d > 90 || m < 0 || m >= 60) { bad.push("Row " + (i + 1) + ": check the sextant altitude (degrees 0 to 90, minutes under 60)."); return; } val = d + m / 60; }
+        if (r.kind === "lat") { d = num(r.ld), m = r.lm === "" ? 0 : num(r.lm); if (isNaN(d) || isNaN(m) || d < 0 || d > 90 || m < 0 || m >= 60 || d * 60 + m > 5400) { bad.push("Row " + (i + 1) + ": check the latitude."); return; } val = (d + m / 60) * (r.ns === "S" ? -1 : 1); }
+        else { d = num(r.hd); m = r.hm === "" ? 0 : num(r.hm); if (isNaN(d) || isNaN(m) || d < 0 || d > 90 || m < 0 || m >= 60) { bad.push("Row " + (i + 1) + ": check the sextant altitude (degrees 0 to 90, minutes under 60)."); return; } val = d + m / 60; }
         if (prev !== null && sec < prev - 12 * 3600) add += 86400; prev = sec;
         var item = { name: name, secLocal: sec, dayAdd: add };
         if (r.kind === "lat") item.lat = val; else { item.hs = val; item.limb = r.limb || "L"; }
@@ -90,7 +91,7 @@
     function render() {
       var v = read(), rr = readRows(v), msg = $("sf-rows-msg");
       msg.textContent = rr.bad.join(" "); msg.className = rr.bad.length ? "hint error" : "hint";
-      $("sf-pick").disabled = !(v.lat !== null && v.lon !== null && !v.errs.lat && !v.errs.lon && v.date && v.zone !== null && rr.rows.length);
+      $("sf-pick").disabled = !(v.lat !== null && v.lon !== null && !v.errs.lat && !v.errs.lon && v.date && v.zone !== null && rowRefs.some(function (rf) { return parseTimeEl(rf.time) !== null; }));
       var ready = !Object.keys(v.errs).length && v.lat !== null && v.lon !== null && v.course !== null && v.speed !== null && v.date && v.zone !== null && v.hoe !== null && rr.rows.length >= 2 && !rr.bad.length;
       var missing = [];
       if (v.lat === null || v.lon === null) missing.push("the DR position"); if (v.course === null || v.speed === null) missing.push("course and speed"); if (!v.date) missing.push("the date"); if (v.zone === null) missing.push("the time zone"); if (v.hoe === null) missing.push("height of eye (0 if none)"); if (rr.rows.length < 2) missing.push("at least two sights");
@@ -160,7 +161,7 @@
       if (!$("sf-date").value) $("sf-date").value = todayISO();
       $("sf-mode-" + mode).checked = true;
     }
-    function shipFill() { var sh = st.ship && st.ship[shipKey()]; if (sh) { $("sf-hoe").value = sh.hoe; $("sf-ie").value = sh.ie; (sh.off ? $("sf-ie-off") : $("sf-ie-on")).checked = true; } }
+    function shipFill() { var sh = (st.ship && st.ship[shipKey()]) || { hoe: "", ie: "", off: false }; $("sf-hoe").value = sh.hoe; $("sf-ie").value = sh.ie; (sh.off ? $("sf-ie-off") : $("sf-ie-on")).checked = true; }
 
     /* ---------- the buttons ---------- */
     function pickStars() {
