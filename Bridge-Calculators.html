@@ -946,6 +946,8 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
 .sf-apmode .field { margin: 0; }
 .sf-apmode + .sf-apmode { margin-top: var(--sp-2); }
 .sf-runnote { margin: var(--sp-3) 0 0; font-size: var(--fs-sm); color: var(--muted); }
+table.sf-rows td.w-dr { min-width: 210px; }
+table.sf-rows td.w-dr input { font-size: var(--fs-md); background: var(--entry); }
 /* Sight Fix end */
 </style>
 </head>
@@ -2833,7 +2835,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
           <fieldset>
             <legend><span class="dot c-ship"></span>Sextant (saved for this ship)</legend>
             <div class="row2" style="grid-template-columns: 1fr;">
-              <div class="field"><label for="sf-hoe">Height of eye</label><div class="input-wrap"><input id="sf-hoe" type="text" inputmode="decimal" placeholder="0" maxlength="5"><span class="unit">m</span></div><div class="hint" id="sf-hoe-msg"></div></div>
+              <div class="field"><label for="sf-hoe">Height of eye</label><div class="input-wrap"><input id="sf-hoe" type="text" inputmode="decimal" placeholder="e.g. 25" maxlength="5"><span class="unit">m</span></div><div class="hint" id="sf-hoe-msg"></div></div>
               <div class="field"><label for="sf-ie">Index error</label><div class="fused fused-2"><div class="input-wrap"><input id="sf-ie" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="Index error on or off the arc"><input type="radio" name="sf-iearc" id="sf-ie-on" value="on" checked><label for="sf-ie-on">On arc</label><input type="radio" name="sf-iearc" id="sf-ie-off" value="off"><label for="sf-ie-off">Off arc</label></div></div><div class="hint" id="sf-ie-msg">On the arc is subtracted, off the arc is added</div></div>
             </div>
           </fieldset>
@@ -2852,6 +2854,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
             <h2>Sights</h2>
             <div class="dr-gridwrap"><table class="sf-rows" id="sf-rows"></table></div>
             <div class="hint" id="sf-rows-msg"></div>
+            <p class="sf-runnote">DR at this sight: type your own position for each sight, or leave it empty to use the one worked from the first DR, course and speed (shown in grey). Fill DR positions writes the worked ones in so you can check or change them.</p>
             <div class="sf-apmode u-mt-3">
               <span class="small muted"><label for="sf-fixat">Give the fix at (ship's time)</label></span>
               <div class="field"><input id="sf-fixat" class="text-input" type="time" step="60" aria-describedby="sf-fixat-msg"><div class="hint" id="sf-fixat-msg">Empty: at the time of the last sight</div></div>
@@ -2863,6 +2866,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
             </div>
             <div class="actions">
               <button type="button" class="btn" id="sf-pick">Pick the best stars</button>
+              <button type="button" class="btn" id="sf-filldr">Fill DR positions</button>
               <button type="button" class="btn" id="sf-example">Load example</button>
               <button type="button" class="btn" id="sf-clear">Clear sights</button>
             </div>
@@ -7536,6 +7540,12 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       }
       if (!dr || !isFinite(dr.lat) || !isFinite(dr.lon) || !isFinite(dr.course) || !isFinite(dr.speed) || !isFinite(dr.ms)) return { error: "The DR position, course and speed are needed.", warnings: warn };
       if (Math.abs(dr.lat) > 84) return { error: "Latitudes above 84 degrees are not supported.", warnings: warn };
+      /* the officer may give the DR at each sight (sight.dr); otherwise it is worked from the first DR, course and speed.
+         With own positions the lines are carried to the fix time by the ship's movement between those positions. */
+      var own = S.some(function (s) { return s.dr && isFinite(s.dr.lat) && isFinite(s.dr.lon); });
+      function drOf(s) { return s.dr && isFinite(s.dr.lat) && isFinite(s.dr.lon) ? { lat: s.dr.lat, lon: s.dr.lon } : drAt(dr, s.ms); }
+      var sLast = S.reduce(function (a, b) { return b.ms > a.ms ? b : a; }), sFirst = S.reduce(function (a, b) { return b.ms < a.ms ? b : a; });
+      var DRF = own ? (function () { var p = drOf(sLast); return advance(p.lat, p.lon, dr.course, dr.speed * (tf - sLast.ms) / 3600000); })() : drAt(dr, tf);
       var invalid = null, items = S.map(function (s) {
         var it = { s: s, lat: s.name === "Latitude" };
         if (it.lat) return it;
@@ -7543,14 +7553,14 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
         if (!pl) { invalid = invalid || s.name; return it; }
         it.pl = pl;
         if (s.ho !== undefined) it.ho = { ho: s.ho };
-        else { var ap0 = drAt(dr, s.ms); it.ho = Sight.ho({ hs: s.hs, ic: inp.ic, hoe: inp.hoe, temp: inp.temp, pres: inp.pres, body: pl.kind, limb: s.limb || "L", sd: pl.kind === "moon" ? Sight.reduceBody(pl, ap0.lat, ap0.lon).sd : pl.sd, hp: pl.hp }); }
+        else { var ap0 = drOf(s); it.ho = Sight.ho({ hs: s.hs, ic: inp.ic, hoe: inp.hoe, temp: inp.temp, pres: inp.pres, body: pl.kind, limb: s.limb || "L", sd: pl.kind === "moon" ? Sight.reduceBody(pl, ap0.lat, ap0.lon).sd : pl.sd, hp: pl.hp }); }
         if (it.ho.valid === false) invalid = s.name;
         return it;
       });
       if (invalid) return { error: invalid + ": the sextant altitude is below the horizon after the corrections (check the altitude, index error and height of eye).", warnings: warn };
       function lines(Pf) {                                                             /* intercepts and azimuths seen from the track positions that lead to Pf */
         return items.map(function (it) {
-          var d = inp.dr.speed * (tf - it.s.ms) / 3600000, P = advance(Pf.lat, Pf.lon, dr.course, -d);
+          var P; if (own) { var o = offset(DRF, drOf(it.s)); P = move(Pf, o.dN, o.dE); } else { var d = inp.dr.speed * (tf - it.s.ms) / 3600000; P = advance(Pf.lat, Pf.lon, dr.course, -d); }
           if (it.lat) return { P: P, zn: 0, hc: null, a: (it.s.lat - P.lat) * 60 };
           var r = Sight.reduceBody(it.pl, P.lat, P.lon);
           return { P: P, zn: r.zn, hc: r.hc, lha: r.lha, a: (it.ho.ho - r.hc) * 60 };
@@ -7561,7 +7571,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
         return L.map(function (l, i) { return [(N2[i].a - N1[i].a) / (2 * s), (E2[i].a - E1[i].a) / (2 * s), l.a, items[i].lat ? 0 : 1]; });
       }
       function iterate(withC) {
-        var Pf = drAt(dr, tf), c = 0, L, k, x, rows, last = Infinity;
+        var Pf = DRF, c = 0, L, k, x, rows, last = Infinity;
         for (k = 0; k < 20; k++) {
           L = lines(Pf); rows = jacobian(Pf, L);
           x = solve(rows, withC); if (!x) return null;
@@ -7574,11 +7584,11 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       }
       var base = iterate(false); if (!base) return { error: "The lines of position are parallel, too few, or too far from the DR: no fix.", warnings: warn };
       if (!base.converged) return { error: "The fix did not settle. Check the times, the altitudes and the DR.", warnings: warn };
-      var DR = drAt(dr, tf), L0 = lines(DR), out = { time: tf, dr: DR, fix: base.P, iterations: base.iters, warnings: warn };
+      var DR = DRF, L0 = lines(DR), out = { time: tf, dr: DR, fix: base.P, iterations: base.iters, warnings: warn };
       out.sights = items.map(function (it, i) {
         /* assumed position: the DR at the time of this sight (DR carried forward), or the first DR for every sight
            (inp.apMode "first", as when all sights are worked from the original DR). Only the working changes, not the fix. */
-        var dS = drAt(dr, it.s.ms), apN = inp.apMode === "first" && !it.lat ? { lat: dr.lat, lon: dr.lon } : dS;
+        var dS = drOf(it.s), d1 = own ? drOf(sFirst) : { lat: dr.lat, lon: dr.lon }, apN = inp.apMode === "first" && !it.lat ? d1 : dS;
         var l0 = L0[i], lf = base.L[i], row = { name: it.s.name, ms: it.s.ms, ap: apN, drSight: dS, zn: l0.zn, a: l0.a, resid: lf.a }, r2 = it.lat ? null : Sight.reduceBody(it.pl, apN.lat, apN.lon);
         if (!it.lat) { row.kind = it.pl.kind; row.hp = it.pl.hp; row.gha = it.pl.gha; row.dec = it.pl.dec; row.lha = r2.lha; row.hc = r2.hc; row.zn = r2.zn; row.ho = it.ho.ho; row.corr = it.ho; row.a = (it.ho.ho - r2.hc) * 60; row.hcFix = lf.hc; row.aDr = apN === dS ? row.a : (it.ho.ho - Sight.reduceBody(it.pl, dS.lat, dS.lon).hc) * 60; if (it.pl.kind === "moon") geoMoon(row, apN); if (r2.hc < 5) warn.push(it.s.name + " is below 5 degrees: refraction is unreliable."); else if (r2.hc < 10) warn.push(it.s.name + " is below 10 degrees: low altitude, less reliable."); if (r2.hc > 80) warn.push(it.s.name + " is above 80 degrees: a straight line is a poor approximation."); }
         if (Math.abs(row.a) > 20) warn.push((it.lat ? "Latitude" : it.s.name) + ": intercept " + Math.abs(row.a).toFixed(1) + "' is large. Check the time, Hs and the DR.");
@@ -7690,7 +7700,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
     /* opt.single: one position line. r.fix is then the ITP; opt.mark = { lat, lon, label } is the longitude by chronometer (or latitude) point */
     function build(r, inp, W, H, id, opt) {
       opt = opt || {};
-      var fx = r.fix, drF = SightFix.drAt(inp.dr, r.time), cosF = Math.cos(fx.lat * R);
+      var fx = r.fix, drF = r.dr || SightFix.drAt(inp.dr, r.time), cosF = Math.cos(fx.lat * R);
       function pl(p) { var dl = p.lon - fx.lon; dl -= 360 * Math.round(dl / 360); return { x: dl * 60 * cosF, y: (p.lat - fx.lat) * 60 }; }
       var pts = [{ x: 0, y: 0 }], dF = pl(drF); pts.push(dF);
       var L = r.sights.map(function (s) {
@@ -7807,7 +7817,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       var data = rowData(); st.rows[mode] = data; rowRefs = [];
       while (rowsEl.firstChild) rowsEl.removeChild(rowsEl.firstChild);
       var th = el("thead"), hr = el("tr");
-      (mode === "sun" ? ["", "Local time", "Sextant altitude", "", "Limb"] : ["", "Body", "Local time", "Sextant altitude", "", "Limb"]).forEach(function (h, i) { var c = el("th", "", h); if ((mode === "sun" && i === 2) || (mode === "stars" && i === 3)) c.colSpan = 2; if (h === "" && ((mode === "sun" && i === 3) || (mode === "stars" && i === 4))) return; hr.appendChild(c); });
+      (mode === "sun" ? ["", "Local time", "Sextant altitude", "", "Limb", "DR at this sight"] : ["", "Body", "Local time", "Sextant altitude", "", "Limb", "DR at this sight"]).forEach(function (h, i) { var c = el("th", "", h); if ((mode === "sun" && i === 2) || (mode === "stars" && i === 3)) c.colSpan = 2; if (h === "" && ((mode === "sun" && i === 3) || (mode === "stars" && i === 4))) return; hr.appendChild(c); });
       th.appendChild(hr); rowsEl.appendChild(th);
       var tb = el("tbody"); rowsEl.appendChild(tb);
       data.forEach(function (r, i) {
@@ -7835,6 +7845,10 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
           if (r.kind === "sun" || r.kind === "star") { var tk = el("td", "w-limb"), sl = el("select"); sl.setAttribute("aria-label", "Limb of the " + (r.kind === "sun" ? "Sun" : "Moon"));
             if (r.kind === "star") { var na = el("span", "small muted", "n/a"); refs.na = na; tk.appendChild(na); var lm0 = r.name === "Moon" || r.name === "Sun"; sl.hidden = !lm0; na.hidden = lm0; } LIMBS.forEach(function (x) { var o = el("option", "", x[1]); o.value = x[0]; sl.appendChild(o); }); sl.value = r.limb || "L"; sl.addEventListener("change", function () { r.limb = sl.value; save(); render(); }); tk.appendChild(sl); tr.appendChild(tk); refs.limb = sl; }
         }
+        var tp = el("td", "w-dr");                                                     /* the officer's DR at this sight; empty: worked from the first DR, course and speed */
+        if (r.kind === "lat") tp.appendChild(el("span", "small muted", "not needed"));
+        else { var pi = el("input", "text-input"); pi.type = "text"; pi.maxLength = 40; pi.value = r.pos || ""; pi.placeholder = "21 22.2N 037 57.2E"; pi.setAttribute("aria-label", "DR position at sight " + (i + 1)); pi.addEventListener("input", function () { r.pos = pi.value; save(); render(); }); tp.appendChild(pi); refs.pos = pi; }
+        tr.appendChild(tp);
         tb.appendChild(tr); rowRefs.push(refs);
       });
       $("sf-pick").hidden = mode !== "stars" || (!!st.method && st.method !== "stars");
@@ -7871,7 +7885,8 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
         if (r.kind === "lat") { d = num(r.ld), m = r.lm === "" ? 0 : num(r.lm); if (isNaN(d) || isNaN(m) || d < 0 || d > 90 || m < 0 || m >= 60 || d * 60 + m > 5400) { bad.push("Row " + (i + 1) + ": check the latitude."); return; } val = (d + m / 60) * (r.ns === "S" ? -1 : 1); }
         else { d = num(r.hd); m = r.hm === "" ? 0 : num(r.hm); if (isNaN(d) || isNaN(m) || d < 0 || d > 90 || m < 0 || m >= 60) { bad.push("Row " + (i + 1) + ": check the sextant altitude (degrees 0 to 90, minutes under 60)."); return; } val = d + m / 60; }
         if (prev !== null && sec < prev - 12 * 3600) add += 86400; prev = sec;
-        var item = { name: name, secLocal: sec, dayAdd: add };
+        var item = { name: name, secLocal: sec, dayAdd: add, rf: rf };
+        if (r.kind !== "lat" && r.pos && String(r.pos).trim()) { var gp = Geo.parse(r.pos); if (gp.error || Math.abs(gp.lat) > 84) { bad.push("Row " + (i + 1) + ": DR position not understood (" + (gp.error || "latitude above 84") + "). Write it like 21 22.2N 037 57.2E."); return; } item.dr = { lat: gp.lat, lon: gp.lon }; }
         if (r.kind === "lat") item.lat = val; else { item.hs = val; item.limb = r.limb || "L"; }
         out.push(item);
       });
@@ -7885,9 +7900,9 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       var one = rr.rows.length === 1 && rr.rows[0].name !== "Latitude";
       var ready = !Object.keys(v.errs).length && v.lat !== null && v.lon !== null && (one || (v.course !== null && v.speed !== null)) && v.date && v.zone !== null && v.hoe !== null && (one || rr.rows.length >= 2) && !rr.bad.length;
       var missing = [];
-      if (v.lat === null || v.lon === null) missing.push("the DR position"); if (!one && (v.course === null || v.speed === null)) missing.push("course and speed"); if (!v.date) missing.push("the date"); if (v.zone === null) missing.push("the time zone"); if (v.hoe === null) missing.push("height of eye (0 if none)"); if (!rr.rows.length) missing.push("a sight (one sight gives a position line, two or more give a fix)"); else if (!one && rr.rows.length < 2) missing.push("a second sight");
+      if (v.lat === null || v.lon === null) missing.push("the DR position"); if (!one && (v.course === null || v.speed === null)) missing.push("course and speed"); if (!v.date) missing.push("the date"); if (v.zone === null) missing.push("the time zone"); if (v.hoe === null) missing.push("height of eye (metres, the eye above the sea)"); if (!rr.rows.length) missing.push("a sight (one sight gives a position line, two or more give a fix)"); else if (!one && rr.rows.length < 2) missing.push("a second sight");
       if (!ready) { $("sf-out").hidden = true; $("sf-sheet").classList.add("no-print"); $("sf-empty").hidden = false; $("sf-empty").className = "empty"; $("sf-empty").textContent = missing.length && !rr.bad.length ? "Still needed: " + missing.join(", ") + "." : "Check the entries marked in red."; last = null; return; }
-      var base = Date.UTC(v.date.y, v.date.m - 1, v.date.d), sights = rr.rows.map(function (s) { var o = { name: s.name, ms: base + (s.secLocal - v.zone * 3600) * 1000 + s.dayAdd * 1000 }; if (s.name === "Latitude") o.lat = s.lat; else { o.hs = s.hs; o.limb = s.limb; } return o; });
+      var base = Date.UTC(v.date.y, v.date.m - 1, v.date.d), sights = rr.rows.map(function (s) { var o = { name: s.name, ms: base + (s.secLocal - v.zone * 3600) * 1000 + s.dayAdd * 1000 }; if (s.dr) o.dr = s.dr; if (s.name === "Latitude") o.lat = s.lat; else { o.hs = s.hs; o.limb = s.limb; } return o; });
       var t1 = Math.min.apply(null, sights.map(function (s) { return s.ms; })), side = $("sf-ie-on").checked ? -1 : 1, fa = parseTimeEl($("sf-fixat")), fixMs = null;
       if (fa !== null && sights.length > 1) {                                          /* that ship's clock time nearest the last sight */
         var tl = Math.max.apply(null, sights.map(function (s) { return s.ms; })); fixMs = base + (fa - v.zone * 3600) * 1000;
@@ -7897,6 +7912,8 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       if (v.gps) inp.gps = v.gps;
       if ($("sf-ap-first").checked) inp.apMode = "first";
       if (fixMs !== null) inp.fixMs = fixMs;
+      rr.rows.forEach(function (s, k) { if (s.rf.pos) { var q = SightFix.drAt(inp.dr, sights[k].ms); s.rf.pos.placeholder = Geo.lat(q.lat) + " " + Geo.lon(q.lon); } });     /* show the worked DR in grey */
+      if (one && sights[0].dr) { inp.dr.lat = sights[0].dr.lat; inp.dr.lon = sights[0].dr.lon; }
       var r = one ? SightFix.single(inp) : SightFix.fix(inp);
       if (r.error) { $("sf-out").hidden = true; $("sf-sheet").classList.add("no-print"); $("sf-empty").hidden = false; $("sf-empty").className = "callout warn u-mt-0"; $("sf-empty").textContent = r.error; last = null; return; }
       last = { r: r, v: v, zone: v.zone, inp: inp }; if (r.single) showLine(r, v); else show(r, v);
@@ -7922,7 +7939,8 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       rn.hidden = !(d0.speed > 0 && r.sights.length > 1);
       if (!rn.hidden) rn.textContent = "Ship under way at " + d0.speed + " kn on " + ("00" + Math.round(d0.course)).slice(-3) + "°: the ship was in a different place at each sight. " +
         bodies.map(function (s) { return s.name + " " + localOf(s.ms, v.zone) + " at " + Geo.lat(s.drSight.lat) + " " + Geo.lon(s.drSight.lon); }).join("; ") +
-        ". Each line is carried forward along the course to " + localOf(r.time, v.zone).slice(0, 5) + ", where they cross: that is the fix."; var line = (methodText(r) + apNote()) + " " + localOf(r.time, v.zone) + " LT (" + utText(r.time) + " UT): " + Geo.lat(ft.lat) + " " + Geo.lon(ft.lon) + (r.setDeg === null ? "" : " | " + Math.round(r.setDeg) + "° " + r.distNM.toFixed(1) + " NM from DR") + (r.gpsErrNM !== undefined ? " | GPS difference " + r.gpsErrNM.toFixed(1) + " NM" : "");
+        ". Each line is carried forward along the course to " + localOf(r.time, v.zone).slice(0, 5) + ", where they cross: that is the fix.";
+      var ft = r.fix, line = (methodText(r) + apNote()) + " " + localOf(r.time, v.zone) + " LT (" + utText(r.time) + " UT): " + Geo.lat(ft.lat) + " " + Geo.lon(ft.lon) + (r.setDeg === null ? "" : " | " + Math.round(r.setDeg) + "° " + r.distNM.toFixed(1) + " NM from DR") + (r.gpsErrNM !== undefined ? " | GPS difference " + r.gpsErrNM.toFixed(1) + " NM" : "");
       $("sf-log").textContent = line;
       work($("sf-work-tbl"), r, v); sheet(r, v);
     }
@@ -8056,7 +8074,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
     $("sf-form").addEventListener("input", function () { save(); render(); });
     $("sf-form").addEventListener("change", function () { save(); render(); });
     ["sf-mode-sun", "sf-mode-stars"].forEach(function (id) { $(id).addEventListener("change", function () { mode = $("sf-mode-stars").checked ? "stars" : "sun"; build(); setMethod(mode === "stars" ? "stars" : "noon", false); }); });   /* keeps the method buttons in step */
-    $("sf-fixat").addEventListener("input", function () { save(); render(); }); $("sf-fixat").addEventListener("change", function () { save(); render(); });
+    $("sf-fixat").addEventListener("input", function () { st.fixAuto = false; save(); render(); }); $("sf-fixat").addEventListener("change", function () { save(); render(); });
     ["sf-hoe", "sf-ie"].forEach(function (id) { $(id).addEventListener("input", function () { shipEdited = true; }); }); ["sf-ie-on", "sf-ie-off"].forEach(function (id) { $(id).addEventListener("change", function () { shipEdited = true; }); });
     ["sf-ap-each", "sf-ap-first"].forEach(function (id) { $(id).addEventListener("change", function () { save(); render(); }); });
     /* ---------- the method picker: sets the mode and the bodies, never wipes what was typed ---------- */
@@ -8077,7 +8095,8 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
         var rows = st.rows[mode] || [], empty = function (r) { return r && !r.time && !r.hd && !r.hm; };     /* only rows with nothing typed are given a body */
         if (m === "polaris" && empty(rows[0])) rows[0].name = "Polaris";
         if (m === "day") { if (empty(rows[0])) rows[0].name = "Sun"; if (empty(rows[1])) rows[1].name = "Moon"; }
-        if (m === "noon" && !$("sf-fixat").value) $("sf-fixat").value = "12:00";
+        if (m === "noon" && !$("sf-fixat").value) { $("sf-fixat").value = "12:00"; st.fixAuto = true; }
+        if (m !== "noon" && st.fixAuto && $("sf-fixat").value === "12:00") { $("sf-fixat").value = ""; st.fixAuto = false; }     /* the noon time does not belong to other methods */
         build();
       }
       [].forEach.call(document.querySelectorAll("#sf-methods [data-m]"), function (b) { var on = b.getAttribute("data-m") === m; b.className = on ? "btn primary" : "btn"; b.setAttribute("aria-pressed", on ? "true" : "false"); });
@@ -8086,6 +8105,10 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       save(); render();
     }
     [].forEach.call(document.querySelectorAll("#sf-methods [data-m]"), function (b) { b.addEventListener("click", function () { setMethod(b.getAttribute("data-m"), true); }); });
+    $("sf-filldr").addEventListener("click", function () {              /* write the worked DR positions into the empty boxes, to check or change them */
+      var n = 0; rowRefs.forEach(function (rf) { if (rf.pos && !rf.pos.value && /[NS]/.test(rf.pos.placeholder) && parseTimeEl(rf.time) !== null) { rf.pos.value = rf.pos.placeholder; rf.r.pos = rf.pos.value; n++; } });
+      save(); render(); toast(n ? "DR positions filled in from course and speed: check or change them" : "Enter the DR, course, speed and the sight times first");
+    });
     $("sf-pick").addEventListener("click", pickStars); $("sf-example").addEventListener("click", example); $("sf-clear").addEventListener("click", clearSights);
     $("sf-print").addEventListener("click", function () { if (last) window.print(); });
     $("sf-copy").addEventListener("click", function () { if (last) copyText($("sf-log").textContent); });
@@ -8093,6 +8116,9 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
     load(); build(); setMethod(st.method, false);
   }
   /* SIGHTPAGE-END */
+
+
+
 
 
 

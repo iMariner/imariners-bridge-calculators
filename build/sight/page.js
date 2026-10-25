@@ -20,7 +20,7 @@
       var data = rowData(); st.rows[mode] = data; rowRefs = [];
       while (rowsEl.firstChild) rowsEl.removeChild(rowsEl.firstChild);
       var th = el("thead"), hr = el("tr");
-      (mode === "sun" ? ["", "Local time", "Sextant altitude", "", "Limb"] : ["", "Body", "Local time", "Sextant altitude", "", "Limb"]).forEach(function (h, i) { var c = el("th", "", h); if ((mode === "sun" && i === 2) || (mode === "stars" && i === 3)) c.colSpan = 2; if (h === "" && ((mode === "sun" && i === 3) || (mode === "stars" && i === 4))) return; hr.appendChild(c); });
+      (mode === "sun" ? ["", "Local time", "Sextant altitude", "", "Limb", "DR at this sight"] : ["", "Body", "Local time", "Sextant altitude", "", "Limb", "DR at this sight"]).forEach(function (h, i) { var c = el("th", "", h); if ((mode === "sun" && i === 2) || (mode === "stars" && i === 3)) c.colSpan = 2; if (h === "" && ((mode === "sun" && i === 3) || (mode === "stars" && i === 4))) return; hr.appendChild(c); });
       th.appendChild(hr); rowsEl.appendChild(th);
       var tb = el("tbody"); rowsEl.appendChild(tb);
       data.forEach(function (r, i) {
@@ -48,6 +48,10 @@
           if (r.kind === "sun" || r.kind === "star") { var tk = el("td", "w-limb"), sl = el("select"); sl.setAttribute("aria-label", "Limb of the " + (r.kind === "sun" ? "Sun" : "Moon"));
             if (r.kind === "star") { var na = el("span", "small muted", "n/a"); refs.na = na; tk.appendChild(na); var lm0 = r.name === "Moon" || r.name === "Sun"; sl.hidden = !lm0; na.hidden = lm0; } LIMBS.forEach(function (x) { var o = el("option", "", x[1]); o.value = x[0]; sl.appendChild(o); }); sl.value = r.limb || "L"; sl.addEventListener("change", function () { r.limb = sl.value; save(); render(); }); tk.appendChild(sl); tr.appendChild(tk); refs.limb = sl; }
         }
+        var tp = el("td", "w-dr");                                                     /* the officer's DR at this sight; empty: worked from the first DR, course and speed */
+        if (r.kind === "lat") tp.appendChild(el("span", "small muted", "not needed"));
+        else { var pi = el("input", "text-input"); pi.type = "text"; pi.maxLength = 40; pi.value = r.pos || ""; pi.placeholder = "21 22.2N 037 57.2E"; pi.setAttribute("aria-label", "DR position at sight " + (i + 1)); pi.addEventListener("input", function () { r.pos = pi.value; save(); render(); }); tp.appendChild(pi); refs.pos = pi; }
+        tr.appendChild(tp);
         tb.appendChild(tr); rowRefs.push(refs);
       });
       $("sf-pick").hidden = mode !== "stars" || (!!st.method && st.method !== "stars");
@@ -84,7 +88,8 @@
         if (r.kind === "lat") { d = num(r.ld), m = r.lm === "" ? 0 : num(r.lm); if (isNaN(d) || isNaN(m) || d < 0 || d > 90 || m < 0 || m >= 60 || d * 60 + m > 5400) { bad.push("Row " + (i + 1) + ": check the latitude."); return; } val = (d + m / 60) * (r.ns === "S" ? -1 : 1); }
         else { d = num(r.hd); m = r.hm === "" ? 0 : num(r.hm); if (isNaN(d) || isNaN(m) || d < 0 || d > 90 || m < 0 || m >= 60) { bad.push("Row " + (i + 1) + ": check the sextant altitude (degrees 0 to 90, minutes under 60)."); return; } val = d + m / 60; }
         if (prev !== null && sec < prev - 12 * 3600) add += 86400; prev = sec;
-        var item = { name: name, secLocal: sec, dayAdd: add };
+        var item = { name: name, secLocal: sec, dayAdd: add, rf: rf };
+        if (r.kind !== "lat" && r.pos && String(r.pos).trim()) { var gp = Geo.parse(r.pos); if (gp.error || Math.abs(gp.lat) > 84) { bad.push("Row " + (i + 1) + ": DR position not understood (" + (gp.error || "latitude above 84") + "). Write it like 21 22.2N 037 57.2E."); return; } item.dr = { lat: gp.lat, lon: gp.lon }; }
         if (r.kind === "lat") item.lat = val; else { item.hs = val; item.limb = r.limb || "L"; }
         out.push(item);
       });
@@ -98,9 +103,9 @@
       var one = rr.rows.length === 1 && rr.rows[0].name !== "Latitude";
       var ready = !Object.keys(v.errs).length && v.lat !== null && v.lon !== null && (one || (v.course !== null && v.speed !== null)) && v.date && v.zone !== null && v.hoe !== null && (one || rr.rows.length >= 2) && !rr.bad.length;
       var missing = [];
-      if (v.lat === null || v.lon === null) missing.push("the DR position"); if (!one && (v.course === null || v.speed === null)) missing.push("course and speed"); if (!v.date) missing.push("the date"); if (v.zone === null) missing.push("the time zone"); if (v.hoe === null) missing.push("height of eye (0 if none)"); if (!rr.rows.length) missing.push("a sight (one sight gives a position line, two or more give a fix)"); else if (!one && rr.rows.length < 2) missing.push("a second sight");
+      if (v.lat === null || v.lon === null) missing.push("the DR position"); if (!one && (v.course === null || v.speed === null)) missing.push("course and speed"); if (!v.date) missing.push("the date"); if (v.zone === null) missing.push("the time zone"); if (v.hoe === null) missing.push("height of eye (metres, the eye above the sea)"); if (!rr.rows.length) missing.push("a sight (one sight gives a position line, two or more give a fix)"); else if (!one && rr.rows.length < 2) missing.push("a second sight");
       if (!ready) { $("sf-out").hidden = true; $("sf-sheet").classList.add("no-print"); $("sf-empty").hidden = false; $("sf-empty").className = "empty"; $("sf-empty").textContent = missing.length && !rr.bad.length ? "Still needed: " + missing.join(", ") + "." : "Check the entries marked in red."; last = null; return; }
-      var base = Date.UTC(v.date.y, v.date.m - 1, v.date.d), sights = rr.rows.map(function (s) { var o = { name: s.name, ms: base + (s.secLocal - v.zone * 3600) * 1000 + s.dayAdd * 1000 }; if (s.name === "Latitude") o.lat = s.lat; else { o.hs = s.hs; o.limb = s.limb; } return o; });
+      var base = Date.UTC(v.date.y, v.date.m - 1, v.date.d), sights = rr.rows.map(function (s) { var o = { name: s.name, ms: base + (s.secLocal - v.zone * 3600) * 1000 + s.dayAdd * 1000 }; if (s.dr) o.dr = s.dr; if (s.name === "Latitude") o.lat = s.lat; else { o.hs = s.hs; o.limb = s.limb; } return o; });
       var t1 = Math.min.apply(null, sights.map(function (s) { return s.ms; })), side = $("sf-ie-on").checked ? -1 : 1, fa = parseTimeEl($("sf-fixat")), fixMs = null;
       if (fa !== null && sights.length > 1) {                                          /* that ship's clock time nearest the last sight */
         var tl = Math.max.apply(null, sights.map(function (s) { return s.ms; })); fixMs = base + (fa - v.zone * 3600) * 1000;
@@ -110,6 +115,8 @@
       if (v.gps) inp.gps = v.gps;
       if ($("sf-ap-first").checked) inp.apMode = "first";
       if (fixMs !== null) inp.fixMs = fixMs;
+      rr.rows.forEach(function (s, k) { if (s.rf.pos) { var q = SightFix.drAt(inp.dr, sights[k].ms); s.rf.pos.placeholder = Geo.lat(q.lat) + " " + Geo.lon(q.lon); } });     /* show the worked DR in grey */
+      if (one && sights[0].dr) { inp.dr.lat = sights[0].dr.lat; inp.dr.lon = sights[0].dr.lon; }
       var r = one ? SightFix.single(inp) : SightFix.fix(inp);
       if (r.error) { $("sf-out").hidden = true; $("sf-sheet").classList.add("no-print"); $("sf-empty").hidden = false; $("sf-empty").className = "callout warn u-mt-0"; $("sf-empty").textContent = r.error; last = null; return; }
       last = { r: r, v: v, zone: v.zone, inp: inp }; if (r.single) showLine(r, v); else show(r, v);
@@ -135,7 +142,8 @@
       rn.hidden = !(d0.speed > 0 && r.sights.length > 1);
       if (!rn.hidden) rn.textContent = "Ship under way at " + d0.speed + " kn on " + ("00" + Math.round(d0.course)).slice(-3) + "°: the ship was in a different place at each sight. " +
         bodies.map(function (s) { return s.name + " " + localOf(s.ms, v.zone) + " at " + Geo.lat(s.drSight.lat) + " " + Geo.lon(s.drSight.lon); }).join("; ") +
-        ". Each line is carried forward along the course to " + localOf(r.time, v.zone).slice(0, 5) + ", where they cross: that is the fix."; var line = (methodText(r) + apNote()) + " " + localOf(r.time, v.zone) + " LT (" + utText(r.time) + " UT): " + Geo.lat(ft.lat) + " " + Geo.lon(ft.lon) + (r.setDeg === null ? "" : " | " + Math.round(r.setDeg) + "° " + r.distNM.toFixed(1) + " NM from DR") + (r.gpsErrNM !== undefined ? " | GPS difference " + r.gpsErrNM.toFixed(1) + " NM" : "");
+        ". Each line is carried forward along the course to " + localOf(r.time, v.zone).slice(0, 5) + ", where they cross: that is the fix.";
+      var ft = r.fix, line = (methodText(r) + apNote()) + " " + localOf(r.time, v.zone) + " LT (" + utText(r.time) + " UT): " + Geo.lat(ft.lat) + " " + Geo.lon(ft.lon) + (r.setDeg === null ? "" : " | " + Math.round(r.setDeg) + "° " + r.distNM.toFixed(1) + " NM from DR") + (r.gpsErrNM !== undefined ? " | GPS difference " + r.gpsErrNM.toFixed(1) + " NM" : "");
       $("sf-log").textContent = line;
       work($("sf-work-tbl"), r, v); sheet(r, v);
     }
@@ -269,7 +277,7 @@
     $("sf-form").addEventListener("input", function () { save(); render(); });
     $("sf-form").addEventListener("change", function () { save(); render(); });
     ["sf-mode-sun", "sf-mode-stars"].forEach(function (id) { $(id).addEventListener("change", function () { mode = $("sf-mode-stars").checked ? "stars" : "sun"; build(); setMethod(mode === "stars" ? "stars" : "noon", false); }); });   /* keeps the method buttons in step */
-    $("sf-fixat").addEventListener("input", function () { save(); render(); }); $("sf-fixat").addEventListener("change", function () { save(); render(); });
+    $("sf-fixat").addEventListener("input", function () { st.fixAuto = false; save(); render(); }); $("sf-fixat").addEventListener("change", function () { save(); render(); });
     ["sf-hoe", "sf-ie"].forEach(function (id) { $(id).addEventListener("input", function () { shipEdited = true; }); }); ["sf-ie-on", "sf-ie-off"].forEach(function (id) { $(id).addEventListener("change", function () { shipEdited = true; }); });
     ["sf-ap-each", "sf-ap-first"].forEach(function (id) { $(id).addEventListener("change", function () { save(); render(); }); });
     /* ---------- the method picker: sets the mode and the bodies, never wipes what was typed ---------- */
@@ -290,7 +298,8 @@
         var rows = st.rows[mode] || [], empty = function (r) { return r && !r.time && !r.hd && !r.hm; };     /* only rows with nothing typed are given a body */
         if (m === "polaris" && empty(rows[0])) rows[0].name = "Polaris";
         if (m === "day") { if (empty(rows[0])) rows[0].name = "Sun"; if (empty(rows[1])) rows[1].name = "Moon"; }
-        if (m === "noon" && !$("sf-fixat").value) $("sf-fixat").value = "12:00";
+        if (m === "noon" && !$("sf-fixat").value) { $("sf-fixat").value = "12:00"; st.fixAuto = true; }
+        if (m !== "noon" && st.fixAuto && $("sf-fixat").value === "12:00") { $("sf-fixat").value = ""; st.fixAuto = false; }     /* the noon time does not belong to other methods */
         build();
       }
       [].forEach.call(document.querySelectorAll("#sf-methods [data-m]"), function (b) { var on = b.getAttribute("data-m") === m; b.className = on ? "btn primary" : "btn"; b.setAttribute("aria-pressed", on ? "true" : "false"); });
@@ -299,6 +308,10 @@
       save(); render();
     }
     [].forEach.call(document.querySelectorAll("#sf-methods [data-m]"), function (b) { b.addEventListener("click", function () { setMethod(b.getAttribute("data-m"), true); }); });
+    $("sf-filldr").addEventListener("click", function () {              /* write the worked DR positions into the empty boxes, to check or change them */
+      var n = 0; rowRefs.forEach(function (rf) { if (rf.pos && !rf.pos.value && /[NS]/.test(rf.pos.placeholder) && parseTimeEl(rf.time) !== null) { rf.pos.value = rf.pos.placeholder; rf.r.pos = rf.pos.value; n++; } });
+      save(); render(); toast(n ? "DR positions filled in from course and speed: check or change them" : "Enter the DR, course, speed and the sight times first");
+    });
     $("sf-pick").addEventListener("click", pickStars); $("sf-example").addEventListener("click", example); $("sf-clear").addEventListener("click", clearSights);
     $("sf-print").addEventListener("click", function () { if (last) window.print(); });
     $("sf-copy").addEventListener("click", function () { if (last) copyText($("sf-log").textContent); });

@@ -36,6 +36,7 @@ Tools now: True Wind, Meridian Passage, Sunrise & Sunset, Sight Fix, Special Are
 
 ## Check after every edit
 ```bash
+node build/tools/smoke.js        # opens every tool in headless Chrome, loads its example, fails on any page error
 node -e "var h=require('fs').readFileSync('Bridge-Calculators.html','utf8');new Function(h.slice(h.lastIndexOf('<script>')+8,h.lastIndexOf('</script>')));console.log('js ok')"
 cp Bridge-Calculators.html ~/Desktop/Bridge-Calculators.html
 ```
@@ -85,3 +86,6 @@ All altitude-correction examples (Capella, Mars, Sun UL, Moon LL) match to 0.0';
 ## Sight methods picker (since 25 Oct 2026)
 Sight Fix opens with "Method: what did you observe?": Noon position, Sun running fix, Position line / long by chron, Meridian altitude / ex-meridian, Pole Star, Star fix, Sun + Moon or Venus. Each sets the internal mode (`sun` or `stars`), fills body names only into rows that have no altitude yet, and shows a one-line how-to (`METHODS` in page.js, `st.method` saved). "Give the fix at (ship's time)" sets `inp.fixMs` (Noon position fills 12:00, as Subramaniam ch. 26 gives the noon position at 1200 ST). Checked against Capt. H. Subramaniam, Practical Navigation (2010), ch. 26 worked example: `node build/sight/test_subramaniam.js` (longitude by chronometer, noon position and the sextant meridian altitude all within 0.3'; `anyYear: true` lets tests use the book's 1992 dates).
 Also `node build/sight/test_subramaniam_examples.js`: 26 worked examples from Subramaniam ch. 10, 14-18 and 24 (Sun, stars, Polaris, planets, Moon, ex-meridian, below the pole, combination fixes), 96 checks, all within 0.35' (largest 0.28'). Book misprints found: p. 132 Mars 13 23.1 vs 31 23.1, p. 140 S 87.8 E should be S 77.8 E, p. 220 latitude named N should be S. Not in the app on purpose: back-angle sights; altitude-only circumpolar problems (no time).
+
+## DR at each sight (since 25 Oct 2026)
+Every sight row has "DR at this sight" (any format Geo.parse reads, e.g. 21 22.2N 037 57.2E). Empty: worked from the first DR, course and speed and shown in grey; "Fill DR positions" writes those in to check or change. `SightFix.fix` uses `sight.dr` when given: each sight is reduced from that position and the lines are carried to the fix time by the movement between the officer's positions (`own` path in fix.js; test `test_owndr.js`). `node build/tools/smoke.js` (headless Chrome, every tool and every Sight Fix method) must pass after every change: it would have caught the `ft is not defined` break shipped in d8a62a8.

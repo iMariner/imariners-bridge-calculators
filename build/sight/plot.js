@@ -27,7 +27,7 @@
     /* opt.single: one position line. r.fix is then the ITP; opt.mark = { lat, lon, label } is the longitude by chronometer (or latitude) point */
     function build(r, inp, W, H, id, opt) {
       opt = opt || {};
-      var fx = r.fix, drF = SightFix.drAt(inp.dr, r.time), cosF = Math.cos(fx.lat * R);
+      var fx = r.fix, drF = r.dr || SightFix.drAt(inp.dr, r.time), cosF = Math.cos(fx.lat * R);
       function pl(p) { var dl = p.lon - fx.lon; dl -= 360 * Math.round(dl / 360); return { x: dl * 60 * cosF, y: (p.lat - fx.lat) * 60 }; }
       var pts = [{ x: 0, y: 0 }], dF = pl(drF); pts.push(dF);
       var L = r.sights.map(function (s) {

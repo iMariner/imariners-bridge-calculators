@@ -61,4 +61,6 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
 .sf-apmode .field { margin: 0; }
 .sf-apmode + .sf-apmode { margin-top: var(--sp-2); }
 .sf-runnote { margin: var(--sp-3) 0 0; font-size: var(--fs-sm); color: var(--muted); }
+table.sf-rows td.w-dr { min-width: 210px; }
+table.sf-rows td.w-dr input { font-size: var(--fs-md); background: var(--entry); }
 /* Sight Fix end */

@@ -50,6 +50,12 @@
       }
       if (!dr || !isFinite(dr.lat) || !isFinite(dr.lon) || !isFinite(dr.course) || !isFinite(dr.speed) || !isFinite(dr.ms)) return { error: "The DR position, course and speed are needed.", warnings: warn };
       if (Math.abs(dr.lat) > 84) return { error: "Latitudes above 84 degrees are not supported.", warnings: warn };
+      /* the officer may give the DR at each sight (sight.dr); otherwise it is worked from the first DR, course and speed.
+         With own positions the lines are carried to the fix time by the ship's movement between those positions. */
+      var own = S.some(function (s) { return s.dr && isFinite(s.dr.lat) && isFinite(s.dr.lon); });
+      function drOf(s) { return s.dr && isFinite(s.dr.lat) && isFinite(s.dr.lon) ? { lat: s.dr.lat, lon: s.dr.lon } : drAt(dr, s.ms); }
+      var sLast = S.reduce(function (a, b) { return b.ms > a.ms ? b : a; }), sFirst = S.reduce(function (a, b) { return b.ms < a.ms ? b : a; });
+      var DRF = own ? (function () { var p = drOf(sLast); return advance(p.lat, p.lon, dr.course, dr.speed * (tf - sLast.ms) / 3600000); })() : drAt(dr, tf);
       var invalid = null, items = S.map(function (s) {
         var it = { s: s, lat: s.name === "Latitude" };
         if (it.lat) return it;
@@ -57,14 +63,14 @@
         if (!pl) { invalid = invalid || s.name; return it; }
         it.pl = pl;
         if (s.ho !== undefined) it.ho = { ho: s.ho };
-        else { var ap0 = drAt(dr, s.ms); it.ho = Sight.ho({ hs: s.hs, ic: inp.ic, hoe: inp.hoe, temp: inp.temp, pres: inp.pres, body: pl.kind, limb: s.limb || "L", sd: pl.kind === "moon" ? Sight.reduceBody(pl, ap0.lat, ap0.lon).sd : pl.sd, hp: pl.hp }); }
+        else { var ap0 = drOf(s); it.ho = Sight.ho({ hs: s.hs, ic: inp.ic, hoe: inp.hoe, temp: inp.temp, pres: inp.pres, body: pl.kind, limb: s.limb || "L", sd: pl.kind === "moon" ? Sight.reduceBody(pl, ap0.lat, ap0.lon).sd : pl.sd, hp: pl.hp }); }
         if (it.ho.valid === false) invalid = s.name;
         return it;
       });
       if (invalid) return { error: invalid + ": the sextant altitude is below the horizon after the corrections (check the altitude, index error and height of eye).", warnings: warn };
       function lines(Pf) {                                                             /* intercepts and azimuths seen from the track positions that lead to Pf */
         return items.map(function (it) {
-          var d = inp.dr.speed * (tf - it.s.ms) / 3600000, P = advance(Pf.lat, Pf.lon, dr.course, -d);
+          var P; if (own) { var o = offset(DRF, drOf(it.s)); P = move(Pf, o.dN, o.dE); } else { var d = inp.dr.speed * (tf - it.s.ms) / 3600000; P = advance(Pf.lat, Pf.lon, dr.course, -d); }
           if (it.lat) return { P: P, zn: 0, hc: null, a: (it.s.lat - P.lat) * 60 };
           var r = Sight.reduceBody(it.pl, P.lat, P.lon);
           return { P: P, zn: r.zn, hc: r.hc, lha: r.lha, a: (it.ho.ho - r.hc) * 60 };
@@ -75,7 +81,7 @@
         return L.map(function (l, i) { return [(N2[i].a - N1[i].a) / (2 * s), (E2[i].a - E1[i].a) / (2 * s), l.a, items[i].lat ? 0 : 1]; });
       }
       function iterate(withC) {
-        var Pf = drAt(dr, tf), c = 0, L, k, x, rows, last = Infinity;
+        var Pf = DRF, c = 0, L, k, x, rows, last = Infinity;
         for (k = 0; k < 20; k++) {
           L = lines(Pf); rows = jacobian(Pf, L);
           x = solve(rows, withC); if (!x) return null;
@@ -88,11 +94,11 @@
       }
       var base = iterate(false); if (!base) return { error: "The lines of position are parallel, too few, or too far from the DR: no fix.", warnings: warn };
       if (!base.converged) return { error: "The fix did not settle. Check the times, the altitudes and the DR.", warnings: warn };
-      var DR = drAt(dr, tf), L0 = lines(DR), out = { time: tf, dr: DR, fix: base.P, iterations: base.iters, warnings: warn };
+      var DR = DRF, L0 = lines(DR), out = { time: tf, dr: DR, fix: base.P, iterations: base.iters, warnings: warn };
       out.sights = items.map(function (it, i) {
         /* assumed position: the DR at the time of this sight (DR carried forward), or the first DR for every sight
            (inp.apMode "first", as when all sights are worked from the original DR). Only the working changes, not the fix. */
-        var dS = drAt(dr, it.s.ms), apN = inp.apMode === "first" && !it.lat ? { lat: dr.lat, lon: dr.lon } : dS;
+        var dS = drOf(it.s), d1 = own ? drOf(sFirst) : { lat: dr.lat, lon: dr.lon }, apN = inp.apMode === "first" && !it.lat ? d1 : dS;
         var l0 = L0[i], lf = base.L[i], row = { name: it.s.name, ms: it.s.ms, ap: apN, drSight: dS, zn: l0.zn, a: l0.a, resid: lf.a }, r2 = it.lat ? null : Sight.reduceBody(it.pl, apN.lat, apN.lon);
         if (!it.lat) { row.kind = it.pl.kind; row.hp = it.pl.hp; row.gha = it.pl.gha; row.dec = it.pl.dec; row.lha = r2.lha; row.hc = r2.hc; row.zn = r2.zn; row.ho = it.ho.ho; row.corr = it.ho; row.a = (it.ho.ho - r2.hc) * 60; row.hcFix = lf.hc; row.aDr = apN === dS ? row.a : (it.ho.ho - Sight.reduceBody(it.pl, dS.lat, dS.lon).hc) * 60; if (it.pl.kind === "moon") geoMoon(row, apN); if (r2.hc < 5) warn.push(it.s.name + " is below 5 degrees: refraction is unreliable."); else if (r2.hc < 10) warn.push(it.s.name + " is below 10 degrees: low altitude, less reliable."); if (r2.hc > 80) warn.push(it.s.name + " is above 80 degrees: a straight line is a poor approximation."); }
         if (Math.abs(row.a) > 20) warn.push((it.lat ? "Latitude" : it.s.name) + ": intercept " + Math.abs(row.a).toFixed(1) + "' is large. Check the time, Hs and the DR.");
