@@ -4,7 +4,7 @@
     var LIMBS = [["L", "Lower"], ["U", "Upper"]];
     var NAMES = Sight.names();
     var FIELDS = ["sf-lat-d", "sf-lat-m", "sf-lon-d", "sf-lon-m", "sf-course", "sf-speed", "sf-date", "sf-zone", "sf-hoe", "sf-ie", "sf-temp", "sf-pres", "sf-gps-lat-d", "sf-gps-lat-m", "sf-gps-lon-d", "sf-gps-lon-m"];
-    var RADIOS = ["sf-lat-n", "sf-lat-s", "sf-lon-e", "sf-lon-w", "sf-ie-on", "sf-ie-off", "sf-gps-lat-n", "sf-gps-lat-s", "sf-gps-lon-e", "sf-gps-lon-w"];
+    var RADIOS = ["sf-ap-each", "sf-ap-first", "sf-lat-n", "sf-lat-s", "sf-lon-e", "sf-lon-w", "sf-ie-on", "sf-ie-off", "sf-gps-lat-n", "sf-gps-lat-s", "sf-gps-lon-e", "sf-gps-lon-w"];
     function shipKey() { var s = Ships.active(); return s ? s.id : "_"; }
     function p2(n) { return ("0" + n).slice(-2); }
     function hms(sec) { sec = ((Math.round(sec) % 86400) + 86400) % 86400; return p2(Math.floor(sec / 3600)) + ":" + p2(Math.floor(sec % 3600 / 60)) + ":" + p2(sec % 60); }
@@ -104,6 +104,7 @@
       var t1 = Math.min.apply(null, sights.map(function (s) { return s.ms; })), side = $("sf-ie-on").checked ? -1 : 1;
       var inp = { dr: { lat: v.lat * ($("sf-lat-s").checked ? -1 : 1), lon: v.lon * ($("sf-lon-w").checked ? -1 : 1), ms: t1, course: v.course === null ? 0 : v.course, speed: v.speed === null ? 0 : v.speed }, hoe: v.hoe, ic: side * (v.ie || 0), temp: v.temp === null ? 10 : v.temp, pres: v.pres === null ? 1010 : v.pres, sights: sights };
       if (v.gps) inp.gps = v.gps;
+      if ($("sf-ap-first").checked) inp.apMode = "first";
       var r = one ? SightFix.single(inp) : SightFix.fix(inp);
       if (r.error) { $("sf-out").hidden = true; $("sf-sheet").classList.add("no-print"); $("sf-empty").hidden = false; $("sf-empty").className = "callout warn u-mt-0"; $("sf-empty").textContent = r.error; last = null; return; }
       last = { r: r, v: v, zone: v.zone, inp: inp }; if (r.single) showLine(r, v); else show(r, v);
@@ -125,7 +126,7 @@
       if (r.constErr !== undefined) qs += (qs ? "; " : "") + "constant error " + (r.constErr >= 0 ? "+" : "−") + Math.abs(r.constErr).toFixed(1) + "'" + (r.fixC ? ", fix with it removed " + Geo.lat(r.fixC.lat) + " " + Geo.lon(r.fixC.lon) : "");
       $("sf-f-q").textContent = q; $("sf-f-q-sub").textContent = qs;
       sightsTable($("sf-tbl"), r, v);
-      var ft = r.fix; var line = methodText(r) + " " + localOf(r.time, v.zone) + " LT (" + utText(r.time) + " UT): " + Geo.lat(ft.lat) + " " + Geo.lon(ft.lon) + (r.setDeg === null ? "" : " | " + Math.round(r.setDeg) + "° " + r.distNM.toFixed(1) + " NM from DR") + (r.gpsErrNM !== undefined ? " | GPS difference " + r.gpsErrNM.toFixed(1) + " NM" : "");
+      var ft = r.fix; var line = (methodText(r) + apNote()) + " " + localOf(r.time, v.zone) + " LT (" + utText(r.time) + " UT): " + Geo.lat(ft.lat) + " " + Geo.lon(ft.lon) + (r.setDeg === null ? "" : " | " + Math.round(r.setDeg) + "° " + r.distNM.toFixed(1) + " NM from DR") + (r.gpsErrNM !== undefined ? " | GPS difference " + r.gpsErrNM.toFixed(1) + " NM" : "");
       $("sf-log").textContent = line;
       work($("sf-work-tbl"), r, v); sheet(r, v);
     }
@@ -159,6 +160,7 @@
       if (nm.every(function (n) { return n !== "Sun" && n !== "Moon" && Sight.planets().indexOf(n) < 0; })) return "Fix by stars" + lat;
       return "Fix by " + nm.join(", ") + lat;
     }
+    function apNote() { return last && last.inp.apMode === "first" ? " (every sight worked from the first DR)" : ""; }
     function p3(x) { return ("00" + Math.round(x) % 360).slice(-3); }
     function sightsTable(tbl, r, v) {
       while (tbl.firstChild) tbl.removeChild(tbl.firstChild);
@@ -177,7 +179,7 @@
       $("sf-ps-plot").innerHTML = SightPlot.build(r, i, 760, 300, "sfc2");
       fillCells($("sf-ps-info"), [["Ship", sh ? sh.name : "—"], ["IMO number", sh && sh.imo ? sh.imo : "—"], ["Date (ship's time)", p2(v.date.d) + "/" + p2(v.date.m) + "/" + v.date.y], ["Time zone", (v.zone >= 0 ? "UTC +" : "UTC −") + Math.abs(v.zone) + " h"],
         ["DR at first sight", Geo.lat(i.dr.lat) + " " + Geo.lon(i.dr.lon), 2], ["Course / speed", Math.round(v.course) + "° / " + v.speed + " kn"], ["Height of eye", v.hoe + " m"],
-        ["Index error", (ic === 0 ? "nil" : Math.abs(ic).toFixed(1) + "' " + (ic < 0 ? "on" : "off") + " the arc")], ["Temp / pressure", i.temp + " °C / " + i.pres + " hPa"], ["Method", methodText(r), 2]]);
+        ["Index error", (ic === 0 ? "nil" : Math.abs(ic).toFixed(1) + "' " + (ic < 0 ? "on" : "off") + " the arc")], ["Temp / pressure", i.temp + " °C / " + i.pres + " hPa"], ["Method", (methodText(r) + apNote()), 2]]);
       sightsTable($("sf-ps-tbl"), r, v); work($("sf-ps-work"), r, v);
       $("sf-ps-l1").textContent = "Latitude"; $("sf-ps-l2").textContent = "Longitude";
       $("sf-ps-lat").textContent = Geo.lat(r.fix.lat); $("sf-ps-lon").textContent = Geo.lon(r.fix.lon);
@@ -206,7 +208,7 @@
       var th = el("thead"), hr = el("tr"); hr.appendChild(el("th", "", "Step")); var cnt = {}; body.forEach(function (s) { cnt[s.name] = (cnt[s.name] || 0) + 1; }); var seen = {}; body.forEach(function (s) { seen[s.name] = (seen[s.name] || 0) + 1; hr.appendChild(el("th", "", s.name + (cnt[s.name] > 1 ? " " + seen[s.name] : ""))); }); th.appendChild(hr); tbl.appendChild(th); var tb = el("tbody"); tbl.appendChild(tb);
       function row(label, f) { var tr = el("tr"); tr.appendChild(el("td", "", label)); body.forEach(function (s, i) { tr.appendChild(el("td", "num", f(s, i))); }); tb.appendChild(tr); }
       var idxOf = function (s) { return r.sights.indexOf(s); };
-      row("UT", function (s) { return utText(s.ms); }); row("DR (assumed position)", function (s) { return Geo.lat(s.ap.lat) + " " + Geo.lon(s.ap.lon); });
+      row("UT", function (s) { return utText(s.ms); }); row(last.inp.apMode === "first" ? "Assumed position (the first DR)" : "Assumed position (DR at the sight)", function (s) { return Geo.lat(s.ap.lat) + " " + Geo.lon(s.ap.lon); });
       row("GHA", function (s) { return alt(s.gha); }); row("Declination", function (s) { return (s.dec < 0 ? "S " : "N ") + alt(Math.abs(s.dec)); }); row("LHA", function (s) { return alt(dsp(s).lha); });
       row("Sextant altitude Hs", function (s) { return last_hs(idxOf(s)); });
       row("Index correction", function (s) { var ic = last.inp.ic; return (ic >= 0 ? "+" : "−") + Math.abs(ic).toFixed(1) + "'"; });
@@ -258,6 +260,7 @@
     $("sf-form").addEventListener("change", function () { save(); render(); });
     ["sf-mode-sun", "sf-mode-stars"].forEach(function (id) { $(id).addEventListener("change", function () { mode = $("sf-mode-stars").checked ? "stars" : "sun"; build(); save(); render(); }); });
     ["sf-hoe", "sf-ie"].forEach(function (id) { $(id).addEventListener("input", function () { shipEdited = true; }); }); ["sf-ie-on", "sf-ie-off"].forEach(function (id) { $(id).addEventListener("change", function () { shipEdited = true; }); });
+    ["sf-ap-each", "sf-ap-first"].forEach(function (id) { $(id).addEventListener("change", function () { save(); render(); }); });
     $("sf-pick").addEventListener("click", pickStars); $("sf-example").addEventListener("click", example); $("sf-clear").addEventListener("click", clearSights);
     $("sf-print").addEventListener("click", function () { if (last) window.print(); });
     $("sf-copy").addEventListener("click", function () { if (last) copyText($("sf-log").textContent); });

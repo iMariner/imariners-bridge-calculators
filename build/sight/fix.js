@@ -90,8 +90,10 @@
       if (!base.converged) return { error: "The fix did not settle. Check the times, the altitudes and the DR.", warnings: warn };
       var DR = drAt(dr, tf), L0 = lines(DR), out = { time: tf, dr: DR, fix: base.P, iterations: base.iters, warnings: warn };
       out.sights = items.map(function (it, i) {
-        var l0 = L0[i], lf = base.L[i], row = { name: it.s.name, ms: it.s.ms, ap: drAt(dr, it.s.ms), zn: l0.zn, a: l0.a, resid: lf.a };
-        var apN = drAt(dr, it.s.ms), r2 = it.lat ? null : Sight.reduceBody(it.pl, apN.lat, apN.lon);
+        /* assumed position: the DR at the time of this sight (DR carried forward), or the first DR for every sight
+           (inp.apMode "first", as when all sights are worked from the original DR). Only the working changes, not the fix. */
+        var dS = drAt(dr, it.s.ms), apN = inp.apMode === "first" && !it.lat ? { lat: dr.lat, lon: dr.lon } : dS;
+        var l0 = L0[i], lf = base.L[i], row = { name: it.s.name, ms: it.s.ms, ap: apN, drSight: dS, zn: l0.zn, a: l0.a, resid: lf.a }, r2 = it.lat ? null : Sight.reduceBody(it.pl, apN.lat, apN.lon);
         if (!it.lat) { row.kind = it.pl.kind; row.hp = it.pl.hp; row.gha = it.pl.gha; row.dec = it.pl.dec; row.lha = r2.lha; row.hc = r2.hc; row.zn = r2.zn; row.ho = it.ho.ho; row.corr = it.ho; row.a = (it.ho.ho - r2.hc) * 60; row.hcFix = lf.hc; if (it.pl.kind === "moon") geoMoon(row, apN); if (r2.hc < 5) warn.push(it.s.name + " is below 5 degrees: refraction is unreliable."); else if (r2.hc < 10) warn.push(it.s.name + " is below 10 degrees: low altitude, less reliable."); if (r2.hc > 80) warn.push(it.s.name + " is above 80 degrees: a straight line is a poor approximation."); }
         if (Math.abs(row.a) > 20) warn.push((it.lat ? "Latitude" : it.s.name) + ": intercept " + Math.abs(row.a).toFixed(1) + "' is large. Check the time, Hs and the DR.");
         return row;

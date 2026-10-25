@@ -939,6 +939,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
   #sf-sheet .ps-grid div { padding: .8mm 2.4mm; }
   .sf-plot, #sf-ps-plot { --surface: #fff; --text: #000; --muted: #555; --border: #ccc; --border-strong: #000; --accent: #000; --danger: #000; --accent-rgb: 0, 0, 0; }
 }
+.sf-apmode { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--sp-3); align-items: center; }
 /* Sight Fix end */
 </style>
 </head>
@@ -2819,6 +2820,13 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
             <h2>Sights</h2>
             <div class="dr-gridwrap"><table class="sf-rows" id="sf-rows"></table></div>
             <div class="hint" id="sf-rows-msg"></div>
+            <div class="sf-apmode u-mt-3">
+              <span class="small muted" id="sf-ap-lbl">Work every sight from</span>
+              <div class="segmented" role="radiogroup" aria-labelledby="sf-ap-lbl">
+                <input type="radio" name="sf-ap" id="sf-ap-each" value="each" checked><label for="sf-ap-each">DR at each sight</label>
+                <input type="radio" name="sf-ap" id="sf-ap-first" value="first"><label for="sf-ap-first">The first DR</label>
+              </div>
+            </div>
             <div class="actions">
               <button type="button" class="btn" id="sf-pick">Pick the best stars</button>
               <button type="button" class="btn" id="sf-example">Load example</button>
@@ -7466,8 +7474,10 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       if (!base.converged) return { error: "The fix did not settle. Check the times, the altitudes and the DR.", warnings: warn };
       var DR = drAt(dr, tf), L0 = lines(DR), out = { time: tf, dr: DR, fix: base.P, iterations: base.iters, warnings: warn };
       out.sights = items.map(function (it, i) {
-        var l0 = L0[i], lf = base.L[i], row = { name: it.s.name, ms: it.s.ms, ap: drAt(dr, it.s.ms), zn: l0.zn, a: l0.a, resid: lf.a };
-        var apN = drAt(dr, it.s.ms), r2 = it.lat ? null : Sight.reduceBody(it.pl, apN.lat, apN.lon);
+        /* assumed position: the DR at the time of this sight (DR carried forward), or the first DR for every sight
+           (inp.apMode "first", as when all sights are worked from the original DR). Only the working changes, not the fix. */
+        var dS = drAt(dr, it.s.ms), apN = inp.apMode === "first" && !it.lat ? { lat: dr.lat, lon: dr.lon } : dS;
+        var l0 = L0[i], lf = base.L[i], row = { name: it.s.name, ms: it.s.ms, ap: apN, drSight: dS, zn: l0.zn, a: l0.a, resid: lf.a }, r2 = it.lat ? null : Sight.reduceBody(it.pl, apN.lat, apN.lon);
         if (!it.lat) { row.kind = it.pl.kind; row.hp = it.pl.hp; row.gha = it.pl.gha; row.dec = it.pl.dec; row.lha = r2.lha; row.hc = r2.hc; row.zn = r2.zn; row.ho = it.ho.ho; row.corr = it.ho; row.a = (it.ho.ho - r2.hc) * 60; row.hcFix = lf.hc; if (it.pl.kind === "moon") geoMoon(row, apN); if (r2.hc < 5) warn.push(it.s.name + " is below 5 degrees: refraction is unreliable."); else if (r2.hc < 10) warn.push(it.s.name + " is below 10 degrees: low altitude, less reliable."); if (r2.hc > 80) warn.push(it.s.name + " is above 80 degrees: a straight line is a poor approximation."); }
         if (Math.abs(row.a) > 20) warn.push((it.lat ? "Latitude" : it.s.name) + ": intercept " + Math.abs(row.a).toFixed(1) + "' is large. Check the time, Hs and the DR.");
         return row;
@@ -7585,7 +7595,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
         var ap = pl(s.ap), z = s.zn * R, lat = s.name === "Latitude";
         var af = lat ? s.a + dF.y : (s.ho - s.hcFix) * 60;             /* line as seen from the fix: intercept worked from the fix itself */
         var f1p = lat ? { x: 0, y: af } : { x: af * Math.sin(z), y: af * Math.cos(z) };
-        var f0 = { x: f1p.x + ap.x - dF.x, y: f1p.y + ap.y - dF.y };
+        var ds = s.drSight ? pl(s.drSight) : ap, f0 = { x: f1p.x + ds.x - dF.x, y: f1p.y + ds.y - dF.y };      /* the line where the sight was taken: carried back by the run from its time */
         pts.push(ap, f0, f1p);
         return { s: s, ap: ap, f0: f0, f1: f1p, dx: Math.cos(z), dy: -Math.sin(z) };
       });
@@ -7679,7 +7689,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
     var LIMBS = [["L", "Lower"], ["U", "Upper"]];
     var NAMES = Sight.names();
     var FIELDS = ["sf-lat-d", "sf-lat-m", "sf-lon-d", "sf-lon-m", "sf-course", "sf-speed", "sf-date", "sf-zone", "sf-hoe", "sf-ie", "sf-temp", "sf-pres", "sf-gps-lat-d", "sf-gps-lat-m", "sf-gps-lon-d", "sf-gps-lon-m"];
-    var RADIOS = ["sf-lat-n", "sf-lat-s", "sf-lon-e", "sf-lon-w", "sf-ie-on", "sf-ie-off", "sf-gps-lat-n", "sf-gps-lat-s", "sf-gps-lon-e", "sf-gps-lon-w"];
+    var RADIOS = ["sf-ap-each", "sf-ap-first", "sf-lat-n", "sf-lat-s", "sf-lon-e", "sf-lon-w", "sf-ie-on", "sf-ie-off", "sf-gps-lat-n", "sf-gps-lat-s", "sf-gps-lon-e", "sf-gps-lon-w"];
     function shipKey() { var s = Ships.active(); return s ? s.id : "_"; }
     function p2(n) { return ("0" + n).slice(-2); }
     function hms(sec) { sec = ((Math.round(sec) % 86400) + 86400) % 86400; return p2(Math.floor(sec / 3600)) + ":" + p2(Math.floor(sec % 3600 / 60)) + ":" + p2(sec % 60); }
@@ -7779,6 +7789,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       var t1 = Math.min.apply(null, sights.map(function (s) { return s.ms; })), side = $("sf-ie-on").checked ? -1 : 1;
       var inp = { dr: { lat: v.lat * ($("sf-lat-s").checked ? -1 : 1), lon: v.lon * ($("sf-lon-w").checked ? -1 : 1), ms: t1, course: v.course === null ? 0 : v.course, speed: v.speed === null ? 0 : v.speed }, hoe: v.hoe, ic: side * (v.ie || 0), temp: v.temp === null ? 10 : v.temp, pres: v.pres === null ? 1010 : v.pres, sights: sights };
       if (v.gps) inp.gps = v.gps;
+      if ($("sf-ap-first").checked) inp.apMode = "first";
       var r = one ? SightFix.single(inp) : SightFix.fix(inp);
       if (r.error) { $("sf-out").hidden = true; $("sf-sheet").classList.add("no-print"); $("sf-empty").hidden = false; $("sf-empty").className = "callout warn u-mt-0"; $("sf-empty").textContent = r.error; last = null; return; }
       last = { r: r, v: v, zone: v.zone, inp: inp }; if (r.single) showLine(r, v); else show(r, v);
@@ -7800,7 +7811,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       if (r.constErr !== undefined) qs += (qs ? "; " : "") + "constant error " + (r.constErr >= 0 ? "+" : "−") + Math.abs(r.constErr).toFixed(1) + "'" + (r.fixC ? ", fix with it removed " + Geo.lat(r.fixC.lat) + " " + Geo.lon(r.fixC.lon) : "");
       $("sf-f-q").textContent = q; $("sf-f-q-sub").textContent = qs;
       sightsTable($("sf-tbl"), r, v);
-      var ft = r.fix; var line = methodText(r) + " " + localOf(r.time, v.zone) + " LT (" + utText(r.time) + " UT): " + Geo.lat(ft.lat) + " " + Geo.lon(ft.lon) + (r.setDeg === null ? "" : " | " + Math.round(r.setDeg) + "° " + r.distNM.toFixed(1) + " NM from DR") + (r.gpsErrNM !== undefined ? " | GPS difference " + r.gpsErrNM.toFixed(1) + " NM" : "");
+      var ft = r.fix; var line = (methodText(r) + apNote()) + " " + localOf(r.time, v.zone) + " LT (" + utText(r.time) + " UT): " + Geo.lat(ft.lat) + " " + Geo.lon(ft.lon) + (r.setDeg === null ? "" : " | " + Math.round(r.setDeg) + "° " + r.distNM.toFixed(1) + " NM from DR") + (r.gpsErrNM !== undefined ? " | GPS difference " + r.gpsErrNM.toFixed(1) + " NM" : "");
       $("sf-log").textContent = line;
       work($("sf-work-tbl"), r, v); sheet(r, v);
     }
@@ -7834,6 +7845,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       if (nm.every(function (n) { return n !== "Sun" && n !== "Moon" && Sight.planets().indexOf(n) < 0; })) return "Fix by stars" + lat;
       return "Fix by " + nm.join(", ") + lat;
     }
+    function apNote() { return last && last.inp.apMode === "first" ? " (every sight worked from the first DR)" : ""; }
     function p3(x) { return ("00" + Math.round(x) % 360).slice(-3); }
     function sightsTable(tbl, r, v) {
       while (tbl.firstChild) tbl.removeChild(tbl.firstChild);
@@ -7852,7 +7864,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       $("sf-ps-plot").innerHTML = SightPlot.build(r, i, 760, 300, "sfc2");
       fillCells($("sf-ps-info"), [["Ship", sh ? sh.name : "—"], ["IMO number", sh && sh.imo ? sh.imo : "—"], ["Date (ship's time)", p2(v.date.d) + "/" + p2(v.date.m) + "/" + v.date.y], ["Time zone", (v.zone >= 0 ? "UTC +" : "UTC −") + Math.abs(v.zone) + " h"],
         ["DR at first sight", Geo.lat(i.dr.lat) + " " + Geo.lon(i.dr.lon), 2], ["Course / speed", Math.round(v.course) + "° / " + v.speed + " kn"], ["Height of eye", v.hoe + " m"],
-        ["Index error", (ic === 0 ? "nil" : Math.abs(ic).toFixed(1) + "' " + (ic < 0 ? "on" : "off") + " the arc")], ["Temp / pressure", i.temp + " °C / " + i.pres + " hPa"], ["Method", methodText(r), 2]]);
+        ["Index error", (ic === 0 ? "nil" : Math.abs(ic).toFixed(1) + "' " + (ic < 0 ? "on" : "off") + " the arc")], ["Temp / pressure", i.temp + " °C / " + i.pres + " hPa"], ["Method", (methodText(r) + apNote()), 2]]);
       sightsTable($("sf-ps-tbl"), r, v); work($("sf-ps-work"), r, v);
       $("sf-ps-l1").textContent = "Latitude"; $("sf-ps-l2").textContent = "Longitude";
       $("sf-ps-lat").textContent = Geo.lat(r.fix.lat); $("sf-ps-lon").textContent = Geo.lon(r.fix.lon);
@@ -7881,7 +7893,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       var th = el("thead"), hr = el("tr"); hr.appendChild(el("th", "", "Step")); var cnt = {}; body.forEach(function (s) { cnt[s.name] = (cnt[s.name] || 0) + 1; }); var seen = {}; body.forEach(function (s) { seen[s.name] = (seen[s.name] || 0) + 1; hr.appendChild(el("th", "", s.name + (cnt[s.name] > 1 ? " " + seen[s.name] : ""))); }); th.appendChild(hr); tbl.appendChild(th); var tb = el("tbody"); tbl.appendChild(tb);
       function row(label, f) { var tr = el("tr"); tr.appendChild(el("td", "", label)); body.forEach(function (s, i) { tr.appendChild(el("td", "num", f(s, i))); }); tb.appendChild(tr); }
       var idxOf = function (s) { return r.sights.indexOf(s); };
-      row("UT", function (s) { return utText(s.ms); }); row("DR (assumed position)", function (s) { return Geo.lat(s.ap.lat) + " " + Geo.lon(s.ap.lon); });
+      row("UT", function (s) { return utText(s.ms); }); row(last.inp.apMode === "first" ? "Assumed position (the first DR)" : "Assumed position (DR at the sight)", function (s) { return Geo.lat(s.ap.lat) + " " + Geo.lon(s.ap.lon); });
       row("GHA", function (s) { return alt(s.gha); }); row("Declination", function (s) { return (s.dec < 0 ? "S " : "N ") + alt(Math.abs(s.dec)); }); row("LHA", function (s) { return alt(dsp(s).lha); });
       row("Sextant altitude Hs", function (s) { return last_hs(idxOf(s)); });
       row("Index correction", function (s) { var ic = last.inp.ic; return (ic >= 0 ? "+" : "−") + Math.abs(ic).toFixed(1) + "'"; });
@@ -7933,6 +7945,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
     $("sf-form").addEventListener("change", function () { save(); render(); });
     ["sf-mode-sun", "sf-mode-stars"].forEach(function (id) { $(id).addEventListener("change", function () { mode = $("sf-mode-stars").checked ? "stars" : "sun"; build(); save(); render(); }); });
     ["sf-hoe", "sf-ie"].forEach(function (id) { $(id).addEventListener("input", function () { shipEdited = true; }); }); ["sf-ie-on", "sf-ie-off"].forEach(function (id) { $(id).addEventListener("change", function () { shipEdited = true; }); });
+    ["sf-ap-each", "sf-ap-first"].forEach(function (id) { $(id).addEventListener("change", function () { save(); render(); }); });
     $("sf-pick").addEventListener("click", pickStars); $("sf-example").addEventListener("click", example); $("sf-clear").addEventListener("click", clearSights);
     $("sf-print").addEventListener("click", function () { if (last) window.print(); });
     $("sf-copy").addEventListener("click", function () { if (last) copyText($("sf-log").textContent); });
@@ -7940,6 +7953,9 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
     load(); build(); render();
   }
   /* SIGHTPAGE-END */
+
+
+
 
 
 

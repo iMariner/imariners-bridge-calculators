@@ -48,6 +48,13 @@
             <h2>Sights</h2>
             <div class="dr-gridwrap"><table class="sf-rows" id="sf-rows"></table></div>
             <div class="hint" id="sf-rows-msg"></div>
+            <div class="sf-apmode u-mt-3">
+              <span class="small muted" id="sf-ap-lbl">Work every sight from</span>
+              <div class="segmented" role="radiogroup" aria-labelledby="sf-ap-lbl">
+                <input type="radio" name="sf-ap" id="sf-ap-each" value="each" checked><label for="sf-ap-each">DR at each sight</label>
+                <input type="radio" name="sf-ap" id="sf-ap-first" value="first"><label for="sf-ap-first">The first DR</label>
+              </div>
+            </div>
             <div class="actions">
               <button type="button" class="btn" id="sf-pick">Pick the best stars</button>
               <button type="button" class="btn" id="sf-example">Load example</button>

@@ -34,7 +34,7 @@
         var ap = pl(s.ap), z = s.zn * R, lat = s.name === "Latitude";
         var af = lat ? s.a + dF.y : (s.ho - s.hcFix) * 60;             /* line as seen from the fix: intercept worked from the fix itself */
         var f1p = lat ? { x: 0, y: af } : { x: af * Math.sin(z), y: af * Math.cos(z) };
-        var f0 = { x: f1p.x + ap.x - dF.x, y: f1p.y + ap.y - dF.y };
+        var ds = s.drSight ? pl(s.drSight) : ap, f0 = { x: f1p.x + ds.x - dF.x, y: f1p.y + ds.y - dF.y };      /* the line where the sight was taken: carried back by the run from its time */
         pts.push(ap, f0, f1p);
         return { s: s, ap: ap, f0: f0, f1: f1p, dx: Math.cos(z), dy: -Math.sin(z) };
       });
