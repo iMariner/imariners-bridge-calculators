@@ -3,7 +3,7 @@
     var KEY = "bridgeCalc.sightFix", st = store.get(KEY) || {}, mode = st.mode === "stars" ? "stars" : "sun", rowsEl = $("sf-rows"), rowRefs = [], last = null, shipEdited = false;
     var LIMBS = [["L", "Lower"], ["U", "Upper"]];
     var NAMES = Sight.names();
-    var FIELDS = ["sf-lat-d", "sf-lat-m", "sf-lon-d", "sf-lon-m", "sf-course", "sf-speed", "sf-date", "sf-zone", "sf-hoe", "sf-ie", "sf-temp", "sf-pres", "sf-gps-lat-d", "sf-gps-lat-m", "sf-gps-lon-d", "sf-gps-lon-m"];
+    var FIELDS = ["sf-fixat", "sf-lat-d", "sf-lat-m", "sf-lon-d", "sf-lon-m", "sf-course", "sf-speed", "sf-date", "sf-zone", "sf-hoe", "sf-ie", "sf-temp", "sf-pres", "sf-gps-lat-d", "sf-gps-lat-m", "sf-gps-lon-d", "sf-gps-lon-m"];
     var RADIOS = ["sf-ap-each", "sf-ap-first", "sf-lat-n", "sf-lat-s", "sf-lon-e", "sf-lon-w", "sf-ie-on", "sf-ie-off", "sf-gps-lat-n", "sf-gps-lat-s", "sf-gps-lon-e", "sf-gps-lon-w"];
     function shipKey() { var s = Ships.active(); return s ? s.id : "_"; }
     function p2(n) { return ("0" + n).slice(-2); }
@@ -50,7 +50,7 @@
         }
         tb.appendChild(tr); rowRefs.push(refs);
       });
-      $("sf-pick").hidden = mode !== "stars";
+      $("sf-pick").hidden = mode !== "stars" || (!!st.method && st.method !== "stars");
     }
 
     /* ---------- reading everything ---------- */
@@ -101,10 +101,12 @@
       if (v.lat === null || v.lon === null) missing.push("the DR position"); if (!one && (v.course === null || v.speed === null)) missing.push("course and speed"); if (!v.date) missing.push("the date"); if (v.zone === null) missing.push("the time zone"); if (v.hoe === null) missing.push("height of eye (0 if none)"); if (!rr.rows.length) missing.push("a sight (one sight gives a position line, two or more give a fix)"); else if (!one && rr.rows.length < 2) missing.push("a second sight");
       if (!ready) { $("sf-out").hidden = true; $("sf-sheet").classList.add("no-print"); $("sf-empty").hidden = false; $("sf-empty").className = "empty"; $("sf-empty").textContent = missing.length && !rr.bad.length ? "Still needed: " + missing.join(", ") + "." : "Check the entries marked in red."; last = null; return; }
       var base = Date.UTC(v.date.y, v.date.m - 1, v.date.d), sights = rr.rows.map(function (s) { var o = { name: s.name, ms: base + (s.secLocal - v.zone * 3600) * 1000 + s.dayAdd * 1000 }; if (s.name === "Latitude") o.lat = s.lat; else { o.hs = s.hs; o.limb = s.limb; } return o; });
-      var t1 = Math.min.apply(null, sights.map(function (s) { return s.ms; })), side = $("sf-ie-on").checked ? -1 : 1;
+      var t1 = Math.min.apply(null, sights.map(function (s) { return s.ms; })), side = $("sf-ie-on").checked ? -1 : 1, fa = parseTimeEl($("sf-fixat")), fixMs = null;
+      if (fa !== null && sights.length > 1) { fixMs = base + (fa - v.zone * 3600) * 1000; while (fixMs < t1 - 12 * 3600000) fixMs += 86400000; }     /* the ship's clock time, on the day of the sights */
       var inp = { dr: { lat: v.lat * ($("sf-lat-s").checked ? -1 : 1), lon: v.lon * ($("sf-lon-w").checked ? -1 : 1), ms: t1, course: v.course === null ? 0 : v.course, speed: v.speed === null ? 0 : v.speed }, hoe: v.hoe, ic: side * (v.ie || 0), temp: v.temp === null ? 10 : v.temp, pres: v.pres === null ? 1010 : v.pres, sights: sights };
       if (v.gps) inp.gps = v.gps;
       if ($("sf-ap-first").checked) inp.apMode = "first";
+      if (fixMs !== null) inp.fixMs = fixMs;
       var r = one ? SightFix.single(inp) : SightFix.fix(inp);
       if (r.error) { $("sf-out").hidden = true; $("sf-sheet").classList.add("no-print"); $("sf-empty").hidden = false; $("sf-empty").className = "callout warn u-mt-0"; $("sf-empty").textContent = r.error; last = null; return; }
       last = { r: r, v: v, zone: v.zone, inp: inp }; if (r.single) showLine(r, v); else show(r, v);
@@ -136,7 +138,7 @@
       $("sf-sheet").classList.remove("no-print"); $("sf-empty").hidden = true; $("sf-out").hidden = false;
       var s = r.sights[0], w = $("sf-warn"); w.hidden = !r.warnings.length; w.textContent = r.warnings.join("\n");
       var byLat = r.lonChron === null && r.latChron !== undefined;
-      labels(["Intercept", "Azimuth Zn", byLat ? "Latitude" : "Longitude by chronometer", "Position line"]);
+      labels(["Intercept", "Azimuth Zn", byLat ? (r.sights[0].name === "Polaris" ? "Latitude by Pole Star" : "Latitude (meridian / ex-meridian)") : "Longitude by chronometer", "Position line"]);
       $("sf-f-lat").textContent = Math.abs(s.a).toFixed(1) + "' " + (s.a >= 0 ? "toward" : "away"); $("sf-f-time").textContent = "at " + localOf(r.time, v.zone) + " local";
       $("sf-f-lon").textContent = s.zn.toFixed(1) + "°"; $("sf-f-ut").textContent = utText(r.time) + " UT";
       $("sf-f-set").textContent = byLat ? Geo.lat(r.latChron) : r.lonChron === null ? "—" : Geo.lon(r.lonChron);
@@ -244,6 +246,7 @@
       build(); save(); render(); toast("Best stars for that time: " + pick.map(function (p) { return p.name + " " + Math.round(p.hc) + "°/" + Math.round(p.zn) + "°"; }).join(", "));
     }
     function example() {
+      $("sf-fixat").value = "";
       var set = function (id, val) { $(id).value = val; }, key = shipKey(), prior = st.ship && st.ship[key] ? JSON.parse(JSON.stringify(st.ship[key])) : null;
       if (mode === "stars") {
         set("sf-lat-d", "21"); set("sf-lat-m", "22.2"); $("sf-lat-n").checked = true; set("sf-lon-d", "37"); set("sf-lon-m", "57.2"); $("sf-lon-e").checked = true; set("sf-course", "332"); set("sf-speed", "12.4"); set("sf-date", "2026-04-14"); set("sf-zone", "2"); set("sf-hoe", "29"); set("sf-ie", "0"); $("sf-ie-on").checked = true; set("sf-temp", "27"); set("sf-pres", "1010");
@@ -261,10 +264,37 @@
     ["sf-mode-sun", "sf-mode-stars"].forEach(function (id) { $(id).addEventListener("change", function () { mode = $("sf-mode-stars").checked ? "stars" : "sun"; build(); save(); render(); }); });
     ["sf-hoe", "sf-ie"].forEach(function (id) { $(id).addEventListener("input", function () { shipEdited = true; }); }); ["sf-ie-on", "sf-ie-off"].forEach(function (id) { $(id).addEventListener("change", function () { shipEdited = true; }); });
     ["sf-ap-each", "sf-ap-first"].forEach(function (id) { $(id).addEventListener("change", function () { save(); render(); }); });
+    /* ---------- the method picker: sets the mode and the bodies, never wipes what was typed ---------- */
+    var METHODS = {
+      noon: ["sun", "Morning Sun sight (about 0800 to 0900) as row 1, the Sun at meridian passage (noon) as row 2. Gives the noon position (Subramaniam ch. 26). Type 12:00 in \u201cGive the fix at\u201d for the position at noon by the ship's clock."],
+      sunrun: ["sun", "Two Sun sights at least 2 to 3 hours apart, so the bearing changes 30\u00b0 or more. The first line is carried forward by your course and speed to the second sight."],
+      one: ["stars", "One sight of any body, away from the meridian (Sun mid-morning or afternoon, a star, planet or the Moon). Gives the intercept, the position line through the ITP and the longitude where it crosses your DR latitude (longitude by chronometer)."],
+      mer: ["stars", "One sight of any body on or near the meridian (bearing within 30\u00b0 of north or south): the Sun at noon, a star, a planet or the Moon, above or below the pole. Gives your latitude where the line crosses your DR longitude. Use the time of the sight. For the Sun alone the Meridian Passage page also works."],
+      polaris: ["stars", "One sight of Polaris at twilight (northern hemisphere, so the horizon and the star are both visible). Gives your latitude directly; no Pole Star tables needed."],
+      stars: ["stars", "3 or 4 stars at twilight, taken within a few minutes, spread round the horizon. Type the time of the first sight and press Pick the best stars, then the times and altitudes."],
+      day: ["stars", "By day when the Moon or Venus is visible: one Sun sight and one Moon (or Venus) sight close in time give a fix. Choose the limb for the Sun and the Moon."]
+    };
+    function setMethod(m, fromUser) {
+      if (!METHODS[m]) m = mode === "sun" ? "noon" : "stars";
+      st.method = m; var want = METHODS[m][0];
+      if (want !== mode) { $("sf-mode-" + want).checked = true; mode = want; build(); }
+      if (fromUser) {
+        var rows = st.rows[mode] || [], empty = function (r) { return r && !r.hd && !r.hm; };
+        if (m === "polaris" && empty(rows[0])) rows[0].name = "Polaris";
+        if (m === "day") { if (empty(rows[0])) rows[0].name = "Sun"; if (empty(rows[1])) rows[1].name = "Moon"; }
+        if (m === "noon" && !$("sf-fixat").value) $("sf-fixat").value = "12:00";
+        build();
+      }
+      [].forEach.call(document.querySelectorAll("#sf-methods [data-m]"), function (b) { var on = b.getAttribute("data-m") === m; b.className = on ? "btn primary" : "btn"; b.setAttribute("aria-pressed", on ? "true" : "false"); });
+      $("sf-method-help").textContent = METHODS[m][1];
+      $("sf-pick").hidden = m !== "stars";
+      save(); render();
+    }
+    [].forEach.call(document.querySelectorAll("#sf-methods [data-m]"), function (b) { b.addEventListener("click", function () { setMethod(b.getAttribute("data-m"), true); }); });
     $("sf-pick").addEventListener("click", pickStars); $("sf-example").addEventListener("click", example); $("sf-clear").addEventListener("click", clearSights);
     $("sf-print").addEventListener("click", function () { if (last) window.print(); });
     $("sf-copy").addEventListener("click", function () { if (last) copyText($("sf-log").textContent); });
     Ships.onChange(function () { if (started["sight-fix"]) { shipFill(); render(); } });
-    load(); build(); render();
+    load(); build(); setMethod(st.method, false);
   }
   /* SIGHTPAGE-END */

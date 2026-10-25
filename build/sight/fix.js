@@ -45,7 +45,7 @@
       if (S.length < 2) warn.push("Two lines of position are needed for a fix.");
       for (var q = 0; q < S.length; q++) {
         var sq = S[q], yr = new Date(sq.ms).getUTCFullYear();
-        if (!isFinite(sq.ms) || yr < 2000 || yr > 2060) return { error: "The date is outside 2000 to 2060, which the star and Sun data cover.", warnings: warn };
+        if (!isFinite(sq.ms) || (!inp.anyYear && (yr < 2000 || yr > 2060)))     /* anyYear: tests against old textbook examples only */ return { error: "The date is outside 2000 to 2060, which the star and Sun data cover.", warnings: warn };
         if (sq.name !== "Latitude" && sq.ho === undefined && (!isFinite(sq.hs) || sq.hs < -1 || sq.hs > 90)) return { error: "Sextant altitude " + (q + 1) + " is not a number between 0 and 90 degrees.", warnings: warn };
       }
       if (!dr || !isFinite(dr.lat) || !isFinite(dr.lon) || !isFinite(dr.course) || !isFinite(dr.speed) || !isFinite(dr.ms)) return { error: "The DR position, course and speed are needed.", warnings: warn };
@@ -133,7 +133,7 @@
     function geoMoon(row, p) { var g = Sight.reduce(p.lat, p.lon, row.gha, row.dec); row.hcGeo = g.hc; row.lhaGeo = g.lha; row.pa = (g.hc - row.hc) * 60; }
     function single(inp) {
       var s = inp.sights[0], warn = [], d = inp.dr, yr = new Date(s.ms).getUTCFullYear();
-      if (!isFinite(s.ms) || yr < 2000 || yr > 2060) return { error: "The date is outside 2000 to 2060, which the star and Sun data cover.", warnings: warn };
+      if (!isFinite(s.ms) || (!inp.anyYear && (yr < 2000 || yr > 2060))) return { error: "The date is outside 2000 to 2060, which the star and Sun data cover.", warnings: warn };
       if (!isFinite(s.hs) || s.hs < 0 || s.hs > 90) return { error: "The sextant altitude is not a number between 0 and 90 degrees.", warnings: warn };
       if (!d || !isFinite(d.lat) || !isFinite(d.lon)) return { error: "The DR position is needed.", warnings: warn };
       if (Math.abs(d.lat) > 84) return { error: "Latitudes above 84 degrees are not supported.", warnings: warn };
