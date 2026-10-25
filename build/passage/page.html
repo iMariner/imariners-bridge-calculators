@@ -1,0 +1,44 @@
+    <section class="tool cmp" id="passage-plan" hidden>
+      <div class="tool-head">
+        <h1>Passage Plan</h1>
+        <p>Waypoints with the course and distance of every leg. A leg can be a rhumb line or a great circle; a great circle is split into waypoints on round meridians, with its vertex and an optional limiting latitude.</p>
+      </div>
+      <div class="card" id="pp-wp-card">
+        <h2>Waypoints</h2>
+        <div class="tbl-scroll"><table class="pp-rows" id="pp-rows"></table></div>
+        <div class="hint" id="pp-rows-msg"></div>
+        <div class="pp-opts">
+          <div class="field"><label for="pp-step">Great circle waypoints every</label><select id="pp-step" class="text-input"><option value="5">5° of longitude</option><option value="10">10° of longitude</option><option value="2">2° of longitude</option></select></div>
+          <div class="field"><label for="pp-limit">Limiting latitude (optional)</label><div class="input-wrap"><input id="pp-limit" type="text" inputmode="decimal" placeholder="e.g. 45" maxlength="4"><span class="unit">°</span></div><div class="hint" id="pp-limit-msg">a great circle will not go beyond it (composite)</div></div>
+          <div class="field"><label for="pp-speed">Planned speed (optional)</label><div class="input-wrap"><input id="pp-speed" type="text" inputmode="decimal" placeholder="e.g. 13.5" maxlength="5"><span class="unit">kn</span></div><div class="hint" id="pp-speed-msg"></div></div>
+        </div>
+        <div class="actions">
+          <button type="button" class="btn primary" id="pp-add">Add waypoint</button>
+          <button type="button" class="btn" id="pp-example">Load example</button>
+          <button type="button" class="btn" id="pp-clear">Clear</button>
+        </div>
+      </div>
+      <div class="card" id="pp-results" aria-live="polite">
+        <h2>Passage</h2>
+        <div id="pp-empty" class="empty">Enter at least two waypoints.</div>
+        <div id="pp-out" hidden>
+          <div class="callout warn u-mt-0" id="pp-warn" hidden></div>
+          <div class="ge-hero">
+            <div class="readout-box"><div class="readout-label">Total distance</div><div class="readout" id="pp-h-dist">—</div><div class="readout-sub" id="pp-h-dist-sub"></div></div>
+            <div class="readout-box"><div class="readout-label">Saved by great circle</div><div class="readout" id="pp-h-save">—</div><div class="readout-sub" id="pp-h-save-sub"></div></div>
+            <div class="readout-box"><div class="readout-label">Time at planned speed</div><div class="readout" id="pp-h-time">—</div><div class="readout-sub" id="pp-h-time-sub"></div></div>
+            <div class="readout-box"><div class="readout-label">Waypoints</div><div class="readout" id="pp-h-wps">—</div><div class="readout-sub" id="pp-h-wps-sub"></div></div>
+          </div>
+          <div class="tbl-scroll u-mt-3"><table class="dt pp-route" id="pp-route"></table></div>
+          <div class="pp-notes" id="pp-notes"></div>
+          <div class="actions"><button type="button" class="btn primary" id="pp-copy">Copy route</button><button type="button" class="btn" id="pp-print">Print</button></div>
+        </div>
+      </div>
+      <div class="print-sheet" id="pp-sheet">
+        <div class="ps-grid" id="pp-ps-info"></div>
+        <table class="dt pp-route" id="pp-ps-route"></table>
+        <div class="pp-notes" id="pp-ps-notes"></div>
+        <div class="ps-sign"><div>Navigating officer<span>Name, signature, date</span></div><div>Master<span>Name, signature, date</span></div></div>
+        <p class="ps-note">Computed with iMariners Bridge Calculators. Great circle on a sphere; rhumb lines by Mercator sailing. Check every leg on the chart or ECDIS.</p>
+      </div>
+    </section>

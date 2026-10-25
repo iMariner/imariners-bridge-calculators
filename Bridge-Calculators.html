@@ -937,6 +937,33 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
   #sf-sheet .ps-grid div { padding: .8mm 2.4mm; }
   .sf-plot, #sf-ps-plot { --surface: #fff; --text: #000; --muted: #555; --border: #ccc; --border-strong: #000; --accent: #000; --danger: #000; --accent-rgb: 0, 0, 0; }
 }
+
+/* Passage Plan */
+table.pp-rows { width: 100%; border-collapse: separate; border-spacing: 0 var(--sp-1); }
+table.pp-rows th { font-family: var(--font-mono); font-size: var(--fs-xs); font-weight: var(--fw-semibold); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); text-align: left; padding: var(--sp-1) var(--sp-2); border-bottom: var(--hair) solid var(--border-strong); }
+table.pp-rows td { padding: var(--sp-1); vertical-align: middle; }
+table.pp-rows td.n { width: 40px; color: var(--muted); font-weight: var(--fw-bold); }
+table.pp-rows td.w-name { min-width: 150px; } table.pp-rows td.w-pos { min-width: 210px; } table.pp-rows td.w-leg { min-width: 150px; }
+table.pp-rows td .ge-dm { grid-template-columns: 1fr 1.2fr 66px; }
+table.pp-rows td .input-wrap input, table.pp-rows td input.text-input { background: var(--entry); }
+table.pp-rows .btn { padding: var(--sp-1) var(--sp-2); }
+.pp-opts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-3); margin-top: var(--sp-3); }
+.pp-opts .field { margin: 0; }
+table.pp-route td { font-family: var(--font-mono); white-space: nowrap; }
+table.pp-route td:nth-child(2), table.pp-route th:nth-child(2) { font-family: inherit; text-align: left; }
+table.pp-route tr.gc td { color: var(--muted); }
+table.pp-route tr.gc td:nth-child(2) { padding-left: var(--sp-5); }
+.pp-notes { margin-top: var(--sp-3); font-size: var(--fs-sm); color: var(--muted); }
+.pp-notes p { margin: var(--sp-1) 0; }
+@media (max-width: 900px) { .pp-opts { grid-template-columns: 1fr; } }
+@media print {
+  #pp-sheet table.pp-route { margin-top: 3mm; font-size: 8pt; }
+  #pp-sheet table.pp-route th { font-size: 6.5pt; padding: .8mm 1.4mm; border-bottom: 1px solid #666; }
+  #pp-sheet table.pp-route td { padding: .4mm 1.4mm; border-bottom: 1px solid #ddd; }
+  #pp-sheet table.pp-route tr.gc td { color: #444; }
+  #pp-sheet .pp-notes { font-size: 8pt; color: #000; }
+  #pp-sheet .ps-sign { margin-top: 10mm; }
+}
 </style>
 </head>
 <body>
@@ -981,6 +1008,10 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
     <a href="#special-areas" data-tool-link="special-areas">
       <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
       Special Areas &amp; Map
+    </a>
+    <a href="#passage-plan" data-tool-link="passage-plan">
+      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="18" r="2"/><circle cx="19" cy="6" r="2"/><path d="M7 18c6 0 4-12 10-12" stroke-dasharray="3 3"/></svg>
+      Passage Plan
     </a>
     <a href="#course-speed" data-tool-link="course-speed">
       <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="19" r="2"/><circle cx="19" cy="5" r="2"/><path d="M6.5 17.5L17.5 6.5" stroke-dasharray="3 3"/></svg>
@@ -2856,6 +2887,50 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
         <div class="ps-remarks">Remarks:</div>
         <div class="ps-sign"><div>Officer of the watch<span>Name, signature, date</span></div><div>Master<span>Name, signature, date</span></div></div>
         <p class="ps-note">Computed with iMariners Bridge Calculators. Planning aid only, not for navigation.</p>
+      </div>
+    </section>
+    <section class="tool cmp" id="passage-plan" hidden>
+      <div class="tool-head">
+        <h1>Passage Plan</h1>
+        <p>Waypoints with the course and distance of every leg. A leg can be a rhumb line or a great circle; a great circle is split into waypoints on round meridians, with its vertex and an optional limiting latitude.</p>
+      </div>
+      <div class="card" id="pp-wp-card">
+        <h2>Waypoints</h2>
+        <div class="tbl-scroll"><table class="pp-rows" id="pp-rows"></table></div>
+        <div class="hint" id="pp-rows-msg"></div>
+        <div class="pp-opts">
+          <div class="field"><label for="pp-step">Great circle waypoints every</label><select id="pp-step" class="text-input"><option value="5">5° of longitude</option><option value="10">10° of longitude</option><option value="2">2° of longitude</option></select></div>
+          <div class="field"><label for="pp-limit">Limiting latitude (optional)</label><div class="input-wrap"><input id="pp-limit" type="text" inputmode="decimal" placeholder="e.g. 45" maxlength="4"><span class="unit">°</span></div><div class="hint" id="pp-limit-msg">a great circle will not go beyond it (composite)</div></div>
+          <div class="field"><label for="pp-speed">Planned speed (optional)</label><div class="input-wrap"><input id="pp-speed" type="text" inputmode="decimal" placeholder="e.g. 13.5" maxlength="5"><span class="unit">kn</span></div><div class="hint" id="pp-speed-msg"></div></div>
+        </div>
+        <div class="actions">
+          <button type="button" class="btn primary" id="pp-add">Add waypoint</button>
+          <button type="button" class="btn" id="pp-example">Load example</button>
+          <button type="button" class="btn" id="pp-clear">Clear</button>
+        </div>
+      </div>
+      <div class="card" id="pp-results" aria-live="polite">
+        <h2>Passage</h2>
+        <div id="pp-empty" class="empty">Enter at least two waypoints.</div>
+        <div id="pp-out" hidden>
+          <div class="callout warn u-mt-0" id="pp-warn" hidden></div>
+          <div class="ge-hero">
+            <div class="readout-box"><div class="readout-label">Total distance</div><div class="readout" id="pp-h-dist">—</div><div class="readout-sub" id="pp-h-dist-sub"></div></div>
+            <div class="readout-box"><div class="readout-label">Saved by great circle</div><div class="readout" id="pp-h-save">—</div><div class="readout-sub" id="pp-h-save-sub"></div></div>
+            <div class="readout-box"><div class="readout-label">Time at planned speed</div><div class="readout" id="pp-h-time">—</div><div class="readout-sub" id="pp-h-time-sub"></div></div>
+            <div class="readout-box"><div class="readout-label">Waypoints</div><div class="readout" id="pp-h-wps">—</div><div class="readout-sub" id="pp-h-wps-sub"></div></div>
+          </div>
+          <div class="tbl-scroll u-mt-3"><table class="dt pp-route" id="pp-route"></table></div>
+          <div class="pp-notes" id="pp-notes"></div>
+          <div class="actions"><button type="button" class="btn primary" id="pp-copy">Copy route</button><button type="button" class="btn" id="pp-print">Print</button></div>
+        </div>
+      </div>
+      <div class="print-sheet" id="pp-sheet">
+        <div class="ps-grid" id="pp-ps-info"></div>
+        <table class="dt pp-route" id="pp-ps-route"></table>
+        <div class="pp-notes" id="pp-ps-notes"></div>
+        <div class="ps-sign"><div>Navigating officer<span>Name, signature, date</span></div><div>Master<span>Name, signature, date</span></div></div>
+        <p class="ps-note">Computed with iMariners Bridge Calculators. Great circle on a sphere; rhumb lines by Mercator sailing. Check every leg on the chart or ECDIS.</p>
       </div>
     </section>
   </main>
@@ -7783,8 +7858,192 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
     load(); build(); render();
   }
 
+  /* PASSAGE-BEGIN */
+  /* Passage plan legs: rhumb line (Mercator sailing, uses courseMadeGood), great circle and composite great circle.
+     Great circle on a sphere, distances in NM = arc minutes (the usual nautical practice). Positions { lat, lon }: degrees, North and East +.
+     A great circle leg is sailed as rhumb lines between waypoints on chosen meridians; both the great circle distance and
+     the distance actually sailed along those rhumb lines are given. */
+  var Passage = (function () {
+    var R = Math.PI / 180;
+    function n180(x) { return ((x % 360) + 540) % 360 - 180; }
+    function vec(p) { var a = p.lat * R, b = p.lon * R; return [Math.cos(a) * Math.cos(b), Math.cos(a) * Math.sin(b), Math.sin(a)]; }
+    function pt(v) { var n = Math.sqrt(v[0] * v[0] + v[1] * v[1] + v[2] * v[2]); return { lat: Math.asin(Math.max(-1, Math.min(1, v[2] / n))) / R, lon: Math.atan2(v[1], v[0]) / R }; }
+    function cross(a, b) { return [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]]; }
+    function dot(a, b) { return a[0] * b[0] + a[1] * b[1] + a[2] * b[2]; }
+    function ang(a, b) { return Math.atan2(Math.sqrt(dot(cross(a, b), cross(a, b))), dot(a, b)) / R; }      /* degrees, stable for small and near-180 angles */
+    function dist(p1, p2) { return ang(vec(p1), vec(p2)) * 60; }
+    function course(p1, p2) {                                                          /* initial great circle course, degrees true */
+      var f1 = p1.lat * R, f2 = p2.lat * R, dl = n180(p2.lon - p1.lon) * R;
+      var c = Math.atan2(Math.sin(dl) * Math.cos(f2), Math.cos(f1) * Math.sin(f2) - Math.sin(f1) * Math.cos(f2) * Math.cos(dl)) / R;
+      return (c + 360) % 360;
+    }
+    function rhumb(p1, p2) { var r = courseMadeGood(p1.lat, p1.lon, p2.lat, p2.lon, null); return { course: r.course, dist: r.dist }; }
+    function vertexOn(p1, p2) {                                                        /* the vertex (highest latitude) if it lies between p1 and p2 */
+      var a = vec(p1), b = vec(p2), n = cross(a, b), m = Math.sqrt(dot(n, n)); if (m < 1e-12) return null;
+      n = [n[0] / m, n[1] / m, n[2] / m];
+      var v = [-n[2] * n[0], -n[2] * n[1], 1 - n[2] * n[2]], d = ang(a, b), best = null;
+      [v, [-v[0], -v[1], -v[2]]].forEach(function (c) { if (Math.sqrt(dot(c, c)) < 1e-12) return; if (Math.abs(ang(a, c) + ang(c, b) - d) < 1e-6) best = pt(c); });
+      return best;
+    }
+    function latAtLon(p1, p2, lon) {                                                   /* latitude where the great circle p1-p2 crosses a meridian */
+      var f1 = p1.lat * R, f2 = p2.lat * R, l1 = p1.lon * R, l2 = l1 + n180(p2.lon - p1.lon) * R, l = lon * R;
+      return Math.atan((Math.tan(f1) * Math.sin(l2 - l) + Math.tan(f2) * Math.sin(l - l1)) / Math.sin(l2 - l1)) / R;
+    }
+    function slerp(p1, p2, f) { var a = vec(p1), b = vec(p2), w = ang(a, b) * R, s = Math.sin(w); if (s < 1e-12) return { lat: p1.lat, lon: p1.lon }; var k1 = Math.sin((1 - f) * w) / s, k2 = Math.sin(f * w) / s; return pt([k1 * a[0] + k2 * b[0], k1 * a[1] + k2 * b[1], k1 * a[2] + k2 * b[2]]); }
+    function gcPoints(p1, p2, step) {                                                  /* waypoints on round meridians every `step` degrees of longitude, ends excluded */
+      var dl = n180(p2.lon - p1.lon), out = [];
+      if (Math.abs(dl) < 1e-9 || Math.abs(Math.abs(dl) - 180) < 1) {                   /* along a meridian or over a pole: equal distances instead */
+        var d = dist(p1, p2), n = Math.floor(d / (step * 60)); for (var j = 1; j <= n; j++) { if (j * step * 60 < d - 1) out.push(slerp(p1, p2, j * step * 60 / d)); } return out;
+      }
+      var s = dl > 0 ? 1 : -1, k = s > 0 ? Math.floor(p1.lon / step) + 1 : Math.ceil(p1.lon / step) - 1;
+      for (var lon = k * step; s * (lon - (p1.lon + dl)) < -1e-9; lon += s * step) { if (Math.abs(lon - p1.lon) < 1e-9) continue; out.push({ lat: latAtLon(p1, p2, lon), lon: n180(lon) }); }
+      return out;
+    }
+    /* one leg. opt: { type: "RL" | "GC", step (deg of longitude, default 5), limit (limiting latitude, degrees, or null) } */
+    function leg(p1, p2, opt) {
+      opt = opt || {}; var step = opt.step || 5, rl = rhumb(p1, p2), out = { type: "RL", from: p1, to: p2, rlDist: rl.dist, warnings: [] };
+      if (opt.type !== "GC" || rl.dist < 1e-6) { out.course = rl.course; out.dist = rl.dist; out.sailed = rl.dist; out.points = [p1, p2]; out.subs = [{ from: p1, to: p2, course: rl.course, dist: rl.dist }]; return out; }
+      var vx = vertexOn(p1, p2), pts, lim = opt.limit;
+      out.type = "GC"; out.gcDist = dist(p1, p2); out.course = course(p1, p2); out.finalCourse = (course(p2, p1) + 180) % 360; out.vertex = vx;
+      if (lim && vx && Math.abs(vx.lat) > lim) {
+        var sg = vx.lat > 0 ? 1 : -1, fL = sg * lim, dl = n180(p2.lon - p1.lon), s = dl > 0 ? 1 : -1;
+        if (sg * p1.lat >= lim || sg * p2.lat >= lim) { out.warnings.push("A position is beyond the limiting latitude: plain great circle used."); }
+        else {
+          var d1 = Math.acos(Math.tan(p1.lat * R) / Math.tan(fL * R)) / R, d2 = Math.acos(Math.tan(p2.lat * R) / Math.tan(fL * R)) / R;
+          if (d1 + d2 < Math.abs(dl)) {
+            var V1 = { lat: fL, lon: n180(p1.lon + s * d1) }, V2 = { lat: fL, lon: n180(p2.lon - s * d2) }, par = (Math.abs(dl) - d1 - d2) * 60 * Math.cos(fL * R);
+            out.type = "CGC"; out.V1 = V1; out.V2 = V2; out.gc1 = dist(p1, V1); out.gc2 = dist(V2, p2); out.parallel = par; out.gcDist = out.gc1 + par + out.gc2;
+            out.course = course(p1, V1); out.finalCourse = (course(p2, V2) + 180) % 360; out.vertex = null;
+            var par1 = [], k = s > 0 ? Math.floor(V1.lon / step) + 1 : Math.ceil(V1.lon / step) - 1, end = V1.lon + s * (Math.abs(dl) - d1 - d2);
+            for (var lon = k * step; s * (lon - end) < -1e-9; lon += s * step) par1.push({ lat: fL, lon: n180(lon) });
+            pts = [p1].concat(gcPoints(p1, V1, step), [V1], par1, [V2], gcPoints(V2, p2, step), [p2]);
+          }
+        }
+      }
+      if (!pts) pts = [p1].concat(gcPoints(p1, p2, step), [p2]);
+      out.points = pts; out.subs = []; out.sailed = 0;
+      for (var i = 1; i < pts.length; i++) { var r = rhumb(pts[i - 1], pts[i]); if (r.dist < 0.05) continue; out.subs.push({ from: pts[i - 1], to: pts[i], course: r.course, dist: r.dist }); out.sailed += r.dist; }
+      out.dist = out.sailed; out.saving = out.rlDist - out.sailed;
+      var hi = 0; pts.forEach(function (p) { hi = Math.max(hi, Math.abs(p.lat)); }); if (hi > 70) out.warnings.push("The track reaches " + Math.round(hi) + "° of latitude: check ice and weather, or set a limiting latitude.");
+      return out;
+    }
+    return { leg: leg, dist: dist, course: course, vertexOn: vertexOn, rhumb: rhumb };
+  })();
+  /* PASSAGE-END */
+  /* Tool: Passage Plan (waypoints, rhumb line and great circle legs) */
+  function initPassagePlan() {
+    var KEY = "bridgeCalc.passagePlan", st = store.get(KEY) || {}, rowsEl = $("pp-rows"), MAX = 30, last = null;
+    if (!Array.isArray(st.wps) || !st.wps.length) st.wps = [blank(), blank()];
+    function blank() { return { name: "", ld: "", lm: "", ns: "N", od: "", om: "", ew: "E", leg: "RL" }; }
+    function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt !== undefined) e.textContent = txt; return e; }
+    function inp(val, ph, max, label, onIn) { var w = el("div", "input-wrap"), i = el("input"); i.type = "text"; i.inputMode = "decimal"; i.placeholder = ph; i.maxLength = max; i.value = val || ""; i.setAttribute("aria-label", label); i.addEventListener("input", function () { onIn(i.value); }); w.appendChild(i); return w; }
+    function sel(opts, val, label, onCh) { var s = el("select", "text-input"); opts.forEach(function (o) { var x = el("option", "", o[1]); x.value = o[0]; s.appendChild(x); }); s.value = val; s.setAttribute("aria-label", label); s.addEventListener("change", function () { onCh(s.value); }); return s; }
+    function unit(w, u) { var s = el("span", "unit", u); w.appendChild(s); return w; }
+    function build() {
+      while (rowsEl.firstChild) rowsEl.removeChild(rowsEl.firstChild);
+      var th = el("thead"), hr = el("tr"); ["", "Waypoint", "Latitude", "Longitude", "Leg to the next", ""].forEach(function (h) { hr.appendChild(el("th", "", h)); }); th.appendChild(hr); rowsEl.appendChild(th);
+      var tb = el("tbody"); rowsEl.appendChild(tb);
+      st.wps.forEach(function (w, i) {
+        var tr = el("tr"), n = i + 1, set = function (k) { return function (v) { w[k] = v; save(); render(); }; };
+        tr.appendChild(el("td", "n", String(n)));
+        var tn = el("td", "w-name"), nm = el("input", "text-input"); nm.type = "text"; nm.maxLength = 30; nm.placeholder = "WP " + n; nm.value = w.name || ""; nm.setAttribute("aria-label", "Name of waypoint " + n); nm.addEventListener("input", function () { w.name = nm.value; save(); render(); }); tn.appendChild(nm); tr.appendChild(tn);
+        var tl = el("td", "w-pos"), dl = el("div", "ge-dm"); dl.appendChild(unit(inp(w.ld, "0", 2, "Latitude degrees, waypoint " + n, set("ld")), "°")); dl.appendChild(unit(inp(w.lm, "0.0", 5, "Latitude minutes, waypoint " + n, set("lm")), "'")); dl.appendChild(sel([["N", "N"], ["S", "S"]], w.ns, "North or south, waypoint " + n, set("ns"))); tl.appendChild(dl); tr.appendChild(tl);
+        var to = el("td", "w-pos"), dn = el("div", "ge-dm"); dn.appendChild(unit(inp(w.od, "0", 3, "Longitude degrees, waypoint " + n, set("od")), "°")); dn.appendChild(unit(inp(w.om, "0.0", 5, "Longitude minutes, waypoint " + n, set("om")), "'")); dn.appendChild(sel([["E", "E"], ["W", "W"]], w.ew, "East or west, waypoint " + n, set("ew"))); to.appendChild(dn); tr.appendChild(to);
+        var tg = el("td", "w-leg"); if (i < st.wps.length - 1) tg.appendChild(sel([["RL", "Rhumb line"], ["GC", "Great circle"]], w.leg || "RL", "Leg from waypoint " + n, set("leg"))); else tg.appendChild(el("span", "small muted", "end of passage")); tr.appendChild(tg);
+        var tx = el("td"), b = el("button", "btn", "Remove"); b.type = "button"; b.setAttribute("aria-label", "Remove waypoint " + n); b.disabled = st.wps.length <= 2; b.addEventListener("click", function () { st.wps.splice(i, 1); build(); save(); render(); }); tx.appendChild(b); tr.appendChild(tx);
+        tb.appendChild(tr);
+      });
+      $("pp-add").disabled = st.wps.length >= MAX;
+    }
+    function num(s) { s = String(s === undefined ? "" : s).trim().replace(",", "."); if (s === "") return null; return /^\d+(\.\d*)?$|^\.\d+$/.test(s) ? parseFloat(s) : NaN; }
+    function pos(w, i, bad) {
+      var a = num(w.ld), b = num(w.lm), c = num(w.od), d = num(w.om);
+      if (a === null && b === null && c === null && d === null) return null;
+      if (a === null || c === null || isNaN(a) || isNaN(b) || isNaN(c) || isNaN(d) || a > 85 || (b || 0) >= 60 || c > 180 || (d || 0) >= 60 || a * 60 + (b || 0) > 5100 || c * 60 + (d || 0) > 10800) { bad.push("Waypoint " + (i + 1) + ": check the position (latitude 0 to 85°, longitude 0 to 180°, minutes under 60)."); return null; }
+      return { lat: (a + (b || 0) / 60) * (w.ns === "S" ? -1 : 1), lon: (c + (d || 0) / 60) * (w.ew === "W" ? -1 : 1) };
+    }
+    function p3(x) { return ("00" + (Math.round(x) % 360)).slice(-3); }
+    function c1(x) { var s = (Math.round(x * 10) / 10 % 360).toFixed(1); return ("00" + s).slice(-5); }
+    function nm(x) { return x.toFixed(1); }
+    function hrs(h) { var d = Math.floor(h / 24), r = h - d * 24; return (d ? d + " d " : "") + Math.floor(r) + " h " + ("0" + Math.round((r % 1) * 60)).slice(-2) + " m"; }
+    function render() {
+      var bad = [], P = [], gaps = false;
+      st.wps.forEach(function (w, i) { var p = pos(w, i, bad); if (p) P.push({ p: p, w: w, i: i }); else if (!bad.length || bad[bad.length - 1].indexOf("Waypoint " + (i + 1) + ":") < 0) gaps = true; });
+      var lim = num($("pp-limit").value), spd = num($("pp-speed").value), step = parseFloat($("pp-step").value) || 5;
+      var limBad = lim !== null && (isNaN(lim) || lim < 20 || lim > 80), spdBad = spd !== null && (isNaN(spd) || spd <= 0 || spd > 40);
+      setHint("pp-limit-msg", limBad ? "20 to 80 degrees" : "a great circle will not go beyond it (composite)", limBad, $("pp-limit")); setHint("pp-speed-msg", spdBad ? "0.1 to 40 kn" : "", spdBad, $("pp-speed"));
+      $("pp-rows-msg").textContent = bad.join(" "); $("pp-rows-msg").className = bad.length ? "hint error" : "hint";
+      if (bad.length || P.length < 2 || limBad || spdBad) { $("pp-out").hidden = true; $("pp-empty").hidden = false; $("pp-empty").textContent = bad.length || limBad || spdBad ? "Check the entries marked in red." : "Enter at least two waypoints."; $("pp-sheet").classList.add("no-print"); last = null; return; }
+      if (gaps) bad.push("Empty rows are skipped.");
+      var route = [], legs = [], warn = [], total = 0, rlTotal = 0;
+      for (var k = 0; k < P.length - 1; k++) {
+        var a = P[k], b = P[k + 1], L = Passage.leg(a.p, b.p, { type: a.w.leg === "GC" ? "GC" : "RL", step: step, limit: lim });
+        L.fromName = a.w.name || "WP " + (a.i + 1); L.toName = b.w.name || "WP " + (b.i + 1); legs.push(L);
+        L.warnings.forEach(function (x) { warn.push(L.fromName + " to " + L.toName + ": " + x); });
+        if (L.rlDist > 3000 && L.type === "RL") warn.push(L.fromName + " to " + L.toName + ": a " + Math.round(L.rlDist) + " NM rhumb line. A great circle may be shorter; see the saving if you switch this leg.");
+        L.subs.forEach(function (s, j) { route.push({ name: j === 0 ? L.fromName : (k + 1) + "." + j, p: s.from, course: s.course, dist: s.dist, gc: j > 0 }); });
+        total += L.sailed; rlTotal += L.rlDist;
+      }
+      var lastP = P[P.length - 1]; route.push({ name: lastP.w.name || "WP " + (lastP.i + 1), p: lastP.p, course: null, dist: null });
+      var run = 0; route.forEach(function (r) { r.cum = run; r.togo = total - run; if (r.dist) run += r.dist; });
+      last = { route: route, legs: legs, total: total, spd: spd, rlTotal: rlTotal };
+      $("pp-empty").hidden = true; $("pp-out").hidden = false; $("pp-sheet").classList.remove("no-print");
+      $("pp-warn").hidden = !warn.length; $("pp-warn").textContent = warn.join("\n");
+      $("pp-h-dist").textContent = nm(total) + " NM"; $("pp-h-dist-sub").textContent = legs.length + (legs.length === 1 ? " leg" : " legs") + ", as sailed";
+      var save = rlTotal - total, anyGC = legs.some(function (l) { return l.type !== "RL"; });
+      $("pp-h-save").textContent = anyGC ? nm(save) + " NM" : "—"; $("pp-h-save-sub").textContent = anyGC ? "against rhumb lines on the same legs" : "no great circle legs";
+      $("pp-h-time").textContent = spd ? hrs(total / spd) : "—"; $("pp-h-time-sub").textContent = spd ? "at " + spd + " kn" : "enter a speed";
+      $("pp-h-wps").textContent = String(route.length); $("pp-h-wps-sub").textContent = route.length - P.length ? "incl. " + (route.length - P.length) + " great circle points" : "as entered";
+      table($("pp-route")); notes($("pp-notes")); sheet();
+    }
+    function table(tbl) {
+      while (tbl.firstChild) tbl.removeChild(tbl.firstChild);
+      var th = el("thead"), hr = el("tr"); ["No.", "Waypoint", "Latitude", "Longitude", "Course", "Distance", "Run", "To go"].concat(last.spd ? ["Elapsed"] : []).forEach(function (h) { hr.appendChild(el("th", "", h)); }); th.appendChild(hr); tbl.appendChild(th);
+      var tb = el("tbody"); tbl.appendChild(tb);
+      last.route.forEach(function (r, i) {
+        var tr = el("tr", r.gc ? "gc" : ""); [String(i + 1), r.name, Geo.lat(r.p.lat), Geo.lon(r.p.lon), r.course === null ? "" : c1(r.course) + "°", r.dist === null ? "" : nm(r.dist), nm(r.cum), nm(r.togo)].concat(last.spd ? [hrs(r.cum / last.spd)] : []).forEach(function (t) { tr.appendChild(el("td", "", t)); });
+        tb.appendChild(tr);
+      });
+    }
+    function notes(box) {
+      while (box.firstChild) box.removeChild(box.firstChild);
+      last.legs.forEach(function (L) {
+        if (L.type === "RL") return;
+        var t = L.fromName + " to " + L.toName + ": " + (L.type === "CGC" ? "composite great circle, limit " + Geo.lat(L.V1.lat) + ", along the limit from " + Geo.lon(L.V1.lon) + " to " + Geo.lon(L.V2.lon) + " (" + nm(L.parallel) + " NM)" : "great circle") +
+          ". Initial course " + c1(L.course) + "°, final " + c1(L.finalCourse) + "°, distance " + nm(L.gcDist) + " NM (" + nm(L.sailed) + " NM sailed on the rhumb lines between the points)" + (L.vertex ? ", vertex " + Geo.lat(L.vertex.lat) + " " + Geo.lon(L.vertex.lon) : "") + ". Rhumb line instead: " + nm(L.rlDist) + " NM.";
+        box.appendChild(el("p", "", t));
+      });
+    }
+    function sheet() {
+      var sh = Ships.active();
+      fillCells($("pp-ps-info"), [["Ship", sh ? sh.name : "—"], ["IMO number", sh && sh.imo ? sh.imo : "—"], ["From", last.route[0].name], ["To", last.route[last.route.length - 1].name],
+        ["Total distance", nm(last.total) + " NM"], ["Planned speed", last.spd ? last.spd + " kn" : "—"], ["Time at that speed", last.spd ? hrs(last.total / last.spd) : "—"], ["Waypoints", String(last.route.length)]]);
+      table($("pp-ps-route")); notes($("pp-ps-notes"));
+    }
+    function save() { st.step = $("pp-step").value; st.limit = $("pp-limit").value; st.speed = $("pp-speed").value; store.set(KEY, st); }
+    function routeText() {
+      var lines = [["No.", "Waypoint", "Latitude", "Longitude", "Course", "Distance NM", "Run NM", "To go NM"].join("\t")];
+      last.route.forEach(function (r, i) { lines.push([i + 1, r.name, Geo.lat(r.p.lat), Geo.lon(r.p.lon), r.course === null ? "" : c1(r.course), r.dist === null ? "" : nm(r.dist), nm(r.cum), nm(r.togo)].join("\t")); });
+      return lines.join("\n");
+    }
+    $("pp-step").value = st.step || "5"; $("pp-limit").value = st.limit || ""; $("pp-speed").value = st.speed || "";
+    ["pp-limit", "pp-speed"].forEach(function (id) { $(id).addEventListener("input", function () { save(); render(); }); });
+    $("pp-step").addEventListener("change", function () { save(); render(); });
+    $("pp-add").addEventListener("click", function () { if (st.wps.length < MAX) { var p = st.wps[st.wps.length - 1]; st.wps.push({ name: "", ld: "", lm: "", ns: p.ns, od: "", om: "", ew: p.ew, leg: "RL" }); build(); save(); render(); } });
+    $("pp-clear").addEventListener("click", function () { st.wps = [blank(), blank()]; build(); save(); render(); });
+    $("pp-example").addEventListener("click", function () {
+      st.wps = [{ name: "Tokyo Bay pilot", ld: "35", lm: "05.0", ns: "N", od: "139", om: "45.0", ew: "E", leg: "RL" }, { name: "Off Nojima Saki", ld: "34", lm: "50.0", ns: "N", od: "140", om: "00.0", ew: "E", leg: "GC" },
+        { name: "Off Point Reyes", ld: "37", lm: "50.0", ns: "N", od: "123", om: "30.0", ew: "W", leg: "RL" }, { name: "San Francisco pilot", ld: "37", lm: "45.0", ns: "N", od: "122", om: "40.0", ew: "W", leg: "RL" }];
+      $("pp-limit").value = ""; $("pp-speed").value = "14"; $("pp-step").value = "5"; build(); save(); render(); toast("Example loaded: Tokyo to San Francisco by great circle");
+    });
+    $("pp-copy").addEventListener("click", function () { if (last) copyText(routeText()); });
+    $("pp-print").addEventListener("click", function () { if (last) window.print(); });
+    Ships.onChange(function () { if (started["passage-plan"] && last) sheet(); });
+    build(); render();
+  }
+
   /* Tool registry and routing */
-  var TOOLS = { "sight-fix": initSightFix, "true-wind": initTrueWind, "true-az": initTrueAz, "mer-pass": initMerPass, "gyro-error": initGyro, "dev-card": initDevCard, "course-speed": initCourseSpeed, "eta": initEta, "heel-draught": initHeel, "anchor-depth": initAnchor, "ship": initShipPage, "design": initDesign, "daily-reports": initDaily, "sun-times": initSunTimes, "special-areas": initAreas };
+  var TOOLS = { "passage-plan": initPassagePlan, "sight-fix": initSightFix, "true-wind": initTrueWind, "true-az": initTrueAz, "mer-pass": initMerPass, "gyro-error": initGyro, "dev-card": initDevCard, "course-speed": initCourseSpeed, "eta": initEta, "heel-draught": initHeel, "anchor-depth": initAnchor, "ship": initShipPage, "design": initDesign, "daily-reports": initDaily, "sun-times": initSunTimes, "special-areas": initAreas };
   var started = {};
 
   /* Page chrome: breadcrumb in the top bar, small label above each page title, drawer on narrow screens */
