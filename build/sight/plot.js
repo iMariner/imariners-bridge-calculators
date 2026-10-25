@@ -34,10 +34,16 @@
         var ap = pl(s.ap), z = s.zn * R, lat = s.name === "Latitude";
         var af = lat ? s.a + dF.y : (s.ho - s.hcFix) * 60;             /* line as seen from the fix: intercept worked from the fix itself */
         var f1p = lat ? { x: 0, y: af } : { x: af * Math.sin(z), y: af * Math.cos(z) };
-        var ds = s.drSight ? pl(s.drSight) : ap, f0 = { x: f1p.x + ds.x - dF.x, y: f1p.y + ds.y - dF.y };      /* the line where the sight was taken: carried back by the run from its time */
+        /* as plotted by hand: from the assumed position lay off the intercept along the azimuth (towards or away), and draw the
+           position line at right angles through that point (the intercept terminal point) */
+        var f0 = lat ? { x: ap.x, y: ap.y + s.a } : { x: ap.x + s.a * Math.sin(z), y: ap.y + s.a * Math.cos(z) };
         pts.push(ap, f0, f1p);
         return { s: s, ap: ap, f0: f0, f1: f1p, dx: Math.cos(z), dy: -Math.sin(z) };
       });
+      for (var ii = 0; ii < L.length; ii++) for (var jj = ii + 1; jj < L.length; jj++) {    /* every crossing of the lines, so the whole figure is in view */
+        var mx = meet({ x: L[ii].f1.x, y: L[ii].f1.y, dx: L[ii].dx, dy: L[ii].dy }, { x: L[jj].f1.x, y: L[jj].f1.y, dx: L[jj].dx, dy: L[jj].dy });
+        if (mx && Math.hypot(mx.x, mx.y) < 40) pts.push(mx);
+      }
       var gps = inp.gps ? pl(inp.gps) : null; if (gps) pts.push(gps);
       var mk = opt.mark ? pl(opt.mark) : null; if (mk) pts.push(mk);
       var x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9; pts.forEach(function (p) { x0 = Math.min(x0, p.x); x1 = Math.max(x1, p.x); y0 = Math.min(y0, p.y); y1 = Math.max(y1, p.y); });
@@ -77,8 +83,16 @@
       L.forEach(function (l, i) {
         var big = (vx1 - vx0 + vy1 - vy0) * 2, dxp = l.dx * sc, dyp = -l.dy * sc;
         function seg(p, cls) { o.push('<line class="' + cls + '" x1="' + f1(X(p.x - l.dx * big)) + '" y1="' + f1(Y(p.y - l.dy * big)) + '" x2="' + f1(X(p.x + l.dx * big)) + '" y2="' + f1(Y(p.y + l.dy * big)) + '"/>'); }
-        if (runNM > 0.3) { seg(l.f0, "sp-lop0"); o.push('<circle class="sp-ap" cx="' + f1(X(l.ap.x)) + '" cy="' + f1(Y(l.ap.y)) + '" r="3"/><circle class="sp-foot" cx="' + f1(X(l.f0.x)) + '" cy="' + f1(Y(l.f0.y)) + '" r="2"/>'); }
-        else o.push('<circle class="sp-ap" cx="' + f1(X(l.ap.x)) + '" cy="' + f1(Y(l.ap.y)) + '" r="3"/>');
+        if (runNM > 0.3) seg(l.f0, "sp-lop0");
+        if (!opt.single && l.s.name !== "Latitude") {                                 /* the construction: azimuth from the AP, intercept, right angle */
+          var zr = l.s.zn * R, ux = Math.sin(zr), uy = Math.cos(zr), len = Math.max(Math.abs(l.s.a) + 10 / sc, 26 / sc);
+          o.push('<line class="sp-azl" x1="' + f1(X(l.ap.x)) + '" y1="' + f1(Y(l.ap.y)) + '" x2="' + f1(X(l.ap.x + ux * len)) + '" y2="' + f1(Y(l.ap.y + uy * len)) + '" marker-end="url(#' + id + 'a)"/>');
+          o.push('<line class="sp-icpt" x1="' + f1(X(l.ap.x)) + '" y1="' + f1(Y(l.ap.y)) + '" x2="' + f1(X(l.f0.x)) + '" y2="' + f1(Y(l.f0.y)) + '"/>');
+          var e = 6 / sc, sg = l.s.a >= 0 ? -1 : 1, bx0 = l.f0.x + sg * ux * e, by0 = l.f0.y + sg * uy * e;            /* small square at the ITP */
+          if (Math.abs(l.s.a) * sc > 8) o.push('<path class="sp-rt" d="M' + f1(X(bx0)) + ' ' + f1(Y(by0)) + ' L' + f1(X(bx0 + l.dx * e)) + ' ' + f1(Y(by0 + l.dy * e)) + ' L' + f1(X(l.f0.x + l.dx * e)) + ' ' + f1(Y(l.f0.y + l.dy * e)) + '"/>');
+          o.push('<circle class="sp-foot" cx="' + f1(X(l.f0.x)) + '" cy="' + f1(Y(l.f0.y)) + '" r="2"/>');
+        }
+        o.push('<circle class="sp-ap" cx="' + f1(X(l.ap.x)) + '" cy="' + f1(Y(l.ap.y)) + '" r="3"/>');
         if (!opt.single && runNM > 0.3 && l.s.name !== "Latitude") {                   /* number the ship's DR at each sight, as written in the sight book */
           var dq = l.s.drSight ? pl(l.s.drSight) : l.ap;
           o.push('<circle class="sp-ap" cx="' + f1(X(dq.x)) + '" cy="' + f1(Y(dq.y)) + '" r="3"/><text class="sp-lab sp-halo" x="' + f1(X(dq.x) - 7) + '" y="' + f1(Y(dq.y) + 4) + '" text-anchor="end">' + (i + 1) + '</text>');

@@ -92,8 +92,12 @@
         if (!isFinite(Pf.lat) || !isFinite(Pf.lon) || Math.abs(Pf.lat) > 89) return null;
         return { P: Pf, c: withC ? c : 0, L: lines(Pf), rows: rows, iters: k + 1, converged: last < 0.02 };
       }
+      /* before solving: a sight far from where the DR puts it is named, instead of a solver that cannot settle */
+      var A0 = lines(DRF), worst = 0; A0.forEach(function (l, q) { if (Math.abs(l.a) > Math.abs(A0[worst].a)) worst = q; });
+      function nameOf(q) { return items[q].lat ? "The latitude line" : items[q].s.name + " (row " + (q + 1) + ")"; }
+      if (Math.abs(A0[worst].a) > 180) return { error: "No fix. " + nameOf(worst) + " is " + Math.abs(A0[worst].a).toFixed(0) + "' (" + (Math.abs(A0[worst].a) / 60).toFixed(1) + "°) away from where the DR puts it. Check that row: the body, the time (zone, hours, seconds) and the sextant altitude. If the DR itself may be this far out, move the DR closer.", warnings: warn };
       var base = iterate(false); if (!base) return { error: "The lines of position are parallel, too few, or too far from the DR: no fix.", warnings: warn };
-      if (!base.converged) return { error: "The fix did not settle. Check the times, the altitudes and the DR.", warnings: warn };
+      if (!base.converged) return { error: "No fix: the lines do not meet. The sight that fits least is " + nameOf(worst) + " (" + Math.abs(A0[worst].a).toFixed(0) + "' from the DR). Check its body, time and sextant altitude.", warnings: warn };
       var DR = DRF, L0 = lines(DR), out = { time: tf, dr: DR, fix: base.P, iterations: base.iters, warnings: warn };
       out.sights = items.map(function (it, i) {
         /* assumed position: the DR at the time of this sight (DR carried forward), or the first DR for every sight

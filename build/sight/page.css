@@ -73,4 +73,5 @@ table.sf-rows td.w-dr input { font-size: var(--fs-md); background: var(--entry);
 .sf-chip span { font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--muted); }
 .sf-chip.take { border-left-color: var(--take); } .sf-chip.ok { border-left-color: var(--okc); }
 .sf-chip:hover, .sf-chip:focus { border-color: var(--accent); outline: none; box-shadow: var(--focus-ring); }
+.sf-plot .sp-azl { stroke: var(--muted); stroke-width: .9; stroke-dasharray: 2 3; } .sf-plot .sp-icpt { stroke: var(--danger); stroke-width: 1.6; } .sf-plot .sp-rt { fill: none; stroke: var(--muted); stroke-width: 1; }
 /* Sight Fix end */

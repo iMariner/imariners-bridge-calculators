@@ -36,13 +36,18 @@
     }
     /* the body list: first what is good to take now (from the stars panel), then Sun, Moon and planets, then every star A to Z */
     var goodNow = [], AZ = NAMES.slice().sort();
-    function fillBodies(sel, val) {
+    function fillBodies(sel, val) {                                                 /* short list (good now) unless this row asked for all */
       while (sel.firstChild) sel.removeChild(sel.firstChild);
       var o0 = el("option", "", "choose a body"); o0.value = ""; sel.appendChild(o0);
-      var groups = [];
+      var groups = [], shortList = goodNow.length && !sel.full, inGood = goodNow.some(function (b) { return b.name === val; });
       if (goodNow.length) groups.push(["Good now (altitude, bearing)", goodNow.map(function (b) { return [b.name, b.name + "   " + Math.round(b.hc) + "°  " + ("00" + Math.round(b.zn) % 360).slice(-3) + "°"]; })]);
-      groups.push(["Sun, Moon and planets", ["Sun", "Moon"].concat(Sight.planets()).map(function (n) { return [n, n]; })]);
-      groups.push(["All stars A to Z", AZ.map(function (n) { return [n, n]; })]);
+      if (shortList) {
+        if (val && !inGood) groups.push(["Chosen", [[val, val]]]);
+        groups.push(["More", [["__all", "Show all stars, Sun, Moon and planets\u2026"]]]);
+      } else {
+        groups.push(["Sun, Moon and planets", ["Sun", "Moon"].concat(Sight.planets()).map(function (n) { return [n, n]; })]);
+        groups.push(["All stars A to Z", AZ.map(function (n) { return [n, n]; })]);
+      }
       groups.forEach(function (g) { var og = document.createElement("optgroup"); og.label = g[0]; g[1].forEach(function (x) { var o = el("option", "", x[1]); o.value = x[0]; og.appendChild(o); }); sel.appendChild(og); });
       sel.value = val;
     }
@@ -61,7 +66,9 @@
       data.forEach(function (r, i) {
         var tr = el("tr"), refs = { r: r };
         tr.appendChild(el("td", "n", r.kind === "lat" ? "Lat" : String(i + 1)));
-        if (r.kind === "star") { var td = el("td", "w-star"), sel = el("select"); sel.setAttribute("aria-label", "Star " + (i + 1)); fillBodies(sel, r.name || ""); sel.addEventListener("change", function () { r.name = sel.value; if (refs.limb) { var lm = r.name === "Moon" || r.name === "Sun"; refs.limb.hidden = !lm; refs.na.hidden = lm; } save(); render(); }); td.appendChild(sel); tr.appendChild(td); refs.sel = sel; }
+        if (r.kind === "star") { var td = el("td", "w-star"), sel = el("select"); sel.setAttribute("aria-label", "Star " + (i + 1)); fillBodies(sel, r.name || ""); sel.addEventListener("change", function () {
+            if (sel.value === "__all") { sel.full = true; fillBodies(sel, r.name || ""); try { if (sel.showPicker) sel.showPicker(); } catch (e) {} toast("All bodies listed: open the list again to choose."); return; }
+            r.name = sel.value; if (refs.limb) { var lm = r.name === "Moon" || r.name === "Sun"; refs.limb.hidden = !lm; refs.na.hidden = lm; } save(); render(); }); td.appendChild(sel); tr.appendChild(td); refs.sel = sel; }
         var tt = el("td", "w-time"), ti = el("input"); ti.type = "time"; ti.step = "1"; ti.value = r.time || ""; ti.setAttribute("aria-label", "Local time of sight " + (i + 1)); ti.addEventListener("input", function () { r.time = ti.value; r.manual = true; save(); render(); }); tt.appendChild(ti); tr.appendChild(tt); refs.time = ti;
         if (r.kind === "lat") {
           var tl = el("td"); tl.colSpan = 2; var fz = el("div", "fused fused-2"), w1 = el("div", "input-wrap"), w2 = el("div", "input-wrap");
