@@ -30,7 +30,7 @@
       var pts = [{ x: 0, y: 0 }], dF = pl(drF); pts.push(dF);
       var L = r.sights.map(function (s) {
         var ap = pl(s.ap), z = s.zn * R, lat = s.name === "Latitude";
-        var af = lat ? (s.ap.lat + s.a / 60 - fx.lat) * 60 : (s.ho - s.hcFix) * 60;             /* line as seen from the fix: intercept worked from the fix itself */
+        var af = lat ? s.a + dF.y : (s.ho - s.hcFix) * 60;             /* line as seen from the fix: intercept worked from the fix itself */
         var f1p = lat ? { x: 0, y: af } : { x: af * Math.sin(z), y: af * Math.cos(z) };
         var f0 = { x: f1p.x + ap.x - dF.x, y: f1p.y + ap.y - dF.y };
         pts.push(ap, f0, f1p);
@@ -72,7 +72,7 @@
       /* lines */
       var labels = [];
       L.forEach(function (l, i) {
-        var big = (vx1 - vx0 + vy1 - vy0) * 2, dxp = l.dx * sc, dyp = l.dy * sc;
+        var big = (vx1 - vx0 + vy1 - vy0) * 2, dxp = l.dx * sc, dyp = -l.dy * sc;
         function seg(p, cls) { o.push('<line class="' + cls + '" x1="' + f1(X(p.x - l.dx * big)) + '" y1="' + f1(Y(p.y - l.dy * big)) + '" x2="' + f1(X(p.x + l.dx * big)) + '" y2="' + f1(Y(p.y + l.dy * big)) + '"/>'); }
         if (runNM > 0.3) { seg(l.f0, "sp-lop0"); o.push('<circle class="sp-ap" cx="' + f1(X(l.ap.x)) + '" cy="' + f1(Y(l.ap.y)) + '" r="3"/><circle class="sp-foot" cx="' + f1(X(l.f0.x)) + '" cy="' + f1(Y(l.f0.y)) + '" r="2"/>'); }
         else o.push('<circle class="sp-ap" cx="' + f1(X(l.ap.x)) + '" cy="' + f1(Y(l.ap.y)) + '" r="3"/>');

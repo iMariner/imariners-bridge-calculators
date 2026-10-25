@@ -2849,6 +2849,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
         <table class="dt sf-res" id="sf-ps-work"></table>
         <div class="ps-result"><div><span>Latitude</span><strong id="sf-ps-lat">—</strong></div><div><span>Longitude</span><strong id="sf-ps-lon">—</strong></div></div>
         <div class="ps-log mono" id="sf-ps-log"></div>
+        <div class="ps-note" id="sf-ps-warn"></div>
         <svg class="sf-plot ps-diagram" id="sf-ps-plot" viewBox="0 0 760 300" role="img" aria-label="Plot"></svg>
         <div class="ps-remarks">Remarks:</div>
         <div class="ps-sign"><div>Officer of the watch<span>Name, signature, date</span></div><div>Master<span>Name, signature, date</span></div></div>
@@ -7405,7 +7406,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       var pts = [{ x: 0, y: 0 }], dF = pl(drF); pts.push(dF);
       var L = r.sights.map(function (s) {
         var ap = pl(s.ap), z = s.zn * R, lat = s.name === "Latitude";
-        var af = lat ? (s.ap.lat + s.a / 60 - fx.lat) * 60 : (s.ho - s.hcFix) * 60;             /* line as seen from the fix: intercept worked from the fix itself */
+        var af = lat ? s.a + dF.y : (s.ho - s.hcFix) * 60;             /* line as seen from the fix: intercept worked from the fix itself */
         var f1p = lat ? { x: 0, y: af } : { x: af * Math.sin(z), y: af * Math.cos(z) };
         var f0 = { x: f1p.x + ap.x - dF.x, y: f1p.y + ap.y - dF.y };
         pts.push(ap, f0, f1p);
@@ -7447,7 +7448,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       /* lines */
       var labels = [];
       L.forEach(function (l, i) {
-        var big = (vx1 - vx0 + vy1 - vy0) * 2, dxp = l.dx * sc, dyp = l.dy * sc;
+        var big = (vx1 - vx0 + vy1 - vy0) * 2, dxp = l.dx * sc, dyp = -l.dy * sc;
         function seg(p, cls) { o.push('<line class="' + cls + '" x1="' + f1(X(p.x - l.dx * big)) + '" y1="' + f1(Y(p.y - l.dy * big)) + '" x2="' + f1(X(p.x + l.dx * big)) + '" y2="' + f1(Y(p.y + l.dy * big)) + '"/>'); }
         if (runNM > 0.3) { seg(l.f0, "sp-lop0"); o.push('<circle class="sp-ap" cx="' + f1(X(l.ap.x)) + '" cy="' + f1(Y(l.ap.y)) + '" r="3"/><circle class="sp-foot" cx="' + f1(X(l.f0.x)) + '" cy="' + f1(Y(l.f0.y)) + '" r="2"/>'); }
         else o.push('<circle class="sp-ap" cx="' + f1(X(l.ap.x)) + '" cy="' + f1(Y(l.ap.y)) + '" r="3"/>');
@@ -7608,7 +7609,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       r.sights.forEach(function (s, i) {
         var tr = el("tr"), hs = last_hs(i);
         tr.appendChild(el("td", "", s.name)); tr.appendChild(el("td", "", localOf(s.ms, v.zone)));
-        if (s.name === "Latitude") { ["", "", "", Math.abs(s.a).toFixed(1) + " NM " + (s.a >= 0 ? "N" : "S"), "000°"].forEach(function (t) { tr.appendChild(el("td", "num", t)); }); }
+        if (s.name === "Latitude") { [Geo.lat(last.inp.sights[i].lat), "", "", Math.abs(s.a).toFixed(1) + " NM " + (s.a >= 0 ? "N" : "S"), "000°"].forEach(function (t) { tr.appendChild(el("td", "num", t)); }); }
         else [hs, alt(s.ho), alt(s.hc), Math.abs(s.a).toFixed(1) + " " + (s.a >= 0 ? "toward" : "away"), s.zn.toFixed(1) + "°"].forEach(function (t) { tr.appendChild(el("td", "num", t)); });
         tb.appendChild(tr);
       });
@@ -7625,6 +7626,8 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       var t = $("sf-log").textContent;
       if (r.constErr !== undefined) t += " | constant altitude error " + (r.constErr >= 0 ? "+" : "−") + Math.abs(r.constErr).toFixed(1) + "'";
       $("sf-ps-log").textContent = t;
+      var qn = $("sf-f-q").textContent + ($("sf-f-q-sub").textContent ? " (" + $("sf-f-q-sub").textContent + ")" : "");
+      $("sf-ps-warn").textContent = "Quality: " + qn + (r.warnings.length ? ". Warnings: " + r.warnings.join(" ") : ". No warnings.");
     }
     function last_dr_ms(r) { return last.inp.dr.ms; }
     function last_hs(i) { var s = last.inp.sights[i]; return s.hs === undefined ? "" : alt(s.hs); }

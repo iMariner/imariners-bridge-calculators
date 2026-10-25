@@ -129,7 +129,7 @@
       r.sights.forEach(function (s, i) {
         var tr = el("tr"), hs = last_hs(i);
         tr.appendChild(el("td", "", s.name)); tr.appendChild(el("td", "", localOf(s.ms, v.zone)));
-        if (s.name === "Latitude") { ["", "", "", Math.abs(s.a).toFixed(1) + " NM " + (s.a >= 0 ? "N" : "S"), "000°"].forEach(function (t) { tr.appendChild(el("td", "num", t)); }); }
+        if (s.name === "Latitude") { [Geo.lat(last.inp.sights[i].lat), "", "", Math.abs(s.a).toFixed(1) + " NM " + (s.a >= 0 ? "N" : "S"), "000°"].forEach(function (t) { tr.appendChild(el("td", "num", t)); }); }
         else [hs, alt(s.ho), alt(s.hc), Math.abs(s.a).toFixed(1) + " " + (s.a >= 0 ? "toward" : "away"), s.zn.toFixed(1) + "°"].forEach(function (t) { tr.appendChild(el("td", "num", t)); });
         tb.appendChild(tr);
       });
@@ -146,6 +146,8 @@
       var t = $("sf-log").textContent;
       if (r.constErr !== undefined) t += " | constant altitude error " + (r.constErr >= 0 ? "+" : "−") + Math.abs(r.constErr).toFixed(1) + "'";
       $("sf-ps-log").textContent = t;
+      var qn = $("sf-f-q").textContent + ($("sf-f-q-sub").textContent ? " (" + $("sf-f-q-sub").textContent + ")" : "");
+      $("sf-ps-warn").textContent = "Quality: " + qn + (r.warnings.length ? ". Warnings: " + r.warnings.join(" ") : ". No warnings.");
     }
     function last_dr_ms(r) { return last.inp.dr.ms; }
     function last_hs(i) { var s = last.inp.sights[i]; return s.hs === undefined ? "" : alt(s.hs); }
