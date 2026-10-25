@@ -360,6 +360,13 @@
       var tbl = $("sf-startbl"), note = $("sf-starnote"), c = starCtx(); while (tbl.firstChild) tbl.removeChild(tbl.firstChild);
       $("sf-starbox").hidden = mode !== "stars";
       function noGood() { if (goodNow.length) { goodNow = []; starPanel.last = ""; rowRefs.forEach(function (rf) { if (rf.sel) fillBodies(rf.sel, rf.r.name || ""); }); } }
+      twMark(); var twTxt = "";
+      if (c && st.tw) {
+        var ts = twSec(c, st.tw === "am"), tv = ts === null ? "" : hms(ts).slice(0, 5);
+        if ($("sf-starsat").value !== tv) { $("sf-starsat").value = tv; save(); }
+        c.sec = ts; twTxt = ts === null ? "" : (st.tw === "am" ? "Morning" : "Evening") + " twilight (halfway between nautical and civil) is at " + tv + " ship's time. ";
+        if (ts === null) { noGood(); note.textContent = "No " + (st.tw === "am" ? "morning" : "evening") + " twilight at this place and date. Type a time instead."; return; }
+      }
       if (!c) { noGood(); note.textContent = "Enter the DR position, date and zone, then choose a time or press a twilight button."; return; }
       if (c.sec === null) { noGood(); note.textContent = "Choose the time you will take the sights, or press Morning twilight or Evening twilight."; return; }
       var ms = c.base + (c.sec - c.v.zone * 3600) * 1000, fr = Sight.frame(ms), list = [];
@@ -367,7 +374,7 @@
       ["Moon"].concat(Sight.planets()).forEach(function (nm) { var r = Sight.reduceBody(Sight.place(ms, nm, fr), c.lat, c.lon); list.push({ name: nm, hc: r.hc, zn: r.zn, mag: PMAG[nm], kind: nm === "Moon" ? "Moon" : "planet" }); });
       var sun = list.filter(function (b) { return b.name === "Sun"; })[0], sh = sun.hc;
       var light = sh > -1 ? "The Sun is up: only the Moon and Venus can be seen." : sh > -3 ? "Too light yet: only planets and the brightest stars." : sh >= -12 ? "Good light: horizon and stars both visible." : "Dark: the horizon may be hard to see.";
-      note.textContent = "At " + hms(c.sec).slice(0, 5) + " ship's time the Sun is " + (sh < 0 ? "−" : "") + Math.abs(sh).toFixed(1) + "°. " + light + " Tap a star to put it in the next empty row (altitude · bearing · brightness). GOOD: 20° to 60° high and bright.";
+      note.textContent = twTxt + "At " + hms(c.sec).slice(0, 5) + " ship's time the Sun is " + (sh < 0 ? "−" : "") + Math.abs(sh).toFixed(1) + "°. " + light + " Tap a star to put it in the next empty row (altitude · bearing · brightness). GOOD: 20° to 60° high and bright.";
       var shown = list.filter(function (b) { return b.name !== "Sun" && verdict(b) && (sh <= -3 || b.mag <= 0); }).sort(function (a, b) { return a.zn - b.zn; });
       if (sh > -1 && sun.hc > 10) shown.unshift({ name: "Sun", hc: sun.hc, zn: sun.zn, mag: -26, kind: "Sun" });
       var good = shown.filter(function (b) { return (verdict(b) || [])[1] === "GOOD" || (b.kind !== "star" && b.hc >= 20 && b.hc <= 60); }), more = shown.filter(function (b) { return good.indexOf(b) < 0; });
@@ -395,13 +402,20 @@
       var n = 0; (st.rows.stars || []).forEach(function (r) { if (r.hd || r.hm) return; var p = pick[n++]; r.name = p ? p.name : ""; });
       build(); save(); render(); toast("Best 4, well spread round the horizon: " + pick.map(function (p) { return p.name + " " + Math.round(p.hc) + "°/" + ("00" + Math.round(p.zn)).slice(-3) + "°"; }).join(", "));
     }
-    function twilight(am) {
-      var c = starCtx(); if (!c) { toast("Enter the DR position, date and zone first."); return; }
+    function twSec(c, am) {                                                          /* halfway between nautical and civil twilight: the usual star time, or null */
       var R = SunTimes.solve(c.v.date.y, c.v.date.m, c.v.date.d, c.v.zone, c.lat, c.lon, 0), n = R.levels.nautical, cv = R.levels.civil;
       var a = am ? n.rise[0] : n.set[0], b = am ? cv.rise[0] : cv.set[0];
-      if (a === undefined || b === undefined) { toast("No twilight at this place and date."); return; }
-      var t = (a + b) / 2, sec = Math.round(((t + c.v.zone * 3600000) / 1000) % 86400 + 86400) % 86400;   /* halfway between nautical and civil twilight: the usual star time */
-      $("sf-starsat").value = hms(sec).slice(0, 5); save(); render();
+      if (a === undefined || b === undefined) return null;
+      return Math.round(((((a + b) / 2) + c.v.zone * 3600000) / 1000) % 86400 + 86400) % 86400;
+    }
+    function twMark() {
+      [["sf-tw-am", "am"], ["sf-tw-pm", "pm"]].forEach(function (p) { var on = st.tw === p[1]; $(p[0]).className = on ? "btn primary" : "btn"; $(p[0]).setAttribute("aria-pressed", on ? "true" : "false"); });
+    }
+    function twilight(am) {                                                          /* the chosen twilight stays chosen; its time follows the DR, date and zone */
+      st.tw = am ? "am" : "pm"; twMark();
+      var c = starCtx(); if (!c) { toast("Enter the DR position, date and zone first."); save(); return; }
+      if (twSec(c, am) === null) toast("No twilight at this place and date.");
+      save(); render();
     }
     /* Examples, one per method. Sights are made from a known true track (ship 060 deg 14 kn, Gulf of Mexico, zone -6); the DR is 3' S and
        4' E of the truth, so the intercepts are real. Height of eye 25 m, index error 1.2' off the arc, 27 C, 1010 hPa. Every box is filled. */
@@ -437,7 +451,7 @@
       set("sf-lon-d", String(Math.floor(lo))); set("sf-lon-m", ((lo - Math.floor(lo)) * 60).toFixed(1)); (X.dr.lon < 0 ? $("sf-lon-w") : $("sf-lon-e")).checked = true;
       set("sf-course", ("00" + EX.course).slice(-3)); set("sf-speed", String(EX.speed)); set("sf-date", dd.getUTCFullYear() + "-" + p2(dd.getUTCMonth() + 1) + "-" + p2(dd.getUTCDate())); set("sf-zone", String(EX.zone));
       set("sf-hoe", String(EX.hoe)); set("sf-ie", String(EX.ie)); $("sf-ie-off").checked = true; set("sf-temp", String(EX.temp)); set("sf-pres", String(EX.pres));
-      set("sf-fixat", m === "noon" ? "12:00" : ""); st.fixAuto = m === "noon"; set("sf-starsat", m === "stars" || m === "polaris" ? X.sights[0].time.slice(0, 5) : "");
+      set("sf-fixat", m === "noon" ? "12:00" : ""); st.fixAuto = m === "noon"; st.tw = ""; set("sf-starsat", m === "stars" || m === "polaris" ? X.sights[0].time.slice(0, 5) : "");
       st.rows = st.rows || {};
       if (mode === "sun") st.rows.sun = X.sights.map(function (s) { return { kind: "sun", name: "Sun", time: s.time, hd: s.hd, hm: s.hm, limb: s.limb, pos: s.pos }; }).concat(X.sights.length < 2 ? [{ kind: "sun", name: "Sun", time: "", hd: "", hm: "", limb: "L" }] : []).concat([{ kind: "lat", time: "", ld: "", lm: "", ns: "N" }]);
       else { var rows = X.sights.map(function (s) { return { kind: "star", name: s.name, time: s.time, hd: s.hd, hm: s.hm, limb: s.limb, pos: s.pos }; }); while (rows.length < 4) rows.push({ kind: "star", name: "", time: "", hd: "", hm: "", limb: "L" }); st.rows.stars = rows; }
@@ -530,10 +544,11 @@
     });
     $("sf-best4").addEventListener("click", pickStars);
     $("sf-tw-am").addEventListener("click", function () { twilight(true); }); $("sf-tw-pm").addEventListener("click", function () { twilight(false); });
-    $("sf-starsat").addEventListener("input", function () { save(); starPanel(); }); $("sf-example").addEventListener("click", example); $("sf-clear").addEventListener("click", clearSights);
+    $("sf-starsat").addEventListener("input", function () { st.tw = ""; save(); starPanel(); }); $("sf-example").addEventListener("click", example); $("sf-clear").addEventListener("click", clearSights);
     $("sf-print").addEventListener("click", function () { if (last) window.print(); });
     $("sf-copy").addEventListener("click", function () { if (last) copyText($("sf-log").textContent); });
     Ships.onChange(function () { if (started["sight-fix"]) { shipFill(); render(); } });
-    load(); build(); setMethod(st.method, false);
+    load(); if (st.tw === undefined) st.tw = $("sf-starsat").value ? "" : "am";
+    build(); setMethod(st.method, false);
   }
   /* SIGHTPAGE-END */
