@@ -10,8 +10,11 @@ One offline HTML file, `Bridge-Calculators.html`, that replaces the Excel sheets
 - The tools were ported from a macro-free Excel compass error workbook; the maths was checked against astropy.
 - Verified special-area coordinates come from `~/Developer/iMariners/sea-areas/data/*.json` (do not retype coordinates, rebuild from there).
 
+## Look and feel
+Read `ART-DIRECTION.md` first for any visual work ("Chart table": navy sidebar, white cards, teal brand, ruler under each page title, mono card titles). Every tool page has the same parts: page header, then cards that each start with an `h2` title. Do not invent a new layout. Review screenshots with `node build/tools/shot.js <outDir> [width] [height] [day|dusk|night]` (headless Chrome, example data in every tool) and check print sheets with `node build/tools/printpdf.js <tool-id> <example-button-id> <out.pdf>`. The Design System page has the live tokens and the compliance check.
+
 ## How the file is organised
-1. `<style>`: first the **DESIGN SYSTEM** (Geist and Geist Mono embedded as base64, colour tokens for Day / Dusk / Night, type, spacing, radius scales), then component CSS, then one block per tool.
+1. `<style>`: first the **DESIGN SYSTEM** (colour tokens now include the sidebar `--side-*`, `--border-strong`, `--matrix-head`) (Geist and Geist Mono embedded as base64, colour tokens for Day / Dusk / Night, type, spacing, radius scales), then component CSS, then one block per tool.
 2. `<body>`: header, side navigation (`data-tool-link`), `<main>` with one `<section class="tool" id="...">` per tool. A tool's print sheet is a `.print-sheet` child of its section.
 3. `<script>` (one IIFE): `store` (localStorage, key prefix `bridgeCalc.`), `Ships`, the almanac engine (`ASTRO-BEGIN/END`), calculation blocks with begin/end markers (`REPORTS-`, `SUN-`, `GEO-`, `ETA-`, `CALC-`), one `initXxx()` per tool, the embedded data blobs (`SA_AREAS`, `SA_LAND`, `SA_SHEET`), then the `TOOLS` registry and hash routing.
 
