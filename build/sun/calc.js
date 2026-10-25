@@ -19,7 +19,7 @@
       var gmst = mod(280.46061837 + 360.98564736629 * (jd - 2451545) + 0.000387933 * Tu * Tu - Tu * Tu * Tu / 38710000, 360);
       var dpsi = -0.004778 * Math.sin(Om * R) - 0.000367 * Math.sin(2 * L0 * R);
       var gast = gmst + dpsi * Math.cos(eps * R);
-      return { gha: mod(gast - ra, 360), dec: dec, sd: 0.266563 / rau, eot: mod(L0 - ra + 180, 360) - 180 };
+      return { gha: mod(gast - ra, 360), dec: dec, sd: 0.266563 / rau, eot: mod(L0 - ra + 180, 360) - 180, lon: mod(L0 + Cc, 360) };
     }
     function alt(ms, lat, lon) {                              /* geometric altitude of the Sun's centre, degrees; lon East + */
       var p = pos(ms), lha = (p.gha + lon) * R;
