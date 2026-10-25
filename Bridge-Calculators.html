@@ -644,26 +644,41 @@ section#eta.tool { max-width: none; }
 .et-top .text-input, .et-top .input-wrap input { padding: var(--sp-1h) var(--sp-2); font-size: var(--fs-lg); font-weight: var(--fw-semibold); }
 .et-top .input-wrap input { padding-right: var(--sp-6); }
 .et-top .hint:empty { display: none; }
-.et-gridwrap { overflow-x: auto; }
-table.et-main { width: 100%; border-collapse: separate; border-spacing: 0 4px; min-width: 880px; }
-table.et-main th { font-size: var(--fs-sm); text-transform: uppercase; letter-spacing: .5px; color: var(--side-strong); background: var(--matrix-head); padding: var(--sp-2) var(--sp-2); text-align: left; font-weight: var(--fw-bold); }
-table.et-main th:first-child { border-radius: var(--r-md) 0 0 var(--r-md); } table.et-main th:last-child { border-radius: 0 var(--r-md) var(--r-md) 0; }
-table.et-main th.sp { text-align: center; padding: var(--sp-1) var(--sp-1); }
-table.et-main th.sp input { width: 100%; max-width: 90px; text-align: center; font: inherit; font-size: var(--fs-xl); font-weight: var(--fw-bold); padding: var(--sp-1) var(--sp-0); border: 1px solid transparent; border-radius: var(--r-sm); background: rgba(var(--side-strong-rgb), 0.14); color: var(--side-strong); outline: none; }
-table.et-main th.sp input::placeholder { color: rgba(var(--side-strong-rgb), 0.55); font-weight: var(--fw-medium); }
-table.et-main th.sp input:focus { border-color: var(--side-strong); }
-table.et-main th.sp small { display: block; font-size: var(--fs-2xs); font-weight: var(--fw-medium); opacity: .85; letter-spacing: .4px; }
-table.et-main td { padding: var(--sp-1) var(--sp-1h); background: var(--surface-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); vertical-align: middle; }
-table.et-main td:first-child { border-left: 1px solid var(--border); border-radius: var(--r-md) 0 0 var(--r-md); color: var(--muted); width: 28px; text-align: center; font-weight: var(--fw-bold); }
-table.et-main td:last-child { border-right: 1px solid var(--border); border-radius: 0 var(--r-md) var(--r-md) 0; }
-table.et-main td input { width: 100%; font-size: var(--fs-lg); font-weight: var(--fw-semibold); padding: var(--sp-1h) var(--sp-2); }
-table.et-main td.cell { text-align: center; font-variant-numeric: tabular-nums; min-width: 120px; padding: var(--sp-1h) var(--sp-1); }
-table.et-main td.cell b.dy { display: block; font-size: var(--fs-data); color: var(--muted); font-weight: var(--fw-semibold); }
-table.et-main td.cell b.tm { display: block; font-size: var(--fs-2xl); line-height: 1.15; color: var(--true); }
-table.et-main td.cell span { display: block; font-size: var(--fs-sm); color: var(--muted); }
-table.et-main td:nth-child(3), table.et-main td:nth-child(4), table.et-main th:nth-child(3), table.et-main th:nth-child(4) { min-width: 92px; }
-table.et-main td:nth-child(2) { min-width: 170px; }
-table.et-main td.cell.na { color: var(--muted); }
+.et-gridwrap { overflow-x: auto; border: var(--hair) solid var(--border); border-radius: var(--r-lg); background: var(--surface); }
+table.et-main { width: 100%; border-collapse: separate; border-spacing: 0; min-width: 880px; font-variant-numeric: tabular-nums; }
+table.et-main th { background: var(--matrix-head); color: var(--side-strong); font-family: var(--font-mono); font-size: var(--fs-micro); font-weight: var(--fw-semibold); text-transform: uppercase; letter-spacing: .8px; text-align: left; padding: var(--sp-2) var(--sp-2h); vertical-align: bottom; white-space: nowrap; }
+table.et-main th small { display: block; margin-top: var(--sp-0); font-size: var(--fs-2xs); font-weight: var(--fw-medium); letter-spacing: .4px; text-transform: none; color: rgba(var(--side-strong-rgb), .62); }
+table.et-main tr.et-grp th { padding: var(--sp-2) var(--sp-2h) var(--sp-1); color: rgba(var(--side-strong-rgb), .7); font-size: var(--fs-2xs); letter-spacing: 1.2px; }
+table.et-main tr.et-grp th.et-grp-eta { text-align: center; border-left: var(--hair) solid rgba(var(--side-strong-rgb), .16); }
+table.et-main tr.et-grp th span { display: inline-block; padding-bottom: var(--sp-1); border-bottom: var(--hair) solid rgba(var(--side-strong-rgb), .28); }
+table.et-main th.sp { text-align: center; padding: var(--sp-1) var(--sp-1h) var(--sp-2); }
+table.et-main th.sp.first { border-left: var(--hair) solid rgba(var(--side-strong-rgb), .16); }
+table.et-main th.sp input { display: block; margin: 0 auto; width: 100%; max-width: 84px; height: var(--ctl-h); text-align: center; font-family: var(--font-mono); font-size: var(--fs-xl); font-weight: var(--fw-semibold); letter-spacing: 0; padding: 0 var(--sp-1); border: var(--hair) solid rgba(var(--side-strong-rgb), .22); border-radius: var(--r-md); background: rgba(var(--side-strong-rgb), .1); color: var(--side-strong); outline: none; transition: border-color var(--ease), background var(--ease); }
+table.et-main th.sp input::placeholder { color: rgba(var(--side-strong-rgb), .45); font-weight: var(--fw-medium); }
+table.et-main th.sp input:hover { background: rgba(var(--side-strong-rgb), .16); }
+table.et-main th.sp input:focus { border-color: var(--side-strong); background: rgba(var(--side-strong-rgb), .18); }
+table.et-main th.sp input[aria-invalid="true"] { border-color: var(--danger); }
+table.et-main th.sp small { text-align: center; margin-top: var(--sp-1); }
+table.et-main td { padding: var(--sp-2) var(--sp-2h); border-top: var(--hair) solid var(--border); vertical-align: middle; background: var(--surface); transition: background var(--ease); }
+table.et-main td.in { background: var(--surface-2); padding-left: var(--sp-1); padding-right: var(--sp-1); }
+table.et-main td.in.last { border-right: var(--hair) solid var(--border-strong); padding-right: var(--sp-2h); }
+table.et-main td.no { width: 40px; padding-left: var(--sp-2h); color: var(--muted); font-family: var(--font-mono); font-size: var(--fs-sm); font-weight: var(--fw-semibold); }
+table.et-main td input { width: 100%; height: var(--ctl-h); font-size: var(--fs-base); font-weight: var(--fw-semibold); padding: 0 var(--sp-2h); border-color: transparent; transition: border-color var(--ease), box-shadow var(--ease); }
+table.et-main td input:hover { border-color: var(--border-strong); }
+table.et-main td input.num { font-family: var(--font-mono); text-align: right; }
+table.et-main tbody tr:hover td.cell { background: var(--surface-2); }
+table.et-main td.cell { text-align: center; min-width: 124px; padding: var(--sp-2h) var(--sp-1h); border-left: var(--hair) solid var(--border); }
+table.et-main td.cell.first { border-left: 0; }
+table.et-main td.cell b.dy { display: block; font-family: var(--font-mono); font-size: var(--fs-2xs); color: var(--muted); font-weight: var(--fw-medium); letter-spacing: .6px; text-transform: uppercase; }
+table.et-main td.cell b.tm { display: block; margin: var(--sp-0) 0 var(--sp-1); font-family: var(--font-mono); font-size: var(--fs-2xl); font-weight: var(--fw-semibold); line-height: var(--lh-tight); color: var(--true); letter-spacing: -.3px; }
+table.et-main td.cell span { display: block; font-size: var(--fs-xs); color: var(--muted); }
+table.et-main td.cell span.ps { display: inline-block; padding: 0 var(--sp-2); border-radius: var(--r-pill); background: var(--tint-accent); color: var(--text); font-size: var(--fs-xs); font-weight: var(--fw-medium); line-height: 1.7; white-space: nowrap; }
+table.et-main td.cell span.ut { margin-top: var(--sp-1); font-family: var(--font-mono); font-size: var(--fs-2xs); }
+table.et-main td.no, table.et-main td.in.nm { white-space: nowrap; }
+table.et-main td:nth-child(3), table.et-main td:nth-child(4) { width: 96px; min-width: 88px; }
+table.et-main td:nth-child(2) { min-width: 180px; }
+table.et-main td.cell.na { color: var(--border-strong); font-size: var(--fs-lg); }
+table.et-main td.cell.zq { color: var(--apparent); font-size: var(--fs-sm); font-weight: var(--fw-semibold); }
 .et-opts { display: flex; gap: var(--sp-5); flex-wrap: wrap; align-items: center; margin-top: var(--sp-2); }
 .et-opts label { display: inline-flex; align-items: center; gap: var(--sp-1h); cursor: pointer; color: var(--text); }
 @media (max-width: 1100px) { .et-top { grid-template-columns: 1fr 1fr; } }
@@ -5575,11 +5590,13 @@ table.sf-rows td.n { font-size: var(--fs-base); }
 
     /* build the table once: speeds in the header, one input row per destination */
     function build() {
-      var thead = document.createElement("thead"), hr = document.createElement("tr");
-      function th(t, cls) { var x = document.createElement("th"); x.textContent = t; if (cls) x.className = cls; hr.appendChild(x); return x; }
-      th("#"); th("Destination"); th("DTG (NM)"); th("Zone (UTC ±)");
+      var thead = document.createElement("thead"), gr = document.createElement("tr"), hr = document.createElement("tr");
+      function grp(t, n, cls) { var x = document.createElement("th"), sp = document.createElement("span"); x.colSpan = n; if (cls) x.className = cls; sp.textContent = t; x.appendChild(sp); gr.appendChild(x); }
+      gr.className = "et-grp"; grp("Destinations", 4); grp("ETA at each speed, local time at the destination", NSP, "et-grp-eta"); thead.appendChild(gr);
+      function th(t, sub) { var x = document.createElement("th"); x.textContent = t; if (sub) { var s = document.createElement("small"); s.textContent = sub; x.appendChild(s); } hr.appendChild(x); return x; }
+      th("#"); th("Destination", "port or point"); th("DTG", "NM"); th("Zone", "UTC ±");
       for (var s = 0; s < NSP; s++) {
-        var h = document.createElement("th"); h.className = "sp";
+        var h = document.createElement("th"); h.className = "sp" + (s ? "" : " first");
         var inp = document.createElement("input"); inp.type = "text"; inp.id = "et-sp" + s; inp.setAttribute("inputmode", "decimal"); inp.maxLength = 5; inp.placeholder = "kn"; inp.setAttribute("aria-label", "Speed " + (s + 1));
         var sm = document.createElement("small"); sm.textContent = "knots";
         h.appendChild(inp); h.appendChild(sm); hr.appendChild(h); spIn.push(inp);
@@ -5588,15 +5605,15 @@ table.sf-rows td.n { font-size: var(--fs-base); }
       var tb = document.createElement("tbody");
       for (var i = 0; i < NDEST; i++) {
         var tr = document.createElement("tr"), o = { cells: [] };
-        var n0 = document.createElement("td"); n0.textContent = String(i + 1); tr.appendChild(n0);
+        var n0 = document.createElement("td"); n0.className = "in no"; n0.textContent = TIME.p2(i + 1); tr.appendChild(n0);
         function mk(id, ph, w, ml, mode) {
-          var td = document.createElement("td"); if (w) td.style.width = w;
-          var x = document.createElement("input"); x.type = "text"; x.id = id; x.placeholder = ph; x.maxLength = ml; if (mode) x.setAttribute("inputmode", mode);
+          var td = document.createElement("td"); td.className = mode ? "in" : "in nm"; if (w) td.style.width = w;
+          var x = document.createElement("input"); x.type = "text"; x.id = id; x.placeholder = ph; x.maxLength = ml; if (mode) { x.setAttribute("inputmode", mode); x.className = "num"; }
           td.appendChild(x); tr.appendChild(td); return x;
         }
         o.name = mk("et-n" + i, "Destination " + (i + 1), "22%", 30, null); o.name.setAttribute("aria-label", "Destination " + (i + 1) + " name");
         o.dist = mk("et-d" + i, "NM", "92px", 7, "decimal"); o.dist.setAttribute("aria-label", "Distance to go to destination " + (i + 1));
-        o.zone = mk("et-z" + i, "e.g. 8", "92px", 5, "decimal"); o.zone.setAttribute("aria-label", "Time zone of destination " + (i + 1));
+        o.zone = mk("et-z" + i, "e.g. 8", "92px", 5, "decimal"); o.zone.setAttribute("aria-label", "Time zone of destination " + (i + 1)); o.zone.parentNode.className += " last";
         for (var s2 = 0; s2 < NSP; s2++) { var c = document.createElement("td"); c.className = "cell na"; c.textContent = "—"; tr.appendChild(c); o.cells.push(c); }
         tb.appendChild(tr); dest.push(o);
       }
@@ -5645,16 +5662,17 @@ table.sf-rows td.n { font-size: var(--fs-base); }
         var d = v.dests[i], rowOut = { name: d.name, dist: d.dist, zone: d.zone, res: [] };
         o.cells.forEach(function (cell, s) {
           var sp = v.speeds[s], text = null;
-          cell.className = "cell na"; while (cell.firstChild) cell.removeChild(cell.firstChild);
+          var c0 = s ? "cell" : "cell first";
+          cell.className = c0 + " na"; while (cell.firstChild) cell.removeChild(cell.firstChild);
           if (!v.ok || sp === null || isNaN(sp) || d.dist === null || isNaN(d.dist) || sp === undefined) { cell.textContent = "—"; rowOut.res.push(null); return; }
-          if (d.zone === null || isNaN(d.zone)) { cell.textContent = "zone?"; rowOut.res.push(null); return; }
+          if (d.zone === null || isNaN(d.zone)) { cell.className = c0 + " zq"; cell.textContent = "zone?"; rowOut.res.push(null); return; }
           var r = etaAt(presentMs - v.tz * 3600000 + v.tz * 3600000, d.dist, sp, v.tz, d.zone), local = r.arrLocal;
           var yr = new Date(local).getUTCFullYear() !== presentYear;
-          cell.className = "cell";
+          cell.className = c0;
           var bd = document.createElement("b"); bd.className = "dy"; bd.textContent = dayTxt(local, yr); cell.appendChild(bd);
           var bt = document.createElement("b"); bt.className = "tm"; bt.textContent = clockTxt(local); cell.appendChild(bt);
-          if (showPass) { var sp2 = document.createElement("span"); sp2.textContent = span(r.hours); cell.appendChild(sp2); }
-          if (showUtc) { var sp3 = document.createElement("span"); sp3.textContent = "UTC " + dayTxt(r.arrUtc, yr).slice(4) + " " + clockTxt(r.arrUtc); cell.appendChild(sp3); }
+          if (showPass) { var sp2 = document.createElement("span"); sp2.className = "ps"; sp2.textContent = span(r.hours); cell.appendChild(sp2); }
+          if (showUtc) { var sp3 = document.createElement("span"); sp3.className = "ut"; sp3.textContent = "UTC " + dayTxt(r.arrUtc, yr).slice(4) + " " + clockTxt(r.arrUtc); cell.appendChild(sp3); }
           rowOut.res.push({ local: fmtMs(local, yr), pass: span(r.hours), utc: fmtMs(r.arrUtc, yr), hours: r.hours });
         });
         rows.push(rowOut);
