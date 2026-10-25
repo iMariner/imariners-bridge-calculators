@@ -50,16 +50,17 @@
       }
       if (!dr || !isFinite(dr.lat) || !isFinite(dr.lon) || !isFinite(dr.course) || !isFinite(dr.speed) || !isFinite(dr.ms)) return { error: "The DR position, course and speed are needed.", warnings: warn };
       if (Math.abs(dr.lat) > 84) return { error: "Latitudes above 84 degrees are not supported.", warnings: warn };
-      var items = S.map(function (s) {
+      var invalid = null, items = S.map(function (s) {
         var it = { s: s, lat: s.name === "Latitude" };
         if (it.lat) return it;
         var f = Sight.frame(s.ms), pl = s.name === "Sun" ? Sight.sunPlace(s.ms, f) : Sight.starPlace(s.ms, s.name, f);
         it.pl = pl;
         if (s.ho !== undefined) it.ho = { ho: s.ho };
         else it.ho = Sight.ho({ hs: s.hs, ic: inp.ic, hoe: inp.hoe, temp: inp.temp, pres: inp.pres, body: s.name === "Sun" ? "sun" : "star", limb: s.limb || "L", sd: pl.sd, hp: pl.hp });
-        if (it.ho.valid === false) warn.push(s.name + ": the altitude is below the horizon, no fix can use it.");
+        if (it.ho.valid === false) invalid = s.name;
         return it;
       });
+      if (invalid) return { error: invalid + ": the sextant altitude is below the horizon after the corrections (check the altitude, index error and height of eye).", warnings: warn };
       function lines(Pf) {                                                             /* intercepts and azimuths seen from the track positions that lead to Pf */
         return items.map(function (it) {
           var d = inp.dr.speed * (tf - it.s.ms) / 3600000, P = advance(Pf.lat, Pf.lon, dr.course, -d);

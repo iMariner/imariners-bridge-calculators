@@ -7312,16 +7312,17 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       }
       if (!dr || !isFinite(dr.lat) || !isFinite(dr.lon) || !isFinite(dr.course) || !isFinite(dr.speed) || !isFinite(dr.ms)) return { error: "The DR position, course and speed are needed.", warnings: warn };
       if (Math.abs(dr.lat) > 84) return { error: "Latitudes above 84 degrees are not supported.", warnings: warn };
-      var items = S.map(function (s) {
+      var invalid = null, items = S.map(function (s) {
         var it = { s: s, lat: s.name === "Latitude" };
         if (it.lat) return it;
         var f = Sight.frame(s.ms), pl = s.name === "Sun" ? Sight.sunPlace(s.ms, f) : Sight.starPlace(s.ms, s.name, f);
         it.pl = pl;
         if (s.ho !== undefined) it.ho = { ho: s.ho };
         else it.ho = Sight.ho({ hs: s.hs, ic: inp.ic, hoe: inp.hoe, temp: inp.temp, pres: inp.pres, body: s.name === "Sun" ? "sun" : "star", limb: s.limb || "L", sd: pl.sd, hp: pl.hp });
-        if (it.ho.valid === false) warn.push(s.name + ": the altitude is below the horizon, no fix can use it.");
+        if (it.ho.valid === false) invalid = s.name;
         return it;
       });
+      if (invalid) return { error: invalid + ": the sextant altitude is below the horizon after the corrections (check the altitude, index error and height of eye).", warnings: warn };
       function lines(Pf) {                                                             /* intercepts and azimuths seen from the track positions that lead to Pf */
         return items.map(function (it) {
           var d = inp.dr.speed * (tf - it.s.ms) / 3600000, P = advance(Pf.lat, Pf.lon, dr.course, -d);
@@ -7436,14 +7437,14 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       o.push('<rect class="sp-frame" x="' + left + '" y="' + top + '" width="' + aw + '" height="' + ah + '"/>');
       o.push('<g clip-path="url(#' + id + ')">');
       /* cocked hat */
-      var adv = L.map(function (l) { return { x: l.f1.x, y: l.f1.y, dx: l.dx, dy: l.dy }; });
+      var adv = L.slice().sort(function (a, b) { return a.s.zn - b.s.zn; }).map(function (l) { return { x: l.f1.x, y: l.f1.y, dx: l.dx, dy: l.dy }; });
       if (L.length >= 3) {
         var hat = [], okh = true; for (k = 0; k < adv.length; k++) { var m = meet(adv[k], adv[(k + 1) % adv.length]); if (!m) { okh = false; break; } hat.push(m); }
         if (okh) o.push('<polygon class="sp-hat" points="' + hat.map(function (p) { return f1(X(p.x)) + "," + f1(Y(p.y)); }).join(" ") + '"/>');
       }
       /* DR track and APs */
       var runNM = Math.hypot(dF.x - L[0].ap.x, dF.y - L[0].ap.y), first = L[0].ap;
-      for (k = 1; k < L.length; k++) if (L[k].s.ms < L[0].s.ms) first = L[k].ap;
+      var tmin = L[0].s.ms; for (k = 1; k < L.length; k++) if (L[k].s.ms < tmin) { tmin = L[k].s.ms; first = L[k].ap; }
       if (runNM > 0.3) o.push('<line class="sp-track" x1="' + f1(X(first.x)) + '" y1="' + f1(Y(first.y)) + '" x2="' + f1(X(dF.x)) + '" y2="' + f1(Y(dF.y)) + '"/>');
       /* lines */
       var labels = [];
@@ -7480,7 +7481,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
 
   /* Tool: Sight Fix (running fix by the Sun, fix by 3 to 4 stars) */
   function initSightFix() {
-    var KEY = "bridgeCalc.sightFix", st = store.get(KEY) || {}, mode = st.mode === "stars" ? "stars" : "sun", rowsEl = $("sf-rows"), rowRefs = [], last = null;
+    var KEY = "bridgeCalc.sightFix", st = store.get(KEY) || {}, mode = st.mode === "stars" ? "stars" : "sun", rowsEl = $("sf-rows"), rowRefs = [], last = null, shipEdited = false;
     var LIMBS = [["L", "Lower limb"], ["U", "Upper limb"]];
     var NAMES = Sight.names().filter(function (n) { return n !== "Polaris"; });
     var FIELDS = ["sf-lat-d", "sf-lat-m", "sf-lon-d", "sf-lon-m", "sf-course", "sf-speed", "sf-date", "sf-zone", "sf-hoe", "sf-ie", "sf-temp", "sf-pres", "sf-gps-lat-d", "sf-gps-lat-m", "sf-gps-lon-d", "sf-gps-lon-m"];
@@ -7551,7 +7552,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       var out = [], bad = [], prev = null, add = 0;
       rowRefs.forEach(function (rf, i) {
         var r = rf.r, sec = parseTimeEl(rf.time), any = (r.kind === "lat" ? (r.ld || r.lm) : (r.hd || r.hm)) !== "" && (r.kind === "lat" ? (r.ld || r.lm) : (r.hd || r.hm)) !== undefined;
-        if (r.kind === "star" && !r.name && !any && sec === null) return;
+        if (r.kind === "star" && !any) return;
         if (r.kind === "lat" && !any && sec === null) return;
         var name = r.kind === "lat" ? "Latitude" : (r.kind === "sun" ? "Sun" : r.name);
         if (!any && sec === null && r.kind !== "star") return;
@@ -7575,28 +7576,29 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       var ready = !Object.keys(v.errs).length && v.lat !== null && v.lon !== null && v.course !== null && v.speed !== null && v.date && v.zone !== null && v.hoe !== null && rr.rows.length >= 2 && !rr.bad.length;
       var missing = [];
       if (v.lat === null || v.lon === null) missing.push("the DR position"); if (v.course === null || v.speed === null) missing.push("course and speed"); if (!v.date) missing.push("the date"); if (v.zone === null) missing.push("the time zone"); if (v.hoe === null) missing.push("height of eye (0 if none)"); if (rr.rows.length < 2) missing.push("at least two sights");
-      if (!ready) { $("sf-out").hidden = true; $("sf-empty").hidden = false; $("sf-empty").textContent = missing.length && !rr.bad.length ? "Still needed: " + missing.join(", ") + "." : "Check the entries marked in red."; last = null; return; }
+      if (!ready) { $("sf-out").hidden = true; $("sf-sheet").classList.add("no-print"); $("sf-empty").hidden = false; $("sf-empty").textContent = missing.length && !rr.bad.length ? "Still needed: " + missing.join(", ") + "." : "Check the entries marked in red."; last = null; return; }
       var base = Date.UTC(v.date.y, v.date.m - 1, v.date.d), sights = rr.rows.map(function (s) { var o = { name: s.name, ms: base + (s.secLocal - v.zone * 3600) * 1000 + s.dayAdd * 1000 }; if (s.name === "Latitude") o.lat = s.lat; else { o.hs = s.hs; o.limb = s.limb; } return o; });
       var t1 = Math.min.apply(null, sights.map(function (s) { return s.ms; })), side = $("sf-ie-on").checked ? -1 : 1;
       var inp = { dr: { lat: v.lat * ($("sf-lat-s").checked ? -1 : 1), lon: v.lon * ($("sf-lon-w").checked ? -1 : 1), ms: t1, course: v.course, speed: v.speed }, hoe: v.hoe, ic: side * (v.ie || 0), temp: v.temp === null ? 10 : v.temp, pres: v.pres === null ? 1010 : v.pres, sights: sights };
       if (v.gps) inp.gps = v.gps;
       var r = SightFix.fix(inp);
-      if (r.error) { $("sf-out").hidden = true; $("sf-empty").hidden = false; $("sf-empty").textContent = r.error; last = null; return; }
+      if (r.error) { $("sf-out").hidden = true; $("sf-sheet").classList.add("no-print"); $("sf-empty").hidden = false; $("sf-empty").textContent = r.error; last = null; return; }
       last = { r: r, v: v, zone: v.zone, inp: inp }; show(r, v);
     }
     function localOf(ms, zone) { return hms(((ms + zone * 3600000) / 1000)); }
     function show(r, v) {
+      $("sf-sheet").classList.remove("no-print");
       $("sf-empty").hidden = true; $("sf-out").hidden = false;
       var w = $("sf-warn"); w.hidden = !r.warnings.length; w.textContent = r.warnings.join("\n");
       $("sf-f-lat").textContent = Geo.lat(r.fix.lat); $("sf-f-lon").textContent = Geo.lon(r.fix.lon);
       $("sf-f-time").textContent = "at " + localOf(r.time, v.zone) + " local"; $("sf-f-ut").textContent = utText(r.time) + " UT";
       $("sf-f-set").textContent = r.setDeg === null ? "on the DR" : Math.round(r.setDeg) + "° " + r.distNM.toFixed(1) + " NM";
-      $("sf-f-set-sub").textContent = r.setDeg === null ? "no difference" : "the fix is this far, this way, from the DR" + (r.driftKn !== null ? " (" + r.driftKn.toFixed(1) + " kn over " + ((r.time - last_dr_ms(r)) / 3600000).toFixed(1) + " h)" : "");
+      $("sf-f-set-sub").textContent = r.setDeg === null ? "no difference" : "the fix is this far, this way, from the DR";
       var q = "—", qs = "";
       if (r.cutDeg !== undefined) { q = "cut " + r.cutDeg + "°"; qs = r.cutDeg >= 60 ? "good" : r.cutDeg >= 30 ? "acceptable" : "weak"; }
       else if (r.hatNM !== undefined) { q = "hat " + r.hatNM.toFixed(1) + " NM"; qs = r.hatNM < 3 ? "small: good" : r.hatNM < 6 ? "moderate" : "large: check the sights"; }
       else if (r.residuals && r.residuals.length) { var mx = Math.max.apply(null, r.residuals.map(Math.abs)); q = "±" + mx.toFixed(1) + "'"; qs = "worst line miss"; }
-      if (r.constErr !== undefined) qs += (qs ? "; " : "") + "constant error " + (r.constErr >= 0 ? "+" : "−") + Math.abs(r.constErr).toFixed(1) + "'";
+      if (r.constErr !== undefined) qs += (qs ? "; " : "") + "constant error " + (r.constErr >= 0 ? "+" : "−") + Math.abs(r.constErr).toFixed(1) + "'" + (r.fixC ? ", fix with it removed " + Geo.lat(r.fixC.lat) + " " + Geo.lon(r.fixC.lon) : "");
       $("sf-f-q").textContent = q; $("sf-f-q-sub").textContent = qs;
       sightsTable($("sf-tbl"), r, v);
       var ft = r.fix; var line = (mode === "sun" ? "Running fix by Sun" : "Fix by stars") + " " + localOf(r.time, v.zone) + " LT (" + utText(r.time) + " UT): " + Geo.lat(ft.lat) + " " + Geo.lon(ft.lon) + (r.setDeg === null ? "" : " | " + Math.round(r.setDeg) + "° " + r.distNM.toFixed(1) + " NM from DR") + (r.gpsErrNM !== undefined ? " | GPS difference " + r.gpsErrNM.toFixed(1) + " NM" : "");
@@ -7649,7 +7651,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
     /* ---------- saving and loading ---------- */
     function save() {
       var o = st; o.mode = mode; o.f = {}; FIELDS.forEach(function (id) { o.f[id] = $(id).value; }); o.r = RADIOS.filter(function (id) { return $(id).checked; });
-      if (!o.ship) o.ship = {}; o.ship[shipKey()] = { hoe: $("sf-hoe").value, ie: $("sf-ie").value, off: $("sf-ie-off").checked };
+      if (!o.ship) o.ship = {}; if (shipEdited) o.ship[shipKey()] = { hoe: $("sf-hoe").value, ie: $("sf-ie").value, off: $("sf-ie-off").checked };
       store.set(KEY, o);
     }
     function load() {
@@ -7659,7 +7661,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       if (!$("sf-date").value) $("sf-date").value = todayISO();
       $("sf-mode-" + mode).checked = true;
     }
-    function shipFill() { var sh = (st.ship && st.ship[shipKey()]) || { hoe: "", ie: "", off: false }; $("sf-hoe").value = sh.hoe; $("sf-ie").value = sh.ie; (sh.off ? $("sf-ie-off") : $("sf-ie-on")).checked = true; }
+    function shipFill() { shipEdited = false; var sh = (st.ship && st.ship[shipKey()]) || { hoe: "", ie: "", off: false }; $("sf-hoe").value = sh.hoe; $("sf-ie").value = sh.ie; (sh.off ? $("sf-ie-off") : $("sf-ie-on")).checked = true; }
 
     /* ---------- the buttons ---------- */
     function pickStars() {
@@ -7669,11 +7671,11 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       var ms = Date.UTC(v.date.y, v.date.m - 1, v.date.d) + (sec - v.zone * 3600) * 1000;
       var pick = Sight.suggest(ms, v.lat * ($("sf-lat-s").checked ? -1 : 1), v.lon * ($("sf-lon-w").checked ? -1 : 1), 4);
       if (!pick.length) { toast("No good stars are up at that time."); return; }
-      var data = st.rows.stars; data.forEach(function (r, i) { r.name = pick[i] ? pick[i].name : ""; if (pick[i] && !r.time) r.time = hms(sec); });
+      var data = st.rows.stars; var n = 0; data.forEach(function (r) { if (r.hd || r.hm) return; var p = pick[n++]; r.name = p ? p.name : ""; if (p && !r.time) r.time = hms(sec); });
       build(); save(); render(); toast("Best stars for that time: " + pick.map(function (p) { return p.name + " " + Math.round(p.hc) + "°/" + Math.round(p.zn) + "°"; }).join(", "));
     }
     function example() {
-      var set = function (id, val) { $(id).value = val; };
+      var set = function (id, val) { $(id).value = val; }, key = shipKey(), prior = st.ship && st.ship[key] ? JSON.parse(JSON.stringify(st.ship[key])) : null;
       if (mode === "stars") {
         set("sf-lat-d", "21"); set("sf-lat-m", "22.2"); $("sf-lat-n").checked = true; set("sf-lon-d", "37"); set("sf-lon-m", "57.2"); $("sf-lon-e").checked = true; set("sf-course", "332"); set("sf-speed", "12.4"); set("sf-date", "2026-04-14"); set("sf-zone", "2"); set("sf-hoe", "29"); set("sf-ie", "0"); $("sf-ie-on").checked = true; set("sf-temp", "27"); set("sf-pres", "1010");
         st.rows = st.rows || {}; st.rows.stars = [["Fomalhaut", "04:48:00", "11", "30.6"], ["Spica", "04:48:33", "4", "36.8"], ["Schedar", "04:48:55", "19", "04.5"], ["", "", "", ""]].map(function (x) { return { kind: "star", name: x[0], time: x[1], hd: x[2], hm: x[3], limb: "L" }; });
@@ -7681,13 +7683,14 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
         set("sf-lat-d", "22"); set("sf-lat-m", "54.6"); $("sf-lat-n").checked = true; set("sf-lon-d", "94"); set("sf-lon-m", "25.3"); $("sf-lon-w").checked = true; set("sf-course", "332"); set("sf-speed", "12.4"); set("sf-date", "2021-05-06"); set("sf-zone", "-5"); set("sf-hoe", "29"); set("sf-ie", "0"); $("sf-ie-on").checked = true; set("sf-temp", "27"); set("sf-pres", "1010");
         st.rows = st.rows || {}; st.rows.sun = [["13:48:55", "79", "41.0"], ["17:06:55", "35", "15.0"]].map(function (x) { return { kind: "sun", name: "Sun", time: x[0], hd: x[1], hm: x[2], limb: "L" }; }).concat([{ kind: "lat", time: "", ld: "", lm: "", ns: "N" }]);
       }
-      build(); save(); render(); toast("Example loaded (from the owner's old workbook)");
+      shipEdited = false; build(); save(); if (st.ship) { if (prior) st.ship[key] = prior; else delete st.ship[key]; store.set(KEY, st); } render(); toast("Example loaded (from the owner's old workbook)");
     }
     function clearSights() { st.rows[mode] = null; build(); save(); render(); }
 
     $("sf-form").addEventListener("input", function () { save(); render(); });
     $("sf-form").addEventListener("change", function () { save(); render(); });
     ["sf-mode-sun", "sf-mode-stars"].forEach(function (id) { $(id).addEventListener("change", function () { mode = $("sf-mode-stars").checked ? "stars" : "sun"; build(); save(); render(); }); });
+    ["sf-hoe", "sf-ie"].forEach(function (id) { $(id).addEventListener("input", function () { shipEdited = true; }); }); ["sf-ie-on", "sf-ie-off"].forEach(function (id) { $(id).addEventListener("change", function () { shipEdited = true; }); });
     $("sf-pick").addEventListener("click", pickStars); $("sf-example").addEventListener("click", example); $("sf-clear").addEventListener("click", clearSights);
     $("sf-print").addEventListener("click", function () { if (last) window.print(); });
     $("sf-copy").addEventListener("click", function () { if (last) copyText($("sf-log").textContent); });

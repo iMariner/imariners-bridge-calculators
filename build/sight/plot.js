@@ -60,14 +60,14 @@
       o.push('<rect class="sp-frame" x="' + left + '" y="' + top + '" width="' + aw + '" height="' + ah + '"/>');
       o.push('<g clip-path="url(#' + id + ')">');
       /* cocked hat */
-      var adv = L.map(function (l) { return { x: l.f1.x, y: l.f1.y, dx: l.dx, dy: l.dy }; });
+      var adv = L.slice().sort(function (a, b) { return a.s.zn - b.s.zn; }).map(function (l) { return { x: l.f1.x, y: l.f1.y, dx: l.dx, dy: l.dy }; });
       if (L.length >= 3) {
         var hat = [], okh = true; for (k = 0; k < adv.length; k++) { var m = meet(adv[k], adv[(k + 1) % adv.length]); if (!m) { okh = false; break; } hat.push(m); }
         if (okh) o.push('<polygon class="sp-hat" points="' + hat.map(function (p) { return f1(X(p.x)) + "," + f1(Y(p.y)); }).join(" ") + '"/>');
       }
       /* DR track and APs */
       var runNM = Math.hypot(dF.x - L[0].ap.x, dF.y - L[0].ap.y), first = L[0].ap;
-      for (k = 1; k < L.length; k++) if (L[k].s.ms < L[0].s.ms) first = L[k].ap;
+      var tmin = L[0].s.ms; for (k = 1; k < L.length; k++) if (L[k].s.ms < tmin) { tmin = L[k].s.ms; first = L[k].ap; }
       if (runNM > 0.3) o.push('<line class="sp-track" x1="' + f1(X(first.x)) + '" y1="' + f1(Y(first.y)) + '" x2="' + f1(X(dF.x)) + '" y2="' + f1(Y(dF.y)) + '"/>');
       /* lines */
       var labels = [];
