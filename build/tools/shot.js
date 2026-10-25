@@ -1,12 +1,13 @@
 // Screenshot every tool in headless Chrome with example data, for design review.
 // usage: node build/tools/shot.js <outDir> [width] [height] [theme]
+// to test an old browser: CHROME=/path/to/Chromium HEADLESS=--headless node build/tools/shot.js ...
 const { spawn } = require('child_process'), fs = require('fs'), path = require('path');
 const out = path.resolve(process.argv[2] || 'shots'), W = +process.argv[3] || 1440, H = +process.argv[4] || 1000, THEME = process.argv[5] || 'day';
 const file = 'file://' + path.resolve(__dirname, '../../Bridge-Calculators.html');
 fs.mkdirSync(out, { recursive: true });
-const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', PORT = 9400 + Math.floor(Math.random() * 400);
+const CHROME = process.env.CHROME || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', PORT = 9400 + Math.floor(Math.random() * 400);
 const prof = fs.mkdtempSync('/tmp/shotprof-');
-const ch = spawn(CHROME, ['--headless=new', '--disable-gpu', '--hide-scrollbars', '--remote-debugging-port=' + PORT, '--user-data-dir=' + prof, '--allow-file-access-from-files', 'about:blank'], { stdio: 'ignore' });
+const ch = spawn(CHROME, [process.env.HEADLESS || '--headless=new', '--disable-gpu', '--hide-scrollbars', '--no-sandbox', '--remote-debugging-port=' + PORT, '--user-data-dir=' + prof, '--allow-file-access-from-files', 'about:blank'], { stdio: 'ignore' });
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const TOOLS = [
   ['true-wind', "document.querySelector('#tool-true-wind,#true-wind')&&0"],

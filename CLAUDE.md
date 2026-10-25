@@ -13,6 +13,9 @@ One offline HTML file, `Bridge-Calculators.html`, that replaces the Excel sheets
 ## Look and feel
 Read `ART-DIRECTION.md` first for any visual work ("Chart table": navy sidebar, white cards, teal brand, ruler under each page title, mono card titles). Every tool page has the same parts: page header, then cards that each start with an `h2` title. Do not invent a new layout. Review screenshots with `node build/tools/shot.js <outDir> [width] [height] [day|dusk|night]` (headless Chrome, example data in every tool) and check print sheets with `node build/tools/printpdf.js <tool-id> <example-button-id> <out.pdf>`. The Design System page has the live tokens and the compliance check.
 
+## Old browsers (ship PCs never get updates)
+The page must work on any Chrome or Edge from version 84 (2020) on, because ship PCs are offline and their browsers are frozen. Rules: no `color-mix()` (use the precomputed `--*-rgb` and `--tint-*` tokens), no `inset:` shorthand, no `:has()`, no modern JS (the script is written in plain ES5 style). A banner appears on older browsers. Test with a real old Chromium: `curl -O https://commondatastorage.googleapis.com/chromium-browser-snapshots/Mac/768968/chrome-mac.zip` (Chromium 84), unzip, `xattr -cr`, then `CHROME=<path>/Chromium.app/Contents/MacOS/Chromium HEADLESS=--headless node build/tools/shot.js <outDir>`. `build/tools/theme-colours.js` prints the theme colours used to precompute the tint tokens.
+
 ## How the file is organised
 1. `<style>`: first the **DESIGN SYSTEM** (colour tokens now include the sidebar `--side-*`, `--border-strong`, `--matrix-head`) (Geist and Geist Mono embedded as base64, colour tokens for Day / Dusk / Night, type, spacing, radius scales), then component CSS, then one block per tool.
 2. `<body>`: header, side navigation (`data-tool-link`), `<main>` with one `<section class="tool" id="...">` per tool. A tool's print sheet is a `.print-sheet` child of its section.
