@@ -43,8 +43,8 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
   #sf-sheet .ps-result strong { font-size: 13pt; }
   #sf-sheet .ps-h { margin: 2.5mm 0 1mm; }
   #sf-sheet .ps-log { margin-top: 2mm; font-size: 8pt; }
-  #sf-sheet .ps-diagram { height: 58mm; margin-top: 2mm; }
-  #sf-sheet .ps-remarks { margin-top: 2mm; height: 12mm; border: 1px solid #999; border-radius: 1.5mm; padding: 1mm 2mm; font-size: 8pt; color: #555; }
+  #sf-sheet .ps-diagram { height: 52mm; margin-top: 2mm; }
+  #sf-sheet .ps-remarks { margin-top: 2mm; height: 10mm; border: 1px solid #999; border-radius: 1.5mm; padding: 1mm 2mm; font-size: 8pt; color: #555; }
   #sf-sheet .ps-sign { margin-top: 5mm; }
   #sf-sheet .ps-note { margin-top: 1.5mm; }
   #sf-sheet .ps-grid div { padding: .8mm 2.4mm; }
