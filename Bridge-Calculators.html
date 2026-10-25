@@ -118,7 +118,7 @@
   --true: #38cfc8; --apparent: #f0a443; --ship: #e4ecf3; --rose: #4f6380;
   --hull-top: #4a5e7a; --chain: #c9d3df; --hull-bottom: #a24631; --hull-edge: #0a1219; --hull-detail: rgba(255, 255, 255, .45);
   --water: rgba(75, 155, 255, .12); --seabed: #3b3426; --seabed-edge: #6e5f3e;
-  --logo-plate: var(--paper);
+  --logo-plate: color-mix(in srgb, var(--paper) 88%, var(--side-bg));
   --side-bg: #060d14; --side-text: #c5d3e0; --side-strong: #ffffff; --side-muted: #8aa0b5; --side-hover: rgba(255, 255, 255, .06); --side-active: rgba(255, 255, 255, .1); --side-line: rgba(255, 255, 255, .09); --side-bar: var(--c-teal-400);
   --border-strong: #35495e; --rule: #2c4258; --chart-grid: rgba(255, 255, 255, .03); --matrix-head: #12324d;
   --map-sea: #0c1a27; --map-land: #2b2a22; --map-coast: #6a664e; --map-grid: #1d3246; --map-ink: #e4ecf3;
@@ -799,6 +799,30 @@ table.xs th { letter-spacing: .04em; font-size: var(--fs-2xs); }
 :root[data-theme="night"] .btn.primary, :root[data-theme="night"] .segmented input:checked + label { background: var(--hit); color: var(--text); border-color: var(--accent); }
 :root[data-theme="night"] input::-webkit-calendar-picker-indicator { filter: var(--logo-filter); }
 
+/* Joined position controls: degrees | minutes | hemisphere as one control */
+.fused { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto; align-items: stretch; }
+.fused > * { margin-left: calc(-1 * var(--hair)); }
+.fused > :first-child { margin-left: 0; }
+.fused .input-wrap input, .fused .segmented { border-radius: 0; }
+.fused > :first-child input { border-top-left-radius: var(--r-md); border-bottom-left-radius: var(--r-md); }
+.fused > .segmented { min-width: 132px; border-top-right-radius: var(--r-md); border-bottom-right-radius: var(--r-md); }
+.fused-2 { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.fused-2 > :last-child input { border-top-right-radius: var(--r-md); border-bottom-right-radius: var(--r-md); }
+.fused .segmented label { display: flex; align-items: center; justify-content: center; padding-top: 0; padding-bottom: 0; }
+.fused > :focus-within { position: relative; z-index: 1; }
+.ge-dm, .ge-pair, .sa-fld { gap: 0; }
+.ge-dm > *, .ge-pair > *, .sa-fld > * { margin-left: calc(-1 * var(--hair)); border-radius: 0; }
+.ge-dm > :first-child, .ge-pair > :first-child, .sa-fld > :first-child { margin-left: 0; }
+.ge-dm .input-wrap input, .ge-pair .input-wrap input { border-radius: 0; }
+.ge-dm > :first-child input, .ge-pair > :first-child input, .sa-fld > :first-child { border-top-left-radius: var(--r-md); border-bottom-left-radius: var(--r-md); }
+.ge-dm > :last-child, .ge-pair > :last-child, .sa-fld > :last-child { border-top-right-radius: var(--r-md); border-bottom-right-radius: var(--r-md); }
+.ge-dm > :focus-within, .ge-pair > :focus-within, .sa-fld > :focus, .sa-fld > :focus-within { position: relative; z-index: 1; }
+#ge-top { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--sp-3); margin-bottom: var(--sp-3); }
+#ge-top .readout-box { padding: var(--sp-2h) var(--sp-3h); }
+#ge-top .readout { font-size: var(--fs-3xl); margin-top: var(--sp-0); }
+#ge-top .readout.dim { color: var(--muted); font-size: var(--fs-lg); font-weight: var(--fw-medium); }
+@media (max-width: 960px) { #ge-top { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
 /* Design System page (documentation of the system itself) */
 .ds-lead { margin: calc(-1 * var(--sp-2)) 0 var(--sp-3); }
 .ds-brand { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--sp-4); }
@@ -1142,36 +1166,14 @@ code { font-family: var(--font-mono); font-size: .9em; background: var(--surface
 
             <fieldset>
               <legend><span class="dot" style="background:var(--true)"></span>Position</legend>
-              <div class="row2">
-                <div class="field">
-                  <label for="az-lat-d">Latitude</label>
-                  <div class="input-wrap"><input id="az-lat-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div>
-                </div>
-                <div class="field">
-                  <label for="az-lat-m">&nbsp;</label>
-                  <div class="input-wrap"><input id="az-lat-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div>
-                </div>
-              </div>
-              <div class="segmented" role="radiogroup" aria-label="Latitude hemisphere">
+              <div class="field"><label for="az-lat-d">Latitude</label><div class="fused"><div class="input-wrap"><input id="az-lat-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div><div class="input-wrap"><input id="az-lat-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="Latitude hemisphere">
                 <input type="radio" name="az-ns" id="az-lat-n" value="N" checked><label for="az-lat-n">North</label>
                 <input type="radio" name="az-ns" id="az-lat-s" value="S"><label for="az-lat-s">South</label>
-              </div>
-              <div class="hint" id="az-lat-msg">0 – 90°</div>
-              <div class="row2">
-                <div class="field">
-                  <label for="az-lon-d">Longitude</label>
-                  <div class="input-wrap"><input id="az-lon-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div>
-                </div>
-                <div class="field">
-                  <label for="az-lon-m">&nbsp;</label>
-                  <div class="input-wrap"><input id="az-lon-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div>
-                </div>
-              </div>
-              <div class="segmented" role="radiogroup" aria-label="Longitude hemisphere">
+              </div></div><div class="hint" id="az-lat-msg">0 – 90°</div></div>
+              <div class="field"><label for="az-lon-d">Longitude</label><div class="fused"><div class="input-wrap"><input id="az-lon-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div><div class="input-wrap"><input id="az-lon-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="Longitude hemisphere">
                 <input type="radio" name="az-ew" id="az-lon-e" value="E" checked><label for="az-lon-e">East</label>
                 <input type="radio" name="az-ew" id="az-lon-w" value="W"><label for="az-lon-w">West</label>
-              </div>
-              <div class="hint" id="az-lon-msg">0 – 180°</div>
+              </div></div><div class="hint" id="az-lon-msg">0 – 180°</div></div>
             </fieldset>
 
             <div class="actions">
@@ -1277,17 +1279,7 @@ code { font-family: var(--font-mono); font-size: .9em; background: var(--surface
 
             <fieldset>
               <legend><span class="dot" style="background:var(--apparent)"></span>Sextant altitude of the Sun</legend>
-              <div class="row2">
-                <div class="field">
-                  <label for="mp-sa-d">Sextant altitude</label>
-                  <div class="input-wrap"><input id="mp-sa-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div>
-                </div>
-                <div class="field">
-                  <label for="mp-sa-m">&nbsp;</label>
-                  <div class="input-wrap"><input id="mp-sa-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div>
-                </div>
-              </div>
-              <div class="hint" id="mp-sa-msg">0 – 90°</div>
+              <div class="field"><label for="mp-sa-d">Sextant altitude</label><div class="fused fused-2"><div class="input-wrap"><input id="mp-sa-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div><div class="input-wrap"><input id="mp-sa-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div></div><div class="hint" id="mp-sa-msg">0 – 90°</div></div>
               <div class="field">
                 <span class="label" id="mp-limb-label">Limb observed</span>
                 <div class="segmented" role="radiogroup" aria-labelledby="mp-limb-label">
@@ -1311,36 +1303,14 @@ code { font-family: var(--font-mono); font-size: .9em; background: var(--surface
 
             <fieldset>
               <legend><span class="dot" style="background:var(--true)"></span>DR position at that time</legend>
-              <div class="row2">
-                <div class="field">
-                  <label for="mp-lat-d">Latitude</label>
-                  <div class="input-wrap"><input id="mp-lat-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div>
-                </div>
-                <div class="field">
-                  <label for="mp-lat-m">&nbsp;</label>
-                  <div class="input-wrap"><input id="mp-lat-m" type="text" inputmode="decimal" placeholder="0.00" maxlength="6"><span class="unit">'</span></div>
-                </div>
-              </div>
-              <div class="segmented" role="radiogroup" aria-label="Latitude hemisphere">
+              <div class="field"><label for="mp-lat-d">Latitude</label><div class="fused"><div class="input-wrap"><input id="mp-lat-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div><div class="input-wrap"><input id="mp-lat-m" type="text" inputmode="decimal" placeholder="0.00" maxlength="6"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="Latitude hemisphere">
                 <input type="radio" name="mp-ns" id="mp-lat-n" value="N" checked><label for="mp-lat-n">North</label>
                 <input type="radio" name="mp-ns" id="mp-lat-s" value="S"><label for="mp-lat-s">South</label>
-              </div>
-              <div class="hint" id="mp-lat-msg">Used to tell whether the Sun bears north or south</div>
-              <div class="row2">
-                <div class="field">
-                  <label for="mp-lon-d">Longitude</label>
-                  <div class="input-wrap"><input id="mp-lon-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div>
-                </div>
-                <div class="field">
-                  <label for="mp-lon-m">&nbsp;</label>
-                  <div class="input-wrap"><input id="mp-lon-m" type="text" inputmode="decimal" placeholder="0.00" maxlength="6"><span class="unit">'</span></div>
-                </div>
-              </div>
-              <div class="segmented" role="radiogroup" aria-label="Longitude hemisphere">
+              </div></div><div class="hint" id="mp-lat-msg">Used to tell whether the Sun bears north or south</div></div>
+              <div class="field"><label for="mp-lon-d">Longitude</label><div class="fused"><div class="input-wrap"><input id="mp-lon-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div><div class="input-wrap"><input id="mp-lon-m" type="text" inputmode="decimal" placeholder="0.00" maxlength="6"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="Longitude hemisphere">
                 <input type="radio" name="mp-ew" id="mp-lon-e" value="E" checked><label for="mp-lon-e">East</label>
                 <input type="radio" name="mp-ew" id="mp-lon-w" value="W"><label for="mp-lon-w">West</label>
-              </div>
-              <div class="hint" id="mp-lon-msg">0 – 180°</div>
+              </div></div><div class="hint" id="mp-lon-msg">0 – 180°</div></div>
             </fieldset>
 
             <fieldset>
@@ -1460,6 +1430,13 @@ code { font-family: var(--font-mono); font-size: .9em; background: var(--surface
       <div class="tool-head">
         <h1>Gyro &amp; Compass Error</h1>
         <p>Gyro, standard and steering compass error and deviation from a celestial bearing.</p>
+      </div>
+
+      <div class="hero" id="ge-top" aria-live="polite">
+        <div class="readout-box"><div class="readout-label">Gyro error</div><div class="readout dim" id="ge-h-gerr">enter the observation</div></div>
+        <div class="readout-box"><div class="readout-label">Compass error</div><div class="readout dim" id="ge-h-serr">—</div></div>
+        <div class="readout-box"><div class="readout-label">True bearing</div><div class="readout dim" id="ge-h-tru">—</div></div>
+        <div class="readout-box"><div class="readout-label">Deviation</div><div class="readout dim" id="ge-h-dev">—</div></div>
       </div>
 
       <div class="ge2-layout">
@@ -1857,7 +1834,7 @@ code { font-family: var(--font-mono); font-size: .9em; background: var(--surface
           </div>
 
           <fieldset>
-            <legend>Ship's data</legend>
+            <legend><span class="dot c-true"></span>Ship's data</legend>
             <div class="row2">
               <div class="field">
                 <label for="hd-beam">Beam (B)</label>
@@ -1873,7 +1850,7 @@ code { font-family: var(--font-mono); font-size: .9em; background: var(--surface
           </fieldset>
 
           <fieldset>
-            <legend>Angle of heel (θ)</legend>
+            <legend><span class="dot c-apparent"></span>Angle of heel (θ)</legend>
             <div class="field">
               <div class="input-wrap"><input id="hd-heel" type="text" inputmode="decimal" placeholder="0.0" maxlength="5" aria-label="Angle of heel in degrees"><span class="unit">°</span></div>
               <input type="range" id="hd-heel-range" min="0" max="30" step="0.5" value="0" aria-label="Angle of heel slider">
@@ -2030,7 +2007,7 @@ code { font-family: var(--font-mono); font-size: .9em; background: var(--surface
           </div>
 
           <fieldset>
-            <legend>Anchor &amp; cable weights</legend>
+            <legend><span class="dot c-true"></span>Anchor &amp; cable weights</legend>
             <div class="src-line" id="ad-src"></div>
             <div class="field">
               <label for="ad-anchorWt">Weight of anchor</label>
@@ -2057,7 +2034,7 @@ code { font-family: var(--font-mono); font-size: .9em; background: var(--surface
           </fieldset>
 
           <fieldset>
-            <legend>Windlass</legend>
+            <legend><span class="dot c-apparent"></span>Windlass</legend>
             <div class="row2">
               <div class="field">
                 <label for="ad-windlassPull">Capacity @ 9 m/min</label>
@@ -2078,7 +2055,7 @@ code { font-family: var(--font-mono); font-size: .9em; background: var(--surface
           </fieldset>
 
           <fieldset>
-            <legend>Cable &amp; freeboard</legend>
+            <legend><span class="dot c-ship"></span>Cable &amp; freeboard</legend>
             <div class="row2">
               <div class="field">
                 <label for="ad-len">Length of 1 shackle</label>
@@ -2271,7 +2248,7 @@ code { font-family: var(--font-mono); font-size: .9em; background: var(--surface
             </div>
           </div>
           <fieldset>
-            <legend>Anchor &amp; windlass <span class="muted small u-fw-regular">(for Safe Anchoring Depth)</span></legend>
+            <legend><span class="dot c-ship"></span>Anchor &amp; windlass <span class="muted small u-fw-regular">(for Safe Anchoring Depth)</span></legend>
             <div class="row2">
               <div class="field">
                 <label for="sp-anchorWt">Weight of anchor</label>
@@ -2429,24 +2406,14 @@ code { font-family: var(--font-mono); font-size: .9em; background: var(--surface
             </fieldset>
             <fieldset>
               <legend><span class="dot c-apparent"></span>Position</legend>
-              <div class="row2">
-                <div class="field"><label for="su-lat-d">Latitude</label><div class="input-wrap"><input id="su-lat-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div></div>
-                <div class="field"><label for="su-lat-m">&nbsp;</label><div class="input-wrap"><input id="su-lat-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div></div>
-              </div>
-              <div class="segmented" role="radiogroup" aria-label="Latitude hemisphere">
+              <div class="field"><label for="su-lat-d">Latitude</label><div class="fused"><div class="input-wrap"><input id="su-lat-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div><div class="input-wrap"><input id="su-lat-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="Latitude hemisphere">
                 <input type="radio" name="su-ns" id="su-lat-n" value="N" checked><label for="su-lat-n">North</label>
                 <input type="radio" name="su-ns" id="su-lat-s" value="S"><label for="su-lat-s">South</label>
-              </div>
-              <div class="hint" id="su-lat-msg">0 – 90°</div>
-              <div class="row2">
-                <div class="field"><label for="su-lon-d">Longitude</label><div class="input-wrap"><input id="su-lon-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div></div>
-                <div class="field"><label for="su-lon-m">&nbsp;</label><div class="input-wrap"><input id="su-lon-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div></div>
-              </div>
-              <div class="segmented" role="radiogroup" aria-label="Longitude hemisphere">
+              </div></div><div class="hint" id="su-lat-msg">0 – 90°</div></div>
+              <div class="field"><label for="su-lon-d">Longitude</label><div class="fused"><div class="input-wrap"><input id="su-lon-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div><div class="input-wrap"><input id="su-lon-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="Longitude hemisphere">
                 <input type="radio" name="su-ew" id="su-lon-e" value="E" checked><label for="su-lon-e">East</label>
                 <input type="radio" name="su-ew" id="su-lon-w" value="W"><label for="su-lon-w">West</label>
-              </div>
-              <div class="hint" id="su-lon-msg">0 – 180°</div>
+              </div></div><div class="hint" id="su-lon-msg">0 – 180°</div></div>
             </fieldset>
             <fieldset>
               <legend><span class="dot c-ship"></span>Height of eye (optional)</legend>
@@ -5015,7 +4982,11 @@ code { font-family: var(--font-mono); font-size: .9em; background: var(--surface
         "";
     }
 
-    function setOut(id, text, cls) { var o = $(id); o.textContent = text; o.className = "xl-out" + (cls ? " " + cls : ""); }
+    var HERO_MAP = { "ge-o-gerr": "ge-h-gerr", "ge-o-serr": "ge-h-serr", "ge-o-tru": "ge-h-tru", "ge-o-dev": "ge-h-dev" };
+    function setOut(id, text, cls) {
+      var o = $(id); o.textContent = text; o.className = "xl-out" + (cls ? " " + cls : "");
+      if (HERO_MAP[id]) { var hh = $(HERO_MAP[id]); hh.textContent = text; hh.className = "readout" + (cls === "dim" || text === "—" ? " dim" : ""); }
+    }
     function render() {
       var v = read(); save();
       renderStars(v);
