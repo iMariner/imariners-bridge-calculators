@@ -1,14 +1,14 @@
     <section class="tool cmp" id="sight-fix" hidden>
       <div class="tool-head">
         <h1>Sight Fix</h1>
-        <p>Sun or star sights. One sight gives a position line with the longitude by chronometer (or the latitude, for Polaris or the Sun near noon). Two or more give a fix. Type the times and the sextant altitudes; the rest comes out by itself.</p>
+        <p>Sun, star, planet or Moon sights. One sight gives a position line with the longitude by chronometer (or the latitude, for Polaris or the Sun near noon). Two or more give a fix. Type the times and the sextant altitudes; the rest comes out by itself.</p>
       </div>
       <div class="grid">
         <form class="card" id="sf-form" autocomplete="off" onsubmit="return false">
           <h2>Ship and DR</h2>
           <div class="segmented" role="radiogroup" aria-label="What you observed">
             <input type="radio" name="sf-mode" id="sf-mode-sun" value="sun" checked><label for="sf-mode-sun">Sun</label>
-            <input type="radio" name="sf-mode" id="sf-mode-stars" value="stars"><label for="sf-mode-stars">Stars</label>
+            <input type="radio" name="sf-mode" id="sf-mode-stars" value="stars"><label for="sf-mode-stars">Stars, planets, Moon</label>
           </div>
           <fieldset class="u-mt-3">
             <legend><span class="dot c-true"></span>DR position at the time of the first sight</legend>
@@ -67,7 +67,7 @@
               </div>
               <div class="tbl-scroll"><table class="dt sf-res" id="sf-tbl"></table></div>
               <div class="sf-plotbox u-mt-3" id="sf-plotbox"><svg class="sf-plot" id="sf-plot" viewBox="0 0 720 540" role="img" aria-label="Plot of the lines of position and the fix"></svg>
-                <div class="legend">Dashed: line of position where the sight was taken. Solid: carried to the fix time. T toward, A away. Ring: fix. Dot: DR at the fix time.</div></div>
+                <div class="legend" id="sf-legend">Dashed: line of position where the sight was taken. Solid: carried to the fix time. T toward, A away. Ring: fix. Dot: DR at the fix time.</div></div>
               <div class="logline mono" id="sf-log"></div>
               <div class="actions"><button type="button" class="btn primary" id="sf-copy">Copy fix</button><button type="button" class="btn" id="sf-print">Print sheet</button></div>
               <details class="ge-fold u-mt-3" id="sf-work"><summary>The working, line by line</summary><div class="tbl-scroll u-mt-2h"><table class="dt sf-res" id="sf-work-tbl"></table></div></details>

@@ -53,10 +53,11 @@
       var invalid = null, items = S.map(function (s) {
         var it = { s: s, lat: s.name === "Latitude" };
         if (it.lat) return it;
-        var f = Sight.frame(s.ms), pl = s.name === "Sun" ? Sight.sunPlace(s.ms, f) : Sight.starPlace(s.ms, s.name, f);
+        var f = Sight.frame(s.ms), pl = Sight.place(s.ms, s.name, f);
+        if (!pl) { invalid = invalid || s.name; return it; }
         it.pl = pl;
         if (s.ho !== undefined) it.ho = { ho: s.ho };
-        else it.ho = Sight.ho({ hs: s.hs, ic: inp.ic, hoe: inp.hoe, temp: inp.temp, pres: inp.pres, body: s.name === "Sun" ? "sun" : "star", limb: s.limb || "L", sd: pl.sd, hp: pl.hp });
+        else { var ap0 = drAt(dr, s.ms); it.ho = Sight.ho({ hs: s.hs, ic: inp.ic, hoe: inp.hoe, temp: inp.temp, pres: inp.pres, body: pl.kind, limb: s.limb || "L", sd: pl.kind === "moon" ? Sight.reduceBody(pl, ap0.lat, ap0.lon).sd : pl.sd, hp: pl.hp }); }
         if (it.ho.valid === false) invalid = s.name;
         return it;
       });
@@ -65,7 +66,7 @@
         return items.map(function (it) {
           var d = inp.dr.speed * (tf - it.s.ms) / 3600000, P = advance(Pf.lat, Pf.lon, dr.course, -d);
           if (it.lat) return { P: P, zn: 0, hc: null, a: (it.s.lat - P.lat) * 60 };
-          var r = Sight.reduce(P.lat, P.lon, it.pl.gha, it.pl.dec);
+          var r = Sight.reduceBody(it.pl, P.lat, P.lon);
           return { P: P, zn: r.zn, hc: r.hc, lha: r.lha, a: (it.ho.ho - r.hc) * 60 };
         });
       }
@@ -90,8 +91,8 @@
       var DR = drAt(dr, tf), L0 = lines(DR), out = { time: tf, dr: DR, fix: base.P, iterations: base.iters, warnings: warn };
       out.sights = items.map(function (it, i) {
         var l0 = L0[i], lf = base.L[i], row = { name: it.s.name, ms: it.s.ms, ap: drAt(dr, it.s.ms), zn: l0.zn, a: l0.a, resid: lf.a };
-        var apN = drAt(dr, it.s.ms), r2 = it.lat ? null : Sight.reduce(apN.lat, apN.lon, it.pl.gha, it.pl.dec);
-        if (!it.lat) { row.gha = it.pl.gha; row.dec = it.pl.dec; row.lha = r2.lha; row.hc = r2.hc; row.zn = r2.zn; row.ho = it.ho.ho; row.corr = it.ho; row.a = (it.ho.ho - r2.hc) * 60; row.hcFix = lf.hc; if (r2.hc < 5) warn.push(it.s.name + " is below 5 degrees: refraction is unreliable."); else if (r2.hc < 10) warn.push(it.s.name + " is below 10 degrees: low altitude, less reliable."); if (r2.hc > 80) warn.push(it.s.name + " is above 80 degrees: a straight line is a poor approximation."); }
+        var apN = drAt(dr, it.s.ms), r2 = it.lat ? null : Sight.reduceBody(it.pl, apN.lat, apN.lon);
+        if (!it.lat) { row.kind = it.pl.kind; row.hp = it.pl.hp; row.gha = it.pl.gha; row.dec = it.pl.dec; row.lha = r2.lha; row.hc = r2.hc; row.zn = r2.zn; row.ho = it.ho.ho; row.corr = it.ho; row.a = (it.ho.ho - r2.hc) * 60; row.hcFix = lf.hc; if (r2.hc < 5) warn.push(it.s.name + " is below 5 degrees: refraction is unreliable."); else if (r2.hc < 10) warn.push(it.s.name + " is below 10 degrees: low altitude, less reliable."); if (r2.hc > 80) warn.push(it.s.name + " is above 80 degrees: a straight line is a poor approximation."); }
         if (Math.abs(row.a) > 20) warn.push((it.lat ? "Latitude" : it.s.name) + ": intercept " + Math.abs(row.a).toFixed(1) + "' is large. Check the time, Hs and the DR.");
         return row;
       });
@@ -131,26 +132,28 @@
       if (!isFinite(s.hs) || s.hs < 0 || s.hs > 90) return { error: "The sextant altitude is not a number between 0 and 90 degrees.", warnings: warn };
       if (!d || !isFinite(d.lat) || !isFinite(d.lon)) return { error: "The DR position is needed.", warnings: warn };
       if (Math.abs(d.lat) > 84) return { error: "Latitudes above 84 degrees are not supported.", warnings: warn };
-      var ap = { lat: d.lat, lon: d.lon }, f = Sight.frame(s.ms), pl = s.name === "Sun" ? Sight.sunPlace(s.ms, f) : Sight.starPlace(s.ms, s.name, f);
-      var ho = Sight.ho({ hs: s.hs, ic: inp.ic, hoe: inp.hoe, temp: inp.temp, pres: inp.pres, body: s.name === "Sun" ? "sun" : "star", limb: s.limb || "L", sd: pl.sd, hp: pl.hp });
+      var ap = { lat: d.lat, lon: d.lon }, f = Sight.frame(s.ms), pl = Sight.place(s.ms, s.name, f);
+      if (!pl) return { error: "Unknown body: " + s.name + ".", warnings: warn };
+      var r = Sight.reduceBody(pl, ap.lat, ap.lon);
+      var ho = Sight.ho({ hs: s.hs, ic: inp.ic, hoe: inp.hoe, temp: inp.temp, pres: inp.pres, body: pl.kind, limb: s.limb || "L", sd: pl.kind === "moon" ? r.sd : pl.sd, hp: pl.hp });
       if (ho.valid === false) return { error: s.name + ": the sextant altitude is below the horizon after the corrections (check the altitude, index error and height of eye).", warnings: warn };
-      var r = Sight.reduce(ap.lat, ap.lon, pl.gha, pl.dec), a = (ho.ho - r.hc) * 60;
+      var a = (ho.ho - r.hc) * 60, gq = pl.kind === "moon" ? { gha: r.ghaTopo, dec: r.decTopo } : pl;      /* the Moon is worked as seen from the observer */
       if (Math.abs(a) > 180) return { error: "No position line. " + s.name + " is " + Math.abs(a).toFixed(0) + "' (" + (Math.abs(a) / 60).toFixed(1) + "°) away from where the DR puts it. This is almost always a wrong time (zone, hours or seconds), a wrong star or a wrong altitude. If the DR itself may be this far out, move the DR closer and try again.", warnings: warn };
       if (Math.abs(a) > 20) warn.push(s.name + ": intercept " + Math.abs(a).toFixed(1) + "' is large. Check the time, Hs and the DR.");
       if (r.hc < 5) warn.push(s.name + " is below 5 degrees: refraction is unreliable."); else if (r.hc < 10) warn.push(s.name + " is below 10 degrees: low altitude, less reliable."); if (r.hc > 80) warn.push(s.name + " is above 80 degrees: a straight line is a poor approximation.");
-      var row = { name: s.name, ms: s.ms, ap: ap, gha: pl.gha, dec: pl.dec, lha: r.lha, hc: r.hc, zn: r.zn, ho: ho.ho, corr: ho, a: a };
+      var row = { name: s.name, kind: pl.kind, hp: pl.hp, ms: s.ms, ap: ap, gha: pl.gha, dec: pl.dec, lha: r.lha, hc: r.hc, zn: r.zn, ho: ho.ho, corr: ho, a: a };
       var itp = move(ap, a * Math.cos(r.zn * R), a * Math.sin(r.zn * R));
       var out = { single: true, time: s.ms, sights: [row], itp: itp, lop: [(r.zn + 90) % 360, (r.zn + 270) % 360].sort(function (x, y) { return x - y; }), warnings: warn, lonChron: null };
       var off = Math.min(Math.abs(r.zn % 180), 180 - Math.abs(r.zn % 180));       /* degrees from north or south */
-      var cosH = (Math.sin(ho.ho * R) - Math.sin(ap.lat * R) * Math.sin(pl.dec * R)) / (Math.cos(ap.lat * R) * Math.cos(pl.dec * R));
+      var cosH = (Math.sin(ho.ho * R) - Math.sin(ap.lat * R) * Math.sin(gq.dec * R)) / (Math.cos(ap.lat * R) * Math.cos(gq.dec * R));
       if (off < 30) {                                                                 /* line runs nearly east-west: give the latitude where it meets the DR longitude (Polaris, ex-meridian) */
-        var A = Math.sin(pl.dec * R), B = Math.cos(pl.dec * R) * Math.cos(r.lha * R), m = Math.hypot(A, B), q = Math.sin(ho.ho * R) / m;
+        var A = Math.sin(gq.dec * R), B = Math.cos(gq.dec * R) * Math.cos(r.lha * R), m = Math.hypot(A, B), q = Math.sin(ho.ho * R) / m;
         if (Math.abs(q) <= 1) {
           var ph = Math.atan2(A, B), c1 = (ph + Math.acos(q)) / R, c2 = (ph - Math.acos(q)) / R;
           out.latChron = Math.abs(c1 - ap.lat) < Math.abs(c2 - ap.lat) ? c1 : c2;
         }
       } else if (Math.abs(cosH) <= 1) {
-        var H = Math.acos(cosH) / R, lha = r.zn < 180 ? 360 - H : H, lon = lha - pl.gha;
+        var H = Math.acos(cosH) / R, lha = r.zn < 180 ? 360 - H : H, lon = lha - gq.gha;
         lon = ((lon % 360) + 540) % 360 - 180; out.lonChron = lon; out.lhaChron = lha;
       }
       return out;

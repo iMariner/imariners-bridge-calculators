@@ -20,13 +20,15 @@
       var data = rowData(); st.rows[mode] = data; rowRefs = [];
       while (rowsEl.firstChild) rowsEl.removeChild(rowsEl.firstChild);
       var th = el("thead"), hr = el("tr");
-      (mode === "sun" ? ["", "Local time", "Sextant altitude", "", "Limb"] : ["", "Star", "Local time", "Sextant altitude", ""]).forEach(function (h, i) { var c = el("th", "", h); if ((mode === "sun" && i === 2) || (mode === "stars" && i === 3)) c.colSpan = 2; if (h === "" && ((mode === "sun" && i === 3) || (mode === "stars" && i === 4))) return; hr.appendChild(c); });
+      (mode === "sun" ? ["", "Local time", "Sextant altitude", "", "Limb"] : ["", "Body", "Local time", "Sextant altitude", "", "Limb"]).forEach(function (h, i) { var c = el("th", "", h); if ((mode === "sun" && i === 2) || (mode === "stars" && i === 3)) c.colSpan = 2; if (h === "" && ((mode === "sun" && i === 3) || (mode === "stars" && i === 4))) return; hr.appendChild(c); });
       th.appendChild(hr); rowsEl.appendChild(th);
       var tb = el("tbody"); rowsEl.appendChild(tb);
       data.forEach(function (r, i) {
         var tr = el("tr"), refs = { r: r };
         tr.appendChild(el("td", "n", r.kind === "lat" ? "Lat" : String(i + 1)));
-        if (r.kind === "star") { var td = el("td", "w-star"), sel = el("select"); sel.setAttribute("aria-label", "Star " + (i + 1)); var o0 = el("option", "", "choose a star"); o0.value = ""; sel.appendChild(o0); NAMES.forEach(function (n) { var o = el("option", "", n); o.value = n; sel.appendChild(o); }); sel.value = r.name || ""; sel.addEventListener("change", function () { r.name = sel.value; save(); render(); }); td.appendChild(sel); tr.appendChild(td); refs.sel = sel; }
+        if (r.kind === "star") { var td = el("td", "w-star"), sel = el("select"); sel.setAttribute("aria-label", "Star " + (i + 1)); var o0 = el("option", "", "choose a body"); o0.value = ""; sel.appendChild(o0);
+          [["Moon and planets", ["Moon"].concat(Sight.planets())], ["Stars", NAMES]].forEach(function (g) { var og = document.createElement("optgroup"); og.label = g[0]; g[1].forEach(function (n) { var o = el("option", "", n); o.value = n; og.appendChild(o); }); sel.appendChild(og); });
+          sel.value = r.name || ""; sel.addEventListener("change", function () { r.name = sel.value; if (refs.limb) refs.limb.style.visibility = r.name === "Moon" ? "visible" : "hidden"; save(); render(); }); td.appendChild(sel); tr.appendChild(td); refs.sel = sel; }
         var tt = el("td", "w-time"), ti = el("input"); ti.type = "time"; ti.step = "1"; ti.value = r.time || ""; ti.setAttribute("aria-label", "Local time of sight " + (i + 1)); ti.addEventListener("input", function () { r.time = ti.value; r.manual = true; save(); render(); }); tt.appendChild(ti); tr.appendChild(tt); refs.time = ti;
         if (r.kind === "lat") {
           var tl = el("td"); tl.colSpan = 2; var fz = el("div", "fused fused-2"), w1 = el("div", "input-wrap"), w2 = el("div", "input-wrap");
@@ -43,7 +45,8 @@
           v1.appendChild(hd); v2.appendChild(hm); fz2.appendChild(v1); fz2.appendChild(v2); th2.appendChild(fz2); tr.appendChild(th2);
           [hd, hm].forEach(function (x) { x.addEventListener("input", function () { r.hd = hd.value; r.hm = hm.value; save(); render(); }); });
           refs.hd = hd; refs.hm = hm;
-          if (r.kind === "sun") { var tk = el("td", "w-limb"), sl = el("select"); sl.setAttribute("aria-label", "Limb"); LIMBS.forEach(function (x) { var o = el("option", "", x[1]); o.value = x[0]; sl.appendChild(o); }); sl.value = r.limb || "L"; sl.addEventListener("change", function () { r.limb = sl.value; save(); render(); }); tk.appendChild(sl); tr.appendChild(tk); refs.limb = sl; }
+          if (r.kind === "sun" || r.kind === "star") { var tk = el("td", "w-limb"), sl = el("select"); sl.setAttribute("aria-label", "Limb of the " + (r.kind === "sun" ? "Sun" : "Moon"));
+            if (r.kind === "star") sl.style.visibility = r.name === "Moon" ? "visible" : "hidden"; LIMBS.forEach(function (x) { var o = el("option", "", x[1]); o.value = x[0]; sl.appendChild(o); }); sl.value = r.limb || "L"; sl.addEventListener("change", function () { r.limb = sl.value; save(); render(); }); tk.appendChild(sl); tr.appendChild(tk); refs.limb = sl; }
         }
         tb.appendChild(tr); rowRefs.push(refs);
       });
@@ -110,7 +113,7 @@
       $("sf-sheet").classList.remove("no-print");
       $("sf-empty").hidden = true; $("sf-out").hidden = false;
       var w = $("sf-warn"); w.hidden = !r.warnings.length; w.textContent = r.warnings.join("\n");
-      labels(["Latitude", "Longitude", "From the DR", "Quality"]); $("sf-plotbox").hidden = false; $("sf-ps-plot").style.display = "";
+      labels(["Latitude", "Longitude", "From the DR", "Quality"]); $("sf-plotbox").hidden = false; $("sf-legend").textContent = LEG_FIX; $("sf-ps-plot").style.display = "";
       $("sf-f-lat").textContent = Geo.lat(r.fix.lat); $("sf-f-lon").textContent = Geo.lon(r.fix.lon);
       $("sf-f-time").textContent = "at " + localOf(r.time, v.zone) + " local"; $("sf-f-ut").textContent = utText(r.time) + " UT";
       $("sf-f-set").textContent = r.setDeg === null ? "on the DR" : Math.round(r.setDeg) + "° " + r.distNM.toFixed(1) + " NM";
@@ -122,10 +125,11 @@
       if (r.constErr !== undefined) qs += (qs ? "; " : "") + "constant error " + (r.constErr >= 0 ? "+" : "−") + Math.abs(r.constErr).toFixed(1) + "'" + (r.fixC ? ", fix with it removed " + Geo.lat(r.fixC.lat) + " " + Geo.lon(r.fixC.lon) : "");
       $("sf-f-q").textContent = q; $("sf-f-q-sub").textContent = qs;
       sightsTable($("sf-tbl"), r, v);
-      var ft = r.fix; var line = (mode === "sun" ? "Running fix by Sun" : "Fix by stars") + " " + localOf(r.time, v.zone) + " LT (" + utText(r.time) + " UT): " + Geo.lat(ft.lat) + " " + Geo.lon(ft.lon) + (r.setDeg === null ? "" : " | " + Math.round(r.setDeg) + "° " + r.distNM.toFixed(1) + " NM from DR") + (r.gpsErrNM !== undefined ? " | GPS difference " + r.gpsErrNM.toFixed(1) + " NM" : "");
+      var ft = r.fix; var line = methodText(r) + " " + localOf(r.time, v.zone) + " LT (" + utText(r.time) + " UT): " + Geo.lat(ft.lat) + " " + Geo.lon(ft.lon) + (r.setDeg === null ? "" : " | " + Math.round(r.setDeg) + "° " + r.distNM.toFixed(1) + " NM from DR") + (r.gpsErrNM !== undefined ? " | GPS difference " + r.gpsErrNM.toFixed(1) + " NM" : "");
       $("sf-log").textContent = line;
       work($("sf-work-tbl"), r, v); sheet(r, v);
     }
+    var LEG_FIX = $("sf-legend").textContent;
     function labels(t) { ["sf-l1", "sf-l2", "sf-l3", "sf-l4"].forEach(function (id, i) { $(id).textContent = t[i]; }); }
     function showLine(r, v) {                                                      /* one sight: position line and longitude by chronometer */
       $("sf-sheet").classList.remove("no-print"); $("sf-empty").hidden = true; $("sf-out").hidden = false;
@@ -137,9 +141,20 @@
       $("sf-f-set").textContent = byLat ? Geo.lat(r.latChron) : r.lonChron === null ? "—" : Geo.lon(r.lonChron);
       $("sf-f-set-sub").textContent = byLat ? "on the DR longitude " + Geo.lon(s.ap.lon) + " (the body bears near " + (Math.cos(s.zn * Math.PI / 180) > 0 ? "north" : "south") + ")" : r.lonChron === null ? "not usable for this bearing" : "on the DR latitude " + Geo.lat(s.ap.lat);
       $("sf-f-q").textContent = p3(r.lop[0]) + "° / " + p3(r.lop[1]) + "°"; $("sf-f-q-sub").textContent = "through the ITP " + Geo.lat(r.itp.lat) + " " + Geo.lon(r.itp.lon);
-      sightsTable($("sf-tbl"), r, v); $("sf-plotbox").hidden = true;
+      sightsTable($("sf-tbl"), r, v); $("sf-plotbox").hidden = false; $("sf-plot").innerHTML = linePlot(r, 720, 540, "sfc1"); $("sf-legend").textContent = "Solid: the position line through the ITP. Red dashes: the intercept from the DR. Arrow: towards the body. Diamond: " + (r.lonChron === null && r.latChron !== undefined ? "the latitude at the DR longitude." : "the longitude by chronometer on the DR latitude.");
       $("sf-log").textContent = s.name + " position line " + localOf(r.time, v.zone) + " LT (" + utText(r.time) + " UT): intercept " + Math.abs(s.a).toFixed(1) + "' " + (s.a >= 0 ? "toward" : "away") + ", Zn " + s.zn.toFixed(1) + "°, ITP " + Geo.lat(r.itp.lat) + " " + Geo.lon(r.itp.lon) + ", line " + p3(r.lop[0]) + "°/" + p3(r.lop[1]) + "°" + (byLat ? " | latitude " + Geo.lat(r.latChron) + " on DR long " + Geo.lon(s.ap.lon) : r.lonChron === null ? "" : " | longitude by chronometer " + Geo.lon(r.lonChron) + " on DR lat " + Geo.lat(s.ap.lat));
       work($("sf-work-tbl"), r, v); sheetLine(r, v);
+    }
+    function linePlot(r, W, H, id) {                                               /* the one position line drawn through its ITP */
+      var s = r.sights[0], c = {}, k; for (k in s) c[k] = s[k]; c.hcFix = s.ho;
+      var mark = r.lonChron !== null ? { lat: s.ap.lat, lon: r.lonChron, label: "Long. by chron " + Geo.lon(r.lonChron) } : r.latChron !== undefined ? { lat: r.latChron, lon: s.ap.lon, label: "Lat. " + Geo.lat(r.latChron) } : null;
+      return SightPlot.build({ fix: r.itp, time: r.time, sights: [c] }, { dr: { lat: s.ap.lat, lon: s.ap.lon, ms: r.time, course: 0, speed: 0 } }, W, H, id, { single: true, mark: mark });
+    }
+    function methodText(r) {                                                       /* "Running fix by Sun", "Fix by stars", or the bodies by name */
+      var nm = r.sights.filter(function (s) { return s.name !== "Latitude"; }).map(function (s) { return s.name; }), lat = nm.length < r.sights.length ? " and latitude" : "";
+      if (nm.every(function (n) { return n === "Sun"; })) return "Running fix by Sun" + lat;
+      if (nm.every(function (n) { return n !== "Sun" && n !== "Moon" && Sight.planets().indexOf(n) < 0; })) return "Fix by stars" + lat;
+      return "Fix by " + nm.join(", ") + lat;
     }
     function p3(x) { return ("00" + Math.round(x) % 360).slice(-3); }
     function sightsTable(tbl, r, v) {
@@ -159,7 +174,7 @@
       $("sf-ps-plot").innerHTML = SightPlot.build(r, i, 760, 300, "sfc2");
       fillCells($("sf-ps-info"), [["Ship", sh ? sh.name : "—"], ["IMO number", sh && sh.imo ? sh.imo : "—"], ["Date (ship's time)", p2(v.date.d) + "/" + p2(v.date.m) + "/" + v.date.y], ["Time zone", (v.zone >= 0 ? "UTC +" : "UTC −") + Math.abs(v.zone) + " h"],
         ["DR at first sight", Geo.lat(i.dr.lat) + " " + Geo.lon(i.dr.lon), 2], ["Course / speed", Math.round(v.course) + "° / " + v.speed + " kn"], ["Height of eye", v.hoe + " m"],
-        ["Index error", (ic === 0 ? "nil" : Math.abs(ic).toFixed(1) + "' " + (ic < 0 ? "on" : "off") + " the arc")], ["Temp / pressure", i.temp + " °C / " + i.pres + " hPa"], ["Method", mode === "sun" ? "Running fix by Sun" : "Fix by stars", 2]]);
+        ["Index error", (ic === 0 ? "nil" : Math.abs(ic).toFixed(1) + "' " + (ic < 0 ? "on" : "off") + " the arc")], ["Temp / pressure", i.temp + " °C / " + i.pres + " hPa"], ["Method", methodText(r), 2]]);
       sightsTable($("sf-ps-tbl"), r, v); work($("sf-ps-work"), r, v);
       $("sf-ps-l1").textContent = "Latitude"; $("sf-ps-l2").textContent = "Longitude";
       $("sf-ps-lat").textContent = Geo.lat(r.fix.lat); $("sf-ps-lon").textContent = Geo.lon(r.fix.lon);
@@ -170,7 +185,7 @@
     }
     function sheetLine(r, v) {
       var sh = Ships.active(), i = last.inp, ic = i.ic, s = r.sights[0];
-      $("sf-ps-plot").innerHTML = ""; $("sf-ps-plot").style.display = "none";
+      $("sf-ps-plot").innerHTML = linePlot(r, 760, 300, "sfc2"); $("sf-ps-plot").style.display = "";
       fillCells($("sf-ps-info"), [["Ship", sh ? sh.name : "—"], ["IMO number", sh && sh.imo ? sh.imo : "—"], ["Date (ship's time)", p2(v.date.d) + "/" + p2(v.date.m) + "/" + v.date.y], ["Time zone", (v.zone >= 0 ? "UTC +" : "UTC −") + Math.abs(v.zone) + " h"],
         ["DR at the sight", Geo.lat(i.dr.lat) + " " + Geo.lon(i.dr.lon), 2], ["Height of eye", v.hoe + " m"], ["Index error", (ic === 0 ? "nil" : Math.abs(ic).toFixed(1) + "' " + (ic < 0 ? "on" : "off") + " the arc")],
         ["Temp / pressure", i.temp + " °C / " + i.pres + " hPa"], ["Method", r.lonChron === null && r.latChron !== undefined ? "Position line and latitude" + (s.name === "Polaris" ? " by Pole Star" : "") : "Position line and longitude by chronometer", 3]]);
@@ -189,11 +204,11 @@
       function row(label, f) { var tr = el("tr"); tr.appendChild(el("td", "", label)); body.forEach(function (s, i) { tr.appendChild(el("td", "num", f(s, i))); }); tb.appendChild(tr); }
       var idxOf = function (s) { return r.sights.indexOf(s); };
       row("UT", function (s) { return utText(s.ms); }); row("DR (assumed position)", function (s) { return Geo.lat(s.ap.lat) + " " + Geo.lon(s.ap.lon); });
-      row("GHA (Sun) or GHA Aries + SHA (star)", function (s) { return alt(s.gha); }); row("Declination", function (s) { return (s.dec < 0 ? "S " : "N ") + alt(Math.abs(s.dec)); }); row("LHA", function (s) { return alt(s.lha); });
+      row("GHA", function (s) { return alt(s.gha); }); row("Declination", function (s) { return (s.dec < 0 ? "S " : "N ") + alt(Math.abs(s.dec)); }); row("LHA", function (s) { return alt(s.lha); });
       row("Sextant altitude Hs", function (s) { return last_hs(idxOf(s)); });
       row("Index correction", function (s) { var ic = last.inp.ic; return (ic >= 0 ? "+" : "−") + Math.abs(ic).toFixed(1) + "'"; });
       row("Dip (height of eye)", function (s) { return "−" + s.corr.dip.toFixed(1) + "'"; }); row("Apparent altitude", function (s) { return alt(s.corr.ha); });
-      row("Refraction", function (s) { return "−" + s.corr.ref.toFixed(1) + "'"; }); row("Semi-diameter", function (s) { return s.corr.sd === 0 ? "—" : (s.corr.sd > 0 ? "+" : "−") + Math.abs(s.corr.sd).toFixed(1) + "'"; }); row("Parallax", function (s) { return s.corr.par === 0 ? "—" : "+" + s.corr.par.toFixed(1) + "'"; });
+      row("Refraction", function (s) { return "−" + s.corr.ref.toFixed(1) + "'"; }); row("Semi-diameter", function (s) { return s.corr.sd === 0 ? "—" : (s.corr.sd > 0 ? "+" : "−") + Math.abs(s.corr.sd).toFixed(1) + "'"; }); row("Parallax", function (s) { return s.kind === "moon" ? "in Hc (HP " + s.hp.toFixed(1) + "')" : s.corr.par === 0 ? "—" : "+" + s.corr.par.toFixed(1) + "'"; });
       row("Observed altitude Ho", function (s) { return alt(s.ho); }); row("Calculated altitude Hc", function (s) { return alt(s.hc); }); row("Intercept (Ho − Hc)", function (s) { return Math.abs(s.a).toFixed(1) + "' " + (s.a >= 0 ? "toward" : "away"); }); row("Azimuth Zn", function (s) { return s.zn.toFixed(1) + "°"; });
     }
 

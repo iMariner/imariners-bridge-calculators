@@ -24,7 +24,9 @@
       var den = a.dx * b.dy - a.dy * b.dx; if (Math.abs(den) < 1e-9) return null;
       var t = ((b.x - a.x) * b.dy - (b.y - a.y) * b.dx) / den; return { x: a.x + t * a.dx, y: a.y + t * a.dy };
     }
-    function build(r, inp, W, H, id) {
+    /* opt.single: one position line. r.fix is then the ITP; opt.mark = { lat, lon, label } is the longitude by chronometer (or latitude) point */
+    function build(r, inp, W, H, id, opt) {
+      opt = opt || {};
       var fx = r.fix, drF = SightFix.drAt(inp.dr, r.time), cosF = Math.cos(fx.lat * R);
       function pl(p) { var dl = p.lon - fx.lon; dl -= 360 * Math.round(dl / 360); return { x: dl * 60 * cosF, y: (p.lat - fx.lat) * 60 }; }
       var pts = [{ x: 0, y: 0 }], dF = pl(drF); pts.push(dF);
@@ -37,14 +39,15 @@
         return { s: s, ap: ap, f0: f0, f1: f1p, dx: Math.cos(z), dy: -Math.sin(z) };
       });
       var gps = inp.gps ? pl(inp.gps) : null; if (gps) pts.push(gps);
+      var mk = opt.mark ? pl(opt.mark) : null; if (mk) pts.push(mk);
       var x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9; pts.forEach(function (p) { x0 = Math.min(x0, p.x); x1 = Math.max(x1, p.x); y0 = Math.min(y0, p.y); y1 = Math.max(y1, p.y); });
       var padv = Math.max(0.15 * Math.max(x1 - x0, y1 - y0), 1.2); x0 -= padv; x1 += padv; y0 -= padv; y1 += padv;
-      var ml = 62, mr = 16, mt = 14, mb = 34, aw = W - ml - mr, ah = H - mt - mb, sc = Math.min(aw / (x1 - x0), ah / (y1 - y0));
+      var ml = 74, mr = 16, mt = 14, mb = 34, aw = W - ml - mr, ah = H - mt - mb, sc = Math.min(aw / (x1 - x0), ah / (y1 - y0));
       var cx = (x0 + x1) / 2, cy = (y0 + y1) / 2, ox = ml + aw / 2 - cx * sc, oy = mt + ah / 2 + cy * sc;
       function X(x) { return ox + x * sc; } function Y(y) { return oy - y * sc; }
       var left = ml, top = mt, right = ml + aw, bottom = mt + ah, o = [];
       var vx0 = (left - ox) / sc, vx1 = (right - ox) / sc, vy0 = (oy - bottom) / sc, vy1 = (oy - top) / sc;
-      o.push('<defs><clipPath id="' + id + '"><rect x="' + left + '" y="' + top + '" width="' + aw + '" height="' + ah + '"/></clipPath></defs>');
+      o.push('<defs><marker id="' + id + 'a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="sp-arrow" d="M0 0 L10 5 L0 10 z"/></marker><clipPath id="' + id + '"><rect x="' + left + '" y="' + top + '" width="' + aw + '" height="' + ah + '"/></clipPath></defs>');
       o.push('<rect class="sp-bg" x="' + left + '" y="' + top + '" width="' + aw + '" height="' + ah + '"/>');
       /* ticks and grid */
       var stepLat = nice(70 / sc), k, v;
@@ -92,12 +95,20 @@
       /* fix, GPS */
       if (gps) o.push('<path class="sp-gps" d="M' + f1(X(gps.x)) + ' ' + f1(Y(gps.y) - 6) + ' l6 6 l-6 6 l-6 -6 z"/><text class="sp-lab" x="' + f1(X(gps.x) + 9) + '" y="' + f1(Y(gps.y) + 4) + '">GPS</text>');
       o.push('<circle class="sp-dr" cx="' + f1(X(dF.x)) + '" cy="' + f1(Y(dF.y)) + '" r="3.5"/>');
-      o.push('<circle class="sp-fixring" cx="' + f1(X(0)) + '" cy="' + f1(Y(0)) + '" r="8"/><circle class="sp-fixdot" cx="' + f1(X(0)) + '" cy="' + f1(Y(0)) + '" r="2.2"/>');
+      if (opt.single) {                                                               /* intercept from the DR to the ITP, and the direction of the body */
+        var s0 = L[0].s, zr = s0.zn * R, al = 34 / sc;
+        o.push('<line class="sp-int" x1="' + f1(X(dF.x)) + '" y1="' + f1(Y(dF.y)) + '" x2="' + f1(X(0)) + '" y2="' + f1(Y(0)) + '"/>');
+        o.push('<line class="sp-az" x1="' + f1(X(dF.x)) + '" y1="' + f1(Y(dF.y)) + '" x2="' + f1(X(dF.x + al * Math.sin(zr))) + '" y2="' + f1(Y(dF.y + al * Math.cos(zr))) + '" marker-end="url(#' + id + 'a)"/>');
+        o.push('<circle class="sp-fixdot" cx="' + f1(X(0)) + '" cy="' + f1(Y(0)) + '" r="3"/>');
+        if (mk) o.push('<path class="sp-mark" d="M' + f1(X(mk.x)) + ' ' + f1(Y(mk.y) - 6) + ' l6 6 l-6 6 l-6 -6 z"/>');
+      }
+      else o.push('<circle class="sp-fixring" cx="' + f1(X(0)) + '" cy="' + f1(Y(0)) + '" r="8"/><circle class="sp-fixdot" cx="' + f1(X(0)) + '" cy="' + f1(Y(0)) + '" r="2.2"/>');
       labels.forEach(function (b) {
         var s = b.l.s, txt = s.name + " " + Math.round(s.zn) + "°  p " + f1(Math.abs(s.a)) + (s.name === "Latitude" ? "" : (s.a >= 0 ? " T" : " A"));
         o.push('<text class="sp-lab sp-halo" x="' + f1(b.x) + '" y="' + f1(b.y - 5) + '" text-anchor="' + b.end + '">' + esc(txt) + '</text>');
       });
-      o.push('<text class="sp-lab sp-fixlab sp-halo" x="' + f1(X(0) + 11) + '" y="' + f1(Y(0) - 9) + '">FIX</text>');
+      o.push('<text class="sp-lab sp-fixlab sp-halo" x="' + f1(X(0) + 11) + '" y="' + f1(Y(0) - 9) + '">' + (opt.single ? "ITP" : "FIX") + '</text>');
+      if (mk) o.push('<text class="sp-lab sp-halo" x="' + f1(X(mk.x) + 10) + '" y="' + f1(Y(mk.y) + 16) + '">' + esc(opt.mark.label) + '</text>');
       o.push('<text class="sp-lab sp-drlab sp-halo" x="' + f1(X(dF.x) + 7) + '" y="' + f1(Y(dF.y) + 15) + '">DR</text>');
       o.push('</g>');
       /* scale bar and north arrow */
