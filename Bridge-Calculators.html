@@ -5189,7 +5189,9 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       setOut("ge-o-tru", b3(R.tru) + "° T", "ok"); setOut("ge-o-alt", (t.alt < 0 ? "−" : "") + dm(Math.abs(t.alt)), t.alt < 0 ? "" : "ok");
       R.side = R.ghdgOk ? sideOf(R.tru, v.ghdg) : null;
       if (R.side) setOut("ge-o-side", R.side.txt, R.side.cls === "s" ? "ok" : R.side.cls === "p" ? "" : "ok"); else setOut("ge-o-side", "enter gyro heading", "dim");
-      if (t.alt < 0) warn.push(R.v.body + " is below the horizon at this time and place.");
+      var amp = t.alt > -2 && t.alt < 2;                                         /* rising or setting: an amplitude bearing */
+      if (amp) warn.push("Amplitude: " + R.v.body + " on the horizon. The true bearing is worked for the exact GMT you entered, so no amplitude table or amplitude correction is needed. Take the bearing when the Sun's lower limb is about half a diameter above the horizon and note the time.");
+      else if (t.alt < 0) warn.push(R.v.body + " is below the horizon at this time and place.");
       if (!t.onMeridian && !t.agree) warn.push("The A, B, C result and the direct calculation differ by more than 0.3°. Check the inputs.");
       if (!c) {
         ["ge-o-gerr", "ge-o-sbrg", "ge-o-serr", "ge-o-dev", "ge-o-card"].forEach(function (id) { setOut(id, "—", "dim"); });
@@ -5204,7 +5206,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       } else { setOut("ge-o-sbrg", "enter standard heading", "dim"); setOut("ge-o-serr", "enter standard heading", "dim"); setOut("ge-o-dev", "—", "dim"); setOut("ge-o-card", "—", "dim"); }
       if (Math.abs(c.gyroErr) > 5) warn.push("The gyro error is large. Check the headings, the bearing and the body.");
       if (c.std && c.std.dev !== null && Math.abs(c.std.dev) > 8) warn.push("The deviation is large. Check the standard heading, the variation and its E/W.");
-      if (t.alt >= 0 && (t.alt < 15 || t.alt > 30)) warn.push("Altitude is outside the best range of 15° – 30°.");
+      if (!amp && t.alt >= 0 && (t.alt < 15 || t.alt > 30)) warn.push("Altitude is outside the best range of 15° – 30°.");
       $("ge-warn").hidden = !warn.length; $("ge-warn").textContent = warn.join("\n");
       var rows = rowsFor(R);
       fillSteps(R, v);
