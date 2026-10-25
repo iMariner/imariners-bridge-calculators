@@ -89,4 +89,8 @@ table.sf-rows td.w-dr input { font-size: var(--fs-md); background: var(--entry);
 .sf-howto-item h3 { margin: 0 0 var(--sp-1); font-size: var(--fs-md); }
 .sf-howto-item p { margin: 0; font-size: var(--fs-sm); line-height: 1.5; color: var(--text); }
 #sf-howto-body > p { grid-column: 1 / -1; margin: 0; }
+.sf-expect { margin-top: var(--hair); font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--muted); }
+.sf-expect.warn { color: var(--okc); } .sf-expect.bad { color: var(--danger); font-weight: var(--fw-semibold); }
+table.sf-rows td.w-hs { min-width: 215px; } table.sf-rows td.w-limb { min-width: 84px; } table.sf-rows td.w-dr { min-width: 180px; } table.sf-rows td.w-star { min-width: 175px; }
+.sf-expect { white-space: nowrap; }
 /* Sight Fix end */

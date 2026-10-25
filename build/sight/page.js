@@ -82,10 +82,11 @@
           [a, b].forEach(function (x) { x.addEventListener("input", function () { r.ld = a.value; r.lm = b.value; save(); render(); }); }); sn.addEventListener("change", function () { r.ns = sn.value; save(); render(); });
           refs.ld = a; refs.lm = b; refs.ns = sn;
         } else {
-          var th2 = el("td"); th2.colSpan = 2; var fz2 = el("div", "fused fused-2"), v1 = el("div", "input-wrap"), v2 = el("div", "input-wrap");
+          var th2 = el("td", "w-hs"); th2.colSpan = 2; var fz2 = el("div", "fused fused-2"), v1 = el("div", "input-wrap"), v2 = el("div", "input-wrap");
           var hd = el("input"); hd.type = "text"; hd.inputMode = "decimal"; hd.placeholder = "Hs °"; hd.maxLength = 3; hd.value = r.hd || ""; hd.setAttribute("aria-label", "Sextant altitude degrees, sight " + (i + 1));
           var hm = el("input"); hm.type = "text"; hm.inputMode = "decimal"; hm.placeholder = "min'"; hm.maxLength = 5; hm.value = r.hm || ""; hm.setAttribute("aria-label", "Sextant altitude minutes, sight " + (i + 1));
           v1.appendChild(hd); v2.appendChild(hm); fz2.appendChild(v1); fz2.appendChild(v2); th2.appendChild(fz2); tr.appendChild(th2);
+          var ex = el("div", "sf-expect"); th2.appendChild(ex); refs.exp = ex;          /* what the sextant should read, from the DR */
           [hd, hm].forEach(function (x) { x.addEventListener("input", function () { r.hd = hd.value; r.hm = hm.value; save(); render(); }); });
           refs.hd = hd; refs.hm = hm;
           if (r.kind === "sun" || r.kind === "star") { var tk = el("td", "w-limb"), sl = el("select"); sl.setAttribute("aria-label", "Limb of the " + (r.kind === "sun" ? "Sun" : "Moon"));
@@ -113,9 +114,38 @@
       v.date = parseDateEl($("sf-date"));
       setHint("sf-lat-msg", errs.lat || "0 – 84°", !!errs.lat); setHint("sf-lon-msg", errs.lon || "0 – 180°", !!errs.lon);
       setHint("sf-course-msg", errs.course || "", !!errs.course, $("sf-course")); setHint("sf-speed-msg", errs.speed || "", !!errs.speed, $("sf-speed")); setHint("sf-hoe-msg", errs.hoe || "", !!errs.hoe, $("sf-hoe")); setHint("sf-ie-msg", errs.ie || "On the arc is subtracted, off the arc is added", !!errs.ie, $("sf-ie"));
-      setHint("sf-zone-msg", errs.zone || "+8 means ship's time = UTC + 8 (East +); nautical zone description is the opposite sign", !!errs.zone, $("sf-zone")); $("sf-temp").setAttribute("aria-invalid", errs.temp ? "true" : "false"); $("sf-pres").setAttribute("aria-invalid", errs.pres ? "true" : "false");
+      var zw = "";                                                                       /* a zone that does not fit the longitude is usually a wrong sign */
+      if (!errs.zone && v.zone !== null && v.lon !== null && !errs.lon) { var lonS = v.lon * ($("sf-lon-w").checked ? -1 : 1), ez = Math.round(lonS / 15); if (Math.abs(v.zone - lonS / 15) > 2.5) zw = "Zone " + (v.zone > 0 ? "+" : "") + v.zone + " does not fit longitude " + Geo.lon(lonS) + " (about " + (ez > 0 ? "+" : "") + ez + "). Check the sign: East is +, West is −."; }
+      setHint("sf-zone-msg", errs.zone || zw || "+8 means ship's time = UTC + 8 (East +); nautical zone description is the opposite sign", !!errs.zone || !!zw, $("sf-zone")); $("sf-temp").setAttribute("aria-invalid", errs.temp ? "true" : "false"); $("sf-pres").setAttribute("aria-invalid", errs.pres ? "true" : "false");
       var g = {}, ge = {}; g.lat = readDM("sf-gps-lat", 90, "GPS latitude", ge, "lat"); g.lon = readDM("sf-gps-lon", 180, "GPS longitude", ge, "lon"); v.gps = g.lat !== null && g.lon !== null && !ge.lat && !ge.lon ? { lat: g.lat * ($("sf-gps-lat-s").checked ? -1 : 1), lon: g.lon * ($("sf-gps-lon-w").checked ? -1 : 1) } : null;
       v.errs = errs; return v;
+    }
+    /* under each sextant box: the altitude the sextant should show for that body, time and DR (the reverse of the corrections),
+       and its bearing. Good for presetting the sextant; a typed altitude far from it is flagged at once. */
+    function expectRows(v) {
+      var ok = v.lat !== null && v.lon !== null && !v.errs.lat && !v.errs.lon && v.date && v.zone !== null && !v.errs.zone;
+      var lat0 = ok ? v.lat * ($("sf-lat-s").checked ? -1 : 1) : 0, lon0 = ok ? v.lon * ($("sf-lon-w").checked ? -1 : 1) : 0, base = ok ? Date.UTC(v.date.y, v.date.m - 1, v.date.d) : 0;
+      var secs = rowRefs.map(function (rf) { return parseTimeEl(rf.time); }), first = null;
+      secs.forEach(function (s) { if (s !== null && (first === null || s < first)) first = s; });
+      var dr0 = ok && first !== null ? { lat: lat0, lon: lon0, ms: base + (first - v.zone * 3600) * 1000, course: v.course || 0, speed: v.speed || 0 } : null;
+      var ic = ($("sf-ie-on").checked ? -1 : 1) * (v.ie || 0);
+      rowRefs.forEach(function (rf, i) {
+        if (!rf.exp) return; var r = rf.r, name = r.kind === "sun" ? "Sun" : r.name, sec = secs[i]; rf.exp.className = "sf-expect"; rf.exp.textContent = "";
+        if (!dr0 || !name || sec === null) return;
+        var ms = base + (sec - v.zone * 3600) * 1000; if (sec < first - 12 * 3600) ms += 86400000;
+        var p = r.pos ? parsePos(r.pos) : null, q = p && !p.error ? p : SightFix.drAt(dr0, ms), pl = Sight.place(ms, name); if (!pl) return;
+        var rd = Sight.reduceBody(pl, q.lat, q.lon), z = ("00" + Math.round(rd.zn) % 360).slice(-3) + "°";
+        if (rd.hc < -0.5) { rf.exp.textContent = name + " is below the horizon at this time"; rf.exp.className = "sf-expect bad"; return; }
+        var hs = rd.hc; for (var k = 0; k < 8; k++) { var c = Sight.ho({ hs: hs, ic: ic, hoe: v.hoe || 0, temp: v.temp === null ? 10 : v.temp, pres: v.pres === null ? 1010 : v.pres, body: pl.kind, limb: r.limb || "L", sd: pl.kind === "moon" ? rd.sd : pl.sd, hp: pl.hp }); hs += rd.hc - c.ho; }
+        var txt = "≈ " + alt(hs) + " · Zn " + z + (v.hoe === null ? " (no HoE yet)" : "");
+        var d = num(r.hd), mm = r.hm === "" || r.hm === undefined ? 0 : num(r.hm);
+        if (r.hd !== "" && r.hd !== undefined && !isNaN(d) && !isNaN(mm)) {
+          var diff = Math.abs(d + mm / 60 - hs) * 60;
+          if (diff > 60) { txt = Math.round(diff / 60 * 10) / 10 + "° off (≈ " + alt(hs) + "): check body, time, zone"; rf.exp.className = "sf-expect bad"; }
+          else if (diff > 20) { txt += " · " + Math.round(diff) + "' off"; rf.exp.className = "sf-expect warn"; }
+        }
+        rf.exp.textContent = txt;
+      });
     }
     function readRows(v) {
       var out = [], bad = [], prev = null, add = 0;
@@ -140,7 +170,7 @@
     }
 
     function render() {
-      var v = read(), rr = readRows(v), msg = $("sf-rows-msg"); starPanel();
+      var v = read(), rr = readRows(v), msg = $("sf-rows-msg"); starPanel(); expectRows(v);
       msg.textContent = rr.bad.join(" "); msg.className = rr.bad.length ? "hint error" : "hint";
       var one = rr.rows.length === 1 && rr.rows[0].name !== "Latitude";
       var ready = !Object.keys(v.errs).length && v.lat !== null && v.lon !== null && (one || (v.course !== null && v.speed !== null)) && v.date && v.zone !== null && v.hoe !== null && (one || rr.rows.length >= 2) && !rr.bad.length;
@@ -160,7 +190,7 @@
       rr.rows.forEach(function (s, k) { if (s.rf.pos) { var q = SightFix.drAt(inp.dr, sights[k].ms); s.rf.pos.placeholder = Geo.lat(q.lat) + " " + Geo.lon(q.lon); } });     /* show the worked DR in grey */
       if (one && sights[0].dr) { inp.dr.lat = sights[0].dr.lat; inp.dr.lon = sights[0].dr.lon; }
       var r = one ? SightFix.single(inp) : SightFix.fix(inp);
-      if (r.error) { $("sf-out").hidden = true; $("sf-sheet").classList.add("no-print"); $("sf-empty").hidden = false; $("sf-empty").className = "callout warn u-mt-0"; $("sf-empty").textContent = r.error; last = null; return; }
+      if (r.error) { $("sf-out").hidden = true; $("sf-sheet").classList.add("no-print"); $("sf-empty").hidden = false; $("sf-empty").className = "callout warn u-mt-0"; $("sf-empty").textContent = r.error + (/does not fit/.test($("sf-zone-msg").textContent) ? " Also: " + $("sf-zone-msg").textContent : ""); last = null; return; }
       last = { r: r, v: v, zone: v.zone, inp: inp }; if (r.single) showLine(r, v); else show(r, v);
     }
     function localOf(ms, zone) { return hms(((ms + zone * 3600000) / 1000)); }
