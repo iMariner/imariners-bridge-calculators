@@ -141,8 +141,8 @@
         var d = num(r.hd), mm = r.hm === "" || r.hm === undefined ? 0 : num(r.hm);
         if (r.hd !== "" && r.hd !== undefined && !isNaN(d) && !isNaN(mm)) {
           var diff = Math.abs(d + mm / 60 - hs) * 60;
-          if (diff > 60) { txt = Math.round(diff / 60 * 10) / 10 + "° off (≈ " + alt(hs) + "): check body, time, zone"; rf.exp.className = "sf-expect bad"; }
-          else if (diff > 20) { txt += " · " + Math.round(diff) + "' off"; rf.exp.className = "sf-expect warn"; }
+          if (diff > 60) { txt = "Hs should be about " + alt(hs); rf.exp.className = "sf-expect bad"; }
+          else if (diff > 20) { txt = "Hs should be about " + alt(hs) + " (" + Math.round(diff) + "' off)"; rf.exp.className = "sf-expect warn"; }
         }
         rf.exp.textContent = txt;
       });
