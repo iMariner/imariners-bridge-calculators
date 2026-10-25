@@ -23,14 +23,14 @@
             <legend><span class="dot c-apparent"></span>Date and time zone</legend>
             <div class="row2">
               <div class="field"><label for="sf-date">Date (ship's date)</label><input id="sf-date" class="text-input" type="date"><div class="hint" id="sf-date-msg"></div></div>
-              <div class="field"><label for="sf-zone">Zone (UTC offset)</label><div class="input-wrap"><input id="sf-zone" type="text" inputmode="decimal" placeholder="e.g. 8 or -5.5" maxlength="6"><span class="unit">h</span></div><div class="hint" id="sf-zone-msg">+8 means ship's time = UTC + 8</div></div>
+              <div class="field"><label for="sf-zone">Zone (UTC offset)</label><div class="input-wrap"><input id="sf-zone" type="text" inputmode="decimal" placeholder="e.g. 8 or -5.5" maxlength="6"><span class="unit">h</span></div><div class="hint" id="sf-zone-msg">+8 means ship's time = UTC + 8 (East +); nautical zone description is the opposite sign</div></div>
             </div>
           </fieldset>
           <fieldset>
             <legend><span class="dot c-ship"></span>Sextant (saved for this ship)</legend>
             <div class="row2" style="grid-template-columns: 1fr;">
               <div class="field"><label for="sf-hoe">Height of eye</label><div class="input-wrap"><input id="sf-hoe" type="text" inputmode="decimal" placeholder="0" maxlength="5"><span class="unit">m</span></div><div class="hint" id="sf-hoe-msg"></div></div>
-              <div class="field"><label for="sf-ie">Index error</label><div class="fused fused-2"><div class="input-wrap"><input id="sf-ie" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="Index error on or off the arc"><input type="radio" name="sf-iearc" id="sf-ie-on" value="on" checked><label for="sf-ie-on">On arc</label><input type="radio" name="sf-iearc" id="sf-ie-off" value="off"><label for="sf-ie-off">Off arc</label></div></div><div class="hint" id="sf-ie-msg"></div></div>
+              <div class="field"><label for="sf-ie">Index error</label><div class="fused fused-2"><div class="input-wrap"><input id="sf-ie" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="Index error on or off the arc"><input type="radio" name="sf-iearc" id="sf-ie-on" value="on" checked><label for="sf-ie-on">On arc</label><input type="radio" name="sf-iearc" id="sf-ie-off" value="off"><label for="sf-ie-off">Off arc</label></div></div><div class="hint" id="sf-ie-msg">On the arc is subtracted, off the arc is added</div></div>
             </div>
           </fieldset>
           <details class="sf-more">

@@ -1225,7 +1225,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
               <div class="field">
                 <label for="az-zone">Ship's time zone (UTC offset)</label>
                 <div class="input-wrap"><input id="az-zone" type="text" inputmode="decimal" placeholder="e.g. 8 or -5.5" maxlength="6"><span class="unit">h</span></div>
-                <div class="hint" id="az-zone-msg">+8 means ship's time = UTC + 8 h (East +)</div>
+                <div class="hint" id="az-zone-msg">+8 means ship's time = UTC + 8 h (East +). The nautical zone description has the opposite sign (50°W is zone +3).</div>
               </div>
               <div class="row2">
                 <div class="field">
@@ -1359,7 +1359,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
               <div class="field">
                 <label for="mp-zone">Ship's time zone (UTC offset)</label>
                 <div class="input-wrap"><input id="mp-zone" type="text" inputmode="decimal" placeholder="e.g. 8 or -5.5" maxlength="6"><span class="unit">h</span></div>
-                <div class="hint" id="mp-zone-msg">+8 means ship's time = UTC + 8 h (East +)</div>
+                <div class="hint" id="mp-zone-msg">+8 means ship's time = UTC + 8 h (East +). The nautical zone description has the opposite sign (50°W is zone +3).</div>
               </div>
             </fieldset>
 
@@ -1375,9 +1375,9 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
               </div>
               <div class="row2">
                 <div class="field">
-                  <label for="mp-ie">Index error (to apply)</label>
-                  <div class="input-wrap"><input id="mp-ie" type="text" inputmode="decimal" placeholder="0.0" maxlength="6"><span class="unit">'</span></div>
-                  <div class="hint" id="mp-ie-msg">+ or −, as applied</div>
+                  <label for="mp-ie">Index error</label>
+                  <div class="fused fused-2"><div class="input-wrap"><input id="mp-ie" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="Index error on or off the arc"><input type="radio" name="mp-iearc" id="mp-ie-on" value="on" checked><label for="mp-ie-on">On arc</label><input type="radio" name="mp-iearc" id="mp-ie-off" value="off"><label for="mp-ie-off">Off arc</label></div></div>
+                  <div class="hint" id="mp-ie-msg">On the arc is subtracted, off the arc is added</div>
                 </div>
                 <div class="field">
                   <label for="mp-hoe">Height of eye</label>
@@ -2488,7 +2488,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
               <div class="field">
                 <label for="su-zone">Ship's time zone (UTC offset)</label>
                 <div class="input-wrap"><input id="su-zone" type="text" inputmode="decimal" placeholder="e.g. 8 or -5.5" maxlength="6"><span class="unit">h</span></div>
-                <div class="hint" id="su-zone-msg">+8 means ship's time = UTC + 8 h (East +)</div>
+                <div class="hint" id="su-zone-msg">+8 means ship's time = UTC + 8 h (East +). The nautical zone description has the opposite sign (50°W is zone +3).</div>
               </div>
             </fieldset>
             <fieldset>
@@ -2806,14 +2806,14 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
             <legend><span class="dot c-apparent"></span>Date and time zone</legend>
             <div class="row2">
               <div class="field"><label for="sf-date">Date (ship's date)</label><input id="sf-date" class="text-input" type="date"><div class="hint" id="sf-date-msg"></div></div>
-              <div class="field"><label for="sf-zone">Zone (UTC offset)</label><div class="input-wrap"><input id="sf-zone" type="text" inputmode="decimal" placeholder="e.g. 8 or -5.5" maxlength="6"><span class="unit">h</span></div><div class="hint" id="sf-zone-msg">+8 means ship's time = UTC + 8</div></div>
+              <div class="field"><label for="sf-zone">Zone (UTC offset)</label><div class="input-wrap"><input id="sf-zone" type="text" inputmode="decimal" placeholder="e.g. 8 or -5.5" maxlength="6"><span class="unit">h</span></div><div class="hint" id="sf-zone-msg">+8 means ship's time = UTC + 8 (East +); nautical zone description is the opposite sign</div></div>
             </div>
           </fieldset>
           <fieldset>
             <legend><span class="dot c-ship"></span>Sextant (saved for this ship)</legend>
             <div class="row2" style="grid-template-columns: 1fr;">
               <div class="field"><label for="sf-hoe">Height of eye</label><div class="input-wrap"><input id="sf-hoe" type="text" inputmode="decimal" placeholder="0" maxlength="5"><span class="unit">m</span></div><div class="hint" id="sf-hoe-msg"></div></div>
-              <div class="field"><label for="sf-ie">Index error</label><div class="fused fused-2"><div class="input-wrap"><input id="sf-ie" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="Index error on or off the arc"><input type="radio" name="sf-iearc" id="sf-ie-on" value="on" checked><label for="sf-ie-on">On arc</label><input type="radio" name="sf-iearc" id="sf-ie-off" value="off"><label for="sf-ie-off">Off arc</label></div></div><div class="hint" id="sf-ie-msg"></div></div>
+              <div class="field"><label for="sf-ie">Index error</label><div class="fused fused-2"><div class="input-wrap"><input id="sf-ie" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="Index error on or off the arc"><input type="radio" name="sf-iearc" id="sf-ie-on" value="on" checked><label for="sf-ie-on">On arc</label><input type="radio" name="sf-iearc" id="sf-ie-off" value="off"><label for="sf-ie-off">Off arc</label></div></div><div class="hint" id="sf-ie-msg">On the arc is subtracted, off the arc is added</div></div>
             </div>
           </fieldset>
           <details class="sf-more">
@@ -4642,7 +4642,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       if (isNaN(v.ce)) errs.ce = "Enter minutes:seconds, e.g. 4:36";
       v.lat = readDM("az-lat", 90, "Latitude", errs, "lat");
       v.lon = readDM("az-lon", 180, "Longitude", errs, "lon");
-      setHint("az-zone-msg", errs.zone || "+8 means ship's time = UTC + 8 h (East +)", !!errs.zone, $("az-zone"));
+      setHint("az-zone-msg", errs.zone || "+8 means ship's time = UTC + 8 h (East +). The nautical zone description has the opposite sign (50°W is zone +3).", !!errs.zone, $("az-zone"));
       setHint("az-ce-msg", errs.ce || "e.g. 4:36", !!errs.ce, $("az-ce"));
       setHint("az-lat-msg", errs.lat || "0 – 90°", !!errs.lat);
       setHint("az-lon-msg", errs.lon || "0 – 180°", !!errs.lon);
@@ -4780,15 +4780,15 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       v.zone = parseNum($("mp-zone"));
       if (isNaN(v.zone) || (v.zone !== null && (v.zone < -14 || v.zone > 14))) errs.zone = "Enter -14 to +14 hours";
       v.sa = readDM("mp-sa", 90, "Sextant altitude", errs, "sa");
-      v.ie = parseNum($("mp-ie")); if (isNaN(v.ie) || (v.ie !== null && Math.abs(v.ie) > 30)) errs.ie = "Enter -30 to +30'";
+      v.ie = parseNum($("mp-ie")); if (isNaN(v.ie) || (v.ie !== null && (v.ie < 0 || v.ie > 30))) errs.ie = "Enter 0 to 30' and choose on or off the arc"; else if (v.ie !== null) v.ie *= $("mp-ie-on").checked ? -1 : 1;   /* as applied: on the arc minus, off the arc plus */
       v.hoe = parseNum($("mp-hoe")); if (isNaN(v.hoe) || (v.hoe !== null && (v.hoe < 0 || v.hoe > 80))) errs.hoe = "Enter 0 – 80 m";
       v.lat = readDM("mp-lat", 90, "Latitude", errs, "lat");
       v.lon = readDM("mp-lon", 180, "Longitude", errs, "lon");
       v.lmt = parseTimeEl($("mp-lmt"));
       v.tc = parseNum($("mp-tc")); if (isNaN(v.tc) || (v.tc !== null && Math.abs(v.tc) > 40)) errs.tc = "Enter minutes of arc";
-      setHint("mp-zone-msg", errs.zone || "+8 means ship's time = UTC + 8 h (East +)", !!errs.zone, $("mp-zone"));
+      setHint("mp-zone-msg", errs.zone || "+8 means ship's time = UTC + 8 h (East +). The nautical zone description has the opposite sign (50°W is zone +3).", !!errs.zone, $("mp-zone"));
       setHint("mp-sa-msg", errs.sa || "0 – 90°", !!errs.sa);
-      setHint("mp-ie-msg", errs.ie || "+ or −, as applied", !!errs.ie, $("mp-ie"));
+      setHint("mp-ie-msg", errs.ie || "On the arc is subtracted, off the arc is added", !!errs.ie, $("mp-ie"));
       setHint("mp-hoe-msg", errs.hoe || "Metres", !!errs.hoe, $("mp-hoe"));
       setHint("mp-lat-msg", errs.lat || "Used to tell whether the Sun bears north or south", !!errs.lat);
       setHint("mp-lon-msg", errs.lon || "0 – 180°", !!errs.lon);
@@ -4800,14 +4800,16 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
     function snapshot() {
       var o = {};
       ids.forEach(function (id) { o[id] = gv(id); });
-      o.limbUL = $("mp-limb-ul").checked; o.south = $("mp-lat-s").checked; o.west = $("mp-lon-w").checked;
+      o.limbUL = $("mp-limb-ul").checked; o.south = $("mp-lat-s").checked; o.west = $("mp-lon-w").checked; o.ieOff = $("mp-ie-off").checked; o.ies = 2;   /* ies 2: index error saved as a size with on/off the arc */
       return o;
     }
     function save() { var o = snapshot(); o.zs = 2; store.set(KEY, o); }   /* zs 2: zone saved as UTC offset (East +) */
     function load(o) {
       if (!o) return;
       if (!o.zs && o["mp-zone"] && !isNaN(parseFloat(String(o["mp-zone"]).replace(",", ".")))) o["mp-zone"] = String(-parseFloat(String(o["mp-zone"]).replace(",", ".")));   /* older saves used hours to add to LT */
+      if (!o.ies && o["mp-ie"] && !isNaN(parseFloat(String(o["mp-ie"]).replace(",", ".")))) { var ie0 = parseFloat(String(o["mp-ie"]).replace(",", ".")); o["mp-ie"] = String(Math.abs(ie0)); o.ieOff = ie0 > 0; }   /* older saves held the signed correction */
       ids.forEach(function (id) { $(id).value = o[id] || ""; });
+      (o.ieOff ? $("mp-ie-off") : $("mp-ie-on")).checked = true;
       (o.limbUL ? $("mp-limb-ul") : $("mp-limb-ll")).checked = true;
       (o.south ? $("mp-lat-s") : $("mp-lat-n")).checked = true;
       (o.west ? $("mp-lon-w") : $("mp-lon-e")).checked = true;
@@ -4849,7 +4851,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
     /* Before noon: when the Sun will be on the meridian at the DR, and the sextant altitude to preset (Sight engine, inverse of the corrections) */
     function preset() {
       var box = $("mp-preset"), dt = parseDateEl($("mp-date")), z = parseNum($("mp-zone")), e = {}, la = readDM("mp-lat", 90, "", e, "a"), lo = readDM("mp-lon", 180, "", e, "b");
-      var hoe = parseNum($("mp-hoe")), ie = parseNum($("mp-ie"));
+      var hoe = parseNum($("mp-hoe")), ie = parseNum($("mp-ie")); if (ie !== null && !isNaN(ie)) ie *= $("mp-ie-on").checked ? -1 : 1;
       if (!dt || z === null || isNaN(z) || la === null || lo === null || e.a || e.b || isNaN(hoe) || isNaN(ie)) { box.hidden = true; return; }
       la *= $("mp-lat-s").checked ? -1 : 1; lo *= $("mp-lon-w").checked ? -1 : 1;
       var day = Date.UTC(dt.y, dt.m - 1, dt.d), t = day + (12 - z) * 3600000, p, k;                 /* noon by the ship's clock (keeps the ship's date), then home in on LHA 0 */
@@ -4913,7 +4915,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
 
     ids.forEach(function (id) { $(id).addEventListener("input", render); });
     ["mp-date", "mp-lt", "mp-lmt", "mp-bears"].forEach(function (id) { $(id).addEventListener("change", render); });
-    ["mp-limb-ll", "mp-limb-ul", "mp-lat-n", "mp-lat-s", "mp-lon-e", "mp-lon-w"].forEach(function (id) { $(id).addEventListener("change", render); });
+    ["mp-limb-ll", "mp-limb-ul", "mp-lat-n", "mp-lat-s", "mp-lon-e", "mp-lon-w", "mp-ie-on", "mp-ie-off"].forEach(function (id) { $(id).addEventListener("change", render); });
     $("mp-example").addEventListener("click", function () {
       load({ "mp-date": "2025-01-07", "mp-lt": "12:26:00", "mp-zone": "6", "zs": 2, "mp-sa-d": "68", "mp-sa-m": "47.8", "mp-ie": "0", "mp-hoe": "20.7",
         "mp-lat-d": "1", "mp-lat-m": "18.41", "mp-lon-d": "85", "mp-lon-m": "5.30", "mp-voy": "V.3", south: true, west: false, limbUL: false });
@@ -6541,7 +6543,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       v.lon = readDM("su-lon", 180, "Longitude", errs, "lon");
       v.hoe = parseNum($("su-hoe"));
       if (isNaN(v.hoe) || (v.hoe !== null && (v.hoe < 0 || v.hoe > 80))) errs.hoe = "Enter 0 to 80 m";
-      setHint("su-zone-msg", errs.zone || "+8 means ship's time = UTC + 8 h (East +)", !!errs.zone, $("su-zone"));
+      setHint("su-zone-msg", errs.zone || "+8 means ship's time = UTC + 8 h (East +). The nautical zone description has the opposite sign (50°W is zone +3).", !!errs.zone, $("su-zone"));
       setHint("su-lat-msg", errs.lat || "0 – 90°", !!errs.lat);
       setHint("su-lon-msg", errs.lon || "0 – 180°", !!errs.lon);
       setHint("su-hoe-msg", errs.hoe || "0 = sea level, as in the Nautical Almanac. From the bridge the Sun shows a minute or so earlier.", !!errs.hoe, $("su-hoe"));
@@ -7826,8 +7828,8 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       if (isNaN(v.zone) || (v.zone !== null && (v.zone < -14 || v.zone > 14))) errs.zone = "-14 to +14";
       v.date = parseDateEl($("sf-date"));
       setHint("sf-lat-msg", errs.lat || "0 – 84°", !!errs.lat); setHint("sf-lon-msg", errs.lon || "0 – 180°", !!errs.lon);
-      setHint("sf-course-msg", errs.course || "", !!errs.course, $("sf-course")); setHint("sf-speed-msg", errs.speed || "", !!errs.speed, $("sf-speed")); setHint("sf-hoe-msg", errs.hoe || "", !!errs.hoe, $("sf-hoe")); setHint("sf-ie-msg", errs.ie || "", !!errs.ie, $("sf-ie"));
-      setHint("sf-zone-msg", errs.zone || "+8 means ship's time = UTC + 8", !!errs.zone, $("sf-zone")); $("sf-temp").setAttribute("aria-invalid", errs.temp ? "true" : "false"); $("sf-pres").setAttribute("aria-invalid", errs.pres ? "true" : "false");
+      setHint("sf-course-msg", errs.course || "", !!errs.course, $("sf-course")); setHint("sf-speed-msg", errs.speed || "", !!errs.speed, $("sf-speed")); setHint("sf-hoe-msg", errs.hoe || "", !!errs.hoe, $("sf-hoe")); setHint("sf-ie-msg", errs.ie || "On the arc is subtracted, off the arc is added", !!errs.ie, $("sf-ie"));
+      setHint("sf-zone-msg", errs.zone || "+8 means ship's time = UTC + 8 (East +); nautical zone description is the opposite sign", !!errs.zone, $("sf-zone")); $("sf-temp").setAttribute("aria-invalid", errs.temp ? "true" : "false"); $("sf-pres").setAttribute("aria-invalid", errs.pres ? "true" : "false");
       var g = {}, ge = {}; g.lat = readDM("sf-gps-lat", 90, "GPS latitude", ge, "lat"); g.lon = readDM("sf-gps-lon", 180, "GPS longitude", ge, "lon"); v.gps = g.lat !== null && g.lon !== null && !ge.lat && !ge.lon ? { lat: g.lat * ($("sf-gps-lat-s").checked ? -1 : 1), lon: g.lon * ($("sf-gps-lon-w").checked ? -1 : 1) } : null;
       v.errs = errs; return v;
     }
@@ -7975,7 +7977,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       row("Index correction", function (s) { var ic = last.inp.ic; return (ic >= 0 ? "+" : "−") + Math.abs(ic).toFixed(1) + "'"; });
       row("Dip (height of eye)", function (s) { return "−" + s.corr.dip.toFixed(1) + "'"; }); row("Apparent altitude", function (s) { return alt(s.corr.ha); });
       row("Refraction", function (s) { return "−" + s.corr.ref.toFixed(1) + "'"; }); row("Semi-diameter", function (s) { return s.corr.sd === 0 ? "—" : (s.corr.sd > 0 ? "+" : "−") + Math.abs(s.corr.sd).toFixed(1) + "'"; }); row("Parallax in altitude", function (s) { return s.kind === "moon" ? "+" + s.pa.toFixed(1) + "' (HP " + s.hp.toFixed(1) + "')" : s.corr.par === 0 ? "—" : "+" + s.corr.par.toFixed(1) + "'"; });
-      row("Observed altitude Ho", function (s) { return alt(dsp(s).ho); }); row("Calculated altitude Hc", function (s) { return alt(dsp(s).hc); }); row("Intercept (Ho − Hc)", function (s) { return Math.abs(s.a).toFixed(1) + "' " + (s.a >= 0 ? "toward" : "away"); }); row("Azimuth Zn", function (s) { return s.zn.toFixed(1) + "°"; });
+      row("True altitude Ho", function (s) { return alt(dsp(s).ho); }); row("Calculated altitude Hc", function (s) { return alt(dsp(s).hc); }); row("Intercept (Ho − Hc)", function (s) { return Math.abs(s.a).toFixed(1) + "' " + (s.a >= 0 ? "toward" : "away"); }); row("Azimuth Zn", function (s) { return s.zn.toFixed(1) + "°"; });
     }
 
     /* ---------- saving and loading ---------- */
@@ -8029,6 +8031,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
     load(); build(); render();
   }
   /* SIGHTPAGE-END */
+
 
 
 

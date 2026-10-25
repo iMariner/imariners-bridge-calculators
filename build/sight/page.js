@@ -65,8 +65,8 @@
       if (isNaN(v.zone) || (v.zone !== null && (v.zone < -14 || v.zone > 14))) errs.zone = "-14 to +14";
       v.date = parseDateEl($("sf-date"));
       setHint("sf-lat-msg", errs.lat || "0 – 84°", !!errs.lat); setHint("sf-lon-msg", errs.lon || "0 – 180°", !!errs.lon);
-      setHint("sf-course-msg", errs.course || "", !!errs.course, $("sf-course")); setHint("sf-speed-msg", errs.speed || "", !!errs.speed, $("sf-speed")); setHint("sf-hoe-msg", errs.hoe || "", !!errs.hoe, $("sf-hoe")); setHint("sf-ie-msg", errs.ie || "", !!errs.ie, $("sf-ie"));
-      setHint("sf-zone-msg", errs.zone || "+8 means ship's time = UTC + 8", !!errs.zone, $("sf-zone")); $("sf-temp").setAttribute("aria-invalid", errs.temp ? "true" : "false"); $("sf-pres").setAttribute("aria-invalid", errs.pres ? "true" : "false");
+      setHint("sf-course-msg", errs.course || "", !!errs.course, $("sf-course")); setHint("sf-speed-msg", errs.speed || "", !!errs.speed, $("sf-speed")); setHint("sf-hoe-msg", errs.hoe || "", !!errs.hoe, $("sf-hoe")); setHint("sf-ie-msg", errs.ie || "On the arc is subtracted, off the arc is added", !!errs.ie, $("sf-ie"));
+      setHint("sf-zone-msg", errs.zone || "+8 means ship's time = UTC + 8 (East +); nautical zone description is the opposite sign", !!errs.zone, $("sf-zone")); $("sf-temp").setAttribute("aria-invalid", errs.temp ? "true" : "false"); $("sf-pres").setAttribute("aria-invalid", errs.pres ? "true" : "false");
       var g = {}, ge = {}; g.lat = readDM("sf-gps-lat", 90, "GPS latitude", ge, "lat"); g.lon = readDM("sf-gps-lon", 180, "GPS longitude", ge, "lon"); v.gps = g.lat !== null && g.lon !== null && !ge.lat && !ge.lon ? { lat: g.lat * ($("sf-gps-lat-s").checked ? -1 : 1), lon: g.lon * ($("sf-gps-lon-w").checked ? -1 : 1) } : null;
       v.errs = errs; return v;
     }
@@ -214,7 +214,7 @@
       row("Index correction", function (s) { var ic = last.inp.ic; return (ic >= 0 ? "+" : "−") + Math.abs(ic).toFixed(1) + "'"; });
       row("Dip (height of eye)", function (s) { return "−" + s.corr.dip.toFixed(1) + "'"; }); row("Apparent altitude", function (s) { return alt(s.corr.ha); });
       row("Refraction", function (s) { return "−" + s.corr.ref.toFixed(1) + "'"; }); row("Semi-diameter", function (s) { return s.corr.sd === 0 ? "—" : (s.corr.sd > 0 ? "+" : "−") + Math.abs(s.corr.sd).toFixed(1) + "'"; }); row("Parallax in altitude", function (s) { return s.kind === "moon" ? "+" + s.pa.toFixed(1) + "' (HP " + s.hp.toFixed(1) + "')" : s.corr.par === 0 ? "—" : "+" + s.corr.par.toFixed(1) + "'"; });
-      row("Observed altitude Ho", function (s) { return alt(dsp(s).ho); }); row("Calculated altitude Hc", function (s) { return alt(dsp(s).hc); }); row("Intercept (Ho − Hc)", function (s) { return Math.abs(s.a).toFixed(1) + "' " + (s.a >= 0 ? "toward" : "away"); }); row("Azimuth Zn", function (s) { return s.zn.toFixed(1) + "°"; });
+      row("True altitude Ho", function (s) { return alt(dsp(s).ho); }); row("Calculated altitude Hc", function (s) { return alt(dsp(s).hc); }); row("Intercept (Ho − Hc)", function (s) { return Math.abs(s.a).toFixed(1) + "' " + (s.a >= 0 ? "toward" : "away"); }); row("Azimuth Zn", function (s) { return s.zn.toFixed(1) + "°"; });
     }
 
     /* ---------- saving and loading ---------- */
