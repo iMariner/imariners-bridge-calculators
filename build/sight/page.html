@@ -66,11 +66,26 @@
                 <div class="readout-box"><div class="readout-label">Quality</div><div class="readout" id="sf-f-q">—</div><div class="readout-sub" id="sf-f-q-sub"></div></div>
               </div>
               <div class="tbl-scroll"><table class="dt sf-res" id="sf-tbl"></table></div>
+              <div class="sf-plotbox u-mt-3"><svg class="sf-plot" id="sf-plot" viewBox="0 0 720 540" role="img" aria-label="Plot of the lines of position and the fix"></svg>
+                <div class="legend">Dashed: line of position where the sight was taken. Solid: carried to the fix time. T toward, A away. Ring: fix. Dot: DR at the fix time.</div></div>
               <div class="logline mono" id="sf-log"></div>
-              <div class="actions"><button type="button" class="btn primary" id="sf-copy">Copy fix</button></div>
+              <div class="actions"><button type="button" class="btn primary" id="sf-copy">Copy fix</button><button type="button" class="btn" id="sf-print">Print sheet</button></div>
               <details class="ge-fold u-mt-3" id="sf-work"><summary>The working, line by line</summary><div class="tbl-scroll u-mt-2h"><table class="dt sf-res" id="sf-work-tbl"></table></div></details>
             </div>
           </div>
         </div>
+      </div>
+      <div class="print-sheet" id="sf-sheet">
+        <div class="ps-grid" id="sf-ps-info"></div>
+        <h3 class="ps-h">Observations <span>(index error and height of eye applied)</span></h3>
+        <table class="dt sf-res" id="sf-ps-tbl"></table>
+        <h3 class="ps-h">Direct computation <span>(worked from the DR at each sight; not from tables)</span></h3>
+        <table class="dt sf-res" id="sf-ps-work"></table>
+        <div class="ps-result"><div><span>Latitude</span><strong id="sf-ps-lat">—</strong></div><div><span>Longitude</span><strong id="sf-ps-lon">—</strong></div></div>
+        <div class="ps-log mono" id="sf-ps-log"></div>
+        <svg class="sf-plot ps-diagram" id="sf-ps-plot" viewBox="0 0 760 300" role="img" aria-label="Plot"></svg>
+        <div class="ps-remarks">Remarks:</div>
+        <div class="ps-sign"><div>Officer of the watch<span>Name, signature, date</span></div><div>Master<span>Name, signature, date</span></div></div>
+        <p class="ps-note">Computed with iMariners Bridge Calculators. Planning aid only, not for navigation.</p>
       </div>
     </section>

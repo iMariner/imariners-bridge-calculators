@@ -18,3 +18,35 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
 #sf-hero { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--sp-3); }
 #sf-hero .readout { font-size: var(--fs-2xl); white-space: normal; }
 @media (max-width: 1100px) { #sf-hero { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.sf-plotbox { margin-top: var(--sp-4); }
+.sf-plot { display: block; width: 100%; height: auto; border: var(--hair) solid var(--border); border-radius: var(--r-md); background: var(--surface); }
+.sf-plot .sp-bg { fill: var(--surface); } .sf-plot .sp-frame { fill: none; stroke: var(--border-strong); stroke-width: 1; }
+.sf-plot .sp-grid { stroke: var(--border); stroke-width: .6; }
+.sf-plot .sp-tick, .sf-plot .sp-lab { font-family: var(--font-mono); font-size: var(--fs-xs); fill: var(--muted); }
+.sf-plot .sp-lab { fill: var(--text); font-weight: var(--fw-semibold); }
+.sf-plot .sp-halo { paint-order: stroke; stroke: var(--surface); stroke-width: 3; stroke-linejoin: round; }
+.sf-plot .sp-lop0 { stroke: var(--muted); stroke-width: 1.2; stroke-dasharray: 6 4; }
+.sf-plot .sp-lop { stroke: var(--accent); stroke-width: 2; }
+.sf-plot .sp-track { stroke: var(--muted); stroke-width: 1.2; }
+.sf-plot .sp-ap { fill: var(--surface); stroke: var(--muted); stroke-width: 1.4; } .sf-plot .sp-foot { fill: var(--muted); }
+.sf-plot .sp-dr { fill: var(--text); }
+.sf-plot .sp-hat { fill: rgba(var(--accent-rgb), .14); stroke: none; }
+.sf-plot .sp-fixring { fill: none; stroke: var(--danger); stroke-width: 2; } .sf-plot .sp-fixdot { fill: var(--danger); } .sf-plot .sp-fixlab { fill: var(--danger); }
+.sf-plot .sp-gps { fill: none; stroke: var(--text); stroke-width: 1.5; }
+.sf-plot .sp-scale line, .sf-plot .sp-north line { stroke: var(--text); stroke-width: 1.5; } .sf-plot .sp-north path { fill: var(--text); }
+.sf-plotbox .legend { margin-top: var(--sp-1h); font-size: var(--fs-xs); color: var(--muted); }
+@media print {
+  #sf-sheet .ps-grid { grid-template-columns: repeat(4, 1fr); }
+  #sf-sheet table.sf-res { margin-top: 0; font-size: 7.5pt; width: 100%; border-collapse: collapse; }
+  #sf-sheet table.sf-res th, #sf-sheet table.sf-res td { padding: .2mm 1.4mm; border-bottom: 1px solid #ddd; font-size: 7.5pt; }
+  #sf-sheet table.sf-res th { border-bottom: 1px solid #666; font-size: 6.5pt; }
+  #sf-sheet .ps-result strong { font-size: 13pt; }
+  #sf-sheet .ps-h { margin: 2.5mm 0 1mm; }
+  #sf-sheet .ps-log { margin-top: 2mm; font-size: 8pt; }
+  #sf-sheet .ps-diagram { height: 58mm; margin-top: 2mm; }
+  #sf-sheet .ps-remarks { margin-top: 2mm; height: 12mm; border: 1px solid #999; border-radius: 1.5mm; padding: 1mm 2mm; font-size: 8pt; color: #555; }
+  #sf-sheet .ps-sign { margin-top: 5mm; }
+  #sf-sheet .ps-note { margin-top: 1.5mm; }
+  #sf-sheet .ps-grid div { padding: .8mm 2.4mm; }
+  .sf-plot, #sf-ps-plot { --surface: #fff; --text: #000; --muted: #555; --border: #ccc; --border-strong: #000; --accent: #000; --danger: #000; --accent-rgb: 0, 0, 0; }
+}

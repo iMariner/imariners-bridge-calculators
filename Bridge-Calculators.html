@@ -903,6 +903,38 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
 #sf-hero { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--sp-3); }
 #sf-hero .readout { font-size: var(--fs-2xl); white-space: normal; }
 @media (max-width: 1100px) { #sf-hero { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.sf-plotbox { margin-top: var(--sp-4); }
+.sf-plot { display: block; width: 100%; height: auto; border: var(--hair) solid var(--border); border-radius: var(--r-md); background: var(--surface); }
+.sf-plot .sp-bg { fill: var(--surface); } .sf-plot .sp-frame { fill: none; stroke: var(--border-strong); stroke-width: 1; }
+.sf-plot .sp-grid { stroke: var(--border); stroke-width: .6; }
+.sf-plot .sp-tick, .sf-plot .sp-lab { font-family: var(--font-mono); font-size: var(--fs-xs); fill: var(--muted); }
+.sf-plot .sp-lab { fill: var(--text); font-weight: var(--fw-semibold); }
+.sf-plot .sp-halo { paint-order: stroke; stroke: var(--surface); stroke-width: 3; stroke-linejoin: round; }
+.sf-plot .sp-lop0 { stroke: var(--muted); stroke-width: 1.2; stroke-dasharray: 6 4; }
+.sf-plot .sp-lop { stroke: var(--accent); stroke-width: 2; }
+.sf-plot .sp-track { stroke: var(--muted); stroke-width: 1.2; }
+.sf-plot .sp-ap { fill: var(--surface); stroke: var(--muted); stroke-width: 1.4; } .sf-plot .sp-foot { fill: var(--muted); }
+.sf-plot .sp-dr { fill: var(--text); }
+.sf-plot .sp-hat { fill: rgba(var(--accent-rgb), .14); stroke: none; }
+.sf-plot .sp-fixring { fill: none; stroke: var(--danger); stroke-width: 2; } .sf-plot .sp-fixdot { fill: var(--danger); } .sf-plot .sp-fixlab { fill: var(--danger); }
+.sf-plot .sp-gps { fill: none; stroke: var(--text); stroke-width: 1.5; }
+.sf-plot .sp-scale line, .sf-plot .sp-north line { stroke: var(--text); stroke-width: 1.5; } .sf-plot .sp-north path { fill: var(--text); }
+.sf-plotbox .legend { margin-top: var(--sp-1h); font-size: var(--fs-xs); color: var(--muted); }
+@media print {
+  #sf-sheet .ps-grid { grid-template-columns: repeat(4, 1fr); }
+  #sf-sheet table.sf-res { margin-top: 0; font-size: 7.5pt; width: 100%; border-collapse: collapse; }
+  #sf-sheet table.sf-res th, #sf-sheet table.sf-res td { padding: .2mm 1.4mm; border-bottom: 1px solid #ddd; font-size: 7.5pt; }
+  #sf-sheet table.sf-res th { border-bottom: 1px solid #666; font-size: 6.5pt; }
+  #sf-sheet .ps-result strong { font-size: 13pt; }
+  #sf-sheet .ps-h { margin: 2.5mm 0 1mm; }
+  #sf-sheet .ps-log { margin-top: 2mm; font-size: 8pt; }
+  #sf-sheet .ps-diagram { height: 58mm; margin-top: 2mm; }
+  #sf-sheet .ps-remarks { margin-top: 2mm; height: 12mm; border: 1px solid #999; border-radius: 1.5mm; padding: 1mm 2mm; font-size: 8pt; color: #555; }
+  #sf-sheet .ps-sign { margin-top: 5mm; }
+  #sf-sheet .ps-note { margin-top: 1.5mm; }
+  #sf-sheet .ps-grid div { padding: .8mm 2.4mm; }
+  .sf-plot, #sf-ps-plot { --surface: #fff; --text: #000; --muted: #555; --border: #ccc; --border-strong: #000; --accent: #000; --danger: #000; --accent-rgb: 0, 0, 0; }
+}
 </style>
 </head>
 <body>
@@ -2800,12 +2832,27 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
                 <div class="readout-box"><div class="readout-label">Quality</div><div class="readout" id="sf-f-q">—</div><div class="readout-sub" id="sf-f-q-sub"></div></div>
               </div>
               <div class="tbl-scroll"><table class="dt sf-res" id="sf-tbl"></table></div>
+              <div class="sf-plotbox u-mt-3"><svg class="sf-plot" id="sf-plot" viewBox="0 0 720 540" role="img" aria-label="Plot of the lines of position and the fix"></svg>
+                <div class="legend">Dashed: line of position where the sight was taken. Solid: carried to the fix time. T toward, A away. Ring: fix. Dot: DR at the fix time.</div></div>
               <div class="logline mono" id="sf-log"></div>
-              <div class="actions"><button type="button" class="btn primary" id="sf-copy">Copy fix</button></div>
+              <div class="actions"><button type="button" class="btn primary" id="sf-copy">Copy fix</button><button type="button" class="btn" id="sf-print">Print sheet</button></div>
               <details class="ge-fold u-mt-3" id="sf-work"><summary>The working, line by line</summary><div class="tbl-scroll u-mt-2h"><table class="dt sf-res" id="sf-work-tbl"></table></div></details>
             </div>
           </div>
         </div>
+      </div>
+      <div class="print-sheet" id="sf-sheet">
+        <div class="ps-grid" id="sf-ps-info"></div>
+        <h3 class="ps-h">Observations <span>(index error and height of eye applied)</span></h3>
+        <table class="dt sf-res" id="sf-ps-tbl"></table>
+        <h3 class="ps-h">Direct computation <span>(worked from the DR at each sight; not from tables)</span></h3>
+        <table class="dt sf-res" id="sf-ps-work"></table>
+        <div class="ps-result"><div><span>Latitude</span><strong id="sf-ps-lat">—</strong></div><div><span>Longitude</span><strong id="sf-ps-lon">—</strong></div></div>
+        <div class="ps-log mono" id="sf-ps-log"></div>
+        <svg class="sf-plot ps-diagram" id="sf-ps-plot" viewBox="0 0 760 300" role="img" aria-label="Plot"></svg>
+        <div class="ps-remarks">Remarks:</div>
+        <div class="ps-sign"><div>Officer of the watch<span>Name, signature, date</span></div><div>Master<span>Name, signature, date</span></div></div>
+        <p class="ps-note">Computed with iMariners Bridge Calculators. Planning aid only, not for navigation.</p>
       </div>
     </section>
   </main>
@@ -7326,6 +7373,110 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
   })();
   /* SIGHTFIX-END */
 
+  /* SIGHTPLOT-BEGIN */
+  /* The plotting sheet: DR track, each line of position (dashed where the sight was taken, solid carried to the fix time),
+     the fix, GPS, scale bar, north arrow, latitude and longitude ticks. Returns SVG markup. Needs SightFix. */
+  var SightPlot = (function () {
+    var R = Math.PI / 180, NICE = [0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 30, 60, 120, 300, 600];
+    function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;"); }
+    function f1(x) { return (Math.round(x * 10) / 10).toFixed(1); }
+    function nice(v) { for (var i = 0; i < NICE.length; i++) if (NICE[i] >= v) return NICE[i]; return NICE[NICE.length - 1]; }
+    function tickText(deg, stepMin, pos, neg, w) {
+      var a = Math.abs(deg), M = Math.round(a * 600) / 10, d = Math.floor(M / 60 + 1e-9), m = M - d * 60;
+      if (m >= 59.95) { d++; m = 0; }
+      var ds = String(d); while (ds.length < w) ds = "0" + ds;
+      return ds + "°" + (stepMin < 1 ? m.toFixed(1) : String(Math.round(m))) + "'" + (deg < 0 ? neg : pos);
+    }
+    function clip(x0, y0, dx, dy, L, T, Rr, B) {                                   /* Liang-Barsky: line x0+t*dx, any t, inside the box */
+      var t0 = -1e9, t1 = 1e9, p = [-dx, dx, -dy, dy], q = [x0 - L, Rr - x0, y0 - T, B - y0];
+      for (var i = 0; i < 4; i++) {
+        if (p[i] === 0) { if (q[i] < 0) return null; }
+        else { var t = q[i] / p[i]; if (p[i] < 0) t0 = Math.max(t0, t); else t1 = Math.min(t1, t); }
+      }
+      return t0 < t1 ? [t0, t1] : null;
+    }
+    function meet(a, b) {                                                           /* two lines point + direction */
+      var den = a.dx * b.dy - a.dy * b.dx; if (Math.abs(den) < 1e-9) return null;
+      var t = ((b.x - a.x) * b.dy - (b.y - a.y) * b.dx) / den; return { x: a.x + t * a.dx, y: a.y + t * a.dy };
+    }
+    function build(r, inp, W, H, id) {
+      var fx = r.fix, drF = SightFix.drAt(inp.dr, r.time), cosF = Math.cos(fx.lat * R);
+      function pl(p) { var dl = p.lon - fx.lon; dl -= 360 * Math.round(dl / 360); return { x: dl * 60 * cosF, y: (p.lat - fx.lat) * 60 }; }
+      var pts = [{ x: 0, y: 0 }], dF = pl(drF); pts.push(dF);
+      var L = r.sights.map(function (s) {
+        var ap = pl(s.ap), z = s.zn * R, lat = s.name === "Latitude";
+        var af = lat ? (s.ap.lat + s.a / 60 - fx.lat) * 60 : (s.ho - s.hcFix) * 60;             /* line as seen from the fix: intercept worked from the fix itself */
+        var f1p = lat ? { x: 0, y: af } : { x: af * Math.sin(z), y: af * Math.cos(z) };
+        var f0 = { x: f1p.x + ap.x - dF.x, y: f1p.y + ap.y - dF.y };
+        pts.push(ap, f0, f1p);
+        return { s: s, ap: ap, f0: f0, f1: f1p, dx: Math.cos(z), dy: -Math.sin(z) };
+      });
+      var gps = inp.gps ? pl(inp.gps) : null; if (gps) pts.push(gps);
+      var x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9; pts.forEach(function (p) { x0 = Math.min(x0, p.x); x1 = Math.max(x1, p.x); y0 = Math.min(y0, p.y); y1 = Math.max(y1, p.y); });
+      var padv = Math.max(0.15 * Math.max(x1 - x0, y1 - y0), 1.2); x0 -= padv; x1 += padv; y0 -= padv; y1 += padv;
+      var ml = 62, mr = 16, mt = 14, mb = 34, aw = W - ml - mr, ah = H - mt - mb, sc = Math.min(aw / (x1 - x0), ah / (y1 - y0));
+      var cx = (x0 + x1) / 2, cy = (y0 + y1) / 2, ox = ml + aw / 2 - cx * sc, oy = mt + ah / 2 + cy * sc;
+      function X(x) { return ox + x * sc; } function Y(y) { return oy - y * sc; }
+      var left = ml, top = mt, right = ml + aw, bottom = mt + ah, o = [];
+      var vx0 = (left - ox) / sc, vx1 = (right - ox) / sc, vy0 = (oy - bottom) / sc, vy1 = (oy - top) / sc;
+      o.push('<defs><clipPath id="' + id + '"><rect x="' + left + '" y="' + top + '" width="' + aw + '" height="' + ah + '"/></clipPath></defs>');
+      o.push('<rect class="sp-bg" x="' + left + '" y="' + top + '" width="' + aw + '" height="' + ah + '"/>');
+      /* ticks and grid */
+      var stepLat = nice(70 / sc), k, v;
+      for (k = Math.ceil((fx.lat * 60 + vy0) / stepLat); k <= Math.floor((fx.lat * 60 + vy1) / stepLat); k++) {
+        var yy = Y(k * stepLat - fx.lat * 60);
+        o.push('<line class="sp-grid" x1="' + left + '" x2="' + right + '" y1="' + f1(yy) + '" y2="' + f1(yy) + '"/><text class="sp-tick" x="' + (left - 5) + '" y="' + f1(yy + 3) + '" text-anchor="end">' + tickText(k * stepLat / 60, stepLat, "N", "S", 2) + '</text>');
+      }
+      var stepLon = nice(70 / sc / cosF);
+      for (k = Math.ceil((fx.lon * 60 + vx0 / cosF) / stepLon); k <= Math.floor((fx.lon * 60 + vx1 / cosF) / stepLon); k++) {
+        var xx = X((k * stepLon - fx.lon * 60) * cosF), lv = k * stepLon / 60; lv = ((lv + 540) % 360) - 180;
+        o.push('<line class="sp-grid" y1="' + top + '" y2="' + bottom + '" x1="' + f1(xx) + '" x2="' + f1(xx) + '"/><text class="sp-tick" x="' + f1(xx) + '" y="' + (bottom + 14) + '" text-anchor="middle">' + tickText(lv, stepLon, "E", "W", 3) + '</text>');
+      }
+      o.push('<rect class="sp-frame" x="' + left + '" y="' + top + '" width="' + aw + '" height="' + ah + '"/>');
+      o.push('<g clip-path="url(#' + id + ')">');
+      /* cocked hat */
+      var adv = L.map(function (l) { return { x: l.f1.x, y: l.f1.y, dx: l.dx, dy: l.dy }; });
+      if (L.length >= 3) {
+        var hat = [], okh = true; for (k = 0; k < adv.length; k++) { var m = meet(adv[k], adv[(k + 1) % adv.length]); if (!m) { okh = false; break; } hat.push(m); }
+        if (okh) o.push('<polygon class="sp-hat" points="' + hat.map(function (p) { return f1(X(p.x)) + "," + f1(Y(p.y)); }).join(" ") + '"/>');
+      }
+      /* DR track and APs */
+      var runNM = Math.hypot(dF.x - L[0].ap.x, dF.y - L[0].ap.y), first = L[0].ap;
+      for (k = 1; k < L.length; k++) if (L[k].s.ms < L[0].s.ms) first = L[k].ap;
+      if (runNM > 0.3) o.push('<line class="sp-track" x1="' + f1(X(first.x)) + '" y1="' + f1(Y(first.y)) + '" x2="' + f1(X(dF.x)) + '" y2="' + f1(Y(dF.y)) + '"/>');
+      /* lines */
+      var labels = [];
+      L.forEach(function (l, i) {
+        var big = (vx1 - vx0 + vy1 - vy0) * 2, dxp = l.dx * sc, dyp = l.dy * sc;
+        function seg(p, cls) { o.push('<line class="' + cls + '" x1="' + f1(X(p.x - l.dx * big)) + '" y1="' + f1(Y(p.y - l.dy * big)) + '" x2="' + f1(X(p.x + l.dx * big)) + '" y2="' + f1(Y(p.y + l.dy * big)) + '"/>'); }
+        if (runNM > 0.3) { seg(l.f0, "sp-lop0"); o.push('<circle class="sp-ap" cx="' + f1(X(l.ap.x)) + '" cy="' + f1(Y(l.ap.y)) + '" r="3"/><circle class="sp-foot" cx="' + f1(X(l.f0.x)) + '" cy="' + f1(Y(l.f0.y)) + '" r="2"/>'); }
+        else o.push('<circle class="sp-ap" cx="' + f1(X(l.ap.x)) + '" cy="' + f1(Y(l.ap.y)) + '" r="3"/>');
+        seg(l.f1, "sp-lop");
+        var c = clip(X(l.f1.x), Y(l.f1.y), dxp, dyp, left + 6, top + 6, right - 6, bottom - 6);
+        if (c) { var t = i % 2 ? c[1] - 0.1 * (c[1] - c[0]) : c[0] + 0.1 * (c[1] - c[0]); var lx = X(l.f1.x) + dxp * t; labels.push({ x: lx, y: Y(l.f1.y) + dyp * t, end: lx < (left + right) / 2 ? "start" : "end", l: l }); }
+      });
+      /* fix, GPS */
+      if (gps) o.push('<path class="sp-gps" d="M' + f1(X(gps.x)) + ' ' + f1(Y(gps.y) - 6) + ' l6 6 l-6 6 l-6 -6 z"/><text class="sp-lab" x="' + f1(X(gps.x) + 9) + '" y="' + f1(Y(gps.y) + 4) + '">GPS</text>');
+      o.push('<circle class="sp-dr" cx="' + f1(X(dF.x)) + '" cy="' + f1(Y(dF.y)) + '" r="3.5"/>');
+      o.push('<circle class="sp-fixring" cx="' + f1(X(0)) + '" cy="' + f1(Y(0)) + '" r="8"/><circle class="sp-fixdot" cx="' + f1(X(0)) + '" cy="' + f1(Y(0)) + '" r="2.2"/>');
+      labels.forEach(function (b) {
+        var s = b.l.s, txt = s.name + " " + Math.round(s.zn) + "°  p " + f1(Math.abs(s.a)) + (s.name === "Latitude" ? "" : (s.a >= 0 ? " T" : " A"));
+        o.push('<text class="sp-lab sp-halo" x="' + f1(b.x) + '" y="' + f1(b.y - 5) + '" text-anchor="' + b.end + '">' + esc(txt) + '</text>');
+      });
+      o.push('<text class="sp-lab sp-fixlab sp-halo" x="' + f1(X(0) + 11) + '" y="' + f1(Y(0) - 9) + '">FIX</text>');
+      o.push('<text class="sp-lab sp-drlab sp-halo" x="' + f1(X(dF.x) + 7) + '" y="' + f1(Y(dF.y) + 15) + '">DR</text>');
+      o.push('</g>');
+      /* scale bar and north arrow */
+      var sb = nice(80 / sc), spx = sb * sc, bx = right - 14 - spx, by = bottom - 14;
+      o.push('<g class="sp-scale"><line x1="' + f1(bx) + '" x2="' + f1(bx + spx) + '" y1="' + by + '" y2="' + by + '"/><line x1="' + f1(bx) + '" x2="' + f1(bx) + '" y1="' + (by - 4) + '" y2="' + (by + 4) + '"/><line x1="' + f1(bx + spx) + '" x2="' + f1(bx + spx) + '" y1="' + (by - 4) + '" y2="' + (by + 4) + '"/><text class="sp-lab" x="' + f1(bx + spx / 2) + '" y="' + (by - 7) + '" text-anchor="middle">' + sb + ' NM</text></g>');
+      var nx = right - 22, ny = top + 40;
+      o.push('<g class="sp-north"><line x1="' + nx + '" x2="' + nx + '" y1="' + ny + '" y2="' + (ny - 26) + '"/><path d="M' + nx + ' ' + (ny - 30) + ' l-4 9 l8 0 z"/><text class="sp-lab" x="' + nx + '" y="' + (ny - 36) + '" text-anchor="middle">N</text></g>');
+      return o.join("");
+    }
+    return { build: build };
+  })();
+  /* SIGHTPLOT-END */
+
   /* Tool: Sight Fix (running fix by the Sun, fix by 3 to 4 stars) */
   function initSightFix() {
     var KEY = "bridgeCalc.sightFix", st = store.get(KEY) || {}, mode = st.mode === "stars" ? "stars" : "sun", rowsEl = $("sf-rows"), rowRefs = [], last = null;
@@ -7446,7 +7597,13 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       else if (r.residuals && r.residuals.length) { var mx = Math.max.apply(null, r.residuals.map(Math.abs)); q = "±" + mx.toFixed(1) + "'"; qs = "worst line miss"; }
       if (r.constErr !== undefined) qs += (qs ? "; " : "") + "constant error " + (r.constErr >= 0 ? "+" : "−") + Math.abs(r.constErr).toFixed(1) + "'";
       $("sf-f-q").textContent = q; $("sf-f-q-sub").textContent = qs;
-      var tbl = $("sf-tbl"); while (tbl.firstChild) tbl.removeChild(tbl.firstChild);
+      sightsTable($("sf-tbl"), r, v);
+      var ft = r.fix; var line = (mode === "sun" ? "Running fix by Sun" : "Fix by stars") + " " + localOf(r.time, v.zone) + " LT (" + utText(r.time) + " UT): " + Geo.lat(ft.lat) + " " + Geo.lon(ft.lon) + (r.setDeg === null ? "" : " | " + Math.round(r.setDeg) + "° " + r.distNM.toFixed(1) + " NM from DR") + (r.gpsErrNM !== undefined ? " | GPS difference " + r.gpsErrNM.toFixed(1) + " NM" : "");
+      $("sf-log").textContent = line;
+      work($("sf-work-tbl"), r, v); sheet(r, v);
+    }
+    function sightsTable(tbl, r, v) {
+      while (tbl.firstChild) tbl.removeChild(tbl.firstChild);
       var hh = el("tr"); ["Body", "Local time", "Hs", "Ho", "Hc", "Intercept", "Zn"].forEach(function (h) { hh.appendChild(el("th", "", h)); }); var th = el("thead"); th.appendChild(hh); tbl.appendChild(th); var tb = el("tbody"); tbl.appendChild(tb);
       r.sights.forEach(function (s, i) {
         var tr = el("tr"), hs = last_hs(i);
@@ -7455,16 +7612,26 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
         else [hs, alt(s.ho), alt(s.hc), Math.abs(s.a).toFixed(1) + " " + (s.a >= 0 ? "toward" : "away"), s.zn.toFixed(1) + "°"].forEach(function (t) { tr.appendChild(el("td", "num", t)); });
         tb.appendChild(tr);
       });
-      var ft = r.fix; var line = (mode === "sun" ? "Running fix by Sun" : "Fix by stars") + " " + localOf(r.time, v.zone) + " LT (" + utText(r.time) + " UT): " + Geo.lat(ft.lat) + " " + Geo.lon(ft.lon) + (r.setDeg === null ? "" : " | " + Math.round(r.setDeg) + "° " + r.distNM.toFixed(1) + " NM from DR") + (r.gpsErrNM !== undefined ? " | GPS difference " + r.gpsErrNM.toFixed(1) + " NM" : "");
-      $("sf-log").textContent = line;
-      work(r, v);
+    }
+    function sheet(r, v) {
+      var sh = Ships.active(), i = last.inp, ic = i.ic;
+      $("sf-plot").innerHTML = SightPlot.build(r, i, 720, 540, "sfc1");
+      $("sf-ps-plot").innerHTML = SightPlot.build(r, i, 760, 300, "sfc2");
+      fillCells($("sf-ps-info"), [["Ship", sh ? sh.name : "—"], ["IMO number", sh && sh.imo ? sh.imo : "—"], ["Date (ship's time)", p2(v.date.d) + "/" + p2(v.date.m) + "/" + v.date.y], ["Time zone", (v.zone >= 0 ? "UTC +" : "UTC −") + Math.abs(v.zone) + " h"],
+        ["DR at first sight", Geo.lat(i.dr.lat) + " " + Geo.lon(i.dr.lon), 2], ["Course / speed", Math.round(v.course) + "° / " + v.speed + " kn"], ["Height of eye", v.hoe + " m"],
+        ["Index error", (ic === 0 ? "nil" : Math.abs(ic).toFixed(1) + "' " + (ic < 0 ? "on" : "off") + " the arc")], ["Temperature / pressure", i.temp + " °C / " + i.pres + " hPa", 2], ["Method", mode === "sun" ? "Running fix by Sun" : "Fix by stars", 2]]);
+      sightsTable($("sf-ps-tbl"), r, v); work($("sf-ps-work"), r, v);
+      $("sf-ps-lat").textContent = Geo.lat(r.fix.lat); $("sf-ps-lon").textContent = Geo.lon(r.fix.lon);
+      var t = $("sf-log").textContent;
+      if (r.constErr !== undefined) t += " | constant altitude error " + (r.constErr >= 0 ? "+" : "−") + Math.abs(r.constErr).toFixed(1) + "'";
+      $("sf-ps-log").textContent = t;
     }
     function last_dr_ms(r) { return last.inp.dr.ms; }
     function last_hs(i) { var s = last.inp.sights[i]; return s.hs === undefined ? "" : alt(s.hs); }
-    function work(r, v) {
-      var tbl = $("sf-work-tbl"); while (tbl.firstChild) tbl.removeChild(tbl.firstChild);
+    function work(tbl, r, v) {
+      while (tbl.firstChild) tbl.removeChild(tbl.firstChild);
       var body = r.sights.filter(function (s) { return s.name !== "Latitude"; });
-      var th = el("thead"), hr = el("tr"); hr.appendChild(el("th", "", "Step")); body.forEach(function (s) { hr.appendChild(el("th", "", s.name)); }); th.appendChild(hr); tbl.appendChild(th); var tb = el("tbody"); tbl.appendChild(tb);
+      var th = el("thead"), hr = el("tr"); hr.appendChild(el("th", "", "Step")); var cnt = {}; body.forEach(function (s) { cnt[s.name] = (cnt[s.name] || 0) + 1; }); var seen = {}; body.forEach(function (s) { seen[s.name] = (seen[s.name] || 0) + 1; hr.appendChild(el("th", "", s.name + (cnt[s.name] > 1 ? " " + seen[s.name] : ""))); }); th.appendChild(hr); tbl.appendChild(th); var tb = el("tbody"); tbl.appendChild(tb);
       function row(label, f) { var tr = el("tr"); tr.appendChild(el("td", "", label)); body.forEach(function (s, i) { tr.appendChild(el("td", "num", f(s, i))); }); tb.appendChild(tr); }
       var idxOf = function (s) { return r.sights.indexOf(s); };
       row("UT", function (s) { return utText(s.ms); }); row("DR (assumed position)", function (s) { return Geo.lat(s.ap.lat) + " " + Geo.lon(s.ap.lon); });
@@ -7519,6 +7686,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
     $("sf-form").addEventListener("change", function () { save(); render(); });
     ["sf-mode-sun", "sf-mode-stars"].forEach(function (id) { $(id).addEventListener("change", function () { mode = $("sf-mode-stars").checked ? "stars" : "sun"; build(); save(); render(); }); });
     $("sf-pick").addEventListener("click", pickStars); $("sf-example").addEventListener("click", example); $("sf-clear").addEventListener("click", clearSights);
+    $("sf-print").addEventListener("click", function () { if (last) window.print(); });
     $("sf-copy").addEventListener("click", function () { if (last) copyText($("sf-log").textContent); });
     Ships.onChange(function () { if (started["sight-fix"]) { shipFill(); render(); } });
     load(); build(); render();
