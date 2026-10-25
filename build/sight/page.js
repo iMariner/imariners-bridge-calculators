@@ -95,13 +95,13 @@
       var ready = !Object.keys(v.errs).length && v.lat !== null && v.lon !== null && v.course !== null && v.speed !== null && v.date && v.zone !== null && v.hoe !== null && rr.rows.length >= 2 && !rr.bad.length;
       var missing = [];
       if (v.lat === null || v.lon === null) missing.push("the DR position"); if (v.course === null || v.speed === null) missing.push("course and speed"); if (!v.date) missing.push("the date"); if (v.zone === null) missing.push("the time zone"); if (v.hoe === null) missing.push("height of eye (0 if none)"); if (rr.rows.length < 2) missing.push("at least two sights");
-      if (!ready) { $("sf-out").hidden = true; $("sf-sheet").classList.add("no-print"); $("sf-empty").hidden = false; $("sf-empty").textContent = missing.length && !rr.bad.length ? "Still needed: " + missing.join(", ") + "." : "Check the entries marked in red."; last = null; return; }
+      if (!ready) { $("sf-out").hidden = true; $("sf-sheet").classList.add("no-print"); $("sf-empty").hidden = false; $("sf-empty").className = "empty"; $("sf-empty").textContent = missing.length && !rr.bad.length ? "Still needed: " + missing.join(", ") + "." : "Check the entries marked in red."; last = null; return; }
       var base = Date.UTC(v.date.y, v.date.m - 1, v.date.d), sights = rr.rows.map(function (s) { var o = { name: s.name, ms: base + (s.secLocal - v.zone * 3600) * 1000 + s.dayAdd * 1000 }; if (s.name === "Latitude") o.lat = s.lat; else { o.hs = s.hs; o.limb = s.limb; } return o; });
       var t1 = Math.min.apply(null, sights.map(function (s) { return s.ms; })), side = $("sf-ie-on").checked ? -1 : 1;
       var inp = { dr: { lat: v.lat * ($("sf-lat-s").checked ? -1 : 1), lon: v.lon * ($("sf-lon-w").checked ? -1 : 1), ms: t1, course: v.course, speed: v.speed }, hoe: v.hoe, ic: side * (v.ie || 0), temp: v.temp === null ? 10 : v.temp, pres: v.pres === null ? 1010 : v.pres, sights: sights };
       if (v.gps) inp.gps = v.gps;
       var r = SightFix.fix(inp);
-      if (r.error) { $("sf-out").hidden = true; $("sf-sheet").classList.add("no-print"); $("sf-empty").hidden = false; $("sf-empty").textContent = r.error; last = null; return; }
+      if (r.error) { $("sf-out").hidden = true; $("sf-sheet").classList.add("no-print"); $("sf-empty").hidden = false; $("sf-empty").className = "callout warn u-mt-0"; $("sf-empty").textContent = r.error; last = null; return; }
       last = { r: r, v: v, zone: v.zone, inp: inp }; show(r, v);
     }
     function localOf(ms, zone) { return hms(((ms + zone * 3600000) / 1000)); }

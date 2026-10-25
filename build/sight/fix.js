@@ -101,6 +101,13 @@
       if (S.length === 2) { var cut = Math.abs(Math.sin((zns[0] - zns[1]) * R)); out.cutDeg = Math.round(Math.asin(cut) / R); if (cut < 0.5) warn.push("The two lines cross at only " + out.cutDeg + " degrees: the fix is weak. Use sights at least 30 degrees apart in azimuth (ideally about 90)."); }
       out.amplify = invTrace2(base.rows); if (S.length > 2 && out.amplify > 2.2) warn.push("The bodies are not well spread round the horizon: errors are magnified " + out.amplify.toFixed(1) + " times.");
       out.residuals = base.L.map(function (l) { return l.a; });
+      /* sights that cannot be right: refuse rather than show a "fix" built on them */
+      var far = out.sights.filter(function (s) { return Math.abs(s.a) > 120; });
+      if (far.length) return { error: "No fix. " + far.map(function (s) { return s.name + " is " + Math.abs(s.a).toFixed(0) + "' (" + (Math.abs(s.a) / 60).toFixed(1) + "°) away from where the DR puts it"; }).join("; ") + ". This is almost always a wrong time (zone, hours or seconds), a wrong star or a wrong altitude.", warnings: warn };
+      if (S.length >= 3) {
+        var wi = 0; out.residuals.forEach(function (x, i) { if (Math.abs(x) > Math.abs(out.residuals[wi])) wi = i; });
+        if (Math.abs(out.residuals[wi]) > 10) return { error: "No fix: the lines do not meet. " + out.sights[wi].name + " misses the best position by " + Math.abs(out.residuals[wi]).toFixed(0) + "'. Check its time, name and altitude, or leave it out.", warnings: warn };
+      }
       if (S.length >= 3 && gapOk(zns)) { var cc = iterate(true); if (cc) { out.constErr = cc.c; out.fixC = cc.P; var d2 = offset(base.P, cc.P); out.cShift = Math.hypot(d2.dN, d2.dE); if (Math.abs(cc.c) > 1.5) warn.push("A constant altitude error of " + cc.c.toFixed(1) + "' fits the stars best: check the index error, dip and height of eye."); } }
       if (S.length === 3) {                                                            /* cocked hat: corners of the triangle of the three lines at the fix */
         var V = [], pr = [[0, 1], [1, 2], [0, 2]]; pr.forEach(function (p) { var a = base.L[p[0]], b = base.L[p[1]], u1 = [base.rows[p[0]][0], base.rows[p[0]][1]], u2 = [base.rows[p[1]][0], base.rows[p[1]][1]], det = u1[0] * u2[1] - u1[1] * u2[0]; if (Math.abs(det) > 1e-6) V.push([(a.a * u2[1] - b.a * u1[1]) / det, (u1[0] * b.a - u2[0] * a.a) / det]); });
