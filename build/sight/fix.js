@@ -92,7 +92,7 @@
       out.sights = items.map(function (it, i) {
         var l0 = L0[i], lf = base.L[i], row = { name: it.s.name, ms: it.s.ms, ap: drAt(dr, it.s.ms), zn: l0.zn, a: l0.a, resid: lf.a };
         var apN = drAt(dr, it.s.ms), r2 = it.lat ? null : Sight.reduceBody(it.pl, apN.lat, apN.lon);
-        if (!it.lat) { row.kind = it.pl.kind; row.hp = it.pl.hp; row.gha = it.pl.gha; row.dec = it.pl.dec; row.lha = r2.lha; row.hc = r2.hc; row.zn = r2.zn; row.ho = it.ho.ho; row.corr = it.ho; row.a = (it.ho.ho - r2.hc) * 60; row.hcFix = lf.hc; if (r2.hc < 5) warn.push(it.s.name + " is below 5 degrees: refraction is unreliable."); else if (r2.hc < 10) warn.push(it.s.name + " is below 10 degrees: low altitude, less reliable."); if (r2.hc > 80) warn.push(it.s.name + " is above 80 degrees: a straight line is a poor approximation."); }
+        if (!it.lat) { row.kind = it.pl.kind; row.hp = it.pl.hp; row.gha = it.pl.gha; row.dec = it.pl.dec; row.lha = r2.lha; row.hc = r2.hc; row.zn = r2.zn; row.ho = it.ho.ho; row.corr = it.ho; row.a = (it.ho.ho - r2.hc) * 60; row.hcFix = lf.hc; if (it.pl.kind === "moon") geoMoon(row, apN); if (r2.hc < 5) warn.push(it.s.name + " is below 5 degrees: refraction is unreliable."); else if (r2.hc < 10) warn.push(it.s.name + " is below 10 degrees: low altitude, less reliable."); if (r2.hc > 80) warn.push(it.s.name + " is above 80 degrees: a straight line is a poor approximation."); }
         if (Math.abs(row.a) > 20) warn.push((it.lat ? "Latitude" : it.s.name) + ": intercept " + Math.abs(row.a).toFixed(1) + "' is large. Check the time, Hs and the DR.");
         return row;
       });
@@ -126,6 +126,9 @@
     /* One sight on its own: the position line through the DR, its intercept terminal point (ITP), and the longitude by
        chronometer (the longitude where the position line meets the DR latitude, solved exactly from the cosine formula).
        input as for fix() with one sight; the DR is taken at the time of the sight. */
+    /* the Moon is reduced as seen from the observer; for the working these give the Almanac figures: geocentric LHA and Hc, and the
+       parallax in altitude (geocentric Hc minus observer Hc) to add to Ho. The intercept is the same either way. */
+    function geoMoon(row, p) { var g = Sight.reduce(p.lat, p.lon, row.gha, row.dec); row.hcGeo = g.hc; row.lhaGeo = g.lha; row.pa = (g.hc - row.hc) * 60; }
     function single(inp) {
       var s = inp.sights[0], warn = [], d = inp.dr, yr = new Date(s.ms).getUTCFullYear();
       if (!isFinite(s.ms) || yr < 2000 || yr > 2060) return { error: "The date is outside 2000 to 2060, which the star and Sun data cover.", warnings: warn };
@@ -137,25 +140,33 @@
       var r = Sight.reduceBody(pl, ap.lat, ap.lon);
       var ho = Sight.ho({ hs: s.hs, ic: inp.ic, hoe: inp.hoe, temp: inp.temp, pres: inp.pres, body: pl.kind, limb: s.limb || "L", sd: pl.kind === "moon" ? r.sd : pl.sd, hp: pl.hp });
       if (ho.valid === false) return { error: s.name + ": the sextant altitude is below the horizon after the corrections (check the altitude, index error and height of eye).", warnings: warn };
-      var a = (ho.ho - r.hc) * 60, gq = pl.kind === "moon" ? { gha: r.ghaTopo, dec: r.decTopo } : pl;      /* the Moon is worked as seen from the observer */
+      var a = (ho.ho - r.hc) * 60;
       if (Math.abs(a) > 180) return { error: "No position line. " + s.name + " is " + Math.abs(a).toFixed(0) + "' (" + (Math.abs(a) / 60).toFixed(1) + "°) away from where the DR puts it. This is almost always a wrong time (zone, hours or seconds), a wrong star or a wrong altitude. If the DR itself may be this far out, move the DR closer and try again.", warnings: warn };
       if (Math.abs(a) > 20) warn.push(s.name + ": intercept " + Math.abs(a).toFixed(1) + "' is large. Check the time, Hs and the DR.");
       if (r.hc < 5) warn.push(s.name + " is below 5 degrees: refraction is unreliable."); else if (r.hc < 10) warn.push(s.name + " is below 10 degrees: low altitude, less reliable."); if (r.hc > 80) warn.push(s.name + " is above 80 degrees: a straight line is a poor approximation.");
       var row = { name: s.name, kind: pl.kind, hp: pl.hp, ms: s.ms, ap: ap, gha: pl.gha, dec: pl.dec, lha: r.lha, hc: r.hc, zn: r.zn, ho: ho.ho, corr: ho, a: a };
+      if (pl.kind === "moon") geoMoon(row, ap);
       var itp = move(ap, a * Math.cos(r.zn * R), a * Math.sin(r.zn * R));
       var out = { single: true, time: s.ms, sights: [row], itp: itp, lop: [(r.zn + 90) % 360, (r.zn + 270) % 360].sort(function (x, y) { return x - y; }), warnings: warn, lonChron: null };
       var off = Math.min(Math.abs(r.zn % 180), 180 - Math.abs(r.zn % 180));       /* degrees from north or south */
-      var cosH = (Math.sin(ho.ho * R) - Math.sin(ap.lat * R) * Math.sin(gq.dec * R)) / (Math.cos(ap.lat * R) * Math.cos(gq.dec * R));
-      if (off < 30) {                                                                 /* line runs nearly east-west: give the latitude where it meets the DR longitude (Polaris, ex-meridian) */
-        var A = Math.sin(gq.dec * R), B = Math.cos(gq.dec * R) * Math.cos(r.lha * R), m = Math.hypot(A, B), q = Math.sin(ho.ho * R) / m;
-        if (Math.abs(q) <= 1) {
+      /* solved from the cosine formula; the Moon's place depends on where the observer is (parallax), so for the Moon it is
+         worked again at each new answer until it settles */
+      var la = ap.lat, lo = ap.lon, loops = pl.kind === "moon" ? 8 : 1, k, ok = false;
+      for (k = 0; k < loops; k++) {
+        var rk = k === 0 ? r : Sight.reduceBody(pl, la, lo), g = pl.kind === "moon" ? { gha: rk.ghaTopo, dec: rk.decTopo } : pl;
+        if (off < 30) {                                                               /* line runs nearly east-west: the latitude where it meets the DR longitude (Polaris, ex-meridian) */
+          var A = Math.sin(g.dec * R), B = Math.cos(g.dec * R) * Math.cos(((g.gha + lo) % 360) * R), m = Math.hypot(A, B), q = Math.sin(ho.ho * R) / m;
+          if (Math.abs(q) > 1) { ok = false; break; }
           var ph = Math.atan2(A, B), c1 = (ph + Math.acos(q)) / R, c2 = (ph - Math.acos(q)) / R;
-          out.latChron = Math.abs(c1 - ap.lat) < Math.abs(c2 - ap.lat) ? c1 : c2;
+          la = Math.abs(c1 - ap.lat) < Math.abs(c2 - ap.lat) ? c1 : c2; ok = true;
+        } else {
+          var cosH = (Math.sin(ho.ho * R) - Math.sin(ap.lat * R) * Math.sin(g.dec * R)) / (Math.cos(ap.lat * R) * Math.cos(g.dec * R));
+          if (Math.abs(cosH) > 1) { ok = false; break; }
+          var H = Math.acos(cosH) / R, lha = r.zn < 180 ? 360 - H : H;
+          lo = (((lha - g.gha) % 360) + 540) % 360 - 180; ok = true; out.lhaChron = lha;
         }
-      } else if (Math.abs(cosH) <= 1) {
-        var H = Math.acos(cosH) / R, lha = r.zn < 180 ? 360 - H : H, lon = lha - gq.gha;
-        lon = ((lon % 360) + 540) % 360 - 180; out.lonChron = lon; out.lhaChron = lha;
       }
+      if (ok && off < 30) out.latChron = la; else if (ok) out.lonChron = lo;
       return out;
     }
     return { fix: fix, single: single, advance: advance, drAt: drAt, offset: offset, move: move };

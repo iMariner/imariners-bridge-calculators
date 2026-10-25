@@ -29,4 +29,15 @@ const rr = ref.find(x => x.hc > 20 && Math.abs(Math.sin(x.zn * R)) > 0.7), sg = 
 const hsFor = (() => { let hs = rr.hc; const pl = S.place(rr.ms, 'Moon'); for (let k = 0; k < 30; k++) { const sd = S.reduceBody(pl, rr.lat, rr.lon + 0.2).sd, h = S.ho({ hs, ic: 0, hoe: 0, temp: 10, pres: 1010, body: 'moon', limb: 'L', sd }); hs += rr.hc - h.ho; } return hs; })();
 const s1 = SF.single({ dr: { lat: rr.lat, lon: rr.lon + 0.2, ms: rr.ms, course: 0, speed: 0 }, hoe: 0, ic: 0, temp: 10, pres: 1010, sights: [{ name: 'Moon', ms: rr.ms, hs: hsFor, limb: 'L' }] });
 const el = ((s1.lonChron - rr.lon + 540) % 360 - 180) * 60 * Math.cos(rr.lat * R); ok(Math.abs(el) < 0.4, 'Moon longitude by chronometer vs DE440: ' + el.toFixed(3) + ' NM');
+// Codex case: the chronometer longitude lands 3 degrees from the DR; Hc worked at the answer must equal Ho
+const ms2 = Date.parse('2032-01-14T22:05:47.319Z'), c2 = SF.single({ dr: { lat: -17.4052610881, lon: -141.5583273986, ms: ms2, course: 0, speed: 0 }, hoe: 0, ic: 0, temp: 10, pres: 1010, sights: [{ name: 'Moon', ms: ms2, hs: 64.6060007094, limb: 'L' }] });
+if (c2.lonChron !== null) { const pm2 = S.place(ms2, 'Moon'), h2 = S.reduceBody(pm2, -17.4052610881, c2.lonChron); ok(Math.abs((h2.hc - c2.sights[0].ho) * 60) < 0.02, 'Moon chron longitude far from the DR: Hc at the answer = Ho, miss ' + ((h2.hc - c2.sights[0].ho) * 60).toFixed(3) + "'"); }
+else ok(false, 'Codex case gave no longitude');
+// a day fix: Sun and Moon (and Sun and Venus), with the working figures as in the Almanac adding up to the same intercept
+{ const lat = 35.2, lon = -20.7, ms = Date.UTC(2026, 5, 10, 13, 0, 0), fr = S.frame(ms), mk = nm => { const p = S.place(ms, nm, fr), h = S.reduceBody(p, lat, lon); return { name: nm, ms, ho: h.hc, zn: h.zn, hc: h.hc }; };
+  const sun = mk('Sun'), moon = mk('Moon'), ven = mk('Venus');
+  console.log('day fix: Sun', sun.hc.toFixed(1), sun.zn.toFixed(0), '| Moon', moon.hc.toFixed(1), moon.zn.toFixed(0), '| Venus', ven.hc.toFixed(1), ven.zn.toFixed(0));
+  [[sun, moon], [sun, ven]].forEach(pair => { if (pair[1].hc < 5) return; const res = SF.fix({ dr: { lat: lat - 0.1, lon: lon + 0.1, ms, course: 0, speed: 0 }, hoe: 0, ic: 0, temp: 10, pres: 1010, sights: pair.map(x => ({ name: x.name, ms: x.ms, ho: x.ho })) });
+    const e = res.error ? 99 : Math.hypot((res.fix.lat - lat) * 60, (res.fix.lon - lon) * 60 * Math.cos(lat * R)); ok(e < 0.05, 'Sun + ' + pair[1].name + ' fix error ' + e.toFixed(3) + ' NM ' + (res.error || ''));
+    const m = res.sights && res.sights.find(s => s.kind === 'moon'); if (m) ok(Math.abs(((m.ho + m.pa / 60) - m.hcGeo) * 60 - m.a) < 1e-9 && Math.abs(m.lhaGeo - ((m.gha + m.ap.lon) % 360 + 360) % 360) < 1e-9, 'Moon working: Almanac-style Ho - Hc = intercept, LHA = GHA + long'); }); }
 console.log(bad ? 'FAILED ' + bad + ' of ' + n : 'moon and planet tests passed: ' + n); process.exit(bad ? 1 : 0);

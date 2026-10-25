@@ -2778,8 +2778,8 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
         <form class="card" id="sf-form" autocomplete="off" onsubmit="return false">
           <h2>Ship and DR</h2>
           <div class="segmented" role="radiogroup" aria-label="What you observed">
-            <input type="radio" name="sf-mode" id="sf-mode-sun" value="sun" checked><label for="sf-mode-sun">Sun</label>
-            <input type="radio" name="sf-mode" id="sf-mode-stars" value="stars"><label for="sf-mode-stars">Stars, planets, Moon</label>
+            <input type="radio" name="sf-mode" id="sf-mode-sun" value="sun" checked><label for="sf-mode-sun">Sun (running fix)</label>
+            <input type="radio" name="sf-mode" id="sf-mode-stars" value="stars"><label for="sf-mode-stars">All bodies</label>
           </div>
           <fieldset class="u-mt-3">
             <legend><span class="dot c-true"></span>DR position at the time of the first sight</legend>
@@ -7468,7 +7468,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       out.sights = items.map(function (it, i) {
         var l0 = L0[i], lf = base.L[i], row = { name: it.s.name, ms: it.s.ms, ap: drAt(dr, it.s.ms), zn: l0.zn, a: l0.a, resid: lf.a };
         var apN = drAt(dr, it.s.ms), r2 = it.lat ? null : Sight.reduceBody(it.pl, apN.lat, apN.lon);
-        if (!it.lat) { row.kind = it.pl.kind; row.hp = it.pl.hp; row.gha = it.pl.gha; row.dec = it.pl.dec; row.lha = r2.lha; row.hc = r2.hc; row.zn = r2.zn; row.ho = it.ho.ho; row.corr = it.ho; row.a = (it.ho.ho - r2.hc) * 60; row.hcFix = lf.hc; if (r2.hc < 5) warn.push(it.s.name + " is below 5 degrees: refraction is unreliable."); else if (r2.hc < 10) warn.push(it.s.name + " is below 10 degrees: low altitude, less reliable."); if (r2.hc > 80) warn.push(it.s.name + " is above 80 degrees: a straight line is a poor approximation."); }
+        if (!it.lat) { row.kind = it.pl.kind; row.hp = it.pl.hp; row.gha = it.pl.gha; row.dec = it.pl.dec; row.lha = r2.lha; row.hc = r2.hc; row.zn = r2.zn; row.ho = it.ho.ho; row.corr = it.ho; row.a = (it.ho.ho - r2.hc) * 60; row.hcFix = lf.hc; if (it.pl.kind === "moon") geoMoon(row, apN); if (r2.hc < 5) warn.push(it.s.name + " is below 5 degrees: refraction is unreliable."); else if (r2.hc < 10) warn.push(it.s.name + " is below 10 degrees: low altitude, less reliable."); if (r2.hc > 80) warn.push(it.s.name + " is above 80 degrees: a straight line is a poor approximation."); }
         if (Math.abs(row.a) > 20) warn.push((it.lat ? "Latitude" : it.s.name) + ": intercept " + Math.abs(row.a).toFixed(1) + "' is large. Check the time, Hs and the DR.");
         return row;
       });
@@ -7502,6 +7502,9 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
     /* One sight on its own: the position line through the DR, its intercept terminal point (ITP), and the longitude by
        chronometer (the longitude where the position line meets the DR latitude, solved exactly from the cosine formula).
        input as for fix() with one sight; the DR is taken at the time of the sight. */
+    /* the Moon is reduced as seen from the observer; for the working these give the Almanac figures: geocentric LHA and Hc, and the
+       parallax in altitude (geocentric Hc minus observer Hc) to add to Ho. The intercept is the same either way. */
+    function geoMoon(row, p) { var g = Sight.reduce(p.lat, p.lon, row.gha, row.dec); row.hcGeo = g.hc; row.lhaGeo = g.lha; row.pa = (g.hc - row.hc) * 60; }
     function single(inp) {
       var s = inp.sights[0], warn = [], d = inp.dr, yr = new Date(s.ms).getUTCFullYear();
       if (!isFinite(s.ms) || yr < 2000 || yr > 2060) return { error: "The date is outside 2000 to 2060, which the star and Sun data cover.", warnings: warn };
@@ -7513,25 +7516,33 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       var r = Sight.reduceBody(pl, ap.lat, ap.lon);
       var ho = Sight.ho({ hs: s.hs, ic: inp.ic, hoe: inp.hoe, temp: inp.temp, pres: inp.pres, body: pl.kind, limb: s.limb || "L", sd: pl.kind === "moon" ? r.sd : pl.sd, hp: pl.hp });
       if (ho.valid === false) return { error: s.name + ": the sextant altitude is below the horizon after the corrections (check the altitude, index error and height of eye).", warnings: warn };
-      var a = (ho.ho - r.hc) * 60, gq = pl.kind === "moon" ? { gha: r.ghaTopo, dec: r.decTopo } : pl;      /* the Moon is worked as seen from the observer */
+      var a = (ho.ho - r.hc) * 60;
       if (Math.abs(a) > 180) return { error: "No position line. " + s.name + " is " + Math.abs(a).toFixed(0) + "' (" + (Math.abs(a) / 60).toFixed(1) + "°) away from where the DR puts it. This is almost always a wrong time (zone, hours or seconds), a wrong star or a wrong altitude. If the DR itself may be this far out, move the DR closer and try again.", warnings: warn };
       if (Math.abs(a) > 20) warn.push(s.name + ": intercept " + Math.abs(a).toFixed(1) + "' is large. Check the time, Hs and the DR.");
       if (r.hc < 5) warn.push(s.name + " is below 5 degrees: refraction is unreliable."); else if (r.hc < 10) warn.push(s.name + " is below 10 degrees: low altitude, less reliable."); if (r.hc > 80) warn.push(s.name + " is above 80 degrees: a straight line is a poor approximation.");
       var row = { name: s.name, kind: pl.kind, hp: pl.hp, ms: s.ms, ap: ap, gha: pl.gha, dec: pl.dec, lha: r.lha, hc: r.hc, zn: r.zn, ho: ho.ho, corr: ho, a: a };
+      if (pl.kind === "moon") geoMoon(row, ap);
       var itp = move(ap, a * Math.cos(r.zn * R), a * Math.sin(r.zn * R));
       var out = { single: true, time: s.ms, sights: [row], itp: itp, lop: [(r.zn + 90) % 360, (r.zn + 270) % 360].sort(function (x, y) { return x - y; }), warnings: warn, lonChron: null };
       var off = Math.min(Math.abs(r.zn % 180), 180 - Math.abs(r.zn % 180));       /* degrees from north or south */
-      var cosH = (Math.sin(ho.ho * R) - Math.sin(ap.lat * R) * Math.sin(gq.dec * R)) / (Math.cos(ap.lat * R) * Math.cos(gq.dec * R));
-      if (off < 30) {                                                                 /* line runs nearly east-west: give the latitude where it meets the DR longitude (Polaris, ex-meridian) */
-        var A = Math.sin(gq.dec * R), B = Math.cos(gq.dec * R) * Math.cos(r.lha * R), m = Math.hypot(A, B), q = Math.sin(ho.ho * R) / m;
-        if (Math.abs(q) <= 1) {
+      /* solved from the cosine formula; the Moon's place depends on where the observer is (parallax), so for the Moon it is
+         worked again at each new answer until it settles */
+      var la = ap.lat, lo = ap.lon, loops = pl.kind === "moon" ? 8 : 1, k, ok = false;
+      for (k = 0; k < loops; k++) {
+        var rk = k === 0 ? r : Sight.reduceBody(pl, la, lo), g = pl.kind === "moon" ? { gha: rk.ghaTopo, dec: rk.decTopo } : pl;
+        if (off < 30) {                                                               /* line runs nearly east-west: the latitude where it meets the DR longitude (Polaris, ex-meridian) */
+          var A = Math.sin(g.dec * R), B = Math.cos(g.dec * R) * Math.cos(((g.gha + lo) % 360) * R), m = Math.hypot(A, B), q = Math.sin(ho.ho * R) / m;
+          if (Math.abs(q) > 1) { ok = false; break; }
           var ph = Math.atan2(A, B), c1 = (ph + Math.acos(q)) / R, c2 = (ph - Math.acos(q)) / R;
-          out.latChron = Math.abs(c1 - ap.lat) < Math.abs(c2 - ap.lat) ? c1 : c2;
+          la = Math.abs(c1 - ap.lat) < Math.abs(c2 - ap.lat) ? c1 : c2; ok = true;
+        } else {
+          var cosH = (Math.sin(ho.ho * R) - Math.sin(ap.lat * R) * Math.sin(g.dec * R)) / (Math.cos(ap.lat * R) * Math.cos(g.dec * R));
+          if (Math.abs(cosH) > 1) { ok = false; break; }
+          var H = Math.acos(cosH) / R, lha = r.zn < 180 ? 360 - H : H;
+          lo = (((lha - g.gha) % 360) + 540) % 360 - 180; ok = true; out.lhaChron = lha;
         }
-      } else if (Math.abs(cosH) <= 1) {
-        var H = Math.acos(cosH) / R, lha = r.zn < 180 ? 360 - H : H, lon = lha - gq.gha;
-        lon = ((lon % 360) + 540) % 360 - 180; out.lonChron = lon; out.lhaChron = lha;
       }
+      if (ok && off < 30) out.latChron = la; else if (ok) out.lonChron = lo;
       return out;
     }
     return { fix: fix, single: single, advance: advance, drAt: drAt, offset: offset, move: move };
@@ -7665,7 +7676,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
   /* Tool: Sight Fix (running fix by the Sun, fix by 3 to 4 stars) */
   function initSightFix() {
     var KEY = "bridgeCalc.sightFix", st = store.get(KEY) || {}, mode = st.mode === "stars" ? "stars" : "sun", rowsEl = $("sf-rows"), rowRefs = [], last = null, shipEdited = false;
-    var LIMBS = [["L", "Lower limb"], ["U", "Upper limb"]];
+    var LIMBS = [["L", "Lower"], ["U", "Upper"]];
     var NAMES = Sight.names();
     var FIELDS = ["sf-lat-d", "sf-lat-m", "sf-lon-d", "sf-lon-m", "sf-course", "sf-speed", "sf-date", "sf-zone", "sf-hoe", "sf-ie", "sf-temp", "sf-pres", "sf-gps-lat-d", "sf-gps-lat-m", "sf-gps-lon-d", "sf-gps-lon-m"];
     var RADIOS = ["sf-lat-n", "sf-lat-s", "sf-lon-e", "sf-lon-w", "sf-ie-on", "sf-ie-off", "sf-gps-lat-n", "sf-gps-lat-s", "sf-gps-lon-e", "sf-gps-lon-w"];
@@ -7691,8 +7702,8 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
         var tr = el("tr"), refs = { r: r };
         tr.appendChild(el("td", "n", r.kind === "lat" ? "Lat" : String(i + 1)));
         if (r.kind === "star") { var td = el("td", "w-star"), sel = el("select"); sel.setAttribute("aria-label", "Star " + (i + 1)); var o0 = el("option", "", "choose a body"); o0.value = ""; sel.appendChild(o0);
-          [["Moon and planets", ["Moon"].concat(Sight.planets())], ["Stars", NAMES]].forEach(function (g) { var og = document.createElement("optgroup"); og.label = g[0]; g[1].forEach(function (n) { var o = el("option", "", n); o.value = n; og.appendChild(o); }); sel.appendChild(og); });
-          sel.value = r.name || ""; sel.addEventListener("change", function () { r.name = sel.value; if (refs.limb) refs.limb.style.visibility = r.name === "Moon" ? "visible" : "hidden"; save(); render(); }); td.appendChild(sel); tr.appendChild(td); refs.sel = sel; }
+          [["Sun, Moon and planets", ["Sun", "Moon"].concat(Sight.planets())], ["Stars", NAMES]].forEach(function (g) { var og = document.createElement("optgroup"); og.label = g[0]; g[1].forEach(function (n) { var o = el("option", "", n); o.value = n; og.appendChild(o); }); sel.appendChild(og); });
+          sel.value = r.name || ""; sel.addEventListener("change", function () { r.name = sel.value; if (refs.limb) { var lm = r.name === "Moon" || r.name === "Sun"; refs.limb.hidden = !lm; refs.na.hidden = lm; } save(); render(); }); td.appendChild(sel); tr.appendChild(td); refs.sel = sel; }
         var tt = el("td", "w-time"), ti = el("input"); ti.type = "time"; ti.step = "1"; ti.value = r.time || ""; ti.setAttribute("aria-label", "Local time of sight " + (i + 1)); ti.addEventListener("input", function () { r.time = ti.value; r.manual = true; save(); render(); }); tt.appendChild(ti); tr.appendChild(tt); refs.time = ti;
         if (r.kind === "lat") {
           var tl = el("td"); tl.colSpan = 2; var fz = el("div", "fused fused-2"), w1 = el("div", "input-wrap"), w2 = el("div", "input-wrap");
@@ -7710,7 +7721,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
           [hd, hm].forEach(function (x) { x.addEventListener("input", function () { r.hd = hd.value; r.hm = hm.value; save(); render(); }); });
           refs.hd = hd; refs.hm = hm;
           if (r.kind === "sun" || r.kind === "star") { var tk = el("td", "w-limb"), sl = el("select"); sl.setAttribute("aria-label", "Limb of the " + (r.kind === "sun" ? "Sun" : "Moon"));
-            if (r.kind === "star") sl.style.visibility = r.name === "Moon" ? "visible" : "hidden"; LIMBS.forEach(function (x) { var o = el("option", "", x[1]); o.value = x[0]; sl.appendChild(o); }); sl.value = r.limb || "L"; sl.addEventListener("change", function () { r.limb = sl.value; save(); render(); }); tk.appendChild(sl); tr.appendChild(tk); refs.limb = sl; }
+            if (r.kind === "star") { var na = el("span", "small muted", "n/a"); refs.na = na; tk.appendChild(na); var lm0 = r.name === "Moon" || r.name === "Sun"; sl.hidden = !lm0; na.hidden = lm0; } LIMBS.forEach(function (x) { var o = el("option", "", x[1]); o.value = x[0]; sl.appendChild(o); }); sl.value = r.limb || "L"; sl.addEventListener("change", function () { r.limb = sl.value; save(); render(); }); tk.appendChild(sl); tr.appendChild(tk); refs.limb = sl; }
         }
         tb.appendChild(tr); rowRefs.push(refs);
       });
@@ -7809,6 +7820,9 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       $("sf-log").textContent = s.name + " position line " + localOf(r.time, v.zone) + " LT (" + utText(r.time) + " UT): intercept " + Math.abs(s.a).toFixed(1) + "' " + (s.a >= 0 ? "toward" : "away") + ", Zn " + s.zn.toFixed(1) + "°, ITP " + Geo.lat(r.itp.lat) + " " + Geo.lon(r.itp.lon) + ", line " + p3(r.lop[0]) + "°/" + p3(r.lop[1]) + "°" + (byLat ? " | latitude " + Geo.lat(r.latChron) + " on DR long " + Geo.lon(s.ap.lon) : r.lonChron === null ? "" : " | longitude by chronometer " + Geo.lon(r.lonChron) + " on DR lat " + Geo.lat(s.ap.lat));
       work($("sf-work-tbl"), r, v); sheetLine(r, v);
     }
+    function dsp(s) {                                                              /* figures as in the Almanac working (the Moon: geocentric Hc, parallax added to Ho) */
+      return s.kind === "moon" ? { ho: s.ho + s.pa / 60, hc: s.hcGeo, lha: s.lhaGeo } : { ho: s.ho, hc: s.hc, lha: s.lha };
+    }
     function linePlot(r, W, H, id) {                                               /* the one position line drawn through its ITP */
       var s = r.sights[0], c = {}, k; for (k in s) c[k] = s[k]; c.hcFix = s.ho;
       var mark = r.lonChron !== null ? { lat: s.ap.lat, lon: r.lonChron, label: "Long. by chron " + Geo.lon(r.lonChron) } : r.latChron !== undefined ? { lat: r.latChron, lon: s.ap.lon, label: "Lat. " + Geo.lat(r.latChron) } : null;
@@ -7828,7 +7842,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
         var tr = el("tr"), hs = last_hs(i);
         tr.appendChild(el("td", "", s.name)); tr.appendChild(el("td", "", localOf(s.ms, v.zone)));
         if (s.name === "Latitude") { [Geo.lat(last.inp.sights[i].lat), "", "", Math.abs(s.a).toFixed(1) + " NM " + (s.a >= 0 ? "N" : "S"), "000°"].forEach(function (t) { tr.appendChild(el("td", "num", t)); }); }
-        else [hs, alt(s.ho), alt(s.hc), Math.abs(s.a).toFixed(1) + " " + (s.a >= 0 ? "toward" : "away"), s.zn.toFixed(1) + "°"].forEach(function (t) { tr.appendChild(el("td", "num", t)); });
+        else [hs, alt(dsp(s).ho), alt(dsp(s).hc), Math.abs(s.a).toFixed(1) + " " + (s.a >= 0 ? "toward" : "away"), s.zn.toFixed(1) + "°"].forEach(function (t) { tr.appendChild(el("td", "num", t)); });
         tb.appendChild(tr);
       });
     }
@@ -7868,12 +7882,12 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       function row(label, f) { var tr = el("tr"); tr.appendChild(el("td", "", label)); body.forEach(function (s, i) { tr.appendChild(el("td", "num", f(s, i))); }); tb.appendChild(tr); }
       var idxOf = function (s) { return r.sights.indexOf(s); };
       row("UT", function (s) { return utText(s.ms); }); row("DR (assumed position)", function (s) { return Geo.lat(s.ap.lat) + " " + Geo.lon(s.ap.lon); });
-      row("GHA", function (s) { return alt(s.gha); }); row("Declination", function (s) { return (s.dec < 0 ? "S " : "N ") + alt(Math.abs(s.dec)); }); row("LHA", function (s) { return alt(s.lha); });
+      row("GHA", function (s) { return alt(s.gha); }); row("Declination", function (s) { return (s.dec < 0 ? "S " : "N ") + alt(Math.abs(s.dec)); }); row("LHA", function (s) { return alt(dsp(s).lha); });
       row("Sextant altitude Hs", function (s) { return last_hs(idxOf(s)); });
       row("Index correction", function (s) { var ic = last.inp.ic; return (ic >= 0 ? "+" : "−") + Math.abs(ic).toFixed(1) + "'"; });
       row("Dip (height of eye)", function (s) { return "−" + s.corr.dip.toFixed(1) + "'"; }); row("Apparent altitude", function (s) { return alt(s.corr.ha); });
-      row("Refraction", function (s) { return "−" + s.corr.ref.toFixed(1) + "'"; }); row("Semi-diameter", function (s) { return s.corr.sd === 0 ? "—" : (s.corr.sd > 0 ? "+" : "−") + Math.abs(s.corr.sd).toFixed(1) + "'"; }); row("Parallax", function (s) { return s.kind === "moon" ? "in Hc (HP " + s.hp.toFixed(1) + "')" : s.corr.par === 0 ? "—" : "+" + s.corr.par.toFixed(1) + "'"; });
-      row("Observed altitude Ho", function (s) { return alt(s.ho); }); row("Calculated altitude Hc", function (s) { return alt(s.hc); }); row("Intercept (Ho − Hc)", function (s) { return Math.abs(s.a).toFixed(1) + "' " + (s.a >= 0 ? "toward" : "away"); }); row("Azimuth Zn", function (s) { return s.zn.toFixed(1) + "°"; });
+      row("Refraction", function (s) { return "−" + s.corr.ref.toFixed(1) + "'"; }); row("Semi-diameter", function (s) { return s.corr.sd === 0 ? "—" : (s.corr.sd > 0 ? "+" : "−") + Math.abs(s.corr.sd).toFixed(1) + "'"; }); row("Parallax in altitude", function (s) { return s.kind === "moon" ? "+" + s.pa.toFixed(1) + "' (HP " + s.hp.toFixed(1) + "')" : s.corr.par === 0 ? "—" : "+" + s.corr.par.toFixed(1) + "'"; });
+      row("Observed altitude Ho", function (s) { return alt(dsp(s).ho); }); row("Calculated altitude Hc", function (s) { return alt(dsp(s).hc); }); row("Intercept (Ho − Hc)", function (s) { return Math.abs(s.a).toFixed(1) + "' " + (s.a >= 0 ? "toward" : "away"); }); row("Azimuth Zn", function (s) { return s.zn.toFixed(1) + "°"; });
     }
 
     /* ---------- saving and loading ---------- */
@@ -7926,6 +7940,9 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
     load(); build(); render();
   }
   /* SIGHTPAGE-END */
+
+
+
 
 
 

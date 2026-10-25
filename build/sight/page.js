@@ -1,7 +1,7 @@
   /* Tool: Sight Fix (running fix by the Sun, fix by 3 to 4 stars) */
   function initSightFix() {
     var KEY = "bridgeCalc.sightFix", st = store.get(KEY) || {}, mode = st.mode === "stars" ? "stars" : "sun", rowsEl = $("sf-rows"), rowRefs = [], last = null, shipEdited = false;
-    var LIMBS = [["L", "Lower limb"], ["U", "Upper limb"]];
+    var LIMBS = [["L", "Lower"], ["U", "Upper"]];
     var NAMES = Sight.names();
     var FIELDS = ["sf-lat-d", "sf-lat-m", "sf-lon-d", "sf-lon-m", "sf-course", "sf-speed", "sf-date", "sf-zone", "sf-hoe", "sf-ie", "sf-temp", "sf-pres", "sf-gps-lat-d", "sf-gps-lat-m", "sf-gps-lon-d", "sf-gps-lon-m"];
     var RADIOS = ["sf-lat-n", "sf-lat-s", "sf-lon-e", "sf-lon-w", "sf-ie-on", "sf-ie-off", "sf-gps-lat-n", "sf-gps-lat-s", "sf-gps-lon-e", "sf-gps-lon-w"];
@@ -27,8 +27,8 @@
         var tr = el("tr"), refs = { r: r };
         tr.appendChild(el("td", "n", r.kind === "lat" ? "Lat" : String(i + 1)));
         if (r.kind === "star") { var td = el("td", "w-star"), sel = el("select"); sel.setAttribute("aria-label", "Star " + (i + 1)); var o0 = el("option", "", "choose a body"); o0.value = ""; sel.appendChild(o0);
-          [["Moon and planets", ["Moon"].concat(Sight.planets())], ["Stars", NAMES]].forEach(function (g) { var og = document.createElement("optgroup"); og.label = g[0]; g[1].forEach(function (n) { var o = el("option", "", n); o.value = n; og.appendChild(o); }); sel.appendChild(og); });
-          sel.value = r.name || ""; sel.addEventListener("change", function () { r.name = sel.value; if (refs.limb) refs.limb.style.visibility = r.name === "Moon" ? "visible" : "hidden"; save(); render(); }); td.appendChild(sel); tr.appendChild(td); refs.sel = sel; }
+          [["Sun, Moon and planets", ["Sun", "Moon"].concat(Sight.planets())], ["Stars", NAMES]].forEach(function (g) { var og = document.createElement("optgroup"); og.label = g[0]; g[1].forEach(function (n) { var o = el("option", "", n); o.value = n; og.appendChild(o); }); sel.appendChild(og); });
+          sel.value = r.name || ""; sel.addEventListener("change", function () { r.name = sel.value; if (refs.limb) { var lm = r.name === "Moon" || r.name === "Sun"; refs.limb.hidden = !lm; refs.na.hidden = lm; } save(); render(); }); td.appendChild(sel); tr.appendChild(td); refs.sel = sel; }
         var tt = el("td", "w-time"), ti = el("input"); ti.type = "time"; ti.step = "1"; ti.value = r.time || ""; ti.setAttribute("aria-label", "Local time of sight " + (i + 1)); ti.addEventListener("input", function () { r.time = ti.value; r.manual = true; save(); render(); }); tt.appendChild(ti); tr.appendChild(tt); refs.time = ti;
         if (r.kind === "lat") {
           var tl = el("td"); tl.colSpan = 2; var fz = el("div", "fused fused-2"), w1 = el("div", "input-wrap"), w2 = el("div", "input-wrap");
@@ -46,7 +46,7 @@
           [hd, hm].forEach(function (x) { x.addEventListener("input", function () { r.hd = hd.value; r.hm = hm.value; save(); render(); }); });
           refs.hd = hd; refs.hm = hm;
           if (r.kind === "sun" || r.kind === "star") { var tk = el("td", "w-limb"), sl = el("select"); sl.setAttribute("aria-label", "Limb of the " + (r.kind === "sun" ? "Sun" : "Moon"));
-            if (r.kind === "star") sl.style.visibility = r.name === "Moon" ? "visible" : "hidden"; LIMBS.forEach(function (x) { var o = el("option", "", x[1]); o.value = x[0]; sl.appendChild(o); }); sl.value = r.limb || "L"; sl.addEventListener("change", function () { r.limb = sl.value; save(); render(); }); tk.appendChild(sl); tr.appendChild(tk); refs.limb = sl; }
+            if (r.kind === "star") { var na = el("span", "small muted", "n/a"); refs.na = na; tk.appendChild(na); var lm0 = r.name === "Moon" || r.name === "Sun"; sl.hidden = !lm0; na.hidden = lm0; } LIMBS.forEach(function (x) { var o = el("option", "", x[1]); o.value = x[0]; sl.appendChild(o); }); sl.value = r.limb || "L"; sl.addEventListener("change", function () { r.limb = sl.value; save(); render(); }); tk.appendChild(sl); tr.appendChild(tk); refs.limb = sl; }
         }
         tb.appendChild(tr); rowRefs.push(refs);
       });
@@ -145,6 +145,9 @@
       $("sf-log").textContent = s.name + " position line " + localOf(r.time, v.zone) + " LT (" + utText(r.time) + " UT): intercept " + Math.abs(s.a).toFixed(1) + "' " + (s.a >= 0 ? "toward" : "away") + ", Zn " + s.zn.toFixed(1) + "°, ITP " + Geo.lat(r.itp.lat) + " " + Geo.lon(r.itp.lon) + ", line " + p3(r.lop[0]) + "°/" + p3(r.lop[1]) + "°" + (byLat ? " | latitude " + Geo.lat(r.latChron) + " on DR long " + Geo.lon(s.ap.lon) : r.lonChron === null ? "" : " | longitude by chronometer " + Geo.lon(r.lonChron) + " on DR lat " + Geo.lat(s.ap.lat));
       work($("sf-work-tbl"), r, v); sheetLine(r, v);
     }
+    function dsp(s) {                                                              /* figures as in the Almanac working (the Moon: geocentric Hc, parallax added to Ho) */
+      return s.kind === "moon" ? { ho: s.ho + s.pa / 60, hc: s.hcGeo, lha: s.lhaGeo } : { ho: s.ho, hc: s.hc, lha: s.lha };
+    }
     function linePlot(r, W, H, id) {                                               /* the one position line drawn through its ITP */
       var s = r.sights[0], c = {}, k; for (k in s) c[k] = s[k]; c.hcFix = s.ho;
       var mark = r.lonChron !== null ? { lat: s.ap.lat, lon: r.lonChron, label: "Long. by chron " + Geo.lon(r.lonChron) } : r.latChron !== undefined ? { lat: r.latChron, lon: s.ap.lon, label: "Lat. " + Geo.lat(r.latChron) } : null;
@@ -164,7 +167,7 @@
         var tr = el("tr"), hs = last_hs(i);
         tr.appendChild(el("td", "", s.name)); tr.appendChild(el("td", "", localOf(s.ms, v.zone)));
         if (s.name === "Latitude") { [Geo.lat(last.inp.sights[i].lat), "", "", Math.abs(s.a).toFixed(1) + " NM " + (s.a >= 0 ? "N" : "S"), "000°"].forEach(function (t) { tr.appendChild(el("td", "num", t)); }); }
-        else [hs, alt(s.ho), alt(s.hc), Math.abs(s.a).toFixed(1) + " " + (s.a >= 0 ? "toward" : "away"), s.zn.toFixed(1) + "°"].forEach(function (t) { tr.appendChild(el("td", "num", t)); });
+        else [hs, alt(dsp(s).ho), alt(dsp(s).hc), Math.abs(s.a).toFixed(1) + " " + (s.a >= 0 ? "toward" : "away"), s.zn.toFixed(1) + "°"].forEach(function (t) { tr.appendChild(el("td", "num", t)); });
         tb.appendChild(tr);
       });
     }
@@ -204,12 +207,12 @@
       function row(label, f) { var tr = el("tr"); tr.appendChild(el("td", "", label)); body.forEach(function (s, i) { tr.appendChild(el("td", "num", f(s, i))); }); tb.appendChild(tr); }
       var idxOf = function (s) { return r.sights.indexOf(s); };
       row("UT", function (s) { return utText(s.ms); }); row("DR (assumed position)", function (s) { return Geo.lat(s.ap.lat) + " " + Geo.lon(s.ap.lon); });
-      row("GHA", function (s) { return alt(s.gha); }); row("Declination", function (s) { return (s.dec < 0 ? "S " : "N ") + alt(Math.abs(s.dec)); }); row("LHA", function (s) { return alt(s.lha); });
+      row("GHA", function (s) { return alt(s.gha); }); row("Declination", function (s) { return (s.dec < 0 ? "S " : "N ") + alt(Math.abs(s.dec)); }); row("LHA", function (s) { return alt(dsp(s).lha); });
       row("Sextant altitude Hs", function (s) { return last_hs(idxOf(s)); });
       row("Index correction", function (s) { var ic = last.inp.ic; return (ic >= 0 ? "+" : "−") + Math.abs(ic).toFixed(1) + "'"; });
       row("Dip (height of eye)", function (s) { return "−" + s.corr.dip.toFixed(1) + "'"; }); row("Apparent altitude", function (s) { return alt(s.corr.ha); });
-      row("Refraction", function (s) { return "−" + s.corr.ref.toFixed(1) + "'"; }); row("Semi-diameter", function (s) { return s.corr.sd === 0 ? "—" : (s.corr.sd > 0 ? "+" : "−") + Math.abs(s.corr.sd).toFixed(1) + "'"; }); row("Parallax", function (s) { return s.kind === "moon" ? "in Hc (HP " + s.hp.toFixed(1) + "')" : s.corr.par === 0 ? "—" : "+" + s.corr.par.toFixed(1) + "'"; });
-      row("Observed altitude Ho", function (s) { return alt(s.ho); }); row("Calculated altitude Hc", function (s) { return alt(s.hc); }); row("Intercept (Ho − Hc)", function (s) { return Math.abs(s.a).toFixed(1) + "' " + (s.a >= 0 ? "toward" : "away"); }); row("Azimuth Zn", function (s) { return s.zn.toFixed(1) + "°"; });
+      row("Refraction", function (s) { return "−" + s.corr.ref.toFixed(1) + "'"; }); row("Semi-diameter", function (s) { return s.corr.sd === 0 ? "—" : (s.corr.sd > 0 ? "+" : "−") + Math.abs(s.corr.sd).toFixed(1) + "'"; }); row("Parallax in altitude", function (s) { return s.kind === "moon" ? "+" + s.pa.toFixed(1) + "' (HP " + s.hp.toFixed(1) + "')" : s.corr.par === 0 ? "—" : "+" + s.corr.par.toFixed(1) + "'"; });
+      row("Observed altitude Ho", function (s) { return alt(dsp(s).ho); }); row("Calculated altitude Hc", function (s) { return alt(dsp(s).hc); }); row("Intercept (Ho − Hc)", function (s) { return Math.abs(s.a).toFixed(1) + "' " + (s.a >= 0 ? "toward" : "away"); }); row("Azimuth Zn", function (s) { return s.zn.toFixed(1) + "°"; });
     }
 
     /* ---------- saving and loading ---------- */
