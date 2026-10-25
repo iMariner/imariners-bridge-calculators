@@ -80,6 +80,7 @@
   --input-bg: var(--surface-2);
   /* cells you type into, and soft tints (precomputed so old browsers need no colour-mixing) */
   --entry: #f6eadb;
+  --entry-soft: #fbf5ed;              /* large areas of entry cells (halfway to the surface) */
   --accent-rgb: 10, 127, 151;
   --danger-rgb: 180, 35, 24;
   --take-rgb: 31, 157, 85;
@@ -103,6 +104,7 @@
 }
 :root[data-theme="dusk"] {
   --entry: #39342c;
+  --entry-soft: #252825;
   --accent-rgb: 63, 184, 208;
   --danger-rgb: 255, 123, 110;
   --take-rgb: 47, 181, 106;
@@ -138,6 +140,7 @@
 }
 :root[data-theme="night"] {   /* red only: protects night vision on the bridge */
   --entry: #1b0202;
+  --entry-soft: #130101;
   --accent-rgb: 163, 18, 18;
   --danger-rgb: 255, 48, 48;
   --take-rgb: 224, 32, 32;
@@ -662,7 +665,7 @@ table.et-main th.sp .et-kn { font-size: var(--fs-xs); font-weight: var(--fw-medi
 table.et-main td { border-top: var(--hair) solid var(--border); vertical-align: middle; background: var(--surface); transition: background var(--ease); }
 table.et-main tbody tr:first-child td { border-top: 0; }
 table.et-main td.no { width: 44px; padding: 0 var(--sp-2); text-align: center; background: var(--surface-2); color: var(--muted); font-size: var(--fs-sm); font-weight: var(--fw-semibold); }
-table.et-main td.in { padding: 0; background: var(--entry); border-left: var(--hair) solid var(--border); }
+table.et-main td.in { padding: 0; background: var(--entry-soft); border-left: var(--hair) solid var(--border); }
 table.et-main td.in.last { border-right: var(--hair) solid var(--border-strong); }
 table.et-main td input { display: block; width: 100%; height: 52px; padding: 0 var(--sp-3); border: 0; border-radius: 0; background: transparent; font-size: var(--fs-base); font-weight: var(--fw-semibold); box-shadow: none; transition: box-shadow var(--ease), background var(--ease); }
 table.et-main td input::placeholder { color: var(--muted); opacity: .55; font-weight: var(--fw-regular); }
@@ -678,7 +681,8 @@ table.et-main td.cell span.dy { display: block; margin-top: var(--sp-0); font-si
 table.et-main td.cell span.dy i { display: block; font-style: normal; font-weight: var(--fw-regular); color: var(--muted); }
 table.et-main td.cell span.ut { display: block; margin-top: var(--sp-0); font-size: var(--fs-2xs); color: var(--muted); }
 table.et-main td:nth-child(3), table.et-main td:nth-child(4) { width: 96px; min-width: 88px; }
-table.et-main td:nth-child(2) { min-width: 180px; }
+table.et-main td:nth-child(2) { width: 15%; min-width: 170px; }
+table.et-main td.nm input { text-transform: capitalize; }
 table.et-main td.cell.na { color: var(--border-strong); }
 table.et-main td.cell.zq { color: var(--apparent); font-size: var(--fs-sm); font-weight: var(--fw-semibold); }
 .et-opts { display: flex; gap: var(--sp-5); flex-wrap: wrap; align-items: center; margin-top: var(--sp-2); }
@@ -5590,6 +5594,7 @@ table.sf-rows td.n { font-size: var(--fs-base); }
     }
     function clockTxt(ms) { var d = new Date(Math.round(ms / 60000) * 60000); return TIME.p2(d.getUTCHours()) + ":" + TIME.p2(d.getUTCMinutes()); }
     function zoneTxt(z) { return "UTC" + (z < 0 ? "−" : "+") + Math.abs(z); }
+    function capName(s) { return (s || "").replace(/(^|[\s\-\/(])([a-z])/g, function (m, a, b) { return a + b.toUpperCase(); }); }   /* "port klang" shows as "Port Klang", as on screen */
 
     /* build the table once: speeds in the header, one input row per destination */
     function build() {
@@ -5613,7 +5618,7 @@ table.sf-rows td.n { font-size: var(--fs-base); }
           var x = document.createElement("input"); x.type = "text"; x.id = id; x.placeholder = ph; x.maxLength = ml; if (mode) { x.setAttribute("inputmode", mode); x.className = "num"; }
           td.appendChild(x); tr.appendChild(td); return x;
         }
-        o.name = mk("et-n" + i, "Destination " + (i + 1), "22%", 30, null); o.name.setAttribute("aria-label", "Destination " + (i + 1) + " name");
+        o.name = mk("et-n" + i, "Destination " + (i + 1), null, 30, null); o.name.setAttribute("aria-label", "Destination " + (i + 1) + " name");
         o.dist = mk("et-d" + i, "NM", "92px", 7, "decimal"); o.dist.setAttribute("aria-label", "Distance to go to destination " + (i + 1));
         o.zone = mk("et-z" + i, "e.g. 8", "92px", 5, "decimal"); o.zone.setAttribute("aria-label", "Time zone of destination " + (i + 1)); o.zone.parentNode.className += " last";
         for (var s2 = 0; s2 < NSP; s2++) { var c = document.createElement("td"); c.className = "cell na"; c.textContent = "—"; tr.appendChild(c); o.cells.push(c); }
@@ -5703,7 +5708,7 @@ table.sf-rows td.n { font-size: var(--fs-base); }
       L.rows.forEach(function (r) {
         if (r.dist === null || isNaN(r.dist)) return;
         var row = document.createElement("tr");
-        [r.name || "—", String(r.dist), r.zone === null || isNaN(r.zone) ? "—" : zoneTxt(r.zone)].forEach(function (x) { var c = document.createElement("td"); c.textContent = x; row.appendChild(c); });
+        [capName(r.name) || "—", String(r.dist), r.zone === null || isNaN(r.zone) ? "—" : zoneTxt(r.zone)].forEach(function (x) { var c = document.createElement("td"); c.textContent = x; row.appendChild(c); });
         used.forEach(function (u) {
           var c = document.createElement("td"), q = r.res[u.i];
           c.textContent = q ? q.local : "—";
@@ -5719,7 +5724,7 @@ table.sf-rows td.n { font-size: var(--fs-base); }
       lines.push(["Destination", "DTG (NM)", "Zone"].concat(used.map(function (u) { return u.s + " kn"; })).join("\t"));
       L.rows.forEach(function (r) {
         if (r.dist === null || isNaN(r.dist)) return;
-        lines.push([r.name || "", r.dist, r.zone === null || isNaN(r.zone) ? "" : zoneTxt(r.zone)].concat(used.map(function (u) { var q = r.res[u.i]; return q ? q.local + (q.pass ? " (" + q.pass + ")" : "") : ""; })).join("\t"));
+        lines.push([capName(r.name), r.dist, r.zone === null || isNaN(r.zone) ? "" : zoneTxt(r.zone)].concat(used.map(function (u) { var q = r.res[u.i]; return q ? q.local + (q.pass ? " (" + q.pass + ")" : "") : ""; })).join("\t"));
       });
       return lines.join("\n");
     }
@@ -5836,7 +5841,7 @@ table.sf-rows td.n { font-size: var(--fs-base); }
       return m.length > 3 && +m[3] < 1 ? h + " " + Math.round(+m[3] * 100) + "%" : h;
     }
     var GROUPS = [
-      ["Roles (change with the theme)", ["--bg", "--surface", "--surface-2", "--text", "--muted", "--border", "--accent", "--accent-hover", "--accent-text", "--brand", "--heading", "--hit", "--danger", "--take", "--okc", "--border-strong", "--side-bg", "--side-text", "--side-muted", "--side-active", "--matrix-head", "--entry", "--input-bg"]],
+      ["Roles (change with the theme)", ["--bg", "--surface", "--surface-2", "--text", "--muted", "--border", "--accent", "--accent-hover", "--accent-text", "--brand", "--heading", "--hit", "--danger", "--take", "--okc", "--border-strong", "--side-bg", "--side-text", "--side-muted", "--side-active", "--matrix-head", "--entry", "--entry-soft", "--input-bg"]],
       ["Data colours (same meaning in every tool)", ["--true", "--apparent", "--ship", "--rose", "--water", "--seabed", "--hull-top", "--hull-bottom", "--map-sea", "--map-land", "--area-special", "--area-eca", "--pos-mark"]],
       ["Brand palette (primitives)", ["--c-teal-50", "--c-teal-100", "--c-teal-300", "--c-teal-400", "--c-teal-500", "--c-teal-600", "--c-teal-700", "--c-teal-900", "--c-blue-400", "--c-blue-500", "--c-navy-50", "--c-navy-700", "--c-navy-900", "--c-navy-950", "--c-ink-900", "--c-ink-600", "--c-ink-400", "--c-green-600", "--c-amber-500", "--c-amber-700", "--c-red-600"]]
     ];
