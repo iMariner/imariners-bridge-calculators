@@ -74,4 +74,13 @@ table.sf-rows td.w-dr input { font-size: var(--fs-md); background: var(--entry);
 .sf-chip.take { border-left-color: var(--take); } .sf-chip.ok { border-left-color: var(--okc); }
 .sf-chip:hover, .sf-chip:focus { border-color: var(--accent); outline: none; box-shadow: var(--focus-ring); }
 .sf-plot .sp-azl { stroke: var(--muted); stroke-width: .9; stroke-dasharray: 2 3; } .sf-plot .sp-icpt { stroke: var(--danger); stroke-width: 1.6; } .sf-plot .sp-rt { fill: none; stroke: var(--muted); stroke-width: 1; }
+.sf-plotbar { display: flex; align-items: center; gap: var(--sp-3); margin-top: var(--sp-2); }
+.sf-plotbar .segmented { min-width: 260px; }
+.sf-key { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--sp-1) var(--sp-4); margin-top: var(--sp-3); font-size: var(--fs-sm); color: var(--text); }
+.sf-keyitem { display: flex; align-items: center; gap: var(--sp-2); }
+.sf-keyicon { flex: 0 0 auto; width: 42px; height: 14px; overflow: visible; }
+.sf-keyicon .sp-lop { stroke: var(--accent); stroke-width: 2; } .sf-keyicon .sp-lop0 { stroke: var(--muted); stroke-width: 1.2; stroke-dasharray: 6 4; }
+.sf-keyicon .sp-icpt { stroke: var(--danger); stroke-width: 1.6; } .sf-keyicon .sp-azl { stroke: var(--muted); stroke-width: .9; stroke-dasharray: 2 3; } .sf-keyicon .sp-arrow { fill: var(--muted); }
+.sf-keyicon .sp-rt { fill: none; stroke: var(--muted); stroke-width: 1; } .sf-keyicon .sp-ap { fill: var(--surface); stroke: var(--muted); stroke-width: 1.4; } .sf-keyicon .sp-dr { fill: var(--text); }
+.sf-keyicon .sp-fixring { fill: none; stroke: var(--danger); stroke-width: 2; } .sf-keyicon .sp-fixdot { fill: var(--danger); } .sf-keyicon .sp-hat { fill: rgba(var(--accent-rgb), .14); stroke: none; } .sf-keyicon .sp-mark { fill: var(--surface); stroke: var(--accent); stroke-width: 1.8; }
 /* Sight Fix end */

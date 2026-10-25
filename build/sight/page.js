@@ -4,7 +4,7 @@
     var LIMBS = [["L", "Lower"], ["U", "Upper"]];
     var NAMES = Sight.names();
     var FIELDS = ["sf-starsat", "sf-fixat", "sf-lat-d", "sf-lat-m", "sf-lon-d", "sf-lon-m", "sf-course", "sf-speed", "sf-date", "sf-zone", "sf-hoe", "sf-ie", "sf-temp", "sf-pres", "sf-gps-lat-d", "sf-gps-lat-m", "sf-gps-lon-d", "sf-gps-lon-m"];
-    var RADIOS = ["sf-ap-each", "sf-ap-first", "sf-lat-n", "sf-lat-s", "sf-lon-e", "sf-lon-w", "sf-ie-on", "sf-ie-off", "sf-gps-lat-n", "sf-gps-lat-s", "sf-gps-lon-e", "sf-gps-lon-w"];
+    var RADIOS = ["sf-pm-work", "sf-pm-clean", "sf-ap-each", "sf-ap-first", "sf-lat-n", "sf-lat-s", "sf-lon-e", "sf-lon-w", "sf-ie-on", "sf-ie-off", "sf-gps-lat-n", "sf-gps-lat-s", "sf-gps-lon-e", "sf-gps-lon-w"];
     function shipKey() { var s = Ships.active(); return s ? s.id : "_"; }
     function p2(n) { return ("0" + n).slice(-2); }
     function hms(sec) { sec = ((Math.round(sec) % 86400) + 86400) % 86400; return p2(Math.floor(sec / 3600)) + ":" + p2(Math.floor(sec % 3600 / 60)) + ":" + p2(sec % 60); }
@@ -165,7 +165,7 @@
       $("sf-sheet").classList.remove("no-print");
       $("sf-empty").hidden = true; $("sf-out").hidden = false;
       var w = $("sf-warn"); w.hidden = !r.warnings.length; w.textContent = r.warnings.join("\n");
-      labels(["Latitude", "Longitude", "From the DR", "Quality"]); $("sf-plotbox").hidden = false; $("sf-legend").textContent = LEG_FIX; $("sf-ps-plot").style.display = "";
+      labels(["Latitude", "Longitude", "From the DR", "Quality"]); $("sf-plotbox").hidden = false; plotKey(false); $("sf-ps-plot").style.display = "";
       $("sf-f-lat").textContent = Geo.lat(r.fix.lat); $("sf-f-lon").textContent = Geo.lon(r.fix.lon);
       $("sf-f-time").textContent = "at " + localOf(r.time, v.zone) + " local"; $("sf-f-ut").textContent = utText(r.time) + " UT";
       $("sf-f-set").textContent = r.setDeg === null ? "on the DR" : Math.round(r.setDeg) + "° " + r.distNM.toFixed(1) + " NM";
@@ -186,7 +186,27 @@
       $("sf-log").textContent = line;
       work($("sf-work-tbl"), r, v); sheet(r, v);
     }
-    var LEG_FIX = $("sf-legend").textContent;
+    /* the key under the diagram: a sample of each line and what it means; "Clean" leaves only the final lines and the fix */
+    var KEY = {
+      lop: ['<line class="sp-lop" x1="2" y1="7" x2="40" y2="7"/>', "Position line carried to the fix time"],
+      lop0: ['<line class="sp-lop0" x1="2" y1="7" x2="40" y2="7"/>', "Position line at the time of the sight"],
+      icpt: ['<line class="sp-icpt" x1="2" y1="7" x2="40" y2="7"/>', "Intercept from the assumed position (T towards the body, A away)"],
+      azl: ['<line class="sp-azl" x1="2" y1="7" x2="34" y2="7"/><path class="sp-arrow" d="M34 3 L40 7 L34 11 z"/>', "Azimuth: the direction of the body"],
+      rt: ['<line class="sp-icpt" x1="20" y1="13" x2="20" y2="1"/><line class="sp-lop0" x1="2" y1="7" x2="40" y2="7"/><path class="sp-rt" d="M20 7 L26 7 L26 1"/>', "90°: the position line is square to the azimuth at the intercept"],
+      ap: ['<circle class="sp-ap" cx="21" cy="7" r="4"/>', "Assumed position: your DR at that sight (numbered 1, 2, 3 ...)"],
+      dr: ['<circle class="sp-dr" cx="21" cy="7" r="4"/>', "DR at the fix time"],
+      fix: ['<circle class="sp-fixring" cx="21" cy="7" r="6"/><circle class="sp-fixdot" cx="21" cy="7" r="2"/>', "Fix"],
+      hat: ['<rect class="sp-hat" x="6" y="1" width="30" height="12"/>', "Cocked hat: where the lines cross"],
+      mark: ['<path class="sp-mark" d="M21 1 L27 7 L21 13 L15 7 z"/>', "Longitude by chronometer (or latitude) point"],
+      itp: ['<circle class="sp-fixdot" cx="21" cy="7" r="3"/>', "Intercept terminal point (ITP)"]
+    };
+    function plotKey(single) {
+      var clean = $("sf-pm-clean").checked, keys = single ? ["lop", "icpt", "azl", "itp", "mark", "ap"] : clean ? ["lop", "fix", "dr", "hat"] : ["lop", "lop0", "icpt", "azl", "rt", "ap", "dr", "fix", "hat"];
+      var box = $("sf-key"); box.innerHTML = keys.map(function (k) { return '<span class="sf-keyitem"><svg class="sf-keyicon" viewBox="0 0 42 14" aria-hidden="true">' + KEY[k][0] + '</svg>' + KEY[k][1] + '</span>'; }).join("");
+      $("sf-legend").textContent = single ? "The position line runs at 90° to the azimuth through the ITP." : clean ? "Only the final position lines, the cocked hat and the fix: what you copy into the sight book once the working is checked." :
+        "How it is plotted by hand: from each assumed position lay off the intercept along the azimuth (towards or away), then draw the position line at 90° through its end (the red line and the dashed line make a T). Move each line by the ship's run to the fix time (solid line). The fix is where the solid lines meet.";
+      $("sf-ps-key").textContent = keys.map(function (k) { return { lop: "solid: position line at the fix time", lop0: "dashed: position line at the sight", icpt: "red: intercept", azl: "dotted arrow: azimuth", rt: "small square: 90°", ap: "circle: assumed position", dr: "dot: DR", fix: "ring: fix", hat: "shaded: cocked hat", mark: "diamond: long. by chron", itp: "dot: ITP" }[k]; }).join(" · ");
+    }
     function labels(t) { ["sf-l1", "sf-l2", "sf-l3", "sf-l4"].forEach(function (id, i) { $(id).textContent = t[i]; }); }
     function showLine(r, v) {                                                      /* one sight: position line and longitude by chronometer */
       $("sf-sheet").classList.remove("no-print"); $("sf-empty").hidden = true; $("sf-out").hidden = false;
@@ -198,7 +218,7 @@
       $("sf-f-set").textContent = byLat ? Geo.lat(r.latChron) : r.lonChron === null ? "—" : Geo.lon(r.lonChron);
       $("sf-f-set-sub").textContent = byLat ? "on the DR longitude " + Geo.lon(s.ap.lon) + " (the body bears near " + (Math.cos(s.zn * Math.PI / 180) > 0 ? "north" : "south") + ")" : r.lonChron === null ? "not usable for this bearing" : "on the DR latitude " + Geo.lat(s.ap.lat);
       $("sf-f-q").textContent = p3(r.lop[0]) + "° / " + p3(r.lop[1]) + "°"; $("sf-f-q-sub").textContent = "through the ITP " + Geo.lat(r.itp.lat) + " " + Geo.lon(r.itp.lon);
-      sightsTable($("sf-tbl"), r, v); $("sf-plotbox").hidden = false; $("sf-plot").innerHTML = linePlot(r, 720, 540, "sfc1"); $("sf-legend").textContent = "Solid: the position line through the ITP. Red dashes: the intercept from the DR. Arrow: towards the body. Diamond: " + (r.lonChron === null && r.latChron !== undefined ? "the latitude at the DR longitude." : "the longitude by chronometer on the DR latitude.");
+      sightsTable($("sf-tbl"), r, v); $("sf-plotbox").hidden = false; $("sf-plot").innerHTML = linePlot(r, 720, 540, "sfc1"); plotKey(true);
       $("sf-log").textContent = s.name + " position line " + localOf(r.time, v.zone) + " LT (" + utText(r.time) + " UT): intercept " + Math.abs(s.a).toFixed(1) + "' " + (s.a >= 0 ? "toward" : "away") + ", Zn " + s.zn.toFixed(1) + "°, ITP " + Geo.lat(r.itp.lat) + " " + Geo.lon(r.itp.lon) + ", line " + p3(r.lop[0]) + "°/" + p3(r.lop[1]) + "°" + (byLat ? " | latitude " + Geo.lat(r.latChron) + " on DR long " + Geo.lon(s.ap.lon) : r.lonChron === null ? "" : " | longitude by chronometer " + Geo.lon(r.lonChron) + " on DR lat " + Geo.lat(s.ap.lat));
       work($("sf-work-tbl"), r, v); sheetLine(r, v);
     }
@@ -231,8 +251,9 @@
     }
     function sheet(r, v) {
       var sh = Ships.active(), i = last.inp, ic = i.ic;
-      $("sf-plot").innerHTML = SightPlot.build(r, i, 720, 540, "sfc1");
-      $("sf-ps-plot").innerHTML = SightPlot.build(r, i, 760, 300, "sfc2");
+      var po = { clean: $("sf-pm-clean").checked };
+      $("sf-plot").innerHTML = SightPlot.build(r, i, 720, 540, "sfc1", po);
+      $("sf-ps-plot").innerHTML = SightPlot.build(r, i, 760, 300, "sfc2", po);
       fillCells($("sf-ps-info"), [["Ship", sh ? sh.name : "—"], ["IMO number", sh && sh.imo ? sh.imo : "—"], ["Date (ship's time)", p2(v.date.d) + "/" + p2(v.date.m) + "/" + v.date.y], ["Time zone", (v.zone >= 0 ? "UTC +" : "UTC −") + Math.abs(v.zone) + " h"],
         ["DR at first sight", Geo.lat(i.dr.lat) + " " + Geo.lon(i.dr.lon), 2], ["Course / speed", Math.round(v.course) + "° / " + v.speed + " kn"], ["Height of eye", v.hoe + " m"],
         ["Index error", (ic === 0 ? "nil" : Math.abs(ic).toFixed(1) + "' " + (ic < 0 ? "on" : "off") + " the arc")], ["Temp / pressure", i.temp + " °C / " + i.pres + " hPa"], ["Method", (methodText(r) + apNote()), 2]]);
@@ -397,6 +418,7 @@
     ["sf-mode-sun", "sf-mode-stars"].forEach(function (id) { $(id).addEventListener("change", function () { mode = $("sf-mode-stars").checked ? "stars" : "sun"; build(); setMethod(mode === "stars" ? "stars" : "noon", false); }); });   /* keeps the method buttons in step */
     $("sf-fixat").addEventListener("input", function () { st.fixAuto = false; save(); render(); }); $("sf-fixat").addEventListener("change", function () { save(); render(); });
     ["sf-hoe", "sf-ie"].forEach(function (id) { $(id).addEventListener("input", function () { shipEdited = true; }); }); ["sf-ie-on", "sf-ie-off"].forEach(function (id) { $(id).addEventListener("change", function () { shipEdited = true; }); });
+    ["sf-pm-work", "sf-pm-clean"].forEach(function (id) { $(id).addEventListener("change", function () { save(); render(); }); });
     ["sf-ap-each", "sf-ap-first"].forEach(function (id) { $(id).addEventListener("change", function () { save(); render(); }); });
     /* ---------- the method picker: sets the mode and the bodies, never wipes what was typed ---------- */
     var METHODS = {

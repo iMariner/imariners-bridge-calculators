@@ -959,6 +959,15 @@ table.sf-rows td.w-dr input { font-size: var(--fs-md); background: var(--entry);
 .sf-chip.take { border-left-color: var(--take); } .sf-chip.ok { border-left-color: var(--okc); }
 .sf-chip:hover, .sf-chip:focus { border-color: var(--accent); outline: none; box-shadow: var(--focus-ring); }
 .sf-plot .sp-azl { stroke: var(--muted); stroke-width: .9; stroke-dasharray: 2 3; } .sf-plot .sp-icpt { stroke: var(--danger); stroke-width: 1.6; } .sf-plot .sp-rt { fill: none; stroke: var(--muted); stroke-width: 1; }
+.sf-plotbar { display: flex; align-items: center; gap: var(--sp-3); margin-top: var(--sp-2); }
+.sf-plotbar .segmented { min-width: 260px; }
+.sf-key { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--sp-1) var(--sp-4); margin-top: var(--sp-3); font-size: var(--fs-sm); color: var(--text); }
+.sf-keyitem { display: flex; align-items: center; gap: var(--sp-2); }
+.sf-keyicon { flex: 0 0 auto; width: 42px; height: 14px; overflow: visible; }
+.sf-keyicon .sp-lop { stroke: var(--accent); stroke-width: 2; } .sf-keyicon .sp-lop0 { stroke: var(--muted); stroke-width: 1.2; stroke-dasharray: 6 4; }
+.sf-keyicon .sp-icpt { stroke: var(--danger); stroke-width: 1.6; } .sf-keyicon .sp-azl { stroke: var(--muted); stroke-width: .9; stroke-dasharray: 2 3; } .sf-keyicon .sp-arrow { fill: var(--muted); }
+.sf-keyicon .sp-rt { fill: none; stroke: var(--muted); stroke-width: 1; } .sf-keyicon .sp-ap { fill: var(--surface); stroke: var(--muted); stroke-width: 1.4; } .sf-keyicon .sp-dr { fill: var(--text); }
+.sf-keyicon .sp-fixring { fill: none; stroke: var(--danger); stroke-width: 2; } .sf-keyicon .sp-fixdot { fill: var(--danger); } .sf-keyicon .sp-hat { fill: rgba(var(--accent-rgb), .14); stroke: none; } .sf-keyicon .sp-mark { fill: var(--surface); stroke: var(--accent); stroke-width: 1.8; }
 /* Sight Fix end */
 </style>
 </head>
@@ -2907,7 +2916,10 @@ table.sf-rows td.w-dr input { font-size: var(--fs-md); background: var(--entry);
               <p class="sf-runnote" id="sf-runnote" hidden></p>
               <div class="tbl-scroll"><table class="dt sf-res" id="sf-tbl"></table></div>
               <div class="sf-plotbox u-mt-3" id="sf-plotbox"><svg class="sf-plot" id="sf-plot" viewBox="0 0 720 540" role="img" aria-label="Plot of the lines of position and the fix"></svg>
-                <div class="legend" id="sf-legend">As plotted by hand: from each assumed position (circle) the dotted arrow is the azimuth towards the body, the red line is the intercept (T towards, A away), and the dashed line at right angles through its end is the position line. Solid lines: the same lines carried to the fix time. Numbers: the DR at each sight. Ring: fix.</div></div>
+                <div class="sf-plotbar"><span class="small muted" id="sf-pm-lbl">Diagram</span>
+                  <div class="segmented" role="radiogroup" aria-labelledby="sf-pm-lbl"><input type="radio" name="sf-pm" id="sf-pm-work" value="work" checked><label for="sf-pm-work">With the working</label><input type="radio" name="sf-pm" id="sf-pm-clean" value="clean"><label for="sf-pm-clean">Clean</label></div></div>
+                <div class="sf-key" id="sf-key" aria-label="What the lines mean"></div>
+                <div class="legend" id="sf-legend"></div></div>
               <div class="logline mono" id="sf-log"></div>
               <div class="actions"><button type="button" class="btn primary" id="sf-copy">Copy fix</button><button type="button" class="btn" id="sf-print">Print sheet</button></div>
               <details class="ge-fold u-mt-3" id="sf-work"><summary>The working, line by line</summary><div class="tbl-scroll u-mt-2h"><table class="dt sf-res" id="sf-work-tbl"></table></div></details>
@@ -2924,6 +2936,7 @@ table.sf-rows td.w-dr input { font-size: var(--fs-md); background: var(--entry);
         <div class="ps-result"><div><span id="sf-ps-l1">Latitude</span><strong id="sf-ps-lat">—</strong></div><div><span id="sf-ps-l2">Longitude</span><strong id="sf-ps-lon">—</strong></div></div>
         <div class="ps-log mono" id="sf-ps-log"></div>
         <div class="ps-note" id="sf-ps-warn"></div>
+        <div class="ps-note" id="sf-ps-key"></div>
         <svg class="sf-plot ps-diagram" id="sf-ps-plot" viewBox="0 0 760 300" role="img" aria-label="Plot"></svg>
         <div class="ps-remarks">Remarks:</div>
         <div class="ps-sign"><div>Officer of the watch<span>Name, signature, date</span></div><div>Master<span>Name, signature, date</span></div></div>
@@ -7723,9 +7736,10 @@ table.sf-rows td.w-dr input { font-size: var(--fs-md); background: var(--entry);
       var den = a.dx * b.dy - a.dy * b.dx; if (Math.abs(den) < 1e-9) return null;
       var t = ((b.x - a.x) * b.dy - (b.y - a.y) * b.dx) / den; return { x: a.x + t * a.dx, y: a.y + t * a.dy };
     }
-    /* opt.single: one position line. r.fix is then the ITP; opt.mark = { lat, lon, label } is the longitude by chronometer (or latitude) point */
-    function build(r, inp, W, H, id, opt) {
-      opt = opt || {};
+    /* the plotting geometry in nautical miles (x east, y north) around the fix: for each sight the assumed position (ap), the
+       intercept terminal point (f0, the position line at the time of the sight passes through it at 90 deg to the azimuth) and the
+       same line carried to the fix time (f1); dx, dy is the direction of the position line. Exposed for the geometry test. */
+    function geom(r, inp) {
       var fx = r.fix, drF = r.dr || SightFix.drAt(inp.dr, r.time), cosF = Math.cos(fx.lat * R);
       function pl(p) { var dl = p.lon - fx.lon; dl -= 360 * Math.round(dl / 360); return { x: dl * 60 * cosF, y: (p.lat - fx.lat) * 60 }; }
       var pts = [{ x: 0, y: 0 }], dF = pl(drF); pts.push(dF);
@@ -7739,6 +7753,12 @@ table.sf-rows td.w-dr input { font-size: var(--fs-md); background: var(--entry);
         pts.push(ap, f0, f1p);
         return { s: s, ap: ap, f0: f0, f1: f1p, dx: Math.cos(z), dy: -Math.sin(z) };
       });
+      return { fx: fx, cosF: cosF, pl: pl, pts: pts, dF: dF, L: L };
+    }
+    /* opt.single: one position line. r.fix is then the ITP; opt.mark = { lat, lon, label } is the longitude by chronometer (or latitude) point */
+    function build(r, inp, W, H, id, opt) {
+      opt = opt || {};
+      var G = geom(r, inp), fx = G.fx, cosF = G.cosF, pl = G.pl, pts = G.pts, dF = G.dF, L = G.L;
       for (var ii = 0; ii < L.length; ii++) for (var jj = ii + 1; jj < L.length; jj++) {    /* every crossing of the lines, so the whole figure is in view */
         var mx = meet({ x: L[ii].f1.x, y: L[ii].f1.y, dx: L[ii].dx, dy: L[ii].dy }, { x: L[jj].f1.x, y: L[jj].f1.y, dx: L[jj].dx, dy: L[jj].dy });
         if (mx && Math.hypot(mx.x, mx.y) < 40) pts.push(mx);
@@ -7776,14 +7796,14 @@ table.sf-rows td.w-dr input { font-size: var(--fs-md); background: var(--entry);
       /* DR track and APs */
       var runNM = Math.hypot(dF.x - L[0].ap.x, dF.y - L[0].ap.y), first = L[0].ap;
       var tmin = L[0].s.ms; for (k = 1; k < L.length; k++) if (L[k].s.ms < tmin) { tmin = L[k].s.ms; first = L[k].ap; }
-      if (runNM > 0.3) o.push('<line class="sp-track" x1="' + f1(X(first.x)) + '" y1="' + f1(Y(first.y)) + '" x2="' + f1(X(dF.x)) + '" y2="' + f1(Y(dF.y)) + '"/>');
+      if (runNM > 0.3 && !opt.clean) o.push('<line class="sp-track" x1="' + f1(X(first.x)) + '" y1="' + f1(Y(first.y)) + '" x2="' + f1(X(dF.x)) + '" y2="' + f1(Y(dF.y)) + '"/>');
       /* lines */
       var labels = [];
       L.forEach(function (l, i) {
         var big = (vx1 - vx0 + vy1 - vy0) * 2, dxp = l.dx * sc, dyp = -l.dy * sc;
         function seg(p, cls) { o.push('<line class="' + cls + '" x1="' + f1(X(p.x - l.dx * big)) + '" y1="' + f1(Y(p.y - l.dy * big)) + '" x2="' + f1(X(p.x + l.dx * big)) + '" y2="' + f1(Y(p.y + l.dy * big)) + '"/>'); }
-        if (runNM > 0.3) seg(l.f0, "sp-lop0");
-        if (!opt.single && l.s.name !== "Latitude") {                                 /* the construction: azimuth from the AP, intercept, right angle */
+        if (runNM > 0.3 && !opt.clean) seg(l.f0, "sp-lop0");
+        if (!opt.single && !opt.clean && l.s.name !== "Latitude") {                                 /* the construction: azimuth from the AP, intercept, right angle */
           var zr = l.s.zn * R, ux = Math.sin(zr), uy = Math.cos(zr), len = Math.max(Math.abs(l.s.a) + 10 / sc, 26 / sc);
           o.push('<line class="sp-azl" x1="' + f1(X(l.ap.x)) + '" y1="' + f1(Y(l.ap.y)) + '" x2="' + f1(X(l.ap.x + ux * len)) + '" y2="' + f1(Y(l.ap.y + uy * len)) + '" marker-end="url(#' + id + 'a)"/>');
           o.push('<line class="sp-icpt" x1="' + f1(X(l.ap.x)) + '" y1="' + f1(Y(l.ap.y)) + '" x2="' + f1(X(l.f0.x)) + '" y2="' + f1(Y(l.f0.y)) + '"/>');
@@ -7791,8 +7811,8 @@ table.sf-rows td.w-dr input { font-size: var(--fs-md); background: var(--entry);
           if (Math.abs(l.s.a) * sc > 8) o.push('<path class="sp-rt" d="M' + f1(X(bx0)) + ' ' + f1(Y(by0)) + ' L' + f1(X(bx0 + l.dx * e)) + ' ' + f1(Y(by0 + l.dy * e)) + ' L' + f1(X(l.f0.x + l.dx * e)) + ' ' + f1(Y(l.f0.y + l.dy * e)) + '"/>');
           o.push('<circle class="sp-foot" cx="' + f1(X(l.f0.x)) + '" cy="' + f1(Y(l.f0.y)) + '" r="2"/>');
         }
-        o.push('<circle class="sp-ap" cx="' + f1(X(l.ap.x)) + '" cy="' + f1(Y(l.ap.y)) + '" r="3"/>');
-        if (!opt.single && runNM > 0.3 && l.s.name !== "Latitude") {                   /* number the ship's DR at each sight, as written in the sight book */
+        if (!opt.clean) o.push('<circle class="sp-ap" cx="' + f1(X(l.ap.x)) + '" cy="' + f1(Y(l.ap.y)) + '" r="3"/>');
+        if (!opt.single && !opt.clean && runNM > 0.3 && l.s.name !== "Latitude") {                   /* number the ship's DR at each sight, as written in the sight book */
           var dq = l.s.drSight ? pl(l.s.drSight) : l.ap;
           o.push('<circle class="sp-ap" cx="' + f1(X(dq.x)) + '" cy="' + f1(Y(dq.y)) + '" r="3"/><text class="sp-lab sp-halo" x="' + f1(X(dq.x) - 7) + '" y="' + f1(Y(dq.y) + 4) + '" text-anchor="end">' + (i + 1) + '</text>');
         }
@@ -7835,7 +7855,7 @@ table.sf-rows td.w-dr input { font-size: var(--fs-md); background: var(--entry);
       o.push('<g class="sp-north"><line x1="' + nx + '" x2="' + nx + '" y1="' + ny + '" y2="' + (ny - 26) + '"/><path d="M' + nx + ' ' + (ny - 30) + ' l-4 9 l8 0 z"/><text class="sp-lab" x="' + nx + '" y="' + (ny - 36) + '" text-anchor="middle">N</text></g>');
       return o.join("");
     }
-    return { build: build };
+    return { build: build, geom: geom };
   })();
   /* SIGHTPLOT-END */
 
@@ -7845,7 +7865,7 @@ table.sf-rows td.w-dr input { font-size: var(--fs-md); background: var(--entry);
     var LIMBS = [["L", "Lower"], ["U", "Upper"]];
     var NAMES = Sight.names();
     var FIELDS = ["sf-starsat", "sf-fixat", "sf-lat-d", "sf-lat-m", "sf-lon-d", "sf-lon-m", "sf-course", "sf-speed", "sf-date", "sf-zone", "sf-hoe", "sf-ie", "sf-temp", "sf-pres", "sf-gps-lat-d", "sf-gps-lat-m", "sf-gps-lon-d", "sf-gps-lon-m"];
-    var RADIOS = ["sf-ap-each", "sf-ap-first", "sf-lat-n", "sf-lat-s", "sf-lon-e", "sf-lon-w", "sf-ie-on", "sf-ie-off", "sf-gps-lat-n", "sf-gps-lat-s", "sf-gps-lon-e", "sf-gps-lon-w"];
+    var RADIOS = ["sf-pm-work", "sf-pm-clean", "sf-ap-each", "sf-ap-first", "sf-lat-n", "sf-lat-s", "sf-lon-e", "sf-lon-w", "sf-ie-on", "sf-ie-off", "sf-gps-lat-n", "sf-gps-lat-s", "sf-gps-lon-e", "sf-gps-lon-w"];
     function shipKey() { var s = Ships.active(); return s ? s.id : "_"; }
     function p2(n) { return ("0" + n).slice(-2); }
     function hms(sec) { sec = ((Math.round(sec) % 86400) + 86400) % 86400; return p2(Math.floor(sec / 3600)) + ":" + p2(Math.floor(sec % 3600 / 60)) + ":" + p2(sec % 60); }
@@ -8006,7 +8026,7 @@ table.sf-rows td.w-dr input { font-size: var(--fs-md); background: var(--entry);
       $("sf-sheet").classList.remove("no-print");
       $("sf-empty").hidden = true; $("sf-out").hidden = false;
       var w = $("sf-warn"); w.hidden = !r.warnings.length; w.textContent = r.warnings.join("\n");
-      labels(["Latitude", "Longitude", "From the DR", "Quality"]); $("sf-plotbox").hidden = false; $("sf-legend").textContent = LEG_FIX; $("sf-ps-plot").style.display = "";
+      labels(["Latitude", "Longitude", "From the DR", "Quality"]); $("sf-plotbox").hidden = false; plotKey(false); $("sf-ps-plot").style.display = "";
       $("sf-f-lat").textContent = Geo.lat(r.fix.lat); $("sf-f-lon").textContent = Geo.lon(r.fix.lon);
       $("sf-f-time").textContent = "at " + localOf(r.time, v.zone) + " local"; $("sf-f-ut").textContent = utText(r.time) + " UT";
       $("sf-f-set").textContent = r.setDeg === null ? "on the DR" : Math.round(r.setDeg) + "° " + r.distNM.toFixed(1) + " NM";
@@ -8027,7 +8047,27 @@ table.sf-rows td.w-dr input { font-size: var(--fs-md); background: var(--entry);
       $("sf-log").textContent = line;
       work($("sf-work-tbl"), r, v); sheet(r, v);
     }
-    var LEG_FIX = $("sf-legend").textContent;
+    /* the key under the diagram: a sample of each line and what it means; "Clean" leaves only the final lines and the fix */
+    var KEY = {
+      lop: ['<line class="sp-lop" x1="2" y1="7" x2="40" y2="7"/>', "Position line carried to the fix time"],
+      lop0: ['<line class="sp-lop0" x1="2" y1="7" x2="40" y2="7"/>', "Position line at the time of the sight"],
+      icpt: ['<line class="sp-icpt" x1="2" y1="7" x2="40" y2="7"/>', "Intercept from the assumed position (T towards the body, A away)"],
+      azl: ['<line class="sp-azl" x1="2" y1="7" x2="34" y2="7"/><path class="sp-arrow" d="M34 3 L40 7 L34 11 z"/>', "Azimuth: the direction of the body"],
+      rt: ['<line class="sp-icpt" x1="20" y1="13" x2="20" y2="1"/><line class="sp-lop0" x1="2" y1="7" x2="40" y2="7"/><path class="sp-rt" d="M20 7 L26 7 L26 1"/>', "90°: the position line is square to the azimuth at the intercept"],
+      ap: ['<circle class="sp-ap" cx="21" cy="7" r="4"/>', "Assumed position: your DR at that sight (numbered 1, 2, 3 ...)"],
+      dr: ['<circle class="sp-dr" cx="21" cy="7" r="4"/>', "DR at the fix time"],
+      fix: ['<circle class="sp-fixring" cx="21" cy="7" r="6"/><circle class="sp-fixdot" cx="21" cy="7" r="2"/>', "Fix"],
+      hat: ['<rect class="sp-hat" x="6" y="1" width="30" height="12"/>', "Cocked hat: where the lines cross"],
+      mark: ['<path class="sp-mark" d="M21 1 L27 7 L21 13 L15 7 z"/>', "Longitude by chronometer (or latitude) point"],
+      itp: ['<circle class="sp-fixdot" cx="21" cy="7" r="3"/>', "Intercept terminal point (ITP)"]
+    };
+    function plotKey(single) {
+      var clean = $("sf-pm-clean").checked, keys = single ? ["lop", "icpt", "azl", "itp", "mark", "ap"] : clean ? ["lop", "fix", "dr", "hat"] : ["lop", "lop0", "icpt", "azl", "rt", "ap", "dr", "fix", "hat"];
+      var box = $("sf-key"); box.innerHTML = keys.map(function (k) { return '<span class="sf-keyitem"><svg class="sf-keyicon" viewBox="0 0 42 14" aria-hidden="true">' + KEY[k][0] + '</svg>' + KEY[k][1] + '</span>'; }).join("");
+      $("sf-legend").textContent = single ? "The position line runs at 90° to the azimuth through the ITP." : clean ? "Only the final position lines, the cocked hat and the fix: what you copy into the sight book once the working is checked." :
+        "How it is plotted by hand: from each assumed position lay off the intercept along the azimuth (towards or away), then draw the position line at 90° through its end (the red line and the dashed line make a T). Move each line by the ship's run to the fix time (solid line). The fix is where the solid lines meet.";
+      $("sf-ps-key").textContent = keys.map(function (k) { return { lop: "solid: position line at the fix time", lop0: "dashed: position line at the sight", icpt: "red: intercept", azl: "dotted arrow: azimuth", rt: "small square: 90°", ap: "circle: assumed position", dr: "dot: DR", fix: "ring: fix", hat: "shaded: cocked hat", mark: "diamond: long. by chron", itp: "dot: ITP" }[k]; }).join(" · ");
+    }
     function labels(t) { ["sf-l1", "sf-l2", "sf-l3", "sf-l4"].forEach(function (id, i) { $(id).textContent = t[i]; }); }
     function showLine(r, v) {                                                      /* one sight: position line and longitude by chronometer */
       $("sf-sheet").classList.remove("no-print"); $("sf-empty").hidden = true; $("sf-out").hidden = false;
@@ -8039,7 +8079,7 @@ table.sf-rows td.w-dr input { font-size: var(--fs-md); background: var(--entry);
       $("sf-f-set").textContent = byLat ? Geo.lat(r.latChron) : r.lonChron === null ? "—" : Geo.lon(r.lonChron);
       $("sf-f-set-sub").textContent = byLat ? "on the DR longitude " + Geo.lon(s.ap.lon) + " (the body bears near " + (Math.cos(s.zn * Math.PI / 180) > 0 ? "north" : "south") + ")" : r.lonChron === null ? "not usable for this bearing" : "on the DR latitude " + Geo.lat(s.ap.lat);
       $("sf-f-q").textContent = p3(r.lop[0]) + "° / " + p3(r.lop[1]) + "°"; $("sf-f-q-sub").textContent = "through the ITP " + Geo.lat(r.itp.lat) + " " + Geo.lon(r.itp.lon);
-      sightsTable($("sf-tbl"), r, v); $("sf-plotbox").hidden = false; $("sf-plot").innerHTML = linePlot(r, 720, 540, "sfc1"); $("sf-legend").textContent = "Solid: the position line through the ITP. Red dashes: the intercept from the DR. Arrow: towards the body. Diamond: " + (r.lonChron === null && r.latChron !== undefined ? "the latitude at the DR longitude." : "the longitude by chronometer on the DR latitude.");
+      sightsTable($("sf-tbl"), r, v); $("sf-plotbox").hidden = false; $("sf-plot").innerHTML = linePlot(r, 720, 540, "sfc1"); plotKey(true);
       $("sf-log").textContent = s.name + " position line " + localOf(r.time, v.zone) + " LT (" + utText(r.time) + " UT): intercept " + Math.abs(s.a).toFixed(1) + "' " + (s.a >= 0 ? "toward" : "away") + ", Zn " + s.zn.toFixed(1) + "°, ITP " + Geo.lat(r.itp.lat) + " " + Geo.lon(r.itp.lon) + ", line " + p3(r.lop[0]) + "°/" + p3(r.lop[1]) + "°" + (byLat ? " | latitude " + Geo.lat(r.latChron) + " on DR long " + Geo.lon(s.ap.lon) : r.lonChron === null ? "" : " | longitude by chronometer " + Geo.lon(r.lonChron) + " on DR lat " + Geo.lat(s.ap.lat));
       work($("sf-work-tbl"), r, v); sheetLine(r, v);
     }
@@ -8072,8 +8112,9 @@ table.sf-rows td.w-dr input { font-size: var(--fs-md); background: var(--entry);
     }
     function sheet(r, v) {
       var sh = Ships.active(), i = last.inp, ic = i.ic;
-      $("sf-plot").innerHTML = SightPlot.build(r, i, 720, 540, "sfc1");
-      $("sf-ps-plot").innerHTML = SightPlot.build(r, i, 760, 300, "sfc2");
+      var po = { clean: $("sf-pm-clean").checked };
+      $("sf-plot").innerHTML = SightPlot.build(r, i, 720, 540, "sfc1", po);
+      $("sf-ps-plot").innerHTML = SightPlot.build(r, i, 760, 300, "sfc2", po);
       fillCells($("sf-ps-info"), [["Ship", sh ? sh.name : "—"], ["IMO number", sh && sh.imo ? sh.imo : "—"], ["Date (ship's time)", p2(v.date.d) + "/" + p2(v.date.m) + "/" + v.date.y], ["Time zone", (v.zone >= 0 ? "UTC +" : "UTC −") + Math.abs(v.zone) + " h"],
         ["DR at first sight", Geo.lat(i.dr.lat) + " " + Geo.lon(i.dr.lon), 2], ["Course / speed", Math.round(v.course) + "° / " + v.speed + " kn"], ["Height of eye", v.hoe + " m"],
         ["Index error", (ic === 0 ? "nil" : Math.abs(ic).toFixed(1) + "' " + (ic < 0 ? "on" : "off") + " the arc")], ["Temp / pressure", i.temp + " °C / " + i.pres + " hPa"], ["Method", (methodText(r) + apNote()), 2]]);
@@ -8238,6 +8279,7 @@ table.sf-rows td.w-dr input { font-size: var(--fs-md); background: var(--entry);
     ["sf-mode-sun", "sf-mode-stars"].forEach(function (id) { $(id).addEventListener("change", function () { mode = $("sf-mode-stars").checked ? "stars" : "sun"; build(); setMethod(mode === "stars" ? "stars" : "noon", false); }); });   /* keeps the method buttons in step */
     $("sf-fixat").addEventListener("input", function () { st.fixAuto = false; save(); render(); }); $("sf-fixat").addEventListener("change", function () { save(); render(); });
     ["sf-hoe", "sf-ie"].forEach(function (id) { $(id).addEventListener("input", function () { shipEdited = true; }); }); ["sf-ie-on", "sf-ie-off"].forEach(function (id) { $(id).addEventListener("change", function () { shipEdited = true; }); });
+    ["sf-pm-work", "sf-pm-clean"].forEach(function (id) { $(id).addEventListener("change", function () { save(); render(); }); });
     ["sf-ap-each", "sf-ap-first"].forEach(function (id) { $(id).addEventListener("change", function () { save(); render(); }); });
     /* ---------- the method picker: sets the mode and the bodies, never wipes what was typed ---------- */
     var METHODS = {
@@ -8279,6 +8321,8 @@ table.sf-rows td.w-dr input { font-size: var(--fs-md); background: var(--entry);
     load(); build(); setMethod(st.method, false);
   }
   /* SIGHTPAGE-END */
+
+
 
 
 

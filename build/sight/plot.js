@@ -24,9 +24,10 @@
       var den = a.dx * b.dy - a.dy * b.dx; if (Math.abs(den) < 1e-9) return null;
       var t = ((b.x - a.x) * b.dy - (b.y - a.y) * b.dx) / den; return { x: a.x + t * a.dx, y: a.y + t * a.dy };
     }
-    /* opt.single: one position line. r.fix is then the ITP; opt.mark = { lat, lon, label } is the longitude by chronometer (or latitude) point */
-    function build(r, inp, W, H, id, opt) {
-      opt = opt || {};
+    /* the plotting geometry in nautical miles (x east, y north) around the fix: for each sight the assumed position (ap), the
+       intercept terminal point (f0, the position line at the time of the sight passes through it at 90 deg to the azimuth) and the
+       same line carried to the fix time (f1); dx, dy is the direction of the position line. Exposed for the geometry test. */
+    function geom(r, inp) {
       var fx = r.fix, drF = r.dr || SightFix.drAt(inp.dr, r.time), cosF = Math.cos(fx.lat * R);
       function pl(p) { var dl = p.lon - fx.lon; dl -= 360 * Math.round(dl / 360); return { x: dl * 60 * cosF, y: (p.lat - fx.lat) * 60 }; }
       var pts = [{ x: 0, y: 0 }], dF = pl(drF); pts.push(dF);
@@ -40,6 +41,12 @@
         pts.push(ap, f0, f1p);
         return { s: s, ap: ap, f0: f0, f1: f1p, dx: Math.cos(z), dy: -Math.sin(z) };
       });
+      return { fx: fx, cosF: cosF, pl: pl, pts: pts, dF: dF, L: L };
+    }
+    /* opt.single: one position line. r.fix is then the ITP; opt.mark = { lat, lon, label } is the longitude by chronometer (or latitude) point */
+    function build(r, inp, W, H, id, opt) {
+      opt = opt || {};
+      var G = geom(r, inp), fx = G.fx, cosF = G.cosF, pl = G.pl, pts = G.pts, dF = G.dF, L = G.L;
       for (var ii = 0; ii < L.length; ii++) for (var jj = ii + 1; jj < L.length; jj++) {    /* every crossing of the lines, so the whole figure is in view */
         var mx = meet({ x: L[ii].f1.x, y: L[ii].f1.y, dx: L[ii].dx, dy: L[ii].dy }, { x: L[jj].f1.x, y: L[jj].f1.y, dx: L[jj].dx, dy: L[jj].dy });
         if (mx && Math.hypot(mx.x, mx.y) < 40) pts.push(mx);
@@ -77,14 +84,14 @@
       /* DR track and APs */
       var runNM = Math.hypot(dF.x - L[0].ap.x, dF.y - L[0].ap.y), first = L[0].ap;
       var tmin = L[0].s.ms; for (k = 1; k < L.length; k++) if (L[k].s.ms < tmin) { tmin = L[k].s.ms; first = L[k].ap; }
-      if (runNM > 0.3) o.push('<line class="sp-track" x1="' + f1(X(first.x)) + '" y1="' + f1(Y(first.y)) + '" x2="' + f1(X(dF.x)) + '" y2="' + f1(Y(dF.y)) + '"/>');
+      if (runNM > 0.3 && !opt.clean) o.push('<line class="sp-track" x1="' + f1(X(first.x)) + '" y1="' + f1(Y(first.y)) + '" x2="' + f1(X(dF.x)) + '" y2="' + f1(Y(dF.y)) + '"/>');
       /* lines */
       var labels = [];
       L.forEach(function (l, i) {
         var big = (vx1 - vx0 + vy1 - vy0) * 2, dxp = l.dx * sc, dyp = -l.dy * sc;
         function seg(p, cls) { o.push('<line class="' + cls + '" x1="' + f1(X(p.x - l.dx * big)) + '" y1="' + f1(Y(p.y - l.dy * big)) + '" x2="' + f1(X(p.x + l.dx * big)) + '" y2="' + f1(Y(p.y + l.dy * big)) + '"/>'); }
-        if (runNM > 0.3) seg(l.f0, "sp-lop0");
-        if (!opt.single && l.s.name !== "Latitude") {                                 /* the construction: azimuth from the AP, intercept, right angle */
+        if (runNM > 0.3 && !opt.clean) seg(l.f0, "sp-lop0");
+        if (!opt.single && !opt.clean && l.s.name !== "Latitude") {                                 /* the construction: azimuth from the AP, intercept, right angle */
           var zr = l.s.zn * R, ux = Math.sin(zr), uy = Math.cos(zr), len = Math.max(Math.abs(l.s.a) + 10 / sc, 26 / sc);
           o.push('<line class="sp-azl" x1="' + f1(X(l.ap.x)) + '" y1="' + f1(Y(l.ap.y)) + '" x2="' + f1(X(l.ap.x + ux * len)) + '" y2="' + f1(Y(l.ap.y + uy * len)) + '" marker-end="url(#' + id + 'a)"/>');
           o.push('<line class="sp-icpt" x1="' + f1(X(l.ap.x)) + '" y1="' + f1(Y(l.ap.y)) + '" x2="' + f1(X(l.f0.x)) + '" y2="' + f1(Y(l.f0.y)) + '"/>');
@@ -92,8 +99,8 @@
           if (Math.abs(l.s.a) * sc > 8) o.push('<path class="sp-rt" d="M' + f1(X(bx0)) + ' ' + f1(Y(by0)) + ' L' + f1(X(bx0 + l.dx * e)) + ' ' + f1(Y(by0 + l.dy * e)) + ' L' + f1(X(l.f0.x + l.dx * e)) + ' ' + f1(Y(l.f0.y + l.dy * e)) + '"/>');
           o.push('<circle class="sp-foot" cx="' + f1(X(l.f0.x)) + '" cy="' + f1(Y(l.f0.y)) + '" r="2"/>');
         }
-        o.push('<circle class="sp-ap" cx="' + f1(X(l.ap.x)) + '" cy="' + f1(Y(l.ap.y)) + '" r="3"/>');
-        if (!opt.single && runNM > 0.3 && l.s.name !== "Latitude") {                   /* number the ship's DR at each sight, as written in the sight book */
+        if (!opt.clean) o.push('<circle class="sp-ap" cx="' + f1(X(l.ap.x)) + '" cy="' + f1(Y(l.ap.y)) + '" r="3"/>');
+        if (!opt.single && !opt.clean && runNM > 0.3 && l.s.name !== "Latitude") {                   /* number the ship's DR at each sight, as written in the sight book */
           var dq = l.s.drSight ? pl(l.s.drSight) : l.ap;
           o.push('<circle class="sp-ap" cx="' + f1(X(dq.x)) + '" cy="' + f1(Y(dq.y)) + '" r="3"/><text class="sp-lab sp-halo" x="' + f1(X(dq.x) - 7) + '" y="' + f1(Y(dq.y) + 4) + '" text-anchor="end">' + (i + 1) + '</text>');
         }
@@ -136,6 +143,6 @@
       o.push('<g class="sp-north"><line x1="' + nx + '" x2="' + nx + '" y1="' + ny + '" y2="' + (ny - 26) + '"/><path d="M' + nx + ' ' + (ny - 30) + ' l-4 9 l8 0 z"/><text class="sp-lab" x="' + nx + '" y="' + (ny - 36) + '" text-anchor="middle">N</text></g>');
       return o.join("");
     }
-    return { build: build };
+    return { build: build, geom: geom };
   })();
   /* SIGHTPLOT-END */
