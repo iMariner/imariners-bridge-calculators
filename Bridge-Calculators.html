@@ -883,6 +883,26 @@ table.xs th { letter-spacing: .04em; font-size: var(--fs-2xs); }
 .ds-audit-list b { color: var(--danger); }
 .ds-tools td:nth-child(n+2), .ds-tools th:nth-child(n+2) { text-align: left; }
 code { font-family: var(--font-mono); font-size: .9em; background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r-xs); padding: 0 var(--sp-1); }
+
+/* Sight Fix */
+table.sf-rows { width: 100%; border-collapse: separate; border-spacing: 0 var(--sp-1); }
+table.sf-rows th { font-family: var(--font-mono); font-size: var(--fs-xs); font-weight: var(--fw-semibold); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); text-align: left; padding: var(--sp-1) var(--sp-2); border-bottom: var(--hair) solid var(--border-strong); }
+table.sf-rows td { padding: var(--sp-1) var(--sp-1); vertical-align: middle; }
+table.sf-rows td.n { width: 40px; color: var(--muted); font-weight: var(--fw-bold); font-size: var(--fs-md); }
+table.sf-rows td.w-star { min-width: 150px; } table.sf-rows td.w-time { min-width: 126px; } table.sf-rows td.w-limb { min-width: 120px; }
+table.sf-rows td input, table.sf-rows td select { width: 100%; font-size: var(--fs-lg); font-weight: var(--fw-semibold); padding: var(--sp-1h) var(--sp-2); }
+table.sf-rows td select { font-family: inherit; color: var(--text); background: var(--surface); border: var(--hair) solid var(--border-strong); border-radius: var(--r-md); outline: none; }
+table.sf-rows td select:focus { border-color: var(--accent); box-shadow: var(--focus-ring); }
+table.sf-rows td .fused .input-wrap input { background: var(--entry); }
+table.sf-rows td input[type="time"] { background: var(--entry); border: var(--hair) solid var(--border-strong); border-radius: var(--r-md); }
+.sf-more summary { cursor: pointer; font-weight: var(--fw-semibold); color: var(--accent); }
+table.sf-res { width: 100%; font-size: var(--fs-base); margin-top: var(--sp-4); }
+table.sf-res th, table.sf-res td { text-align: left; padding: var(--sp-1h) var(--sp-2); white-space: nowrap; }
+table.sf-res td.num, table.sf-res th:not(:first-child) { text-align: right; }
+table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
+#sf-hero { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--sp-3); }
+#sf-hero .readout { font-size: var(--fs-2xl); white-space: normal; }
+@media (max-width: 1100px) { #sf-hero { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 </style>
 </head>
 <body>
@@ -918,6 +938,10 @@ code { font-family: var(--font-mono); font-size: .9em; background: var(--surface
     <a href="#mer-pass" data-tool-link="mer-pass">
       <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18h18"/><path d="M7 18a5 5 0 0 1 10 0"/><path d="M12 5v3M5.6 8.6l2 2M18.4 8.6l-2 2"/></svg>
       Meridian Passage
+    </a>
+    <a href="#sight-fix" data-tool-link="sight-fix">
+      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18h18"/><path d="M7 18a5 5 0 0 1 10 0"/><path d="M12 5v3M5.6 8.6l2 2M18.4 8.6l-2 2"/></svg>
+      Sight Fix
     </a>
     <h2>Passage planning</h2>
     <a href="#special-areas" data-tool-link="special-areas">
@@ -2706,6 +2730,82 @@ code { font-family: var(--font-mono); font-size: .9em; background: var(--surface
       <div class="card">
         <h2>Tools in this app</h2>
         <table class="dt ds-tools" id="ds-tools"><thead><tr><th>Tool</th><th>Group</th><th>Address</th></tr></thead><tbody></tbody></table>
+      </div>
+    </section>
+    <section class="tool cmp" id="sight-fix" hidden>
+      <div class="tool-head">
+        <h1>Sight Fix</h1>
+        <p>Running fix by the Sun (two sights), or a fix by 3 to 4 stars. Type the times and the sextant altitudes; the position, the intercepts and the working come out by themselves.</p>
+      </div>
+      <div class="grid">
+        <form class="card" id="sf-form" autocomplete="off" onsubmit="return false">
+          <h2>Ship and DR</h2>
+          <div class="segmented" role="radiogroup" aria-label="What you observed">
+            <input type="radio" name="sf-mode" id="sf-mode-sun" value="sun" checked><label for="sf-mode-sun">Sun, two sights</label>
+            <input type="radio" name="sf-mode" id="sf-mode-stars" value="stars"><label for="sf-mode-stars">Stars, 3 or 4</label>
+          </div>
+          <fieldset class="u-mt-3">
+            <legend><span class="dot c-true"></span>DR position at the time of the first sight</legend>
+            <div class="field"><label for="sf-lat-d">Latitude</label><div class="fused"><div class="input-wrap"><input id="sf-lat-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div><div class="input-wrap"><input id="sf-lat-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="Latitude hemisphere"><input type="radio" name="sf-ns" id="sf-lat-n" value="N" checked><label for="sf-lat-n">North</label><input type="radio" name="sf-ns" id="sf-lat-s" value="S"><label for="sf-lat-s">South</label></div></div><div class="hint" id="sf-lat-msg">0 – 84°</div></div>
+            <div class="field"><label for="sf-lon-d">Longitude</label><div class="fused"><div class="input-wrap"><input id="sf-lon-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div><div class="input-wrap"><input id="sf-lon-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="Longitude hemisphere"><input type="radio" name="sf-ew" id="sf-lon-e" value="E" checked><label for="sf-lon-e">East</label><input type="radio" name="sf-ew" id="sf-lon-w" value="W"><label for="sf-lon-w">West</label></div></div><div class="hint" id="sf-lon-msg">0 – 180°</div></div>
+            <div class="row2">
+              <div class="field"><label for="sf-course">Course (true)</label><div class="input-wrap"><input id="sf-course" type="text" inputmode="decimal" placeholder="000" maxlength="5"><span class="unit">°</span></div><div class="hint" id="sf-course-msg"></div></div>
+              <div class="field"><label for="sf-speed">Speed</label><div class="input-wrap"><input id="sf-speed" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">kn</span></div><div class="hint" id="sf-speed-msg"></div></div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend><span class="dot c-apparent"></span>Date and time zone</legend>
+            <div class="row2">
+              <div class="field"><label for="sf-date">Date (ship's date)</label><input id="sf-date" class="text-input" type="date"><div class="hint" id="sf-date-msg"></div></div>
+              <div class="field"><label for="sf-zone">Zone (UTC offset)</label><div class="input-wrap"><input id="sf-zone" type="text" inputmode="decimal" placeholder="e.g. 8 or -5.5" maxlength="6"><span class="unit">h</span></div><div class="hint" id="sf-zone-msg">+8 means ship's time = UTC + 8</div></div>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend><span class="dot c-ship"></span>Sextant (saved for this ship)</legend>
+            <div class="row2" style="grid-template-columns: 1fr;">
+              <div class="field"><label for="sf-hoe">Height of eye</label><div class="input-wrap"><input id="sf-hoe" type="text" inputmode="decimal" placeholder="0" maxlength="5"><span class="unit">m</span></div><div class="hint" id="sf-hoe-msg"></div></div>
+              <div class="field"><label for="sf-ie">Index error</label><div class="fused fused-2"><div class="input-wrap"><input id="sf-ie" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="Index error on or off the arc"><input type="radio" name="sf-iearc" id="sf-ie-on" value="on" checked><label for="sf-ie-on">On arc</label><input type="radio" name="sf-iearc" id="sf-ie-off" value="off"><label for="sf-ie-off">Off arc</label></div></div><div class="hint" id="sf-ie-msg"></div></div>
+            </div>
+          </fieldset>
+          <details class="sf-more">
+            <summary>More: temperature, pressure, GPS check</summary>
+            <div class="row2 u-mt-3">
+              <div class="field"><label for="sf-temp">Air temperature</label><div class="input-wrap"><input id="sf-temp" type="text" inputmode="decimal" placeholder="10" maxlength="5"><span class="unit">°C</span></div></div>
+              <div class="field"><label for="sf-pres">Pressure</label><div class="input-wrap"><input id="sf-pres" type="text" inputmode="decimal" placeholder="1010" maxlength="6"><span class="unit">hPa</span></div></div>
+            </div>
+            <div class="field"><label for="sf-gps-lat-d">GPS latitude at the fix time (optional)</label><div class="fused"><div class="input-wrap"><input id="sf-gps-lat-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div><div class="input-wrap"><input id="sf-gps-lat-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="GPS latitude hemisphere"><input type="radio" name="sf-gns" id="sf-gps-lat-n" value="N" checked><label for="sf-gps-lat-n">North</label><input type="radio" name="sf-gns" id="sf-gps-lat-s" value="S"><label for="sf-gps-lat-s">South</label></div></div></div>
+            <div class="field"><label for="sf-gps-lon-d">GPS longitude (optional)</label><div class="fused"><div class="input-wrap"><input id="sf-gps-lon-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div><div class="input-wrap"><input id="sf-gps-lon-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="GPS longitude hemisphere"><input type="radio" name="sf-gew" id="sf-gps-lon-e" value="E" checked><label for="sf-gps-lon-e">East</label><input type="radio" name="sf-gew" id="sf-gps-lon-w" value="W"><label for="sf-gps-lon-w">West</label></div></div></div>
+          </details>
+        </form>
+        <div>
+          <div class="card" id="sf-sights-card">
+            <h2>Sights</h2>
+            <div class="dr-gridwrap"><table class="sf-rows" id="sf-rows"></table></div>
+            <div class="hint" id="sf-rows-msg"></div>
+            <div class="actions">
+              <button type="button" class="btn" id="sf-pick">Pick the best stars</button>
+              <button type="button" class="btn" id="sf-example">Load example</button>
+              <button type="button" class="btn" id="sf-clear">Clear sights</button>
+            </div>
+          </div>
+          <div class="card" id="sf-results" aria-live="polite">
+            <h2>Fix</h2>
+            <div id="sf-empty" class="empty">Enter the DR, the date and zone, and the time and sextant altitude of at least two sights.</div>
+            <div id="sf-out" hidden>
+              <div class="callout warn u-mt-0" id="sf-warn" hidden></div>
+              <div class="hero" id="sf-hero">
+                <div class="readout-box"><div class="readout-label">Latitude</div><div class="readout" id="sf-f-lat">—</div><div class="readout-sub" id="sf-f-time"></div></div>
+                <div class="readout-box"><div class="readout-label">Longitude</div><div class="readout" id="sf-f-lon">—</div><div class="readout-sub" id="sf-f-ut"></div></div>
+                <div class="readout-box"><div class="readout-label">From the DR</div><div class="readout" id="sf-f-set">—</div><div class="readout-sub" id="sf-f-set-sub"></div></div>
+                <div class="readout-box"><div class="readout-label">Quality</div><div class="readout" id="sf-f-q">—</div><div class="readout-sub" id="sf-f-q-sub"></div></div>
+              </div>
+              <div class="tbl-scroll"><table class="dt sf-res" id="sf-tbl"></table></div>
+              <div class="logline mono" id="sf-log"></div>
+              <div class="actions"><button type="button" class="btn primary" id="sf-copy">Copy fix</button></div>
+              <details class="ge-fold u-mt-3" id="sf-work"><summary>The working, line by line</summary><div class="tbl-scroll u-mt-2h"><table class="dt sf-res" id="sf-work-tbl"></table></div></details>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
@@ -6941,8 +7041,490 @@ code { font-family: var(--font-mono); font-size: .9em; background: var(--surface
     Ships.onChange(function () { if (started["special-areas"]) fillPrint(); });
   }
 
+  /* SIGHT-BEGIN */
+  /* Sight reduction: apparent places of the Sun and the 58 navigational stars, Hs to Ho, Hc and Zn.
+     Stars: Hipparcos (new reduction) J2000 position and proper motion, carried to the date with precession (IAU 1976),
+     nutation (20 largest IAU 1980 terms) and annual aberration. Checked against ERFA/astropy to about 0.05 minute of arc.
+     The Sun: VSOP87D Earth series (truncated), FK5 correction, nutation and aberration. Time scale: TT for the body (UTC + 69.184 s, valid while there are 37 leap seconds, 2017 on), UTC used as UT1 for the Earth's rotation (UT1 - UTC is below 0.9 s, so GHA can be off by up to 0.2 minute of arc, the same as the Nautical Almanac). Supported dates: 2000 to 2060. */
+  var Sight = (function () {
+    var R = Math.PI / 180, TTMUTC = 69.184;
+    var CAT = [
+      ["Alpheratz",2.09692,29.09043,137,-163],
+      ["Ankaa",6.57105,-42.30599,233,-356],
+      ["Schedar",10.12684,56.53733,51,-32],
+      ["Diphda",10.89738,-17.98661,233,32],
+      ["Achernar",24.42852,-57.23675,87,-38],
+      ["Hamal",31.79336,23.46242,189,-148],
+      ["Polaris",37.95456,89.26411,44,-12],
+      ["Acamar",44.56531,-40.30468,-53,22],
+      ["Menkar",45.56989,4.08974,-10,-77],
+      ["Mirfak",51.08071,49.86118,24,-26],
+      ["Aldebaran",68.98016,16.50930,63,-189],
+      ["Rigel",78.63447,-8.20164,1,0],
+      ["Capella",79.17233,45.99799,75,-427],
+      ["Bellatrix",81.28276,6.34970,-8,-13],
+      ["Elnath",81.57297,28.60745,23,-174],
+      ["Alnilam",84.05339,-1.20192,1,-1],
+      ["Betelgeuse",88.79294,7.40706,28,11],
+      ["Canopus",95.98796,-52.69566,20,23],
+      ["Sirius",101.28716,-16.71612,-546,-1223],
+      ["Adhara",104.65645,-28.97209,3,1],
+      ["Procyon",114.82550,5.22499,-715,-1037],
+      ["Pollux",116.32896,28.02620,-627,-46],
+      ["Avior",125.62848,-59.50948,-26,22],
+      ["Suhail",136.99899,-43.43259,-24,14],
+      ["Miaplacidus",138.29991,-69.71721,-156,109],
+      ["Alphard",141.89684,-8.65860,-15,34],
+      ["Regulus",152.09296,11.96721,-249,6],
+      ["Dubhe",165.93196,61.75103,-134,-35],
+      ["Denebola",177.26491,14.57206,-498,-115],
+      ["Gienah",183.95155,-17.54193,-159,22],
+      ["Acrux",186.64956,-63.09909,-36,-15],
+      ["Gacrux",187.79150,-57.11321,28,-265],
+      ["Alioth",193.50729,55.95982,112,-8],
+      ["Spica",201.29825,-11.16132,-42,-31],
+      ["Alkaid",206.88516,49.31327,-121,-15],
+      ["Hadar",210.95586,-60.37304,-33,-23],
+      ["Menkent",211.67061,-36.36995,-521,-518],
+      ["Arcturus",213.91530,19.18241,-1093,-2000],
+      ["Rigil Kentaurus",219.90206,-60.83399,-3679,474],
+      ["Kochab",222.67636,74.15550,-33,11],
+      ["Zubenelgenubi",222.71964,-16.04178,-106,-68],
+      ["Alphecca",233.67195,26.71469,120,-90],
+      ["Antares",247.35192,-26.43200,-12,-23],
+      ["Atria",252.16623,-69.02771,18,-32],
+      ["Sabik",257.59453,-15.72491,40,99],
+      ["Shaula",263.40217,-37.10382,-9,-31],
+      ["Rasalhague",263.73362,12.56004,108,-222],
+      ["Eltanin",269.15154,51.48890,-8,-23],
+      ["Kaus Australis",276.04299,-34.38462,-39,-124],
+      ["Vega",279.23473,38.78369,201,286],
+      ["Nunki",283.81636,-26.29672,15,-53],
+      ["Altair",297.69583,8.86832,536,385],
+      ["Peacock",306.41190,-56.73509,7,-86],
+      ["Deneb",310.35798,45.28034,2,2],
+      ["Enif",326.04648,9.87501,27,0],
+      ["Al Na'ir",332.05827,-46.96097,127,-147],
+      ["Fomalhaut",344.41269,-29.62224,329,-165],
+      ["Markab",346.19022,15.20527,60,-41]
+    ];
+    var NUT = [[0,0,0,0,1,-171996,-174.2,92025,8.9],[-2,0,0,2,2,-13187,-1.6,5736,-3.1],[0,0,0,2,2,-2274,-0.2,977,-0.5],[0,0,0,0,2,2062,0.2,-895,0.5],[0,1,0,0,0,1426,-3.4,54,-0.1],[0,0,1,0,0,712,0.1,-7,0],[-2,1,0,2,2,-517,1.2,224,-0.6],[0,0,0,2,1,-386,-0.4,200,0],[0,0,1,2,2,-301,0,129,-0.1],[-2,-1,0,2,2,217,-0.5,-95,0.3],[-2,0,1,0,0,-158,0,0,0],[-2,0,0,2,1,129,0.1,-70,0],[0,0,-1,2,2,123,0,-53,0],[2,0,0,0,0,63,0,0,0],[0,0,1,0,1,63,0.1,-33,0],[2,0,-1,2,2,-59,0,26,0],[0,0,-1,0,1,-58,-0.1,32,0],[0,0,1,2,1,-51,0,27,0],[-2,0,2,0,0,48,0,0,0],[0,0,-2,2,1,46,0,-24,0]];
+    /* Earth, VSOP87D (Bretagnon and Francou 1988), terms with amplitude 5e-7 or more: error under 0.7 arc-second over 2000-2060. [amplitude, phase, frequency], series by power of T (millennia TDB) */
+    var VL = [[[1.753470457,0,0],[0.033416565,4.66926,6283.07585],[0.000348943,4.6261,12566.1517],[0.000034176,2.82887,3.52312],[0.000034971,2.74412,5753.38488],[0.000031359,3.62767,77713.77147],[0.000026762,4.41808,7860.41939],[0.000023427,6.13516,3930.2097],[0.000012732,2.0371,529.69097],[0.000013243,0.74246,11506.76977],[0.000009019,2.04505,26.29832],[0.000011992,1.10963,1577.34354],[0.000008572,3.50849,398.149],[0.000007798,1.17883,5223.69392],[0.000009903,5.23268,5884.92685],[0.000007531,2.53339,5507.55324],[0.000005053,4.58293,18849.22755],[0.000004924,4.20507,775.52261],[0.000003567,2.91954,0.06731],[0.000002841,1.89869,796.29801],[0.000002428,0.34481,5486.77784],[0.000003171,5.84902,11790.62909],[0.00000271,0.31489,10977.0788],[0.000002062,4.80647,2544.31442],[0.000002054,1.86948,5573.1428],[0.000002023,2.45768,6069.77675],[0.000001262,1.08303,20.7754],[0.000001555,0.83306,213.2991],[0.000001151,0.64545,0.98032],[0.000001029,0.636,4694.00295],[0.000001017,4.2668,7.11355],[9.92e-7,6.20993,2146.16542],[0.000001322,3.41118,2942.46342],[9.76e-7,0.68101,155.4204],[8.51e-7,1.29871,6275.9623],[7.47e-7,1.75509,5088.62884],[0.000001019,0.97569,15720.83878],[8.47e-7,3.6708,71430.69562],[7.35e-7,4.67927,801.82093],[7.39e-7,3.50319,3154.68708],[7.88e-7,3.03698,12036.46073],[7.96e-7,1.80791,17260.15465],[8.58e-7,5.98323,161000.68574],[5.7e-7,2.7843,6286.59897],[6.11e-7,1.8184,7084.89678],[6.96e-7,0.83298,9437.76293],[5.61e-7,4.38695,14143.49524],[6.24e-7,3.97764,8827.39027],[5.11e-7,0.28307,5856.47766],[5.56e-7,3.47006,6279.55273],[5.16e-7,1.33283,1748.01641],[5.2e-7,0.18915,12139.55351]],[[6283.319667475,0,0],[0.002060589,2.67823,6283.07585],[0.000043034,2.63513,12566.1517],[0.000004253,1.59047,3.52312],[0.00000109,2.96618,1577.34354],[9.35e-7,2.59213,18849.22755],[0.000001193,5.79557,26.29832],[7.21e-7,1.13846,529.69097],[6.78e-7,1.87472,398.149],[6.73e-7,4.40918,5507.55324],[5.9e-7,2.88797,5223.69392],[5.6e-7,2.17472,155.4204]],[[0.000529189,0,0],[0.000087198,1.0721,6283.07585],[0.000003091,0.86729,12566.1517]],[[0.000002892,5.84384,6283.07585]],[[0.000001141,3.14159,0]],[]],
+        VB = [[[0.000002796,3.1987,84334.66158],[0.000001016,5.42249,5507.55324],[8.04e-7,3.88013,5223.69392]],[],[],[],[]],
+        VR = [[[1.000139888,0,0],[0.016706996,3.09846,6283.07585],[0.00013956,3.05525,12566.1517],[0.000030837,5.19847,77713.77147],[0.000016285,1.17388,5753.38488],[0.000015756,2.84685,7860.41939],[0.000009248,5.45292,11506.76977],[0.000005424,4.56409,3930.2097],[0.000004721,3.661,5884.92685],[0.000003288,5.89984,5223.69392],[0.00000346,0.96369,5507.55324],[0.000003068,0.29867,5573.1428],[0.000001748,3.01194,18849.22755],[0.000002432,4.2735,11790.62909],[0.000002118,5.84715,1577.34354],[0.000001858,5.02194,10977.0788],[0.000001098,5.05511,5486.77784],[9.83e-7,0.88681,6069.77675],[8.65e-7,5.6896,15720.83878],[8.58e-7,1.27084,161000.68574],[6.29e-7,0.92177,529.69097],[5.71e-7,2.01374,83996.84732],[6.49e-7,0.27251,17260.15465],[5.57e-7,5.2416,71430.69562]],[[0.001030186,1.10749,6283.07585],[0.000017212,1.06442,12566.1517],[0.000007022,3.14159,0]],[[0.000043594,5.78455,6283.07585],[0.000001236,5.57935,12566.1517]],[[0.000001446,4.27319,6283.07585]],[],[]];
+    /* visual magnitudes (to about 0.1), used only to prefer bright stars when suggesting a set */
+    var MAG = { "Alpheratz": 2.06, "Ankaa": 2.39, "Schedar": 2.24, "Diphda": 2.04, "Achernar": 0.46, "Hamal": 2.0, "Polaris": 1.98, "Acamar": 2.9, "Menkar": 2.53, "Mirfak": 1.8, "Aldebaran": 0.85, "Rigel": 0.13, "Capella": 0.08, "Bellatrix": 1.64, "Elnath": 1.65, "Alnilam": 1.69, "Betelgeuse": 0.5, "Canopus": -0.74, "Sirius": -1.46, "Adhara": 1.5, "Procyon": 0.34, "Pollux": 1.14, "Avior": 1.86, "Suhail": 2.21, "Miaplacidus": 1.67, "Alphard": 1.98, "Regulus": 1.35, "Dubhe": 1.79, "Denebola": 2.14, "Gienah": 2.59, "Acrux": 0.76, "Gacrux": 1.63, "Alioth": 1.76, "Spica": 1.04, "Alkaid": 1.86, "Hadar": 0.61, "Menkent": 2.06, "Arcturus": -0.05, "Rigil Kentaurus": -0.01, "Kochab": 2.08, "Zubenelgenubi": 2.75, "Alphecca": 2.23, "Antares": 1.06, "Atria": 1.92, "Sabik": 2.43, "Shaula": 1.62, "Rasalhague": 2.07, "Eltanin": 2.23, "Kaus Australis": 1.85, "Vega": 0.03, "Nunki": 2.05, "Altair": 0.76, "Peacock": 1.94, "Deneb": 1.25, "Enif": 2.38, "Al Na'ir": 1.74, "Fomalhaut": 1.16, "Markab": 2.49 };
+    function mod(a, n) { return ((a % n) + n) % n; }
+    function jdOf(ms) { return ms / 86400000 + 2440587.5; }
+    function nutation(T) {
+      var D = mod(297.85036 + 445267.111480 * T - 0.0019142 * T * T, 360) * R, M = mod(357.52772 + 35999.050340 * T - 0.0001603 * T * T, 360) * R,
+          Mp = mod(134.96298 + 477198.867398 * T + 0.0086972 * T * T, 360) * R, F = mod(93.27191 + 483202.017538 * T - 0.0036825 * T * T, 360) * R,
+          Om = mod(125.04452 - 1934.136261 * T + 0.0020708 * T * T, 360) * R, dpsi = 0, deps = 0;
+      for (var i = 0; i < NUT.length; i++) { var t = NUT[i], a = t[0] * D + t[1] * M + t[2] * Mp + t[3] * F + t[4] * Om; dpsi += (t[5] + t[6] * T) * Math.sin(a); deps += (t[7] + t[8] * T) * Math.cos(a); }
+      return { dpsi: dpsi * 0.0001 / 3600, deps: deps * 0.0001 / 3600 };               /* degrees */
+    }
+    function obliquity(T) { return 23.43929111 - (46.8150 * T + 0.00059 * T * T - 0.001813 * T * T * T) / 3600; }
+    function gast(jd, T, dpsi, eps) {                                                    /* Greenwich apparent sidereal time, degrees */
+      var d = jd - 2451545, Tu = d / 36525;
+      return mod(280.46061837 + 360.98564736629 * d + 0.000387933 * Tu * Tu - Tu * Tu * Tu / 38710000 + dpsi * Math.cos(eps * R), 360);
+    }
+    function frame(ms) {
+      var jd = jdOf(ms), T = (jd + TTMUTC / 86400 - 2451545) / 36525, nu = nutation(T), eps0 = obliquity(T), eps = eps0 + nu.deps;
+      return { jd: jd, T: T, dpsi: nu.dpsi, deps: nu.deps, eps: eps, eps0: eps0, gast: gast(jd, T, nu.dpsi, eps), yr: 2000 + (jd + TTMUTC / 86400 - 2451545) / 365.25 };
+    }
+    function sunApparent(ms, fr) {                                                      /* apparent GHA, Dec, SD and HP (minutes) of the Sun */
+      var tau = (fr.jd + TTMUTC / 86400 - 2451545) / 365250;
+      function ser(S) { var tot = 0; for (var k = 0; k < S.length; k++) { var s = 0, A = S[k]; for (var i = 0; i < A.length; i++) s += A[i][0] * Math.cos(A[i][1] + A[i][2] * tau); tot += s * Math.pow(tau, k); } return tot; }
+      var Lh = ser(VL), Bh = ser(VB), Rau = ser(VR), Tc = fr.T;
+      var th = mod(Lh / R * 1 + 180, 360), be = -Bh / R;                                 /* geocentric longitude and latitude, degrees (heliocentric + 180) */
+      var lam1 = th - 1.397 * Tc - 0.00031 * Tc * Tc;                                    /* to the FK5 frame */
+      th += (-0.09033 + 0) / 3600; be += 0.03916 * (Math.cos(lam1 * R) - Math.sin(lam1 * R)) / 3600;
+      var lam = th + fr.dpsi - 20.4898 / Rau / 3600, eps = fr.eps * R, l = lam * R, b = be * R;
+      var ra = mod(Math.atan2(Math.sin(l) * Math.cos(eps) - Math.tan(b) * Math.sin(eps), Math.cos(l)) / R, 360);
+      var dec = Math.asin(Math.sin(b) * Math.cos(eps) + Math.cos(b) * Math.sin(eps) * Math.sin(l)) / R;
+      return { name: "Sun", ra: ra, dec: dec, gha: mod(fr.gast - ra, 360), sd: 959.63 / Rau / 60, hp: 8.794 / Rau / 60, lon: mod(Lh / R + 180, 360), rau: Rau };
+    }
+    function starPlace(ms, name, fr) {
+      var s = null; for (var i = 0; i < CAT.length; i++) if (CAT[i][0] === name) { s = CAT[i]; break; }
+      if (!s) return null;
+      fr = fr || frame(ms);
+      var T = fr.T, dec0 = s[2] * R, dt = fr.yr - 2000;
+      var ra0 = (s[1] + s[3] / Math.cos(dec0) * dt / 3.6e6) * R, de0 = (s[2] + s[4] * dt / 3.6e6) * R;
+      /* precession J2000 to date (Meeus 21.2, rigorous) */
+      var zeta = (2306.2181 * T + 0.30188 * T * T + 0.017998 * T * T * T) / 3600 * R, z = (2306.2181 * T + 1.09468 * T * T + 0.018203 * T * T * T) / 3600 * R, th = (2004.3109 * T - 0.42665 * T * T - 0.041833 * T * T * T) / 3600 * R;
+      var A = Math.cos(de0) * Math.sin(ra0 + zeta), B = Math.cos(th) * Math.cos(de0) * Math.cos(ra0 + zeta) - Math.sin(th) * Math.sin(de0), C = Math.sin(th) * Math.cos(de0) * Math.cos(ra0 + zeta) + Math.cos(th) * Math.sin(de0);
+      var ra = Math.atan2(A, B) + z, de = Math.asin(C);
+      /* annual aberration (Meeus 23.3), then nutation (23.1) */
+      var sun = sunApparent(ms, fr), Ls = sun.lon * R, e = 0.016708634 - 0.000042037 * T, pi = (102.93735 + 1.71946 * T) * R, k = 20.49552 / 3600 * R, eps = fr.eps0 * R;
+      var cd = Math.cos(de), sd = Math.sin(de), tane = Math.tan(eps);
+      var dra = (-k * (Math.cos(ra) * Math.cos(Ls) * Math.cos(eps) + Math.sin(ra) * Math.sin(Ls)) + e * k * (Math.cos(ra) * Math.cos(pi) * Math.cos(eps) + Math.sin(ra) * Math.sin(pi))) / cd;
+      var dde = -k * (Math.cos(Ls) * Math.cos(eps) * (tane * cd - Math.sin(ra) * sd) + Math.cos(ra) * sd * Math.sin(Ls)) + e * k * (Math.cos(pi) * Math.cos(eps) * (tane * cd - Math.sin(ra) * sd) + Math.cos(ra) * sd * Math.sin(pi));
+      ra += dra; de += dde;
+      var dpsi = fr.dpsi * R, deps = fr.deps * R, ee = fr.eps0 * R;
+      var dran = (Math.cos(ee) + Math.sin(ee) * Math.sin(ra) * Math.tan(de)) * dpsi - Math.cos(ra) * Math.tan(de) * deps;
+      var dden = Math.sin(ee) * Math.cos(ra) * dpsi + Math.sin(ra) * deps;
+      ra += dran; de += dden;
+      var raDeg = mod(ra / R, 360);
+      return { name: name, ra: raDeg, sha: mod(360 - raDeg, 360), dec: de / R, gha: mod(fr.gast - raDeg, 360) };
+    }
+    function sunPlace(ms, fr) { var p = sunApparent(ms, fr || frame(ms)); return { name: "Sun", gha: p.gha, dec: p.dec, sd: p.sd, hp: p.hp, ra: p.ra }; }   /* sd and hp in minutes of arc */
+    function reduce(lat, lon, gha, dec) {                                                /* Hc and Zn at (lat, lon east +) for a body at gha, dec; all degrees */
+      var lha = mod(gha + lon, 360), l = lha * R, p = lat * R, d = dec * R;
+      var hc = Math.asin(Math.max(-1, Math.min(1, Math.sin(p) * Math.sin(d) + Math.cos(p) * Math.cos(d) * Math.cos(l)))) / R;
+      var zn = mod(Math.atan2(-Math.sin(l) * Math.cos(d), Math.sin(d) * Math.cos(p) - Math.cos(d) * Math.sin(p) * Math.cos(l)) / R, 360);
+      return { hc: hc, zn: zn, lha: lha };
+    }
+    /* Hs to Ho. o = { hs (deg), ic (minutes to ADD: index correction, = -error on the arc, + error off the arc), hoe (m), temp (C), pres (hPa), body "sun"|"star", limb "L"|"U", sd, hp (minutes) } */
+    function ho(o) {
+      var t = o.temp === undefined ? 10 : o.temp, p = o.pres === undefined ? 1010 : o.pres;
+      var dip = 1.76 * Math.sqrt(Math.max(0, o.hoe || 0));                                /* minutes */
+      var ha = o.hs + ((o.ic || 0) - dip) / 60;                                           /* apparent altitude, degrees */
+      var hh = Math.max(ha, -1);
+      var ref = (1 / Math.tan((hh + 7.31 / (hh + 4.4)) * R)) * (p / 1010) * (283 / (273 + t));   /* Bennett, minutes */
+      var sdc = 0, par = 0;
+      if (o.body === "sun") { sdc = (o.limb === "U" ? -1 : 1) * (o.sd === undefined ? 16 : o.sd); par = (o.hp === undefined ? 0.15 : o.hp) * Math.cos(ha * R); }
+      return { ha: ha, ho: ha + (-ref + sdc + par) / 60, dip: dip, ref: ref, sd: sdc, par: par, valid: ha > -0.5 };   /* below the horizon: refraction is not defined, valid is false */
+    }
+    function bodiesAt(ms, lat, lon) {
+      var fr = frame(ms), out = [], s = sunPlace(ms), r = reduce(lat, lon, s.gha, s.dec); out.push({ name: "Sun", hc: r.hc, zn: r.zn });
+      for (var i = 0; i < CAT.length; i++) { var sp = starPlace(ms, CAT[i][0], fr); r = reduce(lat, lon, sp.gha, sp.dec); out.push({ name: CAT[i][0], hc: r.hc, zn: r.zn }); }
+      return out;
+    }
+    /* The best 3 or 4 stars to shoot: bright, between 20 and 70 degrees, azimuths spread round the horizon (largest smallest gap), nearest 45 degrees preferred. */
+    function suggest(ms, lat, lon, count) {
+      var want = count || 4, all = bodiesAt(ms, lat, lon).filter(function (b) { return b.name !== "Sun" && b.name !== "Polaris" && b.hc >= 20 && b.hc <= 70 && MAG[b.name] <= 2.3; });
+      if (all.length <= want) return all.sort(function (a, b) { return a.zn - b.zn; });
+      var best = null, bs = -1e9, idx = [];
+      function score(set) {
+        var z = set.map(function (s) { return s.zn; }).sort(function (a, b) { return a - b; }), gap = 360, i;
+        for (i = 0; i < z.length; i++) { var g = (i + 1 < z.length ? z[i + 1] : z[0] + 360) - z[i]; if (g < gap) gap = g; }
+        var alt = 0, mg = 0; set.forEach(function (s) { alt += Math.abs(s.hc - 45); mg += MAG[s.name]; });
+        return gap - 0.15 * alt + 6 * (2.3 - mg / set.length);
+      }
+      (function rec(start, set) {
+        if (set.length === want) { var sc = score(set); if (sc > bs) { bs = sc; best = set.slice(); } return; }
+        for (var i = start; i < all.length; i++) { set.push(all[i]); rec(i + 1, set); set.pop(); }
+      })(0, []);
+      return best.sort(function (a, b) { return a.zn - b.zn; });
+    }
+    return { names: function () { return CAT.map(function (s) { return s[0]; }); }, frame: frame, starPlace: starPlace, sunPlace: sunPlace, reduce: reduce, ho: ho, bodiesAt: bodiesAt, suggest: suggest, mag: function (n) { return MAG[n]; } };
+  })();
+  /* SIGHT-END */
+
+  /* SIGHTFIX-BEGIN */
+  /* Running fix from Sun or star sights (and an optional latitude line). Needs Sight (engine.js).
+     Every sight is reduced from the DR position AT ITS OWN TIME; each line of position is carried to the fix time by the ship's
+     course and speed (exactly, along the track); intercepts are then solved from the fix time position, repeating until the answer stops moving. */
+  var SightFix = (function () {
+    var R = Math.PI / 180;
+    function norm180(x) { return ((x + 180) % 360 + 360) % 360 - 180; }
+    function mercY(lat) { var l = Math.max(-85, Math.min(85, lat)); return Math.log(Math.tan(Math.PI / 4 + l * R / 2)) / R; }
+    function advance(lat, lon, course, dist) {                                         /* rhumb line, dist in NM (may be negative) */
+      var c = course * R, lat2 = lat + dist * Math.cos(c) / 60, dy = mercY(lat2) - mercY(lat), dl;
+      dl = Math.abs(dy) > 1e-9 ? Math.tan(c) * dy : dist * Math.sin(c) / 60 / Math.cos(lat * R);
+      return { lat: lat2, lon: norm180(lon + dl) };
+    }
+    function drAt(dr, ms) { return advance(dr.lat, dr.lon, dr.course, dr.speed * (ms - dr.ms) / 3600000); }
+    function move(p, dN, dE) { var lat = p.lat + dN / 60, m = (lat + p.lat) / 2; return { lat: lat, lon: norm180(p.lon + dE / 60 / Math.cos(m * R)) }; }
+    function offset(from, to) { var m = (from.lat + to.lat) / 2; return { dN: (to.lat - from.lat) * 60, dE: norm180(to.lon - from.lon) * 60 * Math.cos(m * R) }; }   /* NM */
+    function solve(rows, withC) {                                                      /* least squares for (dN, dE[, c]); rows = [[cos zn, sin zn, a]] */
+      var n = withC ? 3 : 2, A = [], b = [], i, j, k;
+      for (i = 0; i < n; i++) { A.push(new Array(n).fill(0)); b.push(0); }
+      rows.forEach(function (r) { var v = withC ? [r[0], r[1], r[3] === 0 ? 0 : 1] : [r[0], r[1]]; for (i = 0; i < n; i++) { b[i] += v[i] * r[2]; for (j = 0; j < n; j++) A[i][j] += v[i] * v[j]; } });
+      var M = A.map(function (row, i2) { return row.concat(b[i2]); });
+      for (i = 0; i < n; i++) {
+        var p = i; for (k = i + 1; k < n; k++) if (Math.abs(M[k][i]) > Math.abs(M[p][i])) p = k;
+        if (Math.abs(M[p][i]) < 1e-9) return null;
+        var t = M[i]; M[i] = M[p]; M[p] = t;
+        for (k = i + 1; k < n; k++) { var f = M[k][i] / M[i][i]; for (j = i; j <= n; j++) M[k][j] -= f * M[i][j]; }
+      }
+      var x = new Array(n);
+      for (i = n - 1; i >= 0; i--) { var s = M[i][n]; for (j = i + 1; j < n; j++) s -= M[i][j] * x[j]; x[i] = s / M[i][i]; }
+      return x;
+    }
+    function invTrace2(rows) {                                                         /* sqrt(trace((A'A)^-1)): how much a 1 minute error in each line grows in the fix */
+      var a = 0, b = 0, d = 0; rows.forEach(function (r) { a += r[0] * r[0]; b += r[0] * r[1]; d += r[1] * r[1]; });
+      var det = a * d - b * b; return det < 1e-9 ? Infinity : Math.sqrt((a + d) / det);
+    }
+    function gapOk(zns) {                                                              /* azimuths surround the observer: no gap of 180 degrees or more */
+      var z = zns.slice().sort(function (x, y) { return x - y; }), max = 0;
+      for (var i = 0; i < z.length; i++) { var g = (i + 1 < z.length ? z[i + 1] : z[0] + 360) - z[i]; if (g > max) max = g; }
+      return max < 180;
+    }
+    /* input: { dr:{lat,lon,ms,course,speed}, hoe, ic, temp, pres, fixMs, gps:{lat,lon},
+                sights:[{ name:"Sun"|star, ms, hs, limb:"L"|"U", ho (optional, degrees: used instead of hs) } | { name:"Latitude", ms, lat }] }  (lat, lon: east +, degrees; ms: UT epoch ms; ic in minutes, added) */
+    function fix(inp) {
+      var S = inp.sights, tf = inp.fixMs || Math.max.apply(null, S.map(function (s) { return s.ms; })), warn = [], dr = inp.dr;
+      if (S.length < 2) warn.push("Two lines of position are needed for a fix.");
+      for (var q = 0; q < S.length; q++) {
+        var sq = S[q], yr = new Date(sq.ms).getUTCFullYear();
+        if (!isFinite(sq.ms) || yr < 2000 || yr > 2060) return { error: "The date is outside 2000 to 2060, which the star and Sun data cover.", warnings: warn };
+        if (sq.name !== "Latitude" && sq.ho === undefined && (!isFinite(sq.hs) || sq.hs < -1 || sq.hs > 90)) return { error: "Sextant altitude " + (q + 1) + " is not a number between 0 and 90 degrees.", warnings: warn };
+      }
+      if (!dr || !isFinite(dr.lat) || !isFinite(dr.lon) || !isFinite(dr.course) || !isFinite(dr.speed) || !isFinite(dr.ms)) return { error: "The DR position, course and speed are needed.", warnings: warn };
+      if (Math.abs(dr.lat) > 84) return { error: "Latitudes above 84 degrees are not supported.", warnings: warn };
+      var items = S.map(function (s) {
+        var it = { s: s, lat: s.name === "Latitude" };
+        if (it.lat) return it;
+        var f = Sight.frame(s.ms), pl = s.name === "Sun" ? Sight.sunPlace(s.ms, f) : Sight.starPlace(s.ms, s.name, f);
+        it.pl = pl;
+        if (s.ho !== undefined) it.ho = { ho: s.ho };
+        else it.ho = Sight.ho({ hs: s.hs, ic: inp.ic, hoe: inp.hoe, temp: inp.temp, pres: inp.pres, body: s.name === "Sun" ? "sun" : "star", limb: s.limb || "L", sd: pl.sd, hp: pl.hp });
+        if (it.ho.valid === false) warn.push(s.name + ": the altitude is below the horizon, no fix can use it.");
+        return it;
+      });
+      function lines(Pf) {                                                             /* intercepts and azimuths seen from the track positions that lead to Pf */
+        return items.map(function (it) {
+          var d = inp.dr.speed * (tf - it.s.ms) / 3600000, P = advance(Pf.lat, Pf.lon, dr.course, -d);
+          if (it.lat) return { P: P, zn: 0, hc: null, a: (it.s.lat - P.lat) * 60 };
+          var r = Sight.reduce(P.lat, P.lon, it.pl.gha, it.pl.dec);
+          return { P: P, zn: r.zn, hc: r.hc, lha: r.lha, a: (it.ho.ho - r.hc) * 60 };
+        });
+      }
+      function jacobian(Pf, L) {                                                      /* how each intercept changes with a move of the fix: measured, not assumed, so the long transfers and high latitudes stay exact */
+        var s = 0.25, N1 = lines(move(Pf, s, 0)), N2 = lines(move(Pf, -s, 0)), E1 = lines(move(Pf, 0, s)), E2 = lines(move(Pf, 0, -s));
+        return L.map(function (l, i) { return [(N2[i].a - N1[i].a) / (2 * s), (E2[i].a - E1[i].a) / (2 * s), l.a, items[i].lat ? 0 : 1]; });
+      }
+      function iterate(withC) {
+        var Pf = drAt(dr, tf), c = 0, L, k, x, rows, last = Infinity;
+        for (k = 0; k < 20; k++) {
+          L = lines(Pf); rows = jacobian(Pf, L);
+          x = solve(rows, withC); if (!x) return null;
+          var step = Math.hypot(x[0], x[1]), sc = step > 60 ? 60 / step : 1;           /* never jump more than 60 NM at once */
+          Pf = move(Pf, x[0] * sc, x[1] * sc); if (withC) c = x[2];
+          last = step; if (step < 0.002) break;
+        }
+        if (!isFinite(Pf.lat) || !isFinite(Pf.lon) || Math.abs(Pf.lat) > 89) return null;
+        return { P: Pf, c: withC ? c : 0, L: lines(Pf), rows: rows, iters: k + 1, converged: last < 0.02 };
+      }
+      var base = iterate(false); if (!base) return { error: "The lines of position are parallel, too few, or too far from the DR: no fix.", warnings: warn };
+      if (!base.converged) return { error: "The fix did not settle. Check the times, the altitudes and the DR.", warnings: warn };
+      var DR = drAt(dr, tf), L0 = lines(DR), out = { time: tf, dr: DR, fix: base.P, iterations: base.iters, warnings: warn };
+      out.sights = items.map(function (it, i) {
+        var l0 = L0[i], lf = base.L[i], row = { name: it.s.name, ms: it.s.ms, ap: drAt(dr, it.s.ms), zn: l0.zn, a: l0.a, resid: lf.a };
+        var apN = drAt(dr, it.s.ms), r2 = it.lat ? null : Sight.reduce(apN.lat, apN.lon, it.pl.gha, it.pl.dec);
+        if (!it.lat) { row.gha = it.pl.gha; row.dec = it.pl.dec; row.lha = r2.lha; row.hc = r2.hc; row.zn = r2.zn; row.ho = it.ho.ho; row.corr = it.ho; row.a = (it.ho.ho - r2.hc) * 60; row.hcFix = lf.hc; if (r2.hc < 5) warn.push(it.s.name + " is below 5 degrees: refraction is unreliable."); else if (r2.hc < 10) warn.push(it.s.name + " is below 10 degrees: low altitude, less reliable."); if (r2.hc > 80) warn.push(it.s.name + " is above 80 degrees: a straight line is a poor approximation."); }
+        if (Math.abs(row.a) > 20) warn.push((it.lat ? "Latitude" : it.s.name) + ": intercept " + Math.abs(row.a).toFixed(1) + "' is large. Check the time, Hs and the DR.");
+        return row;
+      });
+      var o = offset(DR, base.P); out.dN = o.dN; out.dE = o.dE; out.distNM = Math.hypot(o.dN, o.dE); out.setDeg = out.distNM < 0.005 ? null : (Math.atan2(o.dE, o.dN) / R + 360) % 360;
+      var hrs = (tf - dr.ms) / 3600000; out.driftKn = hrs > 0.05 ? out.distNM / hrs : null;
+      var zns = base.rows.map(function (r) { return (Math.atan2(r[1], r[0]) / R + 360) % 360; });
+      if (S.length === 2) { var cut = Math.abs(Math.sin((zns[0] - zns[1]) * R)); out.cutDeg = Math.round(Math.asin(cut) / R); if (cut < 0.5) warn.push("The two lines cross at only " + out.cutDeg + " degrees: the fix is weak. Use sights at least 30 degrees apart in azimuth (ideally about 90)."); }
+      out.amplify = invTrace2(base.rows); if (S.length > 2 && out.amplify > 2.2) warn.push("The bodies are not well spread round the horizon: errors are magnified " + out.amplify.toFixed(1) + " times.");
+      out.residuals = base.L.map(function (l) { return l.a; });
+      if (S.length >= 3 && gapOk(zns)) { var cc = iterate(true); if (cc) { out.constErr = cc.c; out.fixC = cc.P; var d2 = offset(base.P, cc.P); out.cShift = Math.hypot(d2.dN, d2.dE); if (Math.abs(cc.c) > 1.5) warn.push("A constant altitude error of " + cc.c.toFixed(1) + "' fits the stars best: check the index error, dip and height of eye."); } }
+      if (S.length === 3) {                                                            /* cocked hat: corners of the triangle of the three lines at the fix */
+        var V = [], pr = [[0, 1], [1, 2], [0, 2]]; pr.forEach(function (p) { var a = base.L[p[0]], b = base.L[p[1]], u1 = [base.rows[p[0]][0], base.rows[p[0]][1]], u2 = [base.rows[p[1]][0], base.rows[p[1]][1]], det = u1[0] * u2[1] - u1[1] * u2[0]; if (Math.abs(det) > 1e-6) V.push([(a.a * u2[1] - b.a * u1[1]) / det, (u1[0] * b.a - u2[0] * a.a) / det]); });
+        if (V.length === 3) { var mx = 0; [[0, 1], [1, 2], [0, 2]].forEach(function (q) { mx = Math.max(mx, Math.hypot(V[q[0]][0] - V[q[1]][0], V[q[0]][1] - V[q[1]][1])); }); out.hatNM = mx; }
+      }
+      if (inp.gps) { var g = offset(inp.gps, base.P); out.gpsErrNM = Math.hypot(g.dN, g.dE); out.gpsBrg = out.gpsErrNM < 0.005 ? null : (Math.atan2(g.dE, g.dN) / R + 360) % 360;   /* bearing from the GPS position to the celestial fix */ }
+      return out;
+    }
+    return { fix: fix, advance: advance, drAt: drAt, offset: offset, move: move };
+  })();
+  /* SIGHTFIX-END */
+
+  /* Tool: Sight Fix (running fix by the Sun, fix by 3 to 4 stars) */
+  function initSightFix() {
+    var KEY = "bridgeCalc.sightFix", st = store.get(KEY) || {}, mode = st.mode === "stars" ? "stars" : "sun", rowsEl = $("sf-rows"), rowRefs = [], last = null;
+    var LIMBS = [["L", "Lower limb"], ["U", "Upper limb"]];
+    var NAMES = Sight.names().filter(function (n) { return n !== "Polaris"; });
+    var FIELDS = ["sf-lat-d", "sf-lat-m", "sf-lon-d", "sf-lon-m", "sf-course", "sf-speed", "sf-date", "sf-zone", "sf-hoe", "sf-ie", "sf-temp", "sf-pres", "sf-gps-lat-d", "sf-gps-lat-m", "sf-gps-lon-d", "sf-gps-lon-m"];
+    var RADIOS = ["sf-lat-n", "sf-lat-s", "sf-lon-e", "sf-lon-w", "sf-ie-on", "sf-ie-off", "sf-gps-lat-n", "sf-gps-lat-s", "sf-gps-lon-e", "sf-gps-lon-w"];
+    function shipKey() { var s = Ships.active(); return s ? s.id : "_"; }
+    function p2(n) { return ("0" + n).slice(-2); }
+    function hms(sec) { sec = ((Math.round(sec) % 86400) + 86400) % 86400; return p2(Math.floor(sec / 3600)) + ":" + p2(Math.floor(sec % 3600 / 60)) + ":" + p2(sec % 60); }
+    function utText(ms) { var d = new Date(ms); return p2(d.getUTCHours()) + ":" + p2(d.getUTCMinutes()) + ":" + p2(d.getUTCSeconds()); }
+    function alt(deg) { var s = deg < 0 ? "−" : "", a = Math.abs(deg), d = Math.floor(a + 1e-9), m = Math.round((a - d) * 600) / 10; if (m >= 60) { d++; m = 0; } return s + d + "°" + (m < 10 ? "0" : "") + m.toFixed(1) + "'"; }
+    function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt !== undefined) e.textContent = txt; return e; }
+
+    /* ---------- the rows of sights ---------- */
+    function blankRow(kind) { return kind === "lat" ? { time: "", ld: "", lm: "", ns: "N" } : { name: "", time: "", hd: "", hm: "", limb: "L" }; }
+    function rowData() { if (!st.rows) st.rows = {}; var want = mode === "sun" ? ["sun", "sun", "lat"] : ["star", "star", "star", "star"]; var cur = st.rows[mode] || []; return want.map(function (k, i) { var r = cur[i] || blankRow(k === "lat" ? "lat" : "body"); r.kind = k; if (k === "sun") r.name = "Sun"; return r; }); }
+    function build() {
+      var data = rowData(); st.rows[mode] = data; rowRefs = [];
+      while (rowsEl.firstChild) rowsEl.removeChild(rowsEl.firstChild);
+      var th = el("thead"), hr = el("tr");
+      (mode === "sun" ? ["", "Local time", "Sextant altitude", "", "Limb"] : ["", "Star", "Local time", "Sextant altitude", ""]).forEach(function (h, i) { var c = el("th", "", h); if ((mode === "sun" && i === 2) || (mode === "stars" && i === 3)) c.colSpan = 2; if (h === "" && ((mode === "sun" && i === 3) || (mode === "stars" && i === 4))) return; hr.appendChild(c); });
+      th.appendChild(hr); rowsEl.appendChild(th);
+      var tb = el("tbody"); rowsEl.appendChild(tb);
+      data.forEach(function (r, i) {
+        var tr = el("tr"), refs = { r: r };
+        tr.appendChild(el("td", "n", r.kind === "lat" ? "Lat" : String(i + 1)));
+        if (r.kind === "star") { var td = el("td", "w-star"), sel = el("select"); sel.setAttribute("aria-label", "Star " + (i + 1)); var o0 = el("option", "", "choose a star"); o0.value = ""; sel.appendChild(o0); NAMES.forEach(function (n) { var o = el("option", "", n); o.value = n; sel.appendChild(o); }); sel.value = r.name || ""; sel.addEventListener("change", function () { r.name = sel.value; save(); render(); }); td.appendChild(sel); tr.appendChild(td); refs.sel = sel; }
+        var tt = el("td", "w-time"), ti = el("input"); ti.type = "time"; ti.step = "1"; ti.value = r.time || ""; ti.setAttribute("aria-label", "Local time of sight " + (i + 1)); ti.addEventListener("input", function () { r.time = ti.value; r.manual = true; save(); render(); }); tt.appendChild(ti); tr.appendChild(tt); refs.time = ti;
+        if (r.kind === "lat") {
+          var tl = el("td"); tl.colSpan = 2; var fz = el("div", "fused fused-2"), w1 = el("div", "input-wrap"), w2 = el("div", "input-wrap");
+          var a = el("input"); a.type = "text"; a.inputMode = "decimal"; a.placeholder = "Lat °"; a.maxLength = 3; a.value = r.ld || ""; a.setAttribute("aria-label", "Noon latitude degrees");
+          var b = el("input"); b.type = "text"; b.inputMode = "decimal"; b.placeholder = "min'"; b.maxLength = 5; b.value = r.lm || ""; b.setAttribute("aria-label", "Noon latitude minutes");
+          w1.appendChild(a); w2.appendChild(b); fz.appendChild(w1); fz.appendChild(w2); tl.appendChild(fz); tr.appendChild(tl);
+          var tn = el("td", "w-limb"), sn = el("select"); sn.setAttribute("aria-label", "North or South"); ["N", "S"].forEach(function (x) { var o = el("option", "", x === "N" ? "North" : "South"); o.value = x; sn.appendChild(o); }); sn.value = r.ns || "N"; tn.appendChild(sn); tr.appendChild(tn);
+          [a, b].forEach(function (x) { x.addEventListener("input", function () { r.ld = a.value; r.lm = b.value; save(); render(); }); }); sn.addEventListener("change", function () { r.ns = sn.value; save(); render(); });
+          refs.ld = a; refs.lm = b; refs.ns = sn;
+        } else {
+          var th2 = el("td"); th2.colSpan = 2; var fz2 = el("div", "fused fused-2"), v1 = el("div", "input-wrap"), v2 = el("div", "input-wrap");
+          var hd = el("input"); hd.type = "text"; hd.inputMode = "decimal"; hd.placeholder = "Hs °"; hd.maxLength = 3; hd.value = r.hd || ""; hd.setAttribute("aria-label", "Sextant altitude degrees, sight " + (i + 1));
+          var hm = el("input"); hm.type = "text"; hm.inputMode = "decimal"; hm.placeholder = "min'"; hm.maxLength = 5; hm.value = r.hm || ""; hm.setAttribute("aria-label", "Sextant altitude minutes, sight " + (i + 1));
+          v1.appendChild(hd); v2.appendChild(hm); fz2.appendChild(v1); fz2.appendChild(v2); th2.appendChild(fz2); tr.appendChild(th2);
+          [hd, hm].forEach(function (x) { x.addEventListener("input", function () { r.hd = hd.value; r.hm = hm.value; save(); render(); }); });
+          refs.hd = hd; refs.hm = hm;
+          if (r.kind === "sun") { var tk = el("td", "w-limb"), sl = el("select"); sl.setAttribute("aria-label", "Limb"); LIMBS.forEach(function (x) { var o = el("option", "", x[1]); o.value = x[0]; sl.appendChild(o); }); sl.value = r.limb || "L"; sl.addEventListener("change", function () { r.limb = sl.value; save(); render(); }); tk.appendChild(sl); tr.appendChild(tk); refs.limb = sl; }
+        }
+        tb.appendChild(tr); rowRefs.push(refs);
+      });
+      $("sf-pick").hidden = mode !== "stars";
+    }
+
+    /* ---------- reading everything ---------- */
+    function pnum(id) { return parseNum($(id)); }
+    function read() {
+      var errs = {}, v = {};
+      v.lat = readDM("sf-lat", 84, "Latitude", errs, "lat"); v.lon = readDM("sf-lon", 180, "Longitude", errs, "lon");
+      v.course = pnum("sf-course"); v.speed = pnum("sf-speed"); v.hoe = pnum("sf-hoe"); v.ie = pnum("sf-ie"); v.temp = pnum("sf-temp"); v.pres = pnum("sf-pres"); v.zone = pnum("sf-zone");
+      if (isNaN(v.course) || (v.course !== null && (v.course < 0 || v.course > 360))) errs.course = "0 to 360"; if (isNaN(v.speed) || (v.speed !== null && (v.speed < 0 || v.speed > 40))) errs.speed = "0 to 40 kn";
+      if (isNaN(v.hoe) || (v.hoe !== null && (v.hoe < 0 || v.hoe > 80))) errs.hoe = "0 to 80 m"; if (isNaN(v.ie) || (v.ie !== null && (v.ie < 0 || v.ie > 30))) errs.ie = "0 to 30'";
+      if (isNaN(v.temp) || (v.temp !== null && (v.temp < -40 || v.temp > 60))) errs.temp = 1; if (isNaN(v.pres) || (v.pres !== null && (v.pres < 800 || v.pres > 1100))) errs.pres = 1;
+      if (isNaN(v.zone) || (v.zone !== null && (v.zone < -14 || v.zone > 14))) errs.zone = "-14 to +14";
+      v.date = parseDateEl($("sf-date"));
+      setHint("sf-lat-msg", errs.lat || "0 – 84°", !!errs.lat); setHint("sf-lon-msg", errs.lon || "0 – 180°", !!errs.lon);
+      setHint("sf-course-msg", errs.course || "", !!errs.course, $("sf-course")); setHint("sf-speed-msg", errs.speed || "", !!errs.speed, $("sf-speed")); setHint("sf-hoe-msg", errs.hoe || "", !!errs.hoe, $("sf-hoe")); setHint("sf-ie-msg", errs.ie || "", !!errs.ie, $("sf-ie"));
+      setHint("sf-zone-msg", errs.zone || "+8 means ship's time = UTC + 8", !!errs.zone, $("sf-zone")); $("sf-temp").setAttribute("aria-invalid", errs.temp ? "true" : "false"); $("sf-pres").setAttribute("aria-invalid", errs.pres ? "true" : "false");
+      var g = {}, ge = {}; g.lat = readDM("sf-gps-lat", 90, "GPS latitude", ge, "lat"); g.lon = readDM("sf-gps-lon", 180, "GPS longitude", ge, "lon"); v.gps = g.lat !== null && g.lon !== null && !ge.lat && !ge.lon ? { lat: g.lat * ($("sf-gps-lat-s").checked ? -1 : 1), lon: g.lon * ($("sf-gps-lon-w").checked ? -1 : 1) } : null;
+      v.errs = errs; return v;
+    }
+    function readRows(v) {
+      var out = [], bad = [], prev = null, add = 0;
+      rowRefs.forEach(function (rf, i) {
+        var r = rf.r, sec = parseTimeEl(rf.time), any = (r.kind === "lat" ? (r.ld || r.lm) : (r.hd || r.hm)) !== "" && (r.kind === "lat" ? (r.ld || r.lm) : (r.hd || r.hm)) !== undefined;
+        if (r.kind === "star" && !r.name && !any && sec === null) return;
+        if (r.kind === "lat" && !any && sec === null) return;
+        var name = r.kind === "lat" ? "Latitude" : (r.kind === "sun" ? "Sun" : r.name);
+        if (!any && sec === null && r.kind !== "star") return;
+        if (r.kind === "star" && !r.name) { bad.push("Row " + (i + 1) + ": choose the star."); return; }
+        if (sec === null) { bad.push("Row " + (i + 1) + ": enter the time."); return; }
+        var d, m, val;
+        if (r.kind === "lat") { d = parseFloat(String(r.ld).replace(",", ".")), m = r.lm === "" ? 0 : parseFloat(String(r.lm).replace(",", ".")); if (isNaN(d) || isNaN(m) || d < 0 || d > 90 || m < 0 || m >= 60) { bad.push("Row " + (i + 1) + ": check the latitude."); return; } val = (d + m / 60) * (r.ns === "S" ? -1 : 1); }
+        else { d = parseFloat(String(r.hd).replace(",", ".")); m = r.hm === "" ? 0 : parseFloat(String(r.hm).replace(",", ".")); if (isNaN(d) || isNaN(m) || d < 0 || d > 90 || m < 0 || m >= 60) { bad.push("Row " + (i + 1) + ": check the sextant altitude (degrees 0 to 90, minutes under 60)."); return; } val = d + m / 60; }
+        if (prev !== null && sec < prev - 12 * 3600) add += 86400; prev = sec;
+        var item = { name: name, secLocal: sec, dayAdd: add };
+        if (r.kind === "lat") item.lat = val; else { item.hs = val; item.limb = r.limb || "L"; }
+        out.push(item);
+      });
+      return { rows: out, bad: bad };
+    }
+
+    function render() {
+      var v = read(), rr = readRows(v), msg = $("sf-rows-msg");
+      msg.textContent = rr.bad.join(" "); msg.className = rr.bad.length ? "hint error" : "hint";
+      $("sf-pick").disabled = !(v.lat !== null && v.lon !== null && !v.errs.lat && !v.errs.lon && v.date && v.zone !== null && rr.rows.length);
+      var ready = !Object.keys(v.errs).length && v.lat !== null && v.lon !== null && v.course !== null && v.speed !== null && v.date && v.zone !== null && v.hoe !== null && rr.rows.length >= 2 && !rr.bad.length;
+      var missing = [];
+      if (v.lat === null || v.lon === null) missing.push("the DR position"); if (v.course === null || v.speed === null) missing.push("course and speed"); if (!v.date) missing.push("the date"); if (v.zone === null) missing.push("the time zone"); if (v.hoe === null) missing.push("height of eye (0 if none)"); if (rr.rows.length < 2) missing.push("at least two sights");
+      if (!ready) { $("sf-out").hidden = true; $("sf-empty").hidden = false; $("sf-empty").textContent = missing.length && !rr.bad.length ? "Still needed: " + missing.join(", ") + "." : "Check the entries marked in red."; last = null; return; }
+      var base = Date.UTC(v.date.y, v.date.m - 1, v.date.d), sights = rr.rows.map(function (s) { var o = { name: s.name, ms: base + (s.secLocal - v.zone * 3600) * 1000 + s.dayAdd * 1000 }; if (s.name === "Latitude") o.lat = s.lat; else { o.hs = s.hs; o.limb = s.limb; } return o; });
+      var t1 = Math.min.apply(null, sights.map(function (s) { return s.ms; })), side = $("sf-ie-on").checked ? -1 : 1;
+      var inp = { dr: { lat: v.lat * ($("sf-lat-s").checked ? -1 : 1), lon: v.lon * ($("sf-lon-w").checked ? -1 : 1), ms: t1, course: v.course, speed: v.speed }, hoe: v.hoe, ic: side * (v.ie || 0), temp: v.temp === null ? 10 : v.temp, pres: v.pres === null ? 1010 : v.pres, sights: sights };
+      if (v.gps) inp.gps = v.gps;
+      var r = SightFix.fix(inp);
+      if (r.error) { $("sf-out").hidden = true; $("sf-empty").hidden = false; $("sf-empty").textContent = r.error; last = null; return; }
+      last = { r: r, v: v, zone: v.zone, inp: inp }; show(r, v);
+    }
+    function localOf(ms, zone) { return hms(((ms + zone * 3600000) / 1000)); }
+    function show(r, v) {
+      $("sf-empty").hidden = true; $("sf-out").hidden = false;
+      var w = $("sf-warn"); w.hidden = !r.warnings.length; w.textContent = r.warnings.join("\n");
+      $("sf-f-lat").textContent = Geo.lat(r.fix.lat); $("sf-f-lon").textContent = Geo.lon(r.fix.lon);
+      $("sf-f-time").textContent = "at " + localOf(r.time, v.zone) + " local"; $("sf-f-ut").textContent = utText(r.time) + " UT";
+      $("sf-f-set").textContent = r.setDeg === null ? "on the DR" : Math.round(r.setDeg) + "° " + r.distNM.toFixed(1) + " NM";
+      $("sf-f-set-sub").textContent = r.setDeg === null ? "no difference" : "the fix is this far, this way, from the DR" + (r.driftKn !== null ? " (" + r.driftKn.toFixed(1) + " kn over " + ((r.time - last_dr_ms(r)) / 3600000).toFixed(1) + " h)" : "");
+      var q = "—", qs = "";
+      if (r.cutDeg !== undefined) { q = "cut " + r.cutDeg + "°"; qs = r.cutDeg >= 60 ? "good" : r.cutDeg >= 30 ? "acceptable" : "weak"; }
+      else if (r.hatNM !== undefined) { q = "hat " + r.hatNM.toFixed(1) + " NM"; qs = r.hatNM < 3 ? "small: good" : r.hatNM < 6 ? "moderate" : "large: check the sights"; }
+      else if (r.residuals && r.residuals.length) { var mx = Math.max.apply(null, r.residuals.map(Math.abs)); q = "±" + mx.toFixed(1) + "'"; qs = "worst line miss"; }
+      if (r.constErr !== undefined) qs += (qs ? "; " : "") + "constant error " + (r.constErr >= 0 ? "+" : "−") + Math.abs(r.constErr).toFixed(1) + "'";
+      $("sf-f-q").textContent = q; $("sf-f-q-sub").textContent = qs;
+      var tbl = $("sf-tbl"); while (tbl.firstChild) tbl.removeChild(tbl.firstChild);
+      var hh = el("tr"); ["Body", "Local time", "Hs", "Ho", "Hc", "Intercept", "Zn"].forEach(function (h) { hh.appendChild(el("th", "", h)); }); var th = el("thead"); th.appendChild(hh); tbl.appendChild(th); var tb = el("tbody"); tbl.appendChild(tb);
+      r.sights.forEach(function (s, i) {
+        var tr = el("tr"), hs = last_hs(i);
+        tr.appendChild(el("td", "", s.name)); tr.appendChild(el("td", "", localOf(s.ms, v.zone)));
+        if (s.name === "Latitude") { ["", "", "", Math.abs(s.a).toFixed(1) + " NM " + (s.a >= 0 ? "N" : "S"), "000°"].forEach(function (t) { tr.appendChild(el("td", "num", t)); }); }
+        else [hs, alt(s.ho), alt(s.hc), Math.abs(s.a).toFixed(1) + " " + (s.a >= 0 ? "toward" : "away"), s.zn.toFixed(1) + "°"].forEach(function (t) { tr.appendChild(el("td", "num", t)); });
+        tb.appendChild(tr);
+      });
+      var ft = r.fix; var line = (mode === "sun" ? "Running fix by Sun" : "Fix by stars") + " " + localOf(r.time, v.zone) + " LT (" + utText(r.time) + " UT): " + Geo.lat(ft.lat) + " " + Geo.lon(ft.lon) + (r.setDeg === null ? "" : " | " + Math.round(r.setDeg) + "° " + r.distNM.toFixed(1) + " NM from DR") + (r.gpsErrNM !== undefined ? " | GPS difference " + r.gpsErrNM.toFixed(1) + " NM" : "");
+      $("sf-log").textContent = line;
+      work(r, v);
+    }
+    function last_dr_ms(r) { return last.inp.dr.ms; }
+    function last_hs(i) { var s = last.inp.sights[i]; return s.hs === undefined ? "" : alt(s.hs); }
+    function work(r, v) {
+      var tbl = $("sf-work-tbl"); while (tbl.firstChild) tbl.removeChild(tbl.firstChild);
+      var body = r.sights.filter(function (s) { return s.name !== "Latitude"; });
+      var th = el("thead"), hr = el("tr"); hr.appendChild(el("th", "", "Step")); body.forEach(function (s) { hr.appendChild(el("th", "", s.name)); }); th.appendChild(hr); tbl.appendChild(th); var tb = el("tbody"); tbl.appendChild(tb);
+      function row(label, f) { var tr = el("tr"); tr.appendChild(el("td", "", label)); body.forEach(function (s, i) { tr.appendChild(el("td", "num", f(s, i))); }); tb.appendChild(tr); }
+      var idxOf = function (s) { return r.sights.indexOf(s); };
+      row("UT", function (s) { return utText(s.ms); }); row("DR (assumed position)", function (s) { return Geo.lat(s.ap.lat) + " " + Geo.lon(s.ap.lon); });
+      row("GHA (Sun) or GHA Aries + SHA (star)", function (s) { return alt(s.gha); }); row("Declination", function (s) { return (s.dec < 0 ? "S " : "N ") + alt(Math.abs(s.dec)); }); row("LHA", function (s) { return alt(s.lha); });
+      row("Sextant altitude Hs", function (s) { return last_hs(idxOf(s)); });
+      row("Index correction", function (s) { var ic = last.inp.ic; return (ic >= 0 ? "+" : "−") + Math.abs(ic).toFixed(1) + "'"; });
+      row("Dip (height of eye)", function (s) { return "−" + s.corr.dip.toFixed(1) + "'"; }); row("Apparent altitude", function (s) { return alt(s.corr.ha); });
+      row("Refraction", function (s) { return "−" + s.corr.ref.toFixed(1) + "'"; }); row("Semi-diameter", function (s) { return s.corr.sd === 0 ? "—" : (s.corr.sd > 0 ? "+" : "−") + Math.abs(s.corr.sd).toFixed(1) + "'"; }); row("Parallax", function (s) { return s.corr.par === 0 ? "—" : "+" + s.corr.par.toFixed(1) + "'"; });
+      row("Observed altitude Ho", function (s) { return alt(s.ho); }); row("Calculated altitude Hc", function (s) { return alt(s.hc); }); row("Intercept (Ho − Hc)", function (s) { return Math.abs(s.a).toFixed(1) + "' " + (s.a >= 0 ? "toward" : "away"); }); row("Azimuth Zn", function (s) { return s.zn.toFixed(1) + "°"; });
+    }
+
+    /* ---------- saving and loading ---------- */
+    function save() {
+      var o = st; o.mode = mode; o.f = {}; FIELDS.forEach(function (id) { o.f[id] = $(id).value; }); o.r = RADIOS.filter(function (id) { return $(id).checked; });
+      if (!o.ship) o.ship = {}; o.ship[shipKey()] = { hoe: $("sf-hoe").value, ie: $("sf-ie").value, off: $("sf-ie-off").checked };
+      store.set(KEY, o);
+    }
+    function load() {
+      if (st.f) FIELDS.forEach(function (id) { if (st.f[id] !== undefined) $(id).value = st.f[id]; });
+      (st.r || []).forEach(function (id) { if ($(id)) $(id).checked = true; });
+      shipFill();
+      if (!$("sf-date").value) $("sf-date").value = todayISO();
+      $("sf-mode-" + mode).checked = true;
+    }
+    function shipFill() { var sh = st.ship && st.ship[shipKey()]; if (sh) { $("sf-hoe").value = sh.hoe; $("sf-ie").value = sh.ie; (sh.off ? $("sf-ie-off") : $("sf-ie-on")).checked = true; } }
+
+    /* ---------- the buttons ---------- */
+    function pickStars() {
+      var v = read(); if (v.lat === null || v.lon === null || !v.date || v.zone === null) return;
+      var first = rowRefs.filter(function (rf) { return parseTimeEl(rf.time) !== null; })[0];
+      var sec = first ? parseTimeEl(first.time) : null; if (sec === null) { toast("Type the time of the first sight, then pick."); return; }
+      var ms = Date.UTC(v.date.y, v.date.m - 1, v.date.d) + (sec - v.zone * 3600) * 1000;
+      var pick = Sight.suggest(ms, v.lat * ($("sf-lat-s").checked ? -1 : 1), v.lon * ($("sf-lon-w").checked ? -1 : 1), 4);
+      if (!pick.length) { toast("No good stars are up at that time."); return; }
+      var data = st.rows.stars; data.forEach(function (r, i) { r.name = pick[i] ? pick[i].name : ""; if (pick[i] && !r.time) r.time = hms(sec); });
+      build(); save(); render(); toast("Best stars for that time: " + pick.map(function (p) { return p.name + " " + Math.round(p.hc) + "°/" + Math.round(p.zn) + "°"; }).join(", "));
+    }
+    function example() {
+      var set = function (id, val) { $(id).value = val; };
+      if (mode === "stars") {
+        set("sf-lat-d", "21"); set("sf-lat-m", "22.2"); $("sf-lat-n").checked = true; set("sf-lon-d", "37"); set("sf-lon-m", "57.2"); $("sf-lon-e").checked = true; set("sf-course", "332"); set("sf-speed", "12.4"); set("sf-date", "2026-04-14"); set("sf-zone", "2"); set("sf-hoe", "29"); set("sf-ie", "0"); $("sf-ie-on").checked = true; set("sf-temp", "27"); set("sf-pres", "1010");
+        st.rows = st.rows || {}; st.rows.stars = [["Fomalhaut", "04:48:00", "11", "30.6"], ["Spica", "04:48:33", "4", "36.8"], ["Schedar", "04:48:55", "19", "04.5"], ["", "", "", ""]].map(function (x) { return { kind: "star", name: x[0], time: x[1], hd: x[2], hm: x[3], limb: "L" }; });
+      } else {
+        set("sf-lat-d", "22"); set("sf-lat-m", "54.6"); $("sf-lat-n").checked = true; set("sf-lon-d", "94"); set("sf-lon-m", "25.3"); $("sf-lon-w").checked = true; set("sf-course", "332"); set("sf-speed", "12.4"); set("sf-date", "2021-05-06"); set("sf-zone", "-5"); set("sf-hoe", "29"); set("sf-ie", "0"); $("sf-ie-on").checked = true; set("sf-temp", "27"); set("sf-pres", "1010");
+        st.rows = st.rows || {}; st.rows.sun = [["13:48:55", "79", "41.0"], ["17:06:55", "35", "15.0"]].map(function (x) { return { kind: "sun", name: "Sun", time: x[0], hd: x[1], hm: x[2], limb: "L" }; }).concat([{ kind: "lat", time: "", ld: "", lm: "", ns: "N" }]);
+      }
+      build(); save(); render(); toast("Example loaded (from the owner's old workbook)");
+    }
+    function clearSights() { st.rows[mode] = null; build(); save(); render(); }
+
+    $("sf-form").addEventListener("input", function () { save(); render(); });
+    $("sf-form").addEventListener("change", function () { save(); render(); });
+    ["sf-mode-sun", "sf-mode-stars"].forEach(function (id) { $(id).addEventListener("change", function () { mode = $("sf-mode-stars").checked ? "stars" : "sun"; build(); save(); render(); }); });
+    $("sf-pick").addEventListener("click", pickStars); $("sf-example").addEventListener("click", example); $("sf-clear").addEventListener("click", clearSights);
+    $("sf-copy").addEventListener("click", function () { if (last) copyText($("sf-log").textContent); });
+    Ships.onChange(function () { if (started["sight-fix"]) { shipFill(); render(); } });
+    load(); build(); render();
+  }
+
   /* Tool registry and routing */
-  var TOOLS = { "true-wind": initTrueWind, "true-az": initTrueAz, "mer-pass": initMerPass, "gyro-error": initGyro, "dev-card": initDevCard, "course-speed": initCourseSpeed, "eta": initEta, "heel-draught": initHeel, "anchor-depth": initAnchor, "ship": initShipPage, "design": initDesign, "daily-reports": initDaily, "sun-times": initSunTimes, "special-areas": initAreas };
+  var TOOLS = { "sight-fix": initSightFix, "true-wind": initTrueWind, "true-az": initTrueAz, "mer-pass": initMerPass, "gyro-error": initGyro, "dev-card": initDevCard, "course-speed": initCourseSpeed, "eta": initEta, "heel-draught": initHeel, "anchor-depth": initAnchor, "ship": initShipPage, "design": initDesign, "daily-reports": initDaily, "sun-times": initSunTimes, "special-areas": initAreas };
   var started = {};
 
   /* Page chrome: breadcrumb in the top bar, small label above each page title, drawer on narrow screens */

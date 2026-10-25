@@ -32,4 +32,6 @@ const m1 = Date.UTC(2026, 10, 3, 3, 0, 0), m2 = m1 + 86164.0905 * 1000;
 near(((Sight.starPlace(m2, 'Sirius').gha - Sight.starPlace(m1, 'Sirius').gha + 540) % 360) - 180, 0, 0.02, 'a sidereal day returns the star');
 // Polaris is within 1.1 degrees of the pole
 near(Sight.starPlace(Date.UTC(2026, 9, 26), 'Polaris').dec, 89.35, 0.1, 'Polaris dec');
+// suggestion: 4 bright stars 20 to 70 degrees up, azimuths spread (smallest gap at least 40 degrees for a good sky)
+{ const ms = Date.UTC(2026, 9, 26, 17, 30, 0), pick = Sight.suggest(ms, 21.37, 37.95, 4); ok(pick.length === 4, 'four stars suggested'); pick.forEach(s => ok(s.hc >= 20 && s.hc <= 70 && Sight.mag(s.name) <= 2.3, 'suggested star usable ' + s.name)); const z = pick.map(s => s.zn).sort((a, b) => a - b); let gap = 360; z.forEach((v, i) => { gap = Math.min(gap, (i + 1 < z.length ? z[i + 1] : z[0] + 360) - v); }); ok(gap > 40, 'spread ' + gap.toFixed(0)); }
 console.log('engine tests passed: ' + n);
