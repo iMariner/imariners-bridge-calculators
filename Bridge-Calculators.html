@@ -490,8 +490,6 @@ table.dt.ps-steps td { padding: .45mm 1.5mm; border-bottom: 1px solid #ddd; }
   .print-sheet .mp-head { padding: 1.5mm 2.5mm; border: 1px solid #999; border-radius: 1.5mm; font-size: 8.5pt; background: #fff; }
   .print-sheet .ps-mp-cols { grid-template-columns: 1fr 1fr !important; gap: 0 6mm; margin-top: 2mm; }
   .ps-diagram.ps-mp-diagram { height: 54mm; }
-  #mp-sheet .ps-sign { margin-top: 8mm; }
-  #mp-sheet .ps-note { margin-top: 1mm; }
 }
 
 /* Working tables (True Azimuth, Meridian Passage) */
@@ -1014,6 +1012,9 @@ table.sf-rows td.n { font-size: var(--fs-base); }
 #sight-fix #sf-form .fused .segmented { flex: 0 0 auto; } #sight-fix #sf-form .fused .segmented label { min-width: 34px; padding-left: var(--sp-2); padding-right: var(--sp-2); }
 #sight-fix #sf-form .fused .input-wrap input { padding-left: var(--sp-2); padding-right: var(--sp-5); }
 #sight-fix #sf-form .fused .input-wrap .unit { right: var(--sp-2); }
+.sf-merpass { margin: 0 0 var(--sp-3); padding: var(--sp-2) var(--sp-3); border-left: var(--sp-1) solid var(--accent); border-radius: var(--r-md); background: var(--surface-2); font-size: var(--fs-sm); color: var(--text); }
+.sf-merpass strong { color: var(--accent); }
+.sf-merpass span { color: var(--muted); }
 /* Sight Fix end */
 </style>
 </head>
@@ -1046,10 +1047,6 @@ table.sf-rows td.n { font-size: var(--fs-base); }
     <a href="#sun-times" data-tool-link="sun-times">
       <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18h18"/><path d="M7 18a5 5 0 0 1 10 0"/><path d="M12 5v3M4.5 9.5l2 2M19.5 9.5l-2 2"/></svg>
       Sunrise &amp; Sunset
-    </a>
-    <a href="#mer-pass" data-tool-link="mer-pass">
-      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18h18"/><path d="M7 18a5 5 0 0 1 10 0"/><path d="M12 5v3M5.6 8.6l2 2M18.4 8.6l-2 2"/></svg>
-      Meridian Passage
     </a>
     <a href="#sight-fix" data-tool-link="sight-fix">
       <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18h18"/><path d="M7 18a5 5 0 0 1 10 0"/><path d="M12 5v3M5.6 8.6l2 2M18.4 8.6l-2 2"/></svg>
@@ -1406,186 +1403,6 @@ table.sf-rows td.n { font-size: var(--fs-base); }
       </div>
     </section>
 
-    <section class="tool" id="mer-pass" hidden>
-      <div class="tool-head">
-        <h1>Meridian Passage</h1>
-        <p>Noon latitude from the Sun's meridian altitude and longitude from the time of meridian passage, with the working and diagram for the log book.</p>
-      </div>
-
-      <div class="grid">
-        <div>
-          <form class="card" id="mp-form" autocomplete="off" onsubmit="return false">
-            <h2>Noon sight</h2>
-            <fieldset>
-              <legend><span class="dot" style="background:var(--ship)"></span>Time of meridian passage</legend>
-              <div class="row2">
-                <div class="field">
-                  <label for="mp-date">Date (ship's date)</label>
-                  <input id="mp-date" class="text-input" type="date">
-                  <div class="hint" id="mp-date-msg"></div>
-                </div>
-                <div class="field">
-                  <label for="mp-lt">LT of maximum altitude</label>
-                  <input id="mp-lt" class="text-input" type="time" step="1">
-                  <div class="hint" id="mp-lt-msg"></div>
-                </div>
-              </div>
-              <div class="field">
-                <label for="mp-zone">Ship's time zone (UTC offset)</label>
-                <div class="input-wrap"><input id="mp-zone" type="text" inputmode="decimal" placeholder="e.g. 8 or -5.5" maxlength="6"><span class="unit">h</span></div>
-                <div class="hint" id="mp-zone-msg">+8 means ship's time = UTC + 8 h (East +). The nautical zone description has the opposite sign (50°W is zone +3).</div>
-              </div>
-            </fieldset>
-
-            <fieldset>
-              <legend><span class="dot" style="background:var(--apparent)"></span>Sextant altitude of the Sun</legend>
-              <div class="field"><label for="mp-sa-d">Sextant altitude</label><div class="fused fused-2"><div class="input-wrap"><input id="mp-sa-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div><div class="input-wrap"><input id="mp-sa-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div></div><div class="hint" id="mp-sa-msg">0 – 90°</div></div>
-              <div class="field">
-                <span class="label" id="mp-limb-label">Limb observed</span>
-                <div class="segmented" role="radiogroup" aria-labelledby="mp-limb-label">
-                  <input type="radio" name="mp-limb" id="mp-limb-ll" value="LL" checked><label for="mp-limb-ll">Lower limb</label>
-                  <input type="radio" name="mp-limb" id="mp-limb-ul" value="UL"><label for="mp-limb-ul">Upper limb</label>
-                </div>
-              </div>
-              <div class="row2">
-                <div class="field">
-                  <label for="mp-ie">Index error</label>
-                  <div class="fused fused-2"><div class="input-wrap"><input id="mp-ie" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="Index error on or off the arc"><input type="radio" name="mp-iearc" id="mp-ie-on" value="on" checked><label for="mp-ie-on">On arc</label><input type="radio" name="mp-iearc" id="mp-ie-off" value="off"><label for="mp-ie-off">Off arc</label></div></div>
-                  <div class="hint" id="mp-ie-msg">On the arc is subtracted, off the arc is added</div>
-                </div>
-                <div class="field">
-                  <label for="mp-hoe">Height of eye</label>
-                  <div class="input-wrap"><input id="mp-hoe" type="text" inputmode="decimal" placeholder="0.0" maxlength="6"><span class="unit">m</span></div>
-                  <div class="hint" id="mp-hoe-msg">Metres</div>
-                </div>
-              </div>
-            </fieldset>
-
-            <fieldset>
-              <legend><span class="dot" style="background:var(--true)"></span>DR position at that time</legend>
-              <div class="field"><label for="mp-lat-d">Latitude</label><div class="fused"><div class="input-wrap"><input id="mp-lat-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div><div class="input-wrap"><input id="mp-lat-m" type="text" inputmode="decimal" placeholder="0.00" maxlength="6"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="Latitude hemisphere">
-                <input type="radio" name="mp-ns" id="mp-lat-n" value="N" checked><label for="mp-lat-n">North</label>
-                <input type="radio" name="mp-ns" id="mp-lat-s" value="S"><label for="mp-lat-s">South</label>
-              </div></div><div class="hint" id="mp-lat-msg">Used to tell whether the Sun bears north or south</div></div>
-              <div class="field"><label for="mp-lon-d">Longitude</label><div class="fused"><div class="input-wrap"><input id="mp-lon-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div><div class="input-wrap"><input id="mp-lon-m" type="text" inputmode="decimal" placeholder="0.00" maxlength="6"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="Longitude hemisphere">
-                <input type="radio" name="mp-ew" id="mp-lon-e" value="E" checked><label for="mp-lon-e">East</label>
-                <input type="radio" name="mp-ew" id="mp-lon-w" value="W"><label for="mp-lon-w">West</label>
-              </div></div><div class="hint" id="mp-lon-msg">0 – 180°</div></div>
-            </fieldset>
-
-            <fieldset>
-              <legend><span class="dot" style="background:var(--muted)"></span>Optional</legend>
-              <div class="row2">
-                <div class="field">
-                  <label for="mp-lmt">LMT Mer Pass (almanac)</label>
-                  <input id="mp-lmt" class="text-input" type="time" step="1">
-                  <div class="hint" id="mp-lmt-msg">Blank: calculated</div>
-                </div>
-                <div class="field">
-                  <label for="mp-tc">TC from almanac</label>
-                  <div class="input-wrap"><input id="mp-tc" type="text" inputmode="decimal" placeholder="calc." maxlength="6"><span class="unit">'</span></div>
-                  <div class="hint" id="mp-tc-msg">Blank: calculated</div>
-                </div>
-              </div>
-              <div class="field">
-                <label for="mp-bears">Sun bears at noon</label>
-                <select id="mp-bears" class="text-input">
-                  <option value="">Automatic (from DR latitude)</option>
-                  <option value="N">North</option>
-                  <option value="S">South</option>
-                </select>
-              </div>
-              <div class="field">
-                <label for="mp-voy">Voyage / remarks</label>
-                <input id="mp-voy" class="text-input" type="text" maxlength="40" placeholder="e.g. V.3">
-              </div>
-            </fieldset>
-
-            <div class="actions">
-              <button type="button" class="btn" id="mp-example">Load example</button>
-              <button type="button" class="btn" id="mp-clear">Clear</button>
-              <button type="button" class="btn" id="mp-print">Print</button>
-            </div>
-          </form>
-        </div>
-
-        <div>
-          <div class="card" id="mp-results" aria-live="polite">
-            <h2>Observed position</h2>
-            <div class="callout u-mt-0" id="mp-preset" hidden></div>
-            <div id="mp-empty" class="empty">Enter the time of meridian passage, the sextant altitude and the DR position to see the observed latitude and longitude.</div>
-            <div id="mp-out" hidden>
-              <div class="hero">
-                <div class="readout-box">
-                  <div class="readout-label">Observed latitude</div>
-                  <div class="readout u-fs-4xl" id="mp-rlat">—</div>
-                  <div class="readout-sub" id="mp-rlat-sub"></div>
-                </div>
-                <div class="readout-box">
-                  <div class="readout-label">Observed longitude</div>
-                  <div class="readout u-fs-4xl" id="mp-rlon">—</div>
-                  <div class="readout-sub" id="mp-rlon-sub"></div>
-                </div>
-              </div>
-              <div class="callout warn u-mt-3h" id="mp-warn" hidden></div>
-              <div class="logline mono" id="mp-log"></div>
-              <div class="actions">
-                <button type="button" class="btn primary" id="mp-copy">Copy log entry</button>
-                <button type="button" class="btn" id="mp-copy-work">Copy working</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <details class="method">
-              <summary>How it is calculated</summary>
-              <ol>
-                <li>OA = sextant altitude + index error. Dip = 1.76 √(height of eye in metres). AA = OA − dip.</li>
-                <li>TC (total correction) = semi-diameter + parallax − refraction for the lower limb, or − semi-diameter for the upper limb, unless you enter the almanac value.</li>
-                <li>TA = AA + TC. ZX (zenith distance) = 90° − TA.</li>
-                <li>Declination is taken for the GMT of meridian passage, corrected from the whole hour (DEC, d, Dec).</li>
-                <li>If the Sun bears south: Lat = Dec + ZX (same names add). If it bears north: Lat = Dec − ZX.</li>
-                <li>Longitude in time = LMT of meridian passage − GMT of meridian passage, multiplied by 15. East if GMT is earlier than LMT.</li>
-              </ol>
-            </details>
-          </div>
-        </div>
-      </div>
-
-      <div class="card wide-card" id="mp-work-card" hidden>
-        <h2>Working</h2>
-        <div class="mp-head mono" id="mp-head"></div>
-        <div class="mp-cols">
-          <table class="dt wk" id="mp-wl"></table>
-          <table class="dt wk" id="mp-wr"></table>
-        </div>
-        <div class="logline mono u-mt-3" id="mp-long"></div>
-        <h2 class="u-mt-5">Diagram</h2>
-        <svg class="mp-svg" id="mp-diagram" viewBox="0 0 760 340" role="img" aria-label="Diagram of the equator, the observer's zenith and the Sun's position"></svg>
-        <p class="small muted u-center u-mt-1">Not to scale. Q is the equator, Z the observer's zenith, X the Sun's position.</p>
-      </div>
-      <p class="footnote">Same method as the “Mer Pass” sheet of the Compass Error spreadsheet. For guidance only: cross-check with the Nautical Almanac.</p>
-
-      <div class="print-sheet" id="mp-sheet">
-        <div class="ps-grid" id="mp-ps-info"></div>
-        <div class="ps-result">
-          <div><span>Observed latitude</span><strong id="mp-ps-lat">—</strong></div>
-          <div><span>Observed longitude</span><strong id="mp-ps-lon">—</strong></div>
-        </div>
-        <div class="mp-head mono" id="mp-ps-head" style="margin-top:3mm"></div>
-        <div class="mp-cols ps-mp-cols">
-          <table class="dt wk ps-wk" id="mp-ps-wl"></table>
-          <table class="dt wk ps-wk" id="mp-ps-wr"></table>
-        </div>
-        <div class="ps-log mono" id="mp-ps-long" style="margin-top:2mm"></div>
-        <svg class="ps-diagram ps-mp-diagram" id="mp-ps-diagram" viewBox="0 0 760 340" aria-hidden="true"></svg>
-        <p class="ps-note"><strong>Method:</strong> OA = SA + IE; AA = OA − dip; TA = AA + TC; ZX = 90° − TA; Lat = Dec ± ZX; Long = (LMT − GMT of meridian passage) × 15. For guidance only.</p>
-        <div class="ps-sign">
-          <div>Observed by: Officer of the Watch<span>Name / Signature / Date</span></div>
-          <div>Checked by: Master<span>Name / Signature / Date</span></div>
-        </div>
-      </div>
-    </section>
 
     <section class="tool cmp" id="gyro-error" hidden>
       <div class="tool-head">
@@ -2930,6 +2747,7 @@ table.sf-rows td.n { font-size: var(--fs-base); }
               <p class="sf-runnote" id="sf-starnote">Enter the DR position, date and zone, then choose a time or press a twilight button.</p>
               <div id="sf-startbl"></div>
             </details>
+            <p class="sf-merpass" id="sf-merpass" aria-live="polite" hidden></p>
             <div class="dr-gridwrap"><table class="sf-rows" id="sf-rows"></table></div>
             <div class="hint" id="sf-rows-msg"></div>
             <p class="sf-runnote"><strong>≈</strong> what the sextant should read at that sight's time. <strong>DR at sight</strong> moves on with course and speed; type over it if you have your own.</p>
@@ -4840,210 +4658,6 @@ table.sf-rows td.n { font-size: var(--fs-base); }
     window.addEventListener("beforeprint", render);
     $("az-copy").addEventListener("click", function () { copyText($("az-log").textContent); });
     $("az-copy-work").addEventListener("click", function () { if (last) copyText(workText(rowsFor(last))); });
-    load(store.get(KEY));
-    render();
-  }
-
-  /* Diagram for the meridian passage */
-  function drawMerDiagram(svg, r, idp) {
-    while (svg.firstChild) svg.removeChild(svg.firstChild);
-    var defs = svgEl("defs", {}, svg);
-    function marker(id, color) {
-      var m = svgEl("marker", { id: idp + id, viewBox: "0 0 10 10", refX: 5, refY: 5, markerWidth: 7, markerHeight: 7, "orient": "auto-start-reverse" }, defs);
-      svgEl("path", { d: "M0,0 L10,5 L0,10 z", fill: color }, m);
-    }
-    marker("d", "var(--danger)"); marker("x", "var(--text)"); marker("l", "var(--true)");
-    var yOf = function (rank) { return 285 - (rank - 1) * 100; };
-    var yE = yOf(r.rank.E), yZ = yOf(r.rank.Z), yS = yOf(r.rank.S);
-    var x0 = 70, x1 = 655;
-    function txt(x, y, s, fill, anchor, size, weight) {
-      var t = svgEl("text", { x: x, y: y, "text-anchor": anchor || "start", "font-size": size || 15, "font-weight": weight || 600, fill: fill || "var(--text)" }, svg);
-      t.textContent = s; return t;
-    }
-    svgEl("line", { x1: 380, y1: 28, x2: 380, y2: 322, stroke: "var(--rose)", "stroke-width": 1.6, "stroke-dasharray": "6 5" }, svg);
-    txt(380, 20, "N", "var(--muted)", "middle", 14, 700); txt(380, 337, "S", "var(--muted)", "middle", 14, 700);
-    function hline(y, color, label) {
-      svgEl("line", { x1: x0, y1: y, x2: x1, y2: y, stroke: color, "stroke-width": 2.6, "stroke-linecap": "round" }, svg);
-      txt(x1 + 8, y + 5, label, color, "start", 14, 700);
-    }
-    hline(yE, "var(--accent)", "Q Equator"); hline(yZ, "var(--true)", "Z Observer"); hline(yS, "var(--apparent)", "X Sun");
-    function arrow(x, ya, yb, mk, color) {
-      svgEl("line", { x1: x, y1: ya, x2: x, y2: yb, stroke: color, "stroke-width": 2, "marker-start": "url(#" + idp + mk + ")", "marker-end": "url(#" + idp + mk + ")" }, svg);
-    }
-    arrow(170, yZ, yS, "x", "var(--text)"); arrow(470, yE, yZ, "l", "var(--true)"); arrow(600, yE, yS, "d", "var(--danger)");
-    var decT = "Dec " + dmMin(Math.abs(r.dec)) + ns(r.dec), zxT = "ZX " + dmMin(r.zx), latT = "Lat " + dmMin(Math.abs(r.latMin)) + ns(r.latMin);
-    function between(ya, yb) { return ya + (yb > ya ? 28 : -28) + 5; }
-    txt(160, between(yZ, yS), zxT, "var(--text)", "end");
-    txt(480, between(yE, yZ), latT, "var(--true)", "start");
-    txt(610, between(yE, yS), decT, "var(--danger)", "start");
-  }
-
-  /* Tool: Meridian Passage */
-  function initMerPass() {
-    var KEY = "bridgeCalc.merPass";
-    var last = null;
-    var ids = ["mp-date", "mp-lt", "mp-zone", "mp-sa-d", "mp-sa-m", "mp-ie", "mp-hoe", "mp-lat-d", "mp-lat-m", "mp-lon-d", "mp-lon-m", "mp-lmt", "mp-tc", "mp-bears", "mp-voy"];
-
-    function read() {
-      var errs = {}, v = {};
-      v.date = parseDateEl($("mp-date")); v.lt = parseTimeEl($("mp-lt"));
-      v.zone = parseNum($("mp-zone"));
-      if (isNaN(v.zone) || (v.zone !== null && (v.zone < -14 || v.zone > 14))) errs.zone = "Enter -14 to +14 hours";
-      v.sa = readDM("mp-sa", 90, "Sextant altitude", errs, "sa");
-      v.ie = parseNum($("mp-ie")); if (isNaN(v.ie) || (v.ie !== null && (v.ie < 0 || v.ie > 30))) errs.ie = "Enter 0 to 30' and choose on or off the arc"; else if (v.ie !== null) v.ie *= $("mp-ie-on").checked ? -1 : 1;   /* as applied: on the arc minus, off the arc plus */
-      v.hoe = parseNum($("mp-hoe")); if (isNaN(v.hoe) || (v.hoe !== null && (v.hoe < 0 || v.hoe > 80))) errs.hoe = "Enter 0 – 80 m";
-      v.lat = readDM("mp-lat", 90, "Latitude", errs, "lat");
-      v.lon = readDM("mp-lon", 180, "Longitude", errs, "lon");
-      v.lmt = parseTimeEl($("mp-lmt"));
-      v.tc = parseNum($("mp-tc")); if (isNaN(v.tc) || (v.tc !== null && Math.abs(v.tc) > 40)) errs.tc = "Enter minutes of arc";
-      setHint("mp-zone-msg", errs.zone || "+8 means ship's time = UTC + 8 h (East +). The nautical zone description has the opposite sign (50°W is zone +3).", !!errs.zone, $("mp-zone"));
-      setHint("mp-sa-msg", errs.sa || "0 – 90°", !!errs.sa);
-      setHint("mp-ie-msg", errs.ie || "On the arc is subtracted, off the arc is added", !!errs.ie, $("mp-ie"));
-      setHint("mp-hoe-msg", errs.hoe || "Metres", !!errs.hoe, $("mp-hoe"));
-      setHint("mp-lat-msg", errs.lat || "Used to tell whether the Sun bears north or south", !!errs.lat);
-      setHint("mp-lon-msg", errs.lon || "0 – 180°", !!errs.lon);
-      setHint("mp-tc-msg", errs.tc || "Blank: calculated", !!errs.tc, $("mp-tc"));
-      var ok = !Object.keys(errs).length && v.date && v.lt !== null && v.zone !== null && v.sa !== null && v.hoe !== null && v.lat !== null && v.lon !== null;
-      if (ok && v.ie === null) v.ie = 0;
-      return ok ? v : null;
-    }
-    function snapshot() {
-      var o = {};
-      ids.forEach(function (id) { o[id] = gv(id); });
-      o.limbUL = $("mp-limb-ul").checked; o.south = $("mp-lat-s").checked; o.west = $("mp-lon-w").checked; o.ieOff = $("mp-ie-off").checked; o.ies = 2;   /* ies 2: index error saved as a size with on/off the arc */
-      return o;
-    }
-    function save() { var o = snapshot(); o.zs = 2; store.set(KEY, o); }   /* zs 2: zone saved as UTC offset (East +) */
-    function load(o) {
-      if (!o) return;
-      if (!o.zs && o["mp-zone"] && !isNaN(parseFloat(String(o["mp-zone"]).replace(",", ".")))) o["mp-zone"] = String(-parseFloat(String(o["mp-zone"]).replace(",", ".")));   /* older saves used hours to add to LT */
-      if (!o.ies && o["mp-ie"] && !isNaN(parseFloat(String(o["mp-ie"]).replace(",", ".")))) { var ie0 = parseFloat(String(o["mp-ie"]).replace(",", ".")); o["mp-ie"] = String(Math.abs(ie0)); o.ieOff = ie0 > 0; }   /* older saves held the signed correction */
-      ids.forEach(function (id) { $(id).value = o[id] || ""; });
-      (o.ieOff ? $("mp-ie-off") : $("mp-ie-on")).checked = true;
-      (o.limbUL ? $("mp-limb-ul") : $("mp-limb-ll")).checked = true;
-      (o.south ? $("mp-lat-s") : $("mp-lat-n")).checked = true;
-      (o.west ? $("mp-lon-w") : $("mp-lon-e")).checked = true;
-    }
-
-    function latTxt(min) { return dmMin(Math.abs(min)) + ns(min); }
-    function lonTxt(min) { return dmMin(Math.abs(min)) + ew(min); }
-    function buildRows(r) {
-      var left = [
-        ["SA Sun (" + r.limb + ")", dmMin(r.sa), ""], ["IE", r.ie.toFixed(1) + "'", ""], ["HOE", r.hoe.toFixed(1) + " m", ""], null,
-        ["SA", dmMin(r.sa), ""], ["IE", r.ie.toFixed(1) + "'", ""], ["OA", dmMin(r.oa), ""], ["DIP", r.dip.toFixed(1) + "'", ""],
-        ["AA", dmMin(r.aa), ""], ["TC", r.tc.toFixed(1) + "'", r.usedAlm ? "from almanac" : "SD " + r.sd.toFixed(1) + " + P " + r.par.toFixed(1) + " − R " + r.ref.toFixed(1)],
-        ["TA", dmMin(r.ta), ""], ["− 90°", "−90°00.0'", ""], ["ZX", dmMin(r.zx), ""],
-        ["DEC", latTxt(r.dec), ""], ["O' Lat", latTxt(r.latMin), "Sun bears " + (r.bearsN ? "N" : "S") + (r.bearsAuto ? " (auto)" : ""), "key"]
-      ];
-      var right = [
-        ["LMT Mer Pass", TIME.hm(r.lmtSec), r.lmtGiven ? "from almanac" : "calculated"],
-        ["LIT", (r.litSec < 0 ? "−" : "") + TIME.hm(Math.abs(r.litSec)), ""],
-        ["GMT Mer Pass", TIME.hm(r.gmtSec), ""], null,
-        ["DEC (" + TIME.p2(r.hr) + "h)", latTxt(r.decHr), ""],
-        ["d", r.decCorr.toFixed(1) + "'", ""],
-        ["Dec", latTxt(r.dec), ""], null,
-        ["O' Long", lonTxt(r.longMin), "", "key"]
-      ];
-      return { left: left, right: right };
-    }
-    function headText(r, voy) {
-      var d = r.ltText.slice(0, 11).toUpperCase();
-      var lines = [d + (voy ? "    " + voy : "")];
-      lines.push(r.ltText.slice(13, 18).replace(":", "") + " LT / " + r.utText.slice(13, 18).replace(":", "") + " GMT    " +
-        latTxt(r.drLat * 60) + " " + lonTxt(r.drLonE * 60) +
-        (r.dr12 ? "  -  1200 LT / " + latTxt(r.dr12.lat * 60) + " " + lonTxt(r.dr12.lonE * 60) : ""));
-      return lines.join("\n");
-    }
-    function longText(r) {
-      return TIME.hm(r.lmtSec) + " − " + TIME.hm(r.gmtSec) + " = " + (r.litSec < 0 ? "−" : "") + TIME.hm(Math.abs(r.litSec)) + " × 15 = " + lonTxt(r.longMin);
-    }
-
-    /* Before noon: when the Sun will be on the meridian at the DR, and the sextant altitude to preset (Sight engine, inverse of the corrections) */
-    function preset() {
-      var box = $("mp-preset"), dt = parseDateEl($("mp-date")), z = parseNum($("mp-zone")), e = {}, la = readDM("mp-lat", 90, "", e, "a"), lo = readDM("mp-lon", 180, "", e, "b");
-      var hoe = parseNum($("mp-hoe")), ie = parseNum($("mp-ie")); if (ie !== null && !isNaN(ie)) ie *= $("mp-ie-on").checked ? -1 : 1;
-      if (!dt || z === null || isNaN(z) || la === null || lo === null || e.a || e.b || isNaN(hoe) || isNaN(ie)) { box.hidden = true; return; }
-      la *= $("mp-lat-s").checked ? -1 : 1; lo *= $("mp-lon-w").checked ? -1 : 1;
-      var day = Date.UTC(dt.y, dt.m - 1, dt.d), t = day + (12 - z) * 3600000, p, k;                 /* noon by the ship's clock (keeps the ship's date), then home in on LHA 0 */
-      for (k = 0; k < 4; k++) { p = Sight.sunPlace(t); var lha = ((p.gha + lo) % 360 + 540) % 360 - 180; t -= lha / 15 * 3600000; }
-      p = Sight.sunPlace(t);
-      var ho = 90 - Math.abs(la - p.dec), bearsS = p.dec < la, limb = $("mp-limb-ul").checked ? "U" : "L", hs = ho;
-      if (ho < 1) { box.hidden = false; box.textContent = "Before noon: the Sun stays " + (ho < 0 ? "below" : "on") + " the horizon at meridian passage today (true altitude " + (ho < 0 ? "−" : "") + dm(Math.abs(ho)) + "), so there is no meridian altitude to take."; return; }
-      for (k = 0; k < 8; k++) { var c = Sight.ho({ hs: hs, ic: ie || 0, hoe: hoe || 0, body: "sun", limb: limb, sd: p.sd, hp: p.hp }); hs += ho - c.ho; }
-      var shipT = new Date(t + z * 3600000), hm = ("0" + shipT.getUTCHours()).slice(-2) + ":" + ("0" + shipT.getUTCMinutes()).slice(-2), dd = Math.round((Date.UTC(shipT.getUTCFullYear(), shipT.getUTCMonth(), shipT.getUTCDate()) - day) / 86400000);
-      if (dd) hm += " (" + (dd > 0 ? "next day" : "previous day") + ")";
-      box.hidden = false;
-      box.textContent = "Before noon: the Sun crosses your DR meridian at about " + hm + " ship's time, bearing " + (Math.abs(la - p.dec) < 0.2 ? "nearly overhead" : bearsS ? "south" : "north") + ". Preset the sextant to about " + dm(hs) +
-        " (" + (limb === "U" ? "upper" : "lower") + " limb, with your index error and height of eye; true altitude " + dm(ho) + ", Dec " + ns(p.dec) + " " + dm(Math.abs(p.dec)) + ")." + (ho > 88 ? " The Sun is nearly overhead: a meridian altitude is hard to read today." : "");
-    }
-    function render() {
-      var v = read();
-      save(); preset();
-      if (!v) { $("mp-out").hidden = true; $("mp-empty").hidden = false; $("mp-work-card").hidden = true; mpSheet(null); return; }
-      var lat = v.lat * ($("mp-lat-s").checked ? -1 : 1), lon = v.lon * ($("mp-lon-w").checked ? -1 : 1);
-      var r = meridianPass({ y: v.date.y, m: v.date.m, d: v.date.d, ltSec: v.lt, zoneH: -v.zone, drLat: lat, drLonE: lon, dr12: null,
-        saDeg: Math.floor(v.sa + 1e-9), saMin: (v.sa - Math.floor(v.sa + 1e-9)) * 60, limb: $("mp-limb-ul").checked ? "UL" : "LL",
-        ie: v.ie, hoe: v.hoe, lmtSec: v.lmt, tcOverride: v.tc, bears: gv("mp-bears") });
-      last = r;
-      $("mp-out").hidden = false; $("mp-empty").hidden = true; $("mp-work-card").hidden = false;
-      $("mp-rlat").textContent = latTxt(r.latMin);
-      $("mp-rlat-sub").innerHTML = "DR " + latTxt(lat * 60) + " · difference <strong>" + Math.abs(r.latMin - lat * 60).toFixed(1) + "'</strong> " + (r.latMin - lat * 60 >= 0 ? "north" : "south") + " of DR";
-      $("mp-rlon").textContent = lonTxt(r.longMin);
-      var dLon = r.longMin - lon * 60;
-      $("mp-rlon-sub").innerHTML = "DR " + lonTxt(lon * 60) + " · difference <strong>" + dmMin(Math.abs(dLon)) + "</strong> " + (dLon >= 0 ? "east" : "west") + " of DR";
-      var warn = [];
-      if (r.ta > 5400 || r.ta < 0) warn.push("The altitude gives an impossible true altitude. Check the sextant reading.");
-      if (Math.abs(r.latMin - lat * 60) > 60 || Math.abs(dLon) > 120) warn.push("The observed position is more than 1° of latitude or 2° of longitude from the DR. Check time, zone, hemisphere and altitude.");
-      var w = $("mp-warn"); w.hidden = !warn.length; w.textContent = warn.join(" ");
-      var rows = buildRows(r);
-      fillWork($("mp-wl"), rows.left); fillWork($("mp-wr"), rows.right);
-      var head = headText(r, gv("mp-voy").trim());
-      $("mp-head").textContent = head; $("mp-long").textContent = "Long   " + longText(r);
-      drawMerDiagram($("mp-diagram"), r, "mpd-");
-      var log = "Mer pass " + r.ltText.slice(0, 11) + " | O' Lat " + latTxt(r.latMin) + " | O' Long " + lonTxt(r.longMin) +
-        " | LMT " + TIME.hm(r.lmtSec) + " GMT " + TIME.hm(r.gmtSec) + " | SA " + r.limb + " " + dmMin(r.sa) + " TA " + dmMin(r.ta) +
-        " ZX " + dmMin(r.zx) + " Dec " + latTxt(r.dec) + " | DR " + latTxt(lat * 60) + " " + lonTxt(lon * 60);
-      $("mp-log").textContent = log;
-      mpSheet(r, rows, head, log);
-    }
-    function mpSheet(r, rows, head, log) {
-      var s = Ships.active();
-      fillCells($("mp-ps-info"), [
-        ["Ship", s ? s.name : "—"], ["IMO number", s && s.imo ? s.imo : "—"],
-        ["Date", r ? r.ltText.slice(0, 11) : "—"], ["Voyage", gv("mp-voy").trim() || "—"],
-        ["DR latitude", r ? latTxt(r.drLat * 60) : "—"], ["DR longitude", r ? lonTxt(r.drLonE * 60) : "—"],
-        ["UT of meridian passage", r ? r.utText : "—", 2],
-        ["Printed", new Date().toLocaleString("en-GB", { day: "2-digit", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" }), 2]
-      ]);
-      $("mp-ps-lat").textContent = r ? latTxt(r.latMin) : "—";
-      $("mp-ps-lon").textContent = r ? lonTxt(r.longMin) : "—";
-      $("mp-ps-head").textContent = r ? head : "";
-      fillWork($("mp-ps-wl"), r ? rows.left : []); fillWork($("mp-ps-wr"), r ? rows.right : []);
-      $("mp-ps-long").textContent = r ? "Long   " + longText(r) : "";
-      if (r) drawMerDiagram($("mp-ps-diagram"), r, "mpp-"); else { var g = $("mp-ps-diagram"); while (g.firstChild) g.removeChild(g.firstChild); }
-    }
-
-    ids.forEach(function (id) { $(id).addEventListener("input", render); });
-    ["mp-date", "mp-lt", "mp-lmt", "mp-bears"].forEach(function (id) { $(id).addEventListener("change", render); });
-    ["mp-limb-ll", "mp-limb-ul", "mp-lat-n", "mp-lat-s", "mp-lon-e", "mp-lon-w", "mp-ie-on", "mp-ie-off"].forEach(function (id) { $(id).addEventListener("change", render); });
-    $("mp-example").addEventListener("click", function () {
-      load({ "mp-date": "2025-01-07", "mp-lt": "12:26:00", "mp-zone": "6", "zs": 2, "mp-sa-d": "68", "mp-sa-m": "47.8", "mp-ie": "0", "mp-hoe": "20.7",
-        "mp-lat-d": "1", "mp-lat-m": "18.41", "mp-lon-d": "85", "mp-lon-m": "5.30", "mp-voy": "V.3", south: true, west: false, limbUL: false });
-      render();
-      toast("Example loaded: expect 1°15.6'S and 85°00.0'E");
-    });
-    $("mp-clear").addEventListener("click", function () {
-      load({}); $("mp-lat-n").checked = true; $("mp-lon-e").checked = true; $("mp-limb-ll").checked = true;
-      render(); $("mp-date").focus();
-    });
-    $("mp-print").addEventListener("click", function () { window.print(); });
-    window.addEventListener("beforeprint", render);
-    $("mp-copy").addEventListener("click", function () { copyText($("mp-log").textContent); });
-    $("mp-copy-work").addEventListener("click", function () {
-      if (!last) return;
-      var b = buildRows(last);
-      copyText(headText(last, gv("mp-voy").trim()) + "\n\n" + workText(b.left) + "\n\n" + workText(b.right) + "\n\nLong   " + longText(last));
-    });
     load(store.get(KEY));
     render();
   }
@@ -8062,6 +7676,27 @@ table.sf-rows td.n { font-size: var(--fs-base); }
         rf.exp.textContent = txt;
       });
     }
+    function merPassBox(v) {                                                         /* when the Sun crosses the meridian at the ship (moving with course and speed): when to be on the bridge */
+      var box = $("sf-merpass"), show = st.method === "noon" || st.method === "mer" || st.method === "sunrun"; box.hidden = !show; if (!show) return;
+      var ok = v.lat !== null && v.lon !== null && !v.errs.lat && !v.errs.lon && v.date && v.zone !== null && !v.errs.zone;
+      if (!ok) { box.textContent = "Sun's meridian passage: enter the DR, date and zone to see the time."; return; }
+      var base = Date.UTC(v.date.y, v.date.m - 1, v.date.d), secs = rowRefs.map(function (rf) { return parseTimeEl(rf.time); }).filter(function (x) { return x !== null; });
+      var ref = secs.length ? Math.min.apply(null, secs) : 12 * 3600;                 /* the DR is for the first sight; with no times yet, for noon */
+      var dr0 = { lat: v.lat * ($("sf-lat-s").checked ? -1 : 1), lon: v.lon * ($("sf-lon-w").checked ? -1 : 1), ms: base + (ref - v.zone * 3600) * 1000, course: v.course || 0, speed: v.speed || 0 };
+      var t = base + (12 - v.zone) * 3600000, q = null;
+      for (var k = 0; k < 8; k++) { q = SightFix.drAt(dr0, t); var lha = ((Sight.sunPlace(t).gha + q.lon) % 360 + 540) % 360 - 180; t -= lha / 15 * 3600000; }
+      q = SightFix.drAt(dr0, t);
+      var pl = Sight.place(t, "Sun"), rd = Sight.reduceBody(pl, q.lat, q.lon), loc = Math.round((t - base) / 1000 + v.zone * 3600), lsec = ((loc % 86400) + 86400) % 86400;
+      var ready = Math.floor((lsec - 15 * 60) / 300) * 300, brg = Math.abs(rd.zn - 180) < 90 ? "South" : "North";
+      box.textContent = "";
+      box.appendChild(el("strong", "", "Sun's meridian passage " + hms(lsec) + " ship's time"));
+      box.appendChild(el("span", "", rd.hc < 0 ? " · the Sun stays below the horizon today" : " · bears " + brg + " · sextant about " + alt(hsFor(pl, rd, v, "L")) + " (lower limb) · be ready by " + hms(ready).slice(0, 5)));
+    }
+    function hsFor(pl, rd, v, limb) {                                                /* the sextant reading that gives altitude rd.hc: Ho inverted */
+      var ic = ($("sf-ie-on").checked ? -1 : 1) * (v.ie || 0), hs = rd.hc;
+      for (var k = 0; k < 8; k++) { var c = Sight.ho({ hs: hs, ic: ic, hoe: v.hoe || 0, temp: v.temp === null ? 10 : v.temp, pres: v.pres === null ? 1010 : v.pres, body: pl.kind, limb: limb, sd: pl.kind === "moon" ? rd.sd : pl.sd, hp: pl.hp }); hs += rd.hc - c.ho; }
+      return hs;
+    }
     function readRows(v) {
       var out = [], bad = [], prev = null, add = 0;
       rowRefs.forEach(function (rf, i) {
@@ -8085,7 +7720,7 @@ table.sf-rows td.n { font-size: var(--fs-base); }
     }
 
     function render() {
-      var v = read(), rr = readRows(v), msg = $("sf-rows-msg"); starPanel(); expectRows(v);
+      var v = read(), rr = readRows(v), msg = $("sf-rows-msg"); starPanel(); expectRows(v); merPassBox(v);
       msg.textContent = rr.bad.join(" "); msg.className = rr.bad.length ? "hint error" : "hint";
       var one = rr.rows.length === 1 && rr.rows[0].name !== "Latitude";
       var ready = !Object.keys(v.errs).length && v.lat !== null && v.lon !== null && (one || (v.course !== null && v.speed !== null)) && v.date && v.zone !== null && v.hoe !== null && (one || rr.rows.length >= 2) && !rr.bad.length;
@@ -8532,8 +8167,9 @@ table.sf-rows td.n { font-size: var(--fs-base); }
 
 
 
+
   /* Tool registry and routing */
-  var TOOLS = { "sight-fix": initSightFix, "true-wind": initTrueWind, "true-az": initTrueAz, "mer-pass": initMerPass, "gyro-error": initGyro, "dev-card": initDevCard, "course-speed": initCourseSpeed, "eta": initEta, "heel-draught": initHeel, "anchor-depth": initAnchor, "ship": initShipPage, "design": initDesign, "daily-reports": initDaily, "sun-times": initSunTimes, "special-areas": initAreas };
+  var TOOLS = { "sight-fix": initSightFix, "true-wind": initTrueWind, "true-az": initTrueAz, "gyro-error": initGyro, "dev-card": initDevCard, "course-speed": initCourseSpeed, "eta": initEta, "heel-draught": initHeel, "anchor-depth": initAnchor, "ship": initShipPage, "design": initDesign, "daily-reports": initDaily, "sun-times": initSunTimes, "special-areas": initAreas };
   var started = {};
 
   /* Page chrome: breadcrumb in the top bar, small label above each page title, drawer on narrow screens */
@@ -8554,6 +8190,7 @@ table.sf-rows td.n { font-size: var(--fs-base); }
 
   function route() {
     var id = location.hash.replace("#", "");
+    if (id === "mer-pass") id = "sight-fix";                         /* the Meridian Passage tab is now part of Sight Fix */
     if (!TOOLS[id]) id = "gyro-error";
     var sections = document.querySelectorAll("main > .tool");
     for (var i = 0; i < sections.length; i++) sections[i].hidden = sections[i].id !== id;

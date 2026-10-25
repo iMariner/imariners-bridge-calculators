@@ -154,6 +154,27 @@
         rf.exp.textContent = txt;
       });
     }
+    function merPassBox(v) {                                                         /* when the Sun crosses the meridian at the ship (moving with course and speed): when to be on the bridge */
+      var box = $("sf-merpass"), show = st.method === "noon" || st.method === "mer" || st.method === "sunrun"; box.hidden = !show; if (!show) return;
+      var ok = v.lat !== null && v.lon !== null && !v.errs.lat && !v.errs.lon && v.date && v.zone !== null && !v.errs.zone;
+      if (!ok) { box.textContent = "Sun's meridian passage: enter the DR, date and zone to see the time."; return; }
+      var base = Date.UTC(v.date.y, v.date.m - 1, v.date.d), secs = rowRefs.map(function (rf) { return parseTimeEl(rf.time); }).filter(function (x) { return x !== null; });
+      var ref = secs.length ? Math.min.apply(null, secs) : 12 * 3600;                 /* the DR is for the first sight; with no times yet, for noon */
+      var dr0 = { lat: v.lat * ($("sf-lat-s").checked ? -1 : 1), lon: v.lon * ($("sf-lon-w").checked ? -1 : 1), ms: base + (ref - v.zone * 3600) * 1000, course: v.course || 0, speed: v.speed || 0 };
+      var t = base + (12 - v.zone) * 3600000, q = null;
+      for (var k = 0; k < 8; k++) { q = SightFix.drAt(dr0, t); var lha = ((Sight.sunPlace(t).gha + q.lon) % 360 + 540) % 360 - 180; t -= lha / 15 * 3600000; }
+      q = SightFix.drAt(dr0, t);
+      var pl = Sight.place(t, "Sun"), rd = Sight.reduceBody(pl, q.lat, q.lon), loc = Math.round((t - base) / 1000 + v.zone * 3600), lsec = ((loc % 86400) + 86400) % 86400;
+      var ready = Math.floor((lsec - 15 * 60) / 300) * 300, brg = Math.abs(rd.zn - 180) < 90 ? "South" : "North";
+      box.textContent = "";
+      box.appendChild(el("strong", "", "Sun's meridian passage " + hms(lsec) + " ship's time"));
+      box.appendChild(el("span", "", rd.hc < 0 ? " · the Sun stays below the horizon today" : " · bears " + brg + " · sextant about " + alt(hsFor(pl, rd, v, "L")) + " (lower limb) · be ready by " + hms(ready).slice(0, 5)));
+    }
+    function hsFor(pl, rd, v, limb) {                                                /* the sextant reading that gives altitude rd.hc: Ho inverted */
+      var ic = ($("sf-ie-on").checked ? -1 : 1) * (v.ie || 0), hs = rd.hc;
+      for (var k = 0; k < 8; k++) { var c = Sight.ho({ hs: hs, ic: ic, hoe: v.hoe || 0, temp: v.temp === null ? 10 : v.temp, pres: v.pres === null ? 1010 : v.pres, body: pl.kind, limb: limb, sd: pl.kind === "moon" ? rd.sd : pl.sd, hp: pl.hp }); hs += rd.hc - c.ho; }
+      return hs;
+    }
     function readRows(v) {
       var out = [], bad = [], prev = null, add = 0;
       rowRefs.forEach(function (rf, i) {
@@ -177,7 +198,7 @@
     }
 
     function render() {
-      var v = read(), rr = readRows(v), msg = $("sf-rows-msg"); starPanel(); expectRows(v);
+      var v = read(), rr = readRows(v), msg = $("sf-rows-msg"); starPanel(); expectRows(v); merPassBox(v);
       msg.textContent = rr.bad.join(" "); msg.className = rr.bad.length ? "hint error" : "hint";
       var one = rr.rows.length === 1 && rr.rows[0].name !== "Latitude";
       var ready = !Object.keys(v.errs).length && v.lat !== null && v.lon !== null && (one || (v.course !== null && v.speed !== null)) && v.date && v.zone !== null && v.hoe !== null && (one || rr.rows.length >= 2) && !rr.bad.length;

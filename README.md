@@ -2,7 +2,7 @@
 
 One offline HTML file with the calculations a deck officer repeats on the bridge. Download `Bridge-Calculators.html`, double-click it, and it works in Chrome or Edge with no internet and nothing to install. Everything typed is saved automatically in the browser, like an Excel sheet that remembers.
 
-**Tools:** True Wind, Meridian Passage, Sunrise & Sunset, Special Areas & Map, Gyro & Compass Error (with every step of the working), Deviation Card, Course & Speed Made Good, ETA to several destinations at several speeds, Vessel Daily Reportings (noon reports and month-end distances), Draught due to Heel, Safe Anchoring Depth. Day, Dusk and Night (red only) themes. One-page print sheets.
+**Tools:** True Wind, Sunrise & Sunset, Sight Fix (every sight method, with the time of meridian passage), Special Areas & Map, Gyro & Compass Error (with every step of the working), Deviation Card, Course & Speed Made Good, ETA to several destinations at several speeds, Vessel Daily Reportings (noon reports and month-end distances), Draught due to Heel, Safe Anchoring Depth. Day, Dusk and Night (red only) themes. One-page print sheets.
 
 **Accuracy is checked, not assumed.** Sunrise and sunset were compared with a full planetary ephemeris over 422 events (largest difference 11 seconds). Special area coordinates are exactly as printed in the IMO texts, each with its source; points that come from the coastline are marked as such. See `CLAUDE.md` for how each tool was verified.
 

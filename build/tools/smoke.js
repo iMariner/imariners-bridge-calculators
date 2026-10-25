@@ -7,7 +7,7 @@ const prof = fs.mkdtempSync('/tmp/smokeprof-'), sleep = ms => new Promise(r => s
 const ch = spawn(CHROME, ['--headless=new', '--disable-gpu', '--remote-debugging-port=' + PORT, '--user-data-dir=' + prof, '--allow-file-access-from-files', 'about:blank'], { stdio: 'ignore' });
 const STEPS = [
   ['gyro-error', "document.getElementById('ge-example').click()"], ['dev-card', "document.getElementById('dc-example') && document.getElementById('dc-example').click()"],
-  ['sun-times', "document.getElementById('su-example').click()"], ['mer-pass', "document.getElementById('mp-example').click()"],
+  ['sun-times', "document.getElementById('su-example').click()"],
   ['sight-fix', "document.querySelector('[data-m=noon]').click(); document.getElementById('sf-example').click()"],
   ['sight-fix', "document.querySelector('[data-m=stars]').click(); document.getElementById('sf-example').click(); document.getElementById('sf-filldr').click(); document.getElementById('sf-tw-am').click(); document.getElementById('sf-best4').click()"],
   ['sight-fix', "['sunrun','one','mer','polaris','day'].forEach(function (m) { document.querySelector('[data-m=' + m + ']').click(); })"],

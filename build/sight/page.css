@@ -129,4 +129,7 @@ table.sf-rows td.n { font-size: var(--fs-base); }
 #sight-fix #sf-form .fused .segmented { flex: 0 0 auto; } #sight-fix #sf-form .fused .segmented label { min-width: 34px; padding-left: var(--sp-2); padding-right: var(--sp-2); }
 #sight-fix #sf-form .fused .input-wrap input { padding-left: var(--sp-2); padding-right: var(--sp-5); }
 #sight-fix #sf-form .fused .input-wrap .unit { right: var(--sp-2); }
+.sf-merpass { margin: 0 0 var(--sp-3); padding: var(--sp-2) var(--sp-3); border-left: var(--sp-1) solid var(--accent); border-radius: var(--r-md); background: var(--surface-2); font-size: var(--fs-sm); color: var(--text); }
+.sf-merpass strong { color: var(--accent); }
+.sf-merpass span { color: var(--muted); }
 /* Sight Fix end */

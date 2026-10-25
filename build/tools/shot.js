@@ -11,7 +11,6 @@ const ch = spawn(CHROME, [process.env.HEADLESS || '--headless=new', '--disable-g
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const TOOLS = [
   ['true-wind', "document.querySelector('#tool-true-wind,#true-wind')&&0"],
-  ['mer-pass', "document.getElementById('mp-example').click()"],
   ['sun-times', "document.getElementById('su-example').click()"],
   ['special-areas', "0"],
   ['gyro-error', "document.getElementById('ge-example').click()"],
