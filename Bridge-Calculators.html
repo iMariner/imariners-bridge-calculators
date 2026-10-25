@@ -945,6 +945,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
 #sf-method-card { margin-bottom: var(--sp-4); }
 .sf-apmode .field { margin: 0; }
 .sf-apmode + .sf-apmode { margin-top: var(--sp-2); }
+.sf-runnote { margin: var(--sp-3) 0 0; font-size: var(--fs-sm); color: var(--muted); }
 /* Sight Fix end */
 </style>
 </head>
@@ -2877,6 +2878,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
                 <div class="readout-box"><div class="readout-label" id="sf-l3">From the DR</div><div class="readout" id="sf-f-set">—</div><div class="readout-sub" id="sf-f-set-sub"></div></div>
                 <div class="readout-box"><div class="readout-label" id="sf-l4">Quality</div><div class="readout" id="sf-f-q">—</div><div class="readout-sub" id="sf-f-q-sub"></div></div>
               </div>
+              <p class="sf-runnote" id="sf-runnote" hidden></p>
               <div class="tbl-scroll"><table class="dt sf-res" id="sf-tbl"></table></div>
               <div class="sf-plotbox u-mt-3" id="sf-plotbox"><svg class="sf-plot" id="sf-plot" viewBox="0 0 720 540" role="img" aria-label="Plot of the lines of position and the fix"></svg>
                 <div class="legend" id="sf-legend">Dashed: line of position where the sight was taken. Solid: carried to the fix time. T toward, A away. Ring: fix. Dot: DR at the fix time.</div></div>
@@ -7916,7 +7918,11 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       if (r.constErr !== undefined) qs += (qs ? "; " : "") + "constant error " + (r.constErr >= 0 ? "+" : "−") + Math.abs(r.constErr).toFixed(1) + "'" + (r.fixC ? ", fix with it removed " + Geo.lat(r.fixC.lat) + " " + Geo.lon(r.fixC.lon) : "");
       $("sf-f-q").textContent = q; $("sf-f-q-sub").textContent = qs;
       sightsTable($("sf-tbl"), r, v);
-      var ft = r.fix; var line = (methodText(r) + apNote()) + " " + localOf(r.time, v.zone) + " LT (" + utText(r.time) + " UT): " + Geo.lat(ft.lat) + " " + Geo.lon(ft.lon) + (r.setDeg === null ? "" : " | " + Math.round(r.setDeg) + "° " + r.distNM.toFixed(1) + " NM from DR") + (r.gpsErrNM !== undefined ? " | GPS difference " + r.gpsErrNM.toFixed(1) + " NM" : "");
+      var rn = $("sf-runnote"), d0 = last.inp.dr, bodies = r.sights.filter(function (s) { return s.name !== "Latitude"; });
+      rn.hidden = !(d0.speed > 0 && r.sights.length > 1);
+      if (!rn.hidden) rn.textContent = "Ship under way at " + d0.speed + " kn on " + ("00" + Math.round(d0.course)).slice(-3) + "°: the ship was in a different place at each sight. " +
+        bodies.map(function (s) { return s.name + " " + localOf(s.ms, v.zone) + " at " + Geo.lat(s.drSight.lat) + " " + Geo.lon(s.drSight.lon); }).join("; ") +
+        ". Each line is carried forward along the course to " + localOf(r.time, v.zone).slice(0, 5) + ", where they cross: that is the fix."; var line = (methodText(r) + apNote()) + " " + localOf(r.time, v.zone) + " LT (" + utText(r.time) + " UT): " + Geo.lat(ft.lat) + " " + Geo.lon(ft.lon) + (r.setDeg === null ? "" : " | " + Math.round(r.setDeg) + "° " + r.distNM.toFixed(1) + " NM from DR") + (r.gpsErrNM !== undefined ? " | GPS difference " + r.gpsErrNM.toFixed(1) + " NM" : "");
       $("sf-log").textContent = line;
       work($("sf-work-tbl"), r, v); sheet(r, v);
     }
@@ -8087,6 +8093,8 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
     load(); build(); setMethod(st.method, false);
   }
   /* SIGHTPAGE-END */
+
+
 
 
 

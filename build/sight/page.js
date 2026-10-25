@@ -131,7 +131,11 @@
       if (r.constErr !== undefined) qs += (qs ? "; " : "") + "constant error " + (r.constErr >= 0 ? "+" : "−") + Math.abs(r.constErr).toFixed(1) + "'" + (r.fixC ? ", fix with it removed " + Geo.lat(r.fixC.lat) + " " + Geo.lon(r.fixC.lon) : "");
       $("sf-f-q").textContent = q; $("sf-f-q-sub").textContent = qs;
       sightsTable($("sf-tbl"), r, v);
-      var ft = r.fix; var line = (methodText(r) + apNote()) + " " + localOf(r.time, v.zone) + " LT (" + utText(r.time) + " UT): " + Geo.lat(ft.lat) + " " + Geo.lon(ft.lon) + (r.setDeg === null ? "" : " | " + Math.round(r.setDeg) + "° " + r.distNM.toFixed(1) + " NM from DR") + (r.gpsErrNM !== undefined ? " | GPS difference " + r.gpsErrNM.toFixed(1) + " NM" : "");
+      var rn = $("sf-runnote"), d0 = last.inp.dr, bodies = r.sights.filter(function (s) { return s.name !== "Latitude"; });
+      rn.hidden = !(d0.speed > 0 && r.sights.length > 1);
+      if (!rn.hidden) rn.textContent = "Ship under way at " + d0.speed + " kn on " + ("00" + Math.round(d0.course)).slice(-3) + "°: the ship was in a different place at each sight. " +
+        bodies.map(function (s) { return s.name + " " + localOf(s.ms, v.zone) + " at " + Geo.lat(s.drSight.lat) + " " + Geo.lon(s.drSight.lon); }).join("; ") +
+        ". Each line is carried forward along the course to " + localOf(r.time, v.zone).slice(0, 5) + ", where they cross: that is the fix."; var line = (methodText(r) + apNote()) + " " + localOf(r.time, v.zone) + " LT (" + utText(r.time) + " UT): " + Geo.lat(ft.lat) + " " + Geo.lon(ft.lon) + (r.setDeg === null ? "" : " | " + Math.round(r.setDeg) + "° " + r.distNM.toFixed(1) + " NM from DR") + (r.gpsErrNM !== undefined ? " | GPS difference " + r.gpsErrNM.toFixed(1) + " NM" : "");
       $("sf-log").textContent = line;
       work($("sf-work-tbl"), r, v); sheet(r, v);
     }

@@ -60,4 +60,5 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
 #sf-method-card { margin-bottom: var(--sp-4); }
 .sf-apmode .field { margin: 0; }
 .sf-apmode + .sf-apmode { margin-top: var(--sp-2); }
+.sf-runnote { margin: var(--sp-3) 0 0; font-size: var(--fs-sm); color: var(--muted); }
 /* Sight Fix end */
