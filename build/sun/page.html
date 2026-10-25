@@ -6,6 +6,7 @@
       <div class="grid">
         <div>
           <form class="card" id="su-form" autocomplete="off" onsubmit="return false">
+            <h2>Inputs</h2>
             <fieldset>
               <legend><span class="dot c-true"></span>Date and time zone</legend>
               <div class="field">
@@ -21,24 +22,22 @@
             </fieldset>
             <fieldset>
               <legend><span class="dot c-apparent"></span>Position</legend>
-              <div class="row2">
-                <div class="field"><label for="su-lat-d">Latitude</label><div class="input-wrap"><input id="su-lat-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div></div>
-                <div class="field"><label for="su-lat-m">&nbsp;</label><div class="input-wrap"><input id="su-lat-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div></div>
-              </div>
-              <div class="segmented" role="radiogroup" aria-label="Latitude hemisphere">
+              <div class="field"><label for="su-lat-d">Latitude</label><div class="fused"><div class="input-wrap"><input id="su-lat-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div><div class="input-wrap"><input id="su-lat-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="Latitude hemisphere">
                 <input type="radio" name="su-ns" id="su-lat-n" value="N" checked><label for="su-lat-n">North</label>
                 <input type="radio" name="su-ns" id="su-lat-s" value="S"><label for="su-lat-s">South</label>
-              </div>
-              <div class="hint" id="su-lat-msg">0 – 90°</div>
-              <div class="row2">
-                <div class="field"><label for="su-lon-d">Longitude</label><div class="input-wrap"><input id="su-lon-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div></div>
-                <div class="field"><label for="su-lon-m">&nbsp;</label><div class="input-wrap"><input id="su-lon-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div></div>
-              </div>
-              <div class="segmented" role="radiogroup" aria-label="Longitude hemisphere">
+              </div></div><div class="hint" id="su-lat-msg">0 – 90°</div></div>
+              <div class="field"><label for="su-lon-d">Longitude</label><div class="fused"><div class="input-wrap"><input id="su-lon-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div><div class="input-wrap"><input id="su-lon-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="Longitude hemisphere">
                 <input type="radio" name="su-ew" id="su-lon-e" value="E" checked><label for="su-lon-e">East</label>
                 <input type="radio" name="su-ew" id="su-lon-w" value="W"><label for="su-lon-w">West</label>
+              </div></div><div class="hint" id="su-lon-msg">0 – 180°</div></div>
+            </fieldset>
+            <fieldset>
+              <legend><span class="dot c-ship"></span>Ship under way (optional)</legend>
+              <div class="row2">
+                <div class="field"><label for="su-course">Course (true)</label><div class="input-wrap"><input id="su-course" type="text" inputmode="decimal" placeholder="000" maxlength="5"><span class="unit">°</span></div></div>
+                <div class="field"><label for="su-speed">Speed</label><div class="input-wrap"><input id="su-speed" type="text" inputmode="decimal" placeholder="0" maxlength="5"><span class="unit">kn</span></div></div>
               </div>
-              <div class="hint" id="su-lon-msg">0 – 180°</div>
+              <div class="field"><label for="su-postime">The position above is at (ship's time)</label><input id="su-postime" class="text-input" type="time"><div class="hint" id="su-mv-msg">Leave the speed empty for a ship at anchor. Under way, every time is worked at the ship's position at that moment.</div></div>
             </fieldset>
             <fieldset>
               <legend><span class="dot c-ship"></span>Height of eye (optional)</legend>
@@ -67,7 +66,7 @@
                 <div class="readout-box"><div class="readout-label">Day length</div><div class="readout" id="su-h-len">—</div><div class="readout-sub" id="su-h-len-sub"></div></div>
                 <div class="readout-box"><div class="readout-label">Meridian passage</div><div class="readout" id="su-h-lan">—</div><div class="readout-sub" id="su-h-lan-sub"></div></div>
               </div>
-              <table class="dt su-tbl" id="su-tbl"></table>
+              <div class="tbl-scroll"><table class="dt su-tbl" id="su-tbl"></table></div>
               <div class="logline mono" id="su-log"></div>
               <div class="actions"><button type="button" class="btn primary" id="su-copy">Copy times</button></div>
             </div>
@@ -75,12 +74,14 @@
           <details class="card ge-fold u-mt-4">
             <summary>How it is worked, and how accurate it is</summary>
             <ol class="small muted u-mt-3 u-list">
-              <li>The Sun's position is computed for each moment (about 0.003° accuracy) and the moment its altitude reaches the target is found to the second, at your own position. The result is rounded to the nearest minute.</li>
+              <li>The Sun's position is computed for each moment (about 0.003° accuracy) and the moment its altitude reaches the target is found to the second, at your own position. The result is rounded to the nearest minute (some websites cut the seconds off instead, so they can show a minute less).</li>
               <li><strong>Sunrise and sunset</strong> are when the Sun's upper limb is on the horizon: centre at −(34′ refraction + 16′ semi-diameter), about −0°50′. This is the Nautical Almanac rule.</li>
               <li><strong>Twilight</strong>: civil begins and ends with the Sun's centre at −6°, nautical at −12° (the time for star sights, when the horizon and the stars are both visible), astronomical at −18°.</li>
               <li><strong>Height of eye</strong> lowers the horizon by the dip, 1.76 × √height (arc minutes), so the Sun appears earlier and disappears later.</li>
               <li><strong>Ship's time</strong> = UTC + zone. <strong>LMT</strong> = UTC + longitude ÷ 15.</li>
               <li>Checked against a full planetary ephemeris at 420+ events from 60°S to 66°N: the largest difference was 11 seconds. Real refraction depends on temperature and pressure, so allow about a minute for the weather, more near the poles.</li>
+              <li><strong>Moonrise and moonset</strong> are when the Moon's upper limb is on the horizon, worked from your own position (so the Moon's large parallax is included) with the same Moon used for Moon sights. Checked against JPL DE440.</li>
+              <li><strong>Under way</strong>: give course, speed and the ship's time of the position. Each event is then worked at the position the ship will be in at that moment, so a fast ship running east sees the Sun rise earlier than at anchor.</li>
               <li>Near the poles the Sun may not rise or set, or twilight may not end: the table says so instead of showing a time.</li>
             </ol>
           </details>

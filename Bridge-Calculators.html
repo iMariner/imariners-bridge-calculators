@@ -1438,6 +1438,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
         <div>
           <div class="card" id="mp-results" aria-live="polite">
             <h2>Observed position</h2>
+            <div class="callout u-mt-0" id="mp-preset" hidden></div>
             <div id="mp-empty" class="empty">Enter the time of meridian passage, the sextant altitude and the DR position to see the observed latitude and longitude.</div>
             <div id="mp-out" hidden>
               <div class="hero">
@@ -2502,6 +2503,14 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
               </div></div><div class="hint" id="su-lon-msg">0 – 180°</div></div>
             </fieldset>
             <fieldset>
+              <legend><span class="dot c-ship"></span>Ship under way (optional)</legend>
+              <div class="row2">
+                <div class="field"><label for="su-course">Course (true)</label><div class="input-wrap"><input id="su-course" type="text" inputmode="decimal" placeholder="000" maxlength="5"><span class="unit">°</span></div></div>
+                <div class="field"><label for="su-speed">Speed</label><div class="input-wrap"><input id="su-speed" type="text" inputmode="decimal" placeholder="0" maxlength="5"><span class="unit">kn</span></div></div>
+              </div>
+              <div class="field"><label for="su-postime">The position above is at (ship's time)</label><input id="su-postime" class="text-input" type="time"><div class="hint" id="su-mv-msg">Leave the speed empty for a ship at anchor. Under way, every time is worked at the ship's position at that moment.</div></div>
+            </fieldset>
+            <fieldset>
               <legend><span class="dot c-ship"></span>Height of eye (optional)</legend>
               <div class="field">
                 <div class="input-wrap"><input id="su-hoe" type="text" inputmode="decimal" placeholder="0" maxlength="5" aria-label="Height of eye in metres"><span class="unit">m</span></div>
@@ -2542,6 +2551,8 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
               <li><strong>Height of eye</strong> lowers the horizon by the dip, 1.76 × √height (arc minutes), so the Sun appears earlier and disappears later.</li>
               <li><strong>Ship's time</strong> = UTC + zone. <strong>LMT</strong> = UTC + longitude ÷ 15.</li>
               <li>Checked against a full planetary ephemeris at 420+ events from 60°S to 66°N: the largest difference was 11 seconds. Real refraction depends on temperature and pressure, so allow about a minute for the weather, more near the poles.</li>
+              <li><strong>Moonrise and moonset</strong> are when the Moon's upper limb is on the horizon, worked from your own position (so the Moon's large parallax is included) with the same Moon used for Moon sights. Checked against JPL DE440.</li>
+              <li><strong>Under way</strong>: give course, speed and the ship's time of the position. Each event is then worked at the position the ship will be in at that moment, so a fast ship running east sees the Sun rise earlier than at anchor.</li>
               <li>Near the poles the Sun may not rise or set, or twilight may not end: the table says so instead of showing a time.</li>
             </ol>
           </details>
@@ -4835,9 +4846,25 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       return TIME.hm(r.lmtSec) + " − " + TIME.hm(r.gmtSec) + " = " + (r.litSec < 0 ? "−" : "") + TIME.hm(Math.abs(r.litSec)) + " × 15 = " + lonTxt(r.longMin);
     }
 
+    /* Before noon: when the Sun will be on the meridian at the DR, and the sextant altitude to preset (Sight engine, inverse of the corrections) */
+    function preset() {
+      var box = $("mp-preset"), dt = parseDateEl($("mp-date")), z = parseNum($("mp-zone")), e = {}, la = readDM("mp-lat", 90, "", e, "a"), lo = readDM("mp-lon", 180, "", e, "b");
+      var hoe = parseNum($("mp-hoe")), ie = parseNum($("mp-ie"));
+      if (!dt || z === null || isNaN(z) || la === null || lo === null || e.a || e.b || isNaN(hoe) || isNaN(ie)) { box.hidden = true; return; }
+      la *= $("mp-lat-s").checked ? -1 : 1; lo *= $("mp-lon-w").checked ? -1 : 1;
+      var day = Date.UTC(dt.y, dt.m - 1, dt.d), t = day + (12 - lo / 15 - 0) * 3600000, p, k;       /* about local noon, then home in on LHA 0 */
+      for (k = 0; k < 4; k++) { p = Sight.sunPlace(t); var lha = ((p.gha + lo) % 360 + 540) % 360 - 180; t -= lha / 15 * 3600000; }
+      p = Sight.sunPlace(t);
+      var ho = 90 - Math.abs(la - p.dec), bearsS = p.dec < la, limb = $("mp-limb-ul").checked ? "U" : "L", hs = ho;
+      for (k = 0; k < 8; k++) { var c = Sight.ho({ hs: hs, ic: ie || 0, hoe: hoe || 0, body: "sun", limb: limb, sd: p.sd, hp: p.hp }); hs += ho - c.ho; }
+      var shipT = new Date(t + z * 3600000), hm = ("0" + shipT.getUTCHours()).slice(-2) + ":" + ("0" + shipT.getUTCMinutes()).slice(-2);
+      box.hidden = false;
+      box.textContent = "Before noon: the Sun crosses your DR meridian at about " + hm + " ship's time, bearing " + (Math.abs(la - p.dec) < 0.2 ? "nearly overhead" : bearsS ? "south" : "north") + ". Preset the sextant to about " + dm(hs) +
+        " (" + (limb === "U" ? "upper" : "lower") + " limb, with your index error and height of eye; true altitude " + dm(ho) + ", Dec " + ns(p.dec) + " " + dm(Math.abs(p.dec)) + ")." + (ho > 88 ? " The Sun is nearly overhead: a meridian altitude is hard to read today." : "");
+    }
     function render() {
       var v = read();
-      save();
+      save(); preset();
       if (!v) { $("mp-out").hidden = true; $("mp-empty").hidden = false; $("mp-work-card").hidden = true; mpSheet(null); return; }
       var lat = v.lat * ($("mp-lat-s").checked ? -1 : 1), lon = v.lon * ($("mp-lon-w").checked ? -1 : 1);
       var r = meridianPass({ y: v.date.y, m: v.date.m, d: v.date.d, ltSec: v.lt, zoneH: -v.zone, drLat: lat, drLonE: lon, dr12: null,
@@ -6433,34 +6460,62 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       return (a + b) / 2;
     }
     var LEVELS = [["astro", -18], ["nautical", -12], ["civil", -6]];
-    function solve(y, mo, d, zoneH, lat, lon, heightM) {
+    /* where the ship is at time ms: fixed, or moving on a rhumb line. mv = { course (deg), speed (kn), ms (time of the given position) } */
+    function mover(lat, lon, mv) {
+      if (!mv || !(mv.speed > 0)) return function () { return { lat: lat, lon: lon }; };
+      var c = mv.course * R;
+      return function (ms) {
+        var d = mv.speed * (ms - mv.ms) / 3600000, la = lat + d * Math.cos(c) / 60, la2 = Math.max(-89.9, Math.min(89.9, la));
+        var dpsi = Math.log(Math.tan(Math.PI / 4 + la2 * R / 2)) - Math.log(Math.tan(Math.PI / 4 + lat * R / 2)), q = Math.abs(dpsi) > 1e-12 ? (la2 - lat) * R / dpsi : Math.cos(lat * R);
+        return { lat: la2, lon: mod(lon + d * Math.sin(c) / q / 60 + 180, 360) - 180 };
+      };
+    }
+    /* Moonrise and moonset: the Moon's upper limb on the visible horizon, worked from the observer (parallax inside), using the
+       sight engine (Sight.moonPlace and reduceBody). Also the fraction of the Moon that is lit. */
+    function moon(start, end, P, dip) {
+      var out = { rise: [], set: [] }, step = 600000;
+      function f(t) { var p = P(t), pl = Sight.moonPlace(t), r = Sight.reduceBody(pl, p.lat, p.lon); return r.hc + (34 / 60 + r.sd / 60 + dip); }
+      var t0 = start, f0 = f(t0);
+      for (var t = start + step; t <= end + 1; t += step) {
+        var f1 = f(t);
+        if ((f0 < 0) !== (f1 < 0)) { var tt = bisect(f, t0, t); if (f1 >= 0) out.rise.push(tt); else out.set.push(tt); }
+        t0 = t; f0 = f1;
+      }
+      var mid = start + 43200000, s = Sight.sunPlace(mid), m = Sight.moonPlace(mid);
+      var ce = Math.sin(s.dec * R) * Math.sin(m.dec * R) + Math.cos(s.dec * R) * Math.cos(m.dec * R) * Math.cos((s.ra - m.ra) * R);
+      out.lit = (1 - ce) / 2; out.waxing = mod(m.ra - s.ra, 360) < 180;               /* elongation from the Sun; waxing while the Moon is east of the Sun */
+      return out;
+    }
+    function solve(y, mo, d, zoneH, lat0, lon0, heightM, mv) {
+      var P = mover(lat0, lon0, mv);
       var start = Date.UTC(y, mo - 1, d) - zoneH * 3600000, end = start + 86400000, step = 120000, n = Math.round((end - start) / step);
       var mid = pos(start + 43200000), dip = heightM > 0 ? 1.76 * Math.sqrt(heightM) / 60 : 0;
       var hSun = -(34 / 60 + mid.sd + dip);
       var levels = [["sun", hSun]].concat(LEVELS), res = { levels: {}, hSun: hSun, sd: mid.sd, dip: dip, transit: [], transitAlt: null, dec: pos(start + 43200000).dec, eot: pos(start + 43200000).eot, start: start, end: end };
       var ts = [], as = [];
-      for (var i = 0; i <= n; i++) { var t = start + i * step; ts.push(t); as.push(alt(t, lat, lon)); }
+      for (var i = 0; i <= n; i++) { var t = start + i * step, q = P(t); ts.push(t); as.push(alt(t, q.lat, q.lon)); }
       levels.forEach(function (lv) {
         var h0 = lv[1], rise = [], set = [], above = 0;
         for (var i = 0; i < n; i++) {
           var a = as[i] - h0, b = as[i + 1] - h0;
           if (a > 0) above++;
           if ((a < 0 && b >= 0) || (a >= 0 && b < 0)) {
-            var tt = bisect(function (x) { return alt(x, lat, lon) - h0; }, ts[i], ts[i + 1]);
+            var tt = bisect(function (x) { var q = P(x); return alt(x, q.lat, q.lon) - h0; }, ts[i], ts[i + 1]);
             if (b >= 0 && a < 0) rise.push(tt); else set.push(tt);
           }
         }
         res.levels[lv[0]] = { h0: h0, rise: rise, set: set, state: rise.length || set.length ? "normal" : (above > n / 2 ? "always-above" : "always-below") };
       });
       for (var j = 0; j < n; j++) {
-        var l1 = wrapLha(ts[j], lon), l2 = wrapLha(ts[j + 1], lon);
+        var l1 = wrapLha(ts[j], P(ts[j]).lon), l2 = wrapLha(ts[j + 1], P(ts[j + 1]).lon);
         if (l1 < 0 && l2 >= 0 && Math.abs(l1) < 90 && Math.abs(l2) < 90) {
-          var tr = bisect(function (x) { return wrapLha(x, lon); }, ts[j], ts[j + 1]);
-          res.transit.push(tr); res.transitAlt = alt(tr, lat, lon); res.dec = pos(tr).dec; res.eot = pos(tr).eot;
+          var tr = bisect(function (x) { return wrapLha(x, P(x).lon); }, ts[j], ts[j + 1]), qt = P(tr);
+          res.transit.push(tr); res.transitAlt = alt(tr, qt.lat, qt.lon); res.transitPos = qt; res.dec = pos(tr).dec; res.eot = pos(tr).eot;
         }
       }
       var mn = Infinity, mx = -Infinity; as.forEach(function (x) { if (x < mn) mn = x; if (x > mx) mx = x; });
-      res.minAlt = mn; res.maxAlt = mx;
+      res.minAlt = mn; res.maxAlt = mx; res.P = P;
+      if (typeof Sight !== "undefined") res.moon = moon(start, end, P, dip);
       return res;
     }
     return { pos: pos, alt: alt, solve: solve };
@@ -6471,7 +6526,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
   function initSunTimes() {
     var KEY = "bridgeCalc.sun", WD = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], last = null;
     var latD = $("su-lat-d"), latM = $("su-lat-m"), lonD = $("su-lon-d"), lonM = $("su-lon-m");
-    var ids = ["su-date", "su-zone", "su-lat-d", "su-lat-m", "su-lon-d", "su-lon-m", "su-hoe"];
+    var ids = ["su-date", "su-zone", "su-lat-d", "su-lat-m", "su-lon-d", "su-lon-m", "su-hoe", "su-course", "su-speed", "su-postime"];
 
     function read() {
       var errs = {}, v = {};
@@ -6486,17 +6541,24 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       setHint("su-lat-msg", errs.lat || "0 – 90°", !!errs.lat);
       setHint("su-lon-msg", errs.lon || "0 – 180°", !!errs.lon);
       setHint("su-hoe-msg", errs.hoe || "0 = sea level, as in the Nautical Almanac. From the bridge the Sun shows a minute or so earlier.", !!errs.hoe, $("su-hoe"));
+      v.course = parseNum($("su-course")); v.speed = parseNum($("su-speed")); v.postime = parseTimeEl($("su-postime"));
+      if (isNaN(v.course) || (v.course !== null && (v.course < 0 || v.course > 360))) errs.course = "Course 0 to 360";
+      if (isNaN(v.speed) || (v.speed !== null && (v.speed < 0 || v.speed > 40))) errs.speed = "Speed 0 to 40 kn";
+      if (v.speed > 0 && v.course === null) errs.course = "Enter the course too";
+      $("su-course").setAttribute("aria-invalid", errs.course ? "true" : "false"); $("su-speed").setAttribute("aria-invalid", errs.speed ? "true" : "false");
+      setHint("su-mv-msg", errs.course || errs.speed || "Leave the speed empty for a ship at anchor. Under way, every time is worked at the ship's position at that moment.", !!(errs.course || errs.speed));
       var ok = !Object.keys(errs).length && v.date && v.zone !== null && v.lat !== null && v.lon !== null;
       if (ok) { v.latS = v.lat * ($("su-lat-s").checked ? -1 : 1); v.lonE = v.lon * ($("su-lon-w").checked ? -1 : 1); v.hoe = v.hoe || 0; }
       return ok ? v : null;
     }
     function save() {
-      store.set(KEY, { date: gv("su-date"), zone: gv("su-zone"), latD: latD.value, latM: latM.value, south: $("su-lat-s").checked, lonD: lonD.value, lonM: lonM.value, west: $("su-lon-w").checked, hoe: gv("su-hoe") });
+      store.set(KEY, { date: gv("su-date"), zone: gv("su-zone"), latD: latD.value, latM: latM.value, south: $("su-lat-s").checked, lonD: lonD.value, lonM: lonM.value, west: $("su-lon-w").checked, hoe: gv("su-hoe"), course: gv("su-course"), speed: gv("su-speed"), postime: gv("su-postime") });
     }
     function load(o) {
       if (!o) return;
       $("su-date").value = o.date || ""; $("su-zone").value = o.zone || ""; latD.value = o.latD || ""; latM.value = o.latM || "";
       (o.south ? $("su-lat-s") : $("su-lat-n")).checked = true; lonD.value = o.lonD || ""; lonM.value = o.lonM || ""; (o.west ? $("su-lon-w") : $("su-lon-e")).checked = true; $("su-hoe").value = o.hoe || "";
+      $("su-course").value = o.course || ""; $("su-speed").value = o.speed || ""; $("su-postime").value = o.postime || "";
     }
 
     /* time text: HH:MM to the nearest minute, with a day marker when the date differs from the ship's date */
@@ -6508,9 +6570,10 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
     function hm(h) { var m = Math.round(h * 60); return Math.floor(m / 60) + " h " + TIME.p2(m % 60) + " m"; }
 
     function build(v) {
-      var R = SunTimes.solve(v.date.y, v.date.m, v.date.d, v.zone, v.latS, v.lonE, v.hoe), L = R.levels, base = Date.UTC(v.date.y, v.date.m - 1, v.date.d);
+      var base = Date.UTC(v.date.y, v.date.m - 1, v.date.d), mv = v.speed > 0 ? { course: v.course, speed: v.speed, ms: base + ((v.postime === null ? 43200 : v.postime) - v.zone * 3600) * 1000 } : null;
+      var R = SunTimes.solve(v.date.y, v.date.m, v.date.d, v.zone, v.latS, v.lonE, v.hoe, mv), L = R.levels;
       var rows = [], lonH = v.lonE / 15;
-      function evt(name, ms, note, key) { rows.push({ name: name, ms: ms, note: note || "", key: !!key }); }
+      function evt(name, ms, note, key) { if (mv) { var q = R.P(ms); note = (note ? note + " · " : "") + "at " + ns(q.lat) + " " + dm(Math.abs(q.lat)) + " " + ew(q.lon) + " " + dm(Math.abs(q.lon)); } rows.push({ name: name, ms: ms, note: note || "", key: !!key }); }
       function pair(level, nameUp, nameDown, noteNone) {
         var l = L[level];
         if (l.state !== "normal") { rows.push({ name: nameUp + " / " + nameDown.toLowerCase(), none: noteNone[l.state] }); return; }
@@ -6522,6 +6585,13 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       pair("civil", "Civil twilight begins", "Civil twilight ends", { "always-above": "Sun stays above −6°: no civil twilight", "always-below": "Sun stays below −6°" });
       pair("sun", "Sunrise", "Sunset", { "always-above": "The Sun does not set (midnight sun)", "always-below": "The Sun does not rise (polar night)" });
       R.transit.forEach(function (t) { evt("Meridian passage (LAN)", t, "altitude " + dm(Math.abs(R.transitAlt)), true); });
+      if (R.moon) {
+        var lit = Math.round(R.moon.lit * 100) + "% lit, " + (R.moon.waxing ? "waxing" : "waning");
+        R.moon.rise.forEach(function (t) { evt("Moonrise", t, lit); }); R.moon.set.forEach(function (t) { evt("Moonset", t, lit); });
+        if (!R.moon.rise.length && !R.moon.set.length) rows.push({ name: "Moonrise / moonset", none: "No moonrise or moonset on this date (" + lit + ")" });
+        else if (!R.moon.rise.length) rows.push({ name: "Moonrise", none: "No moonrise on this date (" + lit + ")" });
+        else if (!R.moon.set.length) rows.push({ name: "Moonset", none: "No moonset on this date (" + lit + ")" });
+      }
       var timed = rows.filter(function (r) { return r.ms !== undefined; }).sort(function (a, b) { return a.ms - b.ms; });
       var none = rows.filter(function (r) { return r.none; });
       return { R: R, rows: timed.concat(none), base: base, lonH: lonH };
@@ -6553,7 +6623,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       $("su-date-msg").textContent = el && el !== today ? "Not today's date. Press Today to use it." : "";
       $("su-date-msg").className = el && el !== today ? "hint error" : "hint";
       if (!v) { $("su-out").hidden = true; $("su-empty").hidden = false; $("su-head-date").textContent = ""; last = null; suSheet(null); return; }
-      var B = build(v), R = B.R, L = R.levels; last = { v: v, B: B };
+      var B = build(v), R = B.R, L = R.levels; last = { v: v, B: B, mv: v.speed > 0 };
       $("su-out").hidden = false; $("su-empty").hidden = true; $("su-head-date").textContent = " " + dateText(v);
       var st = $("su-stale"); st.hidden = el === today; st.textContent = "These times are for " + dateText(v) + ", not today.";
       function hero(id, ms, sub, none) { $(id).textContent = ms === null ? "—" : frame(ms, v.zone, B.base); $(id + "-sub").textContent = ms === null ? none : sub; }
@@ -6569,6 +6639,8 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
       if (nt.rise.length && nt.set.length) parts.push("Nautical twilight " + frame(nt.rise[0], v.zone, B.base) + " - " + frame(nt.set[0], v.zone, B.base));
       if (ct.rise.length && ct.set.length) parts.push("Civil twilight " + frame(ct.rise[0], v.zone, B.base) + " - " + frame(ct.set[0], v.zone, B.base));
       if (R.transit.length) parts.push("LAN " + frame(R.transit[0], v.zone, B.base));
+      if (R.moon) parts.push("Moonrise " + (R.moon.rise.length ? frame(R.moon.rise[0], v.zone, B.base) : "none") + ", moonset " + (R.moon.set.length ? frame(R.moon.set[0], v.zone, B.base) : "none") + " (" + Math.round(R.moon.lit * 100) + "% lit)");
+      if (v.speed > 0) parts.push("under way " + ("00" + Math.round(v.course)).slice(-3) + "° " + v.speed + " kn from the position at " + (v.postime === null ? "12:00" : $("su-postime").value));
       $("su-log").textContent = dateText(v) + " | " + posText(v) + " | " + parts.join(" | ");
       suSheet(last);
     }
