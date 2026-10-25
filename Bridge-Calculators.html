@@ -8051,8 +8051,8 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
     ["sf-ap-each", "sf-ap-first"].forEach(function (id) { $(id).addEventListener("change", function () { save(); render(); }); });
     /* ---------- the method picker: sets the mode and the bodies, never wipes what was typed ---------- */
     var METHODS = {
-      noon: ["sun", "Morning Sun sight (about 0800 to 0900) as row 1, the Sun at meridian passage (noon) as row 2. Gives the noon position (Subramaniam ch. 26). Type 12:00 in \u201cGive the fix at\u201d for the position at noon by the ship's clock."],
-      sunrun: ["sun", "Two Sun sights at least 2 to 3 hours apart, so the bearing changes 30\u00b0 or more. The first line is carried forward by your course and speed to the second sight."],
+      noon: ["sun", "Morning Sun sight (about 0800 to 0900) as row 1, the Sun at meridian passage (noon) as row 2. Gives the noon position (Subramaniam ch. 26). Type 12:00 in \u201cGive the fix at\u201d for the position at noon by the ship's clock. Use the course and speed made good between the sights."],
+      sunrun: ["sun", "Two Sun sights at least 2 to 3 hours apart, so the bearing changes 30\u00b0 or more. The first line is carried forward by your course and speed to the second sight: use the course and speed made good (allowing for current, if known)."],
       one: ["stars", "One sight of any body, away from the meridian (Sun mid-morning or afternoon, a star, planet or the Moon). Gives the intercept, the position line through the ITP and the longitude where it crosses your DR latitude (longitude by chronometer)."],
       mer: ["stars", "One sight of any body on or near the meridian (bearing within 30\u00b0 of north or south): the Sun at noon, a star, a planet or the Moon, above or below the pole. Gives your latitude where the line crosses your DR longitude. Use the time of the sight. For the Sun alone the Meridian Passage page also works."],
       polaris: ["stars", "One sight of Polaris at twilight (northern hemisphere, so the horizon and the star are both visible). Gives your latitude directly; no Pole Star tables needed."],
@@ -8083,6 +8083,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
     load(); build(); setMethod(st.method, false);
   }
   /* SIGHTPAGE-END */
+
 
 
 
