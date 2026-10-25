@@ -102,7 +102,10 @@
       if (!ready) { $("sf-out").hidden = true; $("sf-sheet").classList.add("no-print"); $("sf-empty").hidden = false; $("sf-empty").className = "empty"; $("sf-empty").textContent = missing.length && !rr.bad.length ? "Still needed: " + missing.join(", ") + "." : "Check the entries marked in red."; last = null; return; }
       var base = Date.UTC(v.date.y, v.date.m - 1, v.date.d), sights = rr.rows.map(function (s) { var o = { name: s.name, ms: base + (s.secLocal - v.zone * 3600) * 1000 + s.dayAdd * 1000 }; if (s.name === "Latitude") o.lat = s.lat; else { o.hs = s.hs; o.limb = s.limb; } return o; });
       var t1 = Math.min.apply(null, sights.map(function (s) { return s.ms; })), side = $("sf-ie-on").checked ? -1 : 1, fa = parseTimeEl($("sf-fixat")), fixMs = null;
-      if (fa !== null && sights.length > 1) { fixMs = base + (fa - v.zone * 3600) * 1000; while (fixMs < t1 - 12 * 3600000) fixMs += 86400000; }     /* the ship's clock time, on the day of the sights */
+      if (fa !== null && sights.length > 1) {                                          /* that ship's clock time nearest the last sight */
+        var tl = Math.max.apply(null, sights.map(function (s) { return s.ms; })); fixMs = base + (fa - v.zone * 3600) * 1000;
+        fixMs += Math.round((tl - fixMs) / 86400000) * 86400000;
+      }
       var inp = { dr: { lat: v.lat * ($("sf-lat-s").checked ? -1 : 1), lon: v.lon * ($("sf-lon-w").checked ? -1 : 1), ms: t1, course: v.course === null ? 0 : v.course, speed: v.speed === null ? 0 : v.speed }, hoe: v.hoe, ic: side * (v.ie || 0), temp: v.temp === null ? 10 : v.temp, pres: v.pres === null ? 1010 : v.pres, sights: sights };
       if (v.gps) inp.gps = v.gps;
       if ($("sf-ap-first").checked) inp.apMode = "first";
@@ -261,7 +264,8 @@
 
     $("sf-form").addEventListener("input", function () { save(); render(); });
     $("sf-form").addEventListener("change", function () { save(); render(); });
-    ["sf-mode-sun", "sf-mode-stars"].forEach(function (id) { $(id).addEventListener("change", function () { mode = $("sf-mode-stars").checked ? "stars" : "sun"; build(); save(); render(); }); });
+    ["sf-mode-sun", "sf-mode-stars"].forEach(function (id) { $(id).addEventListener("change", function () { mode = $("sf-mode-stars").checked ? "stars" : "sun"; build(); setMethod(mode === "stars" ? "stars" : "noon", false); }); });   /* keeps the method buttons in step */
+    $("sf-fixat").addEventListener("input", function () { save(); render(); }); $("sf-fixat").addEventListener("change", function () { save(); render(); });
     ["sf-hoe", "sf-ie"].forEach(function (id) { $(id).addEventListener("input", function () { shipEdited = true; }); }); ["sf-ie-on", "sf-ie-off"].forEach(function (id) { $(id).addEventListener("change", function () { shipEdited = true; }); });
     ["sf-ap-each", "sf-ap-first"].forEach(function (id) { $(id).addEventListener("change", function () { save(); render(); }); });
     /* ---------- the method picker: sets the mode and the bodies, never wipes what was typed ---------- */
@@ -279,7 +283,7 @@
       st.method = m; var want = METHODS[m][0];
       if (want !== mode) { $("sf-mode-" + want).checked = true; mode = want; build(); }
       if (fromUser) {
-        var rows = st.rows[mode] || [], empty = function (r) { return r && !r.hd && !r.hm; };
+        var rows = st.rows[mode] || [], empty = function (r) { return r && !r.time && !r.hd && !r.hm; };     /* only rows with nothing typed are given a body */
         if (m === "polaris" && empty(rows[0])) rows[0].name = "Polaris";
         if (m === "day") { if (empty(rows[0])) rows[0].name = "Sun"; if (empty(rows[1])) rows[1].name = "Moon"; }
         if (m === "noon" && !$("sf-fixat").value) $("sf-fixat").value = "12:00";
