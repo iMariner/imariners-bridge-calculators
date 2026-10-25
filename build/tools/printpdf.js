@@ -19,6 +19,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   }
   if (process.env.PRE) await send('Runtime.evaluate', { expression: `document.getElementById('${process.env.PRE}').click();0` });   /* PRE=<id>: click this first (e.g. a mode switch) */
   await send('Runtime.evaluate', { expression: `document.getElementById('${btn}').click();0` }); await sleep(600);
+  if (process.env.POSTJS) { await send('Runtime.evaluate', { expression: process.env.POSTJS + ';0' }); await sleep(400); }   /* POSTJS: script run after the example, e.g. to clear a row */
   await send('Emulation.setEmulatedMedia', { media: 'print' });
   const pdf = await send('Page.printToPDF', { printBackground: true, preferCSSPageSize: true });
   fs.writeFileSync(out, Buffer.from(pdf.result.data, 'base64')); ws.close(); ch.kill(); process.exit(0);

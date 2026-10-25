@@ -116,6 +116,39 @@
       if (inp.gps) { var g = offset(inp.gps, base.P); out.gpsErrNM = Math.hypot(g.dN, g.dE); out.gpsBrg = out.gpsErrNM < 0.005 ? null : (Math.atan2(g.dE, g.dN) / R + 360) % 360;   /* bearing from the GPS position to the celestial fix */ }
       return out;
     }
-    return { fix: fix, advance: advance, drAt: drAt, offset: offset, move: move };
+    /* One sight on its own: the position line through the DR, its intercept terminal point (ITP), and the longitude by
+       chronometer (the longitude where the position line meets the DR latitude, solved exactly from the cosine formula).
+       input as for fix() with one sight; the DR is taken at the time of the sight. */
+    function single(inp) {
+      var s = inp.sights[0], warn = [], d = inp.dr, yr = new Date(s.ms).getUTCFullYear();
+      if (!isFinite(s.ms) || yr < 2000 || yr > 2060) return { error: "The date is outside 2000 to 2060, which the star and Sun data cover.", warnings: warn };
+      if (!isFinite(s.hs) || s.hs < 0 || s.hs > 90) return { error: "The sextant altitude is not a number between 0 and 90 degrees.", warnings: warn };
+      if (!d || !isFinite(d.lat) || !isFinite(d.lon)) return { error: "The DR position is needed.", warnings: warn };
+      if (Math.abs(d.lat) > 84) return { error: "Latitudes above 84 degrees are not supported.", warnings: warn };
+      var ap = { lat: d.lat, lon: d.lon }, f = Sight.frame(s.ms), pl = s.name === "Sun" ? Sight.sunPlace(s.ms, f) : Sight.starPlace(s.ms, s.name, f);
+      var ho = Sight.ho({ hs: s.hs, ic: inp.ic, hoe: inp.hoe, temp: inp.temp, pres: inp.pres, body: s.name === "Sun" ? "sun" : "star", limb: s.limb || "L", sd: pl.sd, hp: pl.hp });
+      if (ho.valid === false) return { error: s.name + ": the sextant altitude is below the horizon after the corrections (check the altitude, index error and height of eye).", warnings: warn };
+      var r = Sight.reduce(ap.lat, ap.lon, pl.gha, pl.dec), a = (ho.ho - r.hc) * 60;
+      if (Math.abs(a) > 120) return { error: "No position line. " + s.name + " is " + Math.abs(a).toFixed(0) + "' (" + (Math.abs(a) / 60).toFixed(1) + "°) away from where the DR puts it. This is almost always a wrong time (zone, hours or seconds), a wrong star or a wrong altitude.", warnings: warn };
+      if (Math.abs(a) > 20) warn.push(s.name + ": intercept " + Math.abs(a).toFixed(1) + "' is large. Check the time, Hs and the DR.");
+      if (r.hc < 5) warn.push(s.name + " is below 5 degrees: refraction is unreliable."); else if (r.hc < 10) warn.push(s.name + " is below 10 degrees: low altitude, less reliable."); if (r.hc > 80) warn.push(s.name + " is above 80 degrees: a straight line is a poor approximation.");
+      var row = { name: s.name, ms: s.ms, ap: ap, gha: pl.gha, dec: pl.dec, lha: r.lha, hc: r.hc, zn: r.zn, ho: ho.ho, corr: ho, a: a };
+      var itp = move(ap, a * Math.cos(r.zn * R), a * Math.sin(r.zn * R));
+      var out = { single: true, time: s.ms, sights: [row], itp: itp, lop: [(r.zn + 90) % 360, (r.zn + 270) % 360].sort(function (x, y) { return x - y; }), warnings: warn, lonChron: null };
+      var off = Math.min(Math.abs(r.zn % 180), 180 - Math.abs(r.zn % 180));       /* degrees from north or south */
+      var cosH = (Math.sin(ho.ho * R) - Math.sin(ap.lat * R) * Math.sin(pl.dec * R)) / (Math.cos(ap.lat * R) * Math.cos(pl.dec * R));
+      if (off < 30) {                                                                 /* line runs nearly east-west: give the latitude where it meets the DR longitude (Polaris, ex-meridian) */
+        var A = Math.sin(pl.dec * R), B = Math.cos(pl.dec * R) * Math.cos(r.lha * R), m = Math.hypot(A, B), q = Math.sin(ho.ho * R) / m;
+        if (Math.abs(q) <= 1) {
+          var ph = Math.atan2(A, B), c1 = (ph + Math.acos(q)) / R, c2 = (ph - Math.acos(q)) / R;
+          out.latChron = Math.abs(c1 - ap.lat) < Math.abs(c2 - ap.lat) ? c1 : c2;
+        }
+      } else if (Math.abs(cosH) <= 1) {
+        var H = Math.acos(cosH) / R, lha = r.zn < 180 ? 360 - H : H, lon = lha - pl.gha;
+        lon = ((lon % 360) + 540) % 360 - 180; out.lonChron = lon; out.lhaChron = lha;
+      }
+      return out;
+    }
+    return { fix: fix, single: single, advance: advance, drAt: drAt, offset: offset, move: move };
   })();
   /* SIGHTFIX-END */

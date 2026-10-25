@@ -2,7 +2,7 @@
   function initSightFix() {
     var KEY = "bridgeCalc.sightFix", st = store.get(KEY) || {}, mode = st.mode === "stars" ? "stars" : "sun", rowsEl = $("sf-rows"), rowRefs = [], last = null, shipEdited = false;
     var LIMBS = [["L", "Lower limb"], ["U", "Upper limb"]];
-    var NAMES = Sight.names().filter(function (n) { return n !== "Polaris"; });
+    var NAMES = Sight.names();
     var FIELDS = ["sf-lat-d", "sf-lat-m", "sf-lon-d", "sf-lon-m", "sf-course", "sf-speed", "sf-date", "sf-zone", "sf-hoe", "sf-ie", "sf-temp", "sf-pres", "sf-gps-lat-d", "sf-gps-lat-m", "sf-gps-lon-d", "sf-gps-lon-m"];
     var RADIOS = ["sf-lat-n", "sf-lat-s", "sf-lon-e", "sf-lon-w", "sf-ie-on", "sf-ie-off", "sf-gps-lat-n", "sf-gps-lat-s", "sf-gps-lon-e", "sf-gps-lon-w"];
     function shipKey() { var s = Ships.active(); return s ? s.id : "_"; }
@@ -92,23 +92,25 @@
       var v = read(), rr = readRows(v), msg = $("sf-rows-msg");
       msg.textContent = rr.bad.join(" "); msg.className = rr.bad.length ? "hint error" : "hint";
       $("sf-pick").disabled = !(v.lat !== null && v.lon !== null && !v.errs.lat && !v.errs.lon && v.date && v.zone !== null && rowRefs.some(function (rf) { return parseTimeEl(rf.time) !== null; }));
-      var ready = !Object.keys(v.errs).length && v.lat !== null && v.lon !== null && v.course !== null && v.speed !== null && v.date && v.zone !== null && v.hoe !== null && rr.rows.length >= 2 && !rr.bad.length;
+      var one = rr.rows.length === 1 && rr.rows[0].name !== "Latitude";
+      var ready = !Object.keys(v.errs).length && v.lat !== null && v.lon !== null && (one || (v.course !== null && v.speed !== null)) && v.date && v.zone !== null && v.hoe !== null && (one || rr.rows.length >= 2) && !rr.bad.length;
       var missing = [];
-      if (v.lat === null || v.lon === null) missing.push("the DR position"); if (v.course === null || v.speed === null) missing.push("course and speed"); if (!v.date) missing.push("the date"); if (v.zone === null) missing.push("the time zone"); if (v.hoe === null) missing.push("height of eye (0 if none)"); if (rr.rows.length < 2) missing.push("at least two sights");
+      if (v.lat === null || v.lon === null) missing.push("the DR position"); if (!one && (v.course === null || v.speed === null)) missing.push("course and speed"); if (!v.date) missing.push("the date"); if (v.zone === null) missing.push("the time zone"); if (v.hoe === null) missing.push("height of eye (0 if none)"); if (!rr.rows.length) missing.push("a sight (one sight gives a position line, two or more give a fix)"); else if (!one && rr.rows.length < 2) missing.push("a second sight");
       if (!ready) { $("sf-out").hidden = true; $("sf-sheet").classList.add("no-print"); $("sf-empty").hidden = false; $("sf-empty").className = "empty"; $("sf-empty").textContent = missing.length && !rr.bad.length ? "Still needed: " + missing.join(", ") + "." : "Check the entries marked in red."; last = null; return; }
       var base = Date.UTC(v.date.y, v.date.m - 1, v.date.d), sights = rr.rows.map(function (s) { var o = { name: s.name, ms: base + (s.secLocal - v.zone * 3600) * 1000 + s.dayAdd * 1000 }; if (s.name === "Latitude") o.lat = s.lat; else { o.hs = s.hs; o.limb = s.limb; } return o; });
       var t1 = Math.min.apply(null, sights.map(function (s) { return s.ms; })), side = $("sf-ie-on").checked ? -1 : 1;
-      var inp = { dr: { lat: v.lat * ($("sf-lat-s").checked ? -1 : 1), lon: v.lon * ($("sf-lon-w").checked ? -1 : 1), ms: t1, course: v.course, speed: v.speed }, hoe: v.hoe, ic: side * (v.ie || 0), temp: v.temp === null ? 10 : v.temp, pres: v.pres === null ? 1010 : v.pres, sights: sights };
+      var inp = { dr: { lat: v.lat * ($("sf-lat-s").checked ? -1 : 1), lon: v.lon * ($("sf-lon-w").checked ? -1 : 1), ms: t1, course: v.course === null ? 0 : v.course, speed: v.speed === null ? 0 : v.speed }, hoe: v.hoe, ic: side * (v.ie || 0), temp: v.temp === null ? 10 : v.temp, pres: v.pres === null ? 1010 : v.pres, sights: sights };
       if (v.gps) inp.gps = v.gps;
-      var r = SightFix.fix(inp);
+      var r = one ? SightFix.single(inp) : SightFix.fix(inp);
       if (r.error) { $("sf-out").hidden = true; $("sf-sheet").classList.add("no-print"); $("sf-empty").hidden = false; $("sf-empty").className = "callout warn u-mt-0"; $("sf-empty").textContent = r.error; last = null; return; }
-      last = { r: r, v: v, zone: v.zone, inp: inp }; show(r, v);
+      last = { r: r, v: v, zone: v.zone, inp: inp }; if (r.single) showLine(r, v); else show(r, v);
     }
     function localOf(ms, zone) { return hms(((ms + zone * 3600000) / 1000)); }
     function show(r, v) {
       $("sf-sheet").classList.remove("no-print");
       $("sf-empty").hidden = true; $("sf-out").hidden = false;
       var w = $("sf-warn"); w.hidden = !r.warnings.length; w.textContent = r.warnings.join("\n");
+      labels(["Latitude", "Longitude", "From the DR", "Quality"]); $("sf-plotbox").hidden = false; $("sf-ps-plot").style.display = "";
       $("sf-f-lat").textContent = Geo.lat(r.fix.lat); $("sf-f-lon").textContent = Geo.lon(r.fix.lon);
       $("sf-f-time").textContent = "at " + localOf(r.time, v.zone) + " local"; $("sf-f-ut").textContent = utText(r.time) + " UT";
       $("sf-f-set").textContent = r.setDeg === null ? "on the DR" : Math.round(r.setDeg) + "° " + r.distNM.toFixed(1) + " NM";
@@ -124,6 +126,22 @@
       $("sf-log").textContent = line;
       work($("sf-work-tbl"), r, v); sheet(r, v);
     }
+    function labels(t) { ["sf-l1", "sf-l2", "sf-l3", "sf-l4"].forEach(function (id, i) { $(id).textContent = t[i]; }); }
+    function showLine(r, v) {                                                      /* one sight: position line and longitude by chronometer */
+      $("sf-sheet").classList.remove("no-print"); $("sf-empty").hidden = true; $("sf-out").hidden = false;
+      var s = r.sights[0], w = $("sf-warn"); w.hidden = !r.warnings.length; w.textContent = r.warnings.join("\n");
+      var byLat = r.lonChron === null && r.latChron !== undefined;
+      labels(["Intercept", "Azimuth Zn", byLat ? "Latitude" : "Longitude by chronometer", "Position line"]);
+      $("sf-f-lat").textContent = Math.abs(s.a).toFixed(1) + "' " + (s.a >= 0 ? "toward" : "away"); $("sf-f-time").textContent = "at " + localOf(r.time, v.zone) + " local";
+      $("sf-f-lon").textContent = s.zn.toFixed(1) + "°"; $("sf-f-ut").textContent = utText(r.time) + " UT";
+      $("sf-f-set").textContent = byLat ? Geo.lat(r.latChron) : r.lonChron === null ? "—" : Geo.lon(r.lonChron);
+      $("sf-f-set-sub").textContent = byLat ? "on the DR longitude " + Geo.lon(s.ap.lon) + " (the body bears near " + (Math.cos(s.zn * Math.PI / 180) > 0 ? "north" : "south") + ")" : r.lonChron === null ? "not usable for this bearing" : "on the DR latitude " + Geo.lat(s.ap.lat);
+      $("sf-f-q").textContent = p3(r.lop[0]) + "° / " + p3(r.lop[1]) + "°"; $("sf-f-q-sub").textContent = "through the ITP " + Geo.lat(r.itp.lat) + " " + Geo.lon(r.itp.lon);
+      sightsTable($("sf-tbl"), r, v); $("sf-plotbox").hidden = true;
+      $("sf-log").textContent = s.name + " position line " + localOf(r.time, v.zone) + " LT (" + utText(r.time) + " UT): intercept " + Math.abs(s.a).toFixed(1) + "' " + (s.a >= 0 ? "toward" : "away") + ", Zn " + s.zn.toFixed(1) + "°, ITP " + Geo.lat(r.itp.lat) + " " + Geo.lon(r.itp.lon) + ", line " + p3(r.lop[0]) + "°/" + p3(r.lop[1]) + "°" + (byLat ? " | latitude " + Geo.lat(r.latChron) + " on DR long " + Geo.lon(s.ap.lon) : r.lonChron === null ? "" : " | longitude by chronometer " + Geo.lon(r.lonChron) + " on DR lat " + Geo.lat(s.ap.lat));
+      work($("sf-work-tbl"), r, v); sheetLine(r, v);
+    }
+    function p3(x) { return ("00" + Math.round(x) % 360).slice(-3); }
     function sightsTable(tbl, r, v) {
       while (tbl.firstChild) tbl.removeChild(tbl.firstChild);
       var hh = el("tr"); ["Body", "Local time", "Hs", "Ho", "Hc", "Intercept", "Zn"].forEach(function (h) { hh.appendChild(el("th", "", h)); }); var th = el("thead"); th.appendChild(hh); tbl.appendChild(th); var tb = el("tbody"); tbl.appendChild(tb);
@@ -143,11 +161,24 @@
         ["DR at first sight", Geo.lat(i.dr.lat) + " " + Geo.lon(i.dr.lon), 2], ["Course / speed", Math.round(v.course) + "° / " + v.speed + " kn"], ["Height of eye", v.hoe + " m"],
         ["Index error", (ic === 0 ? "nil" : Math.abs(ic).toFixed(1) + "' " + (ic < 0 ? "on" : "off") + " the arc")], ["Temp / pressure", i.temp + " °C / " + i.pres + " hPa"], ["Method", mode === "sun" ? "Running fix by Sun" : "Fix by stars", 2]]);
       sightsTable($("sf-ps-tbl"), r, v); work($("sf-ps-work"), r, v);
+      $("sf-ps-l1").textContent = "Latitude"; $("sf-ps-l2").textContent = "Longitude";
       $("sf-ps-lat").textContent = Geo.lat(r.fix.lat); $("sf-ps-lon").textContent = Geo.lon(r.fix.lon);
       var t = $("sf-log").textContent;
       $("sf-ps-log").textContent = t;
       var qn = $("sf-f-q").textContent + ($("sf-f-q-sub").textContent ? " (" + $("sf-f-q-sub").textContent + ")" : "");
       $("sf-ps-warn").textContent = "Quality: " + qn + (r.warnings.length ? ". Warnings: " + r.warnings.join(" ") : ". No warnings.");
+    }
+    function sheetLine(r, v) {
+      var sh = Ships.active(), i = last.inp, ic = i.ic, s = r.sights[0];
+      $("sf-ps-plot").innerHTML = ""; $("sf-ps-plot").style.display = "none";
+      fillCells($("sf-ps-info"), [["Ship", sh ? sh.name : "—"], ["IMO number", sh && sh.imo ? sh.imo : "—"], ["Date (ship's time)", p2(v.date.d) + "/" + p2(v.date.m) + "/" + v.date.y], ["Time zone", (v.zone >= 0 ? "UTC +" : "UTC −") + Math.abs(v.zone) + " h"],
+        ["DR at the sight", Geo.lat(i.dr.lat) + " " + Geo.lon(i.dr.lon), 2], ["Height of eye", v.hoe + " m"], ["Index error", (ic === 0 ? "nil" : Math.abs(ic).toFixed(1) + "' " + (ic < 0 ? "on" : "off") + " the arc")],
+        ["Temp / pressure", i.temp + " °C / " + i.pres + " hPa"], ["Method", r.lonChron === null && r.latChron !== undefined ? "Position line and latitude" + (s.name === "Polaris" ? " by Pole Star" : "") : "Position line and longitude by chronometer", 3]]);
+      sightsTable($("sf-ps-tbl"), r, v); work($("sf-ps-work"), r, v);
+      if (r.lonChron === null && r.latChron !== undefined) { $("sf-ps-l1").textContent = "Latitude (observed)"; $("sf-ps-l2").textContent = "DR longitude"; $("sf-ps-lat").textContent = Geo.lat(r.latChron); $("sf-ps-lon").textContent = Geo.lon(s.ap.lon); }
+      else { $("sf-ps-l1").textContent = "DR latitude"; $("sf-ps-l2").textContent = "Longitude by chronometer"; $("sf-ps-lat").textContent = Geo.lat(s.ap.lat); $("sf-ps-lon").textContent = r.lonChron === null ? "not usable" : Geo.lon(r.lonChron); }
+      $("sf-ps-log").textContent = $("sf-log").textContent;
+      $("sf-ps-warn").textContent = r.warnings.length ? "Warnings: " + r.warnings.join(" ") : "No warnings.";
     }
     function last_dr_ms(r) { return last.inp.dr.ms; }
     function last_hs(i) { var s = last.inp.sights[i]; return s.hs === undefined ? "" : alt(s.hs); }

@@ -1,14 +1,14 @@
     <section class="tool cmp" id="sight-fix" hidden>
       <div class="tool-head">
         <h1>Sight Fix</h1>
-        <p>Running fix by the Sun (two sights), or a fix by 3 to 4 stars. Type the times and the sextant altitudes; the position, the intercepts and the working come out by themselves.</p>
+        <p>Sun or star sights. One sight gives a position line with the longitude by chronometer (or the latitude, for Polaris or the Sun near noon). Two or more give a fix. Type the times and the sextant altitudes; the rest comes out by itself.</p>
       </div>
       <div class="grid">
         <form class="card" id="sf-form" autocomplete="off" onsubmit="return false">
           <h2>Ship and DR</h2>
           <div class="segmented" role="radiogroup" aria-label="What you observed">
-            <input type="radio" name="sf-mode" id="sf-mode-sun" value="sun" checked><label for="sf-mode-sun">Sun, two sights</label>
-            <input type="radio" name="sf-mode" id="sf-mode-stars" value="stars"><label for="sf-mode-stars">Stars, 3 or 4</label>
+            <input type="radio" name="sf-mode" id="sf-mode-sun" value="sun" checked><label for="sf-mode-sun">Sun</label>
+            <input type="radio" name="sf-mode" id="sf-mode-stars" value="stars"><label for="sf-mode-stars">Stars</label>
           </div>
           <fieldset class="u-mt-3">
             <legend><span class="dot c-true"></span>DR position at the time of the first sight</legend>
@@ -60,13 +60,13 @@
             <div id="sf-out" hidden>
               <div class="callout warn u-mt-0" id="sf-warn" hidden></div>
               <div class="hero" id="sf-hero">
-                <div class="readout-box"><div class="readout-label">Latitude</div><div class="readout" id="sf-f-lat">—</div><div class="readout-sub" id="sf-f-time"></div></div>
-                <div class="readout-box"><div class="readout-label">Longitude</div><div class="readout" id="sf-f-lon">—</div><div class="readout-sub" id="sf-f-ut"></div></div>
-                <div class="readout-box"><div class="readout-label">From the DR</div><div class="readout" id="sf-f-set">—</div><div class="readout-sub" id="sf-f-set-sub"></div></div>
-                <div class="readout-box"><div class="readout-label">Quality</div><div class="readout" id="sf-f-q">—</div><div class="readout-sub" id="sf-f-q-sub"></div></div>
+                <div class="readout-box"><div class="readout-label" id="sf-l1">Latitude</div><div class="readout" id="sf-f-lat">—</div><div class="readout-sub" id="sf-f-time"></div></div>
+                <div class="readout-box"><div class="readout-label" id="sf-l2">Longitude</div><div class="readout" id="sf-f-lon">—</div><div class="readout-sub" id="sf-f-ut"></div></div>
+                <div class="readout-box"><div class="readout-label" id="sf-l3">From the DR</div><div class="readout" id="sf-f-set">—</div><div class="readout-sub" id="sf-f-set-sub"></div></div>
+                <div class="readout-box"><div class="readout-label" id="sf-l4">Quality</div><div class="readout" id="sf-f-q">—</div><div class="readout-sub" id="sf-f-q-sub"></div></div>
               </div>
               <div class="tbl-scroll"><table class="dt sf-res" id="sf-tbl"></table></div>
-              <div class="sf-plotbox u-mt-3"><svg class="sf-plot" id="sf-plot" viewBox="0 0 720 540" role="img" aria-label="Plot of the lines of position and the fix"></svg>
+              <div class="sf-plotbox u-mt-3" id="sf-plotbox"><svg class="sf-plot" id="sf-plot" viewBox="0 0 720 540" role="img" aria-label="Plot of the lines of position and the fix"></svg>
                 <div class="legend">Dashed: line of position where the sight was taken. Solid: carried to the fix time. T toward, A away. Ring: fix. Dot: DR at the fix time.</div></div>
               <div class="logline mono" id="sf-log"></div>
               <div class="actions"><button type="button" class="btn primary" id="sf-copy">Copy fix</button><button type="button" class="btn" id="sf-print">Print sheet</button></div>
@@ -81,7 +81,7 @@
         <table class="dt sf-res" id="sf-ps-tbl"></table>
         <h3 class="ps-h">Direct computation <span>(worked from the DR at each sight; not from tables)</span></h3>
         <table class="dt sf-res" id="sf-ps-work"></table>
-        <div class="ps-result"><div><span>Latitude</span><strong id="sf-ps-lat">—</strong></div><div><span>Longitude</span><strong id="sf-ps-lon">—</strong></div></div>
+        <div class="ps-result"><div><span id="sf-ps-l1">Latitude</span><strong id="sf-ps-lat">—</strong></div><div><span id="sf-ps-l2">Longitude</span><strong id="sf-ps-lon">—</strong></div></div>
         <div class="ps-log mono" id="sf-ps-log"></div>
         <div class="ps-note" id="sf-ps-warn"></div>
         <svg class="sf-plot ps-diagram" id="sf-ps-plot" viewBox="0 0 760 300" role="img" aria-label="Plot"></svg>
