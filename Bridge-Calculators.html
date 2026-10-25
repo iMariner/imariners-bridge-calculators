@@ -968,6 +968,12 @@ table.sf-rows td.w-dr input { font-size: var(--fs-md); background: var(--entry);
 .sf-keyicon .sp-icpt { stroke: var(--danger); stroke-width: 1.6; } .sf-keyicon .sp-azl { stroke: var(--muted); stroke-width: .9; stroke-dasharray: 2 3; } .sf-keyicon .sp-arrow { fill: var(--muted); }
 .sf-keyicon .sp-rt { fill: none; stroke: var(--muted); stroke-width: 1; } .sf-keyicon .sp-ap { fill: var(--surface); stroke: var(--muted); stroke-width: 1.4; } .sf-keyicon .sp-dr { fill: var(--text); }
 .sf-keyicon .sp-fixring { fill: none; stroke: var(--danger); stroke-width: 2; } .sf-keyicon .sp-fixdot { fill: var(--danger); } .sf-keyicon .sp-hat { fill: rgba(var(--accent-rgb), .14); stroke: none; } .sf-keyicon .sp-mark { fill: var(--surface); stroke: var(--accent); stroke-width: 1.8; }
+.sf-howto { margin-top: var(--sp-4); }
+.sf-howto summary { cursor: pointer; font-weight: var(--fw-semibold); color: var(--accent); }
+#sf-howto-body { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: var(--sp-3) var(--sp-5); margin-top: var(--sp-3); }
+.sf-howto-item h3 { margin: 0 0 var(--sp-1); font-size: var(--fs-md); }
+.sf-howto-item p { margin: 0; font-size: var(--fs-sm); line-height: 1.5; color: var(--text); }
+#sf-howto-body > p { grid-column: 1 / -1; margin: 0; }
 /* Sight Fix end */
 </style>
 </head>
@@ -2927,6 +2933,7 @@ table.sf-rows td.w-dr input { font-size: var(--fs-md); background: var(--entry);
           </div>
         </div>
       </div>
+      <details class="card ge-fold sf-howto" id="sf-howto"><summary id="sf-howto-title">How this method works</summary><div id="sf-howto-body"></div></details>
       <div class="print-sheet" id="sf-sheet">
         <div class="ps-grid" id="sf-ps-info"></div>
         <h3 class="ps-h">Observations <span>(index error and height of eye applied)</span></h3>
@@ -7906,6 +7913,7 @@ table.sf-rows td.w-dr input { font-size: var(--fs-md); background: var(--entry);
         if (val && !inGood) groups.push(["Chosen", [[val, val]]]);
         groups.push(["More", [["__all", "Show all stars, Sun, Moon and planets\u2026"]]]);
       } else {
+        if (goodNow.length) groups.unshift(["Less", [["__short", "\u25b2 Show only the good stars"]]]);
         groups.push(["Sun, Moon and planets", ["Sun", "Moon"].concat(Sight.planets()).map(function (n) { return [n, n]; })]);
         groups.push(["All stars A to Z", AZ.map(function (n) { return [n, n]; })]);
       }
@@ -7929,7 +7937,9 @@ table.sf-rows td.w-dr input { font-size: var(--fs-md); background: var(--entry);
         tr.appendChild(el("td", "n", r.kind === "lat" ? "Lat" : String(i + 1)));
         if (r.kind === "star") { var td = el("td", "w-star"), sel = el("select"); sel.setAttribute("aria-label", "Star " + (i + 1)); fillBodies(sel, r.name || ""); sel.addEventListener("change", function () {
             if (sel.value === "__all") { sel.full = true; fillBodies(sel, r.name || ""); try { if (sel.showPicker) sel.showPicker(); } catch (e) {} toast("All bodies listed: open the list again to choose."); return; }
-            r.name = sel.value; if (refs.limb) { var lm = r.name === "Moon" || r.name === "Sun"; refs.limb.hidden = !lm; refs.na.hidden = lm; } save(); render(); }); td.appendChild(sel); tr.appendChild(td); refs.sel = sel; }
+            if (sel.value === "__short") { sel.full = false; fillBodies(sel, r.name || ""); return; }
+            r.name = sel.value; if (sel.full) { sel.full = false; fillBodies(sel, r.name); }      /* back to the short list once a body is chosen */ if (refs.limb) { var lm = r.name === "Moon" || r.name === "Sun"; refs.limb.hidden = !lm; refs.na.hidden = lm; } save(); render(); }); sel.addEventListener("blur", function () { if (sel.full) { sel.full = false; fillBodies(sel, r.name || ""); } });   /* leaving the box: back to the short list */
+          td.appendChild(sel); tr.appendChild(td); refs.sel = sel; }
         var tt = el("td", "w-time"), ti = el("input"); ti.type = "time"; ti.step = "1"; ti.value = r.time || ""; ti.setAttribute("aria-label", "Local time of sight " + (i + 1)); ti.addEventListener("input", function () { r.time = ti.value; r.manual = true; save(); render(); }); tt.appendChild(ti); tr.appendChild(tt); refs.time = ti;
         if (r.kind === "lat") {
           var tl = el("td"); tl.colSpan = 2; var fz = el("div", "fused fused-2"), w1 = el("div", "input-wrap"), w2 = el("div", "input-wrap");
@@ -8291,6 +8301,50 @@ table.sf-rows td.w-dr input { font-size: var(--fs-md); background: var(--entry);
       stars: ["stars", "3 or 4 stars at twilight, spread round the horizon. In \u201cStars and planets you can take\u201d press Morning or Evening twilight, then Use the best 4 (or tap the stars you want). Then type each star's time, sextant altitude and your DR at that moment."],
       day: ["stars", "By day when the Moon or Venus is visible: one Sun sight and one Moon (or Venus) sight close in time give a fix. Choose the limb for the Sun and the Moon."]
     };
+    /* "How this method works": what the method is, how the position is found, and good practice (from Subramaniam, Practical
+       Navigation, and Joseph & Rewari, Principles of Navigation) */
+    var HOWTO = {
+      noon: ["Noon position (morning Sun and the Sun at noon)", [
+        ["What it is", "The usual daily position by the Sun. A morning sight gives a position line; it is carried forward to noon and crossed with the latitude from the Sun's meridian altitude. The fix is the noon position (Subramaniam ch. 26)."],
+        ["How the position is found", "1. Morning sight (about 0800 to 0900, Sun bearing roughly east): the intercept from the DR, or the longitude by chronometer, gives a position line at 90\u00b0 to the Sun's bearing. 2. The line is moved, without turning, by the course and distance run to noon (a transferred position line). 3. At meridian passage the Sun bears due north or south, so its position line runs east-west: it is your latitude (zenith distance \u00b1 declination). 4. The noon position is where the transferred morning line crosses the noon latitude."],
+        ["What the app does", "Works each sight from the DR at its own time, carries the morning line by your course and speed (or by the DR positions you type), and finds the crossing exactly. With \u201cGive the fix at 12:00\u201d it gives the position at noon by the ship's clock."],
+        ["Good practice", "Three to four hours between the sights, so the bearing changes 30\u00b0 or more (ideally near 90\u00b0). Use the course and speed made good, allowing for current: any error in the run goes straight into the fix. Take three morning sights 2 to 3 minutes apart and check they agree."]]],
+      sunrun: ["Sun running fix", [
+        ["What it is", "A fix from two sights of the same body (the Sun) taken some hours apart while the ship moves. Also called Sun-run-Sun."],
+        ["How the position is found", "Each sight gives a position line at 90\u00b0 to the Sun's bearing at that time. The first line is moved, parallel to itself, by the ship's course and distance run between the sights. Where the moved first line crosses the second line is the fix, at the time of the second sight."],
+        ["Good practice", "The bearing must change at least 30\u00b0 between the sights (ideally about 90\u00b0); the app warns when the lines cross at less than 30\u00b0. Use course and speed made good. The fix is only as good as the run."]]],
+      one: ["Position line and longitude by chronometer", [
+        ["What it is", "One sight of any body gives one position line, not a fix: the ship is somewhere on that line."],
+        ["Intercept method (Marcq St. Hilaire)", "From the DR the calculated altitude Hc is worked; the observed altitude Ho comes from the sextant altitude. The difference is the intercept, in miles: towards the body if Ho is greater, away if it is less. Lay it off from the DR along the bearing; the position line is at 90\u00b0 through its end (the ITP)."],
+        ["Longitude by chronometer", "The same position line, worked another way: with the DR latitude, the hour angle is found from the observed altitude, and from it the longitude where the line crosses the DR latitude. It gives the same line as the intercept."],
+        ["Good practice", "Best when the body bears near east or west. Near the meridian (within about 30\u00b0 of north or south) the line runs east-west and gives latitude instead; the app then switches to latitude by itself."]]],
+      mer: ["Meridian altitude and ex-meridian", [
+        ["What it is", "A body on (or near) your meridian bears due north or south, so its position line runs east-west: it gives your latitude directly."],
+        ["How the latitude is found", "Zenith distance = 90\u00b0 \u2212 true altitude, named opposite to the bearing. Latitude = zenith distance \u00b1 declination: same names add, different names subtract, named after the greater. Below the pole (a circumpolar body at lower transit): latitude = true altitude + polar distance."],
+        ["Ex-meridian", "Taken a little before or after meridian passage. Tables used to reduce it to the meridian; the app solves it exactly for the latitude where the position line crosses your DR longitude, so no ex-meridian limits or tables are needed."],
+        ["Good practice", "Use the time of the sight. For the Sun at noon you can also preset the sextant with the Meridian Passage page. A meridian altitude is hard to read when the body is almost overhead."]]],
+      polaris: ["Latitude by Pole Star", [
+        ["What it is", "Polaris is less than 1\u00b0 from the north celestial pole, and the altitude of the pole equals your latitude. So the altitude of Polaris, slightly corrected, is your latitude."],
+        ["How the latitude is found", "With the tables: latitude = true altitude \u2212 1\u00b0 + a0 + a1 + a2 (Nautical Almanac Pole Star tables). The app works the exact position of Polaris for the date and time, so no tables are needed and the answer is the latitude where the line crosses your DR longitude."],
+        ["Good practice", "Northern hemisphere only, at twilight when both the horizon and the star are visible. Polaris is faint (magnitude 2): a good horizon matters more than anything."]]],
+      stars: ["Star fix", [
+        ["What it is", "Three or four stars taken at twilight within a few minutes. Their position lines cross at (nearly) one point: the most reliable celestial fix."],
+        ["How the position is found", "Each star is worked from your DR at its own time (intercept and bearing), giving a position line. As the ship moves between sights, each line is carried forward by the run to the time of the last star. The lines then cross; with three or more they form a small triangle (cocked hat) and the fix is its best centre."],
+        ["Choosing the stars", "Bright stars between 20\u00b0 and 60\u00b0 high, spread round the horizon: about 120\u00b0 apart for three, 90\u00b0 apart for four. \u201cUse the best 4\u201d picks them. The time is about halfway between nautical and civil twilight."],
+        ["Reading the result", "A small triangle means good sights. If every line is off by the same amount, the app shows a constant error: check the index error and height of eye. A big triangle means one sight is wrong: the app names it."]]],
+      day: ["Sun with the Moon or Venus", [
+        ["What it is", "By day the Moon, and sometimes Venus, can be seen with the Sun. Two sights a few minutes apart give two position lines that cross: a fix without waiting hours for a running fix."],
+        ["How the position is found", "Each body gives a position line at 90\u00b0 to its bearing; the first is carried to the time of the second; the crossing is the fix."],
+        ["The Moon", "The Moon is close, so its parallax is large (up to about 1\u00b0) and its semi-diameter grows as it rises. The app works the Moon from your own position on the Earth, which includes all of this exactly; the working shows it as the Almanac would (parallax in altitude)."],
+        ["Good practice", "The bearings should differ by at least 30\u00b0. Choose the Sun's and the Moon's limb correctly (lower limb usually)."]]]
+    };
+    function howto(m) {
+      var h = HOWTO[m]; if (!h) return;
+      $("sf-howto-title").textContent = "How this method works: " + h[0];
+      var b = $("sf-howto-body"); while (b.firstChild) b.removeChild(b.firstChild);
+      h[1].forEach(function (p) { var d = el("div", "sf-howto-item"); d.appendChild(el("h3", "", p[0])); d.appendChild(el("p", "", p[1])); b.appendChild(d); });
+      var src = el("p", "small muted", "Checked against Capt. H. Subramaniam, Practical Navigation, and Capt. T.K. Joseph and Capt. S.S.S. Rewari, Principles of Navigation: the worked examples agree within 0.3'."); b.appendChild(src);
+    }
     function setMethod(m, fromUser) {
       if (!METHODS[m]) m = mode === "sun" ? "noon" : "stars";
       st.method = m; var want = METHODS[m][0];
@@ -8304,7 +8358,7 @@ table.sf-rows td.w-dr input { font-size: var(--fs-md); background: var(--entry);
         build();
       }
       [].forEach.call(document.querySelectorAll("#sf-methods [data-m]"), function (b) { var on = b.getAttribute("data-m") === m; b.className = on ? "btn primary" : "btn"; b.setAttribute("aria-pressed", on ? "true" : "false"); });
-      $("sf-method-help").textContent = METHODS[m][1];
+      $("sf-method-help").textContent = METHODS[m][1]; howto(m);
       save(); render();
     }
     [].forEach.call(document.querySelectorAll("#sf-methods [data-m]"), function (b) { b.addEventListener("click", function () { setMethod(b.getAttribute("data-m"), true); }); });
@@ -8321,6 +8375,8 @@ table.sf-rows td.w-dr input { font-size: var(--fs-md); background: var(--entry);
     load(); build(); setMethod(st.method, false);
   }
   /* SIGHTPAGE-END */
+
+
 
 
 

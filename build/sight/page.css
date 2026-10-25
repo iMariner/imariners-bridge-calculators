@@ -83,4 +83,10 @@ table.sf-rows td.w-dr input { font-size: var(--fs-md); background: var(--entry);
 .sf-keyicon .sp-icpt { stroke: var(--danger); stroke-width: 1.6; } .sf-keyicon .sp-azl { stroke: var(--muted); stroke-width: .9; stroke-dasharray: 2 3; } .sf-keyicon .sp-arrow { fill: var(--muted); }
 .sf-keyicon .sp-rt { fill: none; stroke: var(--muted); stroke-width: 1; } .sf-keyicon .sp-ap { fill: var(--surface); stroke: var(--muted); stroke-width: 1.4; } .sf-keyicon .sp-dr { fill: var(--text); }
 .sf-keyicon .sp-fixring { fill: none; stroke: var(--danger); stroke-width: 2; } .sf-keyicon .sp-fixdot { fill: var(--danger); } .sf-keyicon .sp-hat { fill: rgba(var(--accent-rgb), .14); stroke: none; } .sf-keyicon .sp-mark { fill: var(--surface); stroke: var(--accent); stroke-width: 1.8; }
+.sf-howto { margin-top: var(--sp-4); }
+.sf-howto summary { cursor: pointer; font-weight: var(--fw-semibold); color: var(--accent); }
+#sf-howto-body { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: var(--sp-3) var(--sp-5); margin-top: var(--sp-3); }
+.sf-howto-item h3 { margin: 0 0 var(--sp-1); font-size: var(--fs-md); }
+.sf-howto-item p { margin: 0; font-size: var(--fs-sm); line-height: 1.5; color: var(--text); }
+#sf-howto-body > p { grid-column: 1 / -1; margin: 0; }
 /* Sight Fix end */
