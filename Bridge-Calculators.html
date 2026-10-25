@@ -937,6 +937,7 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
   #sf-sheet .ps-grid div { padding: .8mm 2.4mm; }
   .sf-plot, #sf-ps-plot { --surface: #fff; --text: #000; --muted: #555; --border: #ccc; --border-strong: #000; --accent: #000; --danger: #000; --accent-rgb: 0, 0, 0; }
 }
+/* Sight Fix end */
 
 /* Passage Plan */
 table.pp-rows { width: 100%; border-collapse: separate; border-spacing: 0 var(--sp-1); }
@@ -2930,7 +2931,7 @@ table.pp-route tr.gc td:nth-child(2) { padding-left: var(--sp-5); }
         <table class="dt pp-route" id="pp-ps-route"></table>
         <div class="pp-notes" id="pp-ps-notes"></div>
         <div class="ps-sign"><div>Navigating officer<span>Name, signature, date</span></div><div>Master<span>Name, signature, date</span></div></div>
-        <p class="ps-note">Computed with iMariners Bridge Calculators. Great circle on a sphere; rhumb lines by Mercator sailing. Check every leg on the chart or ECDIS.</p>
+        <p class="ps-note">Computed with iMariners Bridge Calculators. Distances and courses on the WGS84 earth, as ECDIS; great circle points from a sphere. Check every leg on the chart or ECDIS.</p>
       </div>
     </section>
   </main>
@@ -4711,7 +4712,7 @@ table.pp-route tr.gc td:nth-child(2) { padding-left: var(--sp-5); }
     function load(o) {
       if (!o) return;
       if (o.body && sel.querySelector('option[value="' + o.body.replace(/"/g, "") + '"]')) sel.value = o.body;
-      if (!o.zs && o.zone && !isNaN(parseFloat(o.zone))) o.zone = String(-parseFloat(o.zone));   /* older saves used hours to add to LT */
+      if (!o.zs && o.zone && !isNaN(parseFloat(String(o.zone).replace(",", ".")))) o.zone = String(-parseFloat(String(o.zone).replace(",", ".")));   /* older saves used hours to add to LT */
       $("az-date").value = o.date || ""; $("az-lt").value = o.lt || ""; $("az-zone").value = o.zone || "";
       $("az-ct").value = o.ct || ""; $("az-ce").value = o.ce || "";
       (o.ceFast ? $("az-ce-fast") : $("az-ce-slow")).checked = true;
@@ -4859,7 +4860,7 @@ table.pp-route tr.gc td:nth-child(2) { padding-left: var(--sp-5); }
     function save() { var o = snapshot(); o.zs = 2; store.set(KEY, o); }   /* zs 2: zone saved as UTC offset (East +) */
     function load(o) {
       if (!o) return;
-      if (!o.zs && o["mp-zone"] && !isNaN(parseFloat(o["mp-zone"]))) o["mp-zone"] = String(-parseFloat(o["mp-zone"]));   /* older saves used hours to add to LT */
+      if (!o.zs && o["mp-zone"] && !isNaN(parseFloat(String(o["mp-zone"]).replace(",", ".")))) o["mp-zone"] = String(-parseFloat(String(o["mp-zone"]).replace(",", ".")));   /* older saves used hours to add to LT */
       ids.forEach(function (id) { $(id).value = o[id] || ""; });
       (o.limbUL ? $("mp-limb-ul") : $("mp-limb-ll")).checked = true;
       (o.south ? $("mp-lat-s") : $("mp-lat-n")).checked = true;
@@ -5660,10 +5661,46 @@ table.pp-route tr.gc td:nth-child(2) { padding-left: var(--sp-5); }
     fillForm(); render(false);
   }
 
+  /* WGS84-BEGIN: rhumb line and geodesic on the WGS84 ellipsoid (the earth model used by GPS and ECDIS). Distances in NM of 1852 m. */
+  var WGS84 = (function () {
+    var a = 6378137, f = 1 / 298.257223563, b = a * (1 - f), e2 = f * (2 - f), e = Math.sqrt(e2), NM = 1852, R = Math.PI / 180;
+    var n = f / (2 - f), n2 = n * n, n3 = n2 * n, n4 = n2 * n2;
+    var A = a / (1 + n) * (1 + n2 / 4 + n4 / 64);                                     /* meridian arc, Helmert series (sub-millimetre) */
+    var B1 = -3 / 2 * n + 9 / 16 * n3, B2 = 15 / 16 * n2 - 15 / 32 * n4, B3 = -35 / 48 * n3, B4 = 315 / 512 * n4;
+    function arc(phi) { var p = phi * R; return A * (p + B1 * Math.sin(2 * p) + B2 * Math.sin(4 * p) + B3 * Math.sin(6 * p) + B4 * Math.sin(8 * p)); }   /* metres from the equator */
+    function iso(phi) { var p = phi * R, s = Math.sin(p); return Math.log(Math.tan(Math.PI / 4 + p / 2)) - e / 2 * Math.log((1 + e * s) / (1 - e * s)); }  /* isometric latitude (meridional parts / 10800 x pi) */
+    function n180(x) { return ((x % 360) + 540) % 360 - 180; }
+    function rhumb(lat1, lon1, lat2, lon2) {                                            /* { course, dist } */
+      var dl = n180(lon2 - lon1) * R, dpsi = iso(lat2) - iso(lat1), dm = arc(lat2) - arc(lat1);
+      if (Math.abs(dl) < 1e-15 && Math.abs(dm) < 1e-6) return { course: null, dist: 0 };
+      var c = Math.atan2(dl, dpsi), d;
+      if (Math.abs(dpsi) > 1e-12) d = dm / Math.cos(c);
+      else { var p = lat1 * R; d = Math.abs(dl) * a * Math.cos(p) / Math.sqrt(1 - e2 * Math.sin(p) * Math.sin(p)); }       /* along a parallel */
+      return { course: (c / R + 360) % 360, dist: Math.abs(d) / NM };
+    }
+    function geodesic(lat1, lon1, lat2, lon2) {                                        /* Vincenty inverse: { dist, course, finalCourse } or null if it does not converge */
+      var L = n180(lon2 - lon1) * R, U1 = Math.atan((1 - f) * Math.tan(lat1 * R)), U2 = Math.atan((1 - f) * Math.tan(lat2 * R));
+      var sU1 = Math.sin(U1), cU1 = Math.cos(U1), sU2 = Math.sin(U2), cU2 = Math.cos(U2), lam = L, it = 0, sl, cl, ss, cs, sig, sa, c2a, c2m, C, lp;
+      do {
+        sl = Math.sin(lam); cl = Math.cos(lam);
+        ss = Math.sqrt((cU2 * sl) * (cU2 * sl) + (cU1 * sU2 - sU1 * cU2 * cl) * (cU1 * sU2 - sU1 * cU2 * cl));
+        if (ss === 0) return { dist: 0, course: null, finalCourse: null };
+        cs = sU1 * sU2 + cU1 * cU2 * cl; sig = Math.atan2(ss, cs); sa = cU1 * cU2 * sl / ss; c2a = 1 - sa * sa;
+        c2m = c2a !== 0 ? cs - 2 * sU1 * sU2 / c2a : 0;
+        C = f / 16 * c2a * (4 + f * (4 - 3 * c2a)); lp = lam;
+        lam = L + (1 - C) * f * sa * (sig + C * ss * (c2m + C * cs * (-1 + 2 * c2m * c2m)));
+      } while (Math.abs(lam - lp) > 1e-12 && ++it < 200);
+      if (it >= 200) return null;
+      var u2 = c2a * (a * a - b * b) / (b * b), AA = 1 + u2 / 16384 * (4096 + u2 * (-768 + u2 * (320 - 175 * u2))), BB = u2 / 1024 * (256 + u2 * (-128 + u2 * (74 - 47 * u2)));
+      var ds = BB * ss * (c2m + BB / 4 * (cs * (-1 + 2 * c2m * c2m) - BB / 6 * c2m * (-3 + 4 * ss * ss) * (-3 + 4 * c2m * c2m)));
+      var s = b * AA * (sig - ds), a1 = Math.atan2(cU2 * sl, cU1 * sU2 - sU1 * cU2 * cl), a2 = Math.atan2(cU1 * sl, -sU1 * cU2 + cU1 * sU2 * cl);
+      return { dist: s / NM, course: (a1 / R + 360) % 360, finalCourse: (a2 / R + 360) % 360 };
+    }
+    return { rhumb: rhumb, geodesic: geodesic, arc: arc, iso: iso };
+  })();
+  /* WGS84-END */
   /* COURSE-BEGIN: course and distance between two positions by Mercator sailing (same as the "Co's & Speed" sheet) */
-  function meridionalParts(lat) {
-    return 7915.7 * Math.log(Math.tan(Math.PI / 180 * (45 + lat / 2))) / Math.LN10 - 23.3 * Math.sin(lat * Math.PI / 180);
-  }
+  function meridionalParts(lat) { return WGS84.iso(lat) * 10800 / Math.PI; }      /* WGS84 meridional parts, minutes of the equator */
   /* lat1, lon1, lat2, lon2: decimal degrees, North and East positive. hours: elapsed time or null. */
   function courseMadeGood(lat1, lon1, lat2, lon2, hours) {
     var r = { lat1: lat1, lon1: lon1, lat2: lat2, lon2: lon2 };
@@ -5677,7 +5714,7 @@ table.pp-route tr.gc td:nth-child(2) { padding-left: var(--sp-5); }
     var c = Math.atan2(r.dLong, r.dmp) / (Math.PI / 180);
     r.course = c < 0 ? c + 360 : c;
     var cosC = Math.cos(c * Math.PI / 180);
-    r.dist = Math.abs(cosC) < 1e-6 ? Math.abs(r.dLong * Math.cos((lat1 + lat2) / 2 * Math.PI / 180)) : Math.abs(r.dLat / cosC);
+    r.dist = WGS84.rhumb(lat1, lon1, lat2, lon2).dist;                               /* along the WGS84 meridian arc, so no jump near 090 / 270 */
     r.hours = hours;
     r.speed = hours && hours > 0 ? r.dist / hours : null;
     /* mid-latitude check */
@@ -7445,11 +7482,17 @@ table.pp-route tr.gc td:nth-child(2) { padding-left: var(--sp-5); }
       out.amplify = invTrace2(base.rows); if (S.length > 2 && out.amplify > 2.2) warn.push("The bodies are not well spread round the horizon: errors are magnified " + out.amplify.toFixed(1) + " times.");
       out.residuals = base.L.map(function (l) { return l.a; });
       /* sights that cannot be right: refuse rather than show a "fix" built on them */
-      var far = out.sights.filter(function (s) { return Math.abs(s.a) > 120; });
-      if (far.length) return { error: "No fix. " + far.map(function (s) { return s.name + " is " + Math.abs(s.a).toFixed(0) + "' (" + (Math.abs(s.a) / 60).toFixed(1) + "°) away from where the DR puts it"; }).join("; ") + ". This is almost always a wrong time (zone, hours or seconds), a wrong star or a wrong altitude.", warnings: warn };
+      var far = out.sights.filter(function (s) { return Math.abs(s.a) > 180; });
+      if (far.length) return { error: "No fix. " + far.map(function (s) { return s.name + " is " + Math.abs(s.a).toFixed(0) + "' (" + (Math.abs(s.a) / 60).toFixed(1) + "°) away from where the DR puts it"; }).join("; ") + ". This is almost always a wrong time (zone, hours or seconds), a wrong star or a wrong altitude. If the DR itself may be this far out, move the DR closer and try again.", warnings: warn };
       if (S.length >= 3) {
         var wi = 0; out.residuals.forEach(function (x, i) { if (Math.abs(x) > Math.abs(out.residuals[wi])) wi = i; });
-        if (Math.abs(out.residuals[wi]) > 10) return { error: "No fix: the lines do not meet. " + out.sights[wi].name + " misses the best position by " + Math.abs(out.residuals[wi]).toFixed(0) + "'. Check its time, name and altitude, or leave it out.", warnings: warn };
+        if (Math.abs(out.residuals[wi]) > 10) {
+          /* lines that all miss by the same amount are one error common to every sight (index error on/off arc, height of eye), not one bad star */
+          var cc0 = S.length >= 4 && gapOk(zns) ? iterate(true) : null, mxc = Infinity;      /* needs a spare line, or a constant explains any triangle */
+          if (cc0) { mxc = 0; cc0.L.forEach(function (l, i) { mxc = Math.max(mxc, Math.abs(l.a - (items[i].lat ? 0 : cc0.c))); }); }
+          if (mxc > 10) return { error: "No fix: the lines do not meet. " + out.sights[wi].name + " misses the best position by " + Math.abs(out.residuals[wi]).toFixed(0) + "'. Check its time, name and altitude, or leave it out." + (S.length === 3 ? " If all three look right, check the index error (on or off the arc) and the height of eye: an error common to every sight also opens up the triangle." : ""), warnings: warn };
+          warn.push("Every line is off by about " + Math.abs(cc0.c).toFixed(0) + "' the same way. Check the index error (on or off the arc) and the height of eye before using this fix.");
+        }
       }
       if (S.length >= 3 && gapOk(zns)) { var cc = iterate(true); if (cc) { out.constErr = cc.c; out.fixC = cc.P; var d2 = offset(base.P, cc.P); out.cShift = Math.hypot(d2.dN, d2.dE); if (Math.abs(cc.c) > 1.5) warn.push("A constant altitude error of " + cc.c.toFixed(1) + "' fits the stars best: check the index error, dip and height of eye."); } }
       if (S.length === 3) {                                                            /* cocked hat: corners of the triangle of the three lines at the fix */
@@ -7472,7 +7515,7 @@ table.pp-route tr.gc td:nth-child(2) { padding-left: var(--sp-5); }
       var ho = Sight.ho({ hs: s.hs, ic: inp.ic, hoe: inp.hoe, temp: inp.temp, pres: inp.pres, body: s.name === "Sun" ? "sun" : "star", limb: s.limb || "L", sd: pl.sd, hp: pl.hp });
       if (ho.valid === false) return { error: s.name + ": the sextant altitude is below the horizon after the corrections (check the altitude, index error and height of eye).", warnings: warn };
       var r = Sight.reduce(ap.lat, ap.lon, pl.gha, pl.dec), a = (ho.ho - r.hc) * 60;
-      if (Math.abs(a) > 120) return { error: "No position line. " + s.name + " is " + Math.abs(a).toFixed(0) + "' (" + (Math.abs(a) / 60).toFixed(1) + "°) away from where the DR puts it. This is almost always a wrong time (zone, hours or seconds), a wrong star or a wrong altitude.", warnings: warn };
+      if (Math.abs(a) > 180) return { error: "No position line. " + s.name + " is " + Math.abs(a).toFixed(0) + "' (" + (Math.abs(a) / 60).toFixed(1) + "°) away from where the DR puts it. This is almost always a wrong time (zone, hours or seconds), a wrong star or a wrong altitude. If the DR itself may be this far out, move the DR closer and try again.", warnings: warn };
       if (Math.abs(a) > 20) warn.push(s.name + ": intercept " + Math.abs(a).toFixed(1) + "' is large. Check the time, Hs and the DR.");
       if (r.hc < 5) warn.push(s.name + " is below 5 degrees: refraction is unreliable."); else if (r.hc < 10) warn.push(s.name + " is below 10 degrees: low altitude, less reliable."); if (r.hc > 80) warn.push(s.name + " is above 80 degrees: a straight line is a poor approximation.");
       var row = { name: s.name, ms: s.ms, ap: ap, gha: pl.gha, dec: pl.dec, lha: r.lha, hc: r.hc, zn: r.zn, ho: ho.ho, corr: ho, a: a };
@@ -7857,10 +7900,13 @@ table.pp-route tr.gc td:nth-child(2) { padding-left: var(--sp-5); }
     Ships.onChange(function () { if (started["sight-fix"]) { shipFill(); render(); } });
     load(); build(); render();
   }
+  /* SIGHTPAGE-END */
+
 
   /* PASSAGE-BEGIN */
   /* Passage plan legs: rhumb line (Mercator sailing, uses courseMadeGood), great circle and composite great circle.
-     Great circle on a sphere, distances in NM = arc minutes (the usual nautical practice). Positions { lat, lon }: degrees, North and East +.
+     Distances and courses are on the WGS84 earth (rhumb lines and the geodesic, as ECDIS); the great circle waypoints, the vertex and the
+     composite points come from a sphere (the difference in position is a few cables). Positions { lat, lon }: degrees, North and East +.
      A great circle leg is sailed as rhumb lines between waypoints on chosen meridians; both the great circle distance and
      the distance actually sailed along those rhumb lines are given. */
   var Passage = (function () {
@@ -7903,17 +7949,21 @@ table.pp-route tr.gc td:nth-child(2) { padding-left: var(--sp-5); }
     function leg(p1, p2, opt) {
       opt = opt || {}; var step = opt.step || 5, rl = rhumb(p1, p2), out = { type: "RL", from: p1, to: p2, rlDist: rl.dist, warnings: [] };
       if (opt.type !== "GC" || rl.dist < 1e-6) { out.course = rl.course; out.dist = rl.dist; out.sailed = rl.dist; out.points = [p1, p2]; out.subs = [{ from: p1, to: p2, course: rl.course, dist: rl.dist }]; return out; }
+      if (dist(p1, p2) > 179.5 * 60) { out.course = rl.course; out.dist = rl.dist; out.sailed = rl.dist; out.points = [p1, p2]; out.subs = [{ from: p1, to: p2, course: rl.course, dist: rl.dist }]; out.warnings.push("The two points are almost opposite each other on the globe, so the great circle is not defined. Add a waypoint in between. Shown as a rhumb line."); return out; }
       var vx = vertexOn(p1, p2), pts, lim = opt.limit;
-      out.type = "GC"; out.gcDist = dist(p1, p2); out.course = course(p1, p2); out.finalCourse = (course(p2, p1) + 180) % 360; out.vertex = vx;
+      var gd = WGS84.geodesic(p1.lat, p1.lon, p2.lat, p2.lon);
+      out.type = "GC"; out.gcDist = gd ? gd.dist : dist(p1, p2); out.course = gd ? gd.course : course(p1, p2); out.finalCourse = gd ? gd.finalCourse : (course(p2, p1) + 180) % 360; out.vertex = vx;
       if (lim && vx && Math.abs(vx.lat) > lim) {
         var sg = vx.lat > 0 ? 1 : -1, fL = sg * lim, dl = n180(p2.lon - p1.lon), s = dl > 0 ? 1 : -1;
-        if (sg * p1.lat >= lim || sg * p2.lat >= lim) { out.warnings.push("A position is beyond the limiting latitude: plain great circle used."); }
+        if (sg * p1.lat > lim + 1e-9 || sg * p2.lat > lim + 1e-9) { out.warnings.push("A position is beyond the limiting latitude: plain great circle used."); }
         else {
           var d1 = Math.acos(Math.tan(p1.lat * R) / Math.tan(fL * R)) / R, d2 = Math.acos(Math.tan(p2.lat * R) / Math.tan(fL * R)) / R;
           if (d1 + d2 < Math.abs(dl)) {
-            var V1 = { lat: fL, lon: n180(p1.lon + s * d1) }, V2 = { lat: fL, lon: n180(p2.lon - s * d2) }, par = (Math.abs(dl) - d1 - d2) * 60 * Math.cos(fL * R);
-            out.type = "CGC"; out.V1 = V1; out.V2 = V2; out.gc1 = dist(p1, V1); out.gc2 = dist(V2, p2); out.parallel = par; out.gcDist = out.gc1 + par + out.gc2;
-            out.course = course(p1, V1); out.finalCourse = (course(p2, V2) + 180) % 360; out.vertex = null;
+            var V1 = { lat: fL, lon: n180(p1.lon + s * d1) }, V2 = { lat: fL, lon: n180(p2.lon - s * d2) };
+            var g1 = WGS84.geodesic(p1.lat, p1.lon, V1.lat, V1.lon), g2 = WGS84.geodesic(V2.lat, V2.lon, p2.lat, p2.lon);
+            out.type = "CGC"; out.V1 = V1; out.V2 = V2; out.gc1 = g1 ? g1.dist : dist(p1, V1); out.gc2 = g2 ? g2.dist : dist(V2, p2);
+            out.parallel = WGS84.rhumb(fL, V1.lon, fL, V2.lon).dist; out.gcDist = out.gc1 + out.parallel + out.gc2;
+            out.course = g1 ? g1.course : course(p1, V1); out.finalCourse = g2 ? g2.finalCourse : (course(p2, V2) + 180) % 360; out.vertex = null;
             var par1 = [], k = s > 0 ? Math.floor(V1.lon / step) + 1 : Math.ceil(V1.lon / step) - 1, end = V1.lon + s * (Math.abs(dl) - d1 - d2);
             for (var lon = k * step; s * (lon - end) < -1e-9; lon += s * step) par1.push({ lat: fL, lon: n180(lon) });
             pts = [p1].concat(gcPoints(p1, V1, step), [V1], par1, [V2], gcPoints(V2, p2, step), [p2]);
@@ -7924,7 +7974,7 @@ table.pp-route tr.gc td:nth-child(2) { padding-left: var(--sp-5); }
       out.points = pts; out.subs = []; out.sailed = 0;
       for (var i = 1; i < pts.length; i++) { var r = rhumb(pts[i - 1], pts[i]); if (r.dist < 0.05) continue; out.subs.push({ from: pts[i - 1], to: pts[i], course: r.course, dist: r.dist }); out.sailed += r.dist; }
       out.dist = out.sailed; out.saving = out.rlDist - out.sailed;
-      var hi = 0; pts.forEach(function (p) { hi = Math.max(hi, Math.abs(p.lat)); }); if (hi > 70) out.warnings.push("The track reaches " + Math.round(hi) + "° of latitude: check ice and weather, or set a limiting latitude.");
+      var hi = out.vertex ? Math.abs(out.vertex.lat) : 0; pts.forEach(function (p) { hi = Math.max(hi, Math.abs(p.lat)); }); if (hi > 70) out.warnings.push("The track reaches " + Math.round(hi) + "° of latitude: check ice and weather, or set a limiting latitude.");
       return out;
     }
     return { leg: leg, dist: dist, course: course, vertexOn: vertexOn, rhumb: rhumb };
@@ -7965,7 +8015,7 @@ table.pp-route tr.gc td:nth-child(2) { padding-left: var(--sp-5); }
     function p3(x) { return ("00" + (Math.round(x) % 360)).slice(-3); }
     function c1(x) { var s = (Math.round(x * 10) / 10 % 360).toFixed(1); return ("00" + s).slice(-5); }
     function nm(x) { return x.toFixed(1); }
-    function hrs(h) { var d = Math.floor(h / 24), r = h - d * 24; return (d ? d + " d " : "") + Math.floor(r) + " h " + ("0" + Math.round((r % 1) * 60)).slice(-2) + " m"; }
+    function hrs(h) { var m = Math.round(h * 60), d = Math.floor(m / 1440), hh = Math.floor((m % 1440) / 60); return (d ? d + " d " : "") + hh + " h " + ("0" + (m % 60)).slice(-2) + " m"; }
     function render() {
       var bad = [], P = [], gaps = false;
       st.wps.forEach(function (w, i) { var p = pos(w, i, bad); if (p) P.push({ p: p, w: w, i: i }); else if (!bad.length || bad[bad.length - 1].indexOf("Waypoint " + (i + 1) + ":") < 0) gaps = true; });
@@ -7981,10 +8031,13 @@ table.pp-route tr.gc td:nth-child(2) { padding-left: var(--sp-5); }
         L.fromName = a.w.name || "WP " + (a.i + 1); L.toName = b.w.name || "WP " + (b.i + 1); legs.push(L);
         L.warnings.forEach(function (x) { warn.push(L.fromName + " to " + L.toName + ": " + x); });
         if (L.rlDist > 3000 && L.type === "RL") warn.push(L.fromName + " to " + L.toName + ": a " + Math.round(L.rlDist) + " NM rhumb line. A great circle may be shorter; see the saving if you switch this leg.");
-        L.subs.forEach(function (s, j) { route.push({ name: j === 0 ? L.fromName : (k + 1) + "." + j, p: s.from, course: s.course, dist: s.dist, gc: j > 0 }); });
+        L.subs.forEach(function (s, j) {
+          var lim = L.type === "CGC" && ((Math.abs(s.from.lat - L.V1.lat) < 1e-9 && Math.abs(s.from.lon - L.V1.lon) < 1e-9) || (Math.abs(s.from.lat - L.V2.lat) < 1e-9 && Math.abs(s.from.lon - L.V2.lon) < 1e-9));
+          route.push({ wp: j === 0 ? String(a.i + 1) : "", name: j === 0 ? L.fromName : "GC " + (a.i + 1) + "." + j + (lim ? " (limit)" : ""), p: s.from, course: s.course, dist: s.dist, gc: j > 0 });
+        });
         total += L.sailed; rlTotal += L.rlDist;
       }
-      var lastP = P[P.length - 1]; route.push({ name: lastP.w.name || "WP " + (lastP.i + 1), p: lastP.p, course: null, dist: null });
+      var lastP = P[P.length - 1]; route.push({ wp: String(lastP.i + 1), name: lastP.w.name || "WP " + (lastP.i + 1), p: lastP.p, course: null, dist: null });
       var run = 0; route.forEach(function (r) { r.cum = run; r.togo = total - run; if (r.dist) run += r.dist; });
       last = { route: route, legs: legs, total: total, spd: spd, rlTotal: rlTotal };
       $("pp-empty").hidden = true; $("pp-out").hidden = false; $("pp-sheet").classList.remove("no-print");
@@ -7998,10 +8051,10 @@ table.pp-route tr.gc td:nth-child(2) { padding-left: var(--sp-5); }
     }
     function table(tbl) {
       while (tbl.firstChild) tbl.removeChild(tbl.firstChild);
-      var th = el("thead"), hr = el("tr"); ["No.", "Waypoint", "Latitude", "Longitude", "Course", "Distance", "Run", "To go"].concat(last.spd ? ["Elapsed"] : []).forEach(function (h) { hr.appendChild(el("th", "", h)); }); th.appendChild(hr); tbl.appendChild(th);
+      var th = el("thead"), hr = el("tr"); ["WP", "Waypoint", "Latitude", "Longitude", "Course to next", "Dist. to next", "From start", "To go"].concat(last.spd ? ["Time from start"] : []).forEach(function (h) { hr.appendChild(el("th", "", h)); }); th.appendChild(hr); tbl.appendChild(th);
       var tb = el("tbody"); tbl.appendChild(tb);
       last.route.forEach(function (r, i) {
-        var tr = el("tr", r.gc ? "gc" : ""); [String(i + 1), r.name, Geo.lat(r.p.lat), Geo.lon(r.p.lon), r.course === null ? "" : c1(r.course) + "°", r.dist === null ? "" : nm(r.dist), nm(r.cum), nm(r.togo)].concat(last.spd ? [hrs(r.cum / last.spd)] : []).forEach(function (t) { tr.appendChild(el("td", "", t)); });
+        var tr = el("tr", r.gc ? "gc" : ""); [r.wp, r.name, Geo.lat(r.p.lat), Geo.lon(r.p.lon), r.course === null ? "" : c1(r.course) + "°", r.dist === null ? "" : nm(r.dist), nm(r.cum), nm(r.togo)].concat(last.spd ? [hrs(r.cum / last.spd)] : []).forEach(function (t) { tr.appendChild(el("td", "", t)); });
         tb.appendChild(tr);
       });
     }
@@ -8022,8 +8075,8 @@ table.pp-route tr.gc td:nth-child(2) { padding-left: var(--sp-5); }
     }
     function save() { st.step = $("pp-step").value; st.limit = $("pp-limit").value; st.speed = $("pp-speed").value; store.set(KEY, st); }
     function routeText() {
-      var lines = [["No.", "Waypoint", "Latitude", "Longitude", "Course", "Distance NM", "Run NM", "To go NM"].join("\t")];
-      last.route.forEach(function (r, i) { lines.push([i + 1, r.name, Geo.lat(r.p.lat), Geo.lon(r.p.lon), r.course === null ? "" : c1(r.course), r.dist === null ? "" : nm(r.dist), nm(r.cum), nm(r.togo)].join("\t")); });
+      var lines = [["WP", "Waypoint", "Latitude", "Longitude", "Course to next", "Dist. to next NM", "From start NM", "To go NM"].join("\t")];
+      last.route.forEach(function (r, i) { lines.push([r.wp, r.name, Geo.lat(r.p.lat), Geo.lon(r.p.lon), r.course === null ? "" : c1(r.course), r.dist === null ? "" : nm(r.dist), nm(r.cum), nm(r.togo)].join("\t")); });
       return lines.join("\n");
     }
     $("pp-step").value = st.step || "5"; $("pp-limit").value = st.limit || ""; $("pp-speed").value = st.speed || "";

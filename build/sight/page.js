@@ -246,4 +246,4 @@
     Ships.onChange(function () { if (started["sight-fix"]) { shipFill(); render(); } });
     load(); build(); render();
   }
-
+  /* SIGHTPAGE-END */

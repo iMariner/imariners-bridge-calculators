@@ -102,11 +102,17 @@
       out.amplify = invTrace2(base.rows); if (S.length > 2 && out.amplify > 2.2) warn.push("The bodies are not well spread round the horizon: errors are magnified " + out.amplify.toFixed(1) + " times.");
       out.residuals = base.L.map(function (l) { return l.a; });
       /* sights that cannot be right: refuse rather than show a "fix" built on them */
-      var far = out.sights.filter(function (s) { return Math.abs(s.a) > 120; });
-      if (far.length) return { error: "No fix. " + far.map(function (s) { return s.name + " is " + Math.abs(s.a).toFixed(0) + "' (" + (Math.abs(s.a) / 60).toFixed(1) + "°) away from where the DR puts it"; }).join("; ") + ". This is almost always a wrong time (zone, hours or seconds), a wrong star or a wrong altitude.", warnings: warn };
+      var far = out.sights.filter(function (s) { return Math.abs(s.a) > 180; });
+      if (far.length) return { error: "No fix. " + far.map(function (s) { return s.name + " is " + Math.abs(s.a).toFixed(0) + "' (" + (Math.abs(s.a) / 60).toFixed(1) + "°) away from where the DR puts it"; }).join("; ") + ". This is almost always a wrong time (zone, hours or seconds), a wrong star or a wrong altitude. If the DR itself may be this far out, move the DR closer and try again.", warnings: warn };
       if (S.length >= 3) {
         var wi = 0; out.residuals.forEach(function (x, i) { if (Math.abs(x) > Math.abs(out.residuals[wi])) wi = i; });
-        if (Math.abs(out.residuals[wi]) > 10) return { error: "No fix: the lines do not meet. " + out.sights[wi].name + " misses the best position by " + Math.abs(out.residuals[wi]).toFixed(0) + "'. Check its time, name and altitude, or leave it out.", warnings: warn };
+        if (Math.abs(out.residuals[wi]) > 10) {
+          /* lines that all miss by the same amount are one error common to every sight (index error on/off arc, height of eye), not one bad star */
+          var cc0 = S.length >= 4 && gapOk(zns) ? iterate(true) : null, mxc = Infinity;      /* needs a spare line, or a constant explains any triangle */
+          if (cc0) { mxc = 0; cc0.L.forEach(function (l, i) { mxc = Math.max(mxc, Math.abs(l.a - (items[i].lat ? 0 : cc0.c))); }); }
+          if (mxc > 10) return { error: "No fix: the lines do not meet. " + out.sights[wi].name + " misses the best position by " + Math.abs(out.residuals[wi]).toFixed(0) + "'. Check its time, name and altitude, or leave it out." + (S.length === 3 ? " If all three look right, check the index error (on or off the arc) and the height of eye: an error common to every sight also opens up the triangle." : ""), warnings: warn };
+          warn.push("Every line is off by about " + Math.abs(cc0.c).toFixed(0) + "' the same way. Check the index error (on or off the arc) and the height of eye before using this fix.");
+        }
       }
       if (S.length >= 3 && gapOk(zns)) { var cc = iterate(true); if (cc) { out.constErr = cc.c; out.fixC = cc.P; var d2 = offset(base.P, cc.P); out.cShift = Math.hypot(d2.dN, d2.dE); if (Math.abs(cc.c) > 1.5) warn.push("A constant altitude error of " + cc.c.toFixed(1) + "' fits the stars best: check the index error, dip and height of eye."); } }
       if (S.length === 3) {                                                            /* cocked hat: corners of the triangle of the three lines at the fix */
@@ -129,7 +135,7 @@
       var ho = Sight.ho({ hs: s.hs, ic: inp.ic, hoe: inp.hoe, temp: inp.temp, pres: inp.pres, body: s.name === "Sun" ? "sun" : "star", limb: s.limb || "L", sd: pl.sd, hp: pl.hp });
       if (ho.valid === false) return { error: s.name + ": the sextant altitude is below the horizon after the corrections (check the altitude, index error and height of eye).", warnings: warn };
       var r = Sight.reduce(ap.lat, ap.lon, pl.gha, pl.dec), a = (ho.ho - r.hc) * 60;
-      if (Math.abs(a) > 120) return { error: "No position line. " + s.name + " is " + Math.abs(a).toFixed(0) + "' (" + (Math.abs(a) / 60).toFixed(1) + "°) away from where the DR puts it. This is almost always a wrong time (zone, hours or seconds), a wrong star or a wrong altitude.", warnings: warn };
+      if (Math.abs(a) > 180) return { error: "No position line. " + s.name + " is " + Math.abs(a).toFixed(0) + "' (" + (Math.abs(a) / 60).toFixed(1) + "°) away from where the DR puts it. This is almost always a wrong time (zone, hours or seconds), a wrong star or a wrong altitude. If the DR itself may be this far out, move the DR closer and try again.", warnings: warn };
       if (Math.abs(a) > 20) warn.push(s.name + ": intercept " + Math.abs(a).toFixed(1) + "' is large. Check the time, Hs and the DR.");
       if (r.hc < 5) warn.push(s.name + " is below 5 degrees: refraction is unreliable."); else if (r.hc < 10) warn.push(s.name + " is below 10 degrees: low altitude, less reliable."); if (r.hc > 80) warn.push(s.name + " is above 80 degrees: a straight line is a poor approximation.");
       var row = { name: s.name, ms: s.ms, ap: ap, gha: pl.gha, dec: pl.dec, lha: r.lha, hc: r.hc, zn: r.zn, ho: ho.ho, corr: ho, a: a };

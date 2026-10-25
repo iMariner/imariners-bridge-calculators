@@ -1,6 +1,7 @@
   /* PASSAGE-BEGIN */
   /* Passage plan legs: rhumb line (Mercator sailing, uses courseMadeGood), great circle and composite great circle.
-     Great circle on a sphere, distances in NM = arc minutes (the usual nautical practice). Positions { lat, lon }: degrees, North and East +.
+     Distances and courses are on the WGS84 earth (rhumb lines and the geodesic, as ECDIS); the great circle waypoints, the vertex and the
+     composite points come from a sphere (the difference in position is a few cables). Positions { lat, lon }: degrees, North and East +.
      A great circle leg is sailed as rhumb lines between waypoints on chosen meridians; both the great circle distance and
      the distance actually sailed along those rhumb lines are given. */
   var Passage = (function () {
@@ -43,17 +44,21 @@
     function leg(p1, p2, opt) {
       opt = opt || {}; var step = opt.step || 5, rl = rhumb(p1, p2), out = { type: "RL", from: p1, to: p2, rlDist: rl.dist, warnings: [] };
       if (opt.type !== "GC" || rl.dist < 1e-6) { out.course = rl.course; out.dist = rl.dist; out.sailed = rl.dist; out.points = [p1, p2]; out.subs = [{ from: p1, to: p2, course: rl.course, dist: rl.dist }]; return out; }
+      if (dist(p1, p2) > 179.5 * 60) { out.course = rl.course; out.dist = rl.dist; out.sailed = rl.dist; out.points = [p1, p2]; out.subs = [{ from: p1, to: p2, course: rl.course, dist: rl.dist }]; out.warnings.push("The two points are almost opposite each other on the globe, so the great circle is not defined. Add a waypoint in between. Shown as a rhumb line."); return out; }
       var vx = vertexOn(p1, p2), pts, lim = opt.limit;
-      out.type = "GC"; out.gcDist = dist(p1, p2); out.course = course(p1, p2); out.finalCourse = (course(p2, p1) + 180) % 360; out.vertex = vx;
+      var gd = WGS84.geodesic(p1.lat, p1.lon, p2.lat, p2.lon);
+      out.type = "GC"; out.gcDist = gd ? gd.dist : dist(p1, p2); out.course = gd ? gd.course : course(p1, p2); out.finalCourse = gd ? gd.finalCourse : (course(p2, p1) + 180) % 360; out.vertex = vx;
       if (lim && vx && Math.abs(vx.lat) > lim) {
         var sg = vx.lat > 0 ? 1 : -1, fL = sg * lim, dl = n180(p2.lon - p1.lon), s = dl > 0 ? 1 : -1;
-        if (sg * p1.lat >= lim || sg * p2.lat >= lim) { out.warnings.push("A position is beyond the limiting latitude: plain great circle used."); }
+        if (sg * p1.lat > lim + 1e-9 || sg * p2.lat > lim + 1e-9) { out.warnings.push("A position is beyond the limiting latitude: plain great circle used."); }
         else {
           var d1 = Math.acos(Math.tan(p1.lat * R) / Math.tan(fL * R)) / R, d2 = Math.acos(Math.tan(p2.lat * R) / Math.tan(fL * R)) / R;
           if (d1 + d2 < Math.abs(dl)) {
-            var V1 = { lat: fL, lon: n180(p1.lon + s * d1) }, V2 = { lat: fL, lon: n180(p2.lon - s * d2) }, par = (Math.abs(dl) - d1 - d2) * 60 * Math.cos(fL * R);
-            out.type = "CGC"; out.V1 = V1; out.V2 = V2; out.gc1 = dist(p1, V1); out.gc2 = dist(V2, p2); out.parallel = par; out.gcDist = out.gc1 + par + out.gc2;
-            out.course = course(p1, V1); out.finalCourse = (course(p2, V2) + 180) % 360; out.vertex = null;
+            var V1 = { lat: fL, lon: n180(p1.lon + s * d1) }, V2 = { lat: fL, lon: n180(p2.lon - s * d2) };
+            var g1 = WGS84.geodesic(p1.lat, p1.lon, V1.lat, V1.lon), g2 = WGS84.geodesic(V2.lat, V2.lon, p2.lat, p2.lon);
+            out.type = "CGC"; out.V1 = V1; out.V2 = V2; out.gc1 = g1 ? g1.dist : dist(p1, V1); out.gc2 = g2 ? g2.dist : dist(V2, p2);
+            out.parallel = WGS84.rhumb(fL, V1.lon, fL, V2.lon).dist; out.gcDist = out.gc1 + out.parallel + out.gc2;
+            out.course = g1 ? g1.course : course(p1, V1); out.finalCourse = g2 ? g2.finalCourse : (course(p2, V2) + 180) % 360; out.vertex = null;
             var par1 = [], k = s > 0 ? Math.floor(V1.lon / step) + 1 : Math.ceil(V1.lon / step) - 1, end = V1.lon + s * (Math.abs(dl) - d1 - d2);
             for (var lon = k * step; s * (lon - end) < -1e-9; lon += s * step) par1.push({ lat: fL, lon: n180(lon) });
             pts = [p1].concat(gcPoints(p1, V1, step), [V1], par1, [V2], gcPoints(V2, p2, step), [p2]);
@@ -64,7 +69,7 @@
       out.points = pts; out.subs = []; out.sailed = 0;
       for (var i = 1; i < pts.length; i++) { var r = rhumb(pts[i - 1], pts[i]); if (r.dist < 0.05) continue; out.subs.push({ from: pts[i - 1], to: pts[i], course: r.course, dist: r.dist }); out.sailed += r.dist; }
       out.dist = out.sailed; out.saving = out.rlDist - out.sailed;
-      var hi = 0; pts.forEach(function (p) { hi = Math.max(hi, Math.abs(p.lat)); }); if (hi > 70) out.warnings.push("The track reaches " + Math.round(hi) + "° of latitude: check ice and weather, or set a limiting latitude.");
+      var hi = out.vertex ? Math.abs(out.vertex.lat) : 0; pts.forEach(function (p) { hi = Math.max(hi, Math.abs(p.lat)); }); if (hi > 70) out.warnings.push("The track reaches " + Math.round(hi) + "° of latitude: check ice and weather, or set a limiting latitude.");
       return out;
     }
     return { leg: leg, dist: dist, course: course, vertexOn: vertexOn, rhumb: rhumb };

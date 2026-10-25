@@ -33,7 +33,7 @@
     function p3(x) { return ("00" + (Math.round(x) % 360)).slice(-3); }
     function c1(x) { var s = (Math.round(x * 10) / 10 % 360).toFixed(1); return ("00" + s).slice(-5); }
     function nm(x) { return x.toFixed(1); }
-    function hrs(h) { var d = Math.floor(h / 24), r = h - d * 24; return (d ? d + " d " : "") + Math.floor(r) + " h " + ("0" + Math.round((r % 1) * 60)).slice(-2) + " m"; }
+    function hrs(h) { var m = Math.round(h * 60), d = Math.floor(m / 1440), hh = Math.floor((m % 1440) / 60); return (d ? d + " d " : "") + hh + " h " + ("0" + (m % 60)).slice(-2) + " m"; }
     function render() {
       var bad = [], P = [], gaps = false;
       st.wps.forEach(function (w, i) { var p = pos(w, i, bad); if (p) P.push({ p: p, w: w, i: i }); else if (!bad.length || bad[bad.length - 1].indexOf("Waypoint " + (i + 1) + ":") < 0) gaps = true; });
@@ -49,10 +49,13 @@
         L.fromName = a.w.name || "WP " + (a.i + 1); L.toName = b.w.name || "WP " + (b.i + 1); legs.push(L);
         L.warnings.forEach(function (x) { warn.push(L.fromName + " to " + L.toName + ": " + x); });
         if (L.rlDist > 3000 && L.type === "RL") warn.push(L.fromName + " to " + L.toName + ": a " + Math.round(L.rlDist) + " NM rhumb line. A great circle may be shorter; see the saving if you switch this leg.");
-        L.subs.forEach(function (s, j) { route.push({ name: j === 0 ? L.fromName : (k + 1) + "." + j, p: s.from, course: s.course, dist: s.dist, gc: j > 0 }); });
+        L.subs.forEach(function (s, j) {
+          var lim = L.type === "CGC" && ((Math.abs(s.from.lat - L.V1.lat) < 1e-9 && Math.abs(s.from.lon - L.V1.lon) < 1e-9) || (Math.abs(s.from.lat - L.V2.lat) < 1e-9 && Math.abs(s.from.lon - L.V2.lon) < 1e-9));
+          route.push({ wp: j === 0 ? String(a.i + 1) : "", name: j === 0 ? L.fromName : "GC " + (a.i + 1) + "." + j + (lim ? " (limit)" : ""), p: s.from, course: s.course, dist: s.dist, gc: j > 0 });
+        });
         total += L.sailed; rlTotal += L.rlDist;
       }
-      var lastP = P[P.length - 1]; route.push({ name: lastP.w.name || "WP " + (lastP.i + 1), p: lastP.p, course: null, dist: null });
+      var lastP = P[P.length - 1]; route.push({ wp: String(lastP.i + 1), name: lastP.w.name || "WP " + (lastP.i + 1), p: lastP.p, course: null, dist: null });
       var run = 0; route.forEach(function (r) { r.cum = run; r.togo = total - run; if (r.dist) run += r.dist; });
       last = { route: route, legs: legs, total: total, spd: spd, rlTotal: rlTotal };
       $("pp-empty").hidden = true; $("pp-out").hidden = false; $("pp-sheet").classList.remove("no-print");
@@ -66,10 +69,10 @@
     }
     function table(tbl) {
       while (tbl.firstChild) tbl.removeChild(tbl.firstChild);
-      var th = el("thead"), hr = el("tr"); ["No.", "Waypoint", "Latitude", "Longitude", "Course", "Distance", "Run", "To go"].concat(last.spd ? ["Elapsed"] : []).forEach(function (h) { hr.appendChild(el("th", "", h)); }); th.appendChild(hr); tbl.appendChild(th);
+      var th = el("thead"), hr = el("tr"); ["WP", "Waypoint", "Latitude", "Longitude", "Course to next", "Dist. to next", "From start", "To go"].concat(last.spd ? ["Time from start"] : []).forEach(function (h) { hr.appendChild(el("th", "", h)); }); th.appendChild(hr); tbl.appendChild(th);
       var tb = el("tbody"); tbl.appendChild(tb);
       last.route.forEach(function (r, i) {
-        var tr = el("tr", r.gc ? "gc" : ""); [String(i + 1), r.name, Geo.lat(r.p.lat), Geo.lon(r.p.lon), r.course === null ? "" : c1(r.course) + "°", r.dist === null ? "" : nm(r.dist), nm(r.cum), nm(r.togo)].concat(last.spd ? [hrs(r.cum / last.spd)] : []).forEach(function (t) { tr.appendChild(el("td", "", t)); });
+        var tr = el("tr", r.gc ? "gc" : ""); [r.wp, r.name, Geo.lat(r.p.lat), Geo.lon(r.p.lon), r.course === null ? "" : c1(r.course) + "°", r.dist === null ? "" : nm(r.dist), nm(r.cum), nm(r.togo)].concat(last.spd ? [hrs(r.cum / last.spd)] : []).forEach(function (t) { tr.appendChild(el("td", "", t)); });
         tb.appendChild(tr);
       });
     }
@@ -90,8 +93,8 @@
     }
     function save() { st.step = $("pp-step").value; st.limit = $("pp-limit").value; st.speed = $("pp-speed").value; store.set(KEY, st); }
     function routeText() {
-      var lines = [["No.", "Waypoint", "Latitude", "Longitude", "Course", "Distance NM", "Run NM", "To go NM"].join("\t")];
-      last.route.forEach(function (r, i) { lines.push([i + 1, r.name, Geo.lat(r.p.lat), Geo.lon(r.p.lon), r.course === null ? "" : c1(r.course), r.dist === null ? "" : nm(r.dist), nm(r.cum), nm(r.togo)].join("\t")); });
+      var lines = [["WP", "Waypoint", "Latitude", "Longitude", "Course to next", "Dist. to next NM", "From start NM", "To go NM"].join("\t")];
+      last.route.forEach(function (r, i) { lines.push([r.wp, r.name, Geo.lat(r.p.lat), Geo.lon(r.p.lon), r.course === null ? "" : c1(r.course), r.dist === null ? "" : nm(r.dist), nm(r.cum), nm(r.togo)].join("\t")); });
       return lines.join("\n");
     }
     $("pp-step").value = st.step || "5"; $("pp-limit").value = st.limit || ""; $("pp-speed").value = st.speed || "";
