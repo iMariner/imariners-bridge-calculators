@@ -1,7 +1,7 @@
 """Compare the JS sight engine with ERFA (the IAU reference library inside astropy).
-usage: python3 build/sight/compare_erfa.py cases.json   (needs astropy)
+usage: python3 build/sight/compare_erfa.py cases.json build/sight/cat_j2000.json   (needs astropy; cases.json from node build/sight/gen_cases.js)
 Stars: GHA and Dec from ERFA atci13 (full astrometry: parallax, light bending, aberration, precession, nutation) and the Earth Rotation Angle.
-Sun: astropy get_sun to CIRS.  Hc and Zn: ERFA hd2ae.  Differences in minutes of arc."""
+Sun: astropy get_sun to CIRS.  Hc and Zn: ERFA hd2ae.  Differences in minutes of arc: GHA is multiplied by cos(dec) and Zn by cos(Hc) (true angular offsets on the sky); UTC is used as UT1 on both sides, so Earth-rotation (DUT1, up to 0.2') is not measured."""
 import json, sys, math, warnings
 warnings.filterwarnings('ignore')
 import numpy as np, erfa

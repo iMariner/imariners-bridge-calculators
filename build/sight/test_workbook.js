@@ -13,4 +13,10 @@ rows.forEach(r => {
   worst = Math.max(worst, Math.abs(dHc), Math.abs(dHo));
   console.log(r[0].padEnd(10), 'Hc diff ' + dHc.toFixed(2) + "'", ' Zn ' + x.zn.toFixed(1) + ' (workbook ' + r[4] + ')', ' Ho ' + (h.ho * 60 / 60).toFixed(4) + ' diff ' + dHo.toFixed(2) + "'", ' [dip ' + h.dip.toFixed(2) + ' ref ' + h.ref.toFixed(2) + ']');
 });
-console.log('worst Hc/Ho difference ' + worst.toFixed(2) + "' (workbook rounds to 0.1')");
+const assert = require('assert');
+// The calculated altitudes and azimuths must agree with the workbook (it works from a 1975 catalogue, so a few tenths of a minute).
+rows.forEach(r => { const p = Sight.starPlace(t0 + r[1] * 1000, r[0]), x = Sight.reduce(lat, lon, p.gha, p.dec); assert(Math.abs((x.hc - r[3]) * 60) < 0.25, r[0] + ' Hc'); assert(Math.abs(x.zn - r[4]) < 0.15, r[0] + ' Zn'); });
+// The workbook refraction is too big: it uses a constant for pressure in mmHg but is fed millibars (about 4/3 too much). Ours matches the Almanac tables.
+const wbRef = [5.9, 12.7, 3.5];
+rows.forEach((r, i) => { const h = Sight.ho({ hs: r[2], ic: 0, hoe: 29, temp: 27, pres: 1010, body: 'star' }); const ratio = wbRef[i] / h.ref; assert(ratio > 1.15 && ratio < 1.4, r[0] + ' workbook refraction ratio ' + ratio.toFixed(2)); });
+console.log("workbook Hc and Zn agree; its refraction is 1.2 to 1.3 times ours (pressure unit bug), so its Ho differ by up to " + worst.toFixed(1) + "'");

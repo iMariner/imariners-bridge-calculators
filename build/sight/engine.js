@@ -2,9 +2,9 @@
   /* Sight reduction: apparent places of the Sun and the 58 navigational stars, Hs to Ho, Hc and Zn.
      Stars: Hipparcos (new reduction) J2000 position and proper motion, carried to the date with precession (IAU 1976),
      nutation (20 largest IAU 1980 terms) and annual aberration. Checked against ERFA/astropy to about 0.05 minute of arc.
-     The Sun: VSOP87D Earth series (truncated), FK5 correction, nutation and aberration. Time scale: TT for the body (UTC + 69 s), UTC used as UT1 for the Earth's rotation. */
+     The Sun: VSOP87D Earth series (truncated), FK5 correction, nutation and aberration. Time scale: TT for the body (UTC + 69.184 s, valid while there are 37 leap seconds, 2017 on), UTC used as UT1 for the Earth's rotation (UT1 - UTC is below 0.9 s, so GHA can be off by up to 0.2 minute of arc, the same as the Nautical Almanac). Supported dates: 2000 to 2060. */
   var Sight = (function () {
-    var R = Math.PI / 180, TTMUTC = 69;
+    var R = Math.PI / 180, TTMUTC = 69.184;
     var CAT = [
       ["Alpheratz",2.09692,29.09043,137,-163],
       ["Ankaa",6.57105,-42.30599,233,-356],
@@ -139,7 +139,7 @@
       var ref = (1 / Math.tan((hh + 7.31 / (hh + 4.4)) * R)) * (p / 1010) * (283 / (273 + t));   /* Bennett, minutes */
       var sdc = 0, par = 0;
       if (o.body === "sun") { sdc = (o.limb === "U" ? -1 : 1) * (o.sd === undefined ? 16 : o.sd); par = (o.hp === undefined ? 0.15 : o.hp) * Math.cos(ha * R); }
-      return { ha: ha, ho: ha + (-ref + sdc + par) / 60, dip: dip, ref: ref, sd: sdc, par: par };
+      return { ha: ha, ho: ha + (-ref + sdc + par) / 60, dip: dip, ref: ref, sd: sdc, par: par, valid: ha > -0.5 };   /* below the horizon: refraction is not defined, valid is false */
     }
     function bodiesAt(ms, lat, lon) {
       var fr = frame(ms), out = [], s = sunPlace(ms), r = reduce(lat, lon, s.gha, s.dec); out.push({ name: "Sun", hc: r.hc, zn: r.zn });
