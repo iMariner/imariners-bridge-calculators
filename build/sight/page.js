@@ -1,6 +1,10 @@
   /* Tool: Sight Fix (running fix by the Sun, fix by 3 to 4 stars) */
+  function sfLost() {                                                               /* saves made while the key was shadowed went to "[object Object]" (Oct 2026): take them back */
+    var o = store.get("[object Object]"); if (!o || typeof o !== "object" || !o.f) return null;
+    try { localStorage.removeItem("[object Object]"); } catch (e) {} return o;
+  }
   function initSightFix() {
-    var KEY = "bridgeCalc.sightFix", st = store.get(KEY) || {}, mode = st.mode === "stars" ? "stars" : "sun", rowsEl = $("sf-rows"), rowRefs = [], last = null, shipEdited = false;
+    var KEY = "bridgeCalc.sightFix", st = store.get(KEY) || sfLost() || {}, mode = st.mode === "stars" ? "stars" : "sun", rowsEl = $("sf-rows"), rowRefs = [], last = null, shipEdited = false;
     var LIMBS = [["L", "Lower"], ["U", "Upper"]];
     var NAMES = Sight.names();
     var FIELDS = ["sf-starsat", "sf-fixat", "sf-lat-d", "sf-lat-m", "sf-lon-d", "sf-lon-m", "sf-course", "sf-speed", "sf-date", "sf-zone", "sf-hoe", "sf-ie", "sf-temp", "sf-pres", "sf-gps-lat-d", "sf-gps-lat-m", "sf-gps-lon-d", "sf-gps-lon-m"];
@@ -52,6 +56,7 @@
       groups.forEach(function (g) { var og = document.createElement("optgroup"); og.label = g[0]; g[1].forEach(function (x) { var o = el("option", "", x[1]); o.value = x[0]; og.appendChild(o); }); sel.appendChild(og); });
       sel.value = val;
     }
+    function limbCol() { rowsEl.classList.toggle("nolimb", mode === "stars" && !rowRefs.some(function (rf) { return rf.r.name === "Moon" || rf.r.name === "Sun"; })); }   /* stars only: no limb column */
     function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt !== undefined) e.textContent = txt; return e; }
 
     /* ---------- the rows of sights ---------- */
@@ -61,7 +66,7 @@
       var data = rowData(); st.rows[mode] = data; rowRefs = [];
       while (rowsEl.firstChild) rowsEl.removeChild(rowsEl.firstChild);
       var th = el("thead"), hr = el("tr");
-      (mode === "sun" ? ["", "Local time", "Sextant altitude", "", "Limb", "DR at sight"] : ["", "Body", "Local time", "Sextant altitude", "", "Limb", "DR at sight"]).forEach(function (h, i) { var c = el("th", "", h); if ((mode === "sun" && i === 2) || (mode === "stars" && i === 3)) c.colSpan = 2; if (h === "" && ((mode === "sun" && i === 3) || (mode === "stars" && i === 4))) return; hr.appendChild(c); });
+      (mode === "sun" ? ["", "Local time", "Sextant altitude", "", "Limb", "DR at sight"] : ["", "Body", "Local time", "Hs (sextant)", "", "Limb", "DR at sight"]).forEach(function (h, i) { var c = el("th", ({ "": "n", "Body": "w-star", "Local time": "w-time", "Sextant altitude": "w-hs", "Hs (sextant)": "w-hs", "Limb": "w-limb", "DR at sight": "w-dr" })[h] || "", h); if ((mode === "sun" && i === 2) || (mode === "stars" && i === 3)) c.colSpan = 2; if (h === "" && ((mode === "sun" && i === 3) || (mode === "stars" && i === 4))) return; hr.appendChild(c); });
       th.appendChild(hr); rowsEl.appendChild(th);
       var tb = el("tbody"); rowsEl.appendChild(tb);
       data.forEach(function (r, i) {
@@ -70,7 +75,7 @@
         if (r.kind === "star") { var td = el("td", "w-star"), sel = el("select"); sel.setAttribute("aria-label", "Star " + (i + 1)); fillBodies(sel, r.name || ""); sel.addEventListener("change", function () {
             if (sel.value === "__all") { sel.full = true; fillBodies(sel, r.name || ""); try { if (sel.showPicker) sel.showPicker(); } catch (e) {} toast("All bodies listed: open the list again to choose."); return; }
             if (sel.value === "__short") { sel.full = false; fillBodies(sel, r.name || ""); return; }
-            r.name = sel.value; sel.full = false; fillBodies(sel, r.name);      /* back to the short list once a body is chosen; the chosen one shows its name only */ if (refs.limb) { var lm = r.name === "Moon" || r.name === "Sun"; refs.limb.hidden = !lm; refs.na.hidden = lm; } save(); render(); }); sel.addEventListener("blur", function () { if (sel.full) { sel.full = false; fillBodies(sel, r.name || ""); } });   /* leaving the box: back to the short list */
+            r.name = sel.value; sel.full = false; fillBodies(sel, r.name);      /* back to the short list once a body is chosen; the chosen one shows its name only */ if (refs.limb) { var lm = r.name === "Moon" || r.name === "Sun"; refs.limb.hidden = !lm; refs.na.hidden = lm; } limbCol(); save(); render(); }); sel.addEventListener("blur", function () { if (sel.full) { sel.full = false; fillBodies(sel, r.name || ""); } });   /* leaving the box: back to the short list */
           td.appendChild(sel); tr.appendChild(td); refs.sel = sel; }
         var tt = el("td", "w-time"), ti = el("input"); ti.type = "time"; ti.step = "1"; ti.value = r.time || ""; ti.setAttribute("aria-label", "Local time of sight " + (i + 1)); ti.addEventListener("input", function () { r.time = ti.value; r.manual = true; save(); render(); }); tt.appendChild(ti); tr.appendChild(tt); refs.time = ti;
         if (r.kind === "lat") {
@@ -90,7 +95,7 @@
           [hd, hm].forEach(function (x) { x.addEventListener("input", function () { r.hd = hd.value; r.hm = hm.value; save(); render(); }); });
           refs.hd = hd; refs.hm = hm;
           if (r.kind === "sun" || r.kind === "star") { var tk = el("td", "w-limb"), sl = el("select"); sl.setAttribute("aria-label", "Limb of the " + (r.kind === "sun" ? "Sun" : "Moon"));
-            if (r.kind === "star") { var na = el("span", "small muted", "n/a"); refs.na = na; tk.appendChild(na); var lm0 = r.name === "Moon" || r.name === "Sun"; sl.hidden = !lm0; na.hidden = lm0; } LIMBS.forEach(function (x) { var o = el("option", "", x[1]); o.value = x[0]; sl.appendChild(o); }); sl.value = r.limb || "L"; sl.addEventListener("change", function () { r.limb = sl.value; save(); render(); }); tk.appendChild(sl); tr.appendChild(tk); refs.limb = sl; }
+            if (r.kind === "star") { var na = el("span", "small muted", ""); refs.na = na; tk.appendChild(na); var lm0 = r.name === "Moon" || r.name === "Sun"; sl.hidden = !lm0; na.hidden = lm0; } LIMBS.forEach(function (x) { var o = el("option", "", x[1]); o.value = x[0]; sl.appendChild(o); }); sl.value = r.limb || "L"; sl.addEventListener("change", function () { r.limb = sl.value; save(); render(); }); tk.appendChild(sl); tr.appendChild(tk); refs.limb = sl; }
         }
         var tp = el("td", "w-dr");                                                     /* the officer's DR at this sight; empty: worked from the first DR, course and speed */
         if (r.kind === "lat") tp.appendChild(el("span", "small muted", "not needed"));
@@ -99,6 +104,7 @@
         tr.appendChild(tp);
         tb.appendChild(tr); rowRefs.push(refs);
       });
+      limbCol();
     }
 
     /* ---------- reading everything ---------- */
@@ -112,11 +118,11 @@
       if (isNaN(v.temp) || (v.temp !== null && (v.temp < -40 || v.temp > 60))) errs.temp = 1; if (isNaN(v.pres) || (v.pres !== null && (v.pres < 800 || v.pres > 1100))) errs.pres = 1;
       if (isNaN(v.zone) || (v.zone !== null && (v.zone < -14 || v.zone > 14))) errs.zone = "-14 to +14";
       v.date = parseDateEl($("sf-date"));
-      setHint("sf-lat-msg", errs.lat || "0 – 84°", !!errs.lat); setHint("sf-lon-msg", errs.lon || "0 – 180°", !!errs.lon);
-      setHint("sf-course-msg", errs.course || "", !!errs.course, $("sf-course")); setHint("sf-speed-msg", errs.speed || "", !!errs.speed, $("sf-speed")); setHint("sf-hoe-msg", errs.hoe || "", !!errs.hoe, $("sf-hoe")); setHint("sf-ie-msg", errs.ie || "On the arc is subtracted, off the arc is added", !!errs.ie, $("sf-ie"));
+      setHint("sf-lat-msg", errs.lat || "", !!errs.lat); setHint("sf-lon-msg", errs.lon || "", !!errs.lon);
+      setHint("sf-course-msg", errs.course || "", !!errs.course, $("sf-course")); setHint("sf-speed-msg", errs.speed || "", !!errs.speed, $("sf-speed")); setHint("sf-hoe-msg", errs.hoe || "", !!errs.hoe, $("sf-hoe")); setHint("sf-ie-msg", errs.ie || "On arc: subtract. Off arc: add.", !!errs.ie, $("sf-ie"));
       var zw = "";                                                                       /* a zone that does not fit the longitude is usually a wrong sign */
       if (!errs.zone && v.zone !== null && v.lon !== null && !errs.lon) { var lonS = v.lon * ($("sf-lon-w").checked ? -1 : 1), ez = Math.round(lonS / 15); if (Math.abs(v.zone - lonS / 15) > 2.5) zw = "Zone " + (v.zone > 0 ? "+" : "") + v.zone + " does not fit longitude " + Geo.lon(lonS) + " (about " + (ez > 0 ? "+" : "") + ez + "). Check the sign: East is +, West is −."; }
-      setHint("sf-zone-msg", errs.zone || zw || "+8 means ship's time = UTC + 8 (East +); nautical zone description is the opposite sign", !!errs.zone || !!zw, $("sf-zone")); $("sf-temp").setAttribute("aria-invalid", errs.temp ? "true" : "false"); $("sf-pres").setAttribute("aria-invalid", errs.pres ? "true" : "false");
+      setHint("sf-zone-msg", errs.zone || zw || "East +, West −", !!errs.zone || !!zw, $("sf-zone")); $("sf-temp").setAttribute("aria-invalid", errs.temp ? "true" : "false"); $("sf-pres").setAttribute("aria-invalid", errs.pres ? "true" : "false");
       var g = {}, ge = {}; g.lat = readDM("sf-gps-lat", 90, "GPS latitude", ge, "lat"); g.lon = readDM("sf-gps-lon", 180, "GPS longitude", ge, "lon"); v.gps = g.lat !== null && g.lon !== null && !ge.lat && !ge.lon ? { lat: g.lat * ($("sf-gps-lat-s").checked ? -1 : 1), lon: g.lon * ($("sf-gps-lon-w").checked ? -1 : 1) } : null;
       v.errs = errs; return v;
     }
@@ -221,7 +227,7 @@
       work($("sf-work-tbl"), r, v); sheet(r, v);
     }
     /* the key under the diagram: a sample of each line and what it means; "Clean" leaves only the final lines and the fix */
-    var KEY = {
+    var PKEY = {
       lop: ['<line class="sp-lop" x1="2" y1="7" x2="40" y2="7"/>', "Position line carried to the fix time"],
       lop0: ['<line class="sp-lop0" x1="2" y1="7" x2="40" y2="7"/>', "Position line at the time of the sight"],
       icpt: ['<line class="sp-icpt" x1="2" y1="7" x2="40" y2="7"/>', "Intercept from the assumed position (T towards the body, A away)"],
@@ -236,7 +242,7 @@
     };
     function plotKey(single) {
       var clean = $("sf-pm-clean").checked, keys = single ? ["lop", "icpt", "azl", "itp", "mark", "ap"] : clean ? ["lop", "fix", "dr", "hat"] : ["lop", "lop0", "icpt", "azl", "rt", "ap", "dr", "fix", "hat"];
-      var box = $("sf-key"); box.innerHTML = keys.map(function (k) { return '<span class="sf-keyitem"><svg class="sf-keyicon" viewBox="0 0 42 14" aria-hidden="true">' + KEY[k][0] + '</svg>' + KEY[k][1] + '</span>'; }).join("");
+      var box = $("sf-key"); box.innerHTML = keys.map(function (k) { return '<span class="sf-keyitem"><svg class="sf-keyicon" viewBox="0 0 42 14" aria-hidden="true">' + PKEY[k][0] + '</svg>' + PKEY[k][1] + '</span>'; }).join("");
       $("sf-legend").textContent = single ? "The position line runs at 90° to the azimuth through the ITP." : clean ? "Only the final position lines, the cocked hat and the fix: what you copy into the sight book once the working is checked." :
         "How it is plotted by hand: from each assumed position lay off the intercept along the azimuth (towards or away), then draw the position line at 90° through its end (the red line and the dashed line make a T). Move each line by the ship's run to the fix time (solid line). The fix is where the solid lines meet.";
       $("sf-ps-key").textContent = keys.map(function (k) { return { lop: "solid: position line at the fix time", lop0: "dashed: position line at the sight", icpt: "red: intercept", azl: "dotted arrow: azimuth", rt: "small square: 90°", ap: "circle: assumed position", dr: "dot: DR", fix: "ring: fix", hat: "shaded: cocked hat", mark: "diamond: long. by chron", itp: "dot: ITP" }[k]; }).join(" · ");
@@ -382,14 +388,14 @@
       var good = shown.filter(function (b) { return (verdict(b) || [])[1] === "GOOD" || (b.kind !== "star" && b.hc >= 20 && b.hc <= 60); }), more = shown.filter(function (b) { return good.indexOf(b) < 0; });
       function chip(b, parent) {
         var bt = el("button", "sf-chip " + (verdict(b) || ["ok"])[0]); bt.type = "button";
-        bt.appendChild(el("strong", "", b.name)); bt.appendChild(el("span", "", Math.round(b.hc) + "° · " + ("00" + Math.round(b.zn) % 360).slice(-3) + "°" + (b.kind === "star" ? " · mag " + b.mag.toFixed(1) : " · " + b.kind.toLowerCase())));
-        bt.setAttribute("aria-label", "Use " + b.name + ", altitude " + Math.round(b.hc) + " degrees, bearing " + Math.round(b.zn)); bt.addEventListener("click", function () { useBody(b.name); }); parent.appendChild(bt);
+        bt.appendChild(el("strong", "", b.name)); bt.appendChild(el("span", "", Math.round(b.hc) + "° · " + ("00" + Math.round(b.zn) % 360).slice(-3) + "°" + (b.kind === "star" ? "" : " · " + b.kind.toLowerCase())));
+        bt.setAttribute("aria-label", "Use " + b.name + ", altitude " + Math.round(b.hc) + " degrees, bearing " + Math.round(b.zn) + (b.kind === "star" ? ", magnitude " + b.mag.toFixed(1) : "")); bt.title = b.kind === "star" ? "Magnitude " + b.mag.toFixed(1) : b.name; bt.addEventListener("click", function () { useBody(b.name); }); parent.appendChild(bt);
       }
       var box = el("div", "sf-chips"); good.forEach(function (b) { chip(b, box); }); tbl.appendChild(box);
       var gs = good.map(function (b) { return b.name + Math.round(b.hc) + "/" + Math.round(b.zn); }).join(",");
       gs += "@" + hms(c.sec).slice(0, 5); if (gs !== starPanel.last) { starPanel.last = gs; goodAt = hms(c.sec).slice(0, 5); goodNow = good.slice(); rowRefs.forEach(function (rf) { if (rf.sel) fillBodies(rf.sel, rf.r.name || ""); }); }
       if (!good.length) tbl.appendChild(el("p", "small muted", "Nothing GOOD at this time" + (more.length ? "; see the OK ones below." : ".")));
-      if (more.length) { var dt = el("details", "sf-more"), sm = el("summary", "", "Also possible (OK, lower, higher or fainter): " + more.length); dt.appendChild(sm); var b2 = el("div", "sf-chips"); more.forEach(function (b) { chip(b, b2); }); dt.appendChild(b2); tbl.appendChild(dt); }
+      if (more.length) { var dt = el("details", "sf-more"), sm = el("summary", "", "Other stars (" + more.length + ")"); dt.appendChild(sm); var b2 = el("div", "sf-chips"); more.forEach(function (b) { chip(b, b2); }); dt.appendChild(b2); tbl.appendChild(dt); }
     }
     function useBody(name) {
       var data = st.rows.stars || [], free = data.filter(function (r) { return !r.name && !r.hd && !r.hm; })[0] || data.filter(function (r) { return !r.hd && !r.hm && !r.time; })[0];
@@ -476,7 +482,7 @@
       one: ["stars", "One sight of any body, away from the meridian (Sun mid-morning or afternoon, a star, planet or the Moon). Gives the intercept, the position line through the ITP and the longitude where it crosses your DR latitude (longitude by chronometer)."],
       mer: ["stars", "One sight of any body on or near the meridian (bearing within 30\u00b0 of north or south): the Sun at noon, a star, a planet or the Moon, above or below the pole. Gives your latitude where the line crosses your DR longitude. Use the time of the sight. For the Sun alone the Meridian Passage page also works."],
       polaris: ["stars", "One sight of Polaris at twilight (northern hemisphere, so the horizon and the star are both visible). Gives your latitude directly; no Pole Star tables needed."],
-      stars: ["stars", "3 or 4 stars at twilight, spread round the horizon. In \u201cStars and planets you can take\u201d press Morning or Evening twilight, then Use the best 4 (or tap the stars you want). Then type each star's time, sextant altitude and your DR at that moment."],
+      stars: ["stars", "3 or 4 stars at twilight, spread round the horizon. Press Use the best 4 or tap the stars, then type each time and sextant altitude."],
       day: ["stars", "By day when the Moon or Venus is visible: one Sun sight and one Moon (or Venus) sight close in time give a fix. Choose the limb for the Sun and the Moon."]
     };
     /* "How this method works": what the method is, how the position is found, and good practice (from Subramaniam, Practical

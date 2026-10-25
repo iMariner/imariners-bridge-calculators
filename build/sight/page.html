@@ -1,10 +1,10 @@
     <section class="tool cmp" id="sight-fix" hidden>
       <div class="tool-head">
         <h1>Sight Fix</h1>
-        <p>Four steps: choose the method, fill the ship's DR, type each sight's time and sextant altitude. The fix, the diagram and the print sheet appear by themselves; there is nothing to press.</p>
+        <p>Choose the method, enter the DR and your sights. The fix and the diagram update by themselves.</p>
       </div>
       <div class="card" id="sf-method-card">
-        <h2>1 · What did you observe?</h2>
+        <h2>Method: what did you observe?</h2>
         <div class="sf-methods" id="sf-methods" role="group" aria-label="Sight method">
           <button type="button" class="btn" data-m="noon">Noon position</button>
           <button type="button" class="btn" data-m="sunrun">Sun running fix</button>
@@ -16,52 +16,51 @@
         </div>
         <p class="sf-method-help" id="sf-method-help"></p>
       </div>
-      <div class="sf-stack">
+      <div class="grid sf-grid">
         <form class="card" id="sf-form" autocomplete="off" onsubmit="return false">
-          <h2>2 · Ship, DR and sextant</h2>
+          <h2>Ship and DR</h2>
           <div hidden>
           <div class="segmented" role="radiogroup" aria-label="What you observed">
             <input type="radio" name="sf-mode" id="sf-mode-sun" value="sun" checked><label for="sf-mode-sun">Sun (running fix)</label>
             <input type="radio" name="sf-mode" id="sf-mode-stars" value="stars"><label for="sf-mode-stars">All bodies</label>
           </div>
           </div>
-          <div class="sf-shipgrid">
           <fieldset>
             <legend><span class="dot c-true"></span>DR at the first sight</legend>
-            <div class="field"><label for="sf-lat-d">Latitude</label><div class="fused"><div class="input-wrap"><input id="sf-lat-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div><div class="input-wrap"><input id="sf-lat-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="Latitude hemisphere"><input type="radio" name="sf-ns" id="sf-lat-n" value="N" checked><label for="sf-lat-n">North</label><input type="radio" name="sf-ns" id="sf-lat-s" value="S"><label for="sf-lat-s">South</label></div></div><div class="hint" id="sf-lat-msg">0 – 84°</div></div>
-            <div class="field"><label for="sf-lon-d">Longitude</label><div class="fused"><div class="input-wrap"><input id="sf-lon-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div><div class="input-wrap"><input id="sf-lon-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="Longitude hemisphere"><input type="radio" name="sf-ew" id="sf-lon-e" value="E" checked><label for="sf-lon-e">East</label><input type="radio" name="sf-ew" id="sf-lon-w" value="W"><label for="sf-lon-w">West</label></div></div><div class="hint" id="sf-lon-msg">0 – 180°</div></div>
+            <div class="field"><label for="sf-lat-d">Latitude</label><div class="fused"><div class="input-wrap"><input id="sf-lat-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div><div class="input-wrap"><input id="sf-lat-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="Latitude hemisphere"><input type="radio" name="sf-ns" id="sf-lat-n" value="N" aria-label="North" checked><label for="sf-lat-n" title="North">N</label><input type="radio" name="sf-ns" id="sf-lat-s" value="S" aria-label="South"><label for="sf-lat-s" title="South">S</label></div></div><div class="hint" id="sf-lat-msg"></div></div>
+            <div class="field"><label for="sf-lon-d">Longitude</label><div class="fused"><div class="input-wrap"><input id="sf-lon-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div><div class="input-wrap"><input id="sf-lon-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="Longitude hemisphere"><input type="radio" name="sf-ew" id="sf-lon-e" value="E" aria-label="East" checked><label for="sf-lon-e" title="East">E</label><input type="radio" name="sf-ew" id="sf-lon-w" value="W" aria-label="West"><label for="sf-lon-w" title="West">W</label></div></div><div class="hint" id="sf-lon-msg"></div></div>
             <div class="row2">
               <div class="field"><label for="sf-course">Course (true)</label><div class="input-wrap"><input id="sf-course" type="text" inputmode="decimal" placeholder="000" maxlength="5"><span class="unit">°</span></div><div class="hint" id="sf-course-msg"></div></div>
               <div class="field"><label for="sf-speed">Speed</label><div class="input-wrap"><input id="sf-speed" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">kn</span></div><div class="hint" id="sf-speed-msg"></div></div>
             </div>
           </fieldset>
           <fieldset>
-            <legend><span class="dot c-apparent"></span>Date and time zone</legend>
-            <div class="row2">
+            <legend><span class="dot c-apparent"></span>Date and zone</legend>
+            <div class="row2 sf-dz">
               <div class="field"><label for="sf-date">Date (ship's date)</label><input id="sf-date" class="text-input" type="date"><div class="hint" id="sf-date-msg"></div></div>
-              <div class="field"><label for="sf-zone">Zone (UTC offset)</label><div class="input-wrap"><input id="sf-zone" type="text" inputmode="decimal" placeholder="e.g. 8 or -5.5" maxlength="6"><span class="unit">h</span></div><div class="hint" id="sf-zone-msg">+8 means ship's time = UTC + 8 (East +); nautical zone description is the opposite sign</div></div>
+              <div class="field"><label for="sf-zone">UTC offset</label><div class="input-wrap"><input id="sf-zone" type="text" inputmode="decimal" placeholder="e.g. 8 or -5.5" maxlength="6"><span class="unit">h</span></div><div class="hint" id="sf-zone-msg">East +, West −</div></div>
             </div>
           </fieldset>
           <fieldset>
-            <legend><span class="dot c-ship"></span>Sextant (saved for this ship)</legend>
+            <legend><span class="dot c-ship"></span>Sextant</legend>
             <div>
               <div class="field"><label for="sf-hoe">Height of eye</label><div class="input-wrap"><input id="sf-hoe" type="text" inputmode="decimal" placeholder="e.g. 25" maxlength="5"><span class="unit">m</span></div><div class="hint" id="sf-hoe-msg"></div></div>
-              <div class="field"><label for="sf-ie">Index error</label><div class="fused fused-2"><div class="input-wrap"><input id="sf-ie" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="Index error on or off the arc"><input type="radio" name="sf-iearc" id="sf-ie-on" value="on" checked><label for="sf-ie-on">On arc</label><input type="radio" name="sf-iearc" id="sf-ie-off" value="off"><label for="sf-ie-off">Off arc</label></div></div><div class="hint" id="sf-ie-msg">On the arc is subtracted, off the arc is added</div></div>
+              <div class="field"><label for="sf-ie">Index error</label><div class="fused fused-2"><div class="input-wrap"><input id="sf-ie" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="Index error on or off the arc"><input type="radio" name="sf-iearc" id="sf-ie-on" value="on" checked><label for="sf-ie-on">On arc</label><input type="radio" name="sf-iearc" id="sf-ie-off" value="off"><label for="sf-ie-off">Off arc</label></div></div><div class="hint" id="sf-ie-msg">On arc: subtract. Off arc: add.</div></div>
             </div>
           </fieldset>
-          </div>
           <details class="sf-more">
-            <summary>More: temperature, pressure, GPS check</summary>
+            <summary>Temperature, pressure, GPS check</summary>
             <div class="row2 u-mt-3">
               <div class="field"><label for="sf-temp">Air temperature</label><div class="input-wrap"><input id="sf-temp" type="text" inputmode="decimal" placeholder="10" maxlength="5"><span class="unit">°C</span></div></div>
               <div class="field"><label for="sf-pres">Pressure</label><div class="input-wrap"><input id="sf-pres" type="text" inputmode="decimal" placeholder="1010" maxlength="6"><span class="unit">hPa</span></div></div>
             </div>
-            <div class="field"><label for="sf-gps-lat-d">GPS latitude at the fix time (optional)</label><div class="fused"><div class="input-wrap"><input id="sf-gps-lat-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div><div class="input-wrap"><input id="sf-gps-lat-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="GPS latitude hemisphere"><input type="radio" name="sf-gns" id="sf-gps-lat-n" value="N" checked><label for="sf-gps-lat-n">North</label><input type="radio" name="sf-gns" id="sf-gps-lat-s" value="S"><label for="sf-gps-lat-s">South</label></div></div></div>
-            <div class="field"><label for="sf-gps-lon-d">GPS longitude (optional)</label><div class="fused"><div class="input-wrap"><input id="sf-gps-lon-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div><div class="input-wrap"><input id="sf-gps-lon-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="GPS longitude hemisphere"><input type="radio" name="sf-gew" id="sf-gps-lon-e" value="E" checked><label for="sf-gps-lon-e">East</label><input type="radio" name="sf-gew" id="sf-gps-lon-w" value="W"><label for="sf-gps-lon-w">West</label></div></div></div>
+            <div class="field"><label for="sf-gps-lat-d">GPS latitude at the fix time (optional)</label><div class="fused"><div class="input-wrap"><input id="sf-gps-lat-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div><div class="input-wrap"><input id="sf-gps-lat-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="GPS latitude hemisphere"><input type="radio" name="sf-gns" id="sf-gps-lat-n" value="N" aria-label="North" checked><label for="sf-gps-lat-n" title="North">N</label><input type="radio" name="sf-gns" id="sf-gps-lat-s" value="S" aria-label="South"><label for="sf-gps-lat-s" title="South">S</label></div></div></div>
+            <div class="field"><label for="sf-gps-lon-d">GPS longitude (optional)</label><div class="fused"><div class="input-wrap"><input id="sf-gps-lon-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div><div class="input-wrap"><input id="sf-gps-lon-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="GPS longitude hemisphere"><input type="radio" name="sf-gew" id="sf-gps-lon-e" value="E" aria-label="East" checked><label for="sf-gps-lon-e" title="East">E</label><input type="radio" name="sf-gew" id="sf-gps-lon-w" value="W" aria-label="West"><label for="sf-gps-lon-w" title="West">W</label></div></div></div>
           </details>
         </form>
+        <div class="sf-right">
           <div class="card" id="sf-sights-card">
-            <h2>3 · Sights</h2>
+            <h2>Sights</h2>
             <details class="sf-starbox" id="sf-starbox" open>
               <summary>Stars and planets you can take</summary>
               <div class="sf-starbar">
@@ -76,10 +75,10 @@
             </details>
             <div class="dr-gridwrap"><table class="sf-rows" id="sf-rows"></table></div>
             <div class="hint" id="sf-rows-msg"></div>
-            <p class="sf-runnote"><strong>≈</strong> under each altitude is what the sextant should read at that sight's time. Stars climb or sink about 1° every 4 minutes, so it differs from the list above. <strong>DR at sight</strong> fills itself from course and speed (grey); type over it only if you have your own.</p>
+            <p class="sf-runnote"><strong>≈</strong> what the sextant should read at that sight's time. <strong>DR at sight</strong> moves on with course and speed; type over it if you have your own.</p>
             <div class="sf-apmode u-mt-3">
               <span class="small muted"><label for="sf-fixat">Give the fix at (ship's time)</label></span>
-              <div class="field"><input id="sf-fixat" class="text-input" type="time" step="60" aria-describedby="sf-fixat-msg"><div class="hint" id="sf-fixat-msg">Empty: at the time of the last sight</div></div>
+              <div class="field"><input id="sf-fixat" class="text-input" type="time" step="60" aria-describedby="sf-fixat-msg"><div class="hint" id="sf-fixat-msg">Blank: at the last sight</div></div>
               <span class="small muted" id="sf-ap-lbl">Work every sight from</span>
               <div class="segmented" role="radiogroup" aria-labelledby="sf-ap-lbl">
                 <input type="radio" name="sf-ap" id="sf-ap-each" value="each" checked><label for="sf-ap-each">DR at each sight</label>
@@ -93,7 +92,7 @@
             </div>
           </div>
           <div class="card" id="sf-results" aria-live="polite">
-            <h2>4 · Fix</h2>
+            <h2>Fix</h2>
             <div id="sf-empty" class="empty">Enter the DR, the date and zone, and the time and sextant altitude of at least two sights.</div>
             <div id="sf-out" hidden>
               <div class="callout warn u-mt-0" id="sf-warn" hidden></div>
@@ -115,6 +114,7 @@
               <details class="ge-fold u-mt-3" id="sf-work"><summary>The working, line by line</summary><div class="tbl-scroll u-mt-2h"><table class="dt sf-res" id="sf-work-tbl"></table></div></details>
             </div>
           </div>
+        </div>
       </div>
       <details class="card ge-fold sf-howto" id="sf-howto"><summary id="sf-howto-title">How this method works</summary><div id="sf-howto-body"></div></details>
       <div class="print-sheet" id="sf-sheet">

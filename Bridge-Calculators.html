@@ -978,15 +978,42 @@ table.sf-rows td.w-dr input { font-size: var(--fs-md); background: var(--entry);
 .sf-expect.warn { color: var(--okc); } .sf-expect.bad { color: var(--danger); font-weight: var(--fw-semibold); }
 table.sf-rows td.w-hs { min-width: 215px; } table.sf-rows td.w-limb { min-width: 84px; } table.sf-rows td.w-dr { min-width: 180px; } table.sf-rows td.w-star { min-width: 175px; }
 .sf-expect { white-space: nowrap; }
-.sf-stack { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--sp-5); } .sf-stack > * { min-width: 0; }
-.sf-shipgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-3) var(--sp-6); align-items: start; }
-.sf-shipgrid fieldset { margin: 0; min-width: 0; }
-@media (max-width: 1100px) { .sf-shipgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 760px) { .sf-shipgrid { grid-template-columns: 1fr; } }
+.sf-right { min-width: 0; display: grid; gap: var(--sp-5); }
 table.sf-rows { --sf-ctl-h: 40px; }
 table.sf-rows td { vertical-align: top; }
 table.sf-rows td input, table.sf-rows td select { height: var(--sf-ctl-h); box-sizing: border-box; padding-top: 0; padding-bottom: 0; }
 table.sf-rows td.n, table.sf-rows td.w-limb > span, table.sf-rows td.w-dr > span { display: block; line-height: var(--sf-ctl-h, 48px); }
+/* compact layout */
+#sight-fix .sf-grid { grid-template-columns: 290px minmax(0, 1fr); gap: var(--sp-4); }
+#sight-fix .card { padding: var(--sp-4); }
+#sight-fix .card h2 { margin-bottom: var(--sp-3); }
+#sight-fix .sf-right { gap: var(--sp-4); } #sight-fix .sf-right > .card + .card { margin-top: 0; }
+#sight-fix #sf-form fieldset { margin-bottom: var(--sp-4); }
+#sight-fix #sf-form .field { margin-bottom: var(--sp-2); }
+#sight-fix #sf-form .hint { min-height: 0; } #sight-fix #sf-form .hint:empty { display: none; }
+#sight-fix #sf-form .row2 { gap: var(--sp-2); }
+table.sf-rows { table-layout: fixed; --sf-ctl-h: var(--ctl-h); }
+table.sf-rows th { padding: var(--sp-1) var(--sp-1); }
+table.sf-rows th.n, table.sf-rows td.n { width: 24px; } table.sf-rows .w-star { width: 22%; } table.sf-rows .w-time { width: 128px; }
+table.sf-rows .w-hs { width: 128px; } table.sf-rows .w-limb { width: 84px; } table.sf-rows .w-dr { width: auto; }
+table.sf-rows.nolimb .w-limb { display: none; }
+table.sf-rows td.w-star, table.sf-rows td.w-time, table.sf-rows td.w-hs, table.sf-rows td.w-limb, table.sf-rows td.w-dr { min-width: 0; }
+table.sf-rows td input, table.sf-rows td select { font-size: var(--fs-base); min-width: 0; }
+table.sf-rows td.w-dr input { font-family: var(--font-mono); font-size: var(--fs-sm); padding-left: var(--sp-1h); padding-right: var(--sp-1h); }
+table.sf-rows td.n { font-size: var(--fs-base); }
+.sf-expect { white-space: nowrap; line-height: 1.3; }
+#sight-fix .sf-starbox { padding: var(--sp-2) var(--sp-3); margin-bottom: var(--sp-3); }
+#sight-fix .sf-starbar { margin-top: var(--sp-2); }
+#sight-fix .sf-chips { display: grid; grid-template-columns: repeat(auto-fill, minmax(108px, 1fr)); gap: var(--sp-1h); }
+#sight-fix .sf-chip { min-width: 0; padding: var(--sp-1) var(--sp-2); }
+#sight-fix .sf-chip strong { font-size: var(--fs-base); }
+#sight-fix #sf-hero { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 1499px) { #sight-fix #sf-hero { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+#sight-fix #sf-form .sf-dz { grid-template-columns: minmax(0, 1fr) 92px; }
+#sight-fix #sf-hero .readout { font-size: var(--fs-xl); }
+#sight-fix #sf-form .fused .segmented { flex: 0 0 auto; } #sight-fix #sf-form .fused .segmented label { min-width: 34px; padding-left: var(--sp-2); padding-right: var(--sp-2); }
+#sight-fix #sf-form .fused .input-wrap input { padding-left: var(--sp-2); padding-right: var(--sp-5); }
+#sight-fix #sf-form .fused .input-wrap .unit { right: var(--sp-2); }
 /* Sight Fix end */
 </style>
 </head>
@@ -2831,10 +2858,10 @@ table.sf-rows td.n, table.sf-rows td.w-limb > span, table.sf-rows td.w-dr > span
     <section class="tool cmp" id="sight-fix" hidden>
       <div class="tool-head">
         <h1>Sight Fix</h1>
-        <p>Four steps: choose the method, fill the ship's DR, type each sight's time and sextant altitude. The fix, the diagram and the print sheet appear by themselves; there is nothing to press.</p>
+        <p>Choose the method, enter the DR and your sights. The fix and the diagram update by themselves.</p>
       </div>
       <div class="card" id="sf-method-card">
-        <h2>1 · What did you observe?</h2>
+        <h2>Method: what did you observe?</h2>
         <div class="sf-methods" id="sf-methods" role="group" aria-label="Sight method">
           <button type="button" class="btn" data-m="noon">Noon position</button>
           <button type="button" class="btn" data-m="sunrun">Sun running fix</button>
@@ -2846,52 +2873,51 @@ table.sf-rows td.n, table.sf-rows td.w-limb > span, table.sf-rows td.w-dr > span
         </div>
         <p class="sf-method-help" id="sf-method-help"></p>
       </div>
-      <div class="sf-stack">
+      <div class="grid sf-grid">
         <form class="card" id="sf-form" autocomplete="off" onsubmit="return false">
-          <h2>2 · Ship, DR and sextant</h2>
+          <h2>Ship and DR</h2>
           <div hidden>
           <div class="segmented" role="radiogroup" aria-label="What you observed">
             <input type="radio" name="sf-mode" id="sf-mode-sun" value="sun" checked><label for="sf-mode-sun">Sun (running fix)</label>
             <input type="radio" name="sf-mode" id="sf-mode-stars" value="stars"><label for="sf-mode-stars">All bodies</label>
           </div>
           </div>
-          <div class="sf-shipgrid">
           <fieldset>
             <legend><span class="dot c-true"></span>DR at the first sight</legend>
-            <div class="field"><label for="sf-lat-d">Latitude</label><div class="fused"><div class="input-wrap"><input id="sf-lat-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div><div class="input-wrap"><input id="sf-lat-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="Latitude hemisphere"><input type="radio" name="sf-ns" id="sf-lat-n" value="N" checked><label for="sf-lat-n">North</label><input type="radio" name="sf-ns" id="sf-lat-s" value="S"><label for="sf-lat-s">South</label></div></div><div class="hint" id="sf-lat-msg">0 – 84°</div></div>
-            <div class="field"><label for="sf-lon-d">Longitude</label><div class="fused"><div class="input-wrap"><input id="sf-lon-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div><div class="input-wrap"><input id="sf-lon-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="Longitude hemisphere"><input type="radio" name="sf-ew" id="sf-lon-e" value="E" checked><label for="sf-lon-e">East</label><input type="radio" name="sf-ew" id="sf-lon-w" value="W"><label for="sf-lon-w">West</label></div></div><div class="hint" id="sf-lon-msg">0 – 180°</div></div>
+            <div class="field"><label for="sf-lat-d">Latitude</label><div class="fused"><div class="input-wrap"><input id="sf-lat-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div><div class="input-wrap"><input id="sf-lat-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="Latitude hemisphere"><input type="radio" name="sf-ns" id="sf-lat-n" value="N" aria-label="North" checked><label for="sf-lat-n" title="North">N</label><input type="radio" name="sf-ns" id="sf-lat-s" value="S" aria-label="South"><label for="sf-lat-s" title="South">S</label></div></div><div class="hint" id="sf-lat-msg"></div></div>
+            <div class="field"><label for="sf-lon-d">Longitude</label><div class="fused"><div class="input-wrap"><input id="sf-lon-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div><div class="input-wrap"><input id="sf-lon-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="Longitude hemisphere"><input type="radio" name="sf-ew" id="sf-lon-e" value="E" aria-label="East" checked><label for="sf-lon-e" title="East">E</label><input type="radio" name="sf-ew" id="sf-lon-w" value="W" aria-label="West"><label for="sf-lon-w" title="West">W</label></div></div><div class="hint" id="sf-lon-msg"></div></div>
             <div class="row2">
               <div class="field"><label for="sf-course">Course (true)</label><div class="input-wrap"><input id="sf-course" type="text" inputmode="decimal" placeholder="000" maxlength="5"><span class="unit">°</span></div><div class="hint" id="sf-course-msg"></div></div>
               <div class="field"><label for="sf-speed">Speed</label><div class="input-wrap"><input id="sf-speed" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">kn</span></div><div class="hint" id="sf-speed-msg"></div></div>
             </div>
           </fieldset>
           <fieldset>
-            <legend><span class="dot c-apparent"></span>Date and time zone</legend>
-            <div class="row2">
+            <legend><span class="dot c-apparent"></span>Date and zone</legend>
+            <div class="row2 sf-dz">
               <div class="field"><label for="sf-date">Date (ship's date)</label><input id="sf-date" class="text-input" type="date"><div class="hint" id="sf-date-msg"></div></div>
-              <div class="field"><label for="sf-zone">Zone (UTC offset)</label><div class="input-wrap"><input id="sf-zone" type="text" inputmode="decimal" placeholder="e.g. 8 or -5.5" maxlength="6"><span class="unit">h</span></div><div class="hint" id="sf-zone-msg">+8 means ship's time = UTC + 8 (East +); nautical zone description is the opposite sign</div></div>
+              <div class="field"><label for="sf-zone">UTC offset</label><div class="input-wrap"><input id="sf-zone" type="text" inputmode="decimal" placeholder="e.g. 8 or -5.5" maxlength="6"><span class="unit">h</span></div><div class="hint" id="sf-zone-msg">East +, West −</div></div>
             </div>
           </fieldset>
           <fieldset>
-            <legend><span class="dot c-ship"></span>Sextant (saved for this ship)</legend>
+            <legend><span class="dot c-ship"></span>Sextant</legend>
             <div>
               <div class="field"><label for="sf-hoe">Height of eye</label><div class="input-wrap"><input id="sf-hoe" type="text" inputmode="decimal" placeholder="e.g. 25" maxlength="5"><span class="unit">m</span></div><div class="hint" id="sf-hoe-msg"></div></div>
-              <div class="field"><label for="sf-ie">Index error</label><div class="fused fused-2"><div class="input-wrap"><input id="sf-ie" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="Index error on or off the arc"><input type="radio" name="sf-iearc" id="sf-ie-on" value="on" checked><label for="sf-ie-on">On arc</label><input type="radio" name="sf-iearc" id="sf-ie-off" value="off"><label for="sf-ie-off">Off arc</label></div></div><div class="hint" id="sf-ie-msg">On the arc is subtracted, off the arc is added</div></div>
+              <div class="field"><label for="sf-ie">Index error</label><div class="fused fused-2"><div class="input-wrap"><input id="sf-ie" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="Index error on or off the arc"><input type="radio" name="sf-iearc" id="sf-ie-on" value="on" checked><label for="sf-ie-on">On arc</label><input type="radio" name="sf-iearc" id="sf-ie-off" value="off"><label for="sf-ie-off">Off arc</label></div></div><div class="hint" id="sf-ie-msg">On arc: subtract. Off arc: add.</div></div>
             </div>
           </fieldset>
-          </div>
           <details class="sf-more">
-            <summary>More: temperature, pressure, GPS check</summary>
+            <summary>Temperature, pressure, GPS check</summary>
             <div class="row2 u-mt-3">
               <div class="field"><label for="sf-temp">Air temperature</label><div class="input-wrap"><input id="sf-temp" type="text" inputmode="decimal" placeholder="10" maxlength="5"><span class="unit">°C</span></div></div>
               <div class="field"><label for="sf-pres">Pressure</label><div class="input-wrap"><input id="sf-pres" type="text" inputmode="decimal" placeholder="1010" maxlength="6"><span class="unit">hPa</span></div></div>
             </div>
-            <div class="field"><label for="sf-gps-lat-d">GPS latitude at the fix time (optional)</label><div class="fused"><div class="input-wrap"><input id="sf-gps-lat-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div><div class="input-wrap"><input id="sf-gps-lat-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="GPS latitude hemisphere"><input type="radio" name="sf-gns" id="sf-gps-lat-n" value="N" checked><label for="sf-gps-lat-n">North</label><input type="radio" name="sf-gns" id="sf-gps-lat-s" value="S"><label for="sf-gps-lat-s">South</label></div></div></div>
-            <div class="field"><label for="sf-gps-lon-d">GPS longitude (optional)</label><div class="fused"><div class="input-wrap"><input id="sf-gps-lon-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div><div class="input-wrap"><input id="sf-gps-lon-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="GPS longitude hemisphere"><input type="radio" name="sf-gew" id="sf-gps-lon-e" value="E" checked><label for="sf-gps-lon-e">East</label><input type="radio" name="sf-gew" id="sf-gps-lon-w" value="W"><label for="sf-gps-lon-w">West</label></div></div></div>
+            <div class="field"><label for="sf-gps-lat-d">GPS latitude at the fix time (optional)</label><div class="fused"><div class="input-wrap"><input id="sf-gps-lat-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div><div class="input-wrap"><input id="sf-gps-lat-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="GPS latitude hemisphere"><input type="radio" name="sf-gns" id="sf-gps-lat-n" value="N" aria-label="North" checked><label for="sf-gps-lat-n" title="North">N</label><input type="radio" name="sf-gns" id="sf-gps-lat-s" value="S" aria-label="South"><label for="sf-gps-lat-s" title="South">S</label></div></div></div>
+            <div class="field"><label for="sf-gps-lon-d">GPS longitude (optional)</label><div class="fused"><div class="input-wrap"><input id="sf-gps-lon-d" type="text" inputmode="decimal" placeholder="0" maxlength="3"><span class="unit">°</span></div><div class="input-wrap"><input id="sf-gps-lon-m" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">'</span></div><div class="segmented" role="radiogroup" aria-label="GPS longitude hemisphere"><input type="radio" name="sf-gew" id="sf-gps-lon-e" value="E" aria-label="East" checked><label for="sf-gps-lon-e" title="East">E</label><input type="radio" name="sf-gew" id="sf-gps-lon-w" value="W" aria-label="West"><label for="sf-gps-lon-w" title="West">W</label></div></div></div>
           </details>
         </form>
+        <div class="sf-right">
           <div class="card" id="sf-sights-card">
-            <h2>3 · Sights</h2>
+            <h2>Sights</h2>
             <details class="sf-starbox" id="sf-starbox" open>
               <summary>Stars and planets you can take</summary>
               <div class="sf-starbar">
@@ -2906,10 +2932,10 @@ table.sf-rows td.n, table.sf-rows td.w-limb > span, table.sf-rows td.w-dr > span
             </details>
             <div class="dr-gridwrap"><table class="sf-rows" id="sf-rows"></table></div>
             <div class="hint" id="sf-rows-msg"></div>
-            <p class="sf-runnote"><strong>≈</strong> under each altitude is what the sextant should read at that sight's time. Stars climb or sink about 1° every 4 minutes, so it differs from the list above. <strong>DR at sight</strong> fills itself from course and speed (grey); type over it only if you have your own.</p>
+            <p class="sf-runnote"><strong>≈</strong> what the sextant should read at that sight's time. <strong>DR at sight</strong> moves on with course and speed; type over it if you have your own.</p>
             <div class="sf-apmode u-mt-3">
               <span class="small muted"><label for="sf-fixat">Give the fix at (ship's time)</label></span>
-              <div class="field"><input id="sf-fixat" class="text-input" type="time" step="60" aria-describedby="sf-fixat-msg"><div class="hint" id="sf-fixat-msg">Empty: at the time of the last sight</div></div>
+              <div class="field"><input id="sf-fixat" class="text-input" type="time" step="60" aria-describedby="sf-fixat-msg"><div class="hint" id="sf-fixat-msg">Blank: at the last sight</div></div>
               <span class="small muted" id="sf-ap-lbl">Work every sight from</span>
               <div class="segmented" role="radiogroup" aria-labelledby="sf-ap-lbl">
                 <input type="radio" name="sf-ap" id="sf-ap-each" value="each" checked><label for="sf-ap-each">DR at each sight</label>
@@ -2923,7 +2949,7 @@ table.sf-rows td.n, table.sf-rows td.w-limb > span, table.sf-rows td.w-dr > span
             </div>
           </div>
           <div class="card" id="sf-results" aria-live="polite">
-            <h2>4 · Fix</h2>
+            <h2>Fix</h2>
             <div id="sf-empty" class="empty">Enter the DR, the date and zone, and the time and sextant altitude of at least two sights.</div>
             <div id="sf-out" hidden>
               <div class="callout warn u-mt-0" id="sf-warn" hidden></div>
@@ -2945,6 +2971,7 @@ table.sf-rows td.n, table.sf-rows td.w-limb > span, table.sf-rows td.w-dr > span
               <details class="ge-fold u-mt-3" id="sf-work"><summary>The working, line by line</summary><div class="tbl-scroll u-mt-2h"><table class="dt sf-res" id="sf-work-tbl"></table></div></details>
             </div>
           </div>
+        </div>
       </div>
       <details class="card ge-fold sf-howto" id="sf-howto"><summary id="sf-howto-title">How this method works</summary><div id="sf-howto-body"></div></details>
       <div class="print-sheet" id="sf-sheet">
@@ -7880,8 +7907,12 @@ table.sf-rows td.n, table.sf-rows td.w-limb > span, table.sf-rows td.w-dr > span
   /* SIGHTPLOT-END */
 
   /* Tool: Sight Fix (running fix by the Sun, fix by 3 to 4 stars) */
+  function sfLost() {                                                               /* saves made while the key was shadowed went to "[object Object]" (Oct 2026): take them back */
+    var o = store.get("[object Object]"); if (!o || typeof o !== "object" || !o.f) return null;
+    try { localStorage.removeItem("[object Object]"); } catch (e) {} return o;
+  }
   function initSightFix() {
-    var KEY = "bridgeCalc.sightFix", st = store.get(KEY) || {}, mode = st.mode === "stars" ? "stars" : "sun", rowsEl = $("sf-rows"), rowRefs = [], last = null, shipEdited = false;
+    var KEY = "bridgeCalc.sightFix", st = store.get(KEY) || sfLost() || {}, mode = st.mode === "stars" ? "stars" : "sun", rowsEl = $("sf-rows"), rowRefs = [], last = null, shipEdited = false;
     var LIMBS = [["L", "Lower"], ["U", "Upper"]];
     var NAMES = Sight.names();
     var FIELDS = ["sf-starsat", "sf-fixat", "sf-lat-d", "sf-lat-m", "sf-lon-d", "sf-lon-m", "sf-course", "sf-speed", "sf-date", "sf-zone", "sf-hoe", "sf-ie", "sf-temp", "sf-pres", "sf-gps-lat-d", "sf-gps-lat-m", "sf-gps-lon-d", "sf-gps-lon-m"];
@@ -7933,6 +7964,7 @@ table.sf-rows td.n, table.sf-rows td.w-limb > span, table.sf-rows td.w-dr > span
       groups.forEach(function (g) { var og = document.createElement("optgroup"); og.label = g[0]; g[1].forEach(function (x) { var o = el("option", "", x[1]); o.value = x[0]; og.appendChild(o); }); sel.appendChild(og); });
       sel.value = val;
     }
+    function limbCol() { rowsEl.classList.toggle("nolimb", mode === "stars" && !rowRefs.some(function (rf) { return rf.r.name === "Moon" || rf.r.name === "Sun"; })); }   /* stars only: no limb column */
     function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt !== undefined) e.textContent = txt; return e; }
 
     /* ---------- the rows of sights ---------- */
@@ -7942,7 +7974,7 @@ table.sf-rows td.n, table.sf-rows td.w-limb > span, table.sf-rows td.w-dr > span
       var data = rowData(); st.rows[mode] = data; rowRefs = [];
       while (rowsEl.firstChild) rowsEl.removeChild(rowsEl.firstChild);
       var th = el("thead"), hr = el("tr");
-      (mode === "sun" ? ["", "Local time", "Sextant altitude", "", "Limb", "DR at sight"] : ["", "Body", "Local time", "Sextant altitude", "", "Limb", "DR at sight"]).forEach(function (h, i) { var c = el("th", "", h); if ((mode === "sun" && i === 2) || (mode === "stars" && i === 3)) c.colSpan = 2; if (h === "" && ((mode === "sun" && i === 3) || (mode === "stars" && i === 4))) return; hr.appendChild(c); });
+      (mode === "sun" ? ["", "Local time", "Sextant altitude", "", "Limb", "DR at sight"] : ["", "Body", "Local time", "Hs (sextant)", "", "Limb", "DR at sight"]).forEach(function (h, i) { var c = el("th", ({ "": "n", "Body": "w-star", "Local time": "w-time", "Sextant altitude": "w-hs", "Hs (sextant)": "w-hs", "Limb": "w-limb", "DR at sight": "w-dr" })[h] || "", h); if ((mode === "sun" && i === 2) || (mode === "stars" && i === 3)) c.colSpan = 2; if (h === "" && ((mode === "sun" && i === 3) || (mode === "stars" && i === 4))) return; hr.appendChild(c); });
       th.appendChild(hr); rowsEl.appendChild(th);
       var tb = el("tbody"); rowsEl.appendChild(tb);
       data.forEach(function (r, i) {
@@ -7951,7 +7983,7 @@ table.sf-rows td.n, table.sf-rows td.w-limb > span, table.sf-rows td.w-dr > span
         if (r.kind === "star") { var td = el("td", "w-star"), sel = el("select"); sel.setAttribute("aria-label", "Star " + (i + 1)); fillBodies(sel, r.name || ""); sel.addEventListener("change", function () {
             if (sel.value === "__all") { sel.full = true; fillBodies(sel, r.name || ""); try { if (sel.showPicker) sel.showPicker(); } catch (e) {} toast("All bodies listed: open the list again to choose."); return; }
             if (sel.value === "__short") { sel.full = false; fillBodies(sel, r.name || ""); return; }
-            r.name = sel.value; sel.full = false; fillBodies(sel, r.name);      /* back to the short list once a body is chosen; the chosen one shows its name only */ if (refs.limb) { var lm = r.name === "Moon" || r.name === "Sun"; refs.limb.hidden = !lm; refs.na.hidden = lm; } save(); render(); }); sel.addEventListener("blur", function () { if (sel.full) { sel.full = false; fillBodies(sel, r.name || ""); } });   /* leaving the box: back to the short list */
+            r.name = sel.value; sel.full = false; fillBodies(sel, r.name);      /* back to the short list once a body is chosen; the chosen one shows its name only */ if (refs.limb) { var lm = r.name === "Moon" || r.name === "Sun"; refs.limb.hidden = !lm; refs.na.hidden = lm; } limbCol(); save(); render(); }); sel.addEventListener("blur", function () { if (sel.full) { sel.full = false; fillBodies(sel, r.name || ""); } });   /* leaving the box: back to the short list */
           td.appendChild(sel); tr.appendChild(td); refs.sel = sel; }
         var tt = el("td", "w-time"), ti = el("input"); ti.type = "time"; ti.step = "1"; ti.value = r.time || ""; ti.setAttribute("aria-label", "Local time of sight " + (i + 1)); ti.addEventListener("input", function () { r.time = ti.value; r.manual = true; save(); render(); }); tt.appendChild(ti); tr.appendChild(tt); refs.time = ti;
         if (r.kind === "lat") {
@@ -7971,7 +8003,7 @@ table.sf-rows td.n, table.sf-rows td.w-limb > span, table.sf-rows td.w-dr > span
           [hd, hm].forEach(function (x) { x.addEventListener("input", function () { r.hd = hd.value; r.hm = hm.value; save(); render(); }); });
           refs.hd = hd; refs.hm = hm;
           if (r.kind === "sun" || r.kind === "star") { var tk = el("td", "w-limb"), sl = el("select"); sl.setAttribute("aria-label", "Limb of the " + (r.kind === "sun" ? "Sun" : "Moon"));
-            if (r.kind === "star") { var na = el("span", "small muted", "n/a"); refs.na = na; tk.appendChild(na); var lm0 = r.name === "Moon" || r.name === "Sun"; sl.hidden = !lm0; na.hidden = lm0; } LIMBS.forEach(function (x) { var o = el("option", "", x[1]); o.value = x[0]; sl.appendChild(o); }); sl.value = r.limb || "L"; sl.addEventListener("change", function () { r.limb = sl.value; save(); render(); }); tk.appendChild(sl); tr.appendChild(tk); refs.limb = sl; }
+            if (r.kind === "star") { var na = el("span", "small muted", ""); refs.na = na; tk.appendChild(na); var lm0 = r.name === "Moon" || r.name === "Sun"; sl.hidden = !lm0; na.hidden = lm0; } LIMBS.forEach(function (x) { var o = el("option", "", x[1]); o.value = x[0]; sl.appendChild(o); }); sl.value = r.limb || "L"; sl.addEventListener("change", function () { r.limb = sl.value; save(); render(); }); tk.appendChild(sl); tr.appendChild(tk); refs.limb = sl; }
         }
         var tp = el("td", "w-dr");                                                     /* the officer's DR at this sight; empty: worked from the first DR, course and speed */
         if (r.kind === "lat") tp.appendChild(el("span", "small muted", "not needed"));
@@ -7980,6 +8012,7 @@ table.sf-rows td.n, table.sf-rows td.w-limb > span, table.sf-rows td.w-dr > span
         tr.appendChild(tp);
         tb.appendChild(tr); rowRefs.push(refs);
       });
+      limbCol();
     }
 
     /* ---------- reading everything ---------- */
@@ -7993,11 +8026,11 @@ table.sf-rows td.n, table.sf-rows td.w-limb > span, table.sf-rows td.w-dr > span
       if (isNaN(v.temp) || (v.temp !== null && (v.temp < -40 || v.temp > 60))) errs.temp = 1; if (isNaN(v.pres) || (v.pres !== null && (v.pres < 800 || v.pres > 1100))) errs.pres = 1;
       if (isNaN(v.zone) || (v.zone !== null && (v.zone < -14 || v.zone > 14))) errs.zone = "-14 to +14";
       v.date = parseDateEl($("sf-date"));
-      setHint("sf-lat-msg", errs.lat || "0 – 84°", !!errs.lat); setHint("sf-lon-msg", errs.lon || "0 – 180°", !!errs.lon);
-      setHint("sf-course-msg", errs.course || "", !!errs.course, $("sf-course")); setHint("sf-speed-msg", errs.speed || "", !!errs.speed, $("sf-speed")); setHint("sf-hoe-msg", errs.hoe || "", !!errs.hoe, $("sf-hoe")); setHint("sf-ie-msg", errs.ie || "On the arc is subtracted, off the arc is added", !!errs.ie, $("sf-ie"));
+      setHint("sf-lat-msg", errs.lat || "", !!errs.lat); setHint("sf-lon-msg", errs.lon || "", !!errs.lon);
+      setHint("sf-course-msg", errs.course || "", !!errs.course, $("sf-course")); setHint("sf-speed-msg", errs.speed || "", !!errs.speed, $("sf-speed")); setHint("sf-hoe-msg", errs.hoe || "", !!errs.hoe, $("sf-hoe")); setHint("sf-ie-msg", errs.ie || "On arc: subtract. Off arc: add.", !!errs.ie, $("sf-ie"));
       var zw = "";                                                                       /* a zone that does not fit the longitude is usually a wrong sign */
       if (!errs.zone && v.zone !== null && v.lon !== null && !errs.lon) { var lonS = v.lon * ($("sf-lon-w").checked ? -1 : 1), ez = Math.round(lonS / 15); if (Math.abs(v.zone - lonS / 15) > 2.5) zw = "Zone " + (v.zone > 0 ? "+" : "") + v.zone + " does not fit longitude " + Geo.lon(lonS) + " (about " + (ez > 0 ? "+" : "") + ez + "). Check the sign: East is +, West is −."; }
-      setHint("sf-zone-msg", errs.zone || zw || "+8 means ship's time = UTC + 8 (East +); nautical zone description is the opposite sign", !!errs.zone || !!zw, $("sf-zone")); $("sf-temp").setAttribute("aria-invalid", errs.temp ? "true" : "false"); $("sf-pres").setAttribute("aria-invalid", errs.pres ? "true" : "false");
+      setHint("sf-zone-msg", errs.zone || zw || "East +, West −", !!errs.zone || !!zw, $("sf-zone")); $("sf-temp").setAttribute("aria-invalid", errs.temp ? "true" : "false"); $("sf-pres").setAttribute("aria-invalid", errs.pres ? "true" : "false");
       var g = {}, ge = {}; g.lat = readDM("sf-gps-lat", 90, "GPS latitude", ge, "lat"); g.lon = readDM("sf-gps-lon", 180, "GPS longitude", ge, "lon"); v.gps = g.lat !== null && g.lon !== null && !ge.lat && !ge.lon ? { lat: g.lat * ($("sf-gps-lat-s").checked ? -1 : 1), lon: g.lon * ($("sf-gps-lon-w").checked ? -1 : 1) } : null;
       v.errs = errs; return v;
     }
@@ -8102,7 +8135,7 @@ table.sf-rows td.n, table.sf-rows td.w-limb > span, table.sf-rows td.w-dr > span
       work($("sf-work-tbl"), r, v); sheet(r, v);
     }
     /* the key under the diagram: a sample of each line and what it means; "Clean" leaves only the final lines and the fix */
-    var KEY = {
+    var PKEY = {
       lop: ['<line class="sp-lop" x1="2" y1="7" x2="40" y2="7"/>', "Position line carried to the fix time"],
       lop0: ['<line class="sp-lop0" x1="2" y1="7" x2="40" y2="7"/>', "Position line at the time of the sight"],
       icpt: ['<line class="sp-icpt" x1="2" y1="7" x2="40" y2="7"/>', "Intercept from the assumed position (T towards the body, A away)"],
@@ -8117,7 +8150,7 @@ table.sf-rows td.n, table.sf-rows td.w-limb > span, table.sf-rows td.w-dr > span
     };
     function plotKey(single) {
       var clean = $("sf-pm-clean").checked, keys = single ? ["lop", "icpt", "azl", "itp", "mark", "ap"] : clean ? ["lop", "fix", "dr", "hat"] : ["lop", "lop0", "icpt", "azl", "rt", "ap", "dr", "fix", "hat"];
-      var box = $("sf-key"); box.innerHTML = keys.map(function (k) { return '<span class="sf-keyitem"><svg class="sf-keyicon" viewBox="0 0 42 14" aria-hidden="true">' + KEY[k][0] + '</svg>' + KEY[k][1] + '</span>'; }).join("");
+      var box = $("sf-key"); box.innerHTML = keys.map(function (k) { return '<span class="sf-keyitem"><svg class="sf-keyicon" viewBox="0 0 42 14" aria-hidden="true">' + PKEY[k][0] + '</svg>' + PKEY[k][1] + '</span>'; }).join("");
       $("sf-legend").textContent = single ? "The position line runs at 90° to the azimuth through the ITP." : clean ? "Only the final position lines, the cocked hat and the fix: what you copy into the sight book once the working is checked." :
         "How it is plotted by hand: from each assumed position lay off the intercept along the azimuth (towards or away), then draw the position line at 90° through its end (the red line and the dashed line make a T). Move each line by the ship's run to the fix time (solid line). The fix is where the solid lines meet.";
       $("sf-ps-key").textContent = keys.map(function (k) { return { lop: "solid: position line at the fix time", lop0: "dashed: position line at the sight", icpt: "red: intercept", azl: "dotted arrow: azimuth", rt: "small square: 90°", ap: "circle: assumed position", dr: "dot: DR", fix: "ring: fix", hat: "shaded: cocked hat", mark: "diamond: long. by chron", itp: "dot: ITP" }[k]; }).join(" · ");
@@ -8263,14 +8296,14 @@ table.sf-rows td.n, table.sf-rows td.w-limb > span, table.sf-rows td.w-dr > span
       var good = shown.filter(function (b) { return (verdict(b) || [])[1] === "GOOD" || (b.kind !== "star" && b.hc >= 20 && b.hc <= 60); }), more = shown.filter(function (b) { return good.indexOf(b) < 0; });
       function chip(b, parent) {
         var bt = el("button", "sf-chip " + (verdict(b) || ["ok"])[0]); bt.type = "button";
-        bt.appendChild(el("strong", "", b.name)); bt.appendChild(el("span", "", Math.round(b.hc) + "° · " + ("00" + Math.round(b.zn) % 360).slice(-3) + "°" + (b.kind === "star" ? " · mag " + b.mag.toFixed(1) : " · " + b.kind.toLowerCase())));
-        bt.setAttribute("aria-label", "Use " + b.name + ", altitude " + Math.round(b.hc) + " degrees, bearing " + Math.round(b.zn)); bt.addEventListener("click", function () { useBody(b.name); }); parent.appendChild(bt);
+        bt.appendChild(el("strong", "", b.name)); bt.appendChild(el("span", "", Math.round(b.hc) + "° · " + ("00" + Math.round(b.zn) % 360).slice(-3) + "°" + (b.kind === "star" ? "" : " · " + b.kind.toLowerCase())));
+        bt.setAttribute("aria-label", "Use " + b.name + ", altitude " + Math.round(b.hc) + " degrees, bearing " + Math.round(b.zn) + (b.kind === "star" ? ", magnitude " + b.mag.toFixed(1) : "")); bt.title = b.kind === "star" ? "Magnitude " + b.mag.toFixed(1) : b.name; bt.addEventListener("click", function () { useBody(b.name); }); parent.appendChild(bt);
       }
       var box = el("div", "sf-chips"); good.forEach(function (b) { chip(b, box); }); tbl.appendChild(box);
       var gs = good.map(function (b) { return b.name + Math.round(b.hc) + "/" + Math.round(b.zn); }).join(",");
       gs += "@" + hms(c.sec).slice(0, 5); if (gs !== starPanel.last) { starPanel.last = gs; goodAt = hms(c.sec).slice(0, 5); goodNow = good.slice(); rowRefs.forEach(function (rf) { if (rf.sel) fillBodies(rf.sel, rf.r.name || ""); }); }
       if (!good.length) tbl.appendChild(el("p", "small muted", "Nothing GOOD at this time" + (more.length ? "; see the OK ones below." : ".")));
-      if (more.length) { var dt = el("details", "sf-more"), sm = el("summary", "", "Also possible (OK, lower, higher or fainter): " + more.length); dt.appendChild(sm); var b2 = el("div", "sf-chips"); more.forEach(function (b) { chip(b, b2); }); dt.appendChild(b2); tbl.appendChild(dt); }
+      if (more.length) { var dt = el("details", "sf-more"), sm = el("summary", "", "Other stars (" + more.length + ")"); dt.appendChild(sm); var b2 = el("div", "sf-chips"); more.forEach(function (b) { chip(b, b2); }); dt.appendChild(b2); tbl.appendChild(dt); }
     }
     function useBody(name) {
       var data = st.rows.stars || [], free = data.filter(function (r) { return !r.name && !r.hd && !r.hm; })[0] || data.filter(function (r) { return !r.hd && !r.hm && !r.time; })[0];
@@ -8357,7 +8390,7 @@ table.sf-rows td.n, table.sf-rows td.w-limb > span, table.sf-rows td.w-dr > span
       one: ["stars", "One sight of any body, away from the meridian (Sun mid-morning or afternoon, a star, planet or the Moon). Gives the intercept, the position line through the ITP and the longitude where it crosses your DR latitude (longitude by chronometer)."],
       mer: ["stars", "One sight of any body on or near the meridian (bearing within 30\u00b0 of north or south): the Sun at noon, a star, a planet or the Moon, above or below the pole. Gives your latitude where the line crosses your DR longitude. Use the time of the sight. For the Sun alone the Meridian Passage page also works."],
       polaris: ["stars", "One sight of Polaris at twilight (northern hemisphere, so the horizon and the star are both visible). Gives your latitude directly; no Pole Star tables needed."],
-      stars: ["stars", "3 or 4 stars at twilight, spread round the horizon. In \u201cStars and planets you can take\u201d press Morning or Evening twilight, then Use the best 4 (or tap the stars you want). Then type each star's time, sextant altitude and your DR at that moment."],
+      stars: ["stars", "3 or 4 stars at twilight, spread round the horizon. Press Use the best 4 or tap the stars, then type each time and sextant altitude."],
       day: ["stars", "By day when the Moon or Venus is visible: one Sun sight and one Moon (or Venus) sight close in time give a fix. Choose the limb for the Sun and the Moon."]
     };
     /* "How this method works": what the method is, how the position is found, and good practice (from Subramaniam, Practical
@@ -8435,6 +8468,15 @@ table.sf-rows td.n, table.sf-rows td.w-limb > span, table.sf-rows td.w-dr > span
     build(); setMethod(st.method, false);
   }
   /* SIGHTPAGE-END */
+
+
+
+
+
+
+
+
+
 
 
 
