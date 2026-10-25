@@ -13,6 +13,11 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   let id = 0; const pend = {}; ws.onmessage = m => { const d = JSON.parse(m.data); if (d.id && pend[d.id]) { pend[d.id](d); delete pend[d.id]; } };
   const send = (method, params = {}) => new Promise(r => { const i = ++id; pend[i] = r; ws.send(JSON.stringify({ id: i, method, params })); });
   await send('Page.enable'); await send('Page.navigate', { url: file + '#' + tool }); await sleep(1500);
+  if (process.env.SHIP) {                                                          /* SHIP=1: print with a ship selected (adds the ship header) */
+    await send('Runtime.evaluate', { expression: `localStorage.setItem('bridgeCalc.ships', JSON.stringify({ active: 'x', list: [{ id: 'x', name: 'MT iMariners Long Ship Name', imo: '9876543', company: 'iMariners Shipping Company' }] }));0` });
+    await send('Page.reload'); await sleep(1500);
+  }
+  if (process.env.PRE) await send('Runtime.evaluate', { expression: `document.getElementById('${process.env.PRE}').click();0` });   /* PRE=<id>: click this first (e.g. a mode switch) */
   await send('Runtime.evaluate', { expression: `document.getElementById('${btn}').click();0` }); await sleep(600);
   await send('Emulation.setEmulatedMedia', { media: 'print' });
   const pdf = await send('Page.printToPDF', { printBackground: true, preferCSSPageSize: true });

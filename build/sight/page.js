@@ -141,11 +141,10 @@
       $("sf-ps-plot").innerHTML = SightPlot.build(r, i, 760, 300, "sfc2");
       fillCells($("sf-ps-info"), [["Ship", sh ? sh.name : "—"], ["IMO number", sh && sh.imo ? sh.imo : "—"], ["Date (ship's time)", p2(v.date.d) + "/" + p2(v.date.m) + "/" + v.date.y], ["Time zone", (v.zone >= 0 ? "UTC +" : "UTC −") + Math.abs(v.zone) + " h"],
         ["DR at first sight", Geo.lat(i.dr.lat) + " " + Geo.lon(i.dr.lon), 2], ["Course / speed", Math.round(v.course) + "° / " + v.speed + " kn"], ["Height of eye", v.hoe + " m"],
-        ["Index error", (ic === 0 ? "nil" : Math.abs(ic).toFixed(1) + "' " + (ic < 0 ? "on" : "off") + " the arc")], ["Temperature / pressure", i.temp + " °C / " + i.pres + " hPa", 2], ["Method", mode === "sun" ? "Running fix by Sun" : "Fix by stars", 2]]);
+        ["Index error", (ic === 0 ? "nil" : Math.abs(ic).toFixed(1) + "' " + (ic < 0 ? "on" : "off") + " the arc")], ["Temp / pressure", i.temp + " °C / " + i.pres + " hPa"], ["Method", mode === "sun" ? "Running fix by Sun" : "Fix by stars", 2]]);
       sightsTable($("sf-ps-tbl"), r, v); work($("sf-ps-work"), r, v);
       $("sf-ps-lat").textContent = Geo.lat(r.fix.lat); $("sf-ps-lon").textContent = Geo.lon(r.fix.lon);
       var t = $("sf-log").textContent;
-      if (r.constErr !== undefined) t += " | constant altitude error " + (r.constErr >= 0 ? "+" : "−") + Math.abs(r.constErr).toFixed(1) + "'";
       $("sf-ps-log").textContent = t;
       var qn = $("sf-f-q").textContent + ($("sf-f-q-sub").textContent ? " (" + $("sf-f-q-sub").textContent + ")" : "");
       $("sf-ps-warn").textContent = "Quality: " + qn + (r.warnings.length ? ". Warnings: " + r.warnings.join(" ") : ". No warnings.");

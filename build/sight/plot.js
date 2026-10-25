@@ -78,7 +78,16 @@
         else o.push('<circle class="sp-ap" cx="' + f1(X(l.ap.x)) + '" cy="' + f1(Y(l.ap.y)) + '" r="3"/>');
         seg(l.f1, "sp-lop");
         var c = clip(X(l.f1.x), Y(l.f1.y), dxp, dyp, left + 6, top + 6, right - 6, bottom - 6);
-        if (c) { var t = i % 2 ? c[1] - 0.1 * (c[1] - c[0]) : c[0] + 0.1 * (c[1] - c[0]); var lx = X(l.f1.x) + dxp * t; labels.push({ x: lx, y: Y(l.f1.y) + dyp * t, end: lx < (left + right) / 2 ? "start" : "end", l: l }); }
+        if (c) {                                                                    /* try spots along the line until the label clashes with no other */
+          var w = (l.s.name.length + 14) * 6.6, best = null, fr = [0.1, 0.9, 0.3, 0.7, 0.5, 0.2, 0.8];
+          for (var q = 0; q < fr.length; q++) {
+            var t = c[0] + fr[q] * (c[1] - c[0]), lx = X(l.f1.x) + dxp * t, ly = Y(l.f1.y) + dyp * t, end = lx < (left + right) / 2 ? "start" : "end";
+            var bx = end === "start" ? lx : lx - w, cand = { x: lx, y: ly, end: end, l: l, b: [bx, ly - 16, bx + w, ly - 2] };
+            if (!best) best = cand;
+            if (!labels.some(function (o) { return !(cand.b[2] < o.b[0] || cand.b[0] > o.b[2] || cand.b[3] < o.b[1] || cand.b[1] > o.b[3]); })) { best = cand; break; }
+          }
+          labels.push(best);
+        }
       });
       /* fix, GPS */
       if (gps) o.push('<path class="sp-gps" d="M' + f1(X(gps.x)) + ' ' + f1(Y(gps.y) - 6) + ' l6 6 l-6 6 l-6 -6 z"/><text class="sp-lab" x="' + f1(X(gps.x) + 9) + '" y="' + f1(Y(gps.y) + 4) + '">GPS</text>');
