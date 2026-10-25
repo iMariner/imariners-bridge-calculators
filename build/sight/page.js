@@ -40,7 +40,7 @@
       while (sel.firstChild) sel.removeChild(sel.firstChild);
       var o0 = el("option", "", "choose a body"); o0.value = ""; sel.appendChild(o0);
       var groups = [], shortList = goodNow.length && !sel.full, inGood = goodNow.some(function (b) { return b.name === val; });
-      if (goodNow.length) groups.push(["Good now (altitude, bearing)", goodNow.map(function (b) { return [b.name, b.name + "   " + Math.round(b.hc) + "°  " + ("00" + Math.round(b.zn) % 360).slice(-3) + "°"]; })]);
+      if (goodNow.length) groups.push(["Good at " + goodAt + " (altitude, bearing)", goodNow.map(function (b) { return [b.name, b.name === val ? b.name : b.name + "   " + Math.round(b.hc) + "°  " + ("00" + Math.round(b.zn) % 360).slice(-3) + "°"]; })]);
       if (shortList) {
         if (val && !inGood) groups.push(["Chosen", [[val, val]]]);
         groups.push(["More", [["__all", "Show all stars, Sun, Moon and planets\u2026"]]]);
@@ -61,7 +61,7 @@
       var data = rowData(); st.rows[mode] = data; rowRefs = [];
       while (rowsEl.firstChild) rowsEl.removeChild(rowsEl.firstChild);
       var th = el("thead"), hr = el("tr");
-      (mode === "sun" ? ["", "Local time", "Sextant altitude", "", "Limb", "DR at this sight"] : ["", "Body", "Local time", "Sextant altitude", "", "Limb", "DR at this sight"]).forEach(function (h, i) { var c = el("th", "", h); if ((mode === "sun" && i === 2) || (mode === "stars" && i === 3)) c.colSpan = 2; if (h === "" && ((mode === "sun" && i === 3) || (mode === "stars" && i === 4))) return; hr.appendChild(c); });
+      (mode === "sun" ? ["", "Local time", "Sextant altitude", "", "Limb", "DR at sight"] : ["", "Body", "Local time", "Sextant altitude", "", "Limb", "DR at sight"]).forEach(function (h, i) { var c = el("th", "", h); if ((mode === "sun" && i === 2) || (mode === "stars" && i === 3)) c.colSpan = 2; if (h === "" && ((mode === "sun" && i === 3) || (mode === "stars" && i === 4))) return; hr.appendChild(c); });
       th.appendChild(hr); rowsEl.appendChild(th);
       var tb = el("tbody"); rowsEl.appendChild(tb);
       data.forEach(function (r, i) {
@@ -70,7 +70,7 @@
         if (r.kind === "star") { var td = el("td", "w-star"), sel = el("select"); sel.setAttribute("aria-label", "Star " + (i + 1)); fillBodies(sel, r.name || ""); sel.addEventListener("change", function () {
             if (sel.value === "__all") { sel.full = true; fillBodies(sel, r.name || ""); try { if (sel.showPicker) sel.showPicker(); } catch (e) {} toast("All bodies listed: open the list again to choose."); return; }
             if (sel.value === "__short") { sel.full = false; fillBodies(sel, r.name || ""); return; }
-            r.name = sel.value; if (sel.full) { sel.full = false; fillBodies(sel, r.name); }      /* back to the short list once a body is chosen */ if (refs.limb) { var lm = r.name === "Moon" || r.name === "Sun"; refs.limb.hidden = !lm; refs.na.hidden = lm; } save(); render(); }); sel.addEventListener("blur", function () { if (sel.full) { sel.full = false; fillBodies(sel, r.name || ""); } });   /* leaving the box: back to the short list */
+            r.name = sel.value; sel.full = false; fillBodies(sel, r.name);      /* back to the short list once a body is chosen; the chosen one shows its name only */ if (refs.limb) { var lm = r.name === "Moon" || r.name === "Sun"; refs.limb.hidden = !lm; refs.na.hidden = lm; } save(); render(); }); sel.addEventListener("blur", function () { if (sel.full) { sel.full = false; fillBodies(sel, r.name || ""); } });   /* leaving the box: back to the short list */
           td.appendChild(sel); tr.appendChild(td); refs.sel = sel; }
         var tt = el("td", "w-time"), ti = el("input"); ti.type = "time"; ti.step = "1"; ti.value = r.time || ""; ti.setAttribute("aria-label", "Local time of sight " + (i + 1)); ti.addEventListener("input", function () { r.time = ti.value; r.manual = true; save(); render(); }); tt.appendChild(ti); tr.appendChild(tt); refs.time = ti;
         if (r.kind === "lat") {
@@ -131,6 +131,7 @@
       var ic = ($("sf-ie-on").checked ? -1 : 1) * (v.ie || 0);
       rowRefs.forEach(function (rf, i) {
         if (!rf.exp) return; var r = rf.r, name = r.kind === "sun" ? "Sun" : r.name, sec = secs[i]; rf.exp.className = "sf-expect"; rf.exp.textContent = "";
+        if (dr0 && name && sec === null) { rf.exp.textContent = "type the time to see what the sextant should read"; return; }
         if (!dr0 || !name || sec === null) return;
         var ms = base + (sec - v.zone * 3600) * 1000; if (sec < first - 12 * 3600) ms += 86400000;
         var p = r.pos ? parsePos(r.pos) : null, q = p && !p.error ? p : SightFix.drAt(dr0, ms), pl = Sight.place(ms, name); if (!pl) return;
@@ -344,6 +345,7 @@
 
     /* ---------- the buttons ---------- */
     /* ---------- the stars and planets panel ---------- */
+    var goodAt = "";
     var PMAG = { Venus: -4, Jupiter: -2.2, Mars: 0.5, Saturn: 0.7, Moon: -10, Sun: -26 };
     function starCtx() {                                                              /* DR, date, zone and the time to look at, or null */
       var v = read(); if (v.lat === null || v.lon === null || v.errs.lat || v.errs.lon || !v.date || v.zone === null) return null;
@@ -364,7 +366,7 @@
       if (c && st.tw) {
         var ts = twSec(c, st.tw === "am"), tv = ts === null ? "" : hms(ts).slice(0, 5);
         if ($("sf-starsat").value !== tv) { $("sf-starsat").value = tv; save(); }
-        c.sec = ts; twTxt = ts === null ? "" : (st.tw === "am" ? "Morning" : "Evening") + " twilight (halfway between nautical and civil) is at " + tv + " ship's time. ";
+        c.sec = ts; twTxt = ts === null ? "" : (st.tw === "am" ? "Morning" : "Evening") + " twilight (halfway between nautical and civil): " + tv + ". ";
         if (ts === null) { noGood(); note.textContent = "No " + (st.tw === "am" ? "morning" : "evening") + " twilight at this place and date. Type a time instead."; return; }
       }
       if (!c) { noGood(); note.textContent = "Enter the DR position, date and zone, then choose a time or press a twilight button."; return; }
@@ -374,7 +376,7 @@
       ["Moon"].concat(Sight.planets()).forEach(function (nm) { var r = Sight.reduceBody(Sight.place(ms, nm, fr), c.lat, c.lon); list.push({ name: nm, hc: r.hc, zn: r.zn, mag: PMAG[nm], kind: nm === "Moon" ? "Moon" : "planet" }); });
       var sun = list.filter(function (b) { return b.name === "Sun"; })[0], sh = sun.hc;
       var light = sh > -1 ? "The Sun is up: only the Moon and Venus can be seen." : sh > -3 ? "Too light yet: only planets and the brightest stars." : sh >= -12 ? "Good light: horizon and stars both visible." : "Dark: the horizon may be hard to see.";
-      note.textContent = twTxt + "At " + hms(c.sec).slice(0, 5) + " ship's time the Sun is " + (sh < 0 ? "−" : "") + Math.abs(sh).toFixed(1) + "°. " + light + " Tap a star to put it in the next empty row (altitude · bearing · brightness). GOOD: 20° to 60° high and bright.";
+      note.textContent = twTxt + "Sun " + (sh < 0 ? "−" : "") + Math.abs(sh).toFixed(1) + "°. " + light + " Altitude · bearing at " + hms(c.sec).slice(0, 5) + ". Tap a star to put it in the next empty row.";
       var shown = list.filter(function (b) { return b.name !== "Sun" && verdict(b) && (sh <= -3 || b.mag <= 0); }).sort(function (a, b) { return a.zn - b.zn; });
       if (sh > -1 && sun.hc > 10) shown.unshift({ name: "Sun", hc: sun.hc, zn: sun.zn, mag: -26, kind: "Sun" });
       var good = shown.filter(function (b) { return (verdict(b) || [])[1] === "GOOD" || (b.kind !== "star" && b.hc >= 20 && b.hc <= 60); }), more = shown.filter(function (b) { return good.indexOf(b) < 0; });
@@ -385,7 +387,7 @@
       }
       var box = el("div", "sf-chips"); good.forEach(function (b) { chip(b, box); }); tbl.appendChild(box);
       var gs = good.map(function (b) { return b.name + Math.round(b.hc) + "/" + Math.round(b.zn); }).join(",");
-      if (gs !== starPanel.last) { starPanel.last = gs; goodNow = good.slice(); rowRefs.forEach(function (rf) { if (rf.sel) fillBodies(rf.sel, rf.r.name || ""); }); }
+      gs += "@" + hms(c.sec).slice(0, 5); if (gs !== starPanel.last) { starPanel.last = gs; goodAt = hms(c.sec).slice(0, 5); goodNow = good.slice(); rowRefs.forEach(function (rf) { if (rf.sel) fillBodies(rf.sel, rf.r.name || ""); }); }
       if (!good.length) tbl.appendChild(el("p", "small muted", "Nothing GOOD at this time" + (more.length ? "; see the OK ones below." : ".")));
       if (more.length) { var dt = el("details", "sf-more"), sm = el("summary", "", "Also possible (OK, lower, higher or fainter): " + more.length); dt.appendChild(sm); var b2 = el("div", "sf-chips"); more.forEach(function (b) { chip(b, b2); }); dt.appendChild(b2); tbl.appendChild(dt); }
     }
