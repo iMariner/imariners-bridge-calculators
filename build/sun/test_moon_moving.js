@@ -15,4 +15,8 @@ const mv = { course: 90, speed: 20, ms: Date.UTC(2026, 2, 20, 0, 0, 0) }, R2 = S
 const tr = R2.levels.sun.rise[0], q = R2.P(tr), a = ST.alt(tr, q.lat, q.lon); ok(Math.abs(a - R2.hSun) < 0.002, 'moving ship: Sun on the horizon at the ship position, ' + ((a - R2.hSun) * 60).toFixed(3) + "'");
 const ds = (R0.levels.sun.rise[0] - tr) / 1000; ok(ds > 30 && ds < 300, 'running east at 20 kn the Sun rises earlier than at anchor by ' + ds.toFixed(0) + ' s');
 ok(Math.abs(q.lon - (60 + 20 * (tr - mv.ms) / 3600000 / 60 / Math.cos(10 * Math.PI / 180))) < 1e-6, 'ship position on course 090');
+// Codex review cases
+const g = ST.solve(2026, 1, 1, 0, -61.736004998543226, 0, 0, null); ok(g.moon.rise.length === 1 && g.moon.set.length === 1 && Math.abs(g.moon.set[0] - g.moon.rise[0]) < 120000, 'Moon that grazes the horizon for under a minute is found: ' + g.moon.rise.length + ' rise, ' + g.moon.set.length + ' set');
+ok(ST.solve(2026, 4, 17, 0, 0, 0, 0, null).moon.waxing === true, 'just after new Moon the Moon is waxing');
+const pole = ST.solve(2026, 3, 20, 0, -90, 0, 0, { course: 0, speed: 10, ms: Date.UTC(2026, 2, 20, 12, 0, 0) }), pp = pole.P(Date.UTC(2026, 2, 20, 18, 0, 0)); ok(isFinite(pp.lat) && isFinite(pp.lon), 'leaving the South Pole gives a finite position');
 console.log(bad ? 'FAILED ' + bad : 'moon and moving-ship tests passed: ' + n); process.exit(bad ? 1 : 0);

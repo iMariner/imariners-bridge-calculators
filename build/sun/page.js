@@ -48,7 +48,7 @@
       var base = Date.UTC(v.date.y, v.date.m - 1, v.date.d), mv = v.speed > 0 ? { course: v.course, speed: v.speed, ms: base + ((v.postime === null ? 43200 : v.postime) - v.zone * 3600) * 1000 } : null;
       var R = SunTimes.solve(v.date.y, v.date.m, v.date.d, v.zone, v.latS, v.lonE, v.hoe, mv), L = R.levels;
       var rows = [], lonH = v.lonE / 15;
-      function evt(name, ms, note, key) { if (mv) { var q = R.P(ms); note = (note ? note + " · " : "") + "at " + ns(q.lat) + " " + dm(Math.abs(q.lat)) + " " + ew(q.lon) + " " + dm(Math.abs(q.lon)); } rows.push({ name: name, ms: ms, note: note || "", key: !!key }); }
+      function evt(name, ms, note, key) { var lonH = mv ? R.P(ms).lon / 15 : null; if (mv) { var q = R.P(ms); note = (note ? note + " · " : "") + "at " + ns(q.lat) + " " + dm(Math.abs(q.lat)) + " " + ew(q.lon) + " " + dm(Math.abs(q.lon)); } rows.push({ name: name, ms: ms, note: note || "", key: !!key, lonH: lonH }); }
       function pair(level, nameUp, nameDown, noteNone) {
         var l = L[level];
         if (l.state !== "normal") { rows.push({ name: nameUp + " / " + nameDown.toLowerCase(), none: noteNone[l.state] }); return; }
@@ -81,7 +81,7 @@
         var a = document.createElement("td"); a.textContent = r.name; tr.appendChild(a);
         if (r.none) { var n = document.createElement("td"); n.colSpan = 3; n.className = "muted"; n.textContent = r.none; tr.appendChild(n); }
         else {
-          [frame(r.ms, v.zone, B.base), frame(r.ms, 0, B.base), frame(r.ms, B.lonH, B.base)].forEach(function (t, i) { var c = document.createElement("td"); c.textContent = t; if (i === 0) c.className = "su-zt"; tr.appendChild(c); });
+          [frame(r.ms, v.zone, B.base), frame(r.ms, 0, B.base), frame(r.ms, r.lonH === null || r.lonH === undefined ? B.lonH : r.lonH, B.base)].forEach(function (t, i) { var c = document.createElement("td"); c.textContent = t; if (i === 0) c.className = "su-zt"; tr.appendChild(c); });
           if (r.note) a.title = r.note;
           if (r.note) { var s = document.createElement("span"); s.className = "su-note"; s.textContent = r.note; a.appendChild(s); }
         }

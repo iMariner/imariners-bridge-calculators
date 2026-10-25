@@ -94,7 +94,7 @@
            (inp.apMode "first", as when all sights are worked from the original DR). Only the working changes, not the fix. */
         var dS = drAt(dr, it.s.ms), apN = inp.apMode === "first" && !it.lat ? { lat: dr.lat, lon: dr.lon } : dS;
         var l0 = L0[i], lf = base.L[i], row = { name: it.s.name, ms: it.s.ms, ap: apN, drSight: dS, zn: l0.zn, a: l0.a, resid: lf.a }, r2 = it.lat ? null : Sight.reduceBody(it.pl, apN.lat, apN.lon);
-        if (!it.lat) { row.kind = it.pl.kind; row.hp = it.pl.hp; row.gha = it.pl.gha; row.dec = it.pl.dec; row.lha = r2.lha; row.hc = r2.hc; row.zn = r2.zn; row.ho = it.ho.ho; row.corr = it.ho; row.a = (it.ho.ho - r2.hc) * 60; row.hcFix = lf.hc; if (it.pl.kind === "moon") geoMoon(row, apN); if (r2.hc < 5) warn.push(it.s.name + " is below 5 degrees: refraction is unreliable."); else if (r2.hc < 10) warn.push(it.s.name + " is below 10 degrees: low altitude, less reliable."); if (r2.hc > 80) warn.push(it.s.name + " is above 80 degrees: a straight line is a poor approximation."); }
+        if (!it.lat) { row.kind = it.pl.kind; row.hp = it.pl.hp; row.gha = it.pl.gha; row.dec = it.pl.dec; row.lha = r2.lha; row.hc = r2.hc; row.zn = r2.zn; row.ho = it.ho.ho; row.corr = it.ho; row.a = (it.ho.ho - r2.hc) * 60; row.hcFix = lf.hc; row.aDr = apN === dS ? row.a : (it.ho.ho - Sight.reduceBody(it.pl, dS.lat, dS.lon).hc) * 60; if (it.pl.kind === "moon") geoMoon(row, apN); if (r2.hc < 5) warn.push(it.s.name + " is below 5 degrees: refraction is unreliable."); else if (r2.hc < 10) warn.push(it.s.name + " is below 10 degrees: low altitude, less reliable."); if (r2.hc > 80) warn.push(it.s.name + " is above 80 degrees: a straight line is a poor approximation."); }
         if (Math.abs(row.a) > 20) warn.push((it.lat ? "Latitude" : it.s.name) + ": intercept " + Math.abs(row.a).toFixed(1) + "' is large. Check the time, Hs and the DR.");
         return row;
       });
@@ -105,8 +105,8 @@
       out.amplify = invTrace2(base.rows); if (S.length > 2 && out.amplify > 2.2) warn.push("The bodies are not well spread round the horizon: errors are magnified " + out.amplify.toFixed(1) + " times.");
       out.residuals = base.L.map(function (l) { return l.a; });
       /* sights that cannot be right: refuse rather than show a "fix" built on them */
-      var far = out.sights.filter(function (s) { return Math.abs(s.a) > 180; });
-      if (far.length) return { error: "No fix. " + far.map(function (s) { return s.name + " is " + Math.abs(s.a).toFixed(0) + "' (" + (Math.abs(s.a) / 60).toFixed(1) + "°) away from where the DR puts it"; }).join("; ") + ". This is almost always a wrong time (zone, hours or seconds), a wrong star or a wrong altitude. If the DR itself may be this far out, move the DR closer and try again.", warnings: warn };
+      var far = out.sights.filter(function (s) { return Math.abs(s.aDr === undefined ? s.a : s.aDr) > 180; });     /* judged from the DR at the sight, whatever position the working uses */
+      if (far.length) return { error: "No fix. " + far.map(function (s) { var aa = Math.abs(s.aDr === undefined ? s.a : s.aDr); return s.name + " is " + aa.toFixed(0) + "' (" + (aa / 60).toFixed(1) + "°) away from where the DR puts it"; }).join("; ") + ". This is almost always a wrong time (zone, hours or seconds), a wrong star or a wrong altitude. If the DR itself may be this far out, move the DR closer and try again.", warnings: warn };
       if (S.length >= 3) {
         var wi = 0; out.residuals.forEach(function (x, i) { if (Math.abs(x) > Math.abs(out.residuals[wi])) wi = i; });
         if (Math.abs(out.residuals[wi]) > 10) {

@@ -35,7 +35,7 @@
     /* where the ship is at time ms: fixed, or moving on a rhumb line. mv = { course (deg), speed (kn), ms (time of the given position) } */
     function mover(lat, lon, mv) {
       if (!mv || !(mv.speed > 0)) return function () { return { lat: lat, lon: lon }; };
-      var c = mv.course * R;
+      var c = mv.course * R; lat = Math.max(-89.9, Math.min(89.9, lat));                    /* the rhumb line is not defined at a pole */
       return function (ms) {
         var d = mv.speed * (ms - mv.ms) / 3600000, la = lat + d * Math.cos(c) / 60, la2 = Math.max(-89.9, Math.min(89.9, la));
         var dpsi = Math.log(Math.tan(Math.PI / 4 + la2 * R / 2)) - Math.log(Math.tan(Math.PI / 4 + lat * R / 2)), q = Math.abs(dpsi) > 1e-12 ? (la2 - lat) * R / dpsi : Math.cos(lat * R);
@@ -45,17 +45,19 @@
     /* Moonrise and moonset: the Moon's upper limb on the visible horizon, worked from the observer (parallax inside), using the
        sight engine (Sight.moonPlace and reduceBody). Also the fraction of the Moon that is lit. */
     function moon(start, end, P, dip) {
-      var out = { rise: [], set: [] }, step = 600000;
+      var out = { rise: [], set: [] }, step = 300000;
       function f(t) { var p = P(t), pl = Sight.moonPlace(t), r = Sight.reduceBody(pl, p.lat, p.lon); return r.hc + (34 / 60 + r.sd / 60 + dip); }
+      function cross(a, fa, b, fb) { if ((fa < 0) !== (fb < 0)) { var tt = bisect(f, a, b); if (fb >= 0) out.rise.push(tt); else out.set.push(tt); } }
       var t0 = start, f0 = f(t0);
       for (var t = start + step; t <= end + 1; t += step) {
         var f1 = f(t);
-        if ((f0 < 0) !== (f1 < 0)) { var tt = bisect(f, t0, t); if (f1 >= 0) out.rise.push(tt); else out.set.push(tt); }
+        if ((f0 < 0) === (f1 < 0) && Math.min(Math.abs(f0), Math.abs(f1)) < 1) {         /* near the horizon: look closer for a brief rise and set */
+          var a = t0, fa = f0; for (var s = t0 + 20000; s <= t; s += 20000) { var fs = s >= t ? f1 : f(s); cross(a, fa, s, fs); a = s; fa = fs; }
+        } else cross(t0, f0, t, f1);
         t0 = t; f0 = f1;
       }
-      var mid = start + 43200000, s = Sight.sunPlace(mid), m = Sight.moonPlace(mid);
-      var ce = Math.sin(s.dec * R) * Math.sin(m.dec * R) + Math.cos(s.dec * R) * Math.cos(m.dec * R) * Math.cos((s.ra - m.ra) * R);
-      out.lit = (1 - ce) / 2; out.waxing = mod(m.ra - s.ra, 360) < 180;               /* elongation from the Sun; waxing while the Moon is east of the Sun */
+      function lit(ms) { var s = Sight.sunPlace(ms), m = Sight.moonPlace(ms), ce = Math.sin(s.dec * R) * Math.sin(m.dec * R) + Math.cos(s.dec * R) * Math.cos(m.dec * R) * Math.cos((s.ra - m.ra) * R); return (1 - ce) / 2; }   /* from the elongation */
+      var mid = start + 43200000; out.lit = lit(mid); out.waxing = lit(mid + 3600000) > lit(mid - 3600000);
       return out;
     }
     function solve(y, mo, d, zoneH, lat0, lon0, heightM, mv) {
