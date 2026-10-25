@@ -1,0 +1,9 @@
+
+/* Sunrise & Sunset */
+.dot.c-true { background: var(--true); } .dot.c-apparent { background: var(--apparent); } .dot.c-ship { background: var(--ship); }
+table.su-tbl { width: 100%; font-size: var(--fs-body); margin-top: var(--sp-4); }
+table.su-tbl th, table.su-tbl td { text-align: right; padding: var(--sp-1h) var(--sp-2); }
+table.su-tbl th:first-child, table.su-tbl td:first-child { text-align: left; }
+table.su-tbl td.su-zt { font-weight: var(--fw-bold); }
+table.su-tbl tr.hit td { font-weight: var(--fw-bold); }
+.su-note { display: block; font-size: var(--fs-sm); font-weight: var(--fw-regular); color: var(--muted); }

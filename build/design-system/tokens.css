@@ -1,0 +1,149 @@
+/* ==========================================================================
+   iMARINERS DESIGN SYSTEM  v1.0     (single source of truth for every tool)
+   --------------------------------------------------------------------------
+   Layers, top to bottom:
+     1. Fonts       two embedded fonts, so every PC and tab looks identical
+     2. Primitives  raw brand palette, never used directly in component CSS
+     3. Semantic    role tokens per theme (Day / Dusk / Night): bg, surface, text,
+                    accent ... Component CSS uses ONLY these, plus the scales below
+     4. Scales      type, spacing, radius, shadow, motion, layout
+   RULES for anything added later (see also the Design System page in the app):
+     - No hex colours, font names, px font sizes or radii in component CSS or
+       inline styles. Use var(--token). Print sheets are the one exception.
+     - New colour need = add a semantic token to all three themes, never a one-off.
+     - Night theme is red only (night vision). Nothing may add another hue there.
+   ========================================================================== */
+
+/* 1. Fonts: Open Sans (same family as imariners.com) and JetBrains Mono for numbers. SIL OFL licence. */
+@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 300 800; font-display: swap; src: url(data:font/woff2;base64,__FONT_SANS__) format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 100 800; font-display: swap; src: url(data:font/woff2;base64,__FONT_MONO__) format("woff2"); }
+
+:root {
+  /* 2. Primitives: brand palette taken from the iMariners logo and imariners.com */
+  --c-teal-50: #e6f6f9;  --c-teal-100: #c2e8ef; --c-teal-300: #5cc0d2; --c-teal-400: #3fb8d0;
+  --c-teal-500: #0a91ab; --c-teal-600: #0a7f97; --c-teal-700: #086679; --c-teal-900: #053f4c;
+  --c-blue-400: #5ba8dc; --c-blue-500: #4b9ac2;
+  --c-navy-50: #eaf1f7;  --c-navy-700: #1b4c74; --c-navy-900: #0e2a44; --c-navy-950: #0a1e31;
+  --c-ink-900: #0f2233;  --c-ink-600: #4b5b6e;  --c-ink-400: #94a3b8;
+  --c-green-600: #1f9d55; --c-amber-500: #d99a00; --c-amber-700: #c26a00; --c-red-600: #b42318;
+
+  /* 4. Scales (identical in every theme) */
+  --font-sans: "Open Sans", "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, "Apple Symbols", "Segoe UI Symbol", sans-serif;
+  --font-mono: "JetBrains Mono", Consolas, "SF Mono", Menlo, "Liberation Mono", monospace;
+  --fw-regular: 400; --fw-medium: 500; --fw-semibold: 600; --fw-bold: 700; --fw-black: 800;
+  --lh-tight: 1.15; --lh-base: 1.45; --lh-loose: 1.6;
+  --fs-2xs: 10px; --fs-micro: 10.5px; --fs-xs: 11px; --fs-sm: 12px; --fs-data: 12.5px; --fs-md: 13px;
+  --fs-base: 14px; --fs-body: 15px; --fs-lg: 16px; --fs-xl: 18px; --fs-2xl: 20px; --fs-3xl: 24px; --fs-numeral: 28px; --fs-4xl: 36px; --fs-display: 44px;
+  --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 20px; --sp-6: 24px; --sp-8: 32px; --sp-10: 40px;
+  --r-xs: 4px; --r-sm: 6px; --r-md: 8px; --r-lg: 12px; --r-pill: 999px;
+  --ctl-h: 36px;                 /* standard control height */
+  --content-max: 1120px;         /* standard tool width */
+  --z-toast: 50; --z-top: 10;
+  --ease: .15s ease;
+  --lh-print: 1.35;
+  --logo-h: 34px;
+
+  /* 3. Semantic: DAY (default) */
+  --bg: #eff4f8;
+  --surface: #ffffff;
+  --surface-2: #f6f9fb;
+  --text: #0f2233;
+  --muted: #4b5b6e;
+  --border: #d5e0ea;
+  --accent: var(--c-teal-600);        /* every interactive thing */
+  --accent-hover: var(--c-teal-700);
+  --accent-text: #ffffff;             /* text on accent */
+  --brand: var(--c-teal-500);         /* logo colour, decoration only */
+  --heading: var(--c-navy-700);
+  --hit: #d9eef3;                     /* highlighted row */
+  --danger: var(--c-red-600);
+  --take: var(--c-green-600);         /* TAKE star */
+  --okc: var(--c-amber-500);          /* OK star */
+  --ok-text: #1b1500;                 /* text on --okc */
+  --on-take: #ffffff;
+  --live: #2ecc71;                    /* saved dot */
+  --header: #ffffff;
+  --header-text: var(--c-ink-900);
+  --header-muted: #5b6b7d;
+  --header-edge: var(--brand);
+  --shadow: 0 1px 2px rgba(15, 34, 51, .06), 0 4px 16px rgba(15, 34, 51, .06);
+  --focus-ring: 0 0 0 3px color-mix(in srgb, var(--accent) 28%, transparent);
+  /* data colours used inside diagrams: same meaning in every tool */
+  --true: #0d8a8c;
+  --apparent: #c26a00;
+  --ship: #0f2233;
+  --rose: #8a97a8;
+  /* ship drawing */
+  --hull-top: #3a4b61; --chain: #2b2f36; --hull-bottom: #b4462f; --hull-edge: #1b2533; --hull-detail: rgba(255, 255, 255, .55);
+  --water: rgba(30, 110, 190, .13); --seabed: #e3d5b0; --seabed-edge: #b39e6b;
+  --logo-filter: none; --logo-plate: transparent;
+}
+:root[data-theme="dusk"] {
+  --bg: #0a1219;
+  --surface: #111c27;
+  --surface-2: #0d1620;
+  --text: #e4ecf3;
+  --muted: #8fa2b5;
+  --border: #223244;
+  --accent: var(--c-teal-400);
+  --accent-hover: var(--c-teal-300);
+  --accent-text: #04141a;
+  --brand: var(--c-teal-400);
+  --heading: #bcd6ea;
+  --hit: #14394a;
+  --danger: #ff7b6e;
+  --take: #2fb56a;
+  --okc: #e0a21a;
+  --header: #070d13;
+  --header-text: #e4ecf3;
+  --header-muted: #8296a9;
+  --shadow: none;
+  --true: #38cfc8; --apparent: #f0a443; --ship: #e4ecf3; --rose: #4f6380;
+  --hull-top: #4a5e7a; --chain: #c9d3df; --hull-bottom: #a24631; --hull-edge: #0a1219; --hull-detail: rgba(255, 255, 255, .45);
+  --water: rgba(75, 155, 255, .12); --seabed: #3b3426; --seabed-edge: #6e5f3e;
+  --logo-plate: #ffffff;
+}
+:root[data-theme="night"] {   /* red only: protects night vision on the bridge */
+  --bg: #000000;
+  --surface: #0a0000;
+  --surface-2: #050000;
+  --text: #c41a1a;
+  --muted: #7a0d0d;
+  --border: #2b0505;
+  --accent: #a31212;
+  --accent-hover: #c41a1a;
+  --accent-text: #000000;
+  --brand: #a31212;
+  --heading: #c41a1a;
+  --hit: #2a0000;
+  --danger: #ff3030;
+  --take: #e02020;
+  --okc: #8a1212;
+  --ok-text: #000000;
+  --on-take: #000000;
+  --live: #c41a1a;
+  --header: #000000;
+  --header-text: #c41a1a;
+  --header-muted: #6e0c0c;
+  --shadow: none;
+  --true: #e02020; --apparent: #861010; --ship: #c41a1a; --rose: #4a0808;
+  --hull-top: #2a0404; --chain: #c41a1a; --hull-bottom: #4d0808; --hull-edge: #7a0d0d; --hull-detail: rgba(196, 26, 26, .5);
+  --water: rgba(160, 0, 0, .10); --seabed: #140202; --seabed-edge: #3a0505;
+  --logo-filter: grayscale(1) brightness(.62) sepia(1) hue-rotate(-52deg) saturate(7);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-base);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+button, input, select, textarea { font-family: inherit; }
+.mono, .readout, input { font-variant-numeric: tabular-nums; }
+.mono { font-family: var(--font-mono); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }

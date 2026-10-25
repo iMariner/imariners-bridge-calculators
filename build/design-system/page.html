@@ -1,0 +1,89 @@
+    <section class="tool" id="design" hidden>
+      <div class="tool-head">
+        <h1>Design System</h1>
+        <p>iMariners Bridge Calculators, version 1.0. The one place that defines colour, type, spacing and components. Every tool reads from it, so nothing changes from tab to tab.</p>
+      </div>
+
+      <div class="card">
+        <h2>Brand</h2>
+        <div class="ds-brand">
+          <div class="ds-logo-tile"><img class="ds-logo" alt="iMariners logo" id="ds-logo-a"><span class="small muted">On the current theme</span></div>
+          <div class="ds-logo-tile ds-plate"><img class="ds-logo" alt="iMariners logo on white" id="ds-logo-b"><span class="small">On white (Dusk header plate, print)</span></div>
+        </div>
+        <ul class="ds-rules">
+          <li>Use the logo as supplied: never stretch, recolour or add effects. Night mode tints it red automatically.</li>
+          <li>Keep clear space equal to the height of the "i" around it. Minimum height 24 px on screen.</li>
+          <li>The product name sits beside it in regular type, separated by a thin rule: <strong>iMariners | Bridge Calculators</strong>.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Colour <span class="ds-theme-note small muted" id="ds-theme-note"></span></h2>
+        <p class="small muted ds-lead">These are live: switch Day, Dusk or Night in the header and the values below change. Components use the role names only.</p>
+        <div id="ds-colors"></div>
+      </div>
+
+      <div class="card">
+        <h2>Typography</h2>
+        <p class="small muted ds-lead">Open Sans for everything, JetBrains Mono for figures that must line up. Both are embedded in this file, so every computer shows the same letters.</p>
+        <div id="ds-type"></div>
+      </div>
+
+      <div class="card">
+        <h2>Spacing, radius, shadow</h2>
+        <div id="ds-space"></div>
+      </div>
+
+      <div class="card">
+        <h2>Components</h2>
+        <div class="ds-comp" id="ds-comp">
+          <div class="ds-cell"><div class="ds-cap">Buttons</div>
+            <div class="actions" style="margin-top:0"><button type="button" class="btn primary">Primary</button><button type="button" class="btn">Default</button><button type="button" class="btn danger">Danger</button><button type="button" class="link-btn">Link</button></div></div>
+          <div class="ds-cell"><div class="ds-cap">Field with unit</div>
+            <div class="field"><label for="ds-in1">Heading</label><div class="input-wrap"><input id="ds-in1" type="text" value="088.5" inputmode="decimal"><span class="unit">°</span></div></div></div>
+          <div class="ds-cell"><div class="ds-cap">Text input and select</div>
+            <div class="row2"><input class="text-input" type="text" value="Example ship" aria-label="Text input"><select class="text-input" aria-label="Select"><option>Option A</option><option>Option B</option></select></div></div>
+          <div class="ds-cell"><div class="ds-cap">Segmented choice</div>
+            <div class="segmented"><input type="radio" name="ds-seg" id="ds-s1" checked><label for="ds-s1">East</label><input type="radio" name="ds-seg" id="ds-s2"><label for="ds-s2">West</label></div></div>
+          <div class="ds-cell"><div class="ds-cap">Badges and verdicts</div>
+            <div class="ds-row"><span class="badge">Active</span><span class="vd take">TAKE</span><span class="vd ok">OK</span><span class="vd avoid">AVOID</span></div></div>
+          <div class="ds-cell"><div class="ds-cap">Best-choice chip</div>
+            <div class="bst"><button type="button" class="chip"><b>Altair</b><span>22°10'  Az 275°</span></button></div></div>
+          <div class="ds-cell ds-wide"><div class="ds-cap">Readout</div>
+            <div class="hero"><div class="readout-box"><div class="readout-label">Gyro error</div><div class="readout">1.5°<small>E</small></div><div class="readout-sub">Gyro <strong>reads less</strong> than true</div></div><div class="readout-box"><div class="readout-label">ETA</div><div class="readout" style="font-size:var(--fs-4xl)">15:48</div><div class="readout-sub">Thu 04 Jan 2024</div></div></div></div>
+          <div class="ds-cell ds-wide"><div class="ds-cap">Callouts and log line</div>
+            <div class="callout">Callout: neutral information, a method note or a reminder.</div>
+            <div class="callout warn">Warning: something must be corrected before the result can be trusted.</div>
+            <div class="logline mono">TRUE AZ 275.4°  GYRO 276.9°  ERROR 1.5° E</div></div>
+          <div class="ds-cell ds-wide"><div class="ds-cap">Table</div>
+            <table class="dt"><thead><tr><th>Item</th><th>Value</th><th>Unit</th></tr></thead><tbody><tr><td>Speed</td><td>11.5</td><td>kn</td></tr><tr class="hit"><td>Selected row</td><td>088.5</td><td>°</td></tr><tr><td>Distance</td><td>1478</td><td>NM</td></tr></tbody></table></div>
+          <div class="ds-cell"><div class="ds-cap">Notice (toast)</div>
+            <div class="actions" style="margin-top:0"><button type="button" class="btn" id="ds-toast">Show a notice</button></div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Page patterns</h2>
+        <div class="ds-two">
+          <div><h3 class="ds-h3">A tool page</h3>
+            <p class="small muted">Every tool is one <code>&lt;section class="tool" id="..."&gt;</code> with the same four parts, in this order.</p>
+            <ol class="ds-rules">
+              <li><strong>.tool-head</strong>: one h1 and one sentence saying what the tool is for.</li>
+              <li><strong>.grid</strong> or <strong>.tool-layout</strong>: inputs card on the left, results on the right. Wide tables take the full row.</li>
+              <li><strong>.card</strong>: every block of content. Card titles are small caps h2.</li>
+              <li><strong>.explain</strong>: optional "how it is calculated" below.</li></ol></div>
+          <div><h3 class="ds-h3">Adding a new tool</h3>
+            <ol class="ds-rules">
+              <li>Copy the section skeleton above into <code>&lt;main&gt;</code> and add its link to the side navigation, under the right heading.</li>
+              <li>Write <code>initYourTool()</code> and add it to the <code>TOOLS</code> list.</li>
+              <li>Save inputs with <code>store.get / store.set</code> under a <code>bridgeCalc.</code> key, so the daily Save backup includes it.</li>
+              <li>Use only tokens from this page. If something is missing, add the token here first, in all three themes.</li>
+              <li>Check it in Day, Dusk and Night, and on a phone width.</li></ol></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Tools in this app</h2>
+        <table class="dt ds-tools" id="ds-tools"><thead><tr><th>Tool</th><th>Group</th><th>Address</th></tr></thead><tbody></tbody></table>
+      </div>
+    </section>

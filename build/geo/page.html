@@ -1,0 +1,81 @@
+    <section class="tool" id="special-areas" hidden>
+      <div class="tool-head">
+        <h1>Special Areas &amp; Map</h1>
+        <p>MARPOL special areas and emission control areas with their coordinates, on a chart. Add your own positions to see at once whether you are inside an area and how far the nearest boundary is.</p>
+      </div>
+      <div class="sa-layout">
+        <div class="sa-side">
+          <div class="card" id="sa-list-card">
+            <h2>Areas</h2>
+            <input id="sa-search" class="text-input" type="search" placeholder="Search areas" aria-label="Search areas" autocomplete="off">
+            <div class="actions u-mt-2h"><button type="button" class="btn" id="sa-showall">Show all</button><button type="button" class="btn" id="sa-hideall">Hide all</button></div>
+            <div id="sa-list" class="sa-list"></div>
+          </div>
+          <div class="card" id="sa-pos-card">
+            <h2>My positions</h2>
+            <p class="small muted u-mt-0">Type or paste positions. They are plotted on the chart and checked against every area.</p>
+            <div id="sa-pos-rows"></div>
+            <div class="actions u-mt-2h">
+              <button type="button" class="btn primary" id="sa-pos-add">Add position</button>
+              <button type="button" class="btn" id="sa-pos-copy">Copy</button>
+              <button type="button" class="btn danger" id="sa-pos-clear">Clear all</button>
+            </div>
+            <label class="sa-join"><input type="checkbox" id="sa-join"> Join positions in order</label>
+            <details class="sa-paste u-mt-3" id="sa-paste">
+              <summary>Paste several positions</summary>
+              <textarea id="sa-paste-text" class="text-input" rows="4" placeholder="One per line, for example:&#10;48 27.0 N 006 25.0 W&#10;WP2 49°52'N 007°44'W&#10;Gibraltar 36.0 -5.6" aria-label="Positions to paste"></textarea>
+              <div class="hint" id="sa-paste-msg"></div>
+              <div class="actions u-mt-1h"><button type="button" class="btn" id="sa-paste-go">Add these</button></div>
+            </details>
+          </div>
+        </div>
+        <div class="sa-main">
+          <div class="card sa-mapcard">
+            <div class="sa-toolbar">
+              <button type="button" class="btn" id="sa-zin" aria-label="Zoom in">+</button>
+              <button type="button" class="btn" id="sa-zout" aria-label="Zoom out">−</button>
+              <button type="button" class="btn" id="sa-fit">Fit area</button>
+              <button type="button" class="btn" id="sa-fitpos">Fit positions</button>
+              <button type="button" class="btn" id="sa-world">World</button>
+              <button type="button" class="btn" id="sa-print">Print</button>
+            </div>
+            <div class="sa-canvaswrap" id="sa-wrap"><canvas id="sa-canvas" aria-label="Chart of special areas" tabindex="0"></canvas></div>
+            <div class="sa-status">
+              <div class="sa-cursor mono" id="sa-cursor">Move over the chart to read a position</div>
+              <div class="small muted">Drag to move, wheel or pinch to zoom, click to pick a point</div>
+            </div>
+            <div class="sa-pick" id="sa-pick" hidden>
+              <div class="sa-pick-head"><strong>Picked point</strong> <span class="mono" id="sa-pick-pos"></span></div>
+              <div id="sa-pick-info" class="small"></div>
+              <div class="actions u-mt-1h"><button type="button" class="btn" id="sa-pick-copy">Copy position</button><button type="button" class="btn" id="sa-pick-add">Add to my positions</button></div>
+            </div>
+            <div class="small muted u-mt-2h">Planning aid only, not for navigation. Boundaries are straight lines between the points listed; the coast is simplified.</div>
+          </div>
+          <div class="card" id="sa-detail" hidden>
+            <div class="sa-d-head">
+              <div><h2 class="u-mb-0" id="sa-d-cat"></h2><div class="sa-d-title" id="sa-d-title"></div></div>
+              <div class="actions u-mt-0"><button type="button" class="btn primary" id="sa-d-zoom">Zoom to area</button><button type="button" class="btn" id="sa-d-copy">Copy points</button></div>
+            </div>
+            <div class="sa-d-meta small" id="sa-d-meta"></div>
+            <details class="u-mt-3" id="sa-d-quote-wrap"><summary>Official definition</summary><p class="small muted" id="sa-d-quote"></p></details>
+            <div class="tbl-scroll sa-pts"><table class="dt sa-ptbl" id="sa-d-pts"></table></div>
+            <div class="small muted u-mt-2h" id="sa-d-notes"></div>
+            <div class="small u-mt-2h" id="sa-d-src"></div>
+          </div>
+          <details class="card ge-fold" id="sa-sheet-card">
+            <summary>Check of your sheet "Waypoints for Special Areas"</summary>
+            <div id="sa-sheet-body" class="u-mt-3"></div>
+          </details>
+        </div>
+      </div>
+
+      <div class="print-sheet" id="sa-sheet">
+        <div class="ps-grid" id="sa-ps-info"></div>
+        <img id="sa-ps-map" alt="Chart" class="sa-ps-map">
+        <h3 class="ps-h">My positions</h3>
+        <table class="dt sa-ptbl" id="sa-ps-pos"></table>
+        <h3 class="ps-h" id="sa-ps-area-h">Selected area</h3>
+        <table class="dt sa-ptbl" id="sa-ps-pts"></table>
+        <p class="ps-note">Planning aid only, not for navigation. Boundaries are straight lines between the listed points.</p>
+      </div>
+    </section>

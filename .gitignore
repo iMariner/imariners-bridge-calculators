@@ -1,0 +1,7 @@
+.DS_Store
+history/
+docs/
+data/*.xlsx
+*.geojson
+__pycache__/
+*.pyc

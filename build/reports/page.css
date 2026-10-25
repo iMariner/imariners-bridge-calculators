@@ -1,0 +1,31 @@
+
+/* Vessel Daily Reportings */
+.dr-vbar { display: grid; grid-template-columns: minmax(180px, 1.4fr) minmax(140px, 1fr) repeat(3, minmax(120px, 1fr)); gap: var(--sp-3) var(--sp-3h); align-items: end; }
+.dr-mbar { display: flex; flex-wrap: wrap; gap: var(--sp-3) var(--sp-5); align-items: end; margin-bottom: var(--sp-3); }
+.dr-f { display: flex; flex-direction: column; gap: var(--sp-1); font-size: var(--fs-md); color: var(--muted); }
+.dr-f .text-input { color: var(--text); }
+.dr-gridwrap { overflow-x: auto; }
+table.dr-main { width: 100%; min-width: 1060px; border-collapse: separate; border-spacing: 0 var(--sp-1); }
+table.dr-main th { font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: .5px; color: var(--accent-text); background: var(--accent); padding: var(--sp-2); text-align: left; font-weight: var(--fw-semibold); white-space: nowrap; }
+table.dr-main th:first-child { border-radius: var(--r-md) 0 0 var(--r-md); } table.dr-main th:last-child { border-radius: 0 var(--r-md) var(--r-md) 0; }
+table.dr-main th.n, table.dr-main td.n { text-align: right; }
+table.dr-main td { padding: var(--sp-1) var(--sp-1h); background: var(--surface-2); border-top: var(--hair) solid var(--border); border-bottom: var(--hair) solid var(--border); vertical-align: middle; font-variant-numeric: tabular-nums; }
+table.dr-main td:first-child { border-left: var(--hair) solid var(--border); border-radius: var(--r-md) 0 0 var(--r-md); color: var(--muted); text-align: center; font-weight: var(--fw-bold); width: 34px; }
+table.dr-main td:last-child { border-right: var(--hair) solid var(--border); border-radius: 0 var(--r-md) var(--r-md) 0; }
+table.dr-main td input, table.dr-main td select { width: 100%; font-size: var(--fs-base); font-weight: var(--fw-semibold); padding: var(--sp-1) var(--sp-1h); }
+table.dr-main td select { font-family: inherit; color: var(--text); background: var(--surface); border: var(--hair) solid var(--border); border-radius: var(--r-sm); outline: none; }
+table.dr-main td select:focus { border-color: var(--accent); box-shadow: var(--focus-ring); }
+table.dr-main td.out { text-align: right; font-weight: var(--fw-bold); white-space: nowrap; font-size: var(--fs-body); }
+table.dr-main td.out.key { color: var(--true); }
+table.dr-main td.cum { text-align: right; color: var(--muted); white-space: nowrap; font-size: var(--fs-data); }
+table.dr-main tr.warn td { background: color-mix(in srgb, var(--danger) 10%, var(--surface-2)); }
+table.dr-main tr.start td.out { color: var(--muted); font-weight: var(--fw-regular); }
+table.dr-main td.del { width: 34px; text-align: center; }
+table.dr-main td.del button { background: none; border: 0; color: var(--muted); font-size: var(--fs-xl); cursor: pointer; line-height: 1; padding: var(--sp-1); border-radius: var(--r-sm); }
+table.dr-main td.del button:hover { color: var(--danger); }
+table.dr-main td.w-type { min-width: 120px; } table.dr-main td.w-date { min-width: 138px; } table.dr-main td.w-time { min-width: 98px; } table.dr-main td.w-zone { min-width: 66px; } table.dr-main td.w-dtg { min-width: 86px; } table.dr-main td.w-ovr { min-width: 80px; } table.dr-main td.w-note { min-width: 130px; }
+table.dr-sum { width: 100%; font-size: var(--fs-body); }
+table.dr-sum th, table.dr-sum td { text-align: right; }
+table.dr-sum th:first-child, table.dr-sum td:first-child { text-align: left; }
+table.dr-sum tr.tot td { font-weight: var(--fw-bold); background: var(--hit); }
+@media (max-width: 1100px) { .dr-vbar { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

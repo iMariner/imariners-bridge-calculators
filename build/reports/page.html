@@ -1,0 +1,79 @@
+    <section class="tool cmp" id="daily-reports" hidden>
+      <div class="tool-head">
+        <h1>Vessel Daily Reportings</h1>
+        <p>Enter each noon report. It gives the distance run, time and average speed for the day, the voyage totals, and the month-end distance for loaded, ballast and other conditions. Everything is saved automatically.</p>
+      </div>
+
+      <div class="card" id="dr-voyage-card">
+        <h2>Voyage</h2>
+        <div class="dr-vbar">
+          <label class="dr-f dr-f-sel">Voyage<select id="dr-sel" class="text-input" aria-label="Voyage"></select></label>
+          <label class="dr-f dr-f-name">Name<input id="dr-name" class="text-input" type="text" maxlength="60" placeholder="e.g. Voy 24/05"></label>
+          <label class="dr-f">From<input id="dr-from" class="text-input" type="text" maxlength="40" placeholder="Departure port"></label>
+          <label class="dr-f">To<input id="dr-to" class="text-input" type="text" maxlength="40" placeholder="Destination"></label>
+          <label class="dr-f">Condition<input id="dr-cond" class="text-input" type="text" maxlength="30" list="dr-conds" placeholder="Loaded, Ballast..."><datalist id="dr-conds"><option value="Loaded"><option value="Ballast"><option value="Part loaded"><option value="Light ship"></datalist></label>
+        </div>
+        <div class="actions">
+          <button type="button" class="btn primary" id="dr-new">New voyage</button>
+          <button type="button" class="btn danger" id="dr-del">Delete voyage</button>
+        </div>
+      </div>
+
+      <div class="card" id="dr-hero-card" aria-live="polite">
+        <h2>Latest report</h2>
+        <div class="hero" id="dr-hero">
+          <div class="readout-box"><div class="readout-label">Distance run</div><div class="readout" id="dr-h-run">—</div><div class="readout-sub" id="dr-h-run-sub"></div></div>
+          <div class="readout-box"><div class="readout-label">Average speed</div><div class="readout" id="dr-h-spd">—</div><div class="readout-sub" id="dr-h-spd-sub"></div></div>
+          <div class="readout-box"><div class="readout-label">Voyage distance</div><div class="readout" id="dr-h-vd">—</div><div class="readout-sub" id="dr-h-vd-sub"></div></div>
+          <div class="readout-box"><div class="readout-label">Voyage average</div><div class="readout" id="dr-h-va">—</div><div class="readout-sub" id="dr-h-va-sub"></div></div>
+        </div>
+        <div class="logline mono" id="dr-line"></div>
+        <div class="actions"><button type="button" class="btn primary" id="dr-copy">Copy noon report line</button></div>
+      </div>
+
+      <div class="card">
+        <h2>Reports</h2>
+        <div class="dr-gridwrap"><table class="dr-main" id="dr-main"></table></div>
+        <div class="callout warn u-mt-3" id="dr-warn" hidden></div>
+        <div class="actions">
+          <button type="button" class="btn primary" id="dr-add">Add noon report</button>
+          <button type="button" class="btn" id="dr-add-eosp">Add arrival</button>
+          <button type="button" class="btn" id="dr-undo" hidden>Undo delete</button>
+        </div>
+        <p class="small muted u-mt-2h">DTG is the distance to go to the next port. Distance run = last report's DTG minus this report's DTG. Time zone is hours from UTC, East +, so a clock change gives the true hours (23 h or 25 h). Use <strong>Override</strong> when the route changed or you want to use the log distance instead. After an arrival, start the next passage with a Departure line.</p>
+      </div>
+
+      <div class="card" id="dr-month-card">
+        <h2>Month summary</h2>
+        <div class="dr-mbar">
+          <label class="dr-f">Month<input id="dr-month" class="text-input" type="month"></label>
+          <div class="actions u-mt-0">
+            <button type="button" class="btn primary" id="dr-mcopy">Copy summary</button>
+            <button type="button" class="btn" id="dr-mprint">Print</button>
+          </div>
+        </div>
+        <div id="dr-mempty" class="empty" hidden>No completed reports in this month yet.</div>
+        <div id="dr-mout">
+          <table class="dt dr-sum" id="dr-sum-cond"></table>
+          <h3 class="ds-h3 u-mt-4">By voyage</h3>
+          <table class="dt dr-sum" id="dr-sum-voy"></table>
+        </div>
+        <p class="small muted u-mt-2h">A day's distance and hours belong to the month of the report's date. A voyage's condition (Loaded, Ballast...) applies to all its reports.</p>
+      </div>
+
+      <div class="print-sheet" id="dr-sheet">
+        <div class="ps-grid" id="dr-ps-info"></div>
+        <div class="ps-result">
+          <div><span>Distance sailed</span><strong id="dr-ps-dist">—</strong></div>
+          <div><span>Average speed</span><strong id="dr-ps-spd">—</strong></div>
+        </div>
+        <h3 class="ps-h">By condition</h3>
+        <table class="dt dr-sum" id="dr-ps-cond"></table>
+        <h3 class="ps-h">By voyage</h3>
+        <table class="dt dr-sum" id="dr-ps-voy"></table>
+        <div class="ps-sign">
+          <div>Prepared by: Chief Officer<span>Name / Signature / Date</span></div>
+          <div>Checked by: Master<span>Name / Signature / Date</span></div>
+        </div>
+      </div>
+    </section>
