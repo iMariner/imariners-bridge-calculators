@@ -34,6 +34,18 @@
       if (isNaN(la) || isNaN(lo)) return { error: "degrees or minutes out of range" };
       return { lat: la * (ns === "S" ? -1 : 1), lon: lo * (ew === "W" ? -1 : 1) };
     }
+    /* the body list: first what is good to take now (from the stars panel), then Sun, Moon and planets, then every star A to Z */
+    var goodNow = [], AZ = NAMES.slice().sort();
+    function fillBodies(sel, val) {
+      while (sel.firstChild) sel.removeChild(sel.firstChild);
+      var o0 = el("option", "", "choose a body"); o0.value = ""; sel.appendChild(o0);
+      var groups = [];
+      if (goodNow.length) groups.push(["Good now (altitude, bearing)", goodNow.map(function (b) { return [b.name, b.name + "   " + Math.round(b.hc) + "°  " + ("00" + Math.round(b.zn) % 360).slice(-3) + "°"]; })]);
+      groups.push(["Sun, Moon and planets", ["Sun", "Moon"].concat(Sight.planets()).map(function (n) { return [n, n]; })]);
+      groups.push(["All stars A to Z", AZ.map(function (n) { return [n, n]; })]);
+      groups.forEach(function (g) { var og = document.createElement("optgroup"); og.label = g[0]; g[1].forEach(function (x) { var o = el("option", "", x[1]); o.value = x[0]; og.appendChild(o); }); sel.appendChild(og); });
+      sel.value = val;
+    }
     function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt !== undefined) e.textContent = txt; return e; }
 
     /* ---------- the rows of sights ---------- */
@@ -49,9 +61,7 @@
       data.forEach(function (r, i) {
         var tr = el("tr"), refs = { r: r };
         tr.appendChild(el("td", "n", r.kind === "lat" ? "Lat" : String(i + 1)));
-        if (r.kind === "star") { var td = el("td", "w-star"), sel = el("select"); sel.setAttribute("aria-label", "Star " + (i + 1)); var o0 = el("option", "", "choose a body"); o0.value = ""; sel.appendChild(o0);
-          [["Sun, Moon and planets", ["Sun", "Moon"].concat(Sight.planets())], ["Stars", NAMES]].forEach(function (g) { var og = document.createElement("optgroup"); og.label = g[0]; g[1].forEach(function (n) { var o = el("option", "", n); o.value = n; og.appendChild(o); }); sel.appendChild(og); });
-          sel.value = r.name || ""; sel.addEventListener("change", function () { r.name = sel.value; if (refs.limb) { var lm = r.name === "Moon" || r.name === "Sun"; refs.limb.hidden = !lm; refs.na.hidden = lm; } save(); render(); }); td.appendChild(sel); tr.appendChild(td); refs.sel = sel; }
+        if (r.kind === "star") { var td = el("td", "w-star"), sel = el("select"); sel.setAttribute("aria-label", "Star " + (i + 1)); fillBodies(sel, r.name || ""); sel.addEventListener("change", function () { r.name = sel.value; if (refs.limb) { var lm = r.name === "Moon" || r.name === "Sun"; refs.limb.hidden = !lm; refs.na.hidden = lm; } save(); render(); }); td.appendChild(sel); tr.appendChild(td); refs.sel = sel; }
         var tt = el("td", "w-time"), ti = el("input"); ti.type = "time"; ti.step = "1"; ti.value = r.time || ""; ti.setAttribute("aria-label", "Local time of sight " + (i + 1)); ti.addEventListener("input", function () { r.time = ti.value; r.manual = true; save(); render(); }); tt.appendChild(ti); tr.appendChild(tt); refs.time = ti;
         if (r.kind === "lat") {
           var tl = el("td"); tl.colSpan = 2; var fz = el("div", "fused fused-2"), w1 = el("div", "input-wrap"), w2 = el("div", "input-wrap");
@@ -288,8 +298,9 @@
     function starPanel() {
       var tbl = $("sf-startbl"), note = $("sf-starnote"), c = starCtx(); while (tbl.firstChild) tbl.removeChild(tbl.firstChild);
       $("sf-starbox").hidden = mode !== "stars";
-      if (!c) { note.textContent = "Enter the DR position, date and zone, then choose a time or press a twilight button."; return; }
-      if (c.sec === null) { note.textContent = "Choose the time you will take the sights, or press Morning twilight or Evening twilight."; return; }
+      function noGood() { if (goodNow.length) { goodNow = []; starPanel.last = ""; rowRefs.forEach(function (rf) { if (rf.sel) fillBodies(rf.sel, rf.r.name || ""); }); } }
+      if (!c) { noGood(); note.textContent = "Enter the DR position, date and zone, then choose a time or press a twilight button."; return; }
+      if (c.sec === null) { noGood(); note.textContent = "Choose the time you will take the sights, or press Morning twilight or Evening twilight."; return; }
       var ms = c.base + (c.sec - c.v.zone * 3600) * 1000, fr = Sight.frame(ms), list = [];
       Sight.bodiesAt(ms, c.lat, c.lon).forEach(function (b) { b.mag = b.name === "Sun" ? -26 : Sight.mag(b.name); b.kind = b.name === "Sun" ? "Sun" : "star"; list.push(b); });
       ["Moon"].concat(Sight.planets()).forEach(function (nm) { var r = Sight.reduceBody(Sight.place(ms, nm, fr), c.lat, c.lon); list.push({ name: nm, hc: r.hc, zn: r.zn, mag: PMAG[nm], kind: nm === "Moon" ? "Moon" : "planet" }); });
@@ -298,13 +309,15 @@
       note.textContent = "At " + hms(c.sec).slice(0, 5) + " ship's time the Sun is " + (sh < 0 ? "−" : "") + Math.abs(sh).toFixed(1) + "°. " + light + " Tap a star to put it in the next empty row (altitude · bearing · brightness). GOOD: 20° to 60° high and bright.";
       var shown = list.filter(function (b) { return b.name !== "Sun" && verdict(b) && (sh <= -3 || b.mag <= 0); }).sort(function (a, b) { return a.zn - b.zn; });
       if (sh > -1 && sun.hc > 10) shown.unshift({ name: "Sun", hc: sun.hc, zn: sun.zn, mag: -26, kind: "Sun" });
-      var good = shown.filter(function (b) { return (verdict(b) || [])[1] === "GOOD" || b.kind !== "star"; }), more = shown.filter(function (b) { return good.indexOf(b) < 0; });
+      var good = shown.filter(function (b) { return (verdict(b) || [])[1] === "GOOD" || (b.kind !== "star" && b.hc >= 20 && b.hc <= 60); }), more = shown.filter(function (b) { return good.indexOf(b) < 0; });
       function chip(b, parent) {
         var bt = el("button", "sf-chip " + (verdict(b) || ["ok"])[0]); bt.type = "button";
         bt.appendChild(el("strong", "", b.name)); bt.appendChild(el("span", "", Math.round(b.hc) + "° · " + ("00" + Math.round(b.zn) % 360).slice(-3) + "°" + (b.kind === "star" ? " · mag " + b.mag.toFixed(1) : " · " + b.kind.toLowerCase())));
         bt.setAttribute("aria-label", "Use " + b.name + ", altitude " + Math.round(b.hc) + " degrees, bearing " + Math.round(b.zn)); bt.addEventListener("click", function () { useBody(b.name); }); parent.appendChild(bt);
       }
       var box = el("div", "sf-chips"); good.forEach(function (b) { chip(b, box); }); tbl.appendChild(box);
+      var gs = good.map(function (b) { return b.name + Math.round(b.hc) + "/" + Math.round(b.zn); }).join(",");
+      if (gs !== starPanel.last) { starPanel.last = gs; goodNow = good.slice(); rowRefs.forEach(function (rf) { if (rf.sel) fillBodies(rf.sel, rf.r.name || ""); }); }
       if (!good.length) tbl.appendChild(el("p", "small muted", "Nothing GOOD at this time" + (more.length ? "; see the OK ones below." : ".")));
       if (more.length) { var dt = el("details", "sf-more"), sm = el("summary", "", "Also possible (OK, lower, higher or fainter): " + more.length); dt.appendChild(sm); var b2 = el("div", "sf-chips"); more.forEach(function (b) { chip(b, b2); }); dt.appendChild(b2); tbl.appendChild(dt); }
     }
@@ -329,17 +342,46 @@
       var t = (a + b) / 2, sec = Math.round(((t + c.v.zone * 3600000) / 1000) % 86400 + 86400) % 86400;   /* halfway between nautical and civil twilight: the usual star time */
       $("sf-starsat").value = hms(sec).slice(0, 5); save(); render();
     }
-    function example() {
-      $("sf-fixat").value = "";
-      var set = function (id, val) { $(id).value = val; }, key = shipKey(), prior = st.ship && st.ship[key] ? JSON.parse(JSON.stringify(st.ship[key])) : null;
-      if (mode === "stars") {
-        set("sf-lat-d", "21"); set("sf-lat-m", "22.2"); $("sf-lat-n").checked = true; set("sf-lon-d", "37"); set("sf-lon-m", "57.2"); $("sf-lon-e").checked = true; set("sf-course", "332"); set("sf-speed", "12.4"); set("sf-date", "2026-04-14"); set("sf-zone", "2"); set("sf-hoe", "29"); set("sf-ie", "0"); $("sf-ie-on").checked = true; set("sf-temp", "27"); set("sf-pres", "1010");
-        st.rows = st.rows || {}; st.rows.stars = [["Fomalhaut", "04:48:00", "11", "30.6"], ["Spica", "04:48:33", "4", "36.8"], ["Schedar", "04:48:55", "19", "04.5"], ["", "", "", ""]].map(function (x) { return { kind: "star", name: x[0], time: x[1], hd: x[2], hm: x[3], limb: "L" }; });
-      } else {
-        set("sf-lat-d", "22"); set("sf-lat-m", "54.6"); $("sf-lat-n").checked = true; set("sf-lon-d", "94"); set("sf-lon-m", "25.3"); $("sf-lon-w").checked = true; set("sf-course", "332"); set("sf-speed", "12.4"); set("sf-date", "2021-05-06"); set("sf-zone", "-5"); set("sf-hoe", "29"); set("sf-ie", "0"); $("sf-ie-on").checked = true; set("sf-temp", "27"); set("sf-pres", "1010");
-        st.rows = st.rows || {}; st.rows.sun = [["13:48:55", "79", "41.0"], ["17:06:55", "35", "15.0"]].map(function (x) { return { kind: "sun", name: "Sun", time: x[0], hd: x[1], hm: x[2], limb: "L" }; }).concat([{ kind: "lat", time: "", ld: "", lm: "", ns: "N" }]);
+    /* Examples, one per method. Sights are made from a known true track (ship 060 deg 14 kn, Gulf of Mexico, zone -6); the DR is 3' S and
+       4' E of the truth, so the intercepts are real. Height of eye 25 m, index error 1.2' off the arc, 27 C, 1010 hPa. Every box is filled. */
+    var EX = { lat: 22.9, lon: -90.4, course: 60, speed: 14, zone: -6, hoe: 25, ie: 1.2, temp: 27, pres: 1010 };
+    function exampleSights(m) {
+      var day = m === "day" ? Date.UTC(2026, 0, 10) : Date.UTC(2026, 0, 15), loc = function (hh, mm, ss) { return day + ((hh - EX.zone) * 3600 + mm * 60 + (ss || 0)) * 1000; };
+      var t0, plan = [];                                                               /* [name, UT ms, limb] */
+      function merPass(tGuess) { var t = tGuess; for (var k = 0; k < 6; k++) { var q = truth(t), p = Sight.sunPlace(t), lha = ((p.gha + q.lon) % 360 + 540) % 360 - 180; t -= lha / 15 * 3600000; } return Math.round(t / 1000) * 1000; }   /* Sun on the ship's meridian */
+      var dr0 = { lat: EX.lat, lon: EX.lon, ms: loc(8, 40), course: EX.course, speed: EX.speed };
+      function truth(t) { var d = SightFix.drAt(dr0, t); return SightFix.move(d, 3, -4); }          /* the ship is really 3' N and 4' W of the DR */
+      if (m === "noon") { plan = [["Sun", loc(8, 40, 12), "L"]]; plan.push(["Sun", merPass(loc(12, 0)), "L"]); }
+      else if (m === "sunrun") plan = [["Sun", loc(8, 40, 12), "L"], ["Sun", loc(14, 5, 30), "L"]];
+      else if (m === "one") plan = [["Sun", loc(9, 12, 40), "L"]];
+      else if (m === "mer") plan = [["Sun", merPass(loc(12, 0)), "L"]];
+      else if (m === "day") plan = [["Sun", loc(9, 0, 20), "L"], ["Moon", loc(9, 4, 45), "L"]];
+      else {                                                                           /* twilight: Polaris, or the best 4 stars 6 minutes apart */
+        var R = SunTimes.solve(2026, 1, 15, EX.zone, EX.lat, EX.lon, 0), tw = Math.round((R.levels.nautical.rise[0] + R.levels.civil.rise[0]) / 2 / 60000) * 60000;
+        if (m === "polaris") plan = [["Polaris", tw + 20000, "L"]];
+        else { var best = Sight.suggest(tw, EX.lat, EX.lon, 4); best.forEach(function (b, k) { plan.push([b.name, tw - 9 * 60000 + k * 6 * 60000 + (k * 7 % 50) * 1000, "L"]); }); }
       }
-      shipEdited = false; build(); save(); if (st.ship) { if (prior) st.ship[key] = prior; else delete st.ship[key]; store.set(KEY, st); } render(); toast("Example loaded (from the owner's old workbook)");
+      t0 = plan.reduce(function (a, b) { return Math.min(a, b[1]); }, Infinity); dr0.ms = t0;
+      return { day: day, dr: dr0, sights: plan.map(function (p) {
+        var ms = p[1], q = truth(ms), pl = Sight.place(ms, p[0]), r = Sight.reduceBody(pl, q.lat, q.lon), hs = r.hc, k;
+        for (k = 0; k < 20; k++) { var c = Sight.ho({ hs: hs, ic: EX.ie, hoe: EX.hoe, temp: EX.temp, pres: EX.pres, body: pl.kind, limb: p[2], sd: pl.kind === "moon" ? r.sd : pl.sd, hp: pl.hp }); hs += r.hc - c.ho; }
+        var hm = Math.round(hs * 600) / 10, d = Math.floor(hm / 60), mi = hm - d * 60, dp = SightFix.drAt(dr0, ms);
+        return { name: p[0], time: hms(((ms + EX.zone * 3600000) / 1000)), hd: String(d), hm: (mi < 10 ? "0" : "") + mi.toFixed(1), limb: p[2], pos: Geo.lat(dp.lat) + " " + Geo.lon(dp.lon) };
+      }) };
+    }
+    function example() {
+      var m = st.method || (mode === "sun" ? "noon" : "stars"), X = exampleSights(m), set = function (id, val) { $(id).value = val; }, key = shipKey(), prior = st.ship && st.ship[key] ? JSON.parse(JSON.stringify(st.ship[key])) : null;
+      var la = Math.abs(X.dr.lat), lo = Math.abs(X.dr.lon), dd = new Date(X.day);
+      set("sf-lat-d", String(Math.floor(la))); set("sf-lat-m", ((la - Math.floor(la)) * 60).toFixed(1)); (X.dr.lat < 0 ? $("sf-lat-s") : $("sf-lat-n")).checked = true;
+      set("sf-lon-d", String(Math.floor(lo))); set("sf-lon-m", ((lo - Math.floor(lo)) * 60).toFixed(1)); (X.dr.lon < 0 ? $("sf-lon-w") : $("sf-lon-e")).checked = true;
+      set("sf-course", ("00" + EX.course).slice(-3)); set("sf-speed", String(EX.speed)); set("sf-date", dd.getUTCFullYear() + "-" + p2(dd.getUTCMonth() + 1) + "-" + p2(dd.getUTCDate())); set("sf-zone", String(EX.zone));
+      set("sf-hoe", String(EX.hoe)); set("sf-ie", String(EX.ie)); $("sf-ie-off").checked = true; set("sf-temp", String(EX.temp)); set("sf-pres", String(EX.pres));
+      set("sf-fixat", m === "noon" ? "12:00" : ""); st.fixAuto = m === "noon"; set("sf-starsat", m === "stars" || m === "polaris" ? X.sights[0].time.slice(0, 5) : "");
+      st.rows = st.rows || {};
+      if (mode === "sun") st.rows.sun = X.sights.map(function (s) { return { kind: "sun", name: "Sun", time: s.time, hd: s.hd, hm: s.hm, limb: s.limb, pos: s.pos }; }).concat(X.sights.length < 2 ? [{ kind: "sun", name: "Sun", time: "", hd: "", hm: "", limb: "L" }] : []).concat([{ kind: "lat", time: "", ld: "", lm: "", ns: "N" }]);
+      else { var rows = X.sights.map(function (s) { return { kind: "star", name: s.name, time: s.time, hd: s.hd, hm: s.hm, limb: s.limb, pos: s.pos }; }); while (rows.length < 4) rows.push({ kind: "star", name: "", time: "", hd: "", hm: "", limb: "L" }); st.rows.stars = rows; }
+      shipEdited = false; build(); save(); if (st.ship) { if (prior) st.ship[key] = prior; else delete st.ship[key]; store.set(KEY, st); } render();
+      toast("Example: sights made from a known true position (the ship was 3' N and 4' W of her DR). Every box is filled, so you can see what goes where.");
     }
     function clearSights() { st.rows[mode] = null; build(); save(); render(); }
 
