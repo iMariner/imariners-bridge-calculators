@@ -11,7 +11,7 @@ One offline HTML file, `Bridge-Calculators.html`, that replaces the Excel sheets
 - Verified special-area coordinates come from `~/Developer/iMariners/sea-areas/data/*.json` (do not retype coordinates, rebuild from there).
 
 ## How the file is organised
-1. `<style>`: first the **DESIGN SYSTEM** (fonts embedded as base64, colour tokens for Day / Dusk / Night, type, spacing, radius scales), then component CSS, then one block per tool.
+1. `<style>`: first the **DESIGN SYSTEM** (Geist and Geist Mono embedded as base64, colour tokens for Day / Dusk / Night, type, spacing, radius scales), then component CSS, then one block per tool.
 2. `<body>`: header, side navigation (`data-tool-link`), `<main>` with one `<section class="tool" id="...">` per tool. A tool's print sheet is a `.print-sheet` child of its section.
 3. `<script>` (one IIFE): `store` (localStorage, key prefix `bridgeCalc.`), `Ships`, the almanac engine (`ASTRO-BEGIN/END`), calculation blocks with begin/end markers (`REPORTS-`, `SUN-`, `GEO-`, `ETA-`, `CALC-`), one `initXxx()` per tool, the embedded data blobs (`SA_AREAS`, `SA_LAND`, `SA_SHEET`), then the `TOOLS` registry and hash routing.
 

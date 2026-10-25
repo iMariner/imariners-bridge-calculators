@@ -15,8 +15,8 @@
    ========================================================================== */
 
 /* 1. Fonts: Open Sans (same family as imariners.com) and JetBrains Mono for numbers. SIL OFL licence. */
-@font-face { font-family: "Open Sans"; font-style: normal; font-weight: 300 800; font-display: swap; src: url(data:font/woff2;base64,__FONT_SANS__) format("woff2"); }
-@font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 100 800; font-display: swap; src: url(data:font/woff2;base64,__FONT_MONO__) format("woff2"); }
+@font-face { font-family: "Geist"; font-style: normal; font-weight: 100 900; font-display: swap; src: url(data:font/woff2;base64,__FONT_SANS__) format("woff2"); }
+@font-face { font-family: "Geist Mono"; font-style: normal; font-weight: 100 900; font-display: swap; src: url(data:font/woff2;base64,__FONT_MONO__) format("woff2"); }
 
 :root {
   /* 2. Primitives: brand palette taken from the iMariners logo and imariners.com */
@@ -28,8 +28,8 @@
   --c-green-600: #1f9d55; --c-amber-500: #d99a00; --c-amber-700: #c26a00; --c-red-600: #b42318;
 
   /* 4. Scales (identical in every theme) */
-  --font-sans: "Open Sans", "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, "Apple Symbols", "Segoe UI Symbol", sans-serif;
-  --font-mono: "JetBrains Mono", Consolas, "SF Mono", Menlo, "Liberation Mono", monospace;
+  --font-sans: "Geist", "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, "Apple Symbols", "Segoe UI Symbol", sans-serif;
+  --font-mono: "Geist Mono", Consolas, "SF Mono", Menlo, "Liberation Mono", monospace;
   --fw-regular: 400; --fw-medium: 500; --fw-semibold: 600; --fw-bold: 700; --fw-black: 800;
   --lh-tight: 1.15; --lh-base: 1.45; --lh-loose: 1.6;
   --fs-2xs: 10px; --fs-micro: 10.5px; --fs-xs: 11px; --fs-sm: 12px; --fs-data: 12.5px; --fs-md: 13px;
