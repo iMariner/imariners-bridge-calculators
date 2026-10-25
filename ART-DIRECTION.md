@@ -6,7 +6,7 @@ Bridge Calculators should feel like instruments on a chart table: calm, exact, r
 A navy console on the left, a clean chart-paper work area on the right. Navy is the instrument frame. White cards are the chart sheets. Teal is the iMariners brand and the only action colour. Amber marks a cell you type into. Red and green keep their seafaring meaning (port and starboard, take and avoid, west and east).
 
 ## Layout (every page)
-1. **Sidebar** (264 px, navy): iMariners logo on a white plate, then the tools in four groups (Navigation, Stability and draught, Anchoring, Settings). One line per tool, icon in a fixed 20 px column, the page you are on has a lighter panel and a teal bar on the edge. Footer: "Planning aid only, not for navigation" and the GitHub link.
+1. **Sidebar** (264 px, navy): iMariners logo on a white plate, then the tools in five groups (Celestial and compass, Passage planning, Watch and reporting, Ship handling, Settings). One line per tool, icon in a fixed 20 px column, the page you are on has a lighter panel and a teal bar on the edge. Footer: "Planning aid only, not for navigation" and the GitHub link.
 2. **Top bar** (56 px, white): where you are (group / page), the "Saved" mark, the ship, and the Day / Dusk / Night switch. On a phone the sidebar becomes a drawer opened by the menu button.
 3. **Page header**: the page title (28 px), one sentence about what the tool is for, and a thin ruler of tick marks under it, like the scale on a chart. Nothing else sits above the first card.
 4. **Cards**: white, 1 px border, 12 px corners. The title of a card is a small mono capital label with a teal square, like a legend on a chart. Every card on every page has the same anatomy.
