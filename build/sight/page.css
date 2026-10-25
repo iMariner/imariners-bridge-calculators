@@ -63,4 +63,14 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
 .sf-runnote { margin: var(--sp-3) 0 0; font-size: var(--fs-sm); color: var(--muted); }
 table.sf-rows td.w-dr { min-width: 210px; }
 table.sf-rows td.w-dr input { font-size: var(--fs-md); background: var(--entry); }
+.sf-starbox { margin: 0 0 var(--sp-4); border: var(--hair) solid var(--border); border-radius: var(--r-md); padding: var(--sp-3); background: var(--surface-2); }
+.sf-starbox summary { cursor: pointer; font-weight: var(--fw-semibold); color: var(--accent); }
+.sf-starbar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2); margin-top: var(--sp-3); }
+.sf-starbar input { width: auto; }
+.sf-chips { display: flex; flex-wrap: wrap; gap: var(--sp-2); margin-top: var(--sp-2); }
+.sf-chip { display: flex; flex-direction: column; align-items: flex-start; gap: var(--hair); padding: var(--sp-1h) var(--sp-3); border: var(--hair) solid var(--border-strong); border-left-width: var(--sp-1); border-radius: var(--r-md); background: var(--surface); color: var(--text); font: inherit; cursor: pointer; text-align: left; }
+.sf-chip strong { font-size: var(--fs-md); }
+.sf-chip span { font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--muted); }
+.sf-chip.take { border-left-color: var(--take); } .sf-chip.ok { border-left-color: var(--okc); }
+.sf-chip:hover, .sf-chip:focus { border-color: var(--accent); outline: none; box-shadow: var(--focus-ring); }
 /* Sight Fix end */

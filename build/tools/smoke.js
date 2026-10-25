@@ -9,7 +9,7 @@ const STEPS = [
   ['gyro-error', "document.getElementById('ge-example').click()"], ['dev-card', "document.getElementById('dc-example') && document.getElementById('dc-example').click()"],
   ['sun-times', "document.getElementById('su-example').click()"], ['mer-pass', "document.getElementById('mp-example').click()"],
   ['sight-fix', "document.querySelector('[data-m=noon]').click(); document.getElementById('sf-example').click()"],
-  ['sight-fix', "document.querySelector('[data-m=stars]').click(); document.getElementById('sf-example').click(); document.getElementById('sf-filldr').click()"],
+  ['sight-fix', "document.querySelector('[data-m=stars]').click(); document.getElementById('sf-example').click(); document.getElementById('sf-filldr').click(); document.getElementById('sf-tw-am').click(); document.getElementById('sf-best4').click()"],
   ['sight-fix', "['sunrun','one','mer','polaris','day'].forEach(function (m) { document.querySelector('[data-m=' + m + ']').click(); })"],
   ['special-areas', "0"], ['course-speed', "document.getElementById('cs-example').click()"], ['eta', "document.getElementById('et-example') && document.getElementById('et-example').click()"],
   ['daily-reports', "0"], ['true-wind', "document.getElementById('tw-example') && document.getElementById('tw-example').click()"],

@@ -61,6 +61,18 @@
         <div>
           <div class="card" id="sf-sights-card">
             <h2>Sights</h2>
+            <details class="sf-starbox" id="sf-starbox" open>
+              <summary>Stars and planets you can take</summary>
+              <div class="sf-starbar">
+                <label for="sf-starsat" class="small muted">At (ship's time)</label>
+                <input id="sf-starsat" class="text-input" type="time" step="60" aria-describedby="sf-starnote">
+                <button type="button" class="btn" id="sf-tw-am">Morning twilight</button>
+                <button type="button" class="btn" id="sf-tw-pm">Evening twilight</button>
+                <button type="button" class="btn primary" id="sf-best4">Use the best 4</button>
+              </div>
+              <p class="sf-runnote" id="sf-starnote">Enter the DR position, date and zone, then choose a time or press a twilight button.</p>
+              <div id="sf-startbl"></div>
+            </details>
             <div class="dr-gridwrap"><table class="sf-rows" id="sf-rows"></table></div>
             <div class="hint" id="sf-rows-msg"></div>
             <p class="sf-runnote">DR at this sight: type your own position for each sight, or leave it empty to use the one worked from the first DR, course and speed (shown in grey). Fill DR positions writes the worked ones in so you can check or change them.</p>
@@ -74,7 +86,6 @@
               </div>
             </div>
             <div class="actions">
-              <button type="button" class="btn" id="sf-pick">Pick the best stars</button>
               <button type="button" class="btn" id="sf-filldr">Fill DR positions</button>
               <button type="button" class="btn" id="sf-example">Load example</button>
               <button type="button" class="btn" id="sf-clear">Clear sights</button>

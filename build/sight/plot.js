@@ -79,6 +79,10 @@
         function seg(p, cls) { o.push('<line class="' + cls + '" x1="' + f1(X(p.x - l.dx * big)) + '" y1="' + f1(Y(p.y - l.dy * big)) + '" x2="' + f1(X(p.x + l.dx * big)) + '" y2="' + f1(Y(p.y + l.dy * big)) + '"/>'); }
         if (runNM > 0.3) { seg(l.f0, "sp-lop0"); o.push('<circle class="sp-ap" cx="' + f1(X(l.ap.x)) + '" cy="' + f1(Y(l.ap.y)) + '" r="3"/><circle class="sp-foot" cx="' + f1(X(l.f0.x)) + '" cy="' + f1(Y(l.f0.y)) + '" r="2"/>'); }
         else o.push('<circle class="sp-ap" cx="' + f1(X(l.ap.x)) + '" cy="' + f1(Y(l.ap.y)) + '" r="3"/>');
+        if (!opt.single && runNM > 0.3 && l.s.name !== "Latitude") {                   /* number the ship's DR at each sight, as written in the sight book */
+          var dq = l.s.drSight ? pl(l.s.drSight) : l.ap;
+          o.push('<circle class="sp-ap" cx="' + f1(X(dq.x)) + '" cy="' + f1(Y(dq.y)) + '" r="3"/><text class="sp-lab sp-halo" x="' + f1(X(dq.x) - 7) + '" y="' + f1(Y(dq.y) + 4) + '" text-anchor="end">' + (i + 1) + '</text>');
+        }
         seg(l.f1, "sp-lop");
         var c = clip(X(l.f1.x), Y(l.f1.y), dxp, dyp, left + 6, top + 6, right - 6, bottom - 6);
         if (c) {                                                                    /* try spots along the line until the label clashes with no other */

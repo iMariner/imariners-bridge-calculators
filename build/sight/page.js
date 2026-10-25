@@ -3,7 +3,7 @@
     var KEY = "bridgeCalc.sightFix", st = store.get(KEY) || {}, mode = st.mode === "stars" ? "stars" : "sun", rowsEl = $("sf-rows"), rowRefs = [], last = null, shipEdited = false;
     var LIMBS = [["L", "Lower"], ["U", "Upper"]];
     var NAMES = Sight.names();
-    var FIELDS = ["sf-fixat", "sf-lat-d", "sf-lat-m", "sf-lon-d", "sf-lon-m", "sf-course", "sf-speed", "sf-date", "sf-zone", "sf-hoe", "sf-ie", "sf-temp", "sf-pres", "sf-gps-lat-d", "sf-gps-lat-m", "sf-gps-lon-d", "sf-gps-lon-m"];
+    var FIELDS = ["sf-starsat", "sf-fixat", "sf-lat-d", "sf-lat-m", "sf-lon-d", "sf-lon-m", "sf-course", "sf-speed", "sf-date", "sf-zone", "sf-hoe", "sf-ie", "sf-temp", "sf-pres", "sf-gps-lat-d", "sf-gps-lat-m", "sf-gps-lon-d", "sf-gps-lon-m"];
     var RADIOS = ["sf-ap-each", "sf-ap-first", "sf-lat-n", "sf-lat-s", "sf-lon-e", "sf-lon-w", "sf-ie-on", "sf-ie-off", "sf-gps-lat-n", "sf-gps-lat-s", "sf-gps-lon-e", "sf-gps-lon-w"];
     function shipKey() { var s = Ships.active(); return s ? s.id : "_"; }
     function p2(n) { return ("0" + n).slice(-2); }
@@ -11,6 +11,29 @@
     function utText(ms) { var d = new Date(ms); return p2(d.getUTCHours()) + ":" + p2(d.getUTCMinutes()) + ":" + p2(d.getUTCSeconds()); }
     function alt(deg) { var s = deg < 0 ? "−" : "", a = Math.abs(deg), d = Math.floor(a + 1e-9), m = Math.round((a - d) * 600) / 10; if (m >= 60) { d++; m = 0; } return s + d + "°" + (m < 10 ? "0" : "") + m.toFixed(1) + "'"; }
     function num(s) { s = String(s).trim().replace(",", "."); return /^\d+(\.\d*)?$|^\.\d+$/.test(s) ? parseFloat(s) : NaN; }
+    /* a position typed any easy way: 2122.1N 03757.1E, 21 22.1N 037 57.1E, 21-22.1N 37-57.1E, or without N/S/E/W (the DR's hemispheres
+       are used). One number with no space: the last two whole digits are minutes (2122.1 = 21 22.1). Falls back to Geo.parse. */
+    function parsePos(text) {
+      var s = String(text || "").toUpperCase().replace(/[°º˚′’‘`´'″”“"]/g, " ").replace(/(\d)-(?=\d)/g, "$1 ").replace(/,/g, " ").replace(/\s+/g, " ").trim();
+      if (!s) return { error: "empty" };
+      function val(t, lon) {
+        var k = t.trim().split(" ").filter(Boolean), d, m;
+        if (!k.length || k.length > 3 || k.some(function (x) { return !/^\d+(\.\d+)?$/.test(x); })) return NaN;
+        if (k.length > 1) { d = +k[0]; m = +k[1] + (k[2] ? +k[2] / 60 : 0); }
+        else { var ip = k[0].split(".")[0]; if (ip.length >= (lon ? 4 : 3)) { d = Math.floor(+k[0] / 100); m = +k[0] - d * 100; } else { d = +k[0]; m = 0; } }
+        if (m >= 60 || d > (lon ? 180 : 90)) return NaN;
+        return d + m / 60;
+      }
+      var mm = /^([0-9. ]+?)\s*([NS])\s*([0-9. ]+?)\s*([EW])$/.exec(s), la, lo, ns, ew;
+      if (mm) { la = val(mm[1], false); lo = val(mm[3], true); ns = mm[2]; ew = mm[4]; }
+      else if (/^[0-9. ]+$/.test(s)) {                                                 /* no letters: two numbers, or degrees and minutes twice */
+        var t = s.split(" "); ns = $("sf-lat-s").checked ? "S" : "N"; ew = $("sf-lon-w").checked ? "W" : "E";
+        if (t.length === 2) { la = val(t[0], false); lo = val(t[1], true); } else if (t.length === 4) { la = val(t[0] + " " + t[1], false); lo = val(t[2] + " " + t[3], true); } else return { error: "need a latitude and a longitude" };
+      }
+      else { var g = Geo.parse(text); return g.error ? g : { lat: g.lat, lon: g.lon }; }
+      if (isNaN(la) || isNaN(lo)) return { error: "degrees or minutes out of range" };
+      return { lat: la * (ns === "S" ? -1 : 1), lon: lo * (ew === "W" ? -1 : 1) };
+    }
     function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt !== undefined) e.textContent = txt; return e; }
 
     /* ---------- the rows of sights ---------- */
@@ -50,11 +73,11 @@
         }
         var tp = el("td", "w-dr");                                                     /* the officer's DR at this sight; empty: worked from the first DR, course and speed */
         if (r.kind === "lat") tp.appendChild(el("span", "small muted", "not needed"));
-        else { var pi = el("input", "text-input"); pi.type = "text"; pi.maxLength = 40; pi.value = r.pos || ""; pi.placeholder = "21 22.2N 037 57.2E"; pi.setAttribute("aria-label", "DR position at sight " + (i + 1)); pi.addEventListener("input", function () { r.pos = pi.value; save(); render(); }); tp.appendChild(pi); refs.pos = pi; }
+        else { var pi = el("input", "text-input"); pi.type = "text"; pi.maxLength = 40; pi.value = r.pos || ""; pi.placeholder = "e.g. 2122.1N 03757.1E"; pi.setAttribute("aria-label", "DR position at sight " + (i + 1)); pi.addEventListener("input", function () { r.pos = pi.value; save(); render(); });
+          pi.addEventListener("blur", function () { var g = parsePos(pi.value); if (pi.value && !g.error) { pi.value = Geo.lat(g.lat) + " " + Geo.lon(g.lon); r.pos = pi.value; save(); render(); } });   /* tidy what was typed */ tp.appendChild(pi); refs.pos = pi; }
         tr.appendChild(tp);
         tb.appendChild(tr); rowRefs.push(refs);
       });
-      $("sf-pick").hidden = mode !== "stars" || (!!st.method && st.method !== "stars");
     }
 
     /* ---------- reading everything ---------- */
@@ -89,7 +112,7 @@
         else { d = num(r.hd); m = r.hm === "" ? 0 : num(r.hm); if (isNaN(d) || isNaN(m) || d < 0 || d > 90 || m < 0 || m >= 60) { bad.push("Row " + (i + 1) + ": check the sextant altitude (degrees 0 to 90, minutes under 60)."); return; } val = d + m / 60; }
         if (prev !== null && sec < prev - 12 * 3600) add += 86400; prev = sec;
         var item = { name: name, secLocal: sec, dayAdd: add, rf: rf };
-        if (r.kind !== "lat" && r.pos && String(r.pos).trim()) { var gp = Geo.parse(r.pos); if (gp.error || Math.abs(gp.lat) > 84) { bad.push("Row " + (i + 1) + ": DR position not understood (" + (gp.error || "latitude above 84") + "). Write it like 21 22.2N 037 57.2E."); return; } item.dr = { lat: gp.lat, lon: gp.lon }; }
+        if (r.kind !== "lat" && r.pos && String(r.pos).trim()) { var gp = parsePos(r.pos); if (gp.error || Math.abs(gp.lat) > 84) { bad.push("Row " + (i + 1) + ": DR position not understood (" + (gp.error || "latitude above 84") + "). For example 2122.1N 03757.1E or 21 22.1N 037 57.1E."); return; } item.dr = { lat: gp.lat, lon: gp.lon }; }
         if (r.kind === "lat") item.lat = val; else { item.hs = val; item.limb = r.limb || "L"; }
         out.push(item);
       });
@@ -97,14 +120,13 @@
     }
 
     function render() {
-      var v = read(), rr = readRows(v), msg = $("sf-rows-msg");
+      var v = read(), rr = readRows(v), msg = $("sf-rows-msg"); starPanel();
       msg.textContent = rr.bad.join(" "); msg.className = rr.bad.length ? "hint error" : "hint";
-      $("sf-pick").disabled = !(v.lat !== null && v.lon !== null && !v.errs.lat && !v.errs.lon && v.date && v.zone !== null && rowRefs.some(function (rf) { return parseTimeEl(rf.time) !== null; }));
       var one = rr.rows.length === 1 && rr.rows[0].name !== "Latitude";
       var ready = !Object.keys(v.errs).length && v.lat !== null && v.lon !== null && (one || (v.course !== null && v.speed !== null)) && v.date && v.zone !== null && v.hoe !== null && (one || rr.rows.length >= 2) && !rr.bad.length;
       var missing = [];
       if (v.lat === null || v.lon === null) missing.push("the DR position"); if (!one && (v.course === null || v.speed === null)) missing.push("course and speed"); if (!v.date) missing.push("the date"); if (v.zone === null) missing.push("the time zone"); if (v.hoe === null) missing.push("height of eye (metres, the eye above the sea)"); if (!rr.rows.length) missing.push("a sight (one sight gives a position line, two or more give a fix)"); else if (!one && rr.rows.length < 2) missing.push("a second sight");
-      if (!ready) { $("sf-out").hidden = true; $("sf-sheet").classList.add("no-print"); $("sf-empty").hidden = false; $("sf-empty").className = "empty"; $("sf-empty").textContent = missing.length && !rr.bad.length ? "Still needed: " + missing.join(", ") + "." : "Check the entries marked in red."; last = null; return; }
+      if (!ready) { $("sf-out").hidden = true; $("sf-sheet").classList.add("no-print"); $("sf-empty").hidden = false; $("sf-empty").className = "empty"; $("sf-empty").textContent = missing.length && !rr.bad.length ? "Still needed: " + missing.join(", ") + ". The fix, the working and the diagram appear as soon as these are in." : "Check the entries marked in red."; last = null; return; }
       var base = Date.UTC(v.date.y, v.date.m - 1, v.date.d), sights = rr.rows.map(function (s) { var o = { name: s.name, ms: base + (s.secLocal - v.zone * 3600) * 1000 + s.dayAdd * 1000 }; if (s.dr) o.dr = s.dr; if (s.name === "Latitude") o.lat = s.lat; else { o.hs = s.hs; o.limb = s.limb; } return o; });
       var t1 = Math.min.apply(null, sights.map(function (s) { return s.ms; })), side = $("sf-ie-on").checked ? -1 : 1, fa = parseTimeEl($("sf-fixat")), fixMs = null;
       if (fa !== null && sights.length > 1) {                                          /* that ship's clock time nearest the last sight */
@@ -250,15 +272,62 @@
     function shipFill() { shipEdited = false; var sh = (st.ship && st.ship[shipKey()]) || { hoe: "", ie: "", off: false }; $("sf-hoe").value = sh.hoe; $("sf-ie").value = sh.ie; (sh.off ? $("sf-ie-off") : $("sf-ie-on")).checked = true; }
 
     /* ---------- the buttons ---------- */
+    /* ---------- the stars and planets panel ---------- */
+    var PMAG = { Venus: -4, Jupiter: -2.2, Mars: 0.5, Saturn: 0.7, Moon: -10, Sun: -26 };
+    function starCtx() {                                                              /* DR, date, zone and the time to look at, or null */
+      var v = read(); if (v.lat === null || v.lon === null || v.errs.lat || v.errs.lon || !v.date || v.zone === null) return null;
+      var sec = parseTimeEl($("sf-starsat")); if (sec === null) { var f = rowRefs.filter(function (rf) { return parseTimeEl(rf.time) !== null; })[0]; sec = f ? parseTimeEl(f.time) : null; }
+      return { v: v, sec: sec, lat: v.lat * ($("sf-lat-s").checked ? -1 : 1), lon: v.lon * ($("sf-lon-w").checked ? -1 : 1), base: Date.UTC(v.date.y, v.date.m - 1, v.date.d) };
+    }
+    function verdict(b) {                                                            /* GOOD: 20-60 deg and bright; OK: 15-20 or 60-70 or fainter */
+      var bright = b.mag <= 2.0;
+      if (b.hc >= 20 && b.hc <= 60 && bright) return ["take", "GOOD"];
+      if (b.hc >= 15 && b.hc <= 70 && b.mag <= 2.6) return ["ok", "OK"];
+      return null;
+    }
+    function starPanel() {
+      var tbl = $("sf-startbl"), note = $("sf-starnote"), c = starCtx(); while (tbl.firstChild) tbl.removeChild(tbl.firstChild);
+      $("sf-starbox").hidden = mode !== "stars";
+      if (!c) { note.textContent = "Enter the DR position, date and zone, then choose a time or press a twilight button."; return; }
+      if (c.sec === null) { note.textContent = "Choose the time you will take the sights, or press Morning twilight or Evening twilight."; return; }
+      var ms = c.base + (c.sec - c.v.zone * 3600) * 1000, fr = Sight.frame(ms), list = [];
+      Sight.bodiesAt(ms, c.lat, c.lon).forEach(function (b) { b.mag = b.name === "Sun" ? -26 : Sight.mag(b.name); b.kind = b.name === "Sun" ? "Sun" : "star"; list.push(b); });
+      ["Moon"].concat(Sight.planets()).forEach(function (nm) { var r = Sight.reduceBody(Sight.place(ms, nm, fr), c.lat, c.lon); list.push({ name: nm, hc: r.hc, zn: r.zn, mag: PMAG[nm], kind: nm === "Moon" ? "Moon" : "planet" }); });
+      var sun = list.filter(function (b) { return b.name === "Sun"; })[0], sh = sun.hc;
+      var light = sh > -1 ? "The Sun is up: only the Moon and Venus can be seen." : sh > -3 ? "Too light yet: only planets and the brightest stars." : sh >= -12 ? "Good light: horizon and stars both visible." : "Dark: the horizon may be hard to see.";
+      note.textContent = "At " + hms(c.sec).slice(0, 5) + " ship's time the Sun is " + (sh < 0 ? "−" : "") + Math.abs(sh).toFixed(1) + "°. " + light + " Tap a star to put it in the next empty row (altitude · bearing · brightness). GOOD: 20° to 60° high and bright.";
+      var shown = list.filter(function (b) { return b.name !== "Sun" && verdict(b) && (sh <= -3 || b.mag <= 0); }).sort(function (a, b) { return a.zn - b.zn; });
+      if (sh > -1 && sun.hc > 10) shown.unshift({ name: "Sun", hc: sun.hc, zn: sun.zn, mag: -26, kind: "Sun" });
+      var good = shown.filter(function (b) { return (verdict(b) || [])[1] === "GOOD" || b.kind !== "star"; }), more = shown.filter(function (b) { return good.indexOf(b) < 0; });
+      function chip(b, parent) {
+        var bt = el("button", "sf-chip " + (verdict(b) || ["ok"])[0]); bt.type = "button";
+        bt.appendChild(el("strong", "", b.name)); bt.appendChild(el("span", "", Math.round(b.hc) + "° · " + ("00" + Math.round(b.zn) % 360).slice(-3) + "°" + (b.kind === "star" ? " · mag " + b.mag.toFixed(1) : " · " + b.kind.toLowerCase())));
+        bt.setAttribute("aria-label", "Use " + b.name + ", altitude " + Math.round(b.hc) + " degrees, bearing " + Math.round(b.zn)); bt.addEventListener("click", function () { useBody(b.name); }); parent.appendChild(bt);
+      }
+      var box = el("div", "sf-chips"); good.forEach(function (b) { chip(b, box); }); tbl.appendChild(box);
+      if (!good.length) tbl.appendChild(el("p", "small muted", "Nothing GOOD at this time" + (more.length ? "; see the OK ones below." : ".")));
+      if (more.length) { var dt = el("details", "sf-more"), sm = el("summary", "", "Also possible (OK, lower, higher or fainter): " + more.length); dt.appendChild(sm); var b2 = el("div", "sf-chips"); more.forEach(function (b) { chip(b, b2); }); dt.appendChild(b2); tbl.appendChild(dt); }
+    }
+    function useBody(name) {
+      var data = st.rows.stars || [], free = data.filter(function (r) { return !r.name && !r.hd && !r.hm; })[0] || data.filter(function (r) { return !r.hd && !r.hm && !r.time; })[0];
+      if (!free) { toast("All rows have sights. Clear one first."); return; }
+      if (data.some(function (r) { return r.name === name; })) { toast(name + " is already in the list."); return; }
+      free.name = name; build(); save(); render(); toast(name + " put in row " + (data.indexOf(free) + 1) + ". Type its time and sextant altitude.");
+    }
     function pickStars() {
-      var v = read(); if (v.lat === null || v.lon === null || !v.date || v.zone === null) return;
-      var first = rowRefs.filter(function (rf) { return parseTimeEl(rf.time) !== null; })[0];
-      var sec = first ? parseTimeEl(first.time) : null; if (sec === null) { toast("Type the time of the first sight, then pick."); return; }
-      var ms = Date.UTC(v.date.y, v.date.m - 1, v.date.d) + (sec - v.zone * 3600) * 1000;
-      var pick = Sight.suggest(ms, v.lat * ($("sf-lat-s").checked ? -1 : 1), v.lon * ($("sf-lon-w").checked ? -1 : 1), 4);
+      var c = starCtx(); if (!c || c.sec === null) { toast("Choose the time first, or press a twilight button."); return; }
+      var pick = Sight.suggest(c.base + (c.sec - c.v.zone * 3600) * 1000, c.lat, c.lon, 4);
       if (!pick.length) { toast("No good stars are up at that time."); return; }
-      var data = st.rows.stars; var n = 0; data.forEach(function (r) { if (r.hd || r.hm) return; var p = pick[n++]; r.name = p ? p.name : ""; if (p && !r.time) r.time = hms(sec); });
-      build(); save(); render(); toast("Best stars for that time: " + pick.map(function (p) { return p.name + " " + Math.round(p.hc) + "°/" + Math.round(p.zn) + "°"; }).join(", "));
+      var n = 0; (st.rows.stars || []).forEach(function (r) { if (r.hd || r.hm) return; var p = pick[n++]; r.name = p ? p.name : ""; });
+      build(); save(); render(); toast("Best 4, well spread round the horizon: " + pick.map(function (p) { return p.name + " " + Math.round(p.hc) + "°/" + ("00" + Math.round(p.zn)).slice(-3) + "°"; }).join(", "));
+    }
+    function twilight(am) {
+      var c = starCtx(); if (!c) { toast("Enter the DR position, date and zone first."); return; }
+      var R = SunTimes.solve(c.v.date.y, c.v.date.m, c.v.date.d, c.v.zone, c.lat, c.lon, 0), n = R.levels.nautical, cv = R.levels.civil;
+      var a = am ? n.rise[0] : n.set[0], b = am ? cv.rise[0] : cv.set[0];
+      if (a === undefined || b === undefined) { toast("No twilight at this place and date."); return; }
+      var t = (a + b) / 2, sec = Math.round(((t + c.v.zone * 3600000) / 1000) % 86400 + 86400) % 86400;   /* halfway between nautical and civil twilight: the usual star time */
+      $("sf-starsat").value = hms(sec).slice(0, 5); save(); render();
     }
     function example() {
       $("sf-fixat").value = "";
@@ -287,7 +356,7 @@
       one: ["stars", "One sight of any body, away from the meridian (Sun mid-morning or afternoon, a star, planet or the Moon). Gives the intercept, the position line through the ITP and the longitude where it crosses your DR latitude (longitude by chronometer)."],
       mer: ["stars", "One sight of any body on or near the meridian (bearing within 30\u00b0 of north or south): the Sun at noon, a star, a planet or the Moon, above or below the pole. Gives your latitude where the line crosses your DR longitude. Use the time of the sight. For the Sun alone the Meridian Passage page also works."],
       polaris: ["stars", "One sight of Polaris at twilight (northern hemisphere, so the horizon and the star are both visible). Gives your latitude directly; no Pole Star tables needed."],
-      stars: ["stars", "3 or 4 stars at twilight, taken within a few minutes, spread round the horizon. Type the time of the first sight and press Pick the best stars, then the times and altitudes."],
+      stars: ["stars", "3 or 4 stars at twilight, spread round the horizon. In \u201cStars and planets you can take\u201d press Morning or Evening twilight, then Use the best 4 (or tap the stars you want). Then type each star's time, sextant altitude and your DR at that moment."],
       day: ["stars", "By day when the Moon or Venus is visible: one Sun sight and one Moon (or Venus) sight close in time give a fix. Choose the limb for the Sun and the Moon."]
     };
     function setMethod(m, fromUser) {
@@ -304,7 +373,6 @@
       }
       [].forEach.call(document.querySelectorAll("#sf-methods [data-m]"), function (b) { var on = b.getAttribute("data-m") === m; b.className = on ? "btn primary" : "btn"; b.setAttribute("aria-pressed", on ? "true" : "false"); });
       $("sf-method-help").textContent = METHODS[m][1];
-      $("sf-pick").hidden = m !== "stars";
       save(); render();
     }
     [].forEach.call(document.querySelectorAll("#sf-methods [data-m]"), function (b) { b.addEventListener("click", function () { setMethod(b.getAttribute("data-m"), true); }); });
@@ -312,7 +380,9 @@
       var n = 0; rowRefs.forEach(function (rf) { if (rf.pos && !rf.pos.value && /[NS]/.test(rf.pos.placeholder) && parseTimeEl(rf.time) !== null) { rf.pos.value = rf.pos.placeholder; rf.r.pos = rf.pos.value; n++; } });
       save(); render(); toast(n ? "DR positions filled in from course and speed: check or change them" : "Enter the DR, course, speed and the sight times first");
     });
-    $("sf-pick").addEventListener("click", pickStars); $("sf-example").addEventListener("click", example); $("sf-clear").addEventListener("click", clearSights);
+    $("sf-best4").addEventListener("click", pickStars);
+    $("sf-tw-am").addEventListener("click", function () { twilight(true); }); $("sf-tw-pm").addEventListener("click", function () { twilight(false); });
+    $("sf-starsat").addEventListener("input", function () { save(); starPanel(); }); $("sf-example").addEventListener("click", example); $("sf-clear").addEventListener("click", clearSights);
     $("sf-print").addEventListener("click", function () { if (last) window.print(); });
     $("sf-copy").addEventListener("click", function () { if (last) copyText($("sf-log").textContent); });
     Ships.onChange(function () { if (started["sight-fix"]) { shipFill(); render(); } });

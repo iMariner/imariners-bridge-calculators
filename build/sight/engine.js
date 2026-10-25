@@ -217,9 +217,9 @@
       for (var i = 0; i < CAT.length; i++) { var sp = starPlace(ms, CAT[i][0], fr); r = reduce(lat, lon, sp.gha, sp.dec); out.push({ name: CAT[i][0], hc: r.hc, zn: r.zn }); }
       return out;
     }
-    /* The best 3 or 4 stars to shoot: bright, between 20 and 70 degrees, azimuths spread round the horizon (largest smallest gap), nearest 45 degrees preferred. */
+    /* The best 3 or 4 stars to shoot: bright, between 20 and 60 degrees, azimuths spread round the horizon (largest smallest gap), nearest 45 degrees preferred. */
     function suggest(ms, lat, lon, count) {
-      var want = count || 4, all = bodiesAt(ms, lat, lon).filter(function (b) { return b.name !== "Sun" && b.name !== "Polaris" && b.hc >= 20 && b.hc <= 70 && MAG[b.name] <= 2.3; });
+      var want = count || 4, all = bodiesAt(ms, lat, lon).filter(function (b) { return b.name !== "Sun" && b.name !== "Polaris" && b.hc >= 20 && b.hc <= 60 && MAG[b.name] <= 2.3;     /* 20-60 deg: easy with the sextant and the azimuth ring */ });
       if (all.length <= want) return all.sort(function (a, b) { return a.zn - b.zn; });
       var best = null, bs = -1e9, idx = [];
       function score(set) {
