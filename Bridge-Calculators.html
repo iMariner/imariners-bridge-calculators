@@ -915,8 +915,8 @@ code { font-family: var(--font-mono); font-size: .9em; background: var(--surface
 .cp-svg .msc-sea { fill: var(--map-sea); } .cp-svg .msc-land { fill: var(--map-land); stroke: var(--map-coast); stroke-width: .5; }
 .cp-svg .msc-grid { fill: none; stroke: var(--map-grid); stroke-width: .5; } .cp-svg .msc-frame { fill: none; stroke: var(--map-ink); stroke-width: 1.2; }
 .cp-svg .msc-box { fill: rgba(var(--accent-rgb), .07); stroke: var(--accent); stroke-width: 2.4; }
-.cp-svg .msc-lab { font-family: var(--font-sans, inherit); font-size: 19px; font-weight: 600; letter-spacing: .03em; fill: var(--accent); paint-order: stroke; stroke: var(--map-sea); stroke-width: 5px; stroke-linejoin: round; }
-.cp-svg .msc-no { font-size: 23px; font-weight: 700; } .cp-svg .msc-tick { font-family: var(--font-mono); font-size: 17px; fill: var(--muted); }
+.cp-svg .msc-lab { font-family: var(--font-sans, inherit); font-size: var(--fs-xl); font-weight: var(--fw-semibold); letter-spacing: .03em; fill: var(--accent); paint-order: stroke; stroke: var(--map-sea); stroke-width: 5px; stroke-linejoin: round; }
+.cp-svg .msc-no { font-size: var(--fs-3xl); font-weight: var(--fw-bold); } .cp-svg .msc-tick { font-family: var(--font-mono); font-size: var(--fs-lg); fill: var(--muted); }
 :root[data-theme="night"] img.cp-img { filter: grayscale(1) invert(1) sepia(1) saturate(6) hue-rotate(-40deg) brightness(.75); }   /* red, dim: keeps night vision */
 /* Sight Fix */
 table.sf-rows { width: 100%; border-collapse: separate; border-spacing: 0 var(--sp-1); }
