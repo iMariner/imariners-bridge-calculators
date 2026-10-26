@@ -12,7 +12,7 @@ const STEPS = [
   ['sight-fix', "document.querySelector('[data-m=stars]').click(); document.getElementById('sf-example').click(); document.getElementById('sf-filldr').click(); document.getElementById('sf-tw-am').click(); document.getElementById('sf-best4').click()"],
   ['sight-fix', "['sunrun','one','mer','polaris','day'].forEach(function (m) { document.querySelector('[data-m=' + m + ']').click(); })"],
   ['sight-fix', "var bad = []; ['noon','sunrun','one','mer','polaris','stars','day'].forEach(function (m) { document.querySelector('[data-m=' + m + ']').click(); document.getElementById('sf-example').click(); if (document.getElementById('sf-out').hidden || document.getElementById('sf-plotbox').hidden || !document.getElementById('sf-plot').innerHTML) bad.push(m); }); if (bad.length) throw new Error('example without a fix or diagram: ' + bad.join(', '))"],
-  ['special-areas', "0"], ['course-speed', "document.getElementById('cs-example').click()"], ['eta', "document.getElementById('et-example') && document.getElementById('et-example').click()"],
+  ['special-areas', "0"], ['charts-pubs', "0"], ['course-speed', "document.getElementById('cs-example').click()"], ['eta', "document.getElementById('et-example') && document.getElementById('et-example').click()"],
   ['daily-reports', "0"], ['true-wind', "document.getElementById('tw-example') && document.getElementById('tw-example').click()"],
   ['heel-draught', "document.getElementById('hd-example') && document.getElementById('hd-example').click()"], ['anchor-depth', "document.getElementById('ad-example') && document.getElementById('ad-example').click()"],
   ['ship', "0"], ['true-az', "document.getElementById('az-example').click()"], ['design', "0"]

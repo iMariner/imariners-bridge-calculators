@@ -24,7 +24,7 @@ The page must work on any Chrome or Edge from version 84 (2020) on, because ship
 2. `<body>`: header, side navigation (`data-tool-link`), `<main>` with one `<section class="tool" id="...">` per tool. A tool's print sheet is a `.print-sheet` child of its section.
 3. `<script>` (one IIFE): `store` (localStorage, key prefix `bridgeCalc.`), `Ships`, the almanac engine (`ASTRO-BEGIN/END`), calculation blocks with begin/end markers (`REPORTS-`, `SUN-`, `GEO-`, `ETA-`, `CALC-`), one `initXxx()` per tool, the embedded data blobs (`SA_AREAS`, `SA_LAND`, `SA_SHEET`), then the `TOOLS` registry and hash routing.
 
-Tools now: True Wind, Sunrise & Sunset, Sight Fix, Special Areas & Map, Gyro & Compass Error (includes the true azimuth working), Deviation Card, Course & Speed Made Good, ETA, Vessel Daily Reportings, Draught due to Heel, Safe Anchoring Depth, Ship Particulars, Design System. (True Azimuth still exists at `#true-az` but is hidden from the menu.)
+Tools now: True Wind, Sunrise & Sunset, Sight Fix, Special Areas & Map, Routeing & Pilots, Gyro & Compass Error (includes the true azimuth working), Deviation Card, Course & Speed Made Good, ETA, Vessel Daily Reportings, Draught due to Heel, Safe Anchoring Depth, Ship Particulars, Design System. (True Azimuth still exists at `#true-az` but is hidden from the menu.)
 
 ## Rules that must hold
 - **Design system only.** No hex colours, font names, px font sizes or px radii in component CSS or inline styles; use `var(--token)` and the `u-*` helper classes. Night theme is red only. After any change open the **Design System** page and press **Run check**: it must say Clean.
@@ -98,3 +98,7 @@ Diagram key and views (since 25 Oct 2026): a key with a sample of each line sits
 
 ## Celestial work: COMPLETE (owner signed off 25 Oct 2026)
 Sight Fix (7 methods with a "How this method works" box each), Sunrise & Sunset (Moon, ship under way), Gyro & Compass Error (amplitude) are finished. Full test set: smoke.js; build/sight test_engine, test_fix, test_owndr, test_single, test_reject, test_plot, test_plotgeom, test_apmode, test_book, test_subramaniam, test_subramaniam_examples; test_bodies + test_moon_planets (DE440 files in build/sight); build/sun/test_moon_moving.js; build/geo/test_wgs84.js. Change celestial code only for a reported problem, and run all of these after.
+
+
+## Routeing & Pilots (`#charts-pubs`, 26 Oct 2026)
+The owner's two Admiralty diagrams (routeing chart limits from e-NP136, Sailing Directions coverage) embedded as WebP data URIs (about 400 KB together; made with pdftoppm + cwebp -q 72, the routeing page cropped to the map). Owner chose the pictures over a redraw: the Sailing Directions areas are about 75 irregular polygons and a hand redraw would not be accurate. Tap to zoom at the point tapped (`initChartsPubs`); Night mode inverts and tints them red. Source PDFs were in ~/Ship Folder/01 Navigation & Passage Planning/.

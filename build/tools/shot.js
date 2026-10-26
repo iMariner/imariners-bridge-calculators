@@ -12,7 +12,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 const TOOLS = [
   ['true-wind', "document.querySelector('#tool-true-wind,#true-wind')&&0"],
   ['sun-times', "document.getElementById('su-example').click()"],
-  ['special-areas', "0"],
+  ['special-areas', "0"], ['charts-pubs', "0"],
   ['gyro-error', "document.getElementById('ge-example').click()"],
   ['dev-card', "document.getElementById('dc-example').click()"],
   ['course-speed', "document.getElementById('cs-example').click()"],
