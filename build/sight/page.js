@@ -77,7 +77,7 @@
             if (sel.value === "__short") { sel.full = false; fillBodies(sel, r.name || ""); return; }
             r.name = sel.value; sel.full = false; fillBodies(sel, r.name);      /* back to the short list once a body is chosen; the chosen one shows its name only */ if (refs.limb) { var lm = r.name === "Moon" || r.name === "Sun"; refs.limb.hidden = !lm; refs.na.hidden = lm; } limbCol(); save(); render(); }); sel.addEventListener("blur", function () { if (sel.full) { sel.full = false; fillBodies(sel, r.name || ""); } });   /* leaving the box: back to the short list */
           td.appendChild(sel); tr.appendChild(td); refs.sel = sel; }
-        var tt = el("td", "w-time"), ti = el("input"); ti.type = "time"; ti.step = "1"; ti.value = r.time || ""; ti.setAttribute("aria-label", "Local time of sight " + (i + 1)); ti.addEventListener("input", function () { r.time = ti.value; r.manual = true; save(); render(); }); tt.appendChild(ti); tr.appendChild(tt); refs.time = ti;
+        var tt = el("td", "w-time"), ti = el("input"); ti.type = "time"; ti.step = "1"; ti.value = r.time || ""; if (r.autoT) ti.className = "sf-auto"; ti.setAttribute("aria-label", "Local time of sight " + (i + 1)); ti.addEventListener("input", function () { r.time = ti.value; r.manual = true; r.autoT = false; ti.className = ""; save(); render(); }); tt.appendChild(ti); tr.appendChild(tt); refs.time = ti;
         if (r.kind === "lat") {
           var tl = el("td"); tl.colSpan = 2; var fz = el("div", "fused fused-2"), w1 = el("div", "input-wrap"), w2 = el("div", "input-wrap");
           var a = el("input"); a.type = "text"; a.inputMode = "decimal"; a.placeholder = "Lat °"; a.maxLength = 3; a.value = r.ld || ""; a.setAttribute("aria-label", "Noon latitude degrees");
@@ -158,7 +158,7 @@
       var box = $("sf-merpass"), show = st.method === "noon" || st.method === "mer" || st.method === "sunrun"; box.hidden = !show; if (!show) return;
       var ok = v.lat !== null && v.lon !== null && !v.errs.lat && !v.errs.lon && v.date && v.zone !== null && !v.errs.zone;
       if (!ok) { box.textContent = "Sun's meridian passage: enter the DR, date and zone to see the time."; return; }
-      var base = Date.UTC(v.date.y, v.date.m - 1, v.date.d), secs = rowRefs.map(function (rf) { return parseTimeEl(rf.time); }).filter(function (x) { return x !== null; });
+      var base = Date.UTC(v.date.y, v.date.m - 1, v.date.d), secs = rowRefs.filter(function (rf) { return !rf.r.autoT; }).map(function (rf) { return parseTimeEl(rf.time); }).filter(function (x) { return x !== null; });
       var ref = secs.length ? Math.min.apply(null, secs) : 12 * 3600;                 /* the DR is for the first sight; with no times yet, for noon */
       var dr0 = { lat: v.lat * ($("sf-lat-s").checked ? -1 : 1), lon: v.lon * ($("sf-lon-w").checked ? -1 : 1), ms: base + (ref - v.zone * 3600) * 1000, course: v.course || 0, speed: v.speed || 0 };
       var t = base + (12 - v.zone) * 3600000, q = null;
@@ -169,6 +169,11 @@
       box.textContent = "";
       box.appendChild(el("strong", "", "Sun's meridian passage " + hms(lsec) + " ship's time"));
       box.appendChild(el("span", "", rd.hc < 0 ? " · the Sun stays below the horizon today" : " · bears " + brg + " · sextant about " + alt(hsFor(pl, rd, v, "L")) + " (lower limb) · be ready by " + hms(ready).slice(0, 5)));
+      var rf2 = rowRefs[1];                                                          /* Noon position: row 2 is the noon sight, its time is the meridian passage */
+      if (st.method === "noon" && rf2 && rf2.r.kind === "sun" && rd.hc > 0 && (rf2.r.autoT || !rf2.time.value)) {
+        if (rf2.time.value !== hms(lsec)) { rf2.time.value = hms(lsec); rf2.r.time = rf2.time.value; rf2.r.autoT = true; rf2.time.className = "sf-auto"; save(); }
+        box.appendChild(el("span", "", ". Row 2 time is filled in: at noon type only the sextant altitude."));
+      }
     }
     function hsFor(pl, rd, v, limb) {                                                /* the sextant reading that gives altitude rd.hc: Ho inverted */
       var ic = ($("sf-ie-on").checked ? -1 : 1) * (v.ie || 0), hs = rd.hc;
@@ -180,6 +185,7 @@
       rowRefs.forEach(function (rf, i) {
         var r = rf.r, sec = parseTimeEl(rf.time), any = (r.kind === "lat" ? (r.ld || r.lm) : (r.hd || r.hm)) !== "" && (r.kind === "lat" ? (r.ld || r.lm) : (r.hd || r.hm)) !== undefined;
         if (r.kind === "star" && !any) return;
+        if (r.autoT && !any) return;                                                   /* the noon time filled in from meridian passage, no altitude yet */
         if (r.kind === "lat" && !any && sec === null) return;
         var name = r.kind === "lat" ? "Latitude" : (r.kind === "sun" ? "Sun" : r.name);
         if (!any && sec === null && r.kind !== "star") return;
@@ -198,7 +204,7 @@
     }
 
     function render() {
-      var v = read(), rr = readRows(v), msg = $("sf-rows-msg"); starPanel(); expectRows(v); merPassBox(v);
+      var v = read(), rr = readRows(v), msg = $("sf-rows-msg"); starPanel(); merPassBox(v); expectRows(v);
       msg.textContent = rr.bad.join(" "); msg.className = rr.bad.length ? "hint error" : "hint";
       var one = rr.rows.length === 1 && rr.rows[0].name !== "Latitude";
       var ready = !Object.keys(v.errs).length && v.lat !== null && v.lon !== null && (one || (v.course !== null && v.speed !== null)) && v.date && v.zone !== null && v.hoe !== null && (one || rr.rows.length >= 2) && !rr.bad.length;
@@ -560,10 +566,11 @@
         if (m === "day") { if (empty(rows[0])) rows[0].name = "Sun"; if (empty(rows[1])) rows[1].name = "Moon"; }
         if (m === "noon" && !$("sf-fixat").value) { $("sf-fixat").value = "12:00"; st.fixAuto = true; }
         if (m !== "noon" && st.fixAuto && $("sf-fixat").value === "12:00") { $("sf-fixat").value = ""; st.fixAuto = false; }     /* the noon time does not belong to other methods */
+        if (m !== "noon") rows.forEach(function (r) { if (r && r.autoT) { if (!r.hd && !r.hm) r.time = ""; r.autoT = false; } });     /* an altitude typed: the time is now that sight's own */
         build();
       }
       [].forEach.call(document.querySelectorAll("#sf-methods [data-m]"), function (b) { var on = b.getAttribute("data-m") === m; b.className = on ? "btn primary" : "btn"; b.setAttribute("aria-pressed", on ? "true" : "false"); });
-      $("sf-method-help").textContent = METHODS[m][1]; howto(m);
+      $("sf-method-help").textContent = METHODS[m][1]; howto(m); $("sf-steps").hidden = m !== "noon";
       save(); render();
     }
     [].forEach.call(document.querySelectorAll("#sf-methods [data-m]"), function (b) { b.addEventListener("click", function () { setMethod(b.getAttribute("data-m"), true); }); });

@@ -133,3 +133,7 @@ table.sf-rows td.n { font-size: var(--fs-base); }
 .sf-merpass strong { color: var(--accent); }
 .sf-merpass span { color: var(--muted); }
 /* Sight Fix end */
+.sf-rows input.sf-auto { color: var(--muted); }
+.sf-steps { margin-top: var(--sp-4); }
+.sf-steps li { margin-bottom: var(--sp-2); line-height: 1.5; }
+.sf-steps p { margin: var(--sp-2) 0 0; }
