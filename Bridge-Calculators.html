@@ -1046,7 +1046,8 @@ table.sf-rows td.n { font-size: var(--fs-base); }
 #sight-fix .sf-chip strong { font-size: var(--fs-base); }
 #sight-fix #sf-hero { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 @media (max-width: 1499px) { #sight-fix #sf-hero { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-#sight-fix #sf-form .sf-dz { grid-template-columns: minmax(0, 1fr) 92px; }
+#sight-fix #sf-form .sf-dz { grid-template-columns: minmax(0, 1fr) 84px; }
+#sight-fix #sf-date { padding-left: var(--sp-2); padding-right: var(--sp-1); }     /* room for the whole date in older Chrome, whose date box is wider */
 #sight-fix #sf-hero .readout { font-size: var(--fs-xl); }
 #sight-fix #sf-form .fused .segmented { flex: 0 0 auto; } #sight-fix #sf-form .fused .segmented label { min-width: 34px; padding-left: var(--sp-2); padding-right: var(--sp-2); }
 #sight-fix #sf-form .fused .input-wrap input { padding-left: var(--sp-2); padding-right: var(--sp-5); }
@@ -1055,6 +1056,21 @@ table.sf-rows td.n { font-size: var(--fs-base); }
 .sf-merpass strong { color: var(--accent); }
 .sf-merpass span { color: var(--muted); }
 /* Sight Fix end */
+.sf-rows input.sf-auto { color: var(--muted); }
+.sf-steps { margin-top: var(--sp-4); }
+.sf-steps li { margin-bottom: var(--sp-2); line-height: 1.5; }
+.sf-steps p { margin: var(--sp-2) 0 0; }
+table.sf-rows td.w-dr > span.sf-dr1 { font-size: var(--fs-sm); color: var(--text); padding-left: var(--sp-1h); }
+.sf-plot, .sf-keyicon { --sp-c0: var(--accent); --sp-c1: var(--apparent); --sp-c2: var(--ship); --sp-c3: var(--take); }
+.sf-plot .sp-c0, .sf-keyicon .sp-c0 { stroke: var(--sp-c0); } .sf-plot .sp-c1 { stroke: var(--sp-c1); } .sf-plot .sp-c2 { stroke: var(--sp-c2); } .sf-plot .sp-c3 { stroke: var(--sp-c3); }
+.sf-plot text.sp-c0, .sf-plot .sp-head.sp-c0, .sf-keyicon .sp-head.sp-c0 { fill: var(--sp-c0); } .sf-plot text.sp-c1, .sf-plot .sp-head.sp-c1 { fill: var(--sp-c1); } .sf-plot text.sp-c2, .sf-plot .sp-head.sp-c2 { fill: var(--sp-c2); } .sf-plot text.sp-c3, .sf-plot .sp-head.sp-c3 { fill: var(--sp-c3); }
+.sf-plot text.sp-c0, .sf-plot text.sp-c1, .sf-plot text.sp-c2, .sf-plot text.sp-c3 { stroke: var(--surface); }
+.sf-plot .sp-head, .sf-keyicon .sp-head { stroke: none; } .sf-plot .sp-head.sp-trk, .sf-keyicon .sp-head.sp-trk { fill: var(--muted); }
+.sf-plot .sp-icpt, .sf-keyicon .sp-icpt { stroke-width: 2.4; } .sf-plot .sp-lop, .sf-keyicon .sp-lop { stroke-width: 2.2; }
+.sf-plot .sp-lab0, .sf-plot .sp-labz, .sf-plot .sp-labi, .sf-plot .sp-labt { font-weight: var(--fw-medium); } .sf-plot .sp-labt { fill: var(--muted); }
+.sf-plot .sp-rosebg { fill: var(--surface); opacity: .6; } .sf-plot .sp-rosering { fill: none; stroke: var(--muted); stroke-width: 1.2; }
+.sf-plot .sp-rosetk { stroke: var(--muted); stroke-width: 1; } .sf-plot .sp-rosetx { font-family: var(--font-mono); font-size: var(--fs-2xs); fill: var(--muted); } .sf-plot .sp-spoke { stroke-width: 1.8; }
+.sf-plot .sp-rosetx.sp-lab { font-size: var(--fs-xs); font-weight: var(--fw-bold); }
 .sf-rows input.sf-auto { color: var(--muted); }
 .sf-steps { margin-top: var(--sp-4); }
 .sf-steps li { margin-bottom: var(--sp-2); line-height: 1.5; }
@@ -8766,6 +8782,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
     build(); setMethod(st.method, false);
   }
   /* SIGHTPAGE-END */
+
 
 
 

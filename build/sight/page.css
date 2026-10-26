@@ -127,7 +127,8 @@ table.sf-rows td.n { font-size: var(--fs-base); }
 #sight-fix .sf-chip strong { font-size: var(--fs-base); }
 #sight-fix #sf-hero { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 @media (max-width: 1499px) { #sight-fix #sf-hero { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-#sight-fix #sf-form .sf-dz { grid-template-columns: minmax(0, 1fr) 92px; }
+#sight-fix #sf-form .sf-dz { grid-template-columns: minmax(0, 1fr) 84px; }
+#sight-fix #sf-date { padding-left: var(--sp-2); padding-right: var(--sp-1); }     /* room for the whole date in older Chrome, whose date box is wider */
 #sight-fix #sf-hero .readout { font-size: var(--fs-xl); }
 #sight-fix #sf-form .fused .segmented { flex: 0 0 auto; } #sight-fix #sf-form .fused .segmented label { min-width: 34px; padding-left: var(--sp-2); padding-right: var(--sp-2); }
 #sight-fix #sf-form .fused .input-wrap input { padding-left: var(--sp-2); padding-right: var(--sp-5); }
