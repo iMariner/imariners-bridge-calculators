@@ -144,7 +144,7 @@
     /* ---------- reports on this passage ---------- */
     function contactTxt(s) {
       var e = (s.how || []).filter(function (h) { return h.ty === "email"; })[0], v = (s.how || []).filter(function (h) { return h.ty === "vhf"; })[0];
-      var vt = v ? "VHF " + String(v.v).replace(/^(VHF\s*)/i, "") + (v.to ? " " + v.to : "") : "";
+      var vt = v ? "VHF " + String(v.v).replace(/^(VHF\s*)/i, "") + (v.to ? " " + clean(v.to) : "") : "";
       return [e ? e.v : "", vt.length > 48 ? vt.slice(0, 46).replace(/\s+\S*$/, "") + " …" : vt].filter(Boolean);
     }
     function renderPlan() {
@@ -254,17 +254,67 @@
     }
     function para(t, cls) { if (!t) return null; var p = document.createElement("p"); if (cls) p.className = cls; p.textContent = t; return p; }
     function list(items) { if (!items.length) return null; var u = document.createElement("ul"); items.forEach(function (x) { var li = document.createElement("li"); if (typeof x === "string") li.textContent = x; else li.appendChild(x); u.appendChild(li); }); return u; }
+    var HOW_NAMES = { email: "E-mail", vhf: "VHF", mf: "MF", "inmarsat-c": "Inmarsat C", phone: "Phone", fax: "Fax", telex: "Telex", web: "Web", other: "By" }, SR_ABOUT = [];
+    var FOREIGN = /[\u0400-\u04ff\u3000-\u9fff\uac00-\ud7af\uff00-\uffef]/;
+    var SRCRX = /(guide (gives|prints|mentions|says)|the (english|chinese|russian|korean|japanese|french) (guide|text|version|original)|\bprints?\b|\bprinted\b|leaves? .{0,40} off|not in the (chinese|english|russian|korean)|misprint|typo|copy (on|of|taken)|archived|secondary|could not|not (found|confirmed)|openstreetmap|differs?\b|discrepanc|checked against|blocked|\bpdf\b|\.docx?\b)/i;
+    function clean(t) {                                            /* plain English only: drop bracketed originals in other scripts and bare article references */
+      if (!t) return "";
+      var x = String(t).replace(/\s*[(\uff08][^()\uff08\uff09]*[)\uff09]/g, function (m) { return FOREIGN.test(m) || /^\s*[(\uff08]\s*(rules?\s+)?(arts?\.|articles?\b|para\b|paras?\.|pp?\.\s*\d|reg\.|annex\b|\u00a7)/i.test(m) ? "" : m; });
+      x = x.replace(/[\u3000-\u9fff\uac00-\ud7af\uff00-\uffef]+[\u3000-\u9fff\uac00-\ud7af\uff00-\uffef\s,.\/]*/g, function (m) { return FOREIGN.test(m) ? " " : m; });
+      x = x.replace(/\s*\(([^()]*)\)/g, function (m, inner) { return /^(user guide|english guide|chinese text|the rules|rules|notice|order|decree|resolution|guide)\b/i.test(inner) || /\b(regulations?|appendix|annex|p\.\s*\d|pp\.\s*\d|arts?\.\s*\d|article|decree|gazette)\b/i.test(inner) ? "" : m; });
+      x = x.replace(/\b(see )?((?:cn|ru|kr|jp|imo|surnav)-[a-z0-9-]+)\b/g, function (m, see, id) { return byId[id] ? (see ? "see " : "") + "“" + byId[id].t + "”" : m; });
+      return x.replace(/\s+([.,;:)])/g, "$1").replace(/\(\s*\)/g, "").replace(/\s{2,}/g, " ").replace(/^[\s,;:.]+/, "").trim();
+    }
+    function cut(t, n) { return t.length > n ? t.slice(0, n - 1).replace(/\s+\S*$/, "") + " …" : t; }
+    function sentences(t) {                                        /* split notes into short points; never after art. / No. / e.g. */
+      var x = clean(t); if (!x) return [];
+      var out = [], cur = "", parts = x.split(/([.;])\s+(?=[A-Z])/);
+      for (var i = 0; i < parts.length; i += 2) {
+        cur += parts[i] + (parts[i + 1] || "");
+        if (!/\b(art|arts|no|nos|p|pp|e\.g|i\.e|approx|incl|st|ch|vol|fig|res)$/i.test(cur.replace(/[.;]$/, ""))) { out.push(cur.replace(/;$/, ".").trim()); cur = ""; } else cur += " ";
+      }
+      if (cur.trim()) out.push(cur.trim());
+      return out.filter(function (s2) { return s2.length > 2; });
+    }
+    function shortWhen(w) {                                        /* one short line per report: the source's own heading if it has one */
+      var t = clean(w.x), c = t.indexOf(":"), head = c > 6 && c <= 80 ? t.slice(0, c) : "";
+      var lab = { before_entry: w.h ? w.h + " h before entering" : "Before entering", entry: "On entering", exit: "On leaving", departure: w.h ? w.h + " h before sailing" : "On departure", before_arrival: w.h ? w.h + " h before arrival" : "Before arrival", arrival: "On arrival", position: w.iv ? "Every " + w.iv + " h while inside" : "Position reports", deviation: "On a deviation", final: "Final report" }[w.e] || "";
+      if (head && lab && !/\d+\s*h/.test(head) && /(before|every)/.test(lab)) head = lab + ": " + head;
+      var line = head || (lab ? lab + (t ? ": " + cut(t, 90) : "") : cut(t, 110));
+      return (w.rep ? w.rep + ". " : "") + line.charAt(0).toUpperCase() + line.slice(1);
+    }
     function renderSys() {
       var s = byId[ui.sel]; $("sr-sys").hidden = !s; $("sr-msg").hidden = !s; if (!s) return;
-      $("sr-d-sys").textContent = s.sys; $("sr-d-title").textContent = s.t;
+      $("sr-d-sys").textContent = clean(s.sys) || s.sys; $("sr-d-title").textContent = clean(s.t) || s.t;
       var tags = $("sr-d-tags"); while (tags.firstChild) tags.removeChild(tags.firstChild);
       [[(KIND[s.k] || [0, s.k])[1], "k-" + s.kc], [s.cty], [s.res], [s.st && s.st !== "in effect" ? s.st : ""], ["Checked " + s.chk], [s.cf === "low" ? "Low confidence: check before use" : s.cf === "medium" ? "Medium confidence" : "", s.cf === "low" ? "low" : ""]].forEach(function (t) { if (!t[0]) return; var sp = document.createElement("span"); sp.className = "sr-tag" + (t[1] ? " " + t[1] : ""); sp.textContent = t[0]; tags.appendChild(sp); });
-      var F = $("sr-facts"); while (F.firstChild) F.removeChild(F.firstChild);
-      fact(F, "Who must report", [para(s.ap), para(s.apq ? "“" + s.apq + "”" : "", "q")]);
-      fact(F, "When", [list((s.when || []).map(function (w) { return (EVENT_NAMES[w.e] ? EVENT_NAMES[w.e].charAt(0).toUpperCase() + EVENT_NAMES[w.e].slice(1) + (w.h ? " (" + w.h + " h)" : "") + (w.iv ? " (every " + w.iv + " h)" : "") + (w.rep ? ", " + w.rep : "") + ": " : "") + (w.x || ""); }))]);
-      fact(F, "How to send", [list((s.how || []).map(function (h) { var sp = document.createElement("span"); var c = document.createElement("span"); c.className = "c"; c.textContent = (h.ty === "email" ? "" : h.ty.toUpperCase().replace("INMARSAT-C", "Inmarsat C") + " ") + h.v; sp.appendChild(c); sp.appendChild(document.createTextNode((h.to ? "  " + h.to : "") + (h.n ? " (" + h.n + ")" : ""))); return sp; }))]);
-      fact(F, "Address and heading", [para(s.ad ? "To: " + s.ad : ""), para(s.hd ? "Heading: " + s.hd : ""), para(!s.ad && !s.hd ? "No special address line or heading is given by the source." : "", "q"), para(s.fn, "q")]);
-      if (s.nt) fact(F, "Notes", [para(s.nt)], true);
+      /* at a glance: who to call, when, what to say. Long source wording goes into the folds below. */
+      var G = $("sr-glance"); while (G.firstChild) G.removeChild(G.firstChild);
+      function block(title, node) { if (!node) return; var b = document.createElement("div"); b.className = "sr-gb"; var h = document.createElement("h3"); h.textContent = title; b.appendChild(h); b.appendChild(node); G.appendChild(b); }
+      var how = document.createElement("div"); how.className = "sr-how";
+      (s.how || []).forEach(function (h) {
+        var r = document.createElement("div"); r.className = "sr-hrow";
+        var t = document.createElement("span"); t.className = "sr-ht"; t.textContent = HOW_NAMES[h.ty] || ""; r.appendChild(t);
+        var v = document.createElement("b"); v.className = "sr-hv"; v.textContent = String(h.ty === "vhf" ? h.v.replace(/^VHF\s*/i, "") : h.v); r.appendChild(v);
+        var who = clean(h.to), nn = clean(h.n); nn = nn ? nn.charAt(0).toUpperCase() + nn.slice(1) : ""; if (who || nn) { var w2 = document.createElement("span"); w2.className = "sr-hw"; w2.textContent = [who, nn].filter(Boolean).join(". "); r.appendChild(w2); }
+        how.appendChild(r);
+      });
+      if (s.ad || s.hd) { var ah = document.createElement("div"); ah.className = "sr-hrow"; var t2 = document.createElement("span"); t2.className = "sr-ht"; t2.textContent = "Write"; ah.appendChild(t2); var v2 = document.createElement("span"); v2.className = "sr-hw"; v2.textContent = [s.ad ? "To: " + clean(s.ad) : "", s.hd ? "Heading: " + s.hd : ""].filter(Boolean).join("   "); ah.appendChild(v2); how.appendChild(ah); }
+      block("Send to", how.firstChild ? how : null);
+      block("When", list((s.when || []).map(shortWhen)));
+      var L = (s.ln || []).map(function (ln) { var sp = document.createElement("span"); var b = document.createElement("b"); b.className = "sr-ll"; b.textContent = ln.l; sp.appendChild(b); sp.appendChild(document.createTextNode(cut(clean(ln.x) || SR_LINES[ln.l] || "", 90) + (ln.r === "optional" ? " (optional)" : ln.r === "if-applicable" ? " (if it applies)" : ""))); return sp; });
+      var wl = list(L); if (wl) wl.className = "sr-lines-ul";
+      block("What to report", wl);
+      var good = $("sr-good"); while (good.firstChild) good.removeChild(good.firstChild);
+      var nt = sentences(s.nt), isSrc = function (x) { return SRCRX.test(x) && !/^no (e-?mail|phone|fax|vhf)/i.test(x); }, prac = nt.filter(function (x) { return !isSrc(x); }), about = nt.filter(isSrc);
+      if (s.fn && !SRCRX.test(s.fn)) prac.unshift(clean(s.fn));
+      if (prac.length) { var gh = document.createElement("h3"); gh.textContent = "Good to know"; good.appendChild(gh); good.appendChild(list(prac.map(function (x) { return cut(x, 260); }))); }
+      var FO = $("sr-folds"); while (FO.firstChild) FO.removeChild(FO.firstChild);
+      function fold(title, nodes) { nodes = nodes.filter(Boolean); if (!nodes.length) return; var dd = document.createElement("details"); dd.className = "sr-fold"; var sm = document.createElement("summary"); sm.textContent = title; dd.appendChild(sm); nodes.forEach(function (n) { dd.appendChild(n); }); FO.appendChild(dd); }
+      fold("Who must report", [para(clean(s.ap))]);
+      fold("Each report in full", [list((s.when || []).map(function (w) { return clean(w.x); }).filter(Boolean))]);
+      fold("Original wording", [para(s.apq, "q")]);
+      SR_ABOUT = about;
       var ab = $("sr-d-areabody"); while (ab.firstChild) ab.removeChild(ab.firstChild);
       var a = s.ar || {};
       function addP(n) { if (n) ab.appendChild(n); }
@@ -281,9 +331,11 @@
       $("sr-d-area").hidden = !(a.pts && a.pts.length) && !s.aq && !a.sh;
       $("sr-notes").value = d.notes[s.id] || "";
       var src = $("sr-d-src"); while (src.firstChild) src.removeChild(src.firstChild);
-      src.appendChild(document.createTextNode("Source: "));
-      (s.src || []).forEach(function (x, i) { if (i) src.appendChild(document.createTextNode("; ")); var e = document.createElement(x.url ? "a" : "span"); if (x.url) { e.href = x.url; e.target = "_blank"; e.rel = "noopener"; } e.textContent = x.t + (x.ref ? ", " + x.ref : "") + (x.date ? " (" + x.date + ")" : ""); src.appendChild(e); });
-      if (s.ver) src.appendChild(document.createTextNode(". How it was checked: " + s.ver));
+      var su = list((s.src || []).map(function (x) { var e = document.createElement(x.url ? "a" : "span"); if (x.url) { e.href = x.url; e.target = "_blank"; e.rel = "noopener"; } e.textContent = x.t + (x.ref ? ", " + x.ref : "") + (x.date ? " (" + x.date + ")" : ""); return e; }));
+      if (su) { src.appendChild(para("Official source", "sr-sh")); src.appendChild(su); }
+      if (SR_ABOUT.length) { src.appendChild(para("Remarks on the texts", "sr-sh")); src.appendChild(list(SR_ABOUT)); }
+      if (s.ver) { src.appendChild(para("How it was checked", "sr-sh")); src.appendChild(para(s.ver)); }
+      src.appendChild(para("Checked " + s.chk + (s.cf ? ", confidence " + s.cf : "") + ". Confirm with your latest ALRS and Notices to Mariners.", "q"));
       renderMsg();
     }
 
@@ -348,7 +400,7 @@
       L.forEach(function (ln) {
         var tr = document.createElement("tr"); if (ln.r === "optional") tr.className = "opt";
         var c1 = document.createElement("td"); c1.className = "l"; c1.textContent = ln.l; tr.appendChild(c1);
-        var c2 = document.createElement("td"); c2.className = "w"; var b = document.createElement("b"); b.textContent = ln.x || SR_LINES[ln.l] || ln.l; c2.appendChild(b);
+        var c2 = document.createElement("td"); c2.className = "w"; var b = document.createElement("b"); b.textContent = cut(clean(ln.x), 120) || SR_LINES[ln.l] || ln.l; c2.appendChild(b);
         if (ln.r === "optional" || ln.r === "if-applicable") c2.appendChild(document.createTextNode(ln.r === "optional" ? " (optional)" : " (if it applies)"));
         tr.appendChild(c2);
         var c3 = document.createElement("td"); c3.className = "v"; var ta = document.createElement("textarea"); ta.rows = 1; ta.setAttribute("aria-label", "Line " + ln.l);

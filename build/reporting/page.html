@@ -74,13 +74,15 @@
               </div>
               <div class="actions u-mt-0"><button type="button" class="btn" id="sr-d-zoom">Show on chart</button></div>
             </div>
-            <div class="sr-facts" id="sr-facts"></div>
-            <details class="u-mt-3" id="sr-d-area"><summary>Area and boundary points</summary><div id="sr-d-areabody"></div></details>
+            <div class="sr-glance" id="sr-glance"></div>
+            <div class="sr-good" id="sr-good"></div>
+            <div class="sr-folds" id="sr-folds"></div>
+            <details class="sr-fold" id="sr-d-area"><summary>Area and boundary points</summary><div id="sr-d-areabody"></div></details>
             <div class="field u-mt-3">
               <label for="sr-notes">Ship's notes for this system (from your ALRS, Notices to Mariners, agent)</label>
               <textarea id="sr-notes" class="text-input" rows="2" placeholder="e.g. NtM 1234/26: new e-mail address …"></textarea>
             </div>
-            <div class="small muted u-mt-2h" id="sr-d-src"></div>
+            <details class="sr-fold" id="sr-d-srcfold"><summary>About the source</summary><div id="sr-d-src"></div></details>
           </div>
 
           <div class="card" id="sr-msg" hidden>
