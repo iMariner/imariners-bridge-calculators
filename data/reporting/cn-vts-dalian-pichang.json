@@ -1,0 +1,259 @@
+{
+  "id": "cn-vts-dalian-pichang",
+  "system": "China VTS",
+  "title": "Dalian VTS, Pikou to Changhai route subarea",
+  "country": "China",
+  "authority": "Dalian MSA (大连海事局), Dalian VTS Centre (大连交管中心)",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": "2022-05-01",
+  "applies_to": "Foreign ships, and Chinese passenger ships and other Chinese ships of 300 GT and over. Chinese ships under 300 GT may take part. Military, fishing and sports craft are not covered unless stated. A foreign crude oil tanker is always included.",
+  "applies_quote": "第四条 在大连VTS区域内航行、停泊和作业的外国籍船舶和中国籍客船、300总吨及以上其他船舶，应当向大连交管中心报告。300总吨以下的中国籍船舶，可以自愿参加本规则规定的船舶报告制度。 (指南) 除另有明文规定外，军用船舶、渔业船舶和体育运动船艇不适用本指南的报告要求。",
+  "when": [
+    {
+      "event": "before_arrival",
+      "hours_before": 24,
+      "interval_h": null,
+      "report": null,
+      "text": "VTS arrival pre-report, sent on the internet by the company or agent at least 24 hours before entering the VTS subarea (if the voyage is shorter than 24 hours, on leaving the last port). Not for ships only passing through. Site www.dpn.com.cn, menu 'VTS抵港预报'. Content: ship's name, call sign, ETA, draught, cargo, ship size (type). The port operator also files the berthing plan 24 hours before berthing. (VTS抵港预报: 船舶进入VTS分区前（过路船除外），必须提前24小时（航程不足24小时的，应在离开上一港口时），由船公司或者代理，在互联网上提交VTS抵港预报。)"
+    },
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Entry report when crossing the report line (north line F-G-H-I, south line A-B-C or east line C-D-E). Content: ship's name or call sign, position, draught, purpose of entry, other information the VTS asks for. (进港报告: 通过报告线 ... 船名或呼号，船位，吃水，进港目的，大连交管中心要求的其它信息。)"
+    },
+    {
+      "event": "arrival",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Arrival report on reaching a berth or anchorage in the subarea: ship's name or call sign, berth or anchor position, time of berthing or anchoring. (抵港报告: 船舶抵达VTS分区内泊位或者锚地 ... 船名或呼号，抵达的泊位或锚位，靠泊或锚泊时间等。)"
+    },
+    {
+      "event": "departure",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Sailing report before leaving the berth or weighing anchor: ship's name or call sign, berth or anchorage, time of unberthing or weighing anchor, destination. (开航报告: 船舶离泊或起锚前 ... 船名或呼号，所在泊位或锚位，离泊或起锚时间及目的地等。)"
+    },
+    {
+      "event": "exit",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Departure report when crossing the report line out of the subarea: ship's name or call sign, time of crossing, position. (离港报告: 船舶通过报告线离开VTS分区 ... 船名或呼号，通过报告线时间，船位等。)"
+    },
+    {
+      "event": "deviation",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Change report when the pre-reported plan changes: the items that changed. (变化报告: 船舶预报计划信息发生变化 ... 变化的项目。)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Pilot report when the pilot boards and leaves: ship's name, time, place, pilot's name or number. (引航报告: 引航员登离轮 ... 登船及离船的船名、时间、地点及引航员姓名或编号等。)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Activity report before and after: towing or speed trials in a fairway, shifting berth, engine trials, sea trials, compass testing. Ship's name or call sign, position, other information. (活动报告: 应在以下行动之前和结束之后报告: 航道内拖带或测速；调整泊位；试车，试航和测试磁罗经等。)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Accident report at once by all available means: ship's name or call sign, nationality, time, place, cause, help needed, damage, other information. Abnormal situation report (aids to navigation out of order, obstructions, drifting objects): at once by all means, with position. Anchoring in an emergency outside anchorages: report at once. (事故报告 / 异常情况报告: 采用一切有效手段报告大连交管中心。)"
+    },
+    {
+      "event": "position",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Ships only passing through the subarea: report on entering and leaving it: ship's name, call sign, MMSI, position (lat/long or from a landmark), course, speed, last port, destination. (过路船舶报告: 进入、驶离 ... VTS分区时 ... 报告船名，呼号，海上移动业务识别号，位置（经纬度或相对于陆标的位置），航向，航速，始发港，目的港。)"
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 67",
+      "to": "大连交管中心 (Dalian VTS Centre)",
+      "note": "Pikou-Changhai route subarea working channel (guide part 1)"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 16",
+      "to": "大连海岸电台 (Dalian Coast Radio)",
+      "note": "listed in the guide under 'other channels'; distress and calling"
+    },
+    {
+      "type": "web",
+      "value": "www.dpn.com.cn",
+      "to": "大连交管中心 (Dalian VTS Centre)",
+      "note": "24 h arrival pre-report, filed by the company or agent"
+    },
+    {
+      "type": "phone",
+      "value": "00-86-411-82622716 / 82624002",
+      "to": "大连交管中心 (Dalian VTS Centre)",
+      "note": "24 hours"
+    },
+    {
+      "type": "fax",
+      "value": "00-86-411-82622230",
+      "to": "大连交管中心 (Dalian VTS Centre)",
+      "note": null
+    },
+    {
+      "type": "email",
+      "value": "dalianvts@126.com",
+      "to": "大连交管中心 (Dalian VTS Centre)",
+      "note": "as printed in the guide (a public mailbox address)"
+    }
+  ],
+  "addressee": "大连交管中心",
+  "heading": null,
+  "lines": [
+    {
+      "l": "1",
+      "req": "required",
+      "text": "Ship's name or call sign (船名或呼号)"
+    },
+    {
+      "l": "2",
+      "req": "required",
+      "text": "Position (船位)"
+    },
+    {
+      "l": "3",
+      "req": "required",
+      "text": "Draught (吃水)"
+    },
+    {
+      "l": "4",
+      "req": "required",
+      "text": "Purpose of entry (进港目的)"
+    },
+    {
+      "l": "5",
+      "req": "optional",
+      "text": "Other information the VTS asks for (大连交管中心要求的其它信息)"
+    }
+  ],
+  "format_note": "Voice reports on VHF, in Mandarin Chinese or English (rules art. 9). The lines above are the entry report; arrival, sailing and departure reports are shorter (see 'when'). Call '大连交管中心'; the guide prints the call name only in Chinese, 'Dalian VTS' is the usual English form but is not printed. VTS works 24 hours, Beijing time.",
+  "area": {
+    "shape": "lines",
+    "points": [
+      {
+        "n": "A",
+        "lat": "39 21 54.10N",
+        "lon": "122 21 17.64E",
+        "inferred": false
+      },
+      {
+        "n": "B",
+        "lat": "39 16 15.08N",
+        "lon": "122 29 03.40E",
+        "inferred": false
+      },
+      {
+        "n": "C",
+        "lat": "39 14 00.00N",
+        "lon": "122 34 51.94E",
+        "inferred": false
+      },
+      {
+        "n": "D",
+        "lat": "39 15 02.71N",
+        "lon": "122 36 00.00E",
+        "inferred": false
+      },
+      {
+        "n": "E",
+        "lat": "39 15 38.84N",
+        "lon": "122 35 00.90E",
+        "inferred": false
+      },
+      {
+        "n": "F",
+        "lat": "39 17 58.37N",
+        "lon": "122 30 20.75E",
+        "inferred": false
+      },
+      {
+        "n": "G",
+        "lat": "39 18 05.96N",
+        "lon": "122 30 24.80E",
+        "inferred": false
+      },
+      {
+        "n": "H",
+        "lat": "39 19 39.20N",
+        "lon": "122 27 44.51E",
+        "inferred": false
+      },
+      {
+        "n": "I",
+        "lat": "39 21 58.38N",
+        "lon": "122 21 28.62E",
+        "inferred": false
+      }
+    ],
+    "lines": [
+      [
+        "A",
+        "B",
+        "C"
+      ],
+      [
+        "C",
+        "D",
+        "E"
+      ],
+      [
+        "F",
+        "G",
+        "H",
+        "I"
+      ]
+    ],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 39.286,
+      "lon": 122.495
+    },
+    "bbox": [
+      122.3,
+      39.2,
+      122.65,
+      39.42
+    ]
+  },
+  "area_quote": "皮长航线VTS分区的范围为A,B,C,D,E五点顺序连结和F，G，H，I四点顺序连结与岸线之间的水域：39°21′54.10″N,122°21′17.64″E；B.39°16′15.08″N,122°29′03.40″E；C.39°14′00.00″N,122°34′51.94″E；D.39°15′02.71″N,122°36′00.00″E；E.39°15′38.84″N,122°35′00.90″E；F.39°17′58.37″N,122°30′20.75″E；G.39°18′05.96″N,122°30′24.80″E；H.39°19′39.20″N,122°27′44.51″E；I.39°21′58.38″N,122°21′28.62″E。皮长航线VTS分区报告线：南报告线为A、B、C三点连线；东报告线为C、D、E三点连线；北报告线为F、G、H、I四点连线。",
+  "sources": [
+    {
+      "title": "中华人民共和国大连船舶交通管理系统安全监督管理规则 (附 VTS服务指南（中国）（大连交管中心）), Liaoning MSA, in force 2022-05-01, valid 5 years",
+      "ref": "Rules art. 2, 4-10, 17; Guide parts 1 (VHF, areas), 2 (reports), 3 (pilots), 5 (anchorages), 6 (contacts)",
+      "date": "2022-05-01",
+      "url": "https://www.mcrrc.top/bmgz/jy/bhhs/zsjfg/lnhsj/636.html",
+      "primary": false
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Points and report lines from the copy of the Dalian VTS guide on mcrrc.top. Copy of the official text on mcrrc.top (maritime law database run by Shandong Jiaotong University). The Liaoning MSA site www.ln.msa.gov.cn, where the original is published, could not be reached from here; the notice number of the 2022 issue is not shown in the copy. The copy leaves out the letter 'A' before the first point; it is given here by order. The inside hint is a rough mid-route position, not checked against a chart.",
+  "confidence": "medium",
+  "notes": "A coastal ferry route (Pikou, Zhuanghe to Changhai islands); of little use for deep-sea tankers but listed for completeness. The rules and guide came into force on 2022-05-01 with 5 years validity (to 2027-04-30), replacing 辽海指挥〔2020〕74号. Check for a newer issue after the Liaoning coastal routeing system (in force 2026-08-15)."
+}

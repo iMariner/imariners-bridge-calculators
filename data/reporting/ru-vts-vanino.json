@@ -1,0 +1,86 @@
+{
+  "id": "ru-vts-vanino",
+  "system": "Vanino VTS (СУДС морского порта Ванино)",
+  "title": "Vanino Traffic: Vanina Bay and the Tatar Strait approaches",
+  "country": "Russia",
+  "authority": "VTS of the seaport of Vanino, call sign \"Ванино-Трафик\"; harbour master of Vanino (FGBU AMP of the Sea of Okhotsk and Tatar Strait)",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": null,
+  "applies_to": "All ships in the port of Vanino and in the VTS zone, whatever their flag. VTS does not regulate autonomous ships.",
+  "applies_quote": "Регулирование движения судов на акватории морского порта осуществляется СУДС на 14 канале связи ОВЧ.",
+  "when": [
+    {
+      "event": "before_arrival",
+      "hours_before": 72,
+      "interval_h": null,
+      "report": null,
+      "text": "Arrival information to the harbour master through www.portcall.marinet.ru (p. 22); times per the General Rules (ru-general-prearrival). Daily traffic schedule approved at 16.00 and published on www.ampvanino.ru (p. 24)."
+    },
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "In the VTS zone keep a continuous watch on CH 14 and 16 (p. 75); working channel CH 14, reserves CH 11, 20, 68 (p. 38). Give the General Rules p. 29 data on entering. Ask VTS permission before any movement (p. 25). Entry to the port is from the roundabout of the traffic separation scheme centred at 49 03.60N 140 24.50E (p. 26). Ships for area No. 3 of the port ask the harbour master on CH 9 (Манорский-радио-5) for permission to enter (p. 25)."
+    }
+  ],
+  "how": [
+    { "type": "vhf", "value": "CH 14", "to": "Ванино-Трафик (Vanino Traffic)", "note": "Working channel; reserves CH 11, 20, 68 (p. 38)" },
+    { "type": "vhf", "value": "CH 16", "to": "Ванино-Трафик (Vanino Traffic)", "note": "VTS keeps watch on CH 14 and 16" },
+    { "type": "vhf", "value": "CH 71", "to": "Ванино-Радио-5 (state port control)", "note": "Appendix 7: calling 16, 71, working 71; pollution reports on CH 71 (p. 71)" },
+    { "type": "vhf", "value": "CH 73", "to": "Ванино-4 (pilots)", "note": "Appendix 7: working 73, 30" },
+    { "type": "vhf", "value": "CH 67", "to": "Ванино-Радио-15 (oil berths dispatcher)", "note": "Appendix 7: calling 16, 67, 69, working 67, 69" },
+    { "type": "web", "value": "www.portcall.marinet.ru", "to": "Harbour master of Vanino", "note": "Arrival information (p. 22)" }
+  ],
+  "addressee": null,
+  "heading": null,
+  "lines": [
+    { "l": "1", "req": "required", "text": "Ship's name and type" },
+    { "l": "2", "req": "required", "text": "Flag" },
+    { "l": "3", "req": "required", "text": "Port of destination" },
+    { "l": "4", "req": "required", "text": "Maximum present draught and air draught" },
+    { "l": "5", "req": "required", "text": "Kind of cargo, dangerous cargo on board" },
+    { "l": "6", "req": "if-applicable", "text": "Defects of ship equipment and other limits that affect safe navigation" }
+  ],
+  "format_note": "Report items from General Rules p. 29.",
+  "area": {
+    "shape": "lines",
+    "points": [
+      { "n": "N1", "name": "Parallel 49°09,00'N at the coast (west end)", "lat": "49 09.00N", "lon": "140 18.0E", "inferred": true },
+      { "n": "N2", "name": "49°09,00'N on meridian 140°30,00'E", "lat": "49 09.00N", "lon": "140 30.00E", "inferred": true },
+      { "n": "S2", "name": "48°58,10'N on meridian 140°30,00'E", "lat": "48 58.10N", "lon": "140 30.00E", "inferred": true },
+      { "n": "S1", "name": "Parallel 48°58,10'N at Cape Krasny Partizan (west end)", "lat": "48 58.10N", "lon": "140 18.0E", "inferred": true }
+    ],
+    "lines": [ [ "N1", "N2", "S2", "S1" ] ],
+    "center": null,
+    "radius_nm": null,
+    "state": "Russia",
+    "zone": "Closed by the coast on the west; Sovetskaya Gavan Bay is not part of the zone",
+    "ports": [ "Vanino" ],
+    "inside_hint": { "lat": 49.06, "lon": 140.40 },
+    "bbox": [ 140.1, 48.9, 140.6, 49.2 ]
+  },
+  "area_quote": "36. Зона действия СУДС морского порта включает в себя бухту Ванина и район Татарского пролива на подходах к морскому порту, ограниченный береговой линией и: с севера - параллелью 49°09,00' северной широты; с востока - меридианом 140°30,00' восточной долготы; с юга - параллелью 48°58,10' северной широты (мыс Красный Партизан), за исключением залива Советская Гавань.",
+  "sources": [
+    {
+      "title": "Обязательные постановления в морском порту Ванино, Приказ Минтранса России от 13.12.2012 № 431 (ред. от 23.06.2026), consolidated text",
+      "ref": "pp. 22 to 26, 36 to 38, 71, 75 to 77, Appendix 1, Appendix 7",
+      "date": "2026-06-23",
+      "url": "https://legalacts.ru/doc/prikaz-mintransa-rossii-ot-13122012-n-431/",
+      "primary": true
+    },
+    {
+      "title": "Приказ Минтранса России от 23.06.2026 № 287 (latest amendment to the Vanino regulations)",
+      "ref": "Official PDF, registered by Minjust 24.07.2026 № 87591",
+      "date": "2026-06-23",
+      "url": "http://publication.pravo.gov.ru/document/0001202607240003",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Consolidated text (legalacts.ru, ред. от 23.06.2026) read; the 23.06.2026 amendment checked on the official PDF (its new p. 23 sentence is present in the consolidated text).",
+  "confidence": "medium",
+  "notes": "The corners on 140°30,00'E are where the printed parallels meet the printed meridian (exact values, marked inferred because the corners themselves are not printed as points). The west ends at about 140°18'E are rough coast estimates for drawing only. The call sign is printed \"Ванино-Трафик\" in p. 38 and \"Ванино-Траффик\" in Appendix 7. The approaches to the port are the same as the VTS zone (Appendix 1). Regulations valid until 01.03.2031. VTS phone and email not in the regulations and not found."
+}

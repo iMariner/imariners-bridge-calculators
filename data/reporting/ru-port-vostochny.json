@@ -1,0 +1,136 @@
+{
+  "id": "ru-port-vostochny",
+  "system": "Port of Vostochny, harbour master and VTS (Wrangel Bay)",
+  "title": "Vostochny port (Wrangel Bay): harbour master and VTS channels, arrival notice",
+  "country": "Russia",
+  "authority": "Harbour master of the seaport of Vostochny (Восточный-5), FGBU AMP of Primorsky Krai and the Eastern Arctic; VTS Находка-Трафик",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": null,
+  "applies_to": "All ships in the port of Vostochny (Wrangel Bay, Khmylovka river mouth, anchorages, RPK Vostochny-1), whatever their flag. For Kozmino Bay see ru-port-kozmino.",
+  "applies_quote": "24. В бухте Врангеля регулирование движения судов осуществляется СУДС на канале 13 ОВЧ, позывной \"Находка-Трафик\" и капитаном морского порта на канале 14 ОВЧ, позывной \"Восточный-5\".",
+  "when": [
+    {
+      "event": "before_arrival",
+      "hours_before": 72,
+      "interval_h": null,
+      "report": null,
+      "text": "Arrival and departure information to the harbour master through www.portcall.marinet.ru (Vostochny p. 22). Times per the General Rules: 120 to 72 hours before arrival, confirm 48 to 24 hours before; arrival application within 4 hours of first anchoring or mooring; departure application 4 hours before departure (ru-general-prearrival). From a foreign port the entry permission must also be agreed with the FSB (ru-entry-fsb-permission)."
+    },
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Crossing the line Cape Likhacheva to Cape Povorotny: call Nakhodka Traffic on CH 13 (ru-vts-nakhodka-sector-2). Permission system: anchoring, weighing anchor, berthing, unberthing and shifting only with VTS permission (p. 23). Ships go to the anchorages without a pilot on VTS advice (p. 28). Pilot leaves ships outbound from Wrangel Bay at 42 45.70N 133 01.35E (p. 30)."
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "At anchor watch CH 14 and 16 (pp. 62, 96); in Wrangel Bay and at berths without telephone watch CH 14 (p. 97). No talk unrelated to safety on CH 13, 14, 29 (p. 99). Pilot order cancelled at least 1.5 hours before (p. 32)."
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 13",
+      "to": "Находка-Трафик (VTS)",
+      "note": "Appendix 4: calling 16, working 13"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 14",
+      "to": "Восточный-5 (state port control, Vostochny; ISPS inspectors)",
+      "note": "Appendix 4"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 14",
+      "to": "Лоцман Восточный (pilots)",
+      "note": "Appendix 4"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 14",
+      "to": "Восточный-2 (port dispatcher)",
+      "note": "Appendix 4"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 69",
+      "to": "Врангель-Терминал (Wrangel Bay dispatcher)",
+      "note": "Appendix 4"
+    },
+    {
+      "type": "web",
+      "value": "www.portcall.marinet.ru",
+      "to": "Harbour master of Vostochny",
+      "note": "Arrival information (p. 22)"
+    }
+  ],
+  "addressee": null,
+  "heading": null,
+  "lines": [],
+  "format_note": "No own format; arrival data per General Rules p. 38 through the agent.",
+  "area": {
+    "shape": "port",
+    "points": [
+      {
+        "n": "PW",
+        "name": "Pilot landing point for ships leaving Wrangel Bay",
+        "lat": "42 45.70N",
+        "lon": "133 01.35E",
+        "inferred": false
+      }
+    ],
+    "lines": [],
+    "center": null,
+    "radius_nm": null,
+    "state": "Russia",
+    "zone": null,
+    "ports": [
+      "Vostochny (Wrangel Bay, Khmylovka river mouth, Lake Vtoroye, Kozmino Bay)"
+    ],
+    "inside_hint": {
+      "lat": 42.775,
+      "lon": 133.01
+    },
+    "bbox": [
+      132.9,
+      42.7,
+      133.1,
+      42.82
+    ]
+  },
+  "area_quote": "Акватория морского порта включает в себя участки водной поверхности в бухте Врангеля, устье реки Хмыловка, бухте Козьмина и озере Второе.",
+  "sources": [
+    {
+      "title": "Обязательные постановления в морском порту Восточный, Приказ Минтранса России от 11.01.2011 № 10 (ред. от 13.02.2026)",
+      "ref": "pp. 10, 22 to 32, 50 to 62, 96 to 99, 132, 133, Appendix 4, Appendix 5",
+      "date": "2026-02-13",
+      "url": "https://legalacts.ru/doc/prikaz-mintransa-rf-ot-11012011-n-10/",
+      "primary": true
+    },
+    {
+      "title": "Приказ Минтранса России от 17.07.2026 № 337, new Vostochny regulations (from 01.03.2027)",
+      "ref": "pp. 13, 17, 46 to 55, 101 to 104",
+      "date": "2026-07-17",
+      "url": "http://publication.pravo.gov.ru/document/0001202609020003",
+      "primary": true
+    },
+    {
+      "title": "Общие правила плавания и стоянки судов (Приказ Минтранса № 395, ред. от 23.12.2025)",
+      "ref": "pp. 29, 39, 40, 43, 45",
+      "date": "2025-12-23",
+      "url": "https://legalacts.ru/doc/prikaz-mintransa-rossii-ot-12112021-n-395-ob-utverzhdenii/",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Consolidated text (legalacts.ru, ред. от 13.02.2026) read; channels from the paragraphs and Appendix 4.",
+  "confidence": "medium",
+  "notes": "Current regulations valid to 01.03.2028; replaced on 01.03.2027 by order № 337 (same channels; Khmylovka river mouth then by the harbour master on CH 14 Восточный-5; daily schedule approved at 16:00 and published on https://pma.ru). Anchorages 5 to 9, Vostochny-2, area 211 and anchor places 1 to 3 are listed in Appendix 5 (anchorage 9 points 2 to 4 are printed with 132° that look like misprints for 133°; not used here). Harbour master phone and email not found."
+}

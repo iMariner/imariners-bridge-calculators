@@ -1,0 +1,86 @@
+{
+  "id": "ru-vts-vladivostok-sector-1a",
+  "system": "Vladivostok VTS (СУДС морского порта Владивосток), Sector 1A",
+  "title": "Vladivostok Traffic: Sector 1A, Ussuri Bay terminals (Bolshoy Kamen, Telyakovsky, Cape Otkryty) and western approaches",
+  "country": "Russia",
+  "authority": "VTS of the seaport of Vladivostok, call sign \"Владивосток-Трафик\" (Vladivostok Traffic)",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": "2026-03-01",
+  "applies_to": "All ships in Sector 1A, whatever their flag, except small craft, pleasure craft and sports sailing craft. Outside the VTS radar coverage in Sector 1A the VTS gives reference information only.",
+  "applies_quote": "В секторе N 1А СУДС за пределами зон радиолокационных станций СУДС передает капитанам судов справочную информацию.",
+  "when": [
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "In Sector 1A, communication with the VTS is on VHF CH 71, or on a reserve channel named by the VTS, or on the channels in Appendix 4; call sign Владивосток-Трафик. Give the General Rules p. 29 data on entering. Quote: \"Связь с судами, находящимися в секторе N 1А СУДС, осуществляется на 71 рабочем канале связи ОВЧ или на резервном канале связи ОВЧ, указанном СУДС, а также на каналах связи ОВЧ, приведенных в приложении N 4 к Обязательным постановлениям (позывной «Владивосток-Трафик»).\" (p. 54)."
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Ships bound for Bolshoy Kamen Bay or Telyakovsky Bay must anchor first at anchorages 175A and 175B (p. 57). Pilot boarding for Cape Otkryty (Bezzashchitnaya Bay) at 42 55.35N 132 14.50E; for Telyakovsky Bay at 43 10.0N 132 15.3E (p. 39); for Bolshoy Kamen in the area 43 07.00N to 43 07.50N, 132 16.70E to 132 17.30E (p. 40). Traffic in Bolshoy Kamen Bay is not regulated by the VTS (p. 29); harbour master there on CH 6 (Большой-Камень-Порт-Контроль)."
+    }
+  ],
+  "how": [
+    { "type": "vhf", "value": "CH 71", "to": "Владивосток-Трафик (Vladivostok Traffic)", "note": "Sector 1A working channel (p. 54)" },
+    { "type": "vhf", "value": "CH 16", "to": "Владивосток-Трафик (Vladivostok Traffic)", "note": "Calling channel (Appendix 4: calling 16, 67)" },
+    { "type": "vhf", "value": "CH 6", "to": "Большой-Камень-Порт-Контроль (state port control at Bolshoy Kamen)", "note": "Appendix 4" }
+  ],
+  "addressee": null,
+  "heading": null,
+  "lines": [
+    { "l": "1", "req": "required", "text": "Ship's name and type" },
+    { "l": "2", "req": "required", "text": "Flag" },
+    { "l": "3", "req": "required", "text": "Port of destination" },
+    { "l": "4", "req": "required", "text": "Maximum present draught and air draught" },
+    { "l": "5", "req": "required", "text": "Kind of cargo, dangerous cargo on board" },
+    { "l": "6", "req": "if-applicable", "text": "Defects of ship equipment and other limits that affect safe navigation" }
+  ],
+  "format_note": "Report items from General Rules p. 29.",
+  "area": {
+    "shape": "lines",
+    "points": [
+      { "n": "K", "name": "мыс Клерка (Cape Klerka)", "lat": "42 45.8N", "lon": "131 21.8E", "inferred": true },
+      { "n": "2", "lat": "42 46.00N", "lon": "131 42.00E", "inferred": false },
+      { "n": "3", "lat": "42 53.00N", "lon": "131 57.00E", "inferred": false },
+      { "n": "4", "lat": "43 03.00N", "lon": "132 10.00E", "inferred": false },
+      { "n": "T", "name": "мыс Трех Камней (Cape Trekh Kamney)", "lat": "43 09.0N", "lon": "132 04.0E", "inferred": true },
+      { "n": "M1", "name": "Meridian 132°28,00'E at the coast (north end)", "lat": "42 53.0N", "lon": "132 28.00E", "inferred": true },
+      { "n": "M2", "name": "Meridian 132°28,00'E at the territorial sea limit (south end)", "lat": "42 22.0N", "lon": "132 28.00E", "inferred": true }
+    ],
+    "lines": [ [ "K", "2", "3", "4", "T" ], [ "M1", "M2" ] ],
+    "center": null,
+    "radius_nm": null,
+    "state": "Russia",
+    "zone": "South limit: outer limit of the Russian territorial sea. North and northeast: the coast from Cape Vilkova to Cape Otkryty of Bezzashchitnaya Bay, with closing lines across Bolshoy Kamen Bay (Cape Palets, Cape Sedlovidny, Cape Liflyandsky, Cape Otkryty)",
+    "ports": [ "Vladivostok: Bolshoy Kamen Bay, Cape Telyakovsky (Telyakovsky Bay), Cape Otkryty (Bezzashchitnaya Bay)" ],
+    "inside_hint": { "lat": 42.85, "lon": 132.10 },
+    "bbox": [ 131.3, 42.3, 132.5, 43.25 ]
+  },
+  "area_quote": "Сектор N 1А СУДС расположен во внутренних морских водах и территориальном море Российской Федерации и включает акваторию морских терминалов, расположенных в бухте Большого Камня, в районе мыса Теляковского и в районе мыса Открытый бухты Беззащитной с подходами к ним в Уссурийском заливе, и ограничен: с юга - границей территориального моря Российской Федерации; с востока - меридианом 132°28,00' восточной долготы; с запада - линиями, соединяющими мыс Клерка, точки с координатами 42°46,00' северной широты и 131°42,00' восточной долготы, 42°53,00' северной широты и 131°57,00' восточной долготы, 43°03,00' северной широты и 132°10,00' восточной долготы и мыс Трех Камней; с севера и северо-востока - линиями, соединяющими мыс Вилкова, мыс Теляковского, побережье бухты Теляковского, мыс Азарьева, побережье бухты Суходол, мыс Красный, мыс Максимова, побережье бухты Большой Камень, далее линиями, соединяющими мыс Палец, мыс Седловидный, мыс Лифляндский и мыс Открытый бухты Беззащитной.",
+  "sources": [
+    {
+      "title": "Приказ Минтранса России от 20.08.2025 № 248 \"О внесении изменений в Обязательные постановления в морском порту Владивосток\" (in force 01.03.2026)",
+      "ref": "Appendix item 22 (new pp. 53 to 55), item 20 (p. 39), item 24 (pp. 56, 57), item 41 (Appendix 4)",
+      "date": "2025-08-20",
+      "url": "http://publication.pravo.gov.ru/document/0001202510140003",
+      "primary": true
+    },
+    {
+      "title": "Обязательные постановления в морском порту Владивосток, Приказ Минтранса России от 02.07.2013 № 229 (ред. от 20.08.2025)",
+      "ref": "pp. 29, 39, 40, 53 to 57, Appendix 4",
+      "date": "2025-08-20",
+      "url": "https://legalacts.ru/doc/prikaz-mintransa-rossii-ot-02072013-n-229/",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Text of order № 248 read on pravo.ppt.ru and compared with the consolidated regulations on legalacts.ru; coordinates copied as printed.",
+  "confidence": "medium",
+  "notes": "The Sector 1A text is from order № 248, in force 01.03.2026 (the earlier wording was not checked). Points 2, 3 and 4 are printed. Cape Klerka and Cape Trekh Kamney are named only; their positions are from OpenStreetMap (inferred). The meridian end points M1 and M2 are rough estimates (about 5' either way) only for drawing; the real limits are the coast and the outer limit of the territorial sea (measured from the Peter the Great Bay closing line). East of 132°28,00'E is Sector 1B (Nakhodka Traffic CH 9), see ru-vts-peter-great-bay-sector-1b. The line from point 3 through point 4 to Cape Trekh Kamney is shared with Sector 3 (CH 67). The northern limit (coast and capes listed in the zone field) is not drawn here. VTS phone and email not in the regulations and not found."
+}

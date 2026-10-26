@@ -1,0 +1,86 @@
+{
+  "id": "surnav-mediterranee",
+  "system": "SURNAV",
+  "title": "SURNAV France: Mediterranean (incl. Corsica)",
+  "country": "France",
+  "authority": "Préfet maritime de la Méditerranée (Toulon); reports go to CROSS MED (MRCC La Garde)",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": "2021-06-24",
+  "applies_to": "The entry notice (Art. 2.1) is for the master of any ship in Art. 1 §1.1 about to pass through or stay in French territorial or internal waters of the Mediterranean: oil tankers carrying oil listed in MARPOL Annex I Appendix I; ships carrying noxious liquid substances of MARPOL Annex II in categories X or Y of IBC Code chapter 17; ships carrying an INF cargo (as defined in Art. 221-VII/14 of the French ship safety rules) or the dangerous substances of Annex I (plutonium 239, uranium 233, 235, 238, thorium and material containing them except ores; in bulk: acetaldehyde, ethyl ether, ethyl vinyl ether, monoethylamine, ammonium nitrate, propylene oxide); incinerator ships carrying organochlorine compounds; ships carrying liquefied gases in bulk; tankers that are not inerted. No tonnage limit is given for the notice. The Art. 3 message (Annex IV) is for every ship in Art. 1, including §1.2 (other MARPOL Annex II and III substances, IMDG, IBC ch. 17, IGC ch. 19 goods), coming from a port or anchorage outside the EU and planning to anchor in French territorial or internal waters.",
+  "applies_quote": "1.1. Aux navires suivants : - navires-citernes transportant des hydrocarbures, dont la liste est fixée par l'appendice I de l'annexe I de la convention [...] (MARPOL 73/78) ; - navires transportant des substances liquides nocives définies par l'appendice II de l'annexe II de la convention MARPOL 73/78 et classées dans les catégories X ou Y au chapitre 17 du recueil [...] IBC ; - navires transportant, une cargaison « INF », telle que définie à l'article 221-VII/14 de la division 221 du règlement annexé à l'arrêté du 23 novembre 1987, ou des substances dangereuses dont la liste figure en annexe I du présent arrêté ; - navires incinérateurs transportant des composés organochlorés ; - navires transportant en vrac des gaz liquéfiés ; - navires-citernes non inertés. [...] 2.1. Le capitaine de tout navire visé au paragraphe 1.1 de l'article 1 du présent arrêté s'apprêtant à passer ou à séjourner dans les eaux territoriales ou intérieures françaises de la Méditerranée est tenu d'adresser au CROSS MED (Centre Régional Opérationnel de Surveillance et de Sauvetage Méditerranée - MRCC LA GARDE) (coordonnées figurant en annexe II du présent arrêté) un message du modèle figurant en annexe III",
+
+  "when": [
+    { "event": "before_entry", "hours_before": 6, "interval_h": null, "report": null,
+      "text": "Six hours before entering French territorial waters if the ship comes from outside.",
+      "text_quote": "six heures avant l'entrée dans les eaux territoriales françaises si le navire vient de l'extérieur ;" },
+    { "event": "departure", "hours_before": 6, "interval_h": null, "report": null,
+      "text": "Six hours before sailing if the ship is about to leave French waters from a port, an anchorage or a waiting area.",
+      "text_quote": "six heures avant l'appareillage si le navire se prépare à quitter les eaux françaises à partir d'un port, d'une zone de mouillage ou d'une zone d'attente." },
+    { "event": "other", "hours_before": null, "interval_h": null, "report": null,
+      "text": "The message covers the whole planned transit in French territorial waters until exit or arrival, even if the route leaves these waters and comes back in.",
+      "text_quote": "2.4. Ce message couvre la totalité du transit prévu dans les eaux territoriales françaises jusqu'à la sortie de ces eaux ou jusqu'à l'arrivée à destination, même si au cours de ce transit la route du navire le conduit à sortir de ces eaux puis à y rentrer de nouveau." },
+    { "event": "deviation", "hours_before": null, "interval_h": null, "report": null,
+      "text": "If the movement intentions or the manoeuvring and navigation capabilities change after the message, send a correcting message at once, in the same way.",
+      "text_quote": "2.5. En cas de modification aux intentions de mouvement ou aux capacités de manœuvre et de navigation du navire survenant après l'envoi du message, le capitaine du navire concerné est tenu d'envoyer aussitôt et dans les mêmes conditions un nouveau message corrigeant le premier." },
+    { "event": "departure", "hours_before": null, "interval_h": null, "report": null,
+      "text": "Any ship in Art. 1 coming from a port or anchorage outside the EU and planning to anchor in French territorial or internal waters: when it leaves the loading port (or as soon as possible if the destination changes), send CROSS MED all the Annex IV information, or say which EU authority holds it.",
+      "text_quote": "3.1. Tout navire visé à l'article 1 du présent arrêté venant d'un port ou d'un mouillage situé hors des États de l'Union européenne et prévoyant de mouiller dans les eaux territoriales ou intérieures françaises doit adresser au CROSS MED, lorsqu'il quitte le port de chargement (ou dès que possible en cas de modification de destination), un message comportant toutes les informations prévues à l'annexe IV du présent arrêté, ou indiquant quelle autorité au sein de l'Union européenne détient ces informations." }
+  ],
+
+  "how": [
+    { "type": "email", "value": "lagarde@mrccfr.eu", "to": "CROSS MED (MRCC La Garde)", "note": "Annex II." },
+    { "type": "phone", "value": "+33.(0)4.94.61.16.16", "to": "CROSS MED (MRCC La Garde)", "note": "Annex II." },
+    { "type": "fax", "value": "+33.(0)4.94.27.11.49", "to": "CROSS MED (MRCC La Garde)", "note": "Annex II." },
+    { "type": "vhf", "value": "CH 16", "to": "CROSS MED", "note": "Annex II: permanent watch and calling on VHF 16 over the whole zone; call sign CROSS MED." },
+    { "type": "vhf", "value": "CH 70 (DSC)", "to": "CROSS MED", "note": "Annex II: permanent DSC watch; MMSI of CROSS MED La Garde 002275400." },
+    { "type": "mf", "value": "2187.5 kHz (DSC), then 2182 kHz", "to": "CROSS MED", "note": "Annex II: DSC watch on MF 2187.5; call on MF 2182 after the DSC call." },
+    { "type": "other", "value": "Through a French semaphore (sémaphore), VHF 16", "to": "CROSS MED", "note": "Art. 2.3." },
+    { "type": "other", "value": "Through the port authority (direction du port)", "to": "CROSS MED", "note": "Art. 2.3: when the ship is in a French port." }
+  ],
+  "addressee": "CROSS MED",
+  "heading": "SURNAV - FRANCE",
+
+  "lines": [
+    { "l": "A", "req": "required", "text": "Ship's name, call sign, flag, MMSI number.", "text_quote": "nom, indicatif d'appel, pavillon du navire, numéro MMSI" },
+    { "l": "B", "req": "required", "text": "Date, time UTC (as six digits DD HH MM).", "text_quote": "date, heure UTC (sous forme de six chiffres JJ HH MM)" },
+    { "l": "C", "req": "required", "text": "Position (latitude, longitude).", "text_quote": "position (latitude, longitude)" },
+    { "l": "E", "req": "required", "text": "Course.", "text_quote": "route" },
+    { "l": "F", "req": "required", "text": "Speed.", "text_quote": "vitesse" },
+    { "l": "G", "req": "required", "text": "Where the ship comes from.", "text_quote": "provenance" },
+    { "l": "H", "req": "required", "text": "Date, time (UTC) and point of entry into French territorial waters, or date, time (UTC) and place of sailing.", "text_quote": "date, heure (UTC) et point d'entrée dans les eaux territoriales françaises ou date, heure (UTC) et lieu d'appareillage" },
+    { "l": "I", "req": "required", "text": "Destination.", "text_quote": "destination" },
+    { "l": "K", "req": "required", "text": "Date, time (UTC) and point of exit from French territorial waters, or date and time (UTC) of arrival at the destination port, anchorage or waiting area in French waters.", "text_quote": "date, heure (UTC) et point de sortie des eaux territoriales françaises ou date et heure (UTC) d'arrivée au port, mouillage, zone d'attente, de destination dans les eaux françaises" },
+    { "l": "M", "req": "required", "text": "Radiotelephone watches kept.", "text_quote": "veilles radio téléphoniques assurées" },
+    { "l": "O", "req": "required", "text": "Draught.", "text_quote": "tirant d'eau" },
+    { "l": "P", "req": "required", "text": "Cargo: quantity and category (as defined in MARPOL 73/78).", "text_quote": "cargaison : quantité et catégorie (suivant définitions MARPOL 73/78)" },
+    { "l": "Q", "req": "required", "text": "Defects, damage, deficiencies, restrictions.", "text_quote": "défectuosité, avaries, défaillance, restrictions" },
+    { "l": "U", "req": "required", "text": "Type of ship.", "text_quote": "type du navire" },
+    { "l": "W", "req": "required", "text": "Number of persons on board (crew, passengers, any stowaways).", "text_quote": "nombre de POB (équipage, passagers, clandestins éventuels)" },
+    { "l": "X", "req": "optional", "text": "Other remarks.", "text_quote": "remarques diverses." }
+  ],
+  "format_note": "Annex III model ('MODÈLE DU MESSAGE DE PRÉAVIS D'ENTRÉE DANS LES EAUX TERRITORIALES'), IMO letters spoken ALPHA ... X-RAY. No ZULU line in this model. Annex IV (Art. 3 message, ships from non-EU ports planning to anchor) gives 10 numbered items: name, call sign and MMSI; nationality; length and draught; port of destination; ETA at the planned anchorage; ETD; intended route; correct technical name of the dangerous or polluting goods, UN numbers, IMO hazard classes, quantities, stowage and, for portable tanks or containers, their identification marks; confirmation that a list, manifest or stowage plan is on board; number of crew. Incident reports use Annex VI (heading 'SURNAV - AVARIES'), assisting ships Annex VII.",
+
+  "area": {
+    "shape": "territorial-sea",
+    "points": [],
+    "lines": [],
+    "center": null, "radius_nm": null,
+    "state": "France",
+    "zone": "French territorial and internal waters of the Mediterranean (mainland coast and Corsica), zone of the préfet maritime de la Méditerranée",
+    "ports": [],
+    "inside_hint": { "lat": 42.95, "lon": 6.0 },
+    "bbox": [ 3.0, 41.3, 9.7, 43.8 ]
+  },
+  "area_quote": "s'apprêtant à passer ou à séjourner dans les eaux territoriales ou intérieures françaises de la Méditerranée",
+
+  "sources": [
+    { "title": "Arrêté préfectoral n° 149/2021 du 24 juin 2021 relatif au signalement des incidents et accidents de mer et réglementant la navigation aux approches des côtes françaises de méditerranée en vue de prévenir les pollutions marines accidentelles", "ref": "Art. 1 to 7, Annexes I to IV", "date": "2021-06-24", "url": "https://www.premar-mediterranee.gouv.fr/uploads/mediterranee/arretes/f059b03557ac38252ab9ee446bb9cc78.pdf", "primary": true },
+    { "title": "Préfecture maritime de la Méditerranée, list of arrêtés (keyword 'approches'): 2021-149 is the latest, not marked 'Abrogé'; 047/2017 marked 'ABROGÉ par l'arrêté préfectoral n° 149/2021'", "ref": "listing", "date": "2026-10-26", "url": "https://www.premar-mediterranee.gouv.fr/arretes?motcle=approches&sort=a.dateSignature&direction=desc", "primary": true }
+  ],
+  "checked": "2026-10-26",
+  "verification": "PDF of 149/2021 downloaded and read in full (text layer): Art. 1, 2, 3, Annex II (contacts) and Annex III (model) copied from it. Status checked on the prefecture's arrêté list (149/2021 newest text on this subject, no repeal mark; the earlier 047/2017 and 2020-201 are marked repealed). Contacts are those printed in the 2021 arrêté.",
+  "confidence": "high",
+  "notes": "This replaced 047/2017 (same message, which already had W) on 24 June 2021. Other rules in the same arrêté: Art. 4, keep the GMDSS A1+A2 watches while in French territorial or internal waters (except alongside) and answer French State ships and coast stations; Art. 5, ships of §1.1 of 300 GT or more keep at least 7 NM from the French coast except in the port and pipeline access channels set by the préfet maritime (Annex V; arrêté 199/2020); the 7 NM rule does not apply in the Strait of Bonifacio and the Canal de Corse TSS, which have their own arrêtés and IMO measures; Art. 6, report loss of normal manoeuvring or navigation capability to CROSS MED; Art. 7, anchoring for safety or emergency (not port or commercial) needs prior authorisation (the text cites arrêté 155/2016; a newer anchoring-duration arrêté 77/2025 exists, not checked here); Art. 8, ships of Art. 1 and all commercial ships of 300 GT or more report incidents at once by voice, then by Annex VI message ('SURNAV - AVARIES'), in French waters and in the French Mediterranean SAR area. Penalties: Code pénal R. 610-5 and Code des transports L. 5242-1, L. 5242-2."
+}

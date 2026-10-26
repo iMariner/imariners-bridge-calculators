@@ -1,0 +1,593 @@
+{
+  "id": "imo-gofrep",
+  "system": "GOFREP",
+  "title": "GOFREP Gulf of Finland mandatory ship reporting system",
+  "country": "Finland, Estonia, Russian Federation (joint system)",
+  "authority": "Helsinki Traffic (Fintraffic, Gulf of Finland VTS Centre, Finland); Tallinn Traffic (Estonian Transport Administration, Tallinn VTS Centre); St. Petersburg Traffic (Russian Federation)",
+  "kind": "mandatory-imo",
+  "resolution": "MSC.139(76) annex 1, as amended by MSC.231(82)",
+  "status": "in effect",
+  "effective": "2007-07-01",
+  "applies_to": "Ships of 300 GT and over. Ships under 300 GT should report when not under command or at anchor in a TSS, restricted in their ability to manoeuvre, or with defective navigational aids.",
+  "applies_quote": "1.1 Ships of 300 gross tonnage and over are required to participate in the mandatory ship reporting system. Ships under 300 gross tonnage should make reports in circumstances where they: .1 are not under command or at anchor in the TSS; .2 are restricted in their ability to manoeuvre; and .3 have defective navigational aids.",
+  "when": [
+    {
+      "event": "before_entry",
+      "hours_before": 1,
+      "interval_h": null,
+      "report": null,
+      "text": "Full Report: Vessels not equipped with AIS entering the GOFREP area from the Northern Baltic or Väinameri, are recommended to give a Full Report to the relevant Traffic Centre by fax or e-mail at least one hour before entering the area. In any case, a Full Report shall be given prior to entering the GOFREP area."
+    },
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Full Report: 3.3.2 Ships shall submit a Full Report: 1. when entering the GOFREP area from the west or from Väinameri,"
+    },
+    {
+      "event": "departure",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Full Report: 3.3.2 Ships shall submit a Full Report: ... 2. on departure from a port or latest before entering the reporting area, 3. on departure from a port if it shall not enter the reporting area at all, 4. before departing from Russian Port areas. A Full Report on departure from a port is given to the Traffic Centre of the country whose port the vessel is departing in the Gulf of Finland traffic area."
+    },
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Short Report: 3.3.4 Ships shall submit a Short Report: 1. on entering the GOFREP area from the Estonian or Finnish VTS areas in the Gulf of Finland, 2. on crossing the Western or Väinameri Reporting Line inward-bound to Gulf of Finland,"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Short Report: 3.3.4 Ships shall submit a Short Report: ... 3. on crossing the Central Reporting Line, ... Short Report is given on VHF when crossing the Central Reporting Line to the Traffic Centre of the country to which monitoring area the vessel is proceeding."
+    },
+    {
+      "event": "deviation",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Short Report: 3.3.4 Ships shall submit a Short Report: ... 4. whenever there is a change in the vessel's navigational status excluding the change of status when berthing or unberthing."
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "If there are any circumstances affecting normal navigation in accordance with the provisions of the SOLAS and MARPOL Conventions, the Master of the vessel in question is obliged to report designator Q or R, whichever is relevant under the prevailing circumstances. This report shall be made without delay."
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 60",
+      "to": "Helsinki Traffic",
+      "note": "Main channel, area north of the Central Reporting Line. MSC.231(82) Annex (amended 4.1.1); same on Fintraffic Master's Guide web page, read 2026-10-26."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 80",
+      "to": "Helsinki Traffic",
+      "note": "Reserve channel. MSC.231(82) Annex; Fintraffic Master's Guide calls it the alternative channel."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 61",
+      "to": "Tallinn Traffic",
+      "note": "Main channel, area south of the Central Reporting Line and west of 026 30E, and ships coming from Väinameri. MSC.231(82) Annex (amended 4.1.1 and 7.2.3.1); same on Fintraffic Master's Guide, read 2026-10-26."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 81",
+      "to": "Tallinn Traffic",
+      "note": "Reserve channel. MSC.231(82) Annex (amended 7.2.3.1)."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 74",
+      "to": "St. Petersburg Traffic",
+      "note": "Main channel, area south of the Central Reporting Line and east of 026 30E. MSC.231(82) Annex (amended 4.1.1); same on Fintraffic Master's Guide, read 2026-10-26."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 10",
+      "to": "St. Petersburg Traffic",
+      "note": "Reserve channel. MSC.231(82) Annex (amended 4.1.1)."
+    },
+    {
+      "type": "email",
+      "value": "gofrep@fintraffic.fi",
+      "to": "Helsinki Traffic",
+      "note": "For a Full Report sent in advance (MSC.231(82) amended 5.4: Full Report in advance by facsimile or e-mail). Address not printed in the IMO text; from the Fintraffic GOFREP Master's Guide web page, read 2026-10-26 (also in the Master's Guide PDF of 2021-09-03, changed 07.01.2021)."
+    },
+    {
+      "type": "phone",
+      "value": "+358 (0)204 48 5387",
+      "to": "Helsinki Traffic",
+      "note": "Fintraffic Master's Guide, read 2026-10-26. Second number +358 (0)204 48 5388. All calls are recorded. Not in the IMO text."
+    },
+    {
+      "type": "email",
+      "value": "gofrep@transpordiamet.ee",
+      "to": "Tallinn Traffic",
+      "note": "From the Fintraffic Master's Guide, read 2026-10-26 (Estonian address changed 28.01.2021). Not in the IMO text. Not confirmed on an Estonian Transport Administration page."
+    },
+    {
+      "type": "phone",
+      "value": "+372 6 205 764",
+      "to": "Tallinn Traffic",
+      "note": "Fintraffic Master's Guide, read 2026-10-26. Second number +372 6 205 765. Not confirmed on an Estonian page."
+    },
+    {
+      "type": "email",
+      "value": "gofrep@rsbm.ru",
+      "to": "St. Petersburg Traffic",
+      "note": "From the Fintraffic Master's Guide, read 2026-10-26. Not in the IMO text. Not confirmed on a Russian official site (rsbm.ru did not answer from here)."
+    },
+    {
+      "type": "phone",
+      "value": "+7 812 380 70 21",
+      "to": "St. Petersburg Traffic",
+      "note": "Fintraffic Master's Guide, read 2026-10-26. Second number +7 812 380 70 81. Not confirmed on a Russian official site."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 16",
+      "to": "all GOFREP Traffic Centres",
+      "note": "Call and distress (MSC.139(76) Annex 1, para 5.3). Broadcasts are announced on CH 16 first (para 4.1.2)."
+    },
+    {
+      "type": "other",
+      "value": "AIS",
+      "to": "all GOFREP Traffic Centres",
+      "note": "MSC.231(82) amended section 3 and 5.4: update AIS before entering; a Full Report can be made by AIS, fax or e-mail or by VHF voice. A Short Report is always by voice on VHF."
+    }
+  ],
+  "addressee": null,
+  "heading": "GOFREP",
+  "lines": [
+    {
+      "l": "A",
+      "req": "required",
+      "text": "Vessel's name, call sign and IMO identification. MMSI may be reported."
+    },
+    {
+      "l": "C",
+      "req": "required",
+      "text": "Geographical position by two 6 digit groups; or"
+    },
+    {
+      "l": "D",
+      "req": "optional",
+      "text": "Bearing and distance in nautical miles from a clearly identified landmark"
+    },
+    {
+      "l": "E",
+      "req": "required",
+      "text": "True course in three (3) digit group"
+    },
+    {
+      "l": "F",
+      "req": "optional",
+      "text": "Speed in knots with one decimal"
+    },
+    {
+      "l": "H",
+      "req": "optional",
+      "text": "Time (UTC) and point of entry into the GOFREP area"
+    },
+    {
+      "l": "I",
+      "req": "required",
+      "text": "Destination and expected time of arrival"
+    },
+    {
+      "l": "O",
+      "req": "required",
+      "text": "Vessel's present draught in metres with one decimal"
+    },
+    {
+      "l": "P",
+      "req": "required",
+      "text": "Dangerous goods on board, main classes and total quantity in metric tons with up to two decimals. The amount of classes 1 and 7, if any, shall be reported separately."
+    },
+    {
+      "l": "Q",
+      "req": "if-applicable",
+      "text": "Brief details of defects or restrictions of manoeuvrability"
+    },
+    {
+      "l": "R",
+      "req": "if-applicable",
+      "text": "Description of pollution or dangerous goods lost overboard"
+    },
+    {
+      "l": "T",
+      "req": "required",
+      "text": "Contact information of agent in the Gulf of Finland"
+    },
+    {
+      "l": "U",
+      "req": "required",
+      "text": "Ship's type and length in meters"
+    },
+    {
+      "l": "W",
+      "req": "required",
+      "text": "Total number of persons onboard"
+    },
+    {
+      "l": "X",
+      "req": "required",
+      "text": "Characteristics and estimated quantity of bunker fuel for ships carrying more than 5,000 tons of bunker and navigational status"
+    }
+  ],
+  "format_note": "Two reports (MSC.231(82), Appendix 1 as amended): 'A Short Report consists of designators A, C or D and E. Vessels may additionally be requested to report designator F.' 'A Full Report consists of designators A, C or D, E, I, O, P, T, U, W and X. Vessels may additionally be requested to report designators F or H.' Q or R are reported without delay when relevant. Line texts are from the amended Appendix 1 (paragraph 3.2.2 words T as 'Address for the communication of cargo information'). Information on cargo other than dangerous goods is only asked for ships to or from EU ports in the Gulf of Finland if it cannot be got by other means. The Fintraffic Master's Guide (2026) says a Short Report is the name of the ship and the reporting line being crossed, and a non-verbal Full Report should at least give A, I, O, P and W. Language English (IMO SMCP).",
+  "area": {
+    "shape": "polygon",
+    "points": [
+      {
+        "n": "1",
+        "lat": "59 33.30N",
+        "lon": "022 30.00E",
+        "inferred": false
+      },
+      {
+        "n": "2",
+        "lat": "59 36.50N",
+        "lon": "022 38.10E",
+        "inferred": false
+      },
+      {
+        "n": "3",
+        "lat": "59 38.10N",
+        "lon": "022 51.40E",
+        "inferred": false
+      },
+      {
+        "n": "4",
+        "lat": "59 39.40N",
+        "lon": "023 21.10E",
+        "inferred": false
+      },
+      {
+        "n": "5",
+        "lat": "59 47.00N",
+        "lon": "024 12.40E",
+        "inferred": false
+      },
+      {
+        "n": "6",
+        "lat": "59 47.80N",
+        "lon": "024 19.90E",
+        "inferred": false
+      },
+      {
+        "n": "7",
+        "lat": "59 49.00N",
+        "lon": "024 29.30E",
+        "inferred": false
+      },
+      {
+        "n": "8",
+        "lat": "59 53.50N",
+        "lon": "024 47.10E",
+        "inferred": false
+      },
+      {
+        "n": "9",
+        "lat": "59 55.30N",
+        "lon": "024 55.80E",
+        "inferred": false
+      },
+      {
+        "n": "10",
+        "lat": "59 56.60N",
+        "lon": "025 10.20E",
+        "inferred": false
+      },
+      {
+        "n": "11",
+        "lat": "59 55.90N",
+        "lon": "025 28.30E",
+        "inferred": false
+      },
+      {
+        "n": "12",
+        "lat": "59 55.70N",
+        "lon": "025 35.00E",
+        "inferred": false
+      },
+      {
+        "n": "13",
+        "lat": "59 55.90N",
+        "lon": "025 37.20E",
+        "inferred": false
+      },
+      {
+        "n": "14",
+        "lat": "59 58.60N",
+        "lon": "026 01.00E",
+        "inferred": false
+      },
+      {
+        "n": "15",
+        "lat": "60 00.80N",
+        "lon": "026 04.50E",
+        "inferred": false
+      },
+      {
+        "n": "16",
+        "lat": "60 02.30N",
+        "lon": "026 11.30E",
+        "inferred": false
+      },
+      {
+        "n": "17",
+        "lat": "60 02.80N",
+        "lon": "026 17.70E",
+        "inferred": false
+      },
+      {
+        "n": "18",
+        "lat": "60 09.20N",
+        "lon": "026 29.50E",
+        "inferred": false
+      },
+      {
+        "n": "19",
+        "lat": "60 09.70N",
+        "lon": "026 36.70E",
+        "inferred": false
+      },
+      {
+        "n": "20",
+        "lat": "60 11.40N",
+        "lon": "026 44.50E",
+        "inferred": false
+      },
+      {
+        "n": "21",
+        "lat": "60 12.00N",
+        "lon": "026 45.90E",
+        "inferred": false
+      },
+      {
+        "n": "22",
+        "lat": "60 12.00N",
+        "lon": "027 13.40E",
+        "inferred": false
+      },
+      {
+        "n": "23",
+        "lat": "60 12.00N",
+        "lon": "027 17.60E",
+        "inferred": false
+      },
+      {
+        "n": "24",
+        "lat": "60 10.30N",
+        "lon": "027 10.90E",
+        "inferred": false
+      },
+      {
+        "n": "25",
+        "lat": "60 08.50N",
+        "lon": "027 04.20E",
+        "inferred": false
+      },
+      {
+        "n": "26",
+        "lat": "60 08.50N",
+        "lon": "026 57.50E",
+        "inferred": false
+      },
+      {
+        "n": "27",
+        "lat": "60 08.20N",
+        "lon": "026 54.50E",
+        "inferred": false
+      },
+      {
+        "n": "28",
+        "lat": "60 05.00N",
+        "lon": "026 49.00E",
+        "inferred": false
+      },
+      {
+        "n": "29",
+        "lat": "60 08.90N",
+        "lon": "026 49.00E",
+        "inferred": false
+      },
+      {
+        "n": "30",
+        "lat": "60 06.50N",
+        "lon": "026 38.00E",
+        "inferred": false
+      },
+      {
+        "n": "31",
+        "lat": "60 06.10N",
+        "lon": "026 32.20E",
+        "inferred": false
+      },
+      {
+        "n": "32",
+        "lat": "60 05.00N",
+        "lon": "026 30.00E",
+        "inferred": false
+      },
+      {
+        "n": "33",
+        "lat": "59 57.00N",
+        "lon": "026 30.00E",
+        "inferred": false
+      },
+      {
+        "n": "34",
+        "lat": "59 56.30N",
+        "lon": "026 26.10E",
+        "inferred": false
+      },
+      {
+        "n": "35",
+        "lat": "59 54.00N",
+        "lon": "026 09.10E",
+        "inferred": false
+      },
+      {
+        "n": "36",
+        "lat": "59 48.90N",
+        "lon": "026 01.20E",
+        "inferred": false
+      },
+      {
+        "n": "37",
+        "lat": "59 49.60N",
+        "lon": "025 34.60E",
+        "inferred": false
+      },
+      {
+        "n": "38",
+        "lat": "59 42.20N",
+        "lon": "024 28.80E",
+        "inferred": false
+      },
+      {
+        "n": "39",
+        "lat": "59 34.60N",
+        "lon": "023 57.10E",
+        "inferred": false
+      },
+      {
+        "n": "40",
+        "lat": "59 28.90N",
+        "lon": "023 31.20E",
+        "inferred": false
+      },
+      {
+        "n": "41",
+        "lat": "59 29.00N",
+        "lon": "023 11.40E",
+        "inferred": false
+      },
+      {
+        "n": "42",
+        "lat": "59 28.20N",
+        "lon": "023 08.50E",
+        "inferred": false
+      },
+      {
+        "n": "43",
+        "lat": "59 27.40N",
+        "lon": "023 06.40E",
+        "inferred": false
+      },
+      {
+        "n": "44",
+        "lat": "59 17.50N",
+        "lon": "022 43.90E",
+        "inferred": false
+      },
+      {
+        "n": "45",
+        "lat": "59 17.70N",
+        "lon": "022 36.10E",
+        "inferred": false
+      },
+      {
+        "n": "46",
+        "lat": "59 16.20N",
+        "lon": "022 23.80E",
+        "inferred": false
+      },
+      {
+        "n": "47",
+        "lat": "59 14.70N",
+        "lon": "022 18.40E",
+        "inferred": false
+      },
+      {
+        "n": "48",
+        "lat": "59 03.40N",
+        "lon": "021 50.90E",
+        "inferred": false
+      },
+      {
+        "n": "49",
+        "lat": "59 02.10N",
+        "lon": "021 49.00E",
+        "inferred": false
+      },
+      {
+        "n": "50",
+        "lat": "59 10.0N",
+        "lon": "021 30.00E",
+        "inferred": false
+      }
+    ],
+    "lines": [],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 59.67,
+      "lon": 24.0
+    },
+    "bbox": [
+      21.3,
+      58.9,
+      27.5,
+      60.35
+    ]
+  },
+  "area_quote": "2.1 The mandatory ship reporting system in the Gulf of Finland covers the international waters in the Gulf of Finland. In addition, Estonia and Finland have implemented mandatory ship reporting systems to their national water areas outside VTS areas. ... The mandatory ship reporting system and the Estonian and Finnish national mandatory ship reporting systems are together referred as the GOFREP and their area of coverage respectively as the GOFREP area. ... Borderline point by point of the Gulf of Finland ship reporting area (The co-ordinates below are in WGS 84 Datum) 1) 59° 33′.30 N 022° 30′.00 E 2) 59° 36′.50 N 022° 38′.10 E ... 49) 59° 02′.10 N 021° 49′.00 E 50) 59° 10′.0 N 021° 30′.00 E",
+  "sources": [
+    {
+      "title": "IMO MSC.231(82) Amendments to the existing mandatory ship reporting system in the Gulf of Finland",
+      "ref": "Annex: 1.1, 2.1, 2.2 with the borderline points, section 3, 3.2.1, 3.2.2, 3.3, 4.1.1, 5.4, 7.2, Appendix 1",
+      "date": "2006-12-05",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.231(82).pdf",
+      "primary": true
+    },
+    {
+      "title": "IMO MSC.139(76) Mandatory ship reporting systems, Annex 1 (Gulf of Finland)",
+      "ref": "Annex 1, paras 4.1.2, 5.3, 5.7 and the parts not amended",
+      "date": "2002-12-05",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.139(76).pdf",
+      "primary": true
+    },
+    {
+      "title": "Fintraffic GOFREP Master's Guide (web page, Finnish VTS authority)",
+      "ref": "Contact information, reporting lines, 3. When and what to report",
+      "date": "2026-10-26",
+      "url": "https://mastersguide.fintraffic.fi/en/node/102",
+      "primary": false
+    },
+    {
+      "title": "Fintraffic GOFREP Master's Guide PDF",
+      "ref": "Contact information, updates list",
+      "date": "2021-09-03",
+      "url": "https://www.fintraffic.fi/sites/default/files/2021-09/GOFREP_MG_2021_09_03.pdf",
+      "primary": false
+    },
+    {
+      "title": "Fintraffic: Monitoring international waters (GOFREP)",
+      "ref": "GOFREP section",
+      "date": "2026-10-26",
+      "url": "https://www.fintraffic.fi/en/vts/monitoring-international-waters",
+      "primary": false
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Boundary: the 50 points were taken from the text layer of MSC.231(82) Annex page 3 (PDF page 4) and every digit was checked against a 170 dpi render of that page; point 50 is printed with one decimal of a minute (59° 10′.0 N) and is kept so. The ring 1 to 50 and back to 1 is closed by the Western Reporting Line (50 to 1); the points run along the Finnish side (1 to 23), back west along the Russian side (24 to 33) and along the Estonian side (34 to 49), and lie at sea. Rules, report contents and VHF channels: MSC.231(82) Annex (in force 1 July 2007), with the unamended parts of MSC.139(76) Annex 1. E-mail and phone numbers: not printed in either IMO text; taken from the live Fintraffic Master's Guide web page and the 2021 PDF (same numbers). The IMO index of MSC resolutions (pages 2000-03 to 2026-27, read 2026-10-26) shows no later amendment or revision of GOFREP.",
+  "confidence": "medium",
+  "notes": "One record, not one per centre: the IMO text gives one outer boundary and the same rules for all three centres; the three monitoring areas are split by the Central Reporting Line, whose western part is defined in the IMO text only as the midpoints of the separation zones of the TSS off Kõpu, Hankoniemi, Porkkala and Kalbådagrund to 59° 59′.15 N 026° 30′.00 E, so separate sector boundaries could not be drawn from the IMO text without inventing points. Which centre to call: north of the Central Reporting Line Helsinki Traffic; south of it and west of 026 30E (or from Väinameri) Tallinn Traffic; south of it and east of 026 30E St. Petersburg Traffic. When crossing the Central Reporting Line, report to the centre whose area you are entering; you need not report to the centre you are leaving (Fintraffic). Eastern part of the Central Reporting Line (MSC.231(82) 3.3.1): 59° 57′.0 N 026° 30′.00 E to 60° 05′.00 N 026° 30′.00 E, then along the Russian territorial sea / Finnish EEZ limit to 60° 08′.90 N 026° 49′.00 E, then along the Finland / Russia EEZ limit to 60° 10′.30 N 026° 57′.50 E, to 60° 10′.30 N 027° 10′.90 E and to 60° 12′.00 N 027° 17′.60 E. The Fintraffic Master's Guide also lists 17 points of the western part (59°05,88'N 021°40,08'E to 59°59,15'N 026°30,00'E), the Väinameri reporting line (59º06,00'N 022º35,00'E to 59º14,00'N 023º31,00'E) and the outer limits of the Finnish and Tallinn VTS areas; these are national data, not IMO text, and are not drawn here. The polygon leaves out the Finnish and Estonian VTS areas and Russian territorial waters, which have their own national VTS reporting. Ships in an icebreaker convoy need not give a Short Report at the reporting lines; the icebreaker reports them (Fintraffic). History: the 2004 system (MSC.139(76), from 1 July 2004) covered international waters only, between the Bengtskär - 59°33'.30 N 022°30'E - 59°10'N 021°30'E - Kõpu line and 026°30'E, with different report letters; MSC.231(82) replaced the boundary, the report letters and the reporting points from 1 July 2007. Contact details for Tallinn and St. Petersburg Traffic come only from the Finnish Master's Guide; they could not be confirmed on Estonian or Russian official pages. Participation of the Russian centre since 2022 was not checked against a Russian source; Fintraffic still lists St. Petersburg Traffic (page read 2026-10-26)."
+}

@@ -1,0 +1,192 @@
+{
+  "id": "ru-vts-peter-great-bay-sector-1b",
+  "system": "Peter the Great Bay regional VTS (РСУДС залива Петра Великого), Sector 1B",
+  "title": "Nakhodka Traffic: Sector 1B, approaches to Nakhodka Gulf (Kozmino, Vostochny, Nakhodka)",
+  "country": "Russia",
+  "authority": "Regional VTS of Peter the Great Bay, call sign \"Находка-Трафик\" (Nakhodka Traffic); harbour masters of the ports of Vostochny and Nakhodka",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": null,
+  "applies_to": "Ships on the approaches to Nakhodka Gulf (ports of Vostochny with Kozmino, and Nakhodka). The port regulations apply to ships whatever their flag.",
+  "applies_quote": "Настоящие Обязательные постановления подлежат исполнению судами независимо от их национальной и ведомственной принадлежности ...",
+  "when": [
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "In Sector 1B, communication with the regional VTS is on VHF channel 9. On entering a VTS zone the ship gives: name and type, flag, port of destination, maximum draught and air draught, cargo and any dangerous cargo, defects or limits that affect safe navigation (General Rules p. 29). Quote: \"На подходах к заливу Находка в секторе N 1 Б ... связь с РСУДС осуществляется на канале 9 ОВЧ.\""
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 9",
+      "to": "Nakhodka Traffic (Находка-Трафик)",
+      "note": "Sector 1B working channel (Vostochny regulations p. 53, Nakhodka regulations p. 54)"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 16",
+      "to": "Nakhodka Traffic (Находка-Трафик)",
+      "note": "Calling channel of the VTS in the port VHF tables (Vostochny Appendix 4: calling 16, working 13; Nakhodka Appendix 4: calling 16, working 13, 9)"
+    }
+  ],
+  "addressee": null,
+  "heading": null,
+  "lines": [
+    {
+      "l": "1",
+      "req": "required",
+      "text": "Ship's name and type"
+    },
+    {
+      "l": "2",
+      "req": "required",
+      "text": "Flag"
+    },
+    {
+      "l": "3",
+      "req": "required",
+      "text": "Port of destination"
+    },
+    {
+      "l": "4",
+      "req": "required",
+      "text": "Maximum present draught and air draught"
+    },
+    {
+      "l": "5",
+      "req": "required",
+      "text": "Kind of cargo, dangerous cargo on board"
+    },
+    {
+      "l": "6",
+      "req": "if-applicable",
+      "text": "Defects of ship equipment and other limits that affect safe navigation"
+    }
+  ],
+  "format_note": "Report items are from the General Rules p. 29 (on entering any VTS zone); VTS may ask for more of the p. 38 data. Language not stated in the regulations; Russian and English are used in practice (not confirmed in the source).",
+  "area": {
+    "shape": "lines",
+    "points": [
+      {
+        "n": "W1",
+        "name": "Meridian 132°28,00'E at the coast (north end)",
+        "lat": "42 53.0N",
+        "lon": "132 28.00E",
+        "inferred": true
+      },
+      {
+        "n": "W2",
+        "name": "Meridian 132°28,00'E at the territorial sea limit (south end)",
+        "lat": "42 22.0N",
+        "lon": "132 28.00E",
+        "inferred": true
+      },
+      {
+        "n": "E1",
+        "name": "Meridian 133°43,00'E at the coast (north end, near мыс Островной per OpenStreetMap)",
+        "lat": "42 48.5N",
+        "lon": "133 43.00E",
+        "inferred": true
+      },
+      {
+        "n": "E2",
+        "name": "Meridian 133°43,00'E at the territorial sea limit (south end)",
+        "lat": "42 37.0N",
+        "lon": "133 43.00E",
+        "inferred": true
+      },
+      {
+        "n": "L",
+        "name": "мыс Лихачева (Cape Likhacheva)",
+        "lat": "42 44.1N",
+        "lon": "132 51.0E",
+        "inferred": true
+      },
+      {
+        "n": "P",
+        "name": "мыс Поворотный (Cape Povorotny)",
+        "lat": "42 40.4N",
+        "lon": "133 02.5E",
+        "inferred": true
+      }
+    ],
+    "lines": [
+      [
+        "W1",
+        "W2"
+      ],
+      [
+        "E1",
+        "E2"
+      ],
+      [
+        "L",
+        "P"
+      ]
+    ],
+    "center": null,
+    "radius_nm": null,
+    "state": "Russia",
+    "zone": "South limit: outer limit of the Russian territorial sea",
+    "ports": [
+      "Vostochny (Kozmino)",
+      "Nakhodka"
+    ],
+    "inside_hint": {
+      "lat": 42.6,
+      "lon": 132.95
+    },
+    "bbox": [
+      132.3,
+      42.3,
+      133.8,
+      42.95
+    ]
+  },
+  "area_quote": "54. На подходах к заливу Находка в секторе N 1 Б, который ограничен с юга границей территориального моря, с запада меридианом 132°28,00' восточной долготы, с востока меридианом 133°43,00' восточной долготы, связь с РСУДС осуществляется на канале 9 ОВЧ. (Nakhodka regulations p. 54; same text in Vostochny regulations p. 53.)",
+  "sources": [
+    {
+      "title": "Обязательные постановления в морском порту Восточный, Приказ Минтранса России от 11.01.2011 № 10 (ред. от 13.02.2026)",
+      "ref": "pp. 50 to 57, Appendix 4",
+      "date": "2026-02-13",
+      "url": "https://legalacts.ru/doc/prikaz-mintransa-rf-ot-11012011-n-10/",
+      "primary": true
+    },
+    {
+      "title": "Обязательные постановления в морском порту Находка, Приказ Минтранса России от 23.06.2011 № 169 (ред. от 15.12.2017)",
+      "ref": "pp. 52 to 57, Appendix 4",
+      "date": "2017-12-15",
+      "url": "https://pravo.ppt.ru/prikaz/mintrans/n-169-15191",
+      "primary": true
+    },
+    {
+      "title": "Приказ Минтранса России от 13.02.2026 № 62 (amends the Vostochny order, validity to 01.03.2028)",
+      "ref": "Official PDF",
+      "date": "2026-02-13",
+      "url": "http://publication.pravo.gov.ru/document/0001202603240010",
+      "primary": true
+    },
+    {
+      "title": "Приказ Минтранса России от 17.07.2026 № 337 \"Об утверждении Обязательных постановлений в морском порту Восточный\" (new regulations, in force 01.03.2027)",
+      "ref": "pp. 46 to 48 of the new regulations",
+      "date": "2026-07-17",
+      "url": "http://publication.pravo.gov.ru/document/0001202609020003",
+      "primary": true
+    },
+    {
+      "title": "Общие правила плавания и стоянки судов (Приказ Минтранса № 395, ред. от 23.12.2025)",
+      "ref": "p. 29 (report on entering a VTS zone)",
+      "date": "2025-12-23",
+      "url": "https://legalacts.ru/doc/prikaz-mintransa-rossii-ot-12112021-n-395-ob-utverzhdenii/",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Sector 1B text read in the Vostochny regulations (legalacts.ru consolidated text, ред. от 13.02.2026) and in the Nakhodka regulations (pravo.ppt.ru, ред. от 15.12.2017); both identical. The 13.02.2026 amendment checked on the official PDF: it only adds a berth row (RPK Vostochny-1) and sets validity to 01.03.2028, no VTS change. New 2027 regulations read on rulaws.ru (text) and the first page of the official PDF (order number 337, registered 01.09.2026 № 88098).",
+  "confidence": "medium",
+  "notes": "Only the two meridians are printed. Every point in this record is inferred and only for drawing: the north ends of the meridians at the coast (E1 taken from the OpenStreetMap position of Cape Ostrovnoy, 42.809N 133.717E, which lies on the meridian) and the south ends at the 12 NM territorial sea limit are rough estimates (about 5' either way), and the cape positions L and P are from OpenStreetMap, not from the regulations. The real south limit is the outer limit of the Russian territorial sea, measured from the closing line of Peter the Great Bay; check it on a Russian chart. The line Cape Likhacheva to Cape Povorotny is the boundary with Sector 2 (ru-vts-nakhodka-sector-2). From 01.03.2027 the new Vostochny regulations (order № 337) give Sector 1B on VHF channels 9 and 16, call sign Находка-Трафик (\"Связь с СУДС в секторе 1Б осуществляется на 9 и 16 каналах связи ... (позывной «Находка-Трафик»)\"). rulaws.ru prints that order as № 331; the official PDF shows № 337. The Nakhodka regulations were last amended 15.12.2017 (order № 522); no later order was found on publication.pravo.gov.ru on 2026-10-26, and their current validity date was not confirmed. Sector 1A to the west (Vladivostok Traffic, CH 71) starts at 132°28,00'E: see ru-vts-vladivostok-sector-1a. VTS phone and email are not given in the regulations and were not found (pma.ru was not reachable)."
+}

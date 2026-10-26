@@ -1,0 +1,342 @@
+{
+  "id": "kr-vts-donghae",
+  "system": "Korea VTS",
+  "title": "Donghae VTS, Sacheonjin to Deoksan incl. Donghae, Mukho, Samcheok (CH 12)",
+  "country": "Republic of Korea",
+  "authority": "Korea Coast Guard (해양경찰청), Donghae VTS Centre (동해광역 해상교통관제센터)",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": "2026-10-01",
+  "applies_to": "Ships under VTS (관제대상선박): ships on international voyages; ships of 300 GT and over (not domestic fishing vessels); dangerous cargo ships; passenger ships; and some ships under 300 GT fitted with AIS (tugs, pilot boats, bunker and water boats, work vessels, government vessels). A foreign crude oil tanker is always included.",
+  "applies_quote": "법 제2조제3호 관제대상선박: 가. 국제항해에 취항하는 선박 나. 총톤수 300톤 이상의 선박. 다만, 「어선법」 제2조제1호에 따른 어선 중 국내항 사이만을 항행하는 내항어선은 제외한다. 다. 「해상교통안전법」 제2조제4호에 따른 위험화물운반선 ... 고시 제5조: 1. 법 제2조제3호가목부터 다목까지의 선박 2. 「해운법」 제2조제1호의2에 따른 여객선 3. 총톤수 300톤 미만의 선박 중 「선박설비기준」 제108조의5에 따른 자동식별장치를 설치한 다음 각 목의 선박 ...",
+  "when": [
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Navigation report when entering the VTS area: 1) ship's name 2) position 3) destination 4) air draught (only ships that will pass a listed bridge or power line and are as high as or higher than its limit) 5) other items needed for traffic safety. (선박교통관제구역에 들어올 때: 1) 선박명 2) 선박의 위치 3) 목적지 4) 수면상 최고 높이 ... 7) 그 밖에 선박교통의 안전에 필요한 사항)"
+    },
+    {
+      "event": "departure",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "10 minutes before getting under way (from a berth or anchorage inside the area): 1) ship's name 2) position and planned time of sailing 3) destination 4) air draught (only if passing a listed bridge or line at or above its limit) 5) other items. (항행을 시작하기 10분 전: 1) 선박명 2) 선박의 위치, 항행예정 시각 3) 목적지 4) 수면상 최고 높이 ...)"
+    },
+    {
+      "event": "departure",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "When starting to navigate: 1) ship's name 2) call sign 3) time navigation started 4) other items. (항행을 시작할 때: 1) 선박명 2) 호출부호 3) 항행 시작 시각 4) 그 밖에 선박교통의 안전에 필요한 사항)"
+    },
+    {
+      "event": "arrival",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Anchoring or mooring report when anchoring or mooring: 1) ship's name 2) call sign 3) time and position of anchoring or mooring 4) other items. (정박 또는 계류할 때: 1) 선박명 2) 호출부호 3) 정박 또는 계류 시각ㆍ위치 4) 그 밖에 선박교통의 안전에 필요한 사항)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Pilot boarding: ship's name, pilot's name or code, time and place of boarding, destination, air draught, other items. Pilot leaving: ship's name, time and place. The master may let the pilot make these calls. (도선사가 승선할 때: 1) 선박명 2) 도선사 성명 또는 약호 3) 승선 시각ㆍ장소 4) 목적지 5) 수면상 최고 높이 ... 도선사가 하선할 때: 1) 선박명 2) 하선 시각ㆍ장소)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "When entering an offshore wind farm (one in commercial operation): ship's name, position, other items. (해상풍력발전단지에 들어올 때: 1) 선박명 2) 선박의 위치 3) 그 밖에 선박교통의 안전에 필요한 사항)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "At once, if the ship sees an obstruction in a fairway or a marine accident that does or may endanger traffic in the area (Act art. 14(5)). (선박교통관제구역 내의 항로상의 장애물이나 해양사고 발생 등으로 선박교통의 안전을 해치거나 해칠 우려가 있다고 인지한 경우에는 지체 없이 이를 선박교통관제관서에 신고하여야 한다.)"
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 12",
+      "to": "Donghae VTS",
+      "note": "VTS working channel for this area (Annex 1)"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 16",
+      "to": "Donghae VTS",
+      "note": "distress, urgency and safety; DSC CH 70"
+    },
+    {
+      "type": "phone",
+      "value": "033-680-2550, 033-680-2650, 033-680-2750, 033-680-2950",
+      "to": "Donghae VTS Centre (동해광역 해상교통관제센터)",
+      "note": "Donghae VTS (KCG page, one number list for Donghae, Hosan and Sokcho VTS); from abroad +82 33 680 2550"
+    },
+    {
+      "type": "fax",
+      "value": "033-680-2850",
+      "to": "Donghae VTS Centre (동해광역 해상교통관제센터)",
+      "note": "KCG page"
+    }
+  ],
+  "addressee": "동해 브이티에스 또는 Donghae VTS",
+  "heading": null,
+  "lines": [
+    {
+      "l": "1",
+      "req": "required",
+      "text": "Ship's name (선박명)"
+    },
+    {
+      "l": "2",
+      "req": "required",
+      "text": "Ship's position (선박의 위치); on departure also the planned time of sailing"
+    },
+    {
+      "l": "3",
+      "req": "required",
+      "text": "Destination (목적지)"
+    },
+    {
+      "l": "4",
+      "req": "if-applicable",
+      "text": "Air draught (수면상 최고 높이), only when passing a listed bridge or power line and the ship is as high as or higher than the limit"
+    },
+    {
+      "l": "5",
+      "req": "if-applicable",
+      "text": "Call sign (호출부호) and time, in the 'starting to navigate' and anchoring/mooring reports"
+    },
+    {
+      "l": "6",
+      "req": "optional",
+      "text": "Other items needed for traffic safety (그 밖에 선박교통의 안전에 필요한 사항)"
+    }
+  ],
+  "format_note": "Voice reports on the VHF working channel of the area. English may be used (Decree art. 10(1)). The VTS may let the ship leave out items it can already see on AIS (Annex 2 note 3; notice art. 7(3) with prior agreement). No exit report is listed in the rules; keep watch on the working channel and CH 16 while in the area.",
+  "area": {
+    "shape": "polygon",
+    "points": [
+      {
+        "n": "01",
+        "lat": "37 50 19N",
+        "lon": "128 52 47E",
+        "inferred": false,
+        "name": "사천진항"
+      },
+      {
+        "n": "02",
+        "lat": "37 50 19N",
+        "lon": "129 10 34E",
+        "inferred": false
+      },
+      {
+        "n": "03",
+        "lat": "37 39 55N",
+        "lon": "129 18 32E",
+        "inferred": false
+      },
+      {
+        "n": "04",
+        "lat": "37 34 43N",
+        "lon": "129 22 31E",
+        "inferred": false
+      },
+      {
+        "n": "05",
+        "lat": "37 22 49N",
+        "lon": "129 31 32E",
+        "inferred": false
+      },
+      {
+        "n": "06",
+        "lat": "37 22 49N",
+        "lon": "129 15 37E",
+        "inferred": false,
+        "name": "덕산항"
+      },
+      {
+        "n": "07",
+        "lat": "37 23 55N",
+        "lon": "129 13 37E",
+        "inferred": false,
+        "name": "삼척화력발전소항만시설"
+      },
+      {
+        "n": "08",
+        "lat": "37 26 02N",
+        "lon": "129 11 32E",
+        "inferred": false,
+        "name": "삼척항"
+      },
+      {
+        "n": "09",
+        "lat": "37 26 04N",
+        "lon": "129 11 40E",
+        "inferred": false
+      },
+      {
+        "n": "10",
+        "lat": "37 27 09N",
+        "lon": "129 11 34E",
+        "inferred": false
+      },
+      {
+        "n": "11",
+        "lat": "37 29 04N",
+        "lon": "129 09 31E",
+        "inferred": false
+      },
+      {
+        "n": "12",
+        "lat": "37 29 47N",
+        "lon": "129 08 40E",
+        "inferred": false,
+        "name": "동해항 내측방파제"
+      },
+      {
+        "n": "13",
+        "lat": "37 30 11N",
+        "lon": "129 08 44E",
+        "inferred": false,
+        "name": "동해항 외측방파제"
+      },
+      {
+        "n": "14",
+        "lat": "37 31 40N",
+        "lon": "129 07 31E",
+        "inferred": false
+      },
+      {
+        "n": "15",
+        "lat": "37 32 37N",
+        "lon": "129 06 50E",
+        "inferred": false,
+        "name": "묵호항"
+      },
+      {
+        "n": "16",
+        "lat": "37 32 43N",
+        "lon": "129 07 03E",
+        "inferred": false
+      },
+      {
+        "n": "17",
+        "lat": "37 33 33N",
+        "lon": "129 07 21E",
+        "inferred": false,
+        "name": "어달항"
+      },
+      {
+        "n": "18",
+        "lat": "37 34 43N",
+        "lon": "129 07 13E",
+        "inferred": false
+      },
+      {
+        "n": "19",
+        "lat": "37 37 13N",
+        "lon": "129 03 35E",
+        "inferred": false
+      },
+      {
+        "n": "20",
+        "lat": "37 37 17N",
+        "lon": "129 03 15E",
+        "inferred": false,
+        "name": "옥계항"
+      },
+      {
+        "n": "21",
+        "lat": "37 40 32N",
+        "lon": "129 03 31E",
+        "inferred": false
+      },
+      {
+        "n": "22",
+        "lat": "37 44 25N",
+        "lon": "128 59 21E",
+        "inferred": false
+      },
+      {
+        "n": "23",
+        "lat": "37 46 24N",
+        "lon": "128 57 17E",
+        "inferred": false
+      }
+    ],
+    "lines": [],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 37.56,
+      "lon": 129.246
+    },
+    "bbox": [
+      128.83,
+      37.33,
+      129.58,
+      37.89
+    ]
+  },
+  "area_quote": "○ 다음 각 기점을 순차적으로 연결한 선 안의 해역(사천진항에서 덕산항에 이르는 해역) 01. 북위 37도 50분 19초, 동경 128도 52분 47초(사천진항) 02. 북위 37도 50분 19초, 동경 129도 10분 34초 ... 23. 북위 37도 46분 24초, 동경 128도 57분 17초",
+  "sources": [
+    {
+      "title": "선박교통관제에 관한 규정 (Korea Coast Guard notice on VTS), 해양경찰청고시 제2026-10호",
+      "ref": "Art. 4 to 9; Annex 1 (areas and channels)",
+      "date": "2026-10-01",
+      "url": "https://www.law.go.kr/LSW/flDownload.do?flSeq=169768433&bylClsCd=200201",
+      "primary": true
+    },
+    {
+      "title": "선박교통관제에 관한 규정, Annex 2 (reports) and Annex 3 (VTS communication incl. pilot)",
+      "ref": "별표 2, 별표 3",
+      "date": "2026-10-01",
+      "url": "https://www.law.go.kr/LSW/flDownload.do?flSeq=169768445&bylClsCd=200201",
+      "primary": true
+    },
+    {
+      "title": "선박교통관제에 관한 규정 (full text, law.go.kr)",
+      "ref": "본문",
+      "date": "2026-10-01",
+      "url": "https://www.law.go.kr/LSW/admRulInfoP.do?admRulSeq=2100000285422",
+      "primary": true
+    },
+    {
+      "title": "선박교통관제에 관한 법률 (Vessel Traffic Service Act)",
+      "ref": "Art. 2, 3, 14, 15, 18-2, 27",
+      "date": "2025-06-21",
+      "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=267401",
+      "primary": true
+    },
+    {
+      "title": "선박교통관제에 관한 법률 시행령 (Enforcement Decree)",
+      "ref": "Art. 8, 9, 10, 11-2",
+      "date": "2025-06-21",
+      "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=271413",
+      "primary": true
+    },
+    {
+      "title": "Korea Coast Guard, 전국VTS센터: Donghae VTS Centre (동해광역 해상교통관제센터) 이용안내 (VTS 통신망, 통항시 유의사항, 관제구역)",
+      "ref": "VTS 통신망, 통항시 유의사항, 관제구역",
+      "date": "2026-10-26",
+      "url": "https://www.kcg.go.kr/kcg/si/sub/info.do?page=2836&num=05&mi=2836",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Coordinates parsed from the Annex 1 PDF of notice 2026-10 (law.go.kr download) and compared point by point with the Korea Coast Guard VTS web page for this centre: identical. Channel and call name from Annex 1; phone and fax from the KCG page; report rules from Annex 2 and 3 and the Act and Decree as in force on law.go.kr.  inside_hint is the point farthest from the boundary, computed from the polygon; it was not checked against a chart, so it may fall on an island.",
+  "confidence": "high",
+  "notes": "Keep a continuous listening watch and answer on the area's working channel (Act art. 14(4)). Distress, urgency and safety: VHF CH 16, DSC CH 70. VTS works 24 hours (Annex 1 notes 3 and 4). Masters must follow VTS instructions unless that is clearly unsafe, and then say why at once (Act art. 14(1)). The VTS can order ships to a safe place when a gale, storm surge or typhoon warning is in force or visibility is 500 m or less (notice art. 8). International ships of 3,000 GT and over must record VTS VHF exchanges and keep them 60 days (Decree art. 10(2) to (5)). Fines up to KRW 3 million for no report, a false report, no listening watch or no recording; up to KRW 2 million for not reporting a hazard (Act art. 27). Radar shadow areas inside the area are not covered (Annex 1 note 1). Donghae VTS centre has three sub-areas: Dongho beach to Sacheonjin (CH 14, Sokcho VTS), Sacheonjin to Deoksan incl. Donghae, Mukho, Samcheok and Okgye ports (CH 12, Donghae VTS), Deoksan to Uljin incl. Hosan (CH 14, Hosan VTS). Annex 2: in the Donghae area, report the ship's name 2 NM before the end of the breakwater of the destination port. KCG page: keep watch on CH 12 and 16 (Donghae, Samcheok, Mukho, Okgye, Anin) or CH 14 and 16 (Hosan, Sokcho); beware set nets near the approach channels. Sokcho port itself only takes simple entry and departure reports (call Sokcho VTS, CH 14). Quick record (user asked for speed): area, channel, call name and report rules from the notice; phone from the KCG page; not polished. The ring is printed as points 01 to 23 and closes back to 01 along the coast. The annex prints the 'outside territorial sea' note after the Sokcho and Hosan sub-areas but not after this one."
+}

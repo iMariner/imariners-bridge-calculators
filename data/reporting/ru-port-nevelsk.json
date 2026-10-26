@@ -1,0 +1,163 @@
+{
+  "id": "ru-port-nevelsk",
+  "system": "Port of Nevelsk (with Kuril sections), harbour master",
+  "title": "Nevelsk and Kuril sections: call port control 2 NM before the section limit",
+  "country": "Russia",
+  "authority": "Harbour master of the seaport of Nevelsk (Невельск-портконтроль; Северо-Курильск-портконтроль etc.), FGBU AMP of Sakhalin, Kuril Islands and Kamchatka",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": "2024-03-01",
+  "applies_to": "All ships bound for the sections of the port: Nevelsk, Severo-Kurilsk, Kurilsk, Yuzhno-Kurilsk, Malokurilsk.",
+  "applies_quote": "25. Суда, следующие в морской порт, за две морские мили до пересечения границ участков акватории устанавливают связь на каналах связи ОВЧ, указанных в сведениях о каналах связи очень высокой частоты, используемых в морском порту, предусмотренных в Приложении N 3 к Обязательным постановлениям (далее - Сведения о каналах связи).",
+  "when": [
+    {
+      "event": "before_arrival",
+      "hours_before": 72,
+      "interval_h": null,
+      "report": null,
+      "text": "Arrival and departure information to the harbour master through www.portcall.marinet.ru (p. 12). Times per the General Rules: 120 to 72 hours before arrival, confirm 48 to 24 hours before; arrival application within 4 hours of first anchoring or mooring; departure application 4 hours before departure (ru-general-prearrival). From a foreign port the entry permission must also be agreed with the FSB (ru-entry-fsb-permission)."
+    },
+    {
+      "event": "before_entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "2 NM before crossing the limit of a port section, call on the Appendix 3 channels (Nevelsk: Невельск-портконтроль, calling 16, working 11) (p. 25)."
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Emergency information on CH 16 (p. 61). Dangerous goods information through portcall.marinet.ru (p. 53)."
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 11",
+      "to": "Невельск-портконтроль (port control, Nevelsk section)",
+      "note": "Appendix 3: calling 16, working 11"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 16",
+      "to": "Невельск-портконтроль",
+      "note": "Calling channel"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 10",
+      "to": "Невельск-лоцман (pilots)",
+      "note": "Appendix 3: calling 16, working 10"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 17",
+      "to": "Невельск-6 (Border Service, Nevelsk) / Тезис-5 (border checkpoint)",
+      "note": "Appendix 3: calling 16, working 17"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 11",
+      "to": "Северо-Курильск-портконтроль (port control, Severo-Kurilsk section)",
+      "note": "Appendix 3: calling 16, working 11"
+    },
+    {
+      "type": "web",
+      "value": "www.portcall.marinet.ru",
+      "to": "Harbour master of Nevelsk",
+      "note": "Arrival information (p. 12)"
+    }
+  ],
+  "addressee": null,
+  "heading": null,
+  "lines": [
+    {
+      "l": "1",
+      "req": "required",
+      "text": "Ship's name and type"
+    },
+    {
+      "l": "2",
+      "req": "required",
+      "text": "Flag"
+    },
+    {
+      "l": "3",
+      "req": "required",
+      "text": "Port of destination"
+    },
+    {
+      "l": "4",
+      "req": "required",
+      "text": "Maximum present draught and air draught"
+    },
+    {
+      "l": "5",
+      "req": "required",
+      "text": "Kind of cargo, dangerous cargo on board"
+    },
+    {
+      "l": "6",
+      "req": "if-applicable",
+      "text": "Defects of ship equipment and other limits that affect safe navigation"
+    }
+  ],
+  "format_note": "Report items from General Rules p. 29.",
+  "area": {
+    "shape": "port",
+    "points": [],
+    "lines": [],
+    "center": null,
+    "radius_nm": null,
+    "state": "Russia",
+    "zone": "Port sections; their limits are in the regulations' appendices and not copied here",
+    "ports": [
+      "Nevelsk",
+      "Severo-Kurilsk",
+      "Kurilsk",
+      "Yuzhno-Kurilsk",
+      "Malokurilsk"
+    ],
+    "inside_hint": {
+      "lat": 46.67,
+      "lon": 141.82
+    },
+    "bbox": [
+      141.6,
+      46.5,
+      142.0,
+      46.85
+    ]
+  },
+  "area_quote": "25. Суда, следующие в морской порт, за две морские мили до пересечения границ участков акватории устанавливают связь на каналах связи ОВЧ ...",
+  "sources": [
+    {
+      "title": "Приказ Минтранса России от 05.06.2023 № 201 \"Об утверждении Обязательных постановлений в морском порту Невельск\" (in force 01.03.2024, valid to 01.03.2030)",
+      "ref": "pp. 12, 25, 53, 61, Appendix 3",
+      "date": "2023-06-05",
+      "url": "https://rulaws.ru/acts/Prikaz-Mintransa-Rossii-ot-05.06.2023-N-201/",
+      "primary": true
+    },
+    {
+      "title": "Same order № 201, official publication",
+      "ref": "publication.pravo.gov.ru",
+      "date": "2023-06-05",
+      "url": "http://publication.pravo.gov.ru/document/0001202308150003",
+      "primary": true
+    },
+    {
+      "title": "Общие правила плавания и стоянки судов (Приказ Минтранса № 395, ред. от 23.12.2025)",
+      "ref": "pp. 29, 39, 40, 43, 45",
+      "date": "2025-12-23",
+      "url": "https://legalacts.ru/doc/prikaz-mintransa-rossii-ot-12112021-n-395-ob-utverzhdenii/",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Text read on rulaws.ru; channels for the Nevelsk and Severo-Kurilsk sections copied from Appendix 3; other Kuril sections not copied.",
+  "confidence": "medium",
+  "notes": "No VTS. Only the Nevelsk and Severo-Kurilsk port control channels were copied; check Appendix 3 for Kurilsk, Yuzhno-Kurilsk and Malokurilsk. Section limits not drawn. Harbour master phone and email not found."
+}

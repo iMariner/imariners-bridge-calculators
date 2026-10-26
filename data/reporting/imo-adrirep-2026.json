@@ -1,0 +1,443 @@
+{
+  "id": "imo-adrirep-2026",
+  "system": "ADRIREP",
+  "title": "ADRIREP Adriatic Sea (revised, from 1 Dec 2026)",
+  "country": "Albania, Croatia, Italy, Montenegro, Slovenia (reports also made available to Bosnia and Herzegovina and Greece)",
+  "authority": "ADRIREP competent shore-based authorities: VTS Durres, VTS Croatia, VTS Brindisi, Ancona Coast Guard, VTS Venezia, VTS Trieste, VTS Bari, Pescara Coast Guard, Ravenna Coast Guard, MRCC Bar, MRCC Koper",
+  "kind": "mandatory-imo",
+  "resolution": "MSC.598(111)",
+  "status": "adopted, not yet in effect",
+  "effective": "2026-12-01",
+  "applies_to": "Oil tankers of 150 GT and above; all ships of 10,000 GT and above; all other ships of any size carrying hazardous cargo, in bulk or in package.",
+  "applies_quote": "1.1 Ships of the following categories are required to participate in the system: .1 all oil tanker ships of 150 gross tonnage and above; .2 all ships of 10,000 gross tonnage and above; and .3 all other ships, irrespective of their size, carrying on board hazardous cargo, in bulk or in package. 1.2 For the purpose of this system, the term \"hazardous cargo\", as defined in resolution MSC.433(98), means: .1 goods classified in the International Maritime Dangerous Goods (IMDG) Code; .2 substances classified in chapter 17 of the International Code for the Construction and Equipment of Ships Carrying Dangerous Chemicals in Bulk (IBC Code) and chapter 19 of the International Code for the Construction and Equipment of Ships Carrying Liquefied Gases in Bulk (IGC Code); .3 oils as defined in MARPOL Annex I; .4 noxious liquid substances as defined in MARPOL Annex II; .5 harmful substances as defined in MARPOL Annex III; and .6 radioactive materials specified in the International Code for the Safe Carriage of Packaged Irradiated Nuclear Fuel, Plutonium and High-Level Radioactive Wastes on Board Ships (INF Code).",
+  "when": [
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "SP",
+      "text": "3.1.3 When entering the Adriatic Sea by crossing northwards the parallel 40° 25'.00 N, the ship shall submit the SP to VTS Brindisi, which shall confirm its reception and make this information available to all other competent shore-based authorities."
+    },
+    {
+      "event": "departure",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "SP",
+      "text": "3.1.4 When leaving a port inside the area covered by the ADRIREP system the ship shall submit the SP to the nearest competent shore-based authority of the country of the port of departure. The authority receiving this report shall confirm its reception and shall make this information available to other competent shore-based authorities."
+    },
+    {
+      "event": "position",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "PR",
+      "text": "3.2.1 The position report (PR) is considered as on demand report. This report is provided upon request from the competent shore-based authorities, and it is used to confirm the correctness of data provided in the sailing plan. Any competent shore-based authority of the ADRIREP interacting with the ships may request a PR."
+    },
+    {
+      "event": "deviation",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "PR",
+      "text": "3.2.1 In addition, the PR shall be provided by the ship to the nearest competent shore-based authority whenever there are changes to the SP during the ship's voyage in the ADRIREP area."
+    },
+    {
+      "event": "arrival",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "FR",
+      "text": "3.3.1.1 when entering a port area or an anchorage area under the responsibility of the port within the ADRIREP area. 3.3.2 The ship shall submit the FR to the nearest competent shore-based authority of the port of arrival when entering a port inside the area covered by the ADRIREP system."
+    },
+    {
+      "event": "exit",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "FR",
+      "text": "3.3.3 The ship shall submit the FR to VTS Brindisi when leaving the area of the ADRIREP system (south from the latitude 40° 25'.00 N)."
+    }
+  ],
+  "how": [
+    {
+      "type": "web",
+      "value": "https://adrirep.emsa.europa.eu",
+      "to": "ADRIREP SafeSeaNet web user interface (EMSA)",
+      "note": "Primary means of reporting: MSC.598(111) paras 3.1.5, 3.5.1.1 to 3.5.1.4 and 5.1. The address answered on 2026-10-26."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 15",
+      "to": "VTS DURRES (Albania)",
+      "note": "MSC.598(111) Appendix 2 (location: Durres). Backup to SafeSeaNet; ships in the area must use the VHF channel of the authority concerned (para 5.3)."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 16",
+      "to": "VTS DURRES (Albania)",
+      "note": "MSC.598(111) Appendix 2 (location: Durres). Backup to SafeSeaNet; ships in the area must use the VHF channel of the authority concerned (para 5.3)."
+    },
+    {
+      "type": "phone",
+      "value": "+35552706970",
+      "to": "VTS DURRES (Albania)",
+      "note": "MSC.598(111) Appendix 2."
+    },
+    {
+      "type": "email",
+      "value": "kapiteneria.durres@dpdetare.gov.al",
+      "to": "VTS DURRES (Albania)",
+      "note": "MSC.598(111) Appendix 2."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 10",
+      "to": "VTS CROATIA (Croatia)",
+      "note": "MSC.598(111) Appendix 2 (location: Dubrovnik, Split, Rijeka). Backup to SafeSeaNet; ships in the area must use the VHF channel of the authority concerned (para 5.3)."
+    },
+    {
+      "type": "phone",
+      "value": "+38551 312300",
+      "to": "VTS CROATIA (Croatia)",
+      "note": "MSC.598(111) Appendix 2."
+    },
+    {
+      "type": "email",
+      "value": "vts3@pomorstvo.hr",
+      "to": "VTS CROATIA (Croatia)",
+      "note": "MSC.598(111) Appendix 2."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 10",
+      "to": "VTS BRINDISI (Italy)",
+      "note": "MSC.598(111) Appendix 2 (location: Brindisi). Backup to SafeSeaNet; ships in the area must use the VHF channel of the authority concerned (para 5.3)."
+    },
+    {
+      "type": "phone",
+      "value": "+39 0831 590219",
+      "to": "VTS BRINDISI (Italy)",
+      "note": "MSC.598(111) Appendix 2."
+    },
+    {
+      "type": "email",
+      "value": "so.cpbrindisi@mit.gov.it",
+      "to": "VTS BRINDISI (Italy)",
+      "note": "MSC.598(111) Appendix 2."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 10",
+      "to": "ANCONA COAST GUARD (Italy)",
+      "note": "MSC.598(111) Appendix 2 (location: Ancona). Backup to SafeSeaNet; ships in the area must use the VHF channel of the authority concerned (para 5.3)."
+    },
+    {
+      "type": "phone",
+      "value": "+39 071 502101",
+      "to": "ANCONA COAST GUARD (Italy)",
+      "note": "MSC.598(111) Appendix 2."
+    },
+    {
+      "type": "email",
+      "value": "so.cpancona@mit.gov.it",
+      "to": "ANCONA COAST GUARD (Italy)",
+      "note": "MSC.598(111) Appendix 2."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 9",
+      "to": "VTS VENEZIA (Italy)",
+      "note": "MSC.598(111) Appendix 2 (location: Venezia). Backup to SafeSeaNet; ships in the area must use the VHF channel of the authority concerned (para 5.3)."
+    },
+    {
+      "type": "phone",
+      "value": "+39 041 240 5706",
+      "to": "VTS VENEZIA (Italy)",
+      "note": "MSC.598(111) Appendix 2."
+    },
+    {
+      "type": "email",
+      "value": "so.cpvenezia@mit.gov.it",
+      "to": "VTS VENEZIA (Italy)",
+      "note": "MSC.598(111) Appendix 2."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 11",
+      "to": "VTS TRIESTE (Italy)",
+      "note": "MSC.598(111) Appendix 2 (location: Trieste). Backup to SafeSeaNet; ships in the area must use the VHF channel of the authority concerned (para 5.3)."
+    },
+    {
+      "type": "phone",
+      "value": "+39 040 676616",
+      "to": "VTS TRIESTE (Italy)",
+      "note": "MSC.598(111) Appendix 2."
+    },
+    {
+      "type": "email",
+      "value": "so.cptrieste@mit.gov.it",
+      "to": "VTS TRIESTE (Italy)",
+      "note": "MSC.598(111) Appendix 2."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 14",
+      "to": "VTS BARI (Italy)",
+      "note": "MSC.598(111) Appendix 2 (location: Bari). Backup to SafeSeaNet; ships in the area must use the VHF channel of the authority concerned (para 5.3)."
+    },
+    {
+      "type": "phone",
+      "value": "+39 080 5281544",
+      "to": "VTS BARI (Italy)",
+      "note": "MSC.598(111) Appendix 2."
+    },
+    {
+      "type": "email",
+      "value": "so.cpbari@mit.gov.it",
+      "to": "VTS BARI (Italy)",
+      "note": "MSC.598(111) Appendix 2."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 14",
+      "to": "PESCARA COAST GUARD (Italy)",
+      "note": "MSC.598(111) Appendix 2 (location: Pescara). Backup to SafeSeaNet; ships in the area must use the VHF channel of the authority concerned (para 5.3)."
+    },
+    {
+      "type": "phone",
+      "value": "+39 085 9189800",
+      "to": "PESCARA COAST GUARD (Italy)",
+      "note": "MSC.598(111) Appendix 2."
+    },
+    {
+      "type": "email",
+      "value": "so.cppescara@mit.gov.it",
+      "to": "PESCARA COAST GUARD (Italy)",
+      "note": "MSC.598(111) Appendix 2."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 14",
+      "to": "RAVENNA COAST GUARD (Italy)",
+      "note": "MSC.598(111) Appendix 2 (location: Ravenna). Backup to SafeSeaNet; ships in the area must use the VHF channel of the authority concerned (para 5.3)."
+    },
+    {
+      "type": "phone",
+      "value": "+39 0544 443013",
+      "to": "RAVENNA COAST GUARD (Italy)",
+      "note": "MSC.598(111) Appendix 2."
+    },
+    {
+      "type": "email",
+      "value": "so.cpravenna@mit.gov.it",
+      "to": "RAVENNA COAST GUARD (Italy)",
+      "note": "MSC.598(111) Appendix 2."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 12",
+      "to": "MRCC BAR (Montenegro)",
+      "note": "MSC.598(111) Appendix 2 (location: Bar). Backup to SafeSeaNet; ships in the area must use the VHF channel of the authority concerned (para 5.3)."
+    },
+    {
+      "type": "phone",
+      "value": "+38267642179",
+      "to": "MRCC BAR (Montenegro)",
+      "note": "MSC.598(111) Appendix 2."
+    },
+    {
+      "type": "email",
+      "value": "barradio@pomorstvo.me",
+      "to": "MRCC BAR (Montenegro)",
+      "note": "MSC.598(111) Appendix 2."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 12",
+      "to": "MRCC KOPER (Slovenia)",
+      "note": "MSC.598(111) Appendix 2 (location: Koper). Backup to SafeSeaNet; ships in the area must use the VHF channel of the authority concerned (para 5.3)."
+    },
+    {
+      "type": "phone",
+      "value": "+38656632106",
+      "to": "MRCC KOPER (Slovenia)",
+      "note": "MSC.598(111) Appendix 2."
+    },
+    {
+      "type": "phone",
+      "value": "+38656632107",
+      "to": "MRCC KOPER (Slovenia)",
+      "note": "MSC.598(111) Appendix 2."
+    },
+    {
+      "type": "phone",
+      "value": "+38656632108",
+      "to": "MRCC KOPER (Slovenia)",
+      "note": "MSC.598(111) Appendix 2."
+    },
+    {
+      "type": "email",
+      "value": "koper.mrcc@gov.si",
+      "to": "MRCC KOPER (Slovenia)",
+      "note": "MSC.598(111) Appendix 2."
+    },
+    {
+      "type": "email",
+      "value": "kp.promet@gov.si",
+      "to": "MRCC KOPER (Slovenia)",
+      "note": "MSC.598(111) Appendix 2."
+    },
+    {
+      "type": "other",
+      "value": "phone, Inmarsat-C and MF/HF",
+      "to": "the shore-based authorities",
+      "note": "Para 8.2: in case of failing contacts by VHF the shore-based authorities can be contacted through phone, Inmarsat-C and MF/HF facilities."
+    }
+  ],
+  "addressee": null,
+  "heading": "ADRIREP",
+  "lines": [
+    {
+      "l": "A",
+      "req": "required",
+      "text": "Ship - Ship's name, call sign, IMO identification number and flag"
+    },
+    {
+      "l": "B",
+      "req": "required",
+      "text": "Date/time (UTC) of the report - A 6-digit group giving date of month (first 2 digits), hours and minutes (last 4 digits) for example - DDHHMM"
+    },
+    {
+      "l": "C",
+      "req": "required",
+      "text": "Present position - A 4-digit group giving latitude in degrees and minutes suffixed with \"N\" or \"S\" and a 5-digit group giving longitude in degrees and minutes suffixed with \"E\" or \"W\""
+    },
+    {
+      "l": "E",
+      "req": "required",
+      "text": "Course - A 3-digit group giving the course in degrees"
+    },
+    {
+      "l": "F",
+      "req": "required",
+      "text": "Speed - A 3-digit group giving a speed in knots (Speed in knots and tenths of knots)"
+    },
+    {
+      "l": "G",
+      "req": "required",
+      "text": "Port of departure - LoCode or name of port of departure"
+    },
+    {
+      "l": "I",
+      "req": "required",
+      "text": "Destination and estimated time of arrival - ETA in UTC expressed as in B above, followed by LoCode or Name of port of destination"
+    },
+    {
+      "l": "L",
+      "req": "optional",
+      "text": "Route information - To be reported on a voluntary basis by ships sharing their voyage plan in electronic format"
+    },
+    {
+      "l": "O",
+      "req": "required",
+      "text": "Draught of the vessel - draught expressed by a 4-digit group indicating centimetres"
+    },
+    {
+      "l": "P",
+      "req": "if-applicable",
+      "text": "Cargo information - The general category of hazardous cargo as described in resolution MSC.433(98) and shown in paragraph 1.2 of this document"
+    },
+    {
+      "l": "T",
+      "req": "required",
+      "text": "Agent - Ship agent or Cargo agent"
+    },
+    {
+      "l": "U",
+      "req": "required",
+      "text": "Size and type - Ship's type, expressed by 2 digits AIS code; Deadweight, expressed by 6 digits group indicating tonnes; Gross tonnage, expressed by 6 digits group indicating tonnes; Length overall, expressed by 3 digits group indicating meters; Breadth, expressed by 3 digits group indicating meters. Example: U/31/020000T/030000T/150M/045M"
+    },
+    {
+      "l": "W",
+      "req": "required",
+      "text": "Total number of persons on board - The total number of crew and other persons on board"
+    },
+    {
+      "l": "X",
+      "req": "if-applicable",
+      "text": "Miscellaneous - Any other relevant information, including: Bunker fuel details (characteristics and estimated quantity); Navigational Status; SATCOM (ship's satellite communications available); Brief details of incidents (if any)"
+    }
+  ],
+  "format_note": "Message identifier ADRIREP; report types SP (Sailing plan), PR (Position report), FR (Final report) (Appendix 3). Here FR means Final report (in the 2002 system FR meant First report). The SP uses all lines above. The PR updates designators G, I, L, O, P, T, W and X (para 3.2.3). The FR \"shall only include information that the vessel is leaving ADRIREP area and any relevant deviations from the SP\" (para 3.3.5). In the last section of the SP ships shall also report any defect, damage, deficiency or limitations and, if necessary, a pollution incident or loss of cargo (para 3.1.7). Primary means: SafeSeaNet web interface; VHF and other means are backup. Voice: English with IMO SMCP (para 5.4).",
+  "area": {
+    "shape": "lines",
+    "points": [
+      {
+        "n": "S-IT",
+        "name": "Parallel 40 25.00N at the Italian coast (Salento), longitude not printed",
+        "lat": "40 25.00N",
+        "lon": "018 16.6E",
+        "inferred": true
+      },
+      {
+        "n": "S-AL",
+        "name": "Parallel 40 25.00N at the Albanian coast (Karaburun peninsula), longitude not printed",
+        "lat": "40 25.00N",
+        "lon": "019 17.7E",
+        "inferred": true
+      }
+    ],
+    "lines": [
+      [
+        "S-IT",
+        "S-AL"
+      ]
+    ],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 42.8,
+      "lon": 15.0
+    },
+    "bbox": [
+      12.0,
+      40.25,
+      20.0,
+      46.0
+    ]
+  },
+  "area_quote": "2.1 The operational area of the mandatory ship reporting system covers the whole Adriatic Sea, north from the latitude 40° 25'.00 N, as shown in appendix 1, including positions and names of the competent shore-based authorities.",
+  "sources": [
+    {
+      "title": "IMO MSC.598(111) Mandatory ship reporting system \"In the Adriatic Sea\" (ADRIREP)",
+      "ref": "operative paras 1, 2, 4; Annex paras 1 to 9; Appendices 1 to 3",
+      "date": "2026-05-22",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.598(111).pdf",
+      "primary": true
+    },
+    {
+      "title": "ADRIREP SafeSeaNet web user interface (EMSA)",
+      "ref": "address given in MSC.598(111) para 3.5.1.4",
+      "date": "2026-10-26",
+      "url": "https://adrirep.emsa.europa.eu",
+      "primary": true
+    },
+    {
+      "title": "Croatian Hydrographic Institute, Radio Services (Radioslužba) 2024",
+      "ref": "Bar Radio and MRCC; VTS Hrvatska contact data",
+      "date": "2024",
+      "url": "https://www.hhi.hr/Portals/0/adam/HHI/X_zz1OrshUuqLO_JddKm5w/PdfView/RS_2024.pdf",
+      "primary": false
+    },
+    {
+      "title": "ABS, NCSR 12 brief (background on the ADRIREP revision)",
+      "ref": "Routeing measures and ship reporting systems",
+      "date": "2025-05-28",
+      "url": "https://ww2.eagle.org/content/dam/eagle/regulatory-news/2025/NCSR-12-Brief.pdf",
+      "primary": false
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "All text from the IMO PDF of MSC.598(111) (pdftotext). The contact table (Appendix 2) was checked entry by entry, every digit and every e-mail letter, against the rendered PDF page 11 at 150 dpi; the operational area chart (Appendix 1, page 10) was looked at: it shows the boundary as a line across the Strait of Otranto from the Italian to the Albanian coast. The IMO index page MSC 2026-27 lists MSC.598(111) (read 2026-10-26). adrirep.emsa.europa.eu answered on 2026-10-26. Only Bar MRCC (phone and e-mail) and the VTS Croatia phone could be matched with a national publication (Croatian Radio Services 2024); the other contacts are as printed by IMO and were not confirmed on national web sites.",
+  "confidence": "high",
+  "notes": "Starts at 0000 UTC on 1 December 2026; until then the 2002 rules apply (record imo-adrirep). MSC.598(111) revises annex 2 of MSC.139(76) in its entirety and revokes it from that date. Main changes: new category of all ships of 10,000 GT and above, and ships of any size with hazardous cargo (was 300 GT and above); no sectors and no sector-crossing reports; reports made electronically through SafeSeaNet (https://adrirep.emsa.europa.eu), VHF as backup; Albania (VTS Durres) and more Italian centres join; reports for ships to or from ports in Bosnia and Herzegovina are made available to Bosnia and Herzegovina, and reports of ships leaving south across 40 25N to Greece (para 3.4.4). Contacts are copied exactly as printed, including spellings (for example \"kapiteneria.durres@dpdetare.gov.al\" and the phone groupings); they were not confirmed on national web sites except as said in verification. The Croatian Radio Services 2024 give vts-rijeka@pomorstvo.hr and VHF Ch 10, 60 for VTS Croatia (Rijeka), while MSC.598(111) gives vts3@pomorstvo.hr and CH 10. One record covers the whole area because the revised system has one area and no sectors; reports go to VTS Brindisi on entry/exit at 40 25N, or to the nearest authority of the port country. The only printed limit is the parallel 40° 25'.00 N; the rest of the boundary is the coast of the Adriatic Sea. The two end points of that parallel (S-IT, S-AL) are where it meets the coast in Natural Earth 10m land data (computed, inferred), only so the map can close the area; the Albanian end is the west coast of the Karaburun peninsula, so Vlore Bay north of 40 25N is inside. Reference charts: Italian Chart No.435 INT 306 (1993, ED-50) and Croatian Chart No.101 (First Edition 1998, New Edition 2005, New print 2017, Bessel)."
+}

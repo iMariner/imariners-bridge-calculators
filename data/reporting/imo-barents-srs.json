@@ -1,0 +1,305 @@
+{
+  "id": "imo-barents-srs",
+  "system": "Barents SRS",
+  "title": "Barents SRS (Barents Area)",
+  "country": "Norway / Russian Federation",
+  "authority": "Vardø VTS centre (NOR VTS, Norwegian Coastal Administration) for the Norwegian monitoring area; Murmansk VTS centre (Federal Agency of Maritime and River Transport) for the Russian Federation monitoring area",
+  "kind": "mandatory-imo",
+  "resolution": "MSC.348(91)",
+  "status": "in effect",
+  "effective": "2013-06-01",
+  "applies_to": "Ships of 5,000 GT and above; all tankers; all ships carrying hazardous cargoes; a vessel towing with a tow longer than 200 m; any ship not under command, restricted in ability to manoeuvre or with defective navigational aids. Applies to ships passing through or going to and from ports and anchorages in the area.",
+  "applies_quote": "1.1 The following categories of ships passing through or proceeding to and from ports and anchorages in the Barents SRS area are required to participate in the ship reporting system: .1 all ships with a gross tonnage of 5,000 and above; .2 all tankers; .3 all ships carrying hazardous cargoes (paragraph 1.2 refers); .4 a vessel towing when the length of the tow exceeds 200 metres; and .5 any ship not under command, restricted in their ability to manoeuvre or having defective navigational aids. 1.3 Ships not listed above may participate in the ship reporting system (SRS) on a voluntary basis.",
+  "when": [
+    {
+      "event": "before_entry",
+      "hours_before": 1,
+      "interval_h": null,
+      "report": null,
+      "text": "3.4.2 Reports forwarded prior to entering the area can be submitted at any time after entering the Norwegian Economic Zone or the Russian Federation Exclusive Economic Zone and until one hour before entering the Barents SRS operational area. As the Vessel Traffic Services must be able to handle incoming prior reporting, it will not be possible to undertake pre-entry reports any later than one hour prior to entering the area."
+    },
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "3.4.1 Ships entering the Barents SRS operational area shall submit a report when entering into the area or on departure from a port or anchorage within the operational area."
+    },
+    {
+      "event": "departure",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "3.4.1 ... or on departure from a port or anchorage within the operational area. 3.4.3 Ships departing a port or leaving an anchorage within the Barents SRS area, may also submit a pre-entry report for designators H, P, T, Q and X if transmitted one hour prior to departure."
+    },
+    {
+      "event": "deviation",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Note: The master of the ship must forthwith inform the Barents SRS VTS centre concerned of any change in navigational status or in previous information notified, particularly in relation to designator Q."
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "4.1 Ships in the Barents SRS area are required to keep a continuous listening watch on VHF channel 16."
+    }
+  ],
+  "how": [
+    {
+      "type": "web",
+      "value": "www.shiprep.no",
+      "to": "Vardø VTS centre (NOR VTS)",
+      "note": "Primary for the Norwegian monitoring area or Norwegian Economic Zone: MSC.348(91) Appendix 2 para 2.2 (\"Norwegian Ship Reporting System at website: www.shiprep.no\"). The Norwegian regulation on notification obligations (Kystverket English translation), Annex 3, now names it \"SafeSeaNet Norway: www.shiprep.no\" and says reporting should primarily be done through a combination of AIS and an advance notice via SafeSeaNet Norway, fax or e-mail. www.shiprep.no answered on 2026-10-26."
+    },
+    {
+      "type": "other",
+      "value": "AIS",
+      "to": "Vardø VTS centre / Murmansk VTS centre",
+      "note": "Correct and updated AIS information can accomplish reporting of designators A, B, C, E, F, I, O and W (MSC.348(91) para 3.1.2 and Appendix 3)."
+    },
+    {
+      "type": "email",
+      "value": "nor.vts@kystverket.no",
+      "to": "Vardø VTS centre (NOR VTS)",
+      "note": "MSC.348(91) Appendix 2 para 1.2; same address on the Kystverket VTS centres page (NOR VTS, information service for Barents SRS), read 2026-10-26."
+    },
+    {
+      "type": "fax",
+      "value": "+47 78 98 98 99",
+      "to": "Vardø VTS centre (NOR VTS)",
+      "note": "MSC.348(91) Appendix 2 para 1.2; Kystverket VTS centres page (read 2026-10-26) gives the same number as +4778989899."
+    },
+    {
+      "type": "phone",
+      "value": "+47 78 98 98 98",
+      "to": "Vardø VTS centre (NOR VTS)",
+      "note": "MSC.348(91) Appendix 2 para 1.2. The Kystverket VTS centres page (read 2026-10-26) lists +4778989898 as \"Telephone area south of N65\"."
+    },
+    {
+      "type": "phone",
+      "value": "+4778989901",
+      "to": "NOR VTS",
+      "note": "Not in the resolution. Kystverket VTS centres page, read 2026-10-26: \"Telephone area north of N65: +4778989901\" (the Barents SRS area lies north of 65N). Same page: alternative contact +4790245339; Iridium 00 88 16 21 41 90 09."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 16",
+      "to": "Norwegian Coastal Radio Station, request \"NOR VTS\"",
+      "note": "MSC.348(91) Appendix 2 para 1.2: Call Norwegian Coastal Radio Station and request \"NOR VTS\" (channel 16). MMSI 002573550. Kystverket page (read 2026-10-26): VHF call sign NOR VTS, VHF channel 16. VHF or telephone (if outside VHF range) is used when a ship cannot report by non-verbal means or not at least one hour before entry (Appendix 3)."
+    },
+    {
+      "type": "email",
+      "value": "vts@mf-rmp.ru",
+      "to": "Murmansk VTS centre",
+      "note": "MSC.348(91) Appendix 2 para 1.1; primary with fax and AIS for ships within the Russian Federation monitoring area or EEZ (para 2.1). Not confirmed on a current Russian official web site."
+    },
+    {
+      "type": "fax",
+      "value": "+7 8152 479026",
+      "to": "Murmansk VTS centre",
+      "note": "MSC.348(91) Appendix 2 para 1.1. Not confirmed on a current Russian official web site."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 12",
+      "to": "Murmansk Traffic",
+      "note": "MSC.348(91) Appendix 2 para 1.1: Call \"Murmansk Traffic\" (channel 12); MMSI 002734484 or 002734466. Alternative means for the Russian area (para 2.1). Not confirmed on a current Russian official web site."
+    }
+  ],
+  "addressee": null,
+  "heading": null,
+  "lines": [
+    {
+      "l": "A",
+      "req": "required",
+      "text": "Name of ship, call sign, IMO identification number and MMSI (Appendix 3: 1) Name of ship 2) MMSI number 3) Call sign and - when available - 4) IMO number 5) Additional contact information)"
+    },
+    {
+      "l": "B",
+      "req": "required",
+      "text": "Date and time (A 6-digit group giving day of month and hours and minutes in Universal Coordinated Time (UTC))"
+    },
+    {
+      "l": "C",
+      "req": "required",
+      "text": "Position expressed in latitude and longitude (A 5-digit group giving latitude in degrees and minutes, decimal, suffixed with N (north) and a 6-digit group giving longitude in degrees and minutes, decimal, suffixed with E (east) or W (west))"
+    },
+    {
+      "l": "E",
+      "req": "required",
+      "text": "True course (A 3-digit group)"
+    },
+    {
+      "l": "F",
+      "req": "required",
+      "text": "Speed in knots (A 3-digit group; speed in knots and tenths of knots)"
+    },
+    {
+      "l": "H",
+      "req": "if-applicable",
+      "text": "Date, time (UTC) and point of entry into Barents SRS area (This information is only required if reporting designators P, T and X are transmitted non-verbally (e.g. e-mail) prior to entry of the Barents SRS. Entry date and time expressed as in (B) and position expressed as in (C))"
+    },
+    {
+      "l": "I",
+      "req": "required",
+      "text": "Destination and ETA (The name of next port of call given in UN LOCODE by AIS ... ETA date and time group expressed as in (B))"
+    },
+    {
+      "l": "O",
+      "req": "required",
+      "text": "Maximum present draught (A 2-digit or 3-digit group giving the present maximum draught in metres (e.g. 6.1 or 10.4))"
+    },
+    {
+      "l": "P",
+      "req": "required",
+      "text": "Hazardous cargo, class and quantity (Cargo and, if hazardous goods present on board, quantity and IMO class (inclusive UN code). Hazardous goods information must be summarized in total tonnes per IMO class when transmitted)"
+    },
+    {
+      "l": "Q",
+      "req": "if-applicable",
+      "text": "Brief details of defects or restrictions in maneuverability (Details of defects and deficiencies affecting the equipment of the ship or any other circumstances affecting normal navigation and manoeuvrability)"
+    },
+    {
+      "l": "T",
+      "req": "required",
+      "text": "Contact information (shipowner and representative) (Address and particulars from which detailed information on the cargo may be obtained)"
+    },
+    {
+      "l": "W",
+      "req": "required",
+      "text": "Total number of persons on board (State number)"
+    },
+    {
+      "l": "X",
+      "req": "required",
+      "text": "Characteristics and total quantity of bunkers in metric tonnes (Type and estimated quantity of bunker fuel in metric tonnes. Must be summarized in total tonnes per type when transmitted)"
+    }
+  ],
+  "format_note": "Format as in Appendix 3 and resolution A.851(20). Reporting can be done by AIS plus non-verbal means (e-mail, fax or the website). \"Correct and updated AIS information can accomplish reporting of designators A, B, C, E, F, I, O and W.\" \"Non-verbal means can accomplish reporting of designators A, H, P, Q, T and X.\" If a ship cannot use non-verbal means or report at least one hour before entering, reporting is by VHF or by telephone (if outside VHF range). English with IMO SMCP when the VTS centre thinks it necessary (para 5.1).",
+  "area": {
+    "shape": "lines",
+    "points": [
+      {
+        "n": "A",
+        "name": "A - Norway: 67° 10'.00 N, \"Norwegian coast\" (longitude not printed)",
+        "lat": "67 10.00N",
+        "lon": "014 14.2E",
+        "inferred": true
+      },
+      {
+        "n": "B",
+        "name": "B - Norway",
+        "lat": "67 10.00N",
+        "lon": "008 00.00E",
+        "inferred": false
+      },
+      {
+        "n": "C",
+        "name": "C - Norway",
+        "lat": "68 15.00N",
+        "lon": "009 30.00E",
+        "inferred": false
+      },
+      {
+        "n": "D",
+        "name": "D - Norway",
+        "lat": "71 15.00N",
+        "lon": "019 00.00E",
+        "inferred": false
+      },
+      {
+        "n": "E",
+        "name": "E - Norway",
+        "lat": "71 50.00N",
+        "lon": "024 00.00E",
+        "inferred": false
+      },
+      {
+        "n": "F",
+        "name": "F - Norway",
+        "lat": "71 50.00N",
+        "lon": "028 00.00E",
+        "inferred": false
+      },
+      {
+        "n": "G",
+        "name": "G - the Russian Federation",
+        "lat": "71 00.00N",
+        "lon": "033 20.00E",
+        "inferred": false
+      },
+      {
+        "n": "H",
+        "name": "H - the Russian Federation: \"the Russian Federation coast\", 033° 20'.00 E (latitude not printed)",
+        "lat": "69 26.9N",
+        "lon": "033 20.00E",
+        "inferred": true
+      }
+    ],
+    "lines": [
+      [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H"
+      ]
+    ],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 71.3,
+      "lon": 22.0
+    },
+    "bbox": [
+      7.5,
+      66.9,
+      34.5,
+      72.2
+    ]
+  },
+  "area_quote": "2.1 The geographical area covered by the reporting system Barents SRS is defined within the following coordinates and is also shown in the chartlet attached at appendix 1. A - Norway 67º 10'.00 N Norwegian coast; B - Norway 67º 10'.00 N 008º 00'.00 E; C - Norway 68º 15'.00 N 009º 30'.00 E; D - Norway 71º 15'.00 N 019º 00'.00 E; E - Norway 71º 50'.00 N 024º 00'.00 E; F - Norway 71º 50'.00 N 028º 00'.00 E; G - the Russian Federation 71º 00'.00 N 033º 20'.00 E; H - the Russian Federation, the Russian Federation coast, 033º 20'.00 E. (Positions in WGS 84.)",
+  "sources": [
+    {
+      "title": "IMO MSC.348(91) Adoption of a new mandatory ship reporting system \"In the Barents Area (Barents SRS)\"",
+      "ref": "Annex paras 1 to 9, Appendices 2 and 3",
+      "date": "2012-11-28",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.348(91).pdf",
+      "primary": true
+    },
+    {
+      "title": "Kystverket (Norwegian Coastal Administration), VTS centres contact page (NOR VTS, information service for Barents SRS)",
+      "ref": "read 2026-10-26",
+      "date": "2026-10-26",
+      "url": "https://www.kystverket.no/en/contact/vts-service/",
+      "primary": true
+    },
+    {
+      "title": "Kystverket, Barents Ship Reporting System page",
+      "ref": "read 2026-10-26",
+      "date": "2026-10-26",
+      "url": "https://www.kystverket.no/en/klima-og-barekraft/barents-srs/",
+      "primary": true
+    },
+    {
+      "title": "Regulation on vessels' notification obligations under the Harbour and Fairways Act (Norway, Kystverket English translation), chapter on Barents SRS (paras 19 to 24) and Annex 3",
+      "ref": "unofficial translation; Norwegian text prevails",
+      "date": "2015-12-21",
+      "url": "https://www.kystverket.no/globalassets/sjotransport-og-havn/safeseanet/regulation-on-vessels-notification-obligations-under-the-harbour-and-fairways-act.pdf/download",
+      "primary": false
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Text from the IMO PDF of MSC.348(91) (pdftotext). The coordinate table checked digit by digit against the rendered PDF page 4 (annex page 3) at 150 dpi, and the contact data against page 10 (Appendix 2, annex page 9). The IMO index pages of MSC resolutions (read 2026-10-26) list no amendment of the Barents SRS. Norwegian contacts confirmed on the Kystverket VTS centres page read 2026-10-26 (same e-mail, fax and the +47 78 98 98 98 number, now labelled for the area south of N65; a separate number +4778989901 for north of N65). Russian contacts are as printed in 2012 and were not confirmed. Point A longitude and point H latitude are not printed; they were computed where the printed parallel or meridian first meets land in Natural Earth 10m data (inferred).",
+  "confidence": "medium",
+  "notes": "Points A and H lie on the coast and are not given as positions in the resolution: A is \"67° 10'.00 N, Norwegian coast\", H is \"the Russian Federation coast, 033° 20'.00 E\". The positions here (A about 014 14.2E on the first land met going east along 67 10N, which is an outer island; H about 69 26.9N where 033 20E meets the Kola coast) are computed (inferred) only to close the area on the map. The area is closed by the Norwegian and Russian coasts between A and H. The resolution splits reporting between a Norwegian and a Russian Federation monitoring area but prints no line between them; the Norwegian national regulation (para 21) defines the Norwegian monitoring area with further points from 71° 02'.7470 N 033° 02'.7580 E to 69° 47'.6903 N 030° 49'.0592 E along the border area (national text, not copied into this area). National Norwegian rules (same regulation, paras 20 and 22): ships listed do not have to report under them when sailing between Norwegian ports, and a ship coming from the Russian area that has reported to Murmansk VTS does not need to report again on entering the Norwegian area; ships should report between entering the Norwegian economic zone and one hour before entering the Norwegian monitoring area. The traffic separation schemes off Norway from Vardø to Røst are inside the area (para 6.2). The 2012 text names www.shiprep.no; Norway now calls it SafeSeaNet Norway. Russian contact details (vts@mf-rmp.ru, fax, VHF 12 \"Murmansk Traffic\") could not be confirmed on a current official Russian web site. Datum WGS 84; for the Russian charts move WGS 84 positions 0.4 seconds south and 11.3 seconds east."
+}

@@ -1,0 +1,184 @@
+{
+  "id": "cn-vts-yantai-laizhou",
+  "system": "China VTS",
+  "title": "Yantai VTS, Laizhou sector (Laizhou port)",
+  "country": "China",
+  "authority": "Yantai MSA (中华人民共和国烟台海事局), Yantai VTS Centre (烟台船舶交通管理中心)",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": "2023-05-01",
+  "applies_to": "Foreign ships; passenger ships; ships carrying dangerous goods; ships restricted in their ability to manoeuvre; Chinese ships of 300 GT and over; ships receiving oily water or other waste; others who join by choice. Not military, government, fishing or sports craft. A foreign crude oil tanker is always included.",
+  "applies_quote": "第四条 除军用船、公务船、渔船和体育运动船外，下列船舶在VTS区域内航行、停泊和作业时，应按规定向VTS中心进行船舶动态报告：（一）外国籍船舶；（二）客船；（三）载运危险货物的船舶；（四）操纵能力受到限制的船舶；（五）300总吨及以上中国籍船舶；（六）从事油污水等污染物接收的船舶；（七）其他自愿参加VTS动态报告的船舶。",
+  "when": [
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Entry report on reaching the reporting line: ship's name, position, movement and other items the VTS asks; ships with dangerous goods also give the kind and quantity; towing ships give the tow's name and length. (驶入报告：驶抵报告线时报告船名、船位、航行动态以及VTS中心要求的其他事项,载有危险货物的船舶还应报告所载危险货物种类、数量，拖带船舶应当报告拖带物名称、拖带长度。)"
+    },
+    {
+      "event": "arrival",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Arrival report after berthing or anchoring: name, berth or anchor position, time completed. (到达报告：靠泊或锚泊后报告船名，泊位或锚位，完成时间。)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Shift report before shifting: name, present berth or anchorage, berth or anchorage you are going to. (移泊报告：移泊前报告船名，当前泊位或锚地，预抵泊位或锚地。)"
+    },
+    {
+      "event": "departure",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Sailing report before sailing: name, departure position, expected time of entering the channel, next port. (开航报告：开航前报告船名，离港位置，预计进入航道的时间和下一港。)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Anchoring / heaving up report before anchoring or heaving up in an anchorage: name, position; when heaving up to go in, also the berth, and the time and position of entering the channel. (抛/起锚报告：在锚地抛/起锚前应报告船名、船位，起锚进港时还应报告拟靠泊位、预计进入航道的时间、位置。)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Before crossing a channel, a routeing area, the Penglai-Changdao route or a temporary control area: report before entering and cross only with permission (rules art. 7)."
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Before starting and after finishing: opening up boilers, main engine, windlass, steering gear or main navigation equipment; sea or engine trials; going alongside at anchor; towing connect or let go; oily water or waste handling; other work affecting safety (art. 11)."
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Emergency and abnormal reports at once by every means: accident, pollution, machinery damage, injury, security incident; aids to navigation not normal, obstructions, drifting objects (arts. 8 and 9). Pilots report boarding and leaving: ship, time, place, pilot's name or number (art. 12)."
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 14",
+      "to": "Yantai VTS Centre (烟台交管中心)",
+      "note": "Laizhou management and service area working channel"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 16",
+      "to": "Yantai VTS Centre (烟台交管中心)",
+      "note": "all ships in the VTS area must also keep watch on CH 16 (user guide)"
+    },
+    {
+      "type": "phone",
+      "value": "0086-535-6687316",
+      "to": "Yantai VTS Centre (烟台海事局船舶交通管理中心)",
+      "note": null
+    },
+    {
+      "type": "fax",
+      "value": "0086-535-6696480",
+      "to": "Yantai VTS Centre",
+      "note": null
+    }
+  ],
+  "addressee": "烟台交管中心 / Yantai VTS",
+  "heading": null,
+  "lines": [
+    {
+      "l": "1",
+      "req": "required",
+      "text": "Ship's name (船名)"
+    },
+    {
+      "l": "2",
+      "req": "required",
+      "text": "Position (船位), or berth / anchor position"
+    },
+    {
+      "l": "3",
+      "req": "required",
+      "text": "Movement (航行动态)"
+    },
+    {
+      "l": "4",
+      "req": "if-applicable",
+      "text": "Dangerous goods: kind and quantity (危险货物种类、数量), in the entry report"
+    },
+    {
+      "l": "5",
+      "req": "if-applicable",
+      "text": "Tow: name and length (拖带物名称、拖带长度)"
+    },
+    {
+      "l": "6",
+      "req": "if-applicable",
+      "text": "Expected time of entering the channel and next port (预计进入航道的时间和下一港), on sailing"
+    },
+    {
+      "l": "7",
+      "req": "optional",
+      "text": "Other information the VTS asks (VTS中心要求的其他事项)"
+    }
+  ],
+  "format_note": "Voice reports on the sector working channel; rules art. 5 also allows phone or other means. Mandarin or English.",
+  "area": {
+    "shape": "circle",
+    "points": [],
+    "lines": [],
+    "center": {
+      "n": "C",
+      "name": "Sanshan Dao radar station (三山岛雷达站)",
+      "lat": "37 24.76N",
+      "lon": "119 56.51E",
+      "inferred": false
+    },
+    "radius_nm": 12,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 37.535,
+      "lon": 119.83
+    },
+    "bbox": [
+      119.65,
+      37.15,
+      120.25,
+      37.65
+    ]
+  },
+  "area_quote": "6.莱州管理服务区：以三山岛雷达站（37°24.76′N，119°56.51′E）为圆心，半径12海里的水域，不包括与龙口管理服务区重叠水域。… 8.莱州管理服务区报告线：以三山岛雷达站（37°24.76′N ，119°56.51′E）为圆心，半径 12 海里的圆弧线。",
+  "sources": [
+    {
+      "title": "山东海事局关于公布《烟台船舶交通管理系统安全监督管理细则》的通告 (Yantai VTS rules and Yantai VTS user guide, Chinese and English)",
+      "ref": "Attachment .docx: rules arts. 4 to 12, 22, 33; user guide (reporting lines, reports, channels, anchorages)",
+      "date": "2023-03-03",
+      "url": "https://www.sd.msa.gov.cn/art/2023/3/6/art_124_1807677.html",
+      "primary": true
+    },
+    {
+      "title": "Same text, copy on mcrrc.top (Shandong Jiaotong University law library)",
+      "ref": "1554.html",
+      "date": "2023-03-03",
+      "url": "https://www.mcrrc.top/bmgz/jy/bhhs/zsjfg/sdhsj/1554.html",
+      "primary": false
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Rules, user guide, centres, radii, channels and contacts read from the official .docx attached to the Shandong MSA notice of 3 March 2023 (sd.msa.gov.cn), compared with the mcrrc.top copy: same. Positions printed in degrees and decimal minutes and copied with only the notation changed.",
+  "confidence": "high",
+  "notes": "Reporting line = the 12 NM circle round Sanshan Dao radar station; the area is the water inside it, less the part that overlaps the Longkou sector. Anchorages (user guide): outer anchorage 37°30.1′N 119°48.55′E; 37°31.48′N 119°52.87′E; 37°33.42′N 119°51.85′E; 37°34.23′N 119°49.3′E; 37°33.78′N 119°46.68′E. West anchorage 37°25.2′N 119°56.1′E; 37°24.61′N 119°56.1′E; 37°25.62′N 119°52.68′E; 37°26.47′N 119°55.45′E. Shelter anchorage 37°18′N 119°47.6′E; 37°18.2′N 119°49.02′E; 37°17.65′N 119°49.18′E; 37°17.45′N 119°47.77′E. 2022 notice 鲁航警0264 reported the Laizhou radar and VHF sub-systems shut down; no later restore notice was checked. Yantai VTS has six sectors, each with its own channel: Zhifu CH 09, Bajiao (West Port) CH 10, Penglai and Changdao CH 11, Longkou CH 12, Laizhou CH 14, Changshan Shuidao and Penglai outer anchorage CH 08. Reports go to the Yantai VTS Centre ('calling Yantai VTS center', 呼叫烟台交管中心) on the channel of the sector you are in. Valid to 30 April 2028 (art. 34). No overtaking in harbour channels (art. 16). Terminal owners or agents must file entry, leaving and shifting plans in advance by internet or fax (art. 17; no hours given). Lightering or going alongside at anchor must follow MOT and MSA rules and be told to the VTS. Radar blind areas: basins and berths, east of Kongtong Dao, between Nan/Bei Changshan Dao and Daheishan Dao. VTS works 0000 to 2400 Beijing time. No email address is printed. Address: 8 Huanhai Road, Yantai. VTS reports do not replace the national port entry, territorial sea or arrival reports."
+}

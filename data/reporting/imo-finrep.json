@@ -1,0 +1,226 @@
+{
+  "id": "imo-finrep",
+  "system": "FINREP",
+  "title": "FINREP Off Finisterre",
+  "country": "Spain",
+  "authority": "Finisterre Traffic VTS (Centro de Coordinacion de Salvamento de Finisterre, Salvamento Maritimo)",
+  "kind": "mandatory-imo",
+  "resolution": "MSC.63(67) Annex 3, as amended by MSC.162(78)",
+  "status": "in effect",
+  "effective": "2004-12-01",
+  "applies_to": "Ships of 50 m LOA or more; any ship with hazardous or potentially polluting cargo; towing or pushing units over 50 m combined; ships under 50 m using the traffic lanes or separation zone to fish or in an emergency.",
+  "applies_quote": "Ships of the following general categories are required to participate in the reporting system: .1 All ships of 50 metres or more in length overall. .2 All ships, regardless of length, carrying hazardous and or potentially polluting cargo, as defined in paragraph 1.4 of resolution MSC.43(64). .3 Ships engaged in towing or pushing another vessel where the combined length of the ship and tow or pushed vessel exceeds 50 metres. .4 Any category of vessel less than 50 metres in length overall which is using the appropriate traffic lane or separation zone in order to engage in fishing. .5 Any category of ships less than 50 metres in length overall which is using the appropriate traffic lane or separation zone in an emergency in order to avoid immediate danger.",
+  "when": [
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Ships entering the area of coverage shall report to the Finisterre Traffic VTS when crossing the limits mentioned in paragraph 2.1 or when leaving the ports or anchorages in the area."
+    },
+    {
+      "event": "departure",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Ships entering the area of coverage shall report to the Finisterre Traffic VTS when crossing the limits mentioned in paragraph 2.1 or when leaving the ports or anchorages in the area."
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 11",
+      "to": "Finisterre Traffic",
+      "note": "Working channel. MSC.63(67) Annex 3, para 5.1: \"The channels defined are channel 16 and 11, with the channel 74 as a supplementary option.\" Not reconfirmed on a current official web page."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 16",
+      "to": "Finisterre Traffic",
+      "note": "MSC.63(67) Annex 3, para 5.1 (see above)."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 74",
+      "to": "Finisterre Traffic",
+      "note": "Supplementary option. MSC.63(67) Annex 3, para 5.1."
+    },
+    {
+      "type": "mf",
+      "value": "hectometric wave band (no frequency given)",
+      "to": "Finisterre VTS",
+      "note": "In special circumstances only. MSC.63(67) Annex 3, para 5.2."
+    },
+    {
+      "type": "fax",
+      "value": "+ 34 81 76 77 40",
+      "to": "Finisterre VTS",
+      "note": "For commercially confidential information (cargo, line P). As printed in MSC.63(67) Annex 3, para 5.3 (1996). This is the old Spanish numbering used before 1998; it is very likely out of date. Do not rely on it."
+    },
+    {
+      "type": "telex",
+      "value": "82268",
+      "to": "Finisterre VTS",
+      "note": "Telex as printed in MSC.63(67) Annex 3, para 5.3 (1996). Radio telex selective call 0993, answerback SAFIS. Very likely out of date."
+    },
+    {
+      "type": "phone",
+      "value": "981 767 500",
+      "to": "Centro de Coordinacion de Salvamento de Finisterre",
+      "note": "Office number from the Salvamento Maritimo web page 'Contacto CCS y BEC' (read 2026-10-26), which says phone service 08:00 to 15:00. Spanish number as printed (from abroad add +34). Not a reporting channel in the resolution."
+    }
+  ],
+  "addressee": "Finisterre Traffic",
+  "heading": "FINREP",
+  "lines": [
+    {
+      "l": "A",
+      "req": "required",
+      "text": "Name of the ship, call sign, IMO identification number."
+    },
+    {
+      "l": "C",
+      "req": "required",
+      "text": "Position. (C or D)"
+    },
+    {
+      "l": "D",
+      "req": "optional",
+      "text": "Position. (C or D)"
+    },
+    {
+      "l": "G",
+      "req": "required",
+      "text": "Last and next port of call (G and I)"
+    },
+    {
+      "l": "I",
+      "req": "required",
+      "text": "Last and next port of call (G and I)"
+    },
+    {
+      "l": "P",
+      "req": "if-applicable",
+      "text": "Hazardous cargo, class and quantity, if applicable."
+    },
+    {
+      "l": "Q",
+      "req": "if-applicable",
+      "text": "Breakdown, damage and/or deficiencies affecting the structure, cargo or equipment of the ship or any other circumstances affecting normal navigation, in accordance with the provisions of the SOLAS and MARPOL Conventions. (Q or R)"
+    },
+    {
+      "l": "R",
+      "req": "if-applicable",
+      "text": "Breakdown, damage and/or deficiencies affecting the structure, cargo or equipment of the ship or any other circumstances affecting normal navigation, in accordance with the provisions of the SOLAS and MARPOL Conventions. (Q or R)"
+    },
+    {
+      "l": "E",
+      "req": "required",
+      "text": "Course and speed of the ship. (E and F, information considered necessary)"
+    },
+    {
+      "l": "F",
+      "req": "required",
+      "text": "Course and speed of the ship. (E and F, information considered necessary)"
+    }
+  ],
+  "format_note": "Standard reporting format of resolution A.648(16), paragraph 2 of the appendix (MSC.63(67) Annex 3, para 3.1; A.648(16) was later replaced by A.851(20), the letters are the same). Lines A, C or D, G and I, P, Q or R are 'information considered essential'; E and F are 'information considered necessary'. The cargo section (line P) of the FINREP ENTRY report may be sent by non-verbal means before entering the system, for commercial confidentiality. Language: English, using the IMO Standard Marine Communication Phrases where necessary, or Spanish if appropriate. Reporting is free of charge.",
+  "area": {
+    "shape": "lines",
+    "points": [
+      {
+        "n": "CV",
+        "name": "Cabo Vilan (Cape Villano) lighthouse",
+        "lat": "43 09 37N",
+        "lon": "009 12 41W",
+        "inferred": true
+      },
+      {
+        "n": "1",
+        "name": "NW corner: 130(T) line to Cape Villano lighthouse meets meridian 010 15W",
+        "lat": "43 47.80N",
+        "lon": "010 15.00W",
+        "inferred": false
+      },
+      {
+        "n": "2",
+        "name": "SW corner: 075(T) line to Cape Finisterre lighthouse meets meridian 010 15W",
+        "lat": "42 41.55N",
+        "lon": "010 15.00W",
+        "inferred": false
+      },
+      {
+        "n": "CF",
+        "name": "Cabo Fisterra (Cape Finisterre) lighthouse",
+        "lat": "42 52 56N",
+        "lon": "009 16 20W",
+        "inferred": true
+      }
+    ],
+    "lines": [
+      [
+        "CV",
+        "1",
+        "2",
+        "CF"
+      ]
+    ],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 43.0,
+      "lon": -9.7
+    },
+    "bbox": [
+      -10.4,
+      42.6,
+      -9.0,
+      43.9
+    ]
+  },
+  "area_quote": "2.1 The reporting system will cover the area (Appendix 1) between the coast and the following lines: .1 a bearing of 130º(T) to Cape Villano lighthouse; .2 a bearing of 075º(T) to Cape Finisterre lighthouse; and .3 the meridian of longitude 010º15' W. This area includes the traffic separation scheme \"Off Finisterre\" and the associated inshore traffic zones adopted by resolution A.767(18), as amended by resolution A.957(23).",
+  "sources": [
+    {
+      "title": "IMO MSC.63(67) Mandatory ship reporting systems, Annex 3 Off Finisterre",
+      "ref": "Annex 3, paras 1, 3, 4, 5 (MSC 67/22/Add.1 Annex 13 pages 18 to 24)",
+      "date": "1996-12-03",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.63(67).pdf",
+      "primary": true
+    },
+    {
+      "title": "IMO MSC.162(78) Amendments to the existing mandatory ship reporting system Off Cape Finisterre",
+      "ref": "Annex, new paras 2.1 and 2.2 and new Appendix 1 chartlet",
+      "date": "2004-05-17",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.162(78).pdf",
+      "primary": true
+    },
+    {
+      "title": "Salvamento Maritimo: Dispositivos de separacion de trafico",
+      "ref": "Finisterre section",
+      "date": "2026-10-26",
+      "url": "https://www.salvamentomaritimo.es/mejora-tu-seguridad/control-y-servicios-en-la-mar/dispositivos-de-separacion-de-trafico",
+      "primary": false
+    },
+    {
+      "title": "Salvamento Maritimo: Contacto CCS y BEC",
+      "ref": "Finisterre",
+      "date": "2026-10-26",
+      "url": "https://www.salvamentomaritimo.es/conocenos/nuestra-empresa/contacto-ccs-y-bec",
+      "primary": false
+    },
+    {
+      "title": "INE Anuario Estadistico de Espana 2001, table 1.1.2 Situacion geografica de los faros mas notables del litoral (source: Instituto Hidrografico de la Marina)",
+      "ref": "page 4, Cabo Vilan and Cabo Fisterra",
+      "date": "2001",
+      "url": "https://www.ine.es/prodyser/pubweb/anuario01/01territ.pdf",
+      "primary": false
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Categories, report content, reporting position, authority and radio details: MSC.63(67) Annex 3 (scanned PDF), pages 18 to 21 rendered at 120 dpi and read against the text; MSC.162(78) did not change these parts. Area: MSC.162(78) page 2 rendered and read (bearings 130(T) and 075(T), meridian 010 15W). Corner points 1 and 2: printed on the new Appendix 1 chartlet of MSC.162(78) (page 3), rendered at 300 dpi and read: 43 47.80N 010 15.00W and 42 41.55N 010 15.00W. They are not in the text of para 2.1. Lighthouse positions: not printed in the resolution; taken from the INE 2001 yearbook lighthouse table (source Instituto Hidrografico de la Marina), page rendered and read. Check: rhumb bearing from point 1 to Cabo Vilan lighthouse = 130.1 deg, from point 2 to Cabo Fisterra lighthouse = 075.2 deg (WGS84), so the chartlet corners agree with the text. Salvamento Maritimo web page (read 2026-10-26) confirms ships must report to Finisterre traffic service when crossing the 130 line to Cabo Villano and the 075 line to Cabo Finisterre. VHF channels, fax and telex: only in the 1996 resolution, not confirmed on any current official page.",
+  "confidence": "medium",
+  "notes": "Area: between the coast and the 130(T) line to Cape Villano lighthouse, the meridian 010 15W and the 075(T) line to Cape Finisterre lighthouse. Until 1 December 2004 the west limit was 010 10.0W (MSC.63(67)); MSC.162(78) moved it to 010 15W and replaced the chartlet. Points CV and CF (lighthouses) are inferred: the resolution names the lighthouses but prints no position; positions are from the INE 2001 yearbook (Instituto Hidrografico de la Marina data), WGS84 not stated there. The ship categories still use length (50 m LOA), not gross tonnage: MSC.162(78) only changed the area and chart. Contact details (VHF 11, 16, 74, fax, telex) are as printed in 1996 and could not be confirmed on a current Salvamento Maritimo page; the fax uses pre-1998 Spanish numbering and the telex is almost certainly out of service. Check the current channel in the Spanish national notices or on first call on CH 16. Later amendments: none found. Checked the Swedish Transport Agency list of IMO ship reporting systems (2017), the NCSR 12 report to MSC (NCSR 12/20/Add.1, 2025), the MSC 111 summary (May 2026: only ADRIREP, SOUNDREP, BELTREP were adopted) and the NCSR 13 draft report (NCSR 13/WP.1/Rev.1: proposals only for TRANSREP, BONIFREP, WETREP, CALDOVREP). An EU proposal at NCSR 12 to add insurance certificate lines to about ten European systems is still being handled at IMO; if it reaches this system the report lines will change."
+}

@@ -1,0 +1,400 @@
+{
+  "id": "imo-coral-shiprep",
+  "system": "CORAL SHIPREP",
+  "title": "Papahānaumokuākea Marine National Monument PSSA ship reporting system (CORAL SHIPREP), North-western Hawaiian Islands",
+  "country": "United States",
+  "authority": "United States Coast Guard Communication Area Master Station Pacific (CAMSPAC) as shore-based authority; reports go to NOAA (nwhi.notifications@noaa.gov)",
+  "kind": "mandatory-imo",
+  "resolution": "MSC.248(83), amended by MSC.279(85)",
+  "status": "in effect",
+  "effective": "2008-05-01",
+  "applies_to": "Ships of 300 gross tonnage or more in transit through the reporting area that are entering or leaving a United States port or place (condition of port entry), and all such ships in a developing emergency. Sovereign immune ships exempt. Other ships of 300 GT or more, fishing vessels and all ships in an emergency are recommended to report. US-flag vessels must report under US law.",
+  "applies_quote": "As a condition of entry to a United States port or place, all ships 300 gross tonnage or greater, and all ships in the event of a developing emergency, and that are in transit through the reporting area are required to participate in CORAL SHIPREP, except for sovereign immune vessels which are exempt under SOLAS regulation V/1. (MSC.248(83), Annex, para 1.1.1)",
+  "when": [
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Each ship should submit a full report in accordance with paragraph 3.2.1 as soon as it crosses the boundary to enter the ship reporting system. (para 3.3.1; for ships that must report, should is to be read as shall)"
+    },
+    {
+      "event": "exit",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Each ship should submit a report in accordance with paragraph 3.2.2 as soon as it crosses the boundary to leave the ship reporting system. (para 3.3.2)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Further reports should be made whenever there is a change in navigation status or circumstances, particularly in relation to item Q of the reporting format. (para 3.3.3)"
+    }
+  ],
+  "how": [
+    {
+      "type": "email",
+      "value": "nwhi.notifications@noaa.gov",
+      "to": "CORAL SHIPREP (NOAA Papahānaumokuākea notifications)",
+      "note": "Primary: send by Inmarsat-C (or ship's email) as a direct email; NOAA pays Inmarsat-C costs (50 CFR 404 Appendix E). Do not use batch message routing services. Address from 50 CFR 404.4(d), (e). MSC.279(85) prints it as \"nwhi.notifications@noaa-gov\", an obvious misprint; the US rule and the 2007 text use @noaa.gov."
+    },
+    {
+      "type": "phone",
+      "value": "001-808-541-2500",
+      "to": "United States Coast Guard 14th District",
+      "note": "In a developing emergency, to request response and assistance (MSC.248(83) para 5.2). Number as printed in 2007; not re-confirmed."
+    },
+    {
+      "type": "phone",
+      "value": "1-866-478-NWHI (6944)",
+      "to": "NOAA Papahānaumokuākea notifications",
+      "note": "For US vessels under 300 GT without email (50 CFR 404.4(f))."
+    },
+    {
+      "type": "fax",
+      "value": "1-808-455-3093",
+      "to": "NOAA Papahānaumokuākea notifications",
+      "note": "For US vessels under 300 GT without email (50 CFR 404.4(f))."
+    }
+  ],
+  "addressee": null,
+  "heading": "CORAL SHIPREP //",
+  "lines": [
+    {
+      "l": "A",
+      "req": "required",
+      "text": "Ship: vessel name/call sign/flag/IMO number/Federal documentation or State registration number if applicable // (e.g. A/OCEAN VOYAGER/C5FU8/BAHAMAS/IMO 9359165//)"
+    },
+    {
+      "l": "B",
+      "req": "required",
+      "text": "Date, time (UTC), and month of entry: a 6-digit group (day, hours, minutes) suffixed by Z and three letters for the month // (e.g. B/271107Z DEC//)"
+    },
+    {
+      "l": "C",
+      "req": "required",
+      "text": "Position: 4-digit latitude group with N, a single /, and 5-digit longitude group with W // in WGS-84 (e.g. C/2728N/17356W//)"
+    },
+    {
+      "l": "E",
+      "req": "required",
+      "text": "True course: 3-digit number // (e.g. E/180//)"
+    },
+    {
+      "l": "F",
+      "req": "required",
+      "text": "Speed in knots and tenths: 3-digit group indicating knots decimal tenths // (e.g. F/20.5//)"
+    },
+    {
+      "l": "I",
+      "req": "required",
+      "text": "Destination and estimated time of arrival: name of port city/country/estimated arrival date and time group as in B // (e.g. I/SEATTLE/USA/311230Z DEC//)"
+    },
+    {
+      "l": "L",
+      "req": "required",
+      "text": "Intended route through the reporting area: a direct rhumb line (RL) course and intended speed, or a series of waypoints (WP) with speed between them; as many L lines as needed // (e.g. L/RL/215/20.5// or L/WP/2734N/17352W/20.5//)"
+    },
+    {
+      "l": "O",
+      "req": "required",
+      "text": "Vessel draft in meters: maximum present static draft in meters decimal centimeters // (e.g. O/11.50//)"
+    },
+    {
+      "l": "P",
+      "req": "required",
+      "text": "Categories of hazardous cargoes: classification code (e.g. IMDG, IBC, IGC, INF) / all corresponding categories, comma separated // (e.g. P/IMDG/1.4G,2.1,2.2,2.3,3,4.1,6.1,8,9//)"
+    },
+    {
+      "l": "Q",
+      "req": "required",
+      "text": "Defects or deficiencies: brief details of defects, damage, deficiencies or limitations that restrict maneuverability or impair normal navigation // (if none, enter the number zero)"
+    },
+    {
+      "l": "R",
+      "req": "required",
+      "text": "Pollution incident or goods lost overboard within the Monument, the Reporting Area, or the U.S. EEZ // (if none, enter the number zero) (e.g. R/0//)"
+    },
+    {
+      "l": "T",
+      "req": "required",
+      "text": "Contact information of ship's agent or owner: name/address/and phone number //"
+    },
+    {
+      "l": "U",
+      "req": "required",
+      "text": "Ship size (length overall and gross tonnage) and type: LOA in meters decimal centimeters/gross tons/type of ship // (e.g. U/294.14/54592/CONTAINER SHIP//)"
+    },
+    {
+      "l": "W",
+      "req": "required",
+      "text": "Persons: total number of persons on board // (e.g. W/15//)"
+    }
+  ],
+  "format_note": "Lines above are the ENTRY report (50 CFR 404 Appendix E, table E.1; the IMO list in MSC.248(83) para 3.2.1 is A, B, C or D, E or F, I, L, O, P, Q or R, T, U, W). The EXIT report is CORAL SHIPREP //, A, B (date, time and month of exit), C and R (Appendix E table E.3; IMO para 3.2.2 lists A, B, C or D). The automatic system rejects reports that do not follow the exact format: no extra text, extraneous characters or double spacing. Hazardous cargo details may be sent by non-verbal means before entering. Language English.",
+  "area": {
+    "shape": "polygon",
+    "points": [
+      {
+        "n": "1",
+        "lat": "29 24.21N",
+        "lon": "178 06.45W",
+        "inferred": false
+      },
+      {
+        "n": "2",
+        "lat": "29 12.16N",
+        "lon": "177 04.25W",
+        "inferred": false
+      },
+      {
+        "n": "3",
+        "lat": "28 43.78N",
+        "lon": "175 13.76W",
+        "inferred": false
+      },
+      {
+        "n": "4",
+        "lat": "27 00.28N",
+        "lon": "173 25.37W",
+        "inferred": false
+      },
+      {
+        "n": "5",
+        "lat": "26 44.85N",
+        "lon": "171 28.22W",
+        "inferred": false
+      },
+      {
+        "n": "6",
+        "lat": "26 23.95N",
+        "lon": "170 20.25W",
+        "inferred": false
+      },
+      {
+        "n": "7",
+        "lat": "25 56.49N",
+        "lon": "167 32.03W",
+        "inferred": false
+      },
+      {
+        "n": "8",
+        "lat": "24 50.23N",
+        "lon": "165 58.56W",
+        "inferred": false
+      },
+      {
+        "n": "9",
+        "lat": "24 02.61N",
+        "lon": "161 42.30W",
+        "inferred": false,
+        "name": "then an arc of radius 60.25 NM centred 23 03.61N 161 55.22W (point 21) to point 10"
+      },
+      {
+        "n": "9a1",
+        "name": "computed point on the arc",
+        "lat": "23 53.56N",
+        "lon": "161 18.56W",
+        "inferred": true
+      },
+      {
+        "n": "9a2",
+        "name": "computed point on the arc",
+        "lat": "23 36.82N",
+        "lon": "161 00.52W",
+        "inferred": true
+      },
+      {
+        "n": "9a3",
+        "name": "computed point on the arc",
+        "lat": "23 15.02N",
+        "lon": "160 50.92W",
+        "inferred": true
+      },
+      {
+        "n": "9a4",
+        "name": "computed point on the arc",
+        "lat": "22 51.51N",
+        "lon": "160 51.17W",
+        "inferred": true
+      },
+      {
+        "n": "9a5",
+        "name": "computed point on the arc",
+        "lat": "22 29.87N",
+        "lon": "161 01.14W",
+        "inferred": true
+      },
+      {
+        "n": "9a6",
+        "name": "computed point on the arc",
+        "lat": "22 13.38N",
+        "lon": "161 19.26W",
+        "inferred": true
+      },
+      {
+        "n": "9a7",
+        "name": "computed point on the arc",
+        "lat": "22 04.51N",
+        "lon": "161 42.77W",
+        "inferred": true
+      },
+      {
+        "n": "10",
+        "lat": "22 04.59N",
+        "lon": "162 08.14W",
+        "inferred": false
+      },
+      {
+        "n": "11",
+        "lat": "22 35.32N",
+        "lon": "164 53.46W",
+        "inferred": false
+      },
+      {
+        "n": "12",
+        "lat": "22 47.86N",
+        "lon": "166 40.44W",
+        "inferred": false
+      },
+      {
+        "n": "13",
+        "lat": "24 03.30N",
+        "lon": "168 27.53W",
+        "inferred": false
+      },
+      {
+        "n": "14",
+        "lat": "24 26.59N",
+        "lon": "170 50.37W",
+        "inferred": false
+      },
+      {
+        "n": "15",
+        "lat": "24 46.49N",
+        "lon": "171 52.87W",
+        "inferred": false
+      },
+      {
+        "n": "16",
+        "lat": "25 07.23N",
+        "lon": "174 30.23W",
+        "inferred": false
+      },
+      {
+        "n": "17",
+        "lat": "27 05.50N",
+        "lon": "176 35.40W",
+        "inferred": false
+      },
+      {
+        "n": "18",
+        "lat": "27 15.11N",
+        "lon": "177 35.26W",
+        "inferred": false
+      },
+      {
+        "n": "19",
+        "lat": "27 26.10N",
+        "lon": "178 32.23W",
+        "inferred": false,
+        "name": "then an arc of radius 60.17 NM centred 28 25.23N 178 19.51W (point 20) back to point 1"
+      },
+      {
+        "n": "19a1",
+        "name": "computed point on the arc",
+        "lat": "27 34.90N",
+        "lon": "178 56.78W",
+        "inferred": true
+      },
+      {
+        "n": "19a2",
+        "name": "computed point on the arc",
+        "lat": "27 51.27N",
+        "lon": "179 15.78W",
+        "inferred": true
+      },
+      {
+        "n": "19a3",
+        "name": "computed point on the arc",
+        "lat": "28 12.82N",
+        "lon": "179 26.34W",
+        "inferred": true
+      },
+      {
+        "n": "19a4",
+        "name": "computed point on the arc",
+        "lat": "28 36.29N",
+        "lon": "179 26.77W",
+        "inferred": true
+      },
+      {
+        "n": "19a5",
+        "name": "computed point on the arc",
+        "lat": "28 58.11N",
+        "lon": "179 16.90W",
+        "inferred": true
+      },
+      {
+        "n": "19a6",
+        "name": "computed point on the arc",
+        "lat": "29 14.92N",
+        "lon": "178 58.15W",
+        "inferred": true
+      },
+      {
+        "n": "19a7",
+        "name": "computed point on the arc",
+        "lat": "29 24.12N",
+        "lon": "178 33.38W",
+        "inferred": true
+      }
+    ],
+    "lines": [],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 23.3,
+      "lon": -163.3
+    },
+    "bbox": [
+      -179.6,
+      21.9,
+      -160.6,
+      29.6
+    ]
+  },
+  "area_quote": "Outer Boundary. The outer boundary of the \"CORALSHIPREP\" reporting area consists of lines connecting the following geographical positions: Starting at (1) 29° 24´.21 N, 178° 06´.45 W; a rhumb line to (2) 29° 12´.16 N, 177° 04´.25 W; ... (9) 24° 02´.61 N, 161° 42´.30 W; Then an arc with a 60.25 nm radius centred at (21) 23° 03´.61 N, 161° 55´.22 W To a point (10) 22° 04´.59 N, 162° 08´.14 W; Then a rhumb line to (11) ... (19) 27° 26´.10 N, 178° 32´.23 W; Then an arc with a 60.17 nm radius centred at (20) 28° 25´.23 N, 178° 19´.51 W; Then to point (1) 29° 24´.21 N, 178° 06´.45 W. Inner Boundary. The inner boundaries of the \"CORAL SHIPREP\" SRS reporting area are coterminous with the outer boundaries of the IMO-adopted Areas To Be Avoided \"In the Region of the Papahānaumokuākea Marine National Monument\", which consist of: circles of radius 50 nautical miles centred upon 28° 25´.18 N 178° 19´.75 W (Kure Atoll); 28° 14´.20 N 177° 22´.10 W (Midway Atoll); 27° 50´.62 N 175° 50´.53 W (Pearl and Hermes Atoll); 26° 03´.82 N 173° 58´.00 W (Lisianski Island); 25° 46´.18 N 171° 43´.95 W (Laysan Island); 25° 25´.45 N 170° 35´.32 W (Maro Reef); 25° 19´.50 N 170° 00´.88 W (Maro Reef and Raita Bank); 25° 00´.00 N 167° 59´.92 W (Gardner Pinnacles); 23° 45´.52 N 166° 14´.62 W (French Frigate Shoals); 23° 34´.60 N 164° 42´.02 W (Necker Island); 23° 03´.38 N 161° 55´.32 W (Nihoa Island); and the areas between: Area 1 Lisianski Island (N) to Laysan Island 26° 53´.22 N 173° 49´.64 W to 26° 35´.58 N 171° 35´.60 W, Lisianski Island (S) to Laysan Island 25° 14´.42 N 174° 06´.36 W to 24° 57´.63 N 171° 57´.07 W; Area 2 Gardner Pinnacles (N) to French Frigate Shoals 25° 38´.90 N 167° 25´.31 W to 24° 24´.80 N 165° 40´.89 W, Gardner Pinnacles (S) to French Frigate Shoals 24° 14´.27 N 168° 22´.13 W to 23° 05´.84 N 166° 47´.81 W. (MSC.279(85), Annex, para 2)",
+  "sources": [
+    {
+      "title": "IMO resolution MSC.248(83) Adoption of a new ship reporting system for the Papahānaumokuākea Marine National Monument PSSA (CORAL SHIPREP)",
+      "ref": "Annex paras 1 to 9",
+      "date": "2007-10-08",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.248(83).pdf",
+      "primary": true
+    },
+    {
+      "title": "IMO resolution MSC.279(85) Adoption of amendments to the existing ship reporting system for the Papahānaumokuākea Marine National Monument PSSA (CORAL SHIPREP)",
+      "ref": "Annex paras 1 and 2 (new reporting address, new outer and inner boundaries)",
+      "date": "2008-12-01",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.279(85).pdf",
+      "primary": true
+    },
+    {
+      "title": "50 CFR Part 404 Papahānaumokuākea Marine National Monument, section 404.4 and appendices D and E, current text via eCFR",
+      "ref": "404.4(c) to (g); Appendix E (content and syntax)",
+      "date": "2026-10-01",
+      "url": "https://www.ecfr.gov/current/title-50/chapter-IV/part-404",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Outer boundary points 1 to 19 and the arc centres 20 and 21 read from MSC.279(85) Annex para 2 (IMO PDF pages 2 and 3) by pdftotext and a regex, then re-read by eye against the page. Arc points (9a1 to 9a7, 19a1 to 19a7) were computed on a sphere at the printed radius; the printed end points lie 60.2 NM from their centres, which confirms the radius. Who must report from MSC.248(83) para 1; address, report syntax and exit report from 50 CFR 404.4 and Appendix E (eCFR, 2026-10-01).",
+  "confidence": "medium",
+  "notes": "The reporting area is the band between the outer boundary and the Areas To Be Avoided (ATBA): you report when you cross the outer boundary inward and again when you cross it outward. The ATBA circles and connecting areas (listed in area_quote) are the inner limit and must be avoided anyway. Two parts of the outer boundary are arcs, not straight lines: points 9 to 10 (round Nihoa, east end) and 19 to 1 (round Kure, west end); the points named 9a1 to 9a7 and 19a1 to 19a7 are computed along those arcs only to draw them and are flagged inferred. Discrepancy: the US regulation 50 CFR 404 Appendix D still lists the original 2007 outer boundary of MSC.248(83) (100 points, slightly different, e.g. point 1 29 25.47N 178 16.97W), while IMO replaced it in MSC.279(85) (in force 1 June 2009). This record follows the IMO text; the difference is small (about 1 to 10 NM). The Monument was enlarged in 2016 and became a National Marine Sanctuary in 2025; those larger limits are NOT the reporting area. The IMO title calls it a ship reporting system; it is mandatory only for the ships in applies_to (via US port entry conditions) and recommended for others."
+}

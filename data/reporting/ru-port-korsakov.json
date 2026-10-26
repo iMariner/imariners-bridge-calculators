@@ -1,0 +1,210 @@
+{
+  "id": "ru-port-korsakov",
+  "system": "Port of Korsakov, harbour master; Aniva Bay VTS",
+  "title": "Korsakov: Aniva Traffic and Korsakov port control, arrival notice",
+  "country": "Russia",
+  "authority": "Harbour master of the seaport of Korsakov (Корсаков-Портконтроль), FGBU AMP of Sakhalin, Kuril Islands and Kamchatka; VTS centre of Aniva Bay (Анива-трафик)",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": "2025-03-01",
+  "applies_to": "All ships bound for the Korsakov section of the port and moving in the Aniva Bay VTS zone, whatever their flag. The port also has the Poronaysk, Moskalvo, Pogranichnoye, Nabil and Aleksandrovsk-Sakhalinsky sections.",
+  "applies_quote": "суда, следующие в участок Корсаков, должны установить связь ... с ЦСУДС залива Анива и передать сведения, предусмотренные пунктом 29 Общих правил, за 2 морские мили до пересечения линии зоны действия СУДС;",
+  "when": [
+    {
+      "event": "before_arrival",
+      "hours_before": 72,
+      "interval_h": null,
+      "report": null,
+      "text": "Arrival and departure information to the harbour master through www.portcall.marinet.ru (p. 11). Times per the General Rules: 120 to 72 hours before arrival, confirm 48 to 24 hours before; arrival application within 4 hours of first anchoring or mooring; departure application 4 hours before departure (ru-general-prearrival). From a foreign port the entry permission must also be agreed with the FSB (ru-entry-fsb-permission)."
+    },
+    {
+      "event": "before_entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "2 NM before crossing the Aniva Bay VTS zone line, call the VTS centre and give the General Rules p. 29 data; in the zone keep contact on calling CH 16 and working CH 74 (p. 24)."
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Storm warnings from port control on VHF; keep engines ready (p. 43). Emergency information on CH 16 (p. 74). Dangerous goods information to the harbour master at og.ampskk.ru (p. 63 as amended 23.04.2026)."
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 74",
+      "to": "Анива-трафик (VTS centre)",
+      "note": "Appendix 4: calling 16, working 74, reserve 67"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 16",
+      "to": "Анива-трафик (VTS centre)",
+      "note": "Calling channel"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 13",
+      "to": "Корсаков-Портконтроль (state port control, Korsakov section)",
+      "note": "Appendix 4: calling 16, working 13"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 10",
+      "to": "Лоцманская Станция (pilot station)",
+      "note": "Appendix 4: calling 16, working 10"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 14",
+      "to": "Радио-2 (Korsakov sea trade port dispatcher)",
+      "note": "Appendix 4: calling 16, working 14"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 14",
+      "to": "Поронайск-Портконтроль (port control, Poronaysk section)",
+      "note": "Appendix 4: calling 16, working 14"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 67",
+      "to": "Москальво-Портконтроль (port control, Moskalvo section)",
+      "note": "Appendix 4: calling 16, working 67"
+    },
+    {
+      "type": "web",
+      "value": "www.portcall.marinet.ru",
+      "to": "Harbour master of Korsakov",
+      "note": "Arrival information (p. 11)"
+    }
+  ],
+  "addressee": null,
+  "heading": null,
+  "lines": [
+    {
+      "l": "1",
+      "req": "required",
+      "text": "Ship's name and type"
+    },
+    {
+      "l": "2",
+      "req": "required",
+      "text": "Flag"
+    },
+    {
+      "l": "3",
+      "req": "required",
+      "text": "Port of destination"
+    },
+    {
+      "l": "4",
+      "req": "required",
+      "text": "Maximum present draught and air draught"
+    },
+    {
+      "l": "5",
+      "req": "required",
+      "text": "Kind of cargo, dangerous cargo on board"
+    },
+    {
+      "l": "6",
+      "req": "if-applicable",
+      "text": "Defects of ship equipment and other limits that affect safe navigation"
+    }
+  ],
+  "format_note": "Report items from General Rules p. 29, given 2 NM before the zone line.",
+  "area": {
+    "shape": "lines",
+    "points": [
+      {
+        "n": "1",
+        "lat": "46 37.50N",
+        "lon": "142 26.00E",
+        "inferred": false
+      },
+      {
+        "n": "2",
+        "lat": "46 25.00N",
+        "lon": "142 30.00E",
+        "inferred": false
+      },
+      {
+        "n": "3",
+        "lat": "46 25.00N",
+        "lon": "143 04.00E",
+        "inferred": false
+      },
+      {
+        "n": "4",
+        "lat": "46 35.70N",
+        "lon": "143 04.00E",
+        "inferred": false
+      }
+    ],
+    "lines": [
+      [
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    ],
+    "center": null,
+    "radius_nm": null,
+    "state": "Russia",
+    "zone": "Aniva Bay VTS zone, closed by the coast (same zone as for Prigorodnoye, ru-vts-aniva-prigorodnoye)",
+    "ports": [
+      "Korsakov (Korsakov section; also Poronaysk, Moskalvo, Pogranichnoye, Nabil, Aleksandrovsk-Sakhalinsky sections)"
+    ],
+    "inside_hint": {
+      "lat": 46.55,
+      "lon": 142.75
+    },
+    "bbox": [
+      142.3,
+      46.35,
+      143.15,
+      46.75
+    ]
+  },
+  "area_quote": "23. В акватории северной части залива Анива действует СУДС. Зона действия СУДС ограничена береговой линией и прямыми линиями, соединяющими по порядку точки с координатами: 46°37,50' северной широты и 142°26,00' восточной долготы; 46°25,00' северной широты и 142°30,00' восточной долготы; 46°25,00' северной широты и 143°04,00' восточной долготы; 46°35,70' северной широты и 143°04,00' восточной долготы.",
+  "sources": [
+    {
+      "title": "Приказ Минтранса России от 13.08.2024 № 280 \"Об утверждении Обязательных постановлений в морском порту Корсаков\" (in force 01.03.2025, valid to 01.03.2031)",
+      "ref": "pp. 11, 16, 23, 24, 43, 52, 74, Appendix 4",
+      "date": "2024-08-13",
+      "url": "https://rulaws.ru/acts/Prikaz-Mintransa-Rossii-ot-13.08.2024-N-280/",
+      "primary": true
+    },
+    {
+      "title": "Same order № 280, official publication",
+      "ref": "publication.pravo.gov.ru",
+      "date": "2024-08-13",
+      "url": "http://publication.pravo.gov.ru/document/0001202411150007",
+      "primary": true
+    },
+    {
+      "title": "Приказ Минтранса России от 23.04.2026 № 174 (amends p. 63 and Appendix 1)",
+      "ref": "official publication",
+      "date": "2026-04-23",
+      "url": "http://publication.pravo.gov.ru/document/0001202605290031",
+      "primary": true
+    },
+    {
+      "title": "Общие правила плавания и стоянки судов (Приказ Минтранса № 395, ред. от 23.12.2025)",
+      "ref": "pp. 29, 39, 40, 43, 45",
+      "date": "2025-12-23",
+      "url": "https://legalacts.ru/doc/prikaz-mintransa-rossii-ot-12112021-n-395-ob-utverzhdenii/",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Text of order № 280 and amendment № 174 read on rulaws.ru; VTS polygon identical to the Prigorodnoye regulations.",
+  "confidence": "high",
+  "notes": "Call sign printed \"Анива-трафик\" (Korsakov) and \"Анива-Трафик\" (Prigorodnoye). The northern sections (Poronaysk, Moskalvo, Nabil, Aleksandrovsk-Sakhalinsky) have their own port control channels but no VTS; their approach limits (for example Nabil: 6 NM arc around 51°44,50'N 143°18,33'E) are in the appendices and not copied here. Harbour master phone and email not found."
+}

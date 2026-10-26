@@ -1,0 +1,112 @@
+{
+  "id": "cn-port-entry",
+  "system": "China port entry (international ships)",
+  "title": "Chinese ports: entry permission, 24 h arrival report and dangerous cargo declaration",
+  "country": "China",
+  "authority": "Local maritime administration (MSA branch) of the port; other port inspection authorities (customs, border inspection)",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": "2025-03-01",
+  "applies_to": "All ships on international voyages entering or leaving a Chinese port. The dangerous cargo declaration applies to ships carrying dangerous goods, which since 2025-03-01 include bulk oils listed in MARPOL Annex I Appendix 1 (crude oil).",
+  "applies_quote": "第六条 船方或其代理人应当在船舶预计抵达口岸7日前（航程不足7日的，在驶离上一口岸时），填写《国际航行船舶进口岸申请书》，报请抵达口岸的港务监督机构审批。 / 危险货物 ... （三）《国际防止船舶造成污染公约》（MARPOL 公约）附则 I 附录 1 中列明的散装油类",
+  "when": [
+    {
+      "event": "before_arrival",
+      "hours_before": 168,
+      "interval_h": null,
+      "report": null,
+      "text": "7 days before the expected arrival (or on leaving the last port if the voyage is shorter than 7 days), the ship or agent sends the application for entry of an international ship to the maritime administration of the port for approval. (第六条)"
+    },
+    {
+      "event": "before_arrival",
+      "hours_before": 24,
+      "interval_h": null,
+      "report": null,
+      "text": "24 hours before the expected arrival (or on leaving the last port if the voyage is shorter), the ship or agent reports to the inspection authorities the arrival time, berth or anchorage, berthing and shifting plan and crew and passenger details. (第七条)"
+    },
+    {
+      "event": "before_arrival",
+      "hours_before": 24,
+      "interval_h": null,
+      "report": null,
+      "text": "Dangerous cargo (incl. crude oil in bulk): 24 hours before entering or leaving port (or before leaving the last port if the voyage is shorter than 24 hours) the applicant makes the dangerous cargo declaration to the maritime administration and gets approval before entering or leaving. (第二十一条)"
+    },
+    {
+      "event": "arrival",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "If entry formalities were not completed before arrival, complete them within 24 hours of arrival. (第八条)"
+    },
+    {
+      "event": "departure",
+      "hours_before": 4,
+      "interval_h": null,
+      "report": null,
+      "text": "Within 4 hours before leaving (or on arrival if the stay is under 4 hours) complete exit formalities and get the port clearance. If the ship has not sailed within 24 hours of clearance or things change, report again. (第十二条, 第十三条)"
+    }
+  ],
+  "how": [
+    {
+      "type": "other",
+      "value": "Ship's agent, through the MSA online government services system (网上申请)",
+      "to": "maritime administration of the arrival port",
+      "note": "filed by the agent"
+    }
+  ],
+  "addressee": null,
+  "heading": null,
+  "lines": [],
+  "format_note": "Entry application documents (2024 services guide): application form, IOPP certificate with Form B and, for ships discharging oil, the oil name, density at 15 C and viscosity, the approved dangerous cargo declaration, security information for the last 10 ports. On arrival: ship particulars, general declaration, cargo declaration, crew list, dangerous cargo manifest, certificates, crew certificates, port clearance from the last port.",
+  "area": {
+    "shape": "port",
+    "points": [],
+    "lines": [],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [
+      "All Chinese ports open to international ships, incl. Dalian, Yingkou, Jinzhou, Panjin, Huludao, Qinhuangdao, Tangshan (Jingtang, Caofeidian), Tianjin, Huanghua, Dongying, Weifang, Laizhou, Longkou, Penglai, Yantai, Weihai, Qingdao, Rizhao"
+    ],
+    "inside_hint": {
+      "lat": 38.9,
+      "lon": 119.5
+    },
+    "bbox": [
+      117.5,
+      34.5,
+      123.0,
+      41.0
+    ]
+  },
+  "area_quote": "进出中华人民共和国口岸的国际航行船舶",
+  "sources": [
+    {
+      "title": "国际航行船舶进出中华人民共和国口岸检查办法 (State Council Decree No. 175, 1995, revised 2019-03-02), State Council Gazette 2019 supplement",
+      "ref": "Art. 6, 7, 8, 12, 13",
+      "date": "2019-03-02",
+      "url": "https://www.gov.cn/gongbao/content/2019/content_5468919.htm",
+      "primary": true
+    },
+    {
+      "title": "船舶载运危险货物安全监督管理规定 (Ministry of Transport Decree 2024 No. 14, in force 2025-03-01)",
+      "ref": "Art. 21, 22 and the definition of dangerous goods (MARPOL Annex I bulk oils)",
+      "date": "2024-12-31",
+      "url": "https://xxgk.mot.gov.cn/gz/202501/W020250120579383594558.pdf",
+      "primary": true
+    },
+    {
+      "title": "海事政务服务指南（2024年）, item 10 国际航行船舶进出口岸许可",
+      "ref": "item 10, documents",
+      "date": "2024-08-16",
+      "url": "https://www.msa.gov.cn/html/cnmsa/xxgk/article/2024/dcc95dc277814a5b8d7d0b46391314a1.html",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Decree 175 articles read in the gov.cn gazette print (copy taken from FAOLEX, faolex.fao.org/docs/pdf/chn220356.pdf, which prints the gov.cn URL). Decree 2024 No. 14 read from the Ministry of Transport PDF. Document list from the 2024 MSA services guide (.doc).",
+  "confidence": "high",
+  "notes": "The agent handles these; the officer should check the agent has the ETA and that the dangerous cargo approval is in place before the pilot station. Ports also have their own ETA rules in the VTS records (for example Tianjin 24 h ETA to the VTS, Dalian 24 h pre-report on www.dpn.com.cn, Qingdao 12 h for deep draught). Customs quarantine declaration (海关) is separate and not covered. LNG carriers have 72 h and 24 h ETA reports (art. 36), not applicable to oil tankers."
+}

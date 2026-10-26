@@ -1,0 +1,80 @@
+{
+  "id": "surnav-polynesie",
+  "system": "SURNAV",
+  "title": "SURNAV French Polynesia and Clipperton",
+  "country": "France",
+  "authority": "Haut-commissaire de la République en Polynésie française, délégué du Gouvernement pour l'action de l'État en mer; reports go to JRCC Tahiti",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": "2025-08-27",
+  "applies_to": "The SURNAV notice (Art. 5, Annex 3) is for the master of every ship of Art. 2.2 preparing to transit French territorial waters of French Polynesia and La Passion-Clipperton: ships over 15 m length overall engaged in commercial navigation of 3000 UMS (GT) or more, whatever the cargo; the list of dangerous goods is added where applicable. Not for State ships or ships on public service missions, and (except the incident reporting of Art. 4) not for ships on coastal trade and island service within the territorial waters of French Polynesia (Art. 2).",
+  "applies_quote": "2.1 tous les navires d'une longueur hors tout supérieure à 15 mètres naviguant dans les eaux sous souveraineté ou juridiction française, situées au large de la Polynésie française et de l'île de La Passion-Clipperton ; 2.2 parmi les navires visés en 2.1, aux navires effectuant une navigation commerciale, d'une jauge brute égale ou supérieure à 3000 UMS ; [...] Il ne s'applique pas, hormis les dispositions de l'article 4, aux navires effectuant des navigations de cabotage et de desserte maritime dans les eaux territoriales de Polynésie française. [...] Article 5 : Le capitaine de tout navire visé à l'article 2.2 s'apprêtant à transiter dans les eaux territoriales françaises de la Polynésie française et de l'île de La Passion-Clipperton est tenu de signaler à l'autorité maritime, par un message conforme au modèle figurant en annexe 3 et acheminé selon les dispositions de l'annexe 1 : 1. ses intentions de mouvement dans les eaux territoriales ; 2. l'état de ses capacités de manœuvre et de navigation ; 3. le cas échéant, la liste des marchandises dangereuses transportées à bord.",
+
+  "when": [
+    { "event": "before_entry", "hours_before": 48, "interval_h": null, "report": null,
+      "text": "The message must reach JRCC Tahiti at least 48 hours before entering the territorial waters if the ship comes from outside.",
+      "text_quote": "Ce message doit parvenir au JRCC Tahiti au moins 48 heures avant l'entrée dans les eaux territoriales si le navire vient de l'extérieur," },
+    { "event": "departure", "hours_before": 2, "interval_h": null, "report": null,
+      "text": "At least 2 hours before sailing if the ship is about to leave these territorial waters from a port or from an anchorage, waiting or lightening area off the French coast.",
+      "text_quote": "et au moins 2 heures avant l'appareillage si le navire se préparait à quitter ces mêmes eaux territoriales à partir d'un port ou d'une zone de mouillage, d'attente ou de délestage des côtes françaises." },
+    { "event": "deviation", "hours_before": null, "interval_h": null, "report": null,
+      "text": "Any change to the programme given in the message must be reported to JRCC Tahiti at once by a correcting message, same model and same way as the first.",
+      "text_quote": "Toute modification survenant dans le programme d'activités renseigné dans le message susvisé de ces navires doit aussitôt être signalée au JRCC Tahiti par un message correctif selon le même modèle et les mêmes modalités que le message initial." },
+    { "event": "other", "hours_before": 24, "interval_h": null, "report": null,
+      "text": "Passenger ships and large yachts of 45 m or more or 300 UMS or more (Art. 2.4) that want to anchor or stop in the territorial waters of French Polynesia: foreign flag ask for authorisation, French flag declare, using the Annex 4 model ('SURNAV – MOUILLAGE / STATIONNEMENT'), between 12 and 24 hours ahead. Maximum stay 24 hours unless stated otherwise (foreign flag). Report arrival at and departure from the anchorage to JRCC Tahiti.",
+      "text_quote": "Le capitaine s'apprêtant à mouiller ou à stationner adresse une demande d'autorisation par un message conforme au modèle figurant en annexe 4 et acheminé selon les dispositions de l'annexe 1, avec un préavis compris entre 12 et 24 heures." }
+  ],
+
+  "how": [
+    { "type": "email", "value": "contact@jrcc.pf", "to": "JRCC Tahiti", "note": "Annex 1 of the arrêté. The JRCC website (jrcc.pf) gives jrcc.tahiti@mer.gouv.fr as its 24/7 e-mail; use the arrêté address first." },
+    { "type": "phone", "value": "+689 40541616", "to": "JRCC Tahiti", "note": "Annex 1 (H24). Written '+689 40 54 16 16' on the JRCC website." },
+    { "type": "vhf", "value": "CH 16", "to": "JRCC Tahiti", "note": "Annex 1." },
+    { "type": "inmarsat-c", "value": "422 799 192", "to": "JRCC Tahiti", "note": "Annex 1: POR." }
+  ],
+  "addressee": "JRCC TAHITI",
+  "heading": "SURNAV",
+
+  "lines": [
+    { "l": "A", "req": "required", "text": "Ship's name, call sign, IMO number, MMSI number and flag.", "text_quote": "Nom, indicatif d'appel, n°OMI, n°MMSI et pavillon du navire" },
+    { "l": "B", "req": "required", "text": "Date and time UT as six digits DD HH MM (Z) of the position given in CHARLIE.", "text_quote": "Date et heure T.U sous forme de six chiffres JJ HH MM (Z) de la position mentionnée au paragraphe CHARLIE" },
+    { "l": "C", "req": "required", "text": "Position (lat. long.).", "text_quote": "Position (Lat. long.)" },
+    { "l": "E", "req": "required", "text": "Course.", "text_quote": "Route" },
+    { "l": "F", "req": "required", "text": "Speed.", "text_quote": "Vitesse" },
+    { "l": "G", "req": "required", "text": "Port of departure.", "text_quote": "Port de départ" },
+    { "l": "H", "req": "required", "text": "Date/time UTC and point of entry into French territorial waters, or date/time UTC and place of sailing.", "text_quote": "Date/heure UTC et point d'entrée dans les eaux territoriales françaises ou Date/heure UTC et lieu d'appareillage" },
+    { "l": "I", "req": "required", "text": "Port of destination and ETA.", "text_quote": "Port de destination et HPA" },
+    { "l": "K", "req": "required", "text": "Date/time UTC and point of exit from French territorial waters, or date/time of arrival at the destination port, anchorage, waiting or lightening area in French waters.", "text_quote": "Date/heure UTC et point de sortie des eaux territoriales françaises ou Date/heure d'arrivée au port, mouillage, zone d'attente ou de délestage, de destination dans les eaux françaises" },
+    { "l": "M", "req": "required", "text": "Radiotelephone watches kept.", "text_quote": "Veilles radio téléphoniques assurées" },
+    { "l": "O", "req": "required", "text": "Draught.", "text_quote": "Tirant d'eau" },
+    { "l": "P", "req": "if-applicable", "text": "Where applicable, dangerous or polluting goods on board: quantity, UN number and IMO hazard classes (as set by the codes in force).", "text_quote": "Le cas échéant, marchandises dangereuses ou polluantes transportées à bord : quantité, N° ONU et classes de risque OMI (déterminées conformément aux différents recueils et codes en vigueur)" },
+    { "l": "Q", "req": "required", "text": "Defects, damage, deficiencies, restrictions; navigation and manoeuvring capability normal or reduced by total or partial failure of (a) propulsion, (b) steering gear, (c) anchoring gear.", "text_quote": "Défectuosité, avaries, défaillances, restrictions. Capacités de navigation ou de manœuvre normales ou diminuées par suite d'avarie totale ou partielle : a) de l'appareil propulsif b) de l'appareil à gouverner c) des apparaux de mouillage" },
+    { "l": "U", "req": "required", "text": "Type of ship, main particulars, tonnage.", "text_quote": "Type de navire, caractéristiques principales, tonnage" },
+    { "l": "W", "req": "required", "text": "Total number of persons on board.", "text_quote": "Nombre total de personnes à bord" },
+    { "l": "X", "req": "optional", "text": "Other remarks.", "text_quote": "Remarques diverses" }
+  ],
+  "format_note": "Annex 3 model, IMO letters, no ZULU line. The official English translation on jrcc.pf ('Decree No. 484 HC/AEM') has an error in GOLF (it repeats the ALPHA wording); the French text says 'Port de départ'. Incidents (Art. 4, all ships over 15 m) are reported at once by any means, then confirmed with the Annex 2 model, heading 'SURNAV – AVARIES' (A.851(20) letters A B C E F G I M O P Q R T U W X Z). Anchoring requests and declarations use Annex 4.",
+
+  "area": {
+    "shape": "territorial-sea",
+    "points": [],
+    "lines": [],
+    "center": null, "radius_nm": null,
+    "state": "France",
+    "zone": "French territorial waters of French Polynesia (all island groups) and of La Passion-Clipperton Island; internal waters and port limits excluded (Art. 3)",
+    "ports": [],
+    "inside_hint": { "lat": -17.45, "lon": -149.62 },
+    "bbox": [ -155.0, -28.5, -134.0, -7.5 ]
+  },
+  "area_quote": "Article 5 : Le capitaine de tout navire visé à l'article 2.2 s'apprêtant à transiter dans les eaux territoriales françaises de la Polynésie française et de l'île de La Passion-Clipperton [...] Article 3 : [...] les dispositions du présent arrêté s'appliquent dans les eaux maritimes sous souveraineté et juridiction françaises bordant les îles de Polynésie française et l'île de La Passion-Clipperton. Elles ne s'appliquent pas dans les eaux intérieures bordant les îles de Polynésie française et dans les limites administratives des ports.",
+
+  "sources": [
+    { "title": "Arrêté n° 484 HC/AEM du 27 août 2025 portant réglementation de la navigation et du mouillage dans les eaux sous souveraineté et juridiction française bordant la Polynésie française et l'île de La Passion-Clipperton en vue de prévenir les pollutions en mer et de garantir la sécurité des personnes et des biens", "ref": "Art. 1 to 15, Annexes 1 to 4", "date": "2025-08-27", "url": "https://www.jrcc.pf/wp-content/uploads/2025/09/20250828_NP_HC_AEM_arrete-HC-n%C2%B0484-du-27-aout-2025.pdf", "primary": true },
+    { "title": "Official English translation, 'Decree No. 484 HC/AEM of 27 August 2025' (SURNAV)", "ref": "whole text", "date": "2025-08-27", "url": "https://www.jrcc.pf/wp-content/uploads/2025/09/20250828_NP_HC_AEM_decree-484-2025-august-27th-SURNAV.pdf", "primary": false },
+    { "title": "JRCC Tahiti, Réglementation de la navigation (lists arrêté 484/2025 and the JRCC contacts)", "ref": "page", "date": "2026-10-26", "url": "https://www.jrcc.pf/reglementation/", "primary": true }
+  ],
+  "checked": "2026-10-26",
+  "verification": "French PDF is a scan: pages 3, 4, 5, 7, 8, 9, 10, 11 and 12 of 13 were rendered and read as images (Art. 1 to 7, 11 to 15, Annexes 1 to 4); the rest checked against the English translation (text layer, read in full). Lines, notice periods and contacts here are from the French images. Status: newest text on the JRCC Tahiti regulation page; it repeals arrêté 684 of 18 November 2019.",
+  "confidence": "high",
+  "notes": "Unlike the other French zones, this notice is for ALL commercial ships of 3000 GT or more, not only dangerous-goods ships, and the notice is 48 hours, not 6. Other rules: Art. 6, ships carrying dangerous or polluting goods, oil, or empty tankers not gas-freed (Art. 2.3) transit the territorial waters more than 7 NM off the coast by the most direct route (Art. 9: 4 NM between Papeete and a secondary port of the same island with a pilot); Art. 7, passenger ships of 80 m or more stay more than 2 NM off; Art. 10, anchoring and mooring forbidden at Clipperton without the overseas minister's authorisation; Art. 11, unannounced anchoring of a foreign ship in territorial waters is presumed not innocent passage; keep VHF 16 watch and AIS on at anchor. Recommended routes and an area to be avoided in the Tuamotu are set by arrêté 2654 HC/AEM of 15 December 2021 (amended 12 January 2022), not covered here. Penalties: Code des transports L. 5242-1 and following."
+}

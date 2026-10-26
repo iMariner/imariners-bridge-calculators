@@ -1,0 +1,260 @@
+{
+  "id": "cn-vts-yantai-changshan",
+  "system": "China VTS",
+  "title": "Yantai VTS, Changshan Shuidao sector (Changshan channel TSS, Penglai outer anchorage)",
+  "country": "China",
+  "authority": "Yantai MSA (中华人民共和国烟台海事局), Yantai VTS Centre (烟台船舶交通管理中心)",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": "2023-05-01",
+  "applies_to": "Foreign ships; passenger ships; ships carrying dangerous goods; ships restricted in their ability to manoeuvre; Chinese ships of 300 GT and over; ships receiving oily water or other waste; others who join by choice. Not military, government, fishing or sports craft. A foreign crude oil tanker is always included. Ships passing Changshan Shuidao must also follow the Changshan Shuidao routeing system and ship reporting system (rules art. 5).",
+  "applies_quote": "第四条 除军用船、公务船、渔船和体育运动船外，下列船舶在VTS区域内航行、停泊和作业时，应按规定向VTS中心进行船舶动态报告：（一）外国籍船舶；（二）客船；（三）载运危险货物的船舶；（四）操纵能力受到限制的船舶；（五）300总吨及以上中国籍船舶；（六）从事油污水等污染物接收的船舶；（七）其他自愿参加VTS动态报告的船舶。 船舶航经长山水道应遵守《长山水道船舶定线制》和《长山水道船舶报告制》。",
+  "when": [
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Ships report when passing the reporting lines (entering the system): name of ship, call sign; position (latitude and longitude or bearing and distance from a landmark); course; speed; port of departure; port of destination; defects and limitations (towing ships give the length of the tow and the name of the object towed); length overall and gross tonnage. (长山水道报告：船舶驶入长山水道时报告：船名、呼号；位置（经纬度或相对于陆标的位置）；航向；航速；始发港；目的港；缺陷及限制（拖船应报告其拖带长度及被拖物名称）；总长及总吨。)"
+    },
+    {
+      "event": "exit",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "No report is needed when a ship leaves the system. (船舶驶出时，不需报告。)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "A ship that wants to cross Changshan Shuidao reports ship's name and present position 15 minutes before entering the channel (English user guide only; the Chinese rules art. 7 ask for a report before entering any routeing area, with permission needed to cross)."
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Penglai outer anchorage (on CH 08): arrival, anchoring, heaving up and sailing reports as in the other Yantai sectors (name, anchor position, time; before heaving up the berth and the time and position of entering the channel)."
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Emergency and abnormal reports at once by every means (rules arts. 8 and 9)."
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 08",
+      "to": "Yantai VTS Centre (烟台交管中心)",
+      "note": "working channel for the Changshan Shuidao sector and the Penglai outer anchorage"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 16",
+      "to": "Yantai VTS Centre (烟台交管中心)",
+      "note": "all ships in the VTS area must also keep watch on CH 16 (user guide)"
+    },
+    {
+      "type": "phone",
+      "value": "0086-535-6687316",
+      "to": "Yantai VTS Centre (烟台海事局船舶交通管理中心)",
+      "note": null
+    },
+    {
+      "type": "fax",
+      "value": "0086-535-6696480",
+      "to": "Yantai VTS Centre",
+      "note": null
+    }
+  ],
+  "addressee": "烟台交管中心 / Yantai VTS",
+  "heading": null,
+  "lines": [
+    {
+      "l": "A",
+      "req": "required",
+      "text": "Name of ship, call sign (船名、呼号)"
+    },
+    {
+      "l": "C",
+      "req": "required",
+      "text": "Position: latitude and longitude, or from a landmark (位置)"
+    },
+    {
+      "l": "E",
+      "req": "required",
+      "text": "Course (航向)"
+    },
+    {
+      "l": "F",
+      "req": "required",
+      "text": "Speed (航速)"
+    },
+    {
+      "l": "G",
+      "req": "required",
+      "text": "Port of departure (始发港)"
+    },
+    {
+      "l": "I",
+      "req": "required",
+      "text": "Port of destination (目的港)"
+    },
+    {
+      "l": "Q",
+      "req": "if-applicable",
+      "text": "Defects and limitations; tow length and object towed (缺陷及限制)"
+    },
+    {
+      "l": "other",
+      "req": "required",
+      "text": "Length overall and gross tonnage (总长及总吨)"
+    }
+  ],
+  "format_note": "Letters given here only to match the items to IMO A.851(20); the source lists the items in words, not letters. Voice report on VHF CH 08, Mandarin or English.",
+  "area": {
+    "shape": "lines",
+    "points": [
+      {
+        "n": "NA",
+        "name": "TSS north limit A",
+        "lat": "38 00.70N",
+        "lon": "120 58.60E",
+        "inferred": false
+      },
+      {
+        "n": "NB",
+        "name": "TSS north limit B",
+        "lat": "38 00.70N",
+        "lon": "120 52.20E",
+        "inferred": false
+      },
+      {
+        "n": "NC",
+        "name": "TSS north limit C",
+        "lat": "38 03.87N",
+        "lon": "120 34.00E",
+        "inferred": false
+      },
+      {
+        "n": "ND",
+        "name": "TSS north limit D",
+        "lat": "38 05.60N",
+        "lon": "120 30.83E",
+        "inferred": false
+      },
+      {
+        "n": "SA",
+        "name": "TSS south limit A",
+        "lat": "37 56.20N",
+        "lon": "120 58.20E",
+        "inferred": false
+      },
+      {
+        "n": "SB",
+        "name": "TSS south limit B",
+        "lat": "37 58.27N",
+        "lon": "120 51.70E",
+        "inferred": false
+      },
+      {
+        "n": "SC",
+        "name": "TSS south limit C",
+        "lat": "38 00.33N",
+        "lon": "120 40.00E",
+        "inferred": false
+      },
+      {
+        "n": "SD",
+        "name": "TSS south limit D",
+        "lat": "38 00.30N",
+        "lon": "120 26.92E",
+        "inferred": false
+      },
+      {
+        "n": "ZA",
+        "name": "separation zone centre line A (zone 0.2 NM wide)",
+        "lat": "38 03.42N",
+        "lon": "120 29.30E",
+        "inferred": false
+      },
+      {
+        "n": "ZB",
+        "name": "separation zone centre line B",
+        "lat": "37 58.45N",
+        "lon": "120 58.40E",
+        "inferred": false
+      },
+      {
+        "n": "EP",
+        "name": "east precautionary area centre, radius 4 NM; its edge is the east reporting line",
+        "lat": "37 58.25N",
+        "lon": "121 02.50E",
+        "inferred": false
+      },
+      {
+        "n": "WP",
+        "name": "west precautionary area centre, radius 5 NM; its edge is the west reporting line",
+        "lat": "38 05.00N",
+        "lon": "120 24.60E",
+        "inferred": false
+      }
+    ],
+    "lines": [
+      [
+        "NA",
+        "NB",
+        "NC",
+        "ND"
+      ],
+      [
+        "SA",
+        "SB",
+        "SC",
+        "SD"
+      ]
+    ],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 38.026,
+      "lon": 120.733
+    },
+    "bbox": [
+      120.25,
+      37.85,
+      121.15,
+      38.2
+    ]
+  },
+  "area_quote": "5.长山水道管理服务区：由分道通航制和东西两端警戒区组成。（1）分道通航制北边线 A：38°00.70′N 120°58.60′E B：38°00.70′N 120°52.20′E C：38°03.87′N 120°34.00′E D：38°05.60′N 120°30.83′E（2）分道通航制南边线 A：37°56.20′N 120°58.20′E B：37°58.27′N 120°51.70′E C：38°00.33′N 120°40.00′E D：38°00.30′N 120°26.92′E … （4）警戒区：东部警戒区：以地理位置37°58.25′N ,121°02.50′E为圆心，半径4海里圆弧内的水域。西部警戒区：以地理位置38°05.00′N ,120°24.60′E为圆心，半径5海里圆弧内的水域。… 6.长山水道管理服务区东报告线：… 半径4海里的东部警戒区的圆弧型边界线。7.长山水道管理服务区西报告线：… 半径5海里的西部警戒区的圆弧型边界线。",
+  "sources": [
+    {
+      "title": "山东海事局关于公布《烟台船舶交通管理系统安全监督管理细则》的通告 (Yantai VTS rules and Yantai VTS user guide, Chinese and English)",
+      "ref": "Attachment .docx: rules arts. 4 to 12, 22, 33; user guide (reporting lines, reports, channels, anchorages)",
+      "date": "2023-03-03",
+      "url": "https://www.sd.msa.gov.cn/art/2023/3/6/art_124_1807677.html",
+      "primary": true
+    },
+    {
+      "title": "Same text, copy on mcrrc.top (Shandong Jiaotong University law library)",
+      "ref": "1554.html",
+      "date": "2023-03-03",
+      "url": "https://www.mcrrc.top/bmgz/jy/bhhs/zsjfg/sdhsj/1554.html",
+      "primary": false
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Rules, user guide, centres, radii, channels and contacts read from the official .docx attached to the Shandong MSA notice of 3 March 2023 (sd.msa.gov.cn), compared with the mcrrc.top copy: same. Positions printed in degrees and decimal minutes and copied with only the notation changed. The separate national texts of the Changshan Shuidao routeing system and ship reporting system (长山水道船舶定线制 / 船舶报告制) were not found or checked; the report items here are from the Yantai VTS user guide.",
+  "confidence": "medium",
+  "notes": "The sector is the TSS (north and south limits as lines, separation zone 0.2 NM wide and 23.5 NM long) plus the two precautionary areas at the ends. Reporting lines are the edges of the east precautionary area (4 NM round 37°58.25′N 121°02.50′E) and the west precautionary area (5 NM round 38°05.00′N 120°24.60′E). Penglai outer anchorage (CH 08): 37°57′N 120°53′E; 37°56.45′N 120°56.83′E; 37°54.47′N 120°56.83′E; 37°52.87′N 120°53′E. The national Changshan Shuidao ship reporting system text (date, ship types, extra rules) was not checked: confidence medium. Gap: the rules do not give a chart of the TSS lanes direction; follow the routeing system. Yantai VTS has six sectors, each with its own channel: Zhifu CH 09, Bajiao (West Port) CH 10, Penglai and Changdao CH 11, Longkou CH 12, Laizhou CH 14, Changshan Shuidao and Penglai outer anchorage CH 08. Reports go to the Yantai VTS Centre ('calling Yantai VTS center', 呼叫烟台交管中心) on the channel of the sector you are in. Valid to 30 April 2028 (art. 34). No overtaking in harbour channels (art. 16). Terminal owners or agents must file entry, leaving and shifting plans in advance by internet or fax (art. 17; no hours given). Lightering or going alongside at anchor must follow MOT and MSA rules and be told to the VTS. Radar blind areas: basins and berths, east of Kongtong Dao, between Nan/Bei Changshan Dao and Daheishan Dao. VTS works 0000 to 2400 Beijing time. No email address is printed. Address: 8 Huanhai Road, Yantai. VTS reports do not replace the national port entry, territorial sea or arrival reports."
+}

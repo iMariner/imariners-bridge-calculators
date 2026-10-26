@@ -1,0 +1,71 @@
+{
+  "id": "surnav-nouvelle-caledonie",
+  "system": "SURNAV",
+  "title": "New Caledonia tanker reporting (arrêté 20/2006, SURNAV equivalent)",
+  "country": "France",
+  "authority": "Haut-commissaire de la République en Nouvelle-Calédonie (arrêté of 2006); police of navigation in the territorial waters has since passed to the Government of New Caledonia, which amended the arrêté in 2015; reports go to COSS NC (formerly MRCC Nouméa)",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": "2006-08-24",
+  "applies_to": "Tankers (navires-citernes: oil tankers, chemical tankers and gas carriers) carrying oil, liquefied gas or noxious liquid substances, intending to sail in the territorial and internal waters of New Caledonia. No tonnage limit is given.",
+  "applies_quote": "Art. 2. - Champ d'application : Le présent arrêté s'applique aux navires-citernes transportant des hydrocarbures, du gaz liquéfié ou des substances liquides nocives. [...] Art. 4. - [...] Ces navires sont soumis à une obligation de signalement auprès du MRCC Nouméa par message acheminé directement par télécopie (687.29.23.03) ou par l'intermédiaire de la station côtière Nouméa Radio (FJP), ou par l'intermédiaire de l'agent maritime, dans les cas suivants.",
+
+  "when": [
+    { "event": "before_entry", "hours_before": 24, "interval_h": null, "report": null,
+      "text": "Twenty-four hours before entering the INTERNAL waters of New Caledonia or, when the voyage is shorter than that, at the latest when sailing from the previous foreign port. The message gives movement intentions in territorial or internal waters, manoeuvring capability, seaworthiness, and the owner's telephone and e-mail (Annex 1 model). Note: the Annex 1 title speaks of entry into the territorial waters; the article itself counts from entry into internal waters.",
+      "text_quote": "4.1. Mouvement dans les eaux territoriales ou intérieures : Vingt-quatre heures avant son entrée dans les eaux intérieures de la Nouvelle-Calédonie ou, lorsque le voyage est d'une durée inférieure à ce préavis, au plus tard lorsqu'il appareille du port étranger précédent, le capitaine d'un navire visé à l'article 2 est tenu d'adresser un message précisant, suivant le modèle en annexe 1 du présent arrêté : a. ses intentions de mouvement dans les eaux territoriales ou intérieures ; b. ses capacités de manœuvre ; c. son état de navigabilité ; d. les coordonnées téléphoniques et adresse électronique de son armateur." },
+    { "event": "departure", "hours_before": 6, "interval_h": null, "report": null,
+      "text": "The same message, by the master or his agent, six hours before sailing from any port or waiting anchorage in New Caledonia.",
+      "text_quote": "Le même message doit être adressé par le capitaine ou son agent, six heures avant l'appareillage de tout port ou mouillage d'attente de Nouvelle-Calédonie." },
+    { "event": "deviation", "hours_before": null, "interval_h": null, "report": null,
+      "text": "If the movement intentions change after the message, send a new correcting message at once, in the same way.",
+      "text_quote": "En cas de modification de ses intentions de mouvement survenant après l'envoi du message prévu au présent article, le navire est tenu d'envoyer aussitôt et dans les mêmes conditions, un nouveau message corrigeant le premier." }
+  ],
+
+  "how": [
+    { "type": "email", "value": "noumea.traffic@mrcc.nc", "to": "COSS NC (traffic)", "note": "Current address given by the COSS NC website for tankers near the lagoon under arrêté 20/2006 ('Les navires concernés devront se reporter via'). Not printed in the 2006 arrêté." },
+    { "type": "phone", "value": "+687 29 21 21", "to": "COSS NC", "note": "COSS NC website (standard line); emergency 16 from a local phone." },
+    { "type": "vhf", "value": "CH 16", "to": "COSS NC", "note": "COSS NC website. Art. 4 also requires a permanent watch on VHF 16 and DSC 70 while in territorial or internal waters." },
+    { "type": "fax", "value": "687.29.23.03", "to": "MRCC Nouméa", "note": "As printed in Art. 4 (2006). Probably obsolete; not confirmed." },
+    { "type": "email", "value": "mrcc.nc@lagoon.nc", "to": "MRCC NOUMEA", "note": "Annex 1 addressee as printed in 2006, with comaraem@lagoon.nc (COMAR Nouvelle-Calédonie). Probably obsolete; not confirmed." },
+    { "type": "other", "value": "Through the coast station Nouméa Radio (FJP) or through the ship's agent", "to": "MRCC Nouméa", "note": "Art. 4 (2006). Whether Nouméa Radio still operates was not checked." }
+  ],
+  "addressee": "COMAR Nouvelle-Calédonie (comaraem@lagoon.nc) / MRCC NOUMEA (mrcc.nc@lagoon.nc)",
+  "heading": null,
+
+  "lines": [
+    { "l": "A", "req": "required", "text": "Ship's name and nationality.", "text_quote": "Nom et nationalité du navire" },
+    { "l": "B", "req": "required", "text": "Where from / where to.", "text_quote": "Provenance / Destination" },
+    { "l": "C", "req": "required", "text": "Draught.", "text_quote": "Tirant d'eau" },
+    { "l": "D", "req": "required", "text": "Cargo: quantities in metric tonnes by category of oil or chemical as defined in MARPOL 1973 Annex I Appendix I and Annex II Appendix II (lists in Annexes 4 and 5).", "text_quote": "Cargaison : quantités en tonnes métriques par catégories d'hydrocarbures ou de produits chimiques suivant les définitions de l'annexe I, appendice I de la convention MARPOL de 1973 et de l'annexe II, appendice II de ladite convention (la liste des hydrocarbures et des produits chimiques est donnée en annexes 4 et 5)" },
+    { "l": "E", "req": "required", "text": "Date / time UT and point of entry into New Caledonia territorial waters, or date/time and place of sailing from the last New Caledonian port; date/time and place of sailing (when leaving).", "text_quote": "Date / heure UT et point d'entrée dans les eaux territoriales de Nouvelle-Calédonie ou date/heure et lieu d'appareillage du dernier port néo-calédonien date/heure et lieu d'appareillage (en cas de sortie)" },
+    { "l": "F", "req": "required", "text": "Date / time UT of arrival at the port or anchorage, or date / time UT and point of exit from New Caledonia territorial waters.", "text_quote": "Date / heure UT d'arrivée au port ou au mouillage, ou Date / heure UT et point de sortie des eaux territoriales de Nouvelle-Calédonie." },
+    { "l": "G", "req": "required", "text": "Manoeuvring and navigation capability normal, or reduced by total or partial failure of (a) propulsion, (b) steering gear, (c) anchoring gear, (d) navigation radar, (e) the radio equipment required by Art. 4 and 5.", "text_quote": "Capacité de manœuvre et de navigation normales ou capacité diminuée par suite d'avarie totale ou partielle : a) de l'appareil propulsif, b) de l'appareil à gouverner, c) des apparaux de mouillage, d) du radar de navigation, e) des moyens de transmissions radio électriques nécessaires au titre des articles 4 et 5 du présent arrêté" },
+    { "l": "H", "req": "required", "text": "Name, telephone and e-mail of the owner.", "text_quote": "Nom et coordonnées téléphoniques et électroniques de l'armateur" }
+  ],
+  "format_note": "Own letters A to H (written ALFA ... HOTEL), NOT the IMO A.851(20) meanings. The model has no 'Texte' heading line and does not use the word SURNAV. Every heading must be filled; write NÉANT for anything not applicable ('Ce message doit comporter toutes les rubriques prévues. Pour les rubriques non renseignées, inscrire : NÉANT.'). Damage reports: Annex 2 (tanker in difficulty, letters A to I), Annex 3 (assisting ship or tug).",
+
+  "area": {
+    "shape": "territorial-sea",
+    "points": [],
+    "lines": [],
+    "center": null, "radius_nm": null,
+    "state": "France (New Caledonia)",
+    "zone": "Territorial waters (12 NM from the baselines of decree 2002-827) and internal waters of New Caledonia; the 24 h notice counts from entry into the internal waters",
+    "ports": [],
+    "inside_hint": { "lat": -22.42, "lon": 166.2 },
+    "bbox": [ 163.5, -23.0, 168.2, -19.5 ]
+  },
+  "area_quote": "\"Eaux territoriales\" désigne les eaux mesurées depuis les lignes de base jusqu'à 12 milles marins au large de celles-ci. [...] Vingt-quatre heures avant son entrée dans les eaux intérieures de la Nouvelle-Calédonie",
+
+  "sources": [
+    { "title": "Arrêté n° 20/2006 du 24 août 2006 réglementant la navigation des navires citernes dans les eaux territoriales et intérieures de la Nouvelle-Calédonie (haut-commissaire), certified copy 'Copie conforme de l'arrêté' Rev. A published by the Station de pilotage de Nouméa", "ref": "Art. 1 to 5, Annexes 1 to 3", "date": "2006-08-24", "url": "https://info.pilotage-maritime.nc/wp-content/uploads/2024/02/1230509361-Navires_Citernes_-_Arr__t___n___20-2006-AM_-_Rev_A.pdf", "primary": false },
+    { "title": "COSS Nouvelle-Calédonie, page 'À propos' (traffic surveillance of tankers under 'Arrêté 20/2006 / Haussariat', report to noumea.traffic@mrcc.nc)", "ref": "Surveillance du trafic maritime", "date": "2026-10-26", "url": "https://mrcc.nc/coss-nc/", "primary": true },
+    { "title": "Station de pilotage de Nouméa, Réglementation, 'Navires citernes' (states that arrêté 20-2006/AM applies to all tankers intending to sail in NC territorial and internal waters)", "ref": "Navires citernes", "date": "2024-02-20", "url": "https://info.pilotage-maritime.nc/reglementation/", "primary": false }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Text read in full from the pilot station's certified copy of the arrêté (text layer), not from the Journal officiel de la Nouvelle-Calédonie itself (juridoc.gouv.nc did not answer). The current reporting e-mail is from the COSS NC website. The amending arrêté n° 2015-4534/GNC-Pr of 20 April 2015 is listed by the NC maritime affairs website (per a search result) but its text could not be downloaded (dam.gouv.nc and juridoc returned errors), so any change it made is unknown.",
+  "confidence": "low",
+  "notes": "Use with care. (1) The 2015 amendment by the Government of New Caledonia was not read; it may have changed the notice, the addresses or the format. (2) All contacts printed in the 2006 text (lagoon.nc e-mails, fax 687.29.23.03, Nouméa Radio FJP) are probably out of date; MRCC Nouméa became COSS NC by arrêté of 30 December 2022, and its website says to report to noumea.traffic@mrcc.nc. (3) The notice is counted from entry into INTERNAL waters (inside the reef baselines), not the 12 NM limit. Other rules in the 2006 text: Art. 3, tankers in territorial waters with no intention to go to a pilot boarding point keep more than 7 NM outside the baselines of the Grande Terre and isolated islands or reefs (Loyalty Islands: only between Ouvéa and Lifou, 7 NM off); Art. 4.2, any tanker suffering damage or failure in internal or territorial waters or within 50 NM of their outer limit informs the MRCC at once (Annex 2); Art. 5, tankers are forbidden in internal waters except listed port access (Nouméa, Prony, Népoui, Loyalty Islands) with day-only, tonnage and draught limits and compulsory pilotage 3 NM off the passes. Wallis and Futuna was not researched."
+}

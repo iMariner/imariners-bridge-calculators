@@ -1,0 +1,255 @@
+{
+  "id": "kr-kosrep",
+  "system": "KOSREP",
+  "title": "KOSREP Korean Ship Reporting System",
+  "country": "Republic of Korea",
+  "authority": "Korea Coast Guard (해양경찰청), Maritime Rescue Coordination Centre (해상구조조정본부)",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": null,
+  "applies_to": "Passenger ships on international voyages; ships of 300 GT and over on international voyages with a passage time of 12 hours or more; ships not under command, restricted in their ability to manoeuvre or constrained by draught; tugs whose tow is longer than 200 m; ships carrying dangerous cargo such as oil or liquid chemicals (the last three groups only if fitted with GMDSS equipment). A laden or ballast crude tanker on an international voyage of 12 h or more is included.",
+  "applies_quote": "수상구조법 시행규칙 제13조(선박위치통보 선박의 범위): 1. 국제항해에 취항하는 여객선 2. 국제항해에 취항하는 총톤수 300톤 이상의 선박 중 항행시간이 12시간 이상인 선박 3. 「해상교통안전법」 제2조제10호부터 제12호까지의 규정에 따른 조종불능선(操縱不能船)ㆍ조종제한선(操縱制限船) 및 흘수제약선(吃水制約船) 4. 예인선열(曳引船列)의 길이가 200미터를 초과하는 예인선 5. 석유류 액체화학물질 등 위험화물을 운송하고 있는 선박. 다만, 제3호부터 제5호까지의 규정에 해당하는 선박의 경우에는 ... 세계 해상조난 및 안전제도의 시행에 필요한 통신설비를 설치하고 있는 선박으로 한정한다.",
+  "when": [
+    {
+      "event": "departure",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "SP",
+      "text": "Sailing Plan: just before or just after leaving a port, or when entering a ship position reporting area designated by the Korea Coast Guard. (항해계획통보: 선박이 항구 또는 포구를 출항하기 직전 또는 그 직후나 해양경찰청장이 지정ㆍ고시하는 선박위치통보해역에 진입한 때)"
+    },
+    {
+      "event": "position",
+      "hours_before": null,
+      "interval_h": 12,
+      "report": "PR",
+      "text": "Position Report: about every 12 hours after the Sailing Plan. (위치통보: 항해계획 통보 후 약 12시간마다)"
+    },
+    {
+      "event": "deviation",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "DR",
+      "text": "Deviation Report: when the sailing plan changes, when the ship is 25 NM or more off its planned position, or when the destination changes. (변경통보: 항해계획의 내용을 변경한 때, 선박이 예정위치에서 25해리 이상 벗어난 때 또는 목적지를 변경한 때)"
+    },
+    {
+      "event": "final",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "FR",
+      "text": "Final Report: just before or on arrival at the destination, or when leaving the designated reporting area. (최종통보: 목적지에 도착하기 직전이나 도착한 때 또는 해양경찰청장이 지정ㆍ고시하는 선박위치통보해역을 벗어난 때)"
+    }
+  ],
+  "how": [
+    {
+      "type": "email",
+      "value": "mcckorea@korea.kr",
+      "to": "Korea Coast Guard Command Center (K.C.G Command Center)",
+      "note": "Korean NtM 2021: address printed over two table lines as 'mcckorea' / '@korea.kr'"
+    },
+    {
+      "type": "email",
+      "value": "rccsouth@korea.kr",
+      "to": "Korea Coast Guard Region-South (Busan)",
+      "note": "Korean NtM 2021; region covering Busan and Ulsan"
+    },
+    {
+      "type": "email",
+      "value": "rcceast@korea.kr",
+      "to": "Korea Coast Guard Region-East (Donghae)",
+      "note": "Korean NtM 2021; East Sea"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 16 calling, CH 9 working",
+      "to": "Korea Coast Guard radio stations (all coast guard stations)",
+      "note": "printed as F3E 156.800MHz (CH 16) calling and F3E 156.450MHz (CH 9) working"
+    },
+    {
+      "type": "mf",
+      "value": "2182 kHz calling; 2110 / 2639.4 kHz working",
+      "to": "Korea Coast Guard (RCC)",
+      "note": "printed as H(J)3E 2,182kHz calling, J3E 2,110/2,639.4kHz working (MF/HF)"
+    },
+    {
+      "type": "phone",
+      "value": "032)835-2342",
+      "to": "Korea Coast Guard Command Center, Incheon",
+      "note": "from abroad +82 32 835 2342"
+    },
+    {
+      "type": "fax",
+      "value": "032)858-8182",
+      "to": "Korea Coast Guard Command Center, Incheon",
+      "note": "from abroad +82 32 858 8182"
+    },
+    {
+      "type": "phone",
+      "value": "051)663-2342",
+      "to": "Korea Coast Guard Region-South, Busan",
+      "note": "fax 051)663-2942; from abroad +82 51 663 2342"
+    },
+    {
+      "type": "phone",
+      "value": "033)680-2242",
+      "to": "Korea Coast Guard Region-East, Donghae",
+      "note": "fax 033)680-2942; from abroad +82 33 680 2242"
+    },
+    {
+      "type": "phone",
+      "value": "052)230-2542",
+      "to": "Korea Coast Guard Station Ulsan",
+      "note": "fax 052)230-2942"
+    }
+  ],
+  "addressee": null,
+  "heading": "KOSREP/SP// (PR, DR or FR for the other reports)",
+  "lines": [
+    {
+      "l": "A",
+      "req": "required",
+      "text": "Ship's name / call sign (선명 / 호출부호)"
+    },
+    {
+      "l": "B",
+      "req": "required",
+      "text": "SP: date and time of departure; PR: date and time of the position (UTC, ddhhmmZ). DR: optional"
+    },
+    {
+      "l": "C",
+      "req": "if-applicable",
+      "text": "PR only: latitude / longitude (4 and 5 figures, e.g. 3538N / 13950E)"
+    },
+    {
+      "l": "G",
+      "req": "if-applicable",
+      "text": "SP: port of departure / latitude / longitude (DR: if changed)"
+    },
+    {
+      "l": "I",
+      "req": "if-applicable",
+      "text": "SP: destination / latitude / longitude / ETA (DR: if changed)"
+    },
+    {
+      "l": "K",
+      "req": "if-applicable",
+      "text": "FR only: port of arrival / latitude / longitude / time of arrival"
+    },
+    {
+      "l": "L",
+      "req": "if-applicable",
+      "text": "SP: route, 3 to 12 lines: method (coastal, RL or GC) / speed to the turning point (e.g. 150 = 15.0 kn) / latitude / longitude / ETA / place name. When entering the area, the first L line must be the entry point and time."
+    },
+    {
+      "l": "V",
+      "req": "if-applicable",
+      "text": "SP: medical staff on board: MD, PA, NURSE or NONE"
+    },
+    {
+      "l": "Y",
+      "req": "required",
+      "text": "JASREP / AMVER / other: mark if the ship also wants to join JASREP, AMVER or another foreign reporting system"
+    },
+    {
+      "l": "E",
+      "req": "optional",
+      "text": "Present course, 3 figures"
+    },
+    {
+      "l": "F",
+      "req": "optional",
+      "text": "Planned average speed, 3 figures with tenths"
+    },
+    {
+      "l": "M",
+      "req": "optional",
+      "text": "Coast station now listened to / next coast station"
+    },
+    {
+      "l": "X",
+      "req": "optional",
+      "text": "Other remarks, up to 65 characters (weather, next report time, cargo type, INMARSAT number, DSC ID, fax)"
+    }
+  ],
+  "format_note": "Forms 7 to 10 of the SAR Act Enforcement Rule. First line 'KOSREP / SP //' (or PR, DR, FR). Times UTC as 6 figures plus Z (e.g. 201200Z). Latitude 4 figures plus N/S, longitude 5 figures plus E/W. Fill in in English. Same letter scheme as JASREP and AMVER. Reports may be sent in writing or by radio or telephone (Rule art. 14(2)).",
+  "area": {
+    "shape": "polygon",
+    "points": [
+      {
+        "n": "1",
+        "lat": "40 00.00N",
+        "lon": "121 00.00E",
+        "inferred": true
+      },
+      {
+        "n": "2",
+        "lat": "40 00.00N",
+        "lon": "135 00.00E",
+        "inferred": true
+      },
+      {
+        "n": "3",
+        "lat": "30 00.00N",
+        "lon": "135 00.00E",
+        "inferred": true
+      },
+      {
+        "n": "4",
+        "lat": "30 00.00N",
+        "lon": "121 00.00E",
+        "inferred": true
+      }
+    ],
+    "lines": [],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 36.0,
+      "lon": 131.0
+    },
+    "bbox": [
+      121,
+      30,
+      135,
+      40
+    ]
+  },
+  "area_quote": "Service Area: Sea area bounded by both latitudes between 30°N and 40°N and longitudes between 121°E and 135°E (Korean Notices to Mariners, Weekly Edition 36, 3 Sep 2021)",
+  "sources": [
+    {
+      "title": "수상에서의 수색ㆍ구조 등에 관한 법률 (SAR Act)",
+      "ref": "Art. 33 (선박위치통보 등)",
+      "date": "2026-09-22",
+      "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=289945",
+      "primary": true
+    },
+    {
+      "title": "수상에서의 수색ㆍ구조 등에 관한 법률 시행규칙 (SAR Act Enforcement Rule)",
+      "ref": "Art. 13, 14; Forms 7 to 10 (SP, PR, DR, FR)",
+      "date": "2025-12-21",
+      "url": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=280643",
+      "primary": true
+    },
+    {
+      "title": "Republic of Korea Notices to Mariners, Weekly Edition 36 (KHOA)",
+      "ref": "Part III, KOSREP (Korean Ship Reporting System), pp. 14 to 16",
+      "date": "2021-09-03",
+      "url": "https://www.khoa.go.kr/iframe/inform/fileDownloadBlobNori.do?cmsCd=CM0237&ntNo=1149&fNo=1004&idx=36",
+      "primary": true
+    },
+    {
+      "title": "Republic of Korea Notices to Mariners, Weekly Edition 40 (KHOA)",
+      "ref": "KOSREP section (older version, also NBDP and telex)",
+      "date": "2016-09-30",
+      "url": "https://khoa.go.kr/iframe/inform/fileDownloadBlobNori.do?cmsCd=CM0237&fNo=1004&fileName=&ntNo=890",
+      "primary": false
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Duty, ship categories, report timing and form layout from the SAR Act and its Enforcement Rule as in force on law.go.kr (Act version 2026-09-22, Rule 2025-12-21) and the PDF forms 7 to 10. Service area, radio frequencies, phone, fax and e-mail from the KHOA Korean Notice to Mariners Weekly Edition 36 of 2021 (pages 14 to 16), compared with the 2016 edition (same area and ship list). Area corners built from the printed latitude and longitude limits.",
+  "confidence": "medium",
+  "notes": "The law says the master 'shall' send these reports (통보를 하여야 한다), so it is mandatory for ships leaving a Korean port, but the Act has no fine for missing them (fines in art. 46 do not cover art. 33) and the Korean NtM words it as a request for positive participation. For a ship only passing through, whether Korea can require it outside its waters is not settled; treat it as expected practice. Ships fitted with a position transmitting device under the Ship Safety Act art. 30 may leave out the Position Reports (SAR Act art. 33(3)); whether this covers a foreign ship's AIS or LRIT was not confirmed, so send PRs unless the RCC says otherwise. The KCG notice designating the 'ship position reporting area' and the radio frequencies (Rule art. 14(4)) was not found on law.go.kr; the area and frequencies here come from the 2021 Korean NtM, which is five years old. The e-mail addresses are printed split over two lines in the NtM table and were joined; confirm them with the RCC (phone above) on first use. Practical: the Y line lets one report also join JASREP or AMVER (Form 7 notes). Kozmino and Vladivostok are north of 40N, so on the Ulsan to Peter the Great Bay run send the FR when leaving the area at 40N (or on arrival if you prefer, as the rule allows either)."
+}

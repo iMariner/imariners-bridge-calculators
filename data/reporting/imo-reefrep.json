@@ -1,0 +1,288 @@
+{
+  "id": "imo-reefrep",
+  "system": "REEFREP (Reef VTS)",
+  "title": "Great Barrier Reef and Torres Strait ship reporting system (REEFREP), reported to Reef VTS",
+  "country": "Australia",
+  "authority": "Reef VTS (Great Barrier Reef and Torres Strait Vessel Traffic Service), operated by Maritime Safety Queensland from Townsville and Gladstone VTS centres, authorised by AMSA (Marine Orders 63 and 64)",
+  "kind": "mandatory-imo",
+  "resolution": "MSC.52(66), amended by MSC.161(78) and MSC.315(88)",
+  "status": "in effect",
+  "effective": "1997-01-01",
+  "applies_to": "Ships of 50 m or more overall; all oil tankers, liquefied gas carriers, chemical tankers and ships under the INF Code whatever their length; ships towing or pushing, or being towed or pushed, or where the tow is 150 m or more.",
+  "applies_quote": "The following categories of ships must report to Reef VTS: All ships with an overall length of 50 metres or more; All oil tankers, liquefied gas carriers, chemical tankers or ships coming within the Irradiated Nuclear Fuel Code, including those with an overall length of less than 50 metres; and Ships which are towing or pushing, or being towed or pushed, or where the overall length of the tow is 150 meters or more (the overall length of the tow is measured from the stern of the towing vessel to the after end of the tow). (Reef VTS User Guide 2025, section 5.1.1)",
+  "when": [
+    {
+      "event": "before_entry",
+      "hours_before": 1,
+      "interval_h": null,
+      "report": "ER",
+      "text": "Reef VTS must receive an ER at least one (1) hour before a ship: Enters the REEFREP area; or Departs from a port within the REEFREP area. (User Guide 2025, section 8)"
+    },
+    {
+      "event": "final",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "FR",
+      "text": "The following information must be provided to Reef VTS immediately on exiting the Reef VTS area or arriving at a port in the Reef VTS area. (section 8.2.2)"
+    },
+    {
+      "event": "deviation",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "DR",
+      "text": "If the ship needs to deviate from the Route Plan which was given to Reef VTS on entry to the Reef VTS area, this should be reported to Reef VTS before the deviation is made. In situations where a deviation is made without much warning, a DR report should be sent to Reef VTS within 15 minutes after the deviation made. (section 8.2.3)"
+    },
+    {
+      "event": "position",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "IP",
+      "text": "Where Reef VTS advises that the ship's position is being tracked by sensors then an IP is not required. If the ship's position is not being tracked by sensors, then a brief position report must be provided to Reef VTS. (section 8.2.4)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "IR",
+      "text": "Defect Report (IR): immediately if a ship suffers damage, failure or breakdown which affects the ship's safety, or, immediately if there is pollution or cargo lost overboard, or, special reports as defined by the IMO for incidents involving dangerous goods, harmful substances or marine pollutants. (section 8.2.5)"
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 14",
+      "to": "Reef VTS",
+      "note": "From latitude 9 00S to 13 30S (Table 1). Call sign Reef VTS; 24 h."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 11",
+      "to": "Reef VTS",
+      "note": "From latitude 13 30S to 18 00S (Table 1)."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 14",
+      "to": "Reef VTS",
+      "note": "From latitude 18 00S to 20 00S (Table 1)."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 11",
+      "to": "Reef VTS",
+      "note": "From latitude 20 00S to 21 40S (Table 1)."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 14",
+      "to": "Reef VTS",
+      "note": "From latitude 21 30S to 24 30S (Table 1; the guide prints 21 40S as the end of the CH 11 band and 21 30S as the start of this one)."
+    },
+    {
+      "type": "inmarsat-c",
+      "value": "SAC 862 via POR LES 212",
+      "to": "Reef VTS North",
+      "note": "All ports and entry/exit points north of Lat 18 00.000S. Free to the ship with the SAC. Terminal must be logged into the Pacific Ocean Region (POR)."
+    },
+    {
+      "type": "inmarsat-c",
+      "value": "SAC 863 via POR LES 212",
+      "to": "Reef VTS South",
+      "note": "All ports and reporting points south of Lat 18 00.000S."
+    },
+    {
+      "type": "email",
+      "value": "reefvtsnorth@msq.qld.gov.au",
+      "to": "Reef VTS North",
+      "note": "North of 18 00S. Use when VHF or Inmarsat-C cannot be used, and in the poor VHF areas (Inset (J) to Heath (K), LADS Passage and Fairway Channel; Swain (Z1) to Archer (Z2) off Gladstone)."
+    },
+    {
+      "type": "email",
+      "value": "reefvtssouth@msq.qld.gov.au",
+      "to": "Reef VTS South",
+      "note": "South of 18 00S."
+    },
+    {
+      "type": "phone",
+      "value": "+61 1300 721 293",
+      "to": "Reef VTS",
+      "note": "If Inmarsat-C or the VHF working channel cannot be used."
+    }
+  ],
+  "addressee": null,
+  "heading": "ID/ER (or ID/FR, ID/DR, ID/IP, ID/IR)",
+  "lines": [
+    {
+      "l": "A",
+      "req": "required",
+      "text": "Ship name, call sign and IMO number (e.g. A/HAPPY SAILOR/ABCD/1234567)"
+    },
+    {
+      "l": "B",
+      "req": "required",
+      "text": "Date and time (UTC) (e.g. B/010200UTC)"
+    },
+    {
+      "l": "C",
+      "req": "required",
+      "text": "Current Position: latitude and longitude in degrees and minutes (e.g. C/1120S/14430E or Cairns)"
+    },
+    {
+      "l": "F",
+      "req": "required",
+      "text": "Speed: ships planned average speed (e.g. F/13.5)"
+    },
+    {
+      "l": "G",
+      "req": "required",
+      "text": "Last Port of Call / Port departing from within the Reef VTS area (e.g. G/Singapore, or, G/Hay Point)"
+    },
+    {
+      "l": "H",
+      "req": "required",
+      "text": "Date, time (UTC) and point of entry to Reef VTS Area: name of the entry point or position (e.g. H/010400UTC/BOOBY or H/1030S14120E)"
+    },
+    {
+      "l": "I",
+      "req": "required",
+      "text": "Next Port of Call and ETA UTC (e.g. I/Gladstone/050500UTC NOV 16)"
+    },
+    {
+      "l": "J",
+      "req": "optional",
+      "text": "Pilot Company Details: give the pilot company name (e.g. J/Torres Pilots or J/Auriga)"
+    },
+    {
+      "l": "K",
+      "req": "required",
+      "text": "Date, time (UTC) and point of exit from area (e.g. K/042100UTC/SANDY CAPE or K/042100UTC/2420S 15110E)"
+    },
+    {
+      "l": "L",
+      "req": "required",
+      "text": "Route information: recommended standard route plans, taking into account vessel draught (e.g. L/INNER ROUTE DEEP DRAUGHT or L/ALPHA NORTH VIA VARZIN PASSAGE/HANNIBAL)"
+    },
+    {
+      "l": "M",
+      "req": "required",
+      "text": "Communication methods: Inmarsat C details, IMN, manufacturer, model, and ship's satellite phone number (e.g. M1/423456789/JRC/JUE- 85C or M2/870773123456)"
+    },
+    {
+      "l": "O",
+      "req": "required",
+      "text": "Draught: fore and aft and deepest draught, in meters and decimeters (e.g. O/Fore 11.6/Aft 11.8/Deepest 11.8)"
+    },
+    {
+      "l": "P",
+      "req": "required",
+      "text": "Cargo on-board: normal name of cargo and whether it is classified as hazardous (yes or no) (e.g. P/BULK CHEMICALS/ DG YES). May be given by non-voice means before the first Reef VTS report."
+    },
+    {
+      "l": "Q",
+      "req": "required",
+      "text": "Defects, damage, deficiencies, or other limitations (e.g. Q/Include details as required)"
+    },
+    {
+      "l": "U",
+      "req": "required",
+      "text": "Ship type, length (meters) and gross tonnage (e.g. U/TANKER/180/28000)"
+    },
+    {
+      "l": "X",
+      "req": "optional",
+      "text": "Remarks: any additional information which would help the navigational safety of shipping in the Reef VTS area (e.g. abnormal weather, faulty navigational aid, DG, HS or MP incident reports)"
+    }
+  ],
+  "format_note": "Lines above are the Entry Report (ER, Table 3 of the 2025 guide; * = required). Note that the ER has no E line. Final Report FR: A and K. Route Deviation DR: A, B, K, L, O required, I optional. Intermediate Position IP: A, C, F required, B optional. Defect Report IR: A, C, F, Q. The first line gives the message type (ID/ER, ID/FR, ...). Language English, IMO SMCP. Outer ports (Port Alma, Mackay, Whitsundays, Abbot Point, Lucinda, Mourilyan, Cape Flattery) also need ER and FR to Reef VTS and a call to the local VTS on arrival and departure (Table 8). Passenger ships have extra rules (section 8.3).",
+  "area": {
+    "shape": "lines",
+    "points": [
+      {
+        "n": "1",
+        "name": "end of the outer edge of the Great Barrier Reef section",
+        "lat": "21 00S",
+        "lon": "152 55E",
+        "inferred": false
+      },
+      {
+        "n": "2",
+        "name": "(a)",
+        "lat": "23 42S",
+        "lon": "153 45E",
+        "inferred": false
+      },
+      {
+        "n": "3",
+        "name": "(b)",
+        "lat": "24 30S",
+        "lon": "153 35E",
+        "inferred": false
+      },
+      {
+        "n": "4",
+        "name": "(c) latitude 24 30S meets the Queensland coast (approximate)",
+        "lat": "24 30S",
+        "lon": "152 02E",
+        "inferred": true
+      }
+    ],
+    "lines": [
+      [
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    ],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": -20.0,
+      "lon": 149.5
+    },
+    "bbox": [
+      141.5,
+      -24.7,
+      154.0,
+      -9.0
+    ]
+  },
+  "area_quote": "2.1 The reporting system will cover the general area, as shown in the chartlet at appendix 1. The area encompasses the Torres Strait between longitudes 141º 45′ E and 144º 00′ E, including the Endeavour Strait, and the waters of the Great Barrier Reef (GBR) between the Australian coast and the outer edge of the GBR, from the latitude of Cape York (10º 40′ S) south-eastwards to 21° 00′ S 152° 55′ E. From this position, the REEFREP boundary extends as follows: (a) to position 23° 42′ S 153° 45′ E, (b) thence to position 24° 30′ S 153° 35′ E, (c) thence westward on latitude 24° 30′ S to its intersection with the Queensland coastline at the low water mark, and (d) thence generally north-westerly along the coastline to the latitude of Cape York (10º 40′ S). 2.2 The REEFREP area is shown on charts AUS 4620 (1996) and AUS 4635 (2010). (MSC.315(88), Annex para 1)",
+  "sources": [
+    {
+      "title": "IMO resolution MSC.315(88) Amendments to the existing mandatory ship reporting system in the Torres Strait region and the inner route of the Great Barrier Reef (REEFREP)",
+      "ref": "Annex para 1 (new paras 2.1 and 2.2 of Annex 1 to MSC.52(66))",
+      "date": "2010-11-29",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.315(88).pdf",
+      "primary": true
+    },
+    {
+      "title": "IMO resolution MSC.52(66) Mandatory ship reporting systems (Annex 1: Torres Strait region and the inner route of the Great Barrier Reef)",
+      "ref": "Annex 1",
+      "date": "1996-05-30",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.52(66).pdf",
+      "primary": true
+    },
+    {
+      "title": "IMO resolution MSC.161(78) Amendments to the existing mandatory ship reporting system in the Torres Strait and inner route of the Great Barrier Reef",
+      "ref": "Annex (sections 3, 4, 5, 7, 9)",
+      "date": "2004-05-17",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.161(78).pdf",
+      "primary": true
+    },
+    {
+      "title": "Great Barrier Reef and Torres Strait Vessel Traffic Service, Reef VTS User Guide (Maritime Safety Queensland), current edition January 2025",
+      "ref": "sections 4.1, 5, 7, 8 (tables 1 to 8)",
+      "date": "2025-01",
+      "url": "https://www.msq.qld.gov.au/-/media/MSQInternet/MSQFiles/Home/shipping/Shipping-movements/REEFVTS/reef-user-guide.pdf",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Area text and the three printed boundary positions read from MSC.315(88) Annex para 1 (IMO PDF page 2) and re-read on the page. Who, when, channels, Inmarsat-C SACs, phone, emails and report lines from the Reef VTS User Guide, January 2025 edition (Maritime Safety Queensland, Creative Commons BY 4.0; downloaded as a Word file from msq.qld.gov.au). Earlier IMO texts MSC.52(66) and MSC.161(78) read for history. No IMO amendment after MSC.315(88) found (scan of MSC resolutions 43 to 599).",
+  "confidence": "medium",
+  "notes": "Area: only the southern closing line is given by coordinates (points 1 to 3, then west along 24 30S to the coast). The rest of the boundary is described in words: the Torres Strait between longitudes 141 45E and 144 00E (including the Endeavour Strait), and the waters between the coast and the outer edge of the Great Barrier Reef from 10 40S to 21 00S 152 55E. The outer reef edge is not given as coordinates in the IMO text; use the chartlet or charts AUS 4620 and AUS 4635. Point 4 is only an approximate coast position. Reef VTS is split into North and South at latitude 18 00S (separate emails and Inmarsat SACs). Rules changed: the 1996 system used VHF channels 5, 18 and 19 and a centre at Hay Point; the 2004 amendment asked for the entry report 2 hours before entry; the current Reef VTS guide (2025) asks for at least 1 hour and uses VHF CH 11 and 14. Masters must keep a listening watch on the Reef VTS working channels and keep Inmarsat-C logged into POR. Coastal pilotage, under keel clearance and designated shipping area rules also apply but are not covered here. Penalties under Navigation Act 2012 s215 and s216."
+}

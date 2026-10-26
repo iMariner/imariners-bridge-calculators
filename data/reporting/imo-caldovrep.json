@@ -1,0 +1,262 @@
+{
+  "id": "imo-caldovrep",
+  "system": "CALDOVREP",
+  "title": "CALDOVREP Dover Strait / Pas de Calais",
+  "country": "United Kingdom and France (joint system)",
+  "authority": "Dover Coastguard (HM Coastguard, MRCC Dover, CNIS) and CROSS Gris-Nez (call sign Gris-Nez Traffic)",
+  "kind": "mandatory-imo",
+  "resolution": "MSC.85(70) Annex 2, amended by MSC.251(83)",
+  "status": "in effect",
+  "effective": "1999-07-01",
+  "applies_to": "Ships of 300 gross tonnage and over. Ships under 300 GT keep reporting under the voluntary MAREP scheme when not under command or at anchor in the TSS or its ITZs, restricted in their ability to manoeuvre, or with defective navigational aids.",
+  "applies_quote": "Ships of 300 gross tonnage and over are required to participate in the system.",
+  "when": [
+    {
+      "event": "before_entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "North-east bound traffic should report to GRIS NEZ TRAFFIC on the French coast 2 nautical miles before crossing the line from the Royal Sovereign light tower, through the Bassurelle Light Buoy (at its assigned position of 50°32'.8N, 000°57'.8E) to the coast of France."
+    },
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "South-west-bound traffic should report to the shore at DOVER COASTGUARD on the English coast when within VHF range of North Foreland and not later when crossing the line drawn from North Foreland to the border between France and Belgium."
+    },
+    {
+      "event": "departure",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Reports to the nearer of the two shore stations should be made on departure from a port within the coverage area. Recognizing that cross-Channel ferries generally operate according to published schedules, special reporting arrangements can be made on a ship-by-ship basis, subject to the approval of both GRIS NEZ TRAFFIC and DOVER COASTGUARD."
+    },
+    {
+      "event": "deviation",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Further reports should be made to the relevant shore station whenever there is a change of navigational circumstance, particularly in relation to items Q and R of the reporting format."
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 13",
+      "to": "Gris-Nez Traffic (CROSS Gris-Nez)",
+      "note": "North-east bound. MSC.85(70) Annex 2, para 5 and Summary 3. Confirmed by Prefet maritime de la Manche order n 30/2026 of 27 April 2026, art. 1 ('canal 13 ou 03')."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 03",
+      "to": "Gris-Nez Traffic (CROSS Gris-Nez)",
+      "note": "Prefet maritime de la Manche order n 30/2026 (27 April 2026), art. 1: reports by voice on channel 13 or 03. Not in the IMO texts."
+    },
+    {
+      "type": "email",
+      "value": "grisnezvts@mrccfr.eu",
+      "to": "Gris-Nez Traffic (CROSS Gris-Nez)",
+      "note": "Prefet maritime de la Manche order n 30/2026, Annex I: cargo data and insurance certificates may be sent by e-mail to this address (read from the scanned page image). Not in the IMO texts."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 11",
+      "to": "Dover Coastguard (MRCC Dover, CNIS)",
+      "note": "South-west bound. MSC.85(70) Annex 2, para 5 and Summary 3. The gov.uk CNIS page (updated 1 Feb 2024) names Dover Coastguard as the SW reporting station but gives no reporting channel (only CH 11 for broadcasts)."
+    },
+    {
+      "type": "other",
+      "value": "AIS",
+      "to": "Dover Coastguard",
+      "note": "MSC.85(70) Summary 3: alternatively to DOVER COASTGUARD by automatic ship-identification transponder (AIS). gov.uk CNIS page: 'Dover Coastguard can receive AIS transponder reports'."
+    },
+    {
+      "type": "other",
+      "value": "Other means (confidential information)",
+      "to": "Both centres",
+      "note": "Confidential information may be transmitted by other means (MSC.85(70) para 5)."
+    }
+  ],
+  "addressee": "GRIS NEZ TRAFFIC (north-east bound) or DOVER COASTGUARD (south-west bound)",
+  "heading": "CALDOVREP",
+  "lines": [
+    {
+      "l": "A",
+      "req": "required",
+      "text": "Name, call sign, IMO No. (or MMSI No. for reporting by transponder)"
+    },
+    {
+      "l": "B",
+      "req": "required",
+      "text": "Date and time"
+    },
+    {
+      "l": "C",
+      "req": "required",
+      "text": "C or D: Position in latitude and longitude or true bearing and distance from a clearly identified landmark"
+    },
+    {
+      "l": "D",
+      "req": "optional",
+      "text": "C or D: true bearing and distance from a clearly identified landmark (instead of C)"
+    },
+    {
+      "l": "E",
+      "req": "required",
+      "text": "True course"
+    },
+    {
+      "l": "F",
+      "req": "required",
+      "text": "Speed"
+    },
+    {
+      "l": "G",
+      "req": "required",
+      "text": "Port of departure"
+    },
+    {
+      "l": "I",
+      "req": "required",
+      "text": "Port of destination and expected time of arrival"
+    },
+    {
+      "l": "O",
+      "req": "required",
+      "text": "Present draught"
+    },
+    {
+      "l": "P",
+      "req": "required",
+      "text": "Cargo and, if dangerous goods are on board, IMO quantity and class"
+    },
+    {
+      "l": "Q",
+      "req": "if-applicable",
+      "text": "Q or R: Defect, damage and/or deficiencies affecting ship's structure, cargo or equipment, or any other circumstance affecting normal navigation, in accordance with the SOLAS or MARPOL Conventions"
+    },
+    {
+      "l": "R",
+      "req": "if-applicable",
+      "text": "Q or R: as for Q (pollution or dangerous goods lost overboard)"
+    },
+    {
+      "l": "T",
+      "req": "required",
+      "text": "Address for provision of information concerning a cargo of dangerous goods"
+    },
+    {
+      "l": "W",
+      "req": "required",
+      "text": "Number of persons on board"
+    },
+    {
+      "l": "X",
+      "req": "required",
+      "text": "Miscellaneous: estimated quantity of bunker fuel and characteristics for ships carrying over 5,000 tonnes bunker fuel; navigation conditions"
+    }
+  ],
+  "format_note": "Lines as replaced by MSC.251(83) (in force 1 May 2008). The 1999 list was A, C or D, E and F, O, L (route information), P, Q or R; L is no longer in the list. French national order 30/2026 for reports to Gris-Nez Traffic adds to line X: bunker characteristics and quantity for ships over 1000 GT, and the insurance certificate (Directive 2009/20/EC) and CLC 1992, Bunkers 2001 and Nairobi 2007 certificates; it also says P, Q and R need not be repeated if already sent in a SURNAV or SURNAV AVARIE message. These additions are not (yet) in an IMO text.",
+  "area": {
+    "shape": "lines",
+    "points": [
+      {
+        "n": "RS",
+        "name": "Royal Sovereign light tower (former position)",
+        "lat": "50 43.4N",
+        "lon": "000 26.1E",
+        "inferred": true
+      },
+      {
+        "n": "BS",
+        "name": "Bassurelle Light Buoy, assigned position",
+        "lat": "50 32.80N",
+        "lon": "000 57.80E",
+        "inferred": false
+      },
+      {
+        "n": "FR",
+        "name": "French coast where the line RS-BS extended meets it",
+        "lat": "50 20.6N",
+        "lon": "001 34.0E",
+        "inferred": true
+      },
+      {
+        "n": "NF",
+        "name": "North Foreland",
+        "lat": "51 22.5N",
+        "lon": "001 26.8E",
+        "inferred": true
+      },
+      {
+        "n": "FB",
+        "name": "Border between France and Belgium (coast)",
+        "lat": "51 05.3N",
+        "lon": "002 32.6E",
+        "inferred": true
+      }
+    ],
+    "lines": [
+      [
+        "RS",
+        "BS",
+        "FR"
+      ],
+      [
+        "NF",
+        "FB"
+      ]
+    ],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 51.0,
+      "lon": 1.45
+    },
+    "bbox": [
+      0.2,
+      50.2,
+      2.8,
+      51.5
+    ]
+  },
+  "area_quote": "The system covers a 65 mile stretch of the Dover Strait/Pas-de-Calais and is bounded by a line to the east drawn from North Foreland to the border between France and Belgium; and by a line to the west drawn from the Royal Sovereign Light Tower, through the Bassurelle Light Buoy (at its assigned position of 50°32'.80 N, 000°57'.80 E) to the coast of France.",
+  "sources": [
+    {
+      "title": "IMO MSC.85(70) Mandatory ship reporting systems, Annex 2 Dover Strait/Pas-de-Calais",
+      "ref": "Annex 2 sections 1 to 9 and Summary",
+      "date": "1998-12-07",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.85(70).pdf",
+      "primary": true
+    },
+    {
+      "title": "IMO MSC.251(83) Adoption of amendments to the existing mandatory ship reporting systems Off Ushant, Off Les Casquets and Dover Strait/Pas de Calais",
+      "ref": "Annex and Appendix (new report content, in force 1 May 2008)",
+      "date": "2007-10-08",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.251(83).pdf",
+      "primary": true
+    },
+    {
+      "title": "Prefet maritime de la Manche et de la mer du Nord, arrete prefectoral n 30/2026/PREMAR MANCHE/AEM/NP relatif au compte rendu obligatoire des navires aux abords du pas de Calais",
+      "ref": "Art. 1 (area, CROSS Gris-Nez, VHF 13 or 03), Annex I (CALDOVREP format, e-mail); repeals order 28/2001",
+      "date": "2026-04-27",
+      "url": "https://www.premar-manche.gouv.fr/uploads/manche/arretes/feb17de4586dc5bc5f611e5cd92b792e.pdf",
+      "primary": true
+    },
+    {
+      "title": "UK government: Dover Strait crossings, Channel Navigation Information Service (CNIS)",
+      "ref": "Mandatory reporting scheme section",
+      "date": "2024-02-01",
+      "url": "https://www.gov.uk/government/publications/dover-strait-crossings-channel-navigation-information-service/dover-strait-crossings-channel-navigation-information-service-cnis",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Area wording, ships, report positions, channels and call signs from MSC.85(70) Annex 2 (pdftotext); lines from MSC.251(83) Appendix. French order 30/2026 downloaded from the Premar Manche site; it is a scan, so article 1 and Annex I were read from page images (channel 13 ou 03, e-mail grisnezvts@mrccfr.eu, date 27 avril 2026). UK side checked against the gov.uk CNIS page (via a fetch summary). Only the Bassurelle buoy position is printed; the other four points are approximate positions of the named landmarks and are marked inferred.",
+  "confidence": "medium",
+  "notes": "Only the Bassurelle buoy position (50 32.80N 000 57.80E) is printed. Royal Sovereign light tower, North Foreland and the France-Belgium border points are approximate positions of the named places (inferred); the point where the western line meets the French coast (near Fort-Mahon, about 50 20.6N 001 34.0E) was computed by extending the rhumb line from Royal Sovereign through Bassurelle (inferred). The Royal Sovereign light tower has been taken out of service and removed, but the IMO text and the 2026 French order still use it as the boundary mark. The French order prints the Bassurelle position as '50°32\"8 ... 000°57'8\"' (garbled marks); the IMO text is used. NE-bound ships report to Gris-Nez Traffic 2 NM before the western line; SW-bound ships to Dover Coastguard when in VHF range of North Foreland and not later than the eastern line. Ships leaving a port in the area report to the nearer station. The French order also covers ships in French territorial waters and leaving French ports in the area. No IMO amendment after MSC.251(83) found in the IMO index up to MSC 111 (May 2026); another agent saw proposals at NCSR 13 to add insurance certificates to some European systems, not adopted."
+}

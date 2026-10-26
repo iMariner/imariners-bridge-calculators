@@ -1,0 +1,216 @@
+{
+  "id": "cn-rep-jinzhou",
+  "system": "China ship reporting",
+  "title": "Jinzhou port ship reporting area",
+  "country": "China",
+  "authority": "Jinzhou MSA (锦州海事局)",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": "2021-04-20",
+  "applies_to": "All foreign ships, Chinese passenger ships and other Chinese ships of 300 GT and over. Military, fishing and sports craft not covered unless stated.",
+  "applies_quote": "本规定适用船舶包括：一切外国籍船舶、中国籍客船和300总吨及以上的其他中国籍船舶。除另有规定外，军用船舶、渔业船舶和体育运动船艇不适用本规定。",
+  "when": [
+    {
+      "event": "before_arrival",
+      "hours_before": 24,
+      "interval_h": null,
+      "report": null,
+      "text": "Arrival pre-report by the owner or agent 24 hours before reaching the reporting area (voyage under 24 hours: on leaving the last port), through the 'ship declaration system' (船舶申报系统) at www.ln.msa.gov.cn: ship's name, call sign, ETA, draught, cargo, ship size (type). Port operator files the berthing plan 24 hours before; the pilot station sends the pilotage plan by fax 0416-3336019 or email jinzhouvts@163.com. Changes: at once by internet, fax or email. (第五条至第八条)"
+    },
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "On entering or leaving the reporting area: ship's name, nationality, position, draught, movement. (进出锦州海事局船舶报告区域时，应报告本船的船名、国籍、船位、吃水、船舶动态。)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Before entering or leaving the channel, and at once after berthing or anchoring: ship's name, berth, time of berthing or anchoring. (船舶在进出航道前、靠妥码头（泊位）、抛妥锚后，立即报告船名、所靠码头（泊位）、靠泊或抛锚时间)"
+    },
+    {
+      "event": "departure",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "20 minutes before leaving the berth or weighing anchor: ship's name, berth or anchor position, planned time. (离开码头（泊位）、起锚应提前20分钟报告船名、所离码头（泊位）、锚位及计划离泊或起锚时间。)"
+    },
+    {
+      "event": "exit",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "On leaving the reporting area: ship's name, nationality, position, draught, movement."
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Ship-to-ship transfer: at once after the barge is alongside give both names, position, cargo, start and planned end; report the end. Sea trials, speed trials, lifeboat drills: at start (content, area, times) and at the end. Pilot: at start and end of pilotage (movement, times, place, pilot's name). (第九条)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Abnormal situations, accidents, pollution, emergencies: at once by all means. Emergency anchoring in a channel, basin or no-anchoring area: report at once. (第十条至第十二条)"
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 06",
+      "to": "锦州海事局 (Jinzhou MSA)",
+      "note": "report channel; call name '锦州海事局'; keep watch on CH 06 in the area"
+    },
+    {
+      "type": "web",
+      "value": "www.ln.msa.gov.cn",
+      "to": "锦州海事局 (Jinzhou MSA)",
+      "note": "24 h pre-report by owner or agent ('船舶申报系统')"
+    },
+    {
+      "type": "email",
+      "value": "jinzhouvts@163.com",
+      "to": "锦州海事局 (Jinzhou MSA)",
+      "note": "printed for the pilot station's pilotage plan and change reports"
+    },
+    {
+      "type": "fax",
+      "value": "0416-3336019",
+      "to": "锦州海事局 (Jinzhou MSA)",
+      "note": "pilotage plan; from abroad +86 416 3336019"
+    }
+  ],
+  "addressee": "锦州海事局",
+  "heading": null,
+  "lines": [
+    {
+      "l": "A",
+      "req": "required",
+      "text": "Ship's name and nationality (船名、国籍)"
+    },
+    {
+      "l": "C",
+      "req": "required",
+      "text": "Position (船位)"
+    },
+    {
+      "l": "O",
+      "req": "required",
+      "text": "Draught (吃水)"
+    },
+    {
+      "l": "X",
+      "req": "required",
+      "text": "Movement / intentions (船舶动态)"
+    }
+  ],
+  "format_note": "Voice reports on VHF CH 06, short and clear, in Mandarin Chinese or English (art. 13). Letters follow A.851 order for convenience; the source has no letters.",
+  "area": {
+    "shape": "lines",
+    "points": [
+      {
+        "n": "A",
+        "lat": "40 49 17.12N",
+        "lon": "121 00 10.88E",
+        "inferred": false
+      },
+      {
+        "n": "B",
+        "lat": "40 46 09.47N",
+        "lon": "121 01 02.80E",
+        "inferred": false
+      },
+      {
+        "n": "C",
+        "lat": "40 45 50.66N",
+        "lon": "121 02 00E",
+        "inferred": false
+      },
+      {
+        "n": "D",
+        "lat": "40 13 00N",
+        "lon": "121 02 00E",
+        "inferred": false
+      },
+      {
+        "n": "E",
+        "lat": "40 13 00N",
+        "lon": "121 31 53.03E",
+        "inferred": false
+      },
+      {
+        "n": "F",
+        "lat": "40 36 00.67N",
+        "lon": "121 31 53.03E",
+        "inferred": false
+      },
+      {
+        "n": "G",
+        "lat": "40 50 03.27N",
+        "lon": "121 31 34.48E",
+        "inferred": false
+      },
+      {
+        "n": "H",
+        "lat": "40 52 36.87N",
+        "lon": "121 34 15.77E",
+        "inferred": false
+      }
+    ],
+    "lines": [
+      [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H"
+      ]
+    ],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 40.5,
+      "lon": 121.42
+    },
+    "bbox": [
+      120.9,
+      40.1,
+      121.65,
+      40.95
+    ]
+  },
+  "area_quote": "船舶报告区域是指：A点(40°49′17.12″N/121°00′10.88″E）、B点(40°46′09.47″N/121°01′02.80″E）、C点(40°45′50.66″N/121°02′00″E）、D点(40°13′00″N/121°02′00″E）、E点(40°13′00″N/121°31′53.03″E）、F点(40°36′00.67″N/121°31′53.03″E）、G点(40°50′03.27″N/121°31′34.48″E）、H点(40°52′36.87″N/121°34′15.77″E）八点顺序连线与岸线所围区域。",
+  "sources": [
+    {
+      "title": "锦州港船舶报告制规定, in force 2021-04-20, valid 5 years (replaced 辽海通航〔2011〕66号)",
+      "ref": "Art. 2, 4-15, 18",
+      "date": "2021-04-20",
+      "url": "https://www.mcrrc.top/bmgz/jy/bhhs/zsjfg/lnhsj/752.html",
+      "primary": false
+    },
+    {
+      "title": "中华人民共和国港务监督局关于公布渤海辽东湾外轮禁航区的通告 (水监字〔1984〕132号)",
+      "ref": "4 points",
+      "date": "1984-10-10",
+      "url": "https://www.mcrrc.top/bmgz/jy/bhhs/thgl/1948.html",
+      "primary": false
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Full text from the copy on mcrrc.top only (no second copy found, no official page reachable). Points F, G, H are identical to points I, J, K of the Panjin reporting area, which supports the copy.",
+  "confidence": "low",
+  "notes": "OLD SOURCE: in force 2021-04-20 with 5 years validity, so by its own terms it ran out on 2026-04-19. No renewal or replacement was found on msa.gov.cn; ask the agent or Jinzhou MSA on CH 06 which rules apply now. The email address looks like a VTS mailbox but is printed for the pilotage plan. The 1984 notice (水监字〔1984〕132号) sets a prohibited area for foreign ships in Liaodong Bay inside the line joining 39 59 18N 119 54 18E, 39 33 18N 120 49 12E, 40 00 00N 121 20 00E, 40 55 30N 121 20 00E; it covers the south-west part of this reporting area (west of 121 20E). Its current status was not checked: check the chart and the agent before planning the approach to Jinzhou or Huludao. Huludao (Liutiaogou, Suizhong) reporting rules were not found."
+}

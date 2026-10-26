@@ -1,0 +1,207 @@
+{
+  "id": "ru-vts-peter-great-bay-sector-5",
+  "system": "Peter the Great Bay regional VTS, Sector 5 (ports of Posyet and Zarubino)",
+  "title": "Vladivostok Traffic: Sector 5, Posyet Bay and Troitsa Bay (Posyet, Zarubino)",
+  "country": "Russia",
+  "authority": "Regional VTS of Peter the Great Bay acting as the port VTS, call sign \"Владивосток-Трафик\"; harbour masters of Posyet (Посьет-Порт-контроль) and Zarubino (Троица-33)",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": null,
+  "applies_to": "All ships in the ports of Posyet (Posyet Bay section) and Zarubino (Troitsa Bay) and in Sector 5, whatever their flag.",
+  "applies_quote": "Настоящие Обязательные постановления подлежат исполнению судами независимо от их национальной и ведомственной принадлежности ...",
+  "when": [
+    {
+      "event": "before_arrival",
+      "hours_before": 72,
+      "interval_h": null,
+      "report": null,
+      "text": "Arrival and departure information to the harbour master through www.portcall.marinet.ru (Zarubino p. 21; Posyet p. 18). Times per the General Rules: 120 to 72 hours before arrival, confirm 48 to 24 hours before; arrival application within 4 hours of first anchoring or mooring; departure application 4 hours before departure (ru-general-prearrival). From a foreign port the entry permission must also be agreed with the FSB (ru-entry-fsb-permission)."
+    },
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Give the General Rules p. 29 data to the VTS on entering. Zarubino: VTS on CH 16 and 71, call sign Владивосток-Трафик (p. 74); ships under way watch CH 16 and 71, at anchor and at berths CH 11 and 16 (p. 72); pilots on CH 11 and 16, call sign Гильза-2 (p. 76). Posyet: VTS on CH 71 (p. 43); ships at the berths in Posyet Bay without telephone watch CH 12 (p. 79). Traffic and anchoring only per the schedule and with VTS permission."
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Zarubino: arrival and departure clearance around the clock on board or without boarding at the berths, \"Рейд N 1\", anchorage No. 18 and the Zarubino-1 and Zarubino-2 areas (p. 27). Navigation and weather information from the harbour master through the VTS on CH 71; daily forecast at 14.30 local time (pp. 95, 96). Dangerous goods information goes in the arrival and departure applications (p. 88)."
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 71",
+      "to": "Владивосток-Трафик (VTS)",
+      "note": "Working channel (Zarubino Appendix 4: calling 16, 71, working 67, 71; Posyet Appendix 4: calling 16, working 71)"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 16",
+      "to": "Владивосток-Трафик (VTS)",
+      "note": "Calling channel"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 11",
+      "to": "Троица-33 (state port control, Zarubino)",
+      "note": "Zarubino Appendix 4: calling 16, working 11"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 11",
+      "to": "Гильза-2 (pilots, Zarubino)",
+      "note": "Zarubino Appendix 4: calling 16, working 11"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 12",
+      "to": "Посьет-Порт-контроль (state port control, Posyet Bay section)",
+      "note": "Posyet Appendix 4: calling 16, working 12"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 10",
+      "to": "Посьет, Лоцман (pilots, Posyet)",
+      "note": "Posyet Appendix 4"
+    },
+    {
+      "type": "web",
+      "value": "www.portcall.marinet.ru",
+      "to": "Harbour masters of Zarubino and Posyet",
+      "note": "Arrival information (Zarubino p. 21, Posyet p. 18)"
+    }
+  ],
+  "addressee": null,
+  "heading": null,
+  "lines": [
+    {
+      "l": "1",
+      "req": "required",
+      "text": "Ship's name and type"
+    },
+    {
+      "l": "2",
+      "req": "required",
+      "text": "Flag"
+    },
+    {
+      "l": "3",
+      "req": "required",
+      "text": "Port of destination"
+    },
+    {
+      "l": "4",
+      "req": "required",
+      "text": "Maximum present draught and air draught"
+    },
+    {
+      "l": "5",
+      "req": "required",
+      "text": "Kind of cargo, dangerous cargo on board"
+    },
+    {
+      "l": "6",
+      "req": "if-applicable",
+      "text": "Defects of ship equipment and other limits that affect safe navigation"
+    }
+  ],
+  "format_note": "Report items from General Rules p. 29.",
+  "area": {
+    "shape": "lines",
+    "points": [
+      {
+        "n": "S",
+        "name": "мыс Суслова (Cape Suslova)",
+        "lat": "42 30.9N",
+        "lon": "130 51.9E",
+        "inferred": true
+      },
+      {
+        "n": "G",
+        "name": "мыс Гамова (Cape Gamova)",
+        "lat": "42 33.3N",
+        "lon": "131 13.0E",
+        "inferred": true
+      }
+    ],
+    "lines": [
+      [
+        "S",
+        "G"
+      ]
+    ],
+    "center": null,
+    "radius_nm": null,
+    "state": "Russia",
+    "zone": "Posyet Bay and Troitsa Bay, north of the line Cape Suslova to Cape Gamova",
+    "ports": [
+      "Posyet (Posyet Bay section)",
+      "Zarubino (Troitsa Bay)"
+    ],
+    "inside_hint": {
+      "lat": 42.6,
+      "lon": 130.95
+    },
+    "bbox": [
+      130.75,
+      42.45,
+      131.3,
+      42.8
+    ]
+  },
+  "area_quote": "Сектор N 5 РСУДС включает в себя бухту Троицы и залив Посьета и ограничен с юга линией, соединяющей мысы Гамова и Суслова. В секторе N 5 РСУДС действует как СУДС морского порта. (Zarubino p. 46; Posyet p. 42: \"Сектор N 5 включает в себя залив Посьета и ограничен с юго-востока линией, соединяющей мыс Суслова и мыс Гамова.\")",
+  "sources": [
+    {
+      "title": "Обязательные постановления в морском порту Зарубино, Приказ Минтранса России от 15.04.2013 № 122 (ред. от 02.10.2024)",
+      "ref": "pp. 21, 26, 27, 31, 46, 47, 72 to 79, 95 to 99, Appendix 4",
+      "date": "2024-10-02",
+      "url": "https://legalacts.ru/doc/prikaz-mintransa-rossii-ot-15042013-n-122/",
+      "primary": true
+    },
+    {
+      "title": "Приказ Минтранса России от 02.10.2024 № 348 (latest amendment, Zarubino)",
+      "ref": "official publication",
+      "date": "2024-10-02",
+      "url": "http://publication.pravo.gov.ru/document/0001202411010005",
+      "primary": true
+    },
+    {
+      "title": "Приказ Минтранса России от 19.05.2023 № 177 (Zarubino; valid to 01.03.2029)",
+      "ref": "official publication",
+      "date": "2023-05-19",
+      "url": "http://publication.pravo.gov.ru/document/0001202306200003",
+      "primary": true
+    },
+    {
+      "title": "Обязательные постановления в морском порту Посьет, Приказ Минтранса России от 19.10.2012 № 379 (ред. от 11.09.2014)",
+      "ref": "pp. 16.1, 18, 20, 23, 29, 41 to 44, 78 to 82, 111, 112, Appendix 4",
+      "date": "2014-09-11",
+      "url": "https://rulaws.ru/acts/Prikaz-Mintransa-Rossii-ot-19.10.2012-N-379/",
+      "primary": true
+    },
+    {
+      "title": "Приказ Минтранса России от 10.03.2023 № 74 (amends order № 379: valid to 01.09.2029; tug table)",
+      "ref": "official publication",
+      "date": "2023-03-10",
+      "url": "http://publication.pravo.gov.ru/document/0001202304120030",
+      "primary": true
+    },
+    {
+      "title": "Общие правила плавания и стоянки судов (Приказ Минтранса № 395, ред. от 23.12.2025)",
+      "ref": "pp. 29, 39, 40, 43, 45",
+      "date": "2025-12-23",
+      "url": "https://legalacts.ru/doc/prikaz-mintransa-rossii-ot-12112021-n-395-ob-utverzhdenii/",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Zarubino consolidated text (ред. от 02.10.2024) read on legalacts.ru; Posyet text (ред. от 11.09.2014) on rulaws.ru; channels copied from the paragraphs and Appendix 4 tables.",
+  "confidence": "medium",
+  "notes": "Cape positions are from OpenStreetMap (inferred); the line is defined only by the two capes. Zarubino regulations valid to 01.03.2029, Posyet to 01.09.2029. Zarubino is described as part of Sector 5 in its own regulations; Posyet describes Sector 5 as Posyet Bay. Harbour master phone and email not found."
+}

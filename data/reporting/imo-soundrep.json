@@ -1,0 +1,333 @@
+{
+  "id": "imo-soundrep",
+  "system": "SOUNDREP",
+  "title": "SOUNDREP The Sound between Denmark and Sweden",
+  "country": "Sweden and Denmark (joint system)",
+  "authority": "Sound VTS, call sign Sound Traffic (Swedish Maritime Administration and Royal Danish Navy), centre in Malmö",
+  "kind": "mandatory-imo",
+  "resolution": "MSC.314(88); revised text MSC.314(88)/Rev.1 adopted 22 May 2026, implemented 1 December 2026",
+  "status": "in effect",
+  "effective": "2011-09-01",
+  "applies_to": "Ships of 300 GT and upwards going to or from ports or anchorages in the Sound or passing through the reporting area. Not warships, naval auxiliaries or other government ships on non-commercial service (they are encouraged to take part).",
+  "applies_quote": "Ships of 300 gross tonnage and upwards proceeding to or from ports or anchorages in the Sound or passing through the reporting area. Pursuant to SOLAS 1974 Convention, as amended, the SOUNDREP does not apply to warships, naval auxiliaries, other ships owned or operated by a Contracting Government and used, only on Government non-commercial service. However, such ships are encouraged to participate in the reporting system.",
+  "when": [
+    {
+      "event": "before_entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "3.1.3 E-mail or other alternative methods prior to entering the ship reporting area, can accomplish the reporting requirements for designators L, T and X. Such non-verbal partly report must also state designator A (see also paragraph 3.4.1, Note (c))."
+    },
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "3.5.1 Ships entering the SOUNDREP operational area shall submit a report when crossing the entrance lines or on departure from a port or anchorage within the operational area. 3.1.4 ... must as a minimum carry out a VHF voice transmission to communicate the name of the ship (part of designator A) and the report line of entry, to the Sound VTS when actually entering the area."
+    },
+    {
+      "event": "departure",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "3.5.1 ... or on departure from a port or anchorage within the operational area. 3.1.4 ... The same procedure must be followed before departing a port or leaving an anchorage in the SOUNDREP area."
+    },
+    {
+      "event": "deviation",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "3.5.2 Further reports should be made whenever there is a change in navigational status or circumstance, particularly in relation to designator Q the reporting format. Note (b) The master of the ship must forthwith inform the Sound VTS concerned of any change to the information notified, including designator Q."
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "3.2 Verbal reporting is not required when a ship is passing the SOUNDREP sector line at latitude 55° 50´.00 N. However, change of VHF frequency is required according to Appendix 2."
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 73",
+      "to": "Sound Traffic (Sound VTS), Sector 1 North",
+      "note": "North of 55 50N. MSC.314(88) and Rev.1, appendix 2; same on the Swedish Maritime Administration SOUNDREP contact page (updated 2022-10-26), read 2026-10-26."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 71",
+      "to": "Sound Traffic (Sound VTS), Sector 2 South",
+      "note": "South of 55 50N. MSC.314(88) and Rev.1, appendix 2; same on the Swedish Maritime Administration page."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 79",
+      "to": "Sound Traffic (Sound VTS)",
+      "note": "Broadcast 1, individual assistance (appendix 2)."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 68",
+      "to": "Sound Traffic (Sound VTS)",
+      "note": "Broadcast 2, individual assistance and reserve channel (appendix 2)."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 16",
+      "to": "Sound Traffic (Sound VTS)",
+      "note": "Monitored continuously with CH 73 and CH 71 (appendix 2). Ships keep watch on the sector channel and CH 16 (para 4.1)."
+    },
+    {
+      "type": "email",
+      "value": "contact@soundvts.org",
+      "to": "Sound VTS",
+      "note": "For L, T and X (with A) before entry. MSC.314(88) and Rev.1 appendix 2; same on the Swedish Maritime Administration contact page, read 2026-10-26."
+    },
+    {
+      "type": "phone",
+      "value": "+46 40 20 43 17",
+      "to": "Sound VTS duty officer (H24)",
+      "note": "MSC.314(88) and Rev.1 appendix 2, also +46 40 20 43 34. The Swedish Maritime Administration contact page (updated 2022-10-26) gives +46 771 63 06 00 instead (next entry). Mobile phone or radio telephone may be used for L, T and X (para 3.1.6)."
+    },
+    {
+      "type": "phone",
+      "value": "+46 771 63 06 00",
+      "to": "Sound VTS",
+      "note": "Swedish Maritime Administration SOUNDREP contact page, updated 2022-10-26, read 2026-10-26. Not in the IMO texts."
+    },
+    {
+      "type": "fax",
+      "value": "+46 40 20 43 45",
+      "to": "Sound VTS",
+      "note": "MSC.314(88) and Rev.1 appendix 2. Not on the Swedish Maritime Administration contact page."
+    },
+    {
+      "type": "other",
+      "value": "AIS",
+      "to": "Sound VTS",
+      "note": "Correct and updated AIS class A information fulfils A (part of), B, C, E, F, I, O, P and W (para 3.1.2)."
+    }
+  ],
+  "addressee": null,
+  "heading": null,
+  "lines": [
+    {
+      "l": "A",
+      "req": "required",
+      "text": "Name of the ship, call sign and if available IMO identification number and MMSI No."
+    },
+    {
+      "l": "B",
+      "req": "required",
+      "text": "Date and time"
+    },
+    {
+      "l": "C",
+      "req": "required",
+      "text": "Position expressed in latitude and longitude"
+    },
+    {
+      "l": "E",
+      "req": "required",
+      "text": "True course"
+    },
+    {
+      "l": "F",
+      "req": "required",
+      "text": "Speed"
+    },
+    {
+      "l": "I",
+      "req": "required",
+      "text": "Destination and ETA"
+    },
+    {
+      "l": "L",
+      "req": "required",
+      "text": "Route information on the intended route through the Sound"
+    },
+    {
+      "l": "O",
+      "req": "required",
+      "text": "Maximum present draught"
+    },
+    {
+      "l": "P",
+      "req": "if-applicable",
+      "text": "Cargo; and quantity and IMO class of dangerous goods, if applicable (see note (c) below)"
+    },
+    {
+      "l": "Q",
+      "req": "if-applicable",
+      "text": "Defects and deficiencies or other limitations"
+    },
+    {
+      "l": "T",
+      "req": "if-applicable",
+      "text": "Contact details for the communication of cargo information (see note (c) below)"
+    },
+    {
+      "l": "U",
+      "req": "if-applicable",
+      "text": "Air draught when exceeding 35 metres"
+    },
+    {
+      "l": "W",
+      "req": "required",
+      "text": "Total number of persons on board"
+    },
+    {
+      "l": "X",
+      "req": "if-applicable",
+      "text": "Type and estimated quantity of bunker fuel, for ships of 1,000 gross tonnage and above. From 1 December 2026 (MSC.314(88)/Rev.1) also: One or more Convention certificates of insurance issued by a party to the Conventions and carried on board the ship, providing evidence of existence of insurance for maritime claims, as well as civil liability certificates, as applicable, issued in accordance with: the International Convention on Civil Liability for Oil Pollution Damage, 1992, as amended (1992 Civil Liability Convention); the International Convention on Civil Liability for Bunker Oil Pollution Damage, 2001 (2001 Bunkers Convention); and, the Nairobi International Convention on the Removal of Wrecks, 2007 (2007 Nairobi WRC)."
+    }
+  ],
+  "format_note": "Line texts from para 3.4 of MSC.314(88). Appendix 3: AIS gives A (part of), B, C, E, F, I, O, P and W; L, T and X by e-mail or other means before entry (with A), or by radio telephone or mobile phone; VHF voice must at least give the ship's name and the report line of entry, and U and Q when applicable. Note (c): P and T are only asked when not already notified via SafeSeaNet in an EU State (Directive 2002/59/EC Article 13). U: maximum air draught when over 35 m, for all ships and tows, by voice on entering; Sound VTS tells air traffic control at least 30 minutes before passing Nordre Røse lighthouse (55° 38´.17 N, 012° 41´.21 E) and light buoy No.9 (55° 36´.15 N, 012° 41´.79 E) near the Drogden channel. L is coded: DW (Disken, west of), DE (Disken, east of), VW (Ven, west of), VE (Ven, east of), D (Drogden), F (Flintrännan), ports as UN LOCODE, e.g. 'L: SE MMA, VE' or 'L: DE, VW, D'. C as 5-digit latitude and 6-digit longitude groups; B as a 6-digit day and time group (UTC). Language English (IMO SMCP).",
+  "area": {
+    "shape": "lines",
+    "points": [
+      {
+        "n": "1",
+        "name": "Rågeleje (Denmark), line North",
+        "lat": "56 06.58N",
+        "lon": "012 11.00E",
+        "inferred": false
+      },
+      {
+        "n": "2",
+        "name": "At sea North of Rågeleje, line North",
+        "lat": "56 14.00N",
+        "lon": "012 11.00E",
+        "inferred": false
+      },
+      {
+        "n": "3",
+        "name": "At sea West of Kullen (Sweden), line North",
+        "lat": "56 18.08N",
+        "lon": "012 17.39E",
+        "inferred": false
+      },
+      {
+        "n": "4",
+        "name": "Kullen Light House, line North",
+        "lat": "56 18.08N",
+        "lon": "012 26.88E",
+        "inferred": false
+      },
+      {
+        "n": "5",
+        "name": "Stevns Light House (Denmark), line South",
+        "lat": "55 17.44N",
+        "lon": "012 27.28E",
+        "inferred": false
+      },
+      {
+        "n": "6",
+        "name": "At sea South of Stevns, line South",
+        "lat": "55 10.00N",
+        "lon": "012 27.28E",
+        "inferred": false
+      },
+      {
+        "n": "7",
+        "name": "At sea South of Falsterbo (Sweden), lines South and East",
+        "lat": "55 10.00N",
+        "lon": "012 54.50E",
+        "inferred": false
+      },
+      {
+        "n": "8",
+        "name": "Fredshög (Sweden), line East",
+        "lat": "55 22.89N",
+        "lon": "013 01.93E",
+        "inferred": false
+      },
+      {
+        "n": "9",
+        "name": "Mandehoved (Denmark), line West",
+        "lat": "55 19.81N",
+        "lon": "012 27.30E",
+        "inferred": false
+      },
+      {
+        "n": "10",
+        "name": "Aflandshage (Denmark), line West",
+        "lat": "55 33.28N",
+        "lon": "012 35.53E",
+        "inferred": false
+      }
+    ],
+    "lines": [
+      [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      [
+        "5",
+        "6",
+        "7"
+      ],
+      [
+        "7",
+        "8"
+      ],
+      [
+        "9",
+        "10"
+      ]
+    ],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 55.3,
+      "lon": 12.7
+    },
+    "bbox": [
+      12.0,
+      55.05,
+      13.15,
+      56.4
+    ]
+  },
+  "area_quote": "2.2 The operational area of SOUNDREP covers the northern, central and southern part of the Sound as shown on the chartlet given in Appendix 1. ... 2.2.1 Report and border line North Denmark: (1) 56° 06´.58 N 012° 11´.00 E (Rågeleje) (2) 56° 14´.00 N 012° 11´.00 E (At sea North of Rågeleje) Sweden: (3) 56° 18´.08 N 012° 17´.39 E (At sea West of Kullen) (4) 56° 18´.08 N 012° 26´.88 E (Kullen Light House) 2.2.2 Report and border line South Denmark: (5) 55° 17´.44 N 012° 27´.28 E (Stevns Light House) (6) 55° 10´.00 N 012° 27´.28 E (At sea South of Stevns) Sweden: (7) 55° 10´.00 N 012° 54´.50 E (At sea South of Falsterbo) 2.2.3 Report and border line East Sweden: (7) 55° 10´.00 N 012° 54´.50 E (At sea South of Falsterbo) (8) 55° 22´.89 N 013° 01´.93 E (Fredshög) 2.2.4 Report and border line West Denmark: (9) 55° 19´.81 N 012° 27´.30 E (Mandehoved) (10) 55° 33´.28 N 012° 35´.53 E (Aflandshage) 2.2.5 Sector division The SOUNDREP area is divided into two sectors at latitude 55° 50´.00 N; sector 1 northerly and sector 2 southerly.",
+  "sources": [
+    {
+      "title": "IMO MSC.314(88) New mandatory ship reporting system In the Sound between Denmark and Sweden (SOUNDREP)",
+      "ref": "Annex, paras 1.1, 2.1-2.2.5, 3.1-3.7, 4.1, 6.6, appendices 1, 2 and 3",
+      "date": "2010-11-29",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.314(88).pdf",
+      "primary": true
+    },
+    {
+      "title": "IMO MSC.314(88)/Rev.1 Mandatory ship reporting system In the Sound between Denmark and Sweden (SOUNDREP), revised text, implemented 1 December 2026",
+      "ref": "Annex 28 of MSC 111/22/Add.2: paras 2.2, 3.1.3, 3.4 X, 9.2, appendix 2",
+      "date": "2026-05-22",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.314(88)%20Rev.1.pdf",
+      "primary": true
+    },
+    {
+      "title": "Swedish Maritime Administration (Sjöfartsverket): SOUNDREP contact",
+      "ref": "Contact page, updated 2022-10-26",
+      "date": "2026-10-26",
+      "url": "https://sjofartsverket.se/en/services/maritime-traffic-information/soundrep/contact/",
+      "primary": false
+    },
+    {
+      "title": "Danish Maritime Authority: Mandatory Ship Reporting Systems (MSRS) and Vessel Traffic Services (VTS)",
+      "ref": "BELTREP and SOUNDREP",
+      "date": "2026-10-26",
+      "url": "https://dma.dk/safety-at-sea/safety-of-navigation/mandatory-ship-reporting-systems-msrs-and-vessel-traffic-services-vts",
+      "primary": false
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Points 1 to 10 and the sector latitude were taken from the text layer of MSC.314(88) Annex pages 2 and 3 and compared with MSC.314(88)/Rev.1 (identical); every digit was checked against 140 dpi renders of Rev.1 Annex 28 pages 2 and 3 (PDF pages 3 and 4). The lines were compared with the chartlet in Rev.1 appendix 1: line North runs from Rågeleje north, then to the sea west of Kullen and east to Kullen light; line South from Stevns light south and east to the sea south of Falsterbo; line East from there to Fredshög; line West from Mandehoved on Stevns to Aflandshage on Amager, so Køge Bugt is outside; the coast closes the rest. Report contents, channels, phone, fax and e-mail from both IMO texts; channels and e-mail confirmed and a different phone number found on the Swedish Maritime Administration contact page (read 2026-10-26 with a web fetch tool).",
+  "confidence": "high",
+  "notes": "From 0000 UTC 1 December 2026 MSC.314(88)/Rev.1 revokes and replaces MSC.314(88); boundary, ships, channels and contacts stay the same, and line X then also asks for the insurance / civil liability certificates (CLC 1992, Bunkers 2001, Nairobi WRC 2007), which the company may give (SOLAS IX/1.2). Line North is printed in two groups (Denmark points 1 and 2, Sweden points 3 and 4); the chartlet shows one line from 1 through 2 and 3 to 4, so it is drawn so here; the leg from 2 to 3 is not described in words. Phone: the IMO texts (also Rev.1 of 2026) print +46 40 20 43 17 or +46 40 20 43 34, the Swedish Maritime Administration page gives +46 771 63 06 00; not checked which is answered. Ferries between Helsingør and Helsingborg on published schedules are normally not asked to report. Loaded oil tankers with draught 7 m or more, loaded chemical and gas carriers and INF cargo ships are recommended to take a pilot between the line Svinbådan - Hornbæk and the line Skanör - Aflandshage (IMO Recommendation on navigation through the entrances to the Baltic Sea). The Danish national order on SOUNDREP and on reporting when passing the Drogden channel is listed by the DMA; not read for this record."
+}

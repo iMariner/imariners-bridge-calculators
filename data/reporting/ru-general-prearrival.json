@@ -1,0 +1,156 @@
+{
+  "id": "ru-general-prearrival",
+  "system": "Russian port call information (portcall.marinet.ru)",
+  "title": "Russia: arrival and departure information to the harbour master (all seaports)",
+  "country": "Russia",
+  "authority": "Harbour master (капитан морского порта) of the port of call; port administrations: FGBU AMP of Primorsky Krai and the Eastern Arctic (Vladivostok, Vostochny incl. Kozmino, Nakhodka), AMP of the Sea of Okhotsk and Tatar Strait (Vanino, De-Kastri), AMP of Sakhalin, Kuril Islands and Kamchatka (Prigorodnoye, Petropavlovsk-Kamchatsky)",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": "2022-09-01",
+  "applies_to": "Crews of all ships, whatever their flag, in Russian seaports and on their approaches. The information is sent by the master, the shipowner or the ship's agent.",
+  "applies_quote": "Настоящие Общие правила обязательны для исполнения экипажами судов и внешними экипажами автономных судов, независимо от их флага и прав на них, а также физическими и юридическими лицами, осуществляющими деятельность в морских портах Российской Федерации (далее - морские порты) и на подходах к ним.",
+  "when": [
+    {
+      "event": "before_arrival",
+      "hours_before": 72,
+      "interval_h": null,
+      "report": null,
+      "text": "The harbour master enters the arrival information into the port state control system (SGPK) not later than 72 hours and not earlier than 120 hours before the planned arrival, from information sent by the master, owner or agent. So the arrival information must reach the harbour master between 120 and 72 hours before arrival. If the passage from the last port is shorter than 72 hours, it is entered before the ship leaves the last port. Quote: \"не позднее 72 часов и не ранее 120 часов до планируемого времени захода судна в морской порт ... В случае если переход судна из последнего морского порта ... составляет менее 72 часов, капитан морского порта организует и контролирует внесение информации о заходе судна в морской порт в СГПК перед выходом судна из последнего морского порта\" (General Rules p. 39)."
+    },
+    {
+      "event": "before_arrival",
+      "hours_before": 24,
+      "interval_h": null,
+      "report": null,
+      "text": "The master, owner or agent confirms the arrival information to the harbour master between 48 and 24 hours before the expected arrival. Quote: \"Информация о заходе судна в морской порт подтверждается капитаном судна ... либо морским агентом капитану морского порта в период между 48 и 24 часами до ожидаемого захода судна в морской порт.\" (p. 40)."
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "If the port of destination changes, the master, owner or agent sends the harbour master a message cancelling the arrival information (p. 41)."
+    },
+    {
+      "event": "arrival",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Not later than 4 hours after the ship first anchors in the port waters or finishes its first mooring, the master, owner or agent sends the harbour master the arrival application with the p. 38 data plus the actual date and time of arrival, the ship's place in port (anchorage or berth) and the bunkers on board (heavy, light and gas fuel separately). Quote: \"не позднее четырех часов после первой постановки судна на якорь в акватории морского порта или окончания первой швартовки судна в морском порту направляет капитану морского порта заявление о приходе судна в морской порт\" (p. 43)."
+    },
+    {
+      "event": "departure",
+      "hours_before": 4,
+      "interval_h": null,
+      "report": null,
+      "text": "For departure clearance the master, owner or agent sends the harbour master the departure application not later than 4 hours before the expected departure, but not before arrival clearance is finished (p. 45). The departure permission is valid 24 hours from the harbour master's stamp on the crew list (p. 54)."
+    }
+  ],
+  "how": [
+    {
+      "type": "web",
+      "value": "www.portcall.marinet.ru",
+      "to": "Harbour master of the port of call",
+      "note": "The address named in each port's Обязательные постановления (Vostochny p. 22, Vladivostok p. 24, Vanino p. 22, Prigorodnoye p. 12, Petropavlovsk-Kamchatsky p. 14). In practice the ship's agent files it."
+    }
+  ],
+  "addressee": null,
+  "heading": null,
+  "lines": [
+    { "l": "1", "req": "required", "text": "IMO number of the ship" },
+    { "l": "2", "req": "required", "text": "Ship's name in Russian and in Latin letters" },
+    { "l": "3", "req": "required", "text": "Call sign" },
+    { "l": "4", "req": "required", "text": "Flag and port of registry" },
+    { "l": "5", "req": "required", "text": "MMSI" },
+    { "l": "6", "req": "if-applicable", "text": "Name and IMO number of the shipowner" },
+    { "l": "7", "req": "if-applicable", "text": "Name and IMO number of the ship operator" },
+    { "l": "8", "req": "required", "text": "Class and the classification society that issued the class certificate" },
+    { "l": "9", "req": "required", "text": "Main particulars: type, year built, GT, DWT, LOA, beam, air draught, depth, maximum draught, draught fore and aft, GMDSS area, permitted navigation area" },
+    { "l": "10", "req": "required", "text": "Type and quantity of each cargo on board" },
+    { "l": "11", "req": "required", "text": "Bunkers on board at departure from the previous port" },
+    { "l": "12", "req": "required", "text": "Ballast: quantity and where it was taken" },
+    { "l": "13", "req": "if-applicable", "text": "Previous cargo and whether the tanks are gas free (tanker coming to load)" },
+    { "l": "15", "req": "if-applicable", "text": "Rosmorrechflot permit for cabotage or other activity by a foreign-flag ship" },
+    { "l": "16", "req": "required", "text": "Crew list (names, nationality, rank, date and place of birth, identity document)" },
+    { "l": "17", "req": "if-applicable", "text": "Passenger list" },
+    { "l": "18", "req": "required", "text": "Expected date and time of arrival" },
+    { "l": "19", "req": "required", "text": "Expected date and time of departure" },
+    { "l": "20", "req": "required", "text": "Last port and date and time of departure from it" },
+    { "l": "21", "req": "required", "text": "Next port" },
+    { "l": "22", "req": "required", "text": "Planned operations in port (cargo, stores, waste to land)" },
+    { "l": "23", "req": "required", "text": "Terminal and/or berth, or roads/anchorage for cargo work or bunkering at anchor" },
+    { "l": "24", "req": "required", "text": "International Ship Security Certificate (issuer, date, validity) and the ship's security level" },
+    { "l": "25", "req": "required", "text": "Services required: tug, pilot, icebreaker" },
+    { "l": "26", "req": "if-applicable", "text": "Displacement, main engine type and power, ice class, propeller material, fuel, water and provisions on board and daily use (when icebreaker support is needed)" },
+    { "l": "27", "req": "required", "text": "Sanitary and epidemic situation on board" },
+    { "l": "28", "req": "if-applicable", "text": "Defects of ship equipment and any non-compliance with SOLAS, MARPOL, transport security rules" },
+    { "l": "29", "req": "if-applicable", "text": "Receiver(s) of the oil or oil products as per bill of lading (when discharging oil)" },
+    { "l": "30-36", "req": "if-applicable", "text": "Dangerous goods: name and UN number, quantity, IMO class and packing group, stowage, gross mass (packaged), bulk data, flash point and density (bulk liquids)" },
+    { "l": "37", "req": "if-applicable", "text": "Cargo that may liquefy" }
+  ],
+  "format_note": "The source numbers the items 1) to 37) in General Rules p. 38 (item 14 is for fishing vessels and is left out here). No message format of its own: the data goes in through the portcall.marinet.ru system, usually by the agent. Since 2026 ships from foreign ports also need FSB agreement of the entry permission, see ru-entry-fsb-permission.",
+  "area": {
+    "shape": "port",
+    "points": [],
+    "lines": [],
+    "center": null,
+    "radius_nm": null,
+    "state": "Russia",
+    "zone": null,
+    "ports": [
+      "Vostochny (including the Kozmino oil terminal, Kozmino Bay)",
+      "Nakhodka",
+      "Vladivostok",
+      "Vanino",
+      "De-Kastri",
+      "Prigorodnoye",
+      "Petropavlovsk-Kamchatsky",
+      "every other Russian seaport"
+    ],
+    "inside_hint": { "lat": 42.723, "lon": 133.003 },
+    "bbox": [ 130.5, 42.0, 160.0, 54.0 ]
+  },
+  "area_quote": "Общие правила плавания и стоянки судов в морских портах Российской Федерации и на подходах к ним (apply in all Russian seaports and on their approaches).",
+  "sources": [
+    {
+      "title": "Приказ Минтранса России от 12.11.2021 № 395 \"Об утверждении Общих правил плавания и стоянки судов в морских портах Российской Федерации и на подходах к ним\" (ред. от 23.12.2025), consolidated text",
+      "ref": "Points 1, 38, 39, 39(1), 40, 41, 43, 45, 54",
+      "date": "2025-12-23",
+      "url": "https://legalacts.ru/doc/prikaz-mintransa-rossii-ot-12112021-n-395-ob-utverzhdenii/",
+      "primary": true
+    },
+    {
+      "title": "Приказ Минтранса России от 12.11.2021 № 395, official publication",
+      "ref": "Registered by Minjust 01.06.2022 № 68677; in force 01.09.2022, valid until 01.09.2028",
+      "date": "2021-11-12",
+      "url": "http://publication.pravo.gov.ru/document/0001202206010040",
+      "primary": true
+    },
+    {
+      "title": "Приказ Минтранса России от 23.12.2025 № 456 (amendments to the General Rules, adds p. 39(1))",
+      "ref": "Official PDF, registered by Minjust 05.02.2026 № 85246; in force 10 days after publication of 06.02.2026",
+      "date": "2025-12-23",
+      "url": "http://publication.pravo.gov.ru/document/0001202602060015",
+      "primary": true
+    },
+    {
+      "title": "Обязательные постановления в морском порту Восточный (Приказ Минтранса от 11.01.2011 № 10, ред. от 13.02.2026)",
+      "ref": "p. 22 (portcall.marinet.ru)",
+      "date": "2026-02-13",
+      "url": "https://legalacts.ru/doc/prikaz-mintransa-rf-ot-11012011-n-10/",
+      "primary": true
+    },
+    {
+      "title": "Обязательные постановления в морском порту Владивосток (Приказ Минтранса от 02.07.2013 № 229, ред. от 20.08.2025)",
+      "ref": "p. 24 (portcall.marinet.ru)",
+      "date": "2025-08-20",
+      "url": "https://legalacts.ru/doc/prikaz-mintransa-rossii-ot-02072013-n-229/",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Consolidated text of the General Rules (ред. от 23.12.2025) read on legalacts.ru; the 23.12.2025 amendment and the order details checked on the official PDF from publication.pravo.gov.ru (scanned pages read by eye). portcall.marinet.ru address read in the port regulations of Vostochny, Vladivostok, Vanino, Prigorodnoye and Petropavlovsk-Kamchatsky.",
+  "confidence": "high",
+  "notes": "Practical: give the agent the full p. 38 data 120 to 72 hours before arrival, confirm 48 to 24 hours before, and send the arrival application within 4 hours of first anchoring or mooring. For a ship coming from a foreign port the earliest possible notice matters, because the FSB may take up to 48 hours to agree the entry (ru-entry-fsb-permission). The old General Rules (Приказ № 140 of 2009, then № 463 of 2017) are replaced; the Vostochny regulations p. 22 still cite \"пунктами 47 - 48, 50 - 51 Общих правил\" of the old 2009 rules, but the times above are the current ones. Each port's own regulations may add more (see the ru-vts-* and ru-port-* records). No 'не менее чем за 72 часа' wording was found in the current Far East port regulations; the 72/120 h and 48-24 h windows come from the General Rules. The General Rules are valid until 01.09.2028."
+}

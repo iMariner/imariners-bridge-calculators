@@ -1,0 +1,172 @@
+{
+  "id": "imo-bonifrep",
+  "system": "BONIFREP",
+  "title": "BONIFREP Strait of Bonifacio",
+  "country": "France / Italy",
+  "authority": "Bonifacio Traffic: Pertusato Naval Signal Station (Corsica, France) and La Maddalena Coast Guard Station (Sardinia, Italy)",
+  "kind": "mandatory-imo",
+  "resolution": "MSC.73(69) Annex 2",
+  "status": "in effect",
+  "effective": "1998-12-01",
+  "applies_to": "Ships of 300 gross tonnage and over.",
+  "applies_quote": "Ships of 300 gross tonnage and over are required to participate in the system.",
+  "when": [
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Ships shall transmit their reports on entering the precautionary areas defined in the documents about routeing measures in the Strait of Bonifacio, or when passing the following lines: - East Bound: A line linking the beacon of Cap De Fano in Corsica to Point 41° 19'.18 N 009° 06'.51 E (West end of the North limit of the two way route). A line linking the beacon of Capo Testa in Sardinia to Point 41° 16'.75 N 009° 06'.18 E (West end of the South limit of the two way route)."
+    },
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "- West Bound: A line linking Pointe De Rondinara in Corsica to Point 41° 22'.55 N 009° 22'.38 E (East end of the North limit of the two way route). A line linking Punta Galera in Sardinia to Point 41° 21'.58 N 009° 23'.30 E (East end of the South limit of the two way route)."
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 10",
+      "to": "Bonifacio Traffic",
+      "note": "Primary, voice. MSC.73(69) Annex 2 para 5.1: \"Ship reports shall be transmitted by voice on VHF channel 10, back up VHF channel 16, both permanently watched by the station.\" Appendix para 4 says the same. MEPC.204(62) (2011, Bonifacio PSSA) also tells ships to call \"Bonifacio Traffic\" on VHF 10."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 16",
+      "to": "Bonifacio Traffic",
+      "note": "Back up, when channel 10 is not possible (MSC.73(69) Annex 2 para 5.1 and Appendix para 4)."
+    }
+  ],
+  "addressee": "BONIFACIO TRAFFIC",
+  "heading": null,
+  "lines": [
+    {
+      "l": "A",
+      "req": "required",
+      "text": "Name + call sign + IMO number"
+    },
+    {
+      "l": "C or D",
+      "req": "required",
+      "text": "Time and Position"
+    },
+    {
+      "l": "E and F",
+      "req": "required",
+      "text": "Course and speed"
+    },
+    {
+      "l": "O",
+      "req": "required",
+      "text": "Draught"
+    },
+    {
+      "l": "P",
+      "req": "if-applicable",
+      "text": "Cargo (in case of transport of oil products, hazardous or pollution substances)"
+    },
+    {
+      "l": "Q",
+      "req": "if-applicable",
+      "text": "Defect or damage (if relevant)"
+    },
+    {
+      "l": "P",
+      "req": "if-applicable",
+      "text": "Polluting/dangerous goods lost overboard (if relevant)"
+    }
+  ],
+  "format_note": "Name of system BONIFREP. Voice report on VHF, letters as in resolution A.851(20) (Appendix para 2). \"The language used shall be English or languages indicated in nautical publications.\" The table lists P twice: cargo, and goods lost overboard. \"In the event of defect, pollution or goods lost overboard, additional information may be requested.\" Information of commercial confidentiality may be sent by non-verbal means; the fax number was to be published in nautical documents (not given in the resolution).",
+  "area": {
+    "shape": "circle",
+    "points": [
+      {
+        "n": "EB-N",
+        "name": "East bound reporting line from the beacon of Cap De Fano (Corsica): sea end, West end of the North limit of the two way route",
+        "lat": "41 19.18N",
+        "lon": "009 06.51E",
+        "inferred": false
+      },
+      {
+        "n": "EB-S",
+        "name": "East bound reporting line from the beacon of Capo Testa (Sardinia): sea end, West end of the South limit of the two way route",
+        "lat": "41 16.75N",
+        "lon": "009 06.18E",
+        "inferred": false
+      },
+      {
+        "n": "WB-N",
+        "name": "West bound reporting line from Pointe De Rondinara (Corsica): sea end, East end of the North limit of the two way route",
+        "lat": "41 22.55N",
+        "lon": "009 22.38E",
+        "inferred": false
+      },
+      {
+        "n": "WB-S",
+        "name": "West bound reporting line from Punta Galera (Sardinia): sea end, East end of the South limit of the two way route",
+        "lat": "41 21.58N",
+        "lon": "009 23.30E",
+        "inferred": false
+      }
+    ],
+    "lines": [],
+    "center": {
+      "name": "Bonifacio (town), position not printed",
+      "lat": "41 23.3N",
+      "lon": "009 09.6E",
+      "inferred": true
+    },
+    "radius_nm": 20,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 41.3,
+      "lon": 9.15
+    },
+    "bbox": [
+      8.7,
+      41.05,
+      9.62,
+      41.72
+    ]
+  },
+  "area_quote": "The reporting system covers a circular area with a radius of 20 (twenty) nautical miles centred on Bonifacio. The reference chart is the French Chart No.7024 of the SHOM (Hydrographic and Oceanographic Service of the French Navy) International chart No.3350.",
+  "sources": [
+    {
+      "title": "IMO MSC.73(69) Mandatory ship reporting systems, Annex 2 (Strait of Bonifacio) and its Appendix (Summary)",
+      "ref": "Annex 2 paras 1, 2, 3.1, 3.2, 5, 6 and Appendix",
+      "date": "1998-05-19",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.73(69).pdf",
+      "primary": true
+    },
+    {
+      "title": "IMO MEPC.204(62) Designation of the Strait of Bonifacio as a PSSA",
+      "ref": "Annex, Recommendation on navigation through the Strait of Bonifacio, paras 2, 3.2 and 3.3",
+      "date": "2011-07-15",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MEPCDocuments/MEPC.204(62).pdf",
+      "primary": true
+    },
+    {
+      "title": "IMO Index of MSC resolutions (pages MSC 1997-99 to MSC 2026-27), checked for amendments",
+      "ref": "no amendment to the Bonifacio system listed",
+      "date": "2026-10-26",
+      "url": "https://www.imo.org/en/KnowledgeCentre/IndexofIMOResolutions/Pages/MSC-1997-99.aspx",
+      "primary": false
+    },
+    {
+      "title": "Transportstyrelsen (Sweden), draft TSFS 2026 annex 10, list of mandatory SRS",
+      "ref": "lists BONIFREP under MSC.73(69) only",
+      "date": "2026",
+      "url": "https://www.transportstyrelsen.se/globalassets/global/regler/remisser/sjofart/tsf-2026-145-sjotrafiktjanst-srs-och-vts/andring-tsfs-2026-60-med-bilaga-10-och-11.pdf",
+      "primary": false
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Text extracted from the IMO PDF of MSC.73(69) (pdftotext). Every coordinate digit checked against the rendered PDF pages 14 and 16 (annex pages 13 and 15) at 120 dpi; the report letters checked against page 17 (annex page 16); categories and area against page 13 (annex page 12). Amendments: the IMO index pages of MSC resolutions from 1997-99 to 2026-27 (read 2026-10-26) list no amendment of BONIFREP; the Swedish 2026 SRS list also cites only MSC.73(69). The VHF call and channel 10 are repeated in IMO MEPC.204(62) (2011). I found no current French (premar-mediterranee.gouv.fr) or Italian (guardiacostiera.gov.it) web page on BONIFREP to confirm the channels today. The circle centre is not printed and was taken as Bonifacio town (inferred).",
+  "confidence": "medium",
+  "notes": "Area: the resolution only says \"a circular area with a radius of 20 (twenty) nautical miles centred on Bonifacio\"; it prints no centre position. The centre here (41 23.3N 009 09.6E, Bonifacio town) is an assumption (inferred), so the circle edge is approximate. The report itself is tied to the reporting lines and the precautionary areas at each end of the two way route, not to the circle. The four points given are the sea ends of the reporting lines as printed; the land ends are beacons (Cap De Fano, Capo Testa, Pointe De Rondinara, Punta Galera) whose positions are not printed, so they are not given. IMO A.766(18) still asks flag States to prohibit or strongly discourage transit by laden oil tankers and ships carrying dangerous chemicals or substances in bulk; French and Italian flag ships carrying oil or hazardous goods are banned from the Strait (MSC.73(69) para 6.4). Since 2011 the Strait is a PSSA (MEPC.204(62)): pilotage is recommended for those ships; vessels ordering a pilot confirm ETA 2 hours before arrival by calling \"Bonifacio Traffic\" on VHF 10; pilot boarding positions (WGS 84) 41° 24'.80 N 009° 30'.00 E (east) and 41° 17'.28 N 008° 58'.50 E (west). French national rules (Prefet maritime arrete n° 84/98, amended by 56/2003, and the older arrete n° 23/83 with a 6 hour notice for hazardous cargo entering French territorial waters, as described in MSC.73(69) para 6.3) are national and not covered here; see the SURNAV records. The 1998 text says an IMO circular could give another back up channel after 1 February 1999; I found none. Not confirmed on a current French or Italian official web page."
+}

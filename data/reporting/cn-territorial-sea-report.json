@@ -1,0 +1,136 @@
+{
+  "id": "cn-territorial-sea-report",
+  "system": "China territorial sea entry report (MSA Announcement No. 7 of 2021)",
+  "title": "Report by foreign ships entering the territorial sea of China",
+  "country": "China",
+  "authority": "Maritime Safety Administration of the People's Republic of China (reports received by Shanghai MSA)",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": "2021-09-01",
+  "applies_to": "Foreign ships entering the Chinese territorial sea that are: submersibles; nuclear powered; carrying radioactive materials; carrying bulk oil, chemicals, liquefied gas or other toxic and harmful substances; or other ships named by law, regulation or the State Council. A foreign crude oil tanker (laden; the text says carrying bulk oil) must report.",
+  "applies_quote": "适用于下列进入中华人民共和国领海的外国籍船舶:（一）潜水器；（二）核动力船舶；（三）载运放射性物质的船舶；（四）载运散装的油类、化学品、液化气体等有毒、有害物质的船舶；（五）法律、行政法规或国务院规定的可能危及中华人民共和国海上交通安全的其他船舶。",
+  "when": [
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "When entering the territorial sea of China, report: 1 name, call sign, IMO number, MMSI; 2 report date and time and present position; 3 last port, departure date and time; 4 next port, ETA date and time; 5 ship's satellite phone number; 6 dangerous cargo: proper name, UN number (NA if none), pollution category (NA if not applicable), quantity in tonnes. (船舶进入中华人民共和国领海时，应当报告以下内容 ...)"
+    },
+    {
+      "event": "position",
+      "hours_before": null,
+      "interval_h": 2,
+      "report": null,
+      "text": "After entering: no more reports while the AIS works properly. If the AIS does not work properly, report every 2 hours until the ship finally leaves the Chinese territorial sea on this voyage: name, call sign, IMO number, MMSI; date, time and position; intended course and average speed. (如船舶自动识别系统设备无法正常使用 ... 其后每2小时应报告以下内容，直到本航次最终驶离中华人民共和国领海)"
+    }
+  ],
+  "how": [
+    {
+      "type": "web",
+      "value": "https://www.sh.msa.gov.cn/chnshiprep",
+      "to": "China MSA (Shanghai MSA reporting page)",
+      "note": "any one channel is enough; the ship or its agent may report"
+    },
+    {
+      "type": "email",
+      "value": "chnshiprep@shmsa.gov.cn",
+      "to": "China MSA",
+      "note": null
+    },
+    {
+      "type": "fax",
+      "value": "+86-21-66072764",
+      "to": "China MSA",
+      "note": null
+    },
+    {
+      "type": "phone",
+      "value": "+86-21-65089469",
+      "to": "China MSA",
+      "note": null
+    }
+  ],
+  "addressee": null,
+  "heading": null,
+  "lines": [
+    {
+      "l": "A",
+      "req": "required",
+      "text": "Ship's name, call sign, IMO number, MMSI. Format: SPRING/DFPH2/9365788/218846000//"
+    },
+    {
+      "l": "B",
+      "req": "required",
+      "text": "Report date and time, and C: present position. Format: 202108/211450UTC/2933N/12312E//"
+    },
+    {
+      "l": "G",
+      "req": "required",
+      "text": "Last port, departure date and time. Format: SINGAPORE/202108/112150UTC//"
+    },
+    {
+      "l": "I",
+      "req": "required",
+      "text": "Next port, ETA date and time. Format: SHANGHAI/202108/251830UTC//"
+    },
+    {
+      "l": "X",
+      "req": "required",
+      "text": "Ship's satellite phone number. Format: 00870773156389//"
+    },
+    {
+      "l": "P",
+      "req": "required",
+      "text": "Dangerous cargo: proper name, UN number (NA if none), pollution category (NA if not applicable), quantity in tonnes. Format: BENZENE/1114/Y/50000// (the web form example: Petroleum crude oil/32003/X/50000//)"
+    },
+    {
+      "l": "E",
+      "req": "if-applicable",
+      "text": "Only in the 2 hourly reports when AIS fails: intended course and average speed. Format: COG296/SOG125//"
+    }
+  ],
+  "format_note": "The notice uses its own numbered items, not A.851 letters; the letters here only show the nearest A.851 line. Each item ends with //. Write NA for any item that does not apply. The web form asks also for the declarant, company and e-mail.",
+  "area": {
+    "shape": "territorial-sea",
+    "points": [],
+    "lines": [],
+    "center": null,
+    "radius_nm": null,
+    "state": "China",
+    "zone": "Territorial sea of the People's Republic of China (12 NM from the baselines). The Bohai Sea and other waters inside the baselines are internal waters (see cn-internal-waters-emergency and cn-port-entry).",
+    "ports": [],
+    "inside_hint": {
+      "lat": 37.5,
+      "lon": 122.8
+    },
+    "bbox": [
+      105.0,
+      17.0,
+      125.0,
+      41.0
+    ]
+  },
+  "area_quote": "外国籍船舶进入中华人民共和国领海应当向海事管理机构报告。",
+  "sources": [
+    {
+      "title": "中华人民共和国海事局关于外国籍船舶进入中华人民共和国领海报告要求的公告 (MSA Announcement No. 7 of 2021), Chinese and English text",
+      "ref": "Parts 1 to 3",
+      "date": "2021-08-27",
+      "url": "https://www.msa.gov.cn/html/cnmsa/xxgk/article/2021/f56a3bca7aa94e128d3d2dce3f8babc9.html",
+      "primary": true
+    },
+    {
+      "title": "China MSA reporting web form (外国籍船舶进入中华人民共和国领海报告)",
+      "ref": "form and instructions",
+      "date": "2026-10-26",
+      "url": "https://www.sh.msa.gov.cn/chnshiprep",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Text read on the China MSA page (Chinese and official English, 2021-08-27); channels and examples checked again on the live web form on 2026-10-26 (same email, fax, phone).",
+  "confidence": "high",
+  "notes": "Legal basis: Maritime Traffic Safety Law 2021. No time ahead is set: the report is made when entering the territorial sea; agents often send it shortly before. The notice gives no exemption for ballast tankers; a tanker in ballast with residues may be treated as carrying oil, so report anyway (assumption, not in the text). Does not replace the VTS reports, the port entry permission or the dangerous cargo declaration (cn-port-entry). China also claims waters such as the Bohai Sea as internal waters, closed by straight baselines across the Bohai Strait (not checked here)."
+}

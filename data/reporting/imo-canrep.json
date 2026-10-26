@@ -1,0 +1,313 @@
+{
+  "id": "imo-canrep",
+  "system": "CANREP",
+  "title": "CANREP Canary Islands",
+  "country": "Spain",
+  "authority": "MRCC Las Palmas and MRCC Tenerife (Salvamento Maritimo)",
+  "kind": "mandatory-imo",
+  "resolution": "MSC.213(81)",
+  "status": "in effect",
+  "effective": "2006-12-01",
+  "applies_to": "Tankers of 600 tonnes deadweight and upwards carrying heavy crude oil, heavy fuel oil, or bitumen and tar and their emulsions, whether transiting, going to or from Canarian ports, or sailing between the islands.",
+  "applies_quote": "1.1 Ships required to take part in the CANREP system: Tankers of 600 tonnes deadweight and upwards, either transiting the Canary Islands or sailing to or from Canarian ports or involved in inter-island navigation, carrying the following: .1 heavy-grade crude oils with a density greater than 900 kg/m³ at 15°C; .2 heavy fuel oils with a density greater than 900 kg/m³ at 15°C or kinematic viscosity greater than 180 mm²/s at 50°C; and .3 bitumen, coal tar and their emulsions.",
+  "when": [
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "SP",
+      "text": "3.3.1 Ships must submit a report: .1 on entering the reporting area as defined in paragraph 2. Appendix 2, para 7: The sailing plan (SP) is sent as an initial report: (a) When entering the reporting area, as defined in paragraph 2.1."
+    },
+    {
+      "event": "departure",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "SP",
+      "text": ".2 immediately after leaving a port, terminal or anchorage situated in the reporting area. Appendix 2, para 7: (b) On leaving the last port of call located in the reporting area."
+    },
+    {
+      "event": "deviation",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "DR",
+      "text": ".3 when deviating from the route leading to the originally declared destination, port, terminal, anchorage or position \"for orders\" given on entry into the reporting area"
+    },
+    {
+      "event": "deviation",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "DR",
+      "text": ".4 when it is necessary to deviate from the planned route owing to weather conditions, damaged equipment or a change in navigational status"
+    },
+    {
+      "event": "exit",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "FR",
+      "text": ".5 on finally leaving the reporting area. Appendix 2, para 8: The final report (FR) is sent: (a) When leaving the reporting area."
+    },
+    {
+      "event": "arrival",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "FR",
+      "text": "Appendix 2, para 8: The final report (FR) is sent: (b) On arrival at a port of destination located in the reporting area."
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "3.3.2 Ships are not required to send a report if, during normal sailing through the reporting area, they cross the area's boundary on other occasions apart from initial entry or final departure."
+    }
+  ],
+  "how": [
+    {
+      "type": "email",
+      "value": "canrep.laspalmas@sasemar.es",
+      "to": "MRCC Las Palmas",
+      "note": "Ships entering east of 015 30W report to Las Palmas (para 3.4.1). MSC.213(81) Appendix 1. Not reconfirmed on a current Salvamento Maritimo page."
+    },
+    {
+      "type": "email",
+      "value": "canrep.tenerife@sasemar.es",
+      "to": "MRCC Tenerife",
+      "note": "Ships entering west of 015 30W report to Tenerife (para 3.4.1). MSC.213(81) Appendix 1. Not reconfirmed on a current Salvamento Maritimo page."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 16",
+      "to": "MRCC Las Palmas / MRCC Tenerife",
+      "note": "MSC.213(81) Appendix 1: \"VHF channels: 16 and 70\" for each MRCC (CH 70 is DSC)."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 70",
+      "to": "MRCC Las Palmas / MRCC Tenerife",
+      "note": "MSC.213(81) Appendix 1 (VHF DSC channel)."
+    },
+    {
+      "type": "mf",
+      "value": "2182",
+      "to": "MRCC Las Palmas / MRCC Tenerife",
+      "note": "MSC.213(81) Appendix 1: \"MF channels: 2182\". Appendix 1 also lists AIS."
+    },
+    {
+      "type": "phone",
+      "value": "+34 900 202 112.",
+      "to": "MRCC Las Palmas",
+      "note": "As printed in MSC.213(81) Appendix 1 (with the full stop). Not found on the current Salvamento Maritimo pages; the web page 'Contacto CCS y BEC' (read 2026-10-26) gives CCS Las Palmas 928 467 965 (office hours 08:00 to 15:00) and the Salvamento Maritimo emergency number is 900 202 202."
+    },
+    {
+      "type": "phone",
+      "value": "+34 900 202 111.",
+      "to": "MRCC Tenerife",
+      "note": "As printed in MSC.213(81) Appendix 1 (with the full stop). Not found on the current Salvamento Maritimo pages; the web page gives CCS Tenerife 922 597 552 (office hours 08:00 to 15:00)."
+    }
+  ],
+  "addressee": "MRCC Las Palmas (entry east of 015 30W) or MRCC Tenerife (entry west of 015 30W)",
+  "heading": "CANREP - SP / CANREP - FR / CANREP - DR",
+  "lines": [
+    {
+      "l": "A",
+      "req": "required",
+      "text": "Ship: Name and call sign (Name of ship, call sign, IMO No. and MMSI No.), (e.g., NONESUCH/KTOI)"
+    },
+    {
+      "l": "B",
+      "req": "required",
+      "text": "Date and time corresponding to position at C, expressed as UTC: A six-digit group followed by a Z. The first two digits indicate day of the month, the second two the hours and the last two the minutes. The Z indicates that the time is given in UTC (e.g., 081340Z)."
+    },
+    {
+      "l": "C",
+      "req": "required",
+      "text": "Position (latitude and longitude): A 4-digit group giving latitude in degrees and minutes, with the suffix N, and a 5-digit group giving longitude in degrees and minutes, with the suffix W (e.g., 2836N or 01545W)."
+    },
+    {
+      "l": "E",
+      "req": "required",
+      "text": "Course: True course. A 3-digit group (e.g., 210)."
+    },
+    {
+      "l": "F",
+      "req": "required",
+      "text": "Speed: Speed in knots. A 2-digit group (e.g.,14)."
+    },
+    {
+      "l": "G",
+      "req": "required",
+      "text": "Name of last port of call: Name of the last port of call (e.g., Strait of Gibraltar)"
+    },
+    {
+      "l": "I",
+      "req": "required",
+      "text": "Destination and ETA (UTC): Name of destination and date and time group as expressed in B (e.g., Cape Town 181400Z)"
+    },
+    {
+      "l": "P",
+      "req": "required",
+      "text": "Cargo: Type(s) of cargo, and quantity and IMO classification if carrying potentially dangerous goods."
+    },
+    {
+      "l": "Q",
+      "req": "if-applicable",
+      "text": "Defects, damage, deficiencies, limitations: Brief details of defects, including damage, deficiencies and other circumstances that impair normal navigation."
+    },
+    {
+      "l": "T",
+      "req": "required",
+      "text": "Address for the communication of cargo information: Name, tel No. and fax, e-mail or URL."
+    },
+    {
+      "l": "W",
+      "req": "required",
+      "text": "Total number of people on board: State number"
+    },
+    {
+      "l": "X",
+      "req": "required",
+      "text": "Miscellaneous: Miscellaneous information concerning those tankers: Characteristics and approximate quantity of bunker fuel for tankers carrying an amount of it greater than 5,000 tonnes. Navigational status (e.g., moving under own propulsion, at anchor, no steering, limited manoeuvrability, depth restriction, moored, aground, etc.)"
+    }
+  ],
+  "format_note": "Every report begins with the word CANREP and a two-letter type: SP (sailing plan), FR (final report), DR (deviation report). Messages with this prefix are free of charge and treated as URGENT. Compulsory lines (Appendix 2, para 6): SP: A, B, C, E, F, G, I, P, T, W and X. FR: A, B, C, E and F. DR: A, B, C, E, F and I. Q is added whenever a problem arises that affects normal navigation. The req values above are for the sailing plan. Format follows resolution A.851(20). Note: in the source, the deviation report example is headed \"CANREP - FR\"; it is a misprint for DR (para 9). Report on exit to the same MRCC as on entry (para 3.4.2).",
+  "area": {
+    "shape": "polygon",
+    "points": [
+      {
+        "n": "A",
+        "lat": "28 56N",
+        "lon": "018 13W",
+        "inferred": false
+      },
+      {
+        "n": "B",
+        "lat": "29 04N",
+        "lon": "017 47W",
+        "inferred": false
+      },
+      {
+        "n": "C",
+        "lat": "28 48N",
+        "lon": "016 04W",
+        "inferred": false
+      },
+      {
+        "n": "D",
+        "lat": "28 22N",
+        "lon": "015 19W",
+        "inferred": false
+      },
+      {
+        "n": "E",
+        "lat": "28 19N",
+        "lon": "014 36W",
+        "inferred": false
+      },
+      {
+        "n": "F",
+        "lat": "29 37N",
+        "lon": "013 39W",
+        "inferred": false
+      },
+      {
+        "n": "G",
+        "lat": "29 37N",
+        "lon": "013 19W",
+        "inferred": false
+      },
+      {
+        "n": "H",
+        "lat": "29 17N",
+        "lon": "013 06W",
+        "inferred": false
+      },
+      {
+        "n": "I",
+        "lat": "27 57N",
+        "lon": "013 48W",
+        "inferred": false
+      },
+      {
+        "n": "J",
+        "lat": "27 32N",
+        "lon": "015 35W",
+        "inferred": false
+      },
+      {
+        "n": "K",
+        "lat": "27 48N",
+        "lon": "016 45W",
+        "inferred": false
+      },
+      {
+        "n": "L",
+        "lat": "27 48N",
+        "lon": "017 11W",
+        "inferred": false
+      },
+      {
+        "n": "M",
+        "lat": "27 23N",
+        "lon": "017 58W",
+        "inferred": false
+      },
+      {
+        "n": "N",
+        "lat": "27 36N",
+        "lon": "018 25W",
+        "inferred": false
+      }
+    ],
+    "lines": [],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 28.2,
+      "lon": -15.95
+    },
+    "bbox": [
+      -18.6,
+      27.2,
+      -12.9,
+      29.8
+    ]
+  },
+  "area_quote": "2.1 The proposed maritime area is bounded by a polygonal line connecting points along the outer limit of the territorial sea (12 nautical miles) that surrounds the archipelago, and having the following inflection points (see chartlet in appendix 3): A 28º 56' N 018º 13' W, B 29º 04' N 017º 47' W, C 28º 48' N 016º 04' W, D 28º 22' N 015º 19' W, E 28º 19' N 014º 36' W, F 29º 37' N 013º 39' W, G 29º 37' N 013º 19' W, H 29º 17' N 013º 06' W, I 27º 57' N 013º 48' W, J 27º 32' N 015º 35' W, K 27º 48' N 016º 45' W, L 27º 48' N 017º 11' W, M 27º 23' N 017º 58' W, N 27º 36' N 018º 25' W. 2.2 The reference chart is No.209 of the Spanish Navy Hydrographical Institute (WGS 84 Datum).",
+  "sources": [
+    {
+      "title": "IMO MSC.213(81) Mandatory ship reporting system for the Canary Islands",
+      "ref": "Annex 1, paras 1 to 8, Appendices 1 to 3; Annex 2 summary (MSC 81/25/Add.2 Annex 29)",
+      "date": "2006-05-12",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.213(81).pdf",
+      "primary": true
+    },
+    {
+      "title": "Salvamento Maritimo: Dispositivos de separacion de trafico",
+      "ref": "general section (mandatory reporting in the Canary Islands PSSA since 1 December 2006)",
+      "date": "2026-10-26",
+      "url": "https://www.salvamentomaritimo.es/mejora-tu-seguridad/control-y-servicios-en-la-mar/dispositivos-de-separacion-de-trafico",
+      "primary": false
+    },
+    {
+      "title": "Salvamento Maritimo: Contacto CCS y BEC",
+      "ref": "Las Palmas, Tenerife",
+      "date": "2026-10-26",
+      "url": "https://www.salvamentomaritimo.es/conocenos/nuestra-empresa/contacto-ccs-y-bec",
+      "primary": false
+    },
+    {
+      "title": "Salvamento Maritimo: Contacto",
+      "ref": "emergency numbers",
+      "date": "2026-10-26",
+      "url": "https://www.salvamentomaritimo.es/conocenos/nuestra-empresa/contacto",
+      "primary": false
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "All 14 points: MSC.213(81) Annex 1 page 2 rendered at 120 dpi and every digit read against the extracted text (whole minutes, WGS 84). Order A to N checked against the Appendix 3 chartlet (rendered): the ring runs A, B, C, D, E north of the western islands, up to F, G, H north and east of Lanzarote, then I, J, K, L, M, N south of the islands, and closes from N back to A west of La Palma. Contacts, report rules and lines: Appendix 1 and Appendix 2 pages rendered and read. Salvamento Maritimo pages read 2026-10-26: they confirm mandatory reporting at entry and exit of the Canary Islands area since 1 December 2006, but do not show the CANREP email addresses or the 900 202 111 / 112 numbers.",
+  "confidence": "medium",
+  "notes": "Only tankers of 600 dwt and over with heavy crude, heavy fuel oil, bitumen or tar must report; other ships are not in this system. Which MRCC: entry east of 015 30W, Las Palmas; entry west of 015 30W, Tenerife; the exit report goes to the same MRCC as the entry report. The polygon follows the outer limit of the 12 NM territorial sea in straight lines between the printed points; the closing side N to A is drawn on the chartlet, not listed separately. Contact details are as printed in 2006 and could not be confirmed on a current Salvamento Maritimo page. Later amendments: none found. Checked the Swedish Transport Agency list of IMO ship reporting systems (2017), the NCSR 12 report to MSC (NCSR 12/20/Add.1, 2025), the MSC 111 summary (May 2026: only ADRIREP, SOUNDREP, BELTREP were adopted) and the NCSR 13 draft report (NCSR 13/WP.1/Rev.1: proposals only for TRANSREP, BONIFREP, WETREP, CALDOVREP). An EU proposal at NCSR 12 to add insurance certificate lines to about ten European systems is still being handled at IMO; if it reaches this system the report lines will change."
+}

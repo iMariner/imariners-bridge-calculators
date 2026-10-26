@@ -1,0 +1,258 @@
+{
+  "id": "cn-rep-panjin",
+  "system": "China ship reporting",
+  "title": "Panjin MSA ship reporting area (Panjin port)",
+  "country": "China",
+  "authority": "Panjin MSA (盘锦海事局)",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": "2023-02-06",
+  "applies_to": "Foreign ships, Chinese passenger ships and other Chinese ships of 300 GT and over; Chinese ships under 300 GT may report. Military, fishing and sports craft not covered unless stated.",
+  "applies_quote": "本规定适用于外国籍船舶、中国籍客船、中国籍300总吨及以上的其他船舶；中国籍300总吨以下的其他船舶自愿按照本规定进行船舶报告。除另有规定外，军用船舶、渔业船舶和体育运动船艇不适用本规定。",
+  "when": [
+    {
+      "event": "before_arrival",
+      "hours_before": 24,
+      "interval_h": null,
+      "report": null,
+      "text": "Arrival pre-report by the company or agent 24 hours before reaching the reporting area (voyage under 24 hours: on leaving the last port), on www.dpn.com.cn: ship's name, call sign, IMO number, DWT, voyage, last port, port of call, ETA, ETD, arrival draught, cargo. Port operator files the berthing plan, pilot station the pilotage plan, 24 hours before. Changes: at once by www.dpn.com.cn or phone 0427-8800323. (第五条 ... 第八条)"
+    },
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "On entering the reporting area: ship's name, nationality, call sign, position, draught, dimensions, last port, destination, cargo, pilot needed or not, loading or discharging plan, intentions. (第九条)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "20 minutes before entering the Panjin port channel (ship inside the area): ship's name, nationality, call sign, position, draught, intention to enter the channel, intended berth. Ship outside the area: 1 hour before entering the channel (or on sailing if less) with the full entry report items. (第十条、第十一条)"
+    },
+    {
+      "event": "arrival",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "On arrival at the berth: ship's name, call sign, berthing time. (第十二条)"
+    },
+    {
+      "event": "departure",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Before leaving the berth: ship's name, call sign, planned time of unberthing, destination. Before leaving the channel: ship's name, call sign, draught, position. (第十三条、第十四条)"
+    },
+    {
+      "event": "exit",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "On leaving the reporting area: ship's name, call sign, position. (第十五条)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Pilot boarding and leaving: ship's name, time, place, pilot's name or number. Before and after: dismantling main engine, steering gear, windlass, boiler or other equipment that affects manoeuvring; engine or sea trials; STS or coming alongside in an anchorage; making fast or casting off a tow. (第十六条、第十七条)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Accident, emergency, aids to navigation moved or lost, obstructions: at once by all means. (第十八条)"
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 09",
+      "to": "盘锦海事局 (Panjin MSA)",
+      "note": "report channel; call name '盘锦海事局'; keep watch on CH 09"
+    },
+    {
+      "type": "web",
+      "value": "www.dpn.com.cn",
+      "to": "盘锦海事局 (Panjin MSA)",
+      "note": "24 h pre-report by company or agent"
+    },
+    {
+      "type": "phone",
+      "value": "0427-8800323",
+      "to": "盘锦海事局 (Panjin MSA)",
+      "note": "change reports; from abroad +86 427 8800323"
+    }
+  ],
+  "addressee": "盘锦海事局",
+  "heading": null,
+  "lines": [
+    {
+      "l": "A",
+      "req": "required",
+      "text": "Ship's name, nationality, call sign (船名、国籍、呼号（如有）)"
+    },
+    {
+      "l": "C",
+      "req": "required",
+      "text": "Position (船位)"
+    },
+    {
+      "l": "O",
+      "req": "required",
+      "text": "Draught (吃水)"
+    },
+    {
+      "l": "U",
+      "req": "required",
+      "text": "Ship's dimensions (船舶尺度)"
+    },
+    {
+      "l": "G",
+      "req": "required",
+      "text": "Last port (出发港)"
+    },
+    {
+      "l": "I",
+      "req": "required",
+      "text": "Destination (目的港)"
+    },
+    {
+      "l": "P",
+      "req": "required",
+      "text": "Cargo (载货情况)"
+    },
+    {
+      "l": "X",
+      "req": "required",
+      "text": "Pilot needed or not, loading or discharging plan, intentions (是否需要引航员、装(卸)计划、航行意图等)"
+    }
+  ],
+  "format_note": "Voice reports on VHF CH 09, short and clear, in Mandarin Chinese or English (art. 19). Letters follow A.851 order for convenience; the source has no letters.",
+  "area": {
+    "shape": "lines",
+    "points": [
+      {
+        "n": "A",
+        "lat": "40 40 50.17N",
+        "lon": "122 08 58.22E",
+        "inferred": false
+      },
+      {
+        "n": "B",
+        "lat": "40 39 08.48N",
+        "lon": "122 08 59.51E",
+        "inferred": false
+      },
+      {
+        "n": "C",
+        "lat": "40 39 07.23N",
+        "lon": "122 06 13.97E",
+        "inferred": false
+      },
+      {
+        "n": "D",
+        "lat": "40 34 38.02N",
+        "lon": "121 59 05.92E",
+        "inferred": false
+      },
+      {
+        "n": "E",
+        "lat": "40 32 53.28N",
+        "lon": "121 59 08.08E",
+        "inferred": false
+      },
+      {
+        "n": "F",
+        "lat": "40 32 51.95N",
+        "lon": "121 56 39.91E",
+        "inferred": false
+      },
+      {
+        "n": "G",
+        "lat": "40 25 23.54N",
+        "lon": "121 56 46.93E",
+        "inferred": false
+      },
+      {
+        "n": "H",
+        "lat": "40 25 06.96N",
+        "lon": "121 31 52.74E",
+        "inferred": false
+      },
+      {
+        "n": "I",
+        "lat": "40 36 00.67N",
+        "lon": "121 31 53.03E",
+        "inferred": false
+      },
+      {
+        "n": "J",
+        "lat": "40 50 03.27N",
+        "lon": "121 31 34.48E",
+        "inferred": false
+      },
+      {
+        "n": "K",
+        "lat": "40 52 36.87N",
+        "lon": "121 34 15.77E",
+        "inferred": false
+      }
+    ],
+    "lines": [
+      [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K"
+      ]
+    ],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 40.55,
+      "lon": 121.75
+    },
+    "bbox": [
+      121.45,
+      40.35,
+      122.25,
+      40.95
+    ]
+  },
+  "area_quote": "盘锦海事局船舶报告区域是指以下十一点顺序连线与岸线所围区域：A、40°40′50.17″N，122°08′58.22″E；B、40°39′08.48″N，122°08′59.51″E；C、40°39′07.23″N，122°06′13.97″E；D、40°34′38.02″N，121°59′05.92″E；E、40°32′53.28″N，121°59′08.08″E；F、40°32′51.95″N，121°56′39.91″E；G、40°25′23.54″N，121°56′46.93″E；H、40°25′06.96″N，121°31′52.74″E；I、40°36′00.67″N，121°31′53.03″E；J、40°50′03.27″N，121°31′34.48″E；K、40°52′36.87″N，121°34′15.77″E。",
+  "sources": [
+    {
+      "title": "盘锦海事局船舶报告制规定, in force 2023-02-06, valid 5 years",
+      "ref": "Art. 2, 4-19",
+      "date": "2023-02-06",
+      "url": "https://www.mcrrc.top/bmgz/jy/bhhs/zsjfg/lnhsj/1861.html",
+      "primary": false
+    },
+    {
+      "title": "盘锦海事局船舶报告制规定, PDF copy on 54seaman.com",
+      "ref": "Art. 4 (points), 19 (channel), 22",
+      "date": "2023-01-09",
+      "url": "https://img-oss.54seaman.com/Editor/Picture/20230109/c053a38e5537819b5bb1bc0ed1c076b4.pdf",
+      "primary": false
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Full text from the mcrrc.top copy; points, channel and dates checked against a second copy (54seaman.com PDF): identical. Points A-G are shared with the Yingkou VTS report line; I, J, K are shared with the Jinzhou reporting area (its F, G, H).",
+  "confidence": "medium",
+  "notes": "In force 2023-02-06, valid 5 years (to 2028-02-05). Not a VTS: reports go to Panjin MSA. The area lies between the Yingkou VTS area (east and south-east) and the Jinzhou reporting area (west). Panjin port (Rongxing) channel entry rules: 20 minutes before (inside the area) or 1 hour before (outside)."
+}

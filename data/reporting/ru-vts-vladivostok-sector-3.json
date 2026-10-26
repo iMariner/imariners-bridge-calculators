@@ -1,0 +1,242 @@
+{
+  "id": "ru-vts-vladivostok-sector-3",
+  "system": "Vladivostok VTS (СУДС морского порта Владивосток), Sector 3",
+  "title": "Vladivostok Traffic: Sector 3, port of Vladivostok and its approaches in Amur and Ussuri Bays",
+  "country": "Russia",
+  "authority": "VTS of the seaport of Vladivostok, call sign \"Владивосток-Трафик\" (Vladivostok Traffic); harbour master of Vladivostok (FGBU AMP of Primorsky Krai and the Eastern Arctic)",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": "2026-03-01",
+  "applies_to": "All ships in the port of Vladivostok and on its approaches, whatever their flag, except small craft, pleasure craft and sports sailing craft (they get help on request).",
+  "applies_quote": "СУДС выполняет указанные в абзацах одиннадцатом - пятнадцатом настоящего пункта функции в отношении всех судов, за исключением маломерных, прогулочных и спортивных парусных судов ...",
+  "when": [
+    {
+      "event": "before_arrival",
+      "hours_before": 72,
+      "interval_h": null,
+      "report": null,
+      "text": "Arrival and departure information to the harbour master through www.portcall.marinet.ru (p. 24). Times per General Rules: 120 to 72 hours before, confirm 48 to 24 hours before (ru-general-prearrival). The ship is moved only per the daily traffic schedule approved by the harbour master and published on www.pma.ru (p. 28)."
+    },
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "On entering the VTS zone, call Vladivostok Traffic on VHF CH 67 and give the General Rules p. 29 data. Before starting any movement, ask VTS permission (p. 29). Quote: \"Связь СУДС с судами, находящимися в секторе N 3 СУДС, осуществляется на 67 рабочем канале связи ОВЧ.\" (p. 54)."
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Ships under way or at anchor in the port keep a continuous watch on CH 67 (p. 93). Report anchoring, mooring and start of movement to VTS (General Rules p. 33). VTS announces traffic restrictions on CH 16 and 67 and ships must follow VTS instructions (p. 55). Navigation and weather information on CH 67 and 71 (p. 129); daily forecast by VTS at 14.30 local time (p. 131); storm warnings on CH 16 (p. 130). In ice, ships proceeding alone report passing the reporting points set by VTS and the ice on their route (p. 122)."
+    },
+    {
+      "event": "before_arrival",
+      "hours_before": 72,
+      "interval_h": null,
+      "report": null,
+      "text": "Ice period only (icebreaker escort period declared by the harbour master): information on the ship's approach to the convoy forming point (TFK) is sent 72 hours before and confirmed 24 hours before the expected arrival at the TFK, through portcall.marinet.ru (p. 24). Times and order of passage through ice are set by the harbour master for 10.00 each day and published on www.pma.ru. Quote: \"Информация о подходе судна к точке формирования каравана (далее - ТФК) передается за 72 часа и подтверждается за 24 часа до ожидаемого подхода к ТФК\" (p. 114). In the icebreaker period ships enter the port through Ussuri Bay, except ships for the Pervaya Rechka oil base, which arrive at TFK No. 1, 43 02.00N 131 38.50E (pp. 115, 116)."
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 67",
+      "to": "Владивосток-Трафик (Vladivostok Traffic)",
+      "note": "Sector 3 working channel (p. 54); Appendix 4: calling 16, 67, working 67"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 16",
+      "to": "Владивосток-Трафик (Vladivostok Traffic)",
+      "note": "Calling channel (Appendix 4)"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 12",
+      "to": "Владивосток-Порт-Контроль (state port control, harbour master)",
+      "note": "Appendix 4: calling 12, working 12, 67"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 13",
+      "to": "Рослоцман (Rosmorport pilot dispatcher)",
+      "note": "Appendix 4"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 14",
+      "to": "Владивосток-Радио-6 (Portoflot pilot dispatcher)",
+      "note": "Appendix 4"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 30",
+      "to": "Владивосток-Радио-30 (Pervaya Rechka oil base)",
+      "note": "Appendix 4"
+    },
+    {
+      "type": "web",
+      "value": "www.portcall.marinet.ru",
+      "to": "Harbour master of Vladivostok",
+      "note": "Arrival and departure information (p. 24)"
+    }
+  ],
+  "addressee": null,
+  "heading": null,
+  "lines": [
+    {
+      "l": "1",
+      "req": "required",
+      "text": "Ship's name and type"
+    },
+    {
+      "l": "2",
+      "req": "required",
+      "text": "Flag"
+    },
+    {
+      "l": "3",
+      "req": "required",
+      "text": "Port of destination"
+    },
+    {
+      "l": "4",
+      "req": "required",
+      "text": "Maximum present draught and air draught"
+    },
+    {
+      "l": "5",
+      "req": "required",
+      "text": "Kind of cargo, dangerous cargo on board"
+    },
+    {
+      "l": "6",
+      "req": "if-applicable",
+      "text": "Defects of ship equipment and other limits that affect safe navigation"
+    }
+  ],
+  "format_note": "Report items from General Rules p. 29 (on entering a VTS zone).",
+  "area": {
+    "shape": "lines",
+    "points": [
+      {
+        "n": "A1",
+        "name": "мыс Фирсова (Cape Firsova)",
+        "lat": "43 10.4N",
+        "lon": "131 53.8E",
+        "inferred": true
+      },
+      {
+        "n": "A2",
+        "name": "мыс Песчаный (Cape Peschany, Amur Bay)",
+        "lat": "43 10.8N",
+        "lon": "131 46.7E",
+        "inferred": true
+      },
+      {
+        "n": "A3",
+        "name": "мыс Перевозный (Cape Perevozny)",
+        "lat": "43 03.1N",
+        "lon": "131 35.4E",
+        "inferred": true
+      },
+      {
+        "n": "A4",
+        "name": "мыс Васильева (Cape Vasilyeva)",
+        "lat": "43 00.3N",
+        "lon": "131 45.4E",
+        "inferred": true
+      },
+      {
+        "n": "U1",
+        "name": "мыс Трех Камней (Cape Trekh Kamney)",
+        "lat": "43 09.0N",
+        "lon": "132 04.0E",
+        "inferred": true
+      },
+      {
+        "n": "U2",
+        "lat": "43 03.00N",
+        "lon": "132 10.00E",
+        "inferred": false
+      },
+      {
+        "n": "U3",
+        "lat": "42 53.00N",
+        "lon": "131 57.00E",
+        "inferred": false
+      },
+      {
+        "n": "U4",
+        "name": "мыс Тобизина (Cape Tobizina)",
+        "lat": "42 56.7N",
+        "lon": "131 52.2E",
+        "inferred": true
+      }
+    ],
+    "lines": [
+      [
+        "A1",
+        "A2"
+      ],
+      [
+        "A3",
+        "A4"
+      ],
+      [
+        "U1",
+        "U2",
+        "U3",
+        "U4"
+      ]
+    ],
+    "center": null,
+    "radius_nm": null,
+    "state": "Russia",
+    "zone": null,
+    "ports": [
+      "Vladivostok (Golden Horn, Diomid, Ulysses, Paris, Ajax, Patrokl bays, Bosphorus Vostochny, Pervaya Rechka oil piers)"
+    ],
+    "inside_hint": {
+      "lat": 43.05,
+      "lon": 132.0
+    },
+    "bbox": [
+      131.55,
+      42.85,
+      132.2,
+      43.2
+    ]
+  },
+  "area_quote": "Сектор N 3 СУДС включает пролив Босфор-Восточный, бухты Золотой Рог, Диомид, Улисс, Парис, Аякс, Патрокл, северо-западную часть бухты Новик и прилегающие участки в Амурском и Уссурийском заливах и ограничен: в Амурском заливе - линиями, соединяющими мыс Фирсова и мыс Песчаный, мыс Перевозный и мыс Васильева; в Уссурийском заливе - линиями, соединяющими мыс Трех Камней, точку с координатами 43°03,00' северной широты и 132°10,00' восточной долготы, точку с координатами 42°53,00' северной широты и 131°57,00' восточной долготы и мыс Тобизина.",
+  "sources": [
+    {
+      "title": "Обязательные постановления в морском порту Владивосток, Приказ Минтранса России от 02.07.2013 № 229 (ред. от 20.08.2025), consolidated text",
+      "ref": "pp. 24, 28, 29, 39, 53 to 55, 93, 112 to 122, 129 to 131, Appendix 4",
+      "date": "2025-08-20",
+      "url": "https://legalacts.ru/doc/prikaz-mintransa-rossii-ot-02072013-n-229/",
+      "primary": true
+    },
+    {
+      "title": "Приказ Минтранса России от 20.08.2025 № 248 \"О внесении изменений в Обязательные постановления в морском порту Владивосток\" (in force 01.03.2026)",
+      "ref": "Appendix items 14, 18, 22 (new pp. 53 to 55), 37, 41 (new Appendix 4)",
+      "date": "2025-08-20",
+      "url": "http://publication.pravo.gov.ru/document/0001202510140003",
+      "primary": true
+    },
+    {
+      "title": "Same order № 248, text",
+      "ref": "pravo.ppt.ru copy",
+      "date": "2025-08-20",
+      "url": "https://pravo.ppt.ru/prikaz/mintrans/n-248-319371",
+      "primary": false
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Sector text, channels and Appendix 4 read in order № 248 (pravo.ppt.ru text) and in the consolidated regulations on legalacts.ru (ред. от 20.08.2025); both match. Official publication details from publication.pravo.gov.ru search (published 14.10.2025).",
+  "confidence": "medium",
+  "notes": "Only points U2 and U3 have printed coordinates; the capes are named only, and their positions here are from OpenStreetMap (inferred). Check the lines on the Russian chart. Since 01.03.2026 (order № 248) Vladivostok VTS has two sectors: Sector 3 on CH 67 and Sector 1A (Ussuri Bay terminals: Bolshoy Kamen, Telyakovsky, Cape Otkryty) on CH 71, see ru-vts-vladivostok-sector-1a. A ship coming from Kozmino by the outer route passes Sector 1B (Nakhodka Traffic CH 9), then Sector 1A west of 132°28,00'E (Vladivostok Traffic CH 71), then Sector 3 (CH 67). Pilot boarding: from or to Amur Bay at 43 04.65N 131 48.00E or area No. 169; from or to Ussuri Bay at anchorages 175A and 175B or at 43 02.35N 131 57.72E; for the Pervaya Rechka oil piers at 43 07.5N 131 47.00E (in icebreaker season 43 07.00N 131 46.00E) (p. 39). Pilotage is compulsory (p. 18). Speed limit 9 knots in the port waters (p. 38). Ice: rules in pp. 112 to 124 and Appendix 8; ice limits and the TFK position are published on www.pma.ru at least 14 days before they start (p. 118); Polar Code ships with a Polar Ship Certificate are exempt from the ice class limits (p. 118, from 01.03.2026). The order is valid until 01.03.2031. VTS phone and email not in the regulations and not found."
+}

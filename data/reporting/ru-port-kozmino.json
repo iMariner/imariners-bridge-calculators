@@ -1,0 +1,117 @@
+{
+  "id": "ru-port-kozmino",
+  "system": "Port of Vostochny, Kozmino Bay oil terminal",
+  "title": "Kozmino (port of Vostochny): harbour master, VTS and terminal calls for tankers",
+  "country": "Russia",
+  "authority": "Harbour master of the seaport of Vostochny (port control in Kozmino Bay, call sign \"Козьмина-АМП Восточный\"), FGBU AMP of Primorsky Krai and the Eastern Arctic; VTS Находка-Трафик",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": null,
+  "applies_to": "All ships in the port of Vostochny, whatever their flag; the Kozmino rules are for tankers going to or from the oil berths in Kozmino Bay.",
+  "applies_quote": "Настоящие Обязательные постановления подлежат исполнению судами независимо от их национальной и ведомственной принадлежности ...",
+  "when": [
+    {
+      "event": "before_arrival",
+      "hours_before": 72,
+      "interval_h": null,
+      "report": null,
+      "text": "Arrival information to the harbour master through www.portcall.marinet.ru (Vostochny p. 22); times per the General Rules: 120 to 72 hours before, confirm 48 to 24 hours before (see ru-general-prearrival). From a foreign port also FSB agreement (ru-entry-fsb-permission)."
+    },
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Tankers for the Kozmino oil terminal get VTS permission to enter Nakhodka Gulf (CH 13, line Cape Likhacheva to Cape Povorotny, see ru-vts-nakhodka-sector-2). If no berth or anchor place is free, wait for VTS permission to enter Kozmino Bay (p. 57). A tanker in ballast may, with the harbour master's permission, anchor at anchor place A before berthing; it goes to anchor place A without a pilot (p. 64)."
+    },
+    {
+      "event": "arrival",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Kozmino Bay traffic is regulated by the VTS on CH 13 (Находка-Трафик) and by the harbour master on CH 14 (Козьмина-АМП Восточный) (p. 24). Pilot boarding for the Kozmino berths at 42 42.86N 132 57.60E (p. 26). Tankers reduce to minimum steerage speed when approaching the pilot station; after the pilot boards, the tanker turns to starboard with tugs and follows the Cape Kozmina leading line to the turning circle (p. 37). Mooring alongside, bow towards the bay exit, with tugs (pp. 71, 72). The terminal operator tells the harbour master 1 hour before mooring that the berth is ready (p. 67)."
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Radio watch: at the Kozmino berths, continuous watch on CH 14 and CH 29 (p. 98); at anchor in the port, CH 14 and CH 16 (pp. 62, 96). Ships alongside tankers watch CH 14 and 29 and leave at once on the harbour master's order (p. 74). No talk unrelated to safety on CH 13, 14 and 29 (p. 99)."
+    },
+    {
+      "event": "departure",
+      "hours_before": 4,
+      "interval_h": null,
+      "report": null,
+      "text": "Departure application to the harbour master not later than 4 hours before departure (General Rules p. 45). Leaving the berth with pilot and tugs, through the turning circle, then without tugs to the Cape Kozmina leading line, leaving buoy No. 1 (42 43.30N 132 56.26E) to port (p. 42). Pilot disembarks at 42 42.86N 132 57.60E (p. 31). If bunkering or clearance is not finished after loading, the tanker leaves the berth with pilot and goes to anchor place A (p. 66)."
+    }
+  ],
+  "how": [
+    { "type": "web", "value": "www.portcall.marinet.ru", "to": "Harbour master of the port of Vostochny", "note": "Arrival information (p. 22)" },
+    { "type": "vhf", "value": "CH 14", "to": "Козьмина-АМП Восточный (port control in Kozmino Bay)", "note": "Appendix 4: calling and working 14, 29" },
+    { "type": "vhf", "value": "CH 29", "to": "Козьмина-АМП Восточный", "note": "Second channel of Kozmino port control; also Lake Vtoroye" },
+    { "type": "vhf", "value": "CH 13", "to": "Находка-Трафик (VTS)", "note": "VTS working channel; calling CH 16" },
+    { "type": "vhf", "value": "CH 10", "to": "Козьмина-1 (main control room of the Kozmino oil terminal) / Козьмина-2 (marine control room)", "note": "Appendix 4: calling and working 10" },
+    { "type": "vhf", "value": "CH 14", "to": "Лоцман Восточный (pilots of the port of Vostochny)", "note": "Appendix 4" },
+    { "type": "vhf", "value": "CH 14", "to": "Восточный-5 (state port control, port of Vostochny; ISPS inspectors)", "note": "Appendix 4" },
+    { "type": "phone", "value": "+7 (423) 230-28-93", "to": "FGBU AMP of Primorsky Krai and the Eastern Arctic (head office, Vladivostok, ul. Nizhneportovaya 3)", "note": "From an archived pma.ru page of 31.03.2023; not the harbour master's direct line; check with the agent" },
+    { "type": "email", "value": "amp@pma.ru", "to": "FGBU AMP of Primorsky Krai and the Eastern Arctic (head office)", "note": "From an archived pma.ru page of 31.03.2023; general address, not the Kozmino harbour master" }
+  ],
+  "addressee": null,
+  "heading": null,
+  "lines": [],
+  "format_note": "No own message format; arrival data per General Rules p. 38 through the agent.",
+  "area": {
+    "shape": "port",
+    "points": [
+      { "n": "PBS", "name": "Pilot boarding and landing point for the Kozmino berths", "lat": "42 42.86N", "lon": "132 57.60E", "inferred": false },
+      { "n": "A", "name": "Anchor place A (in area No. 211); also pilot point for ships leaving Kozmino to area 211 or leaving anchor in area 211 for Kozmino", "lat": "42 44.97N", "lon": "132 57.50E", "inferred": false },
+      { "n": "TC", "name": "Centre of the tanker turning circle, radius 1.5 cables", "lat": "42 43.38N", "lon": "133 00.16E", "inferred": false },
+      { "n": "B1", "name": "Buoy No. 1, left to port when leaving", "lat": "42 43.30N", "lon": "132 56.26E", "inferred": false }
+    ],
+    "lines": [],
+    "center": null,
+    "radius_nm": null,
+    "state": "Russia",
+    "zone": null,
+    "ports": [ "Vostochny: Kozmino Bay oil terminal (Kozmino)" ],
+    "inside_hint": { "lat": 42.723, "lon": 133.003 },
+    "bbox": [ 132.9, 42.68, 133.05, 42.78 ]
+  },
+  "area_quote": "Акватория морского порта включает в себя участки водной поверхности в бухте Врангеля, устье реки Хмыловка, бухте Козьмина и озере Второе. ... 21. Место для разворота танкеров при подходе к нефтеналивным причалам в бухте Козьмина (далее - разворотный круг) установлено в районе акватории морского порта радиусом 1,5 кабельтовых с центром в точке с координатами 42°43,38' северной широты и 133°00,16' восточной долготы.",
+  "sources": [
+    {
+      "title": "Обязательные постановления в морском порту Восточный, Приказ Минтранса России от 11.01.2011 № 10 (ред. от 13.02.2026)",
+      "ref": "pp. 5, 21 to 27, 31, 37 to 44, 57, 62, 64, 66, 67, 70 to 74, 96 to 99, Appendix 4, Appendix 5",
+      "date": "2026-02-13",
+      "url": "https://legalacts.ru/doc/prikaz-mintransa-rf-ot-11012011-n-10/",
+      "primary": true
+    },
+    {
+      "title": "Приказ Минтранса России от 13.02.2026 № 62 (latest amendment; validity to 01.03.2028)",
+      "ref": "Official PDF",
+      "date": "2026-02-13",
+      "url": "http://publication.pravo.gov.ru/document/0001202603240010",
+      "primary": true
+    },
+    {
+      "title": "Приказ Минтранса России от 17.07.2026 № 337, new Обязательные постановления в морском порту Восточный (in force 01.03.2027, valid to 01.03.2033)",
+      "ref": "pp. 13, 17, 23, 29 to 39, 46 to 55, 64 to 75, 101 to 104",
+      "date": "2026-07-17",
+      "url": "http://publication.pravo.gov.ru/document/0001202609020003",
+      "primary": true
+    },
+    {
+      "title": "Archived page of FGBU AMP of Primorsky Krai and the Eastern Arctic (Nakhodka branch), footer contacts",
+      "ref": "Wayback Machine capture 2023-03-31",
+      "date": "2023-03-31",
+      "url": "http://web.archive.org/web/20230331135459/http://pma.ru/filialyi/filial-fgbu-administratsiya-morskih-portov-primorskogo-kraya-i-vostochnoy-arktiki-v-morskom-portu-nahodka/",
+      "primary": false
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "All paragraphs, coordinates, channels and call signs copied from the consolidated text of the Vostochny regulations (legalacts.ru, ред. от 13.02.2026). 2015 amendments (№ 142, 242, 364) read separately and found included; 2026 amendment № 62 read on the official PDF (adds RPK Vostochny-1 berth row only). New 2027 regulations read on rulaws.ru and first page of the official PDF. Contacts from an archived 2023 page because pma.ru returned HTTP 403.",
+  "confidence": "medium",
+  "notes": "Kozmino is in the seaport of Vostochny, not in Nakhodka. Current text is the 2011 regulations as amended, valid until 01.03.2028; new regulations (order № 337 of 17.07.2026, rulaws.ru shows № 331) replace them from 01.03.2027 with the same Kozmino channels (CH 13 Находка-Трафик; CH 14 Козьмина-АМП Восточный; CH 29 Lake Vtoroye; watch CH 14 and 16 at anchor and at berths, CH 14 and 29 at berths and alongside tankers in Kozmino). New rules from 2027 also: mooring at Kozmino only with wind up to 14 m/s and visibility at least 10 cables (same as now), oil loading stops above 15 m/s wind or 1 m waves. Weather limits now: Kozmino mooring at wind up to 14 m/s and visibility not less than 10 cables (p. 70). Tankers and other oil ships may not use the port as a storm refuge (p. 9). Harbour master phone and email for Kozmino were not found in an official source reachable from here (pma.ru blocked); the numbers given are the port administration head office from 2023 and must be checked with the agent. The terminal call signs Козьмина-1 / Козьмина-2 on CH 10 are as printed in the regulations; the terminal operator may use other channels in its own port information."
+}

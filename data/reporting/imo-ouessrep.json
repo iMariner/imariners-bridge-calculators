@@ -1,0 +1,190 @@
+{
+  "id": "imo-ouessrep",
+  "system": "OUESSREP",
+  "title": "OUESSREP Off Ushant (Ouessant)",
+  "country": "France",
+  "authority": "CROSS Corsen, VTS call sign Ushant Traffic (French orders write OUESSANT TRAFIC)",
+  "kind": "mandatory-imo",
+  "resolution": "MSC.52(66) Annex 2, amended by MSC.127(75) and MSC.251(83)",
+  "status": "in effect",
+  "effective": "1996-11-30",
+  "applies_to": "Ships of more than 300 gross tonnage.",
+  "applies_quote": "Ships of more than 300 grt are required to participate in the system. (Summary 1.1: all vessels having a gross registered tonnage equal to or exceeding 300 tons.)",
+  "when": [
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "on entering a circular area 35 miles in radius centred on the Ile d'Ouessant (Stiff radar tower). [Radius changed to 40 miles by MSC.127(75) from 1 May 2003: \"The reporting system covers a circular area 40 miles in radius centred on the Ile d'Ouessant (Stiff radar tower).\"]"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "A ship may elect, for reasons of commercial confidentiality, to communicate that section of the report which provides information on cargo by non-verbal means prior to entering the system."
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 13",
+      "to": "Ushant Traffic (CROSS Corsen)",
+      "note": "MSC.52(66) Annex 2, para 5 and Summary 1.6: reports by radiotelephone on VHF channel 13. Confirmed in Prefet maritime de l'Atlantique order 2017/85, art. 2 (canal 13); that order is now marked repealed on the Premar Atlantique site (see notes)."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 79",
+      "to": "Ushant Traffic (CROSS Corsen)",
+      "note": "MSC.52(66) Summary 1.6: 'or, in the event of failure, on channel 79, according to the information given by the Centre'. Para 5 also names channel 80. CH 79 is also used for the traffic and safety broadcasts after a call on CH 16."
+    },
+    {
+      "type": "other",
+      "value": "Non-verbal means (cargo information)",
+      "to": "CROSS Corsen",
+      "note": "Commercially confidential cargo information may be sent by non-verbal means (para 3 and 5). No e-mail address is printed in the IMO texts."
+    }
+  ],
+  "addressee": "USHANT TRAFFIC",
+  "heading": "OUESSREP",
+  "lines": [
+    {
+      "l": "A",
+      "req": "required",
+      "text": "Name, call sign, IMO No. (or MMSI No. for reporting by transponder)"
+    },
+    {
+      "l": "B",
+      "req": "required",
+      "text": "Date and time"
+    },
+    {
+      "l": "C",
+      "req": "required",
+      "text": "C or D: Position in latitude and longitude or true bearing and distance from a clearly identified landmark"
+    },
+    {
+      "l": "D",
+      "req": "optional",
+      "text": "C or D: true bearing and distance from a clearly identified landmark (instead of C)"
+    },
+    {
+      "l": "E",
+      "req": "required",
+      "text": "True course"
+    },
+    {
+      "l": "F",
+      "req": "required",
+      "text": "Speed"
+    },
+    {
+      "l": "G",
+      "req": "required",
+      "text": "Port of departure"
+    },
+    {
+      "l": "I",
+      "req": "required",
+      "text": "Port of destination and expected time of arrival"
+    },
+    {
+      "l": "O",
+      "req": "required",
+      "text": "Present draught"
+    },
+    {
+      "l": "P",
+      "req": "required",
+      "text": "Cargo and, if dangerous goods are on board, IMO quantity and class"
+    },
+    {
+      "l": "Q",
+      "req": "if-applicable",
+      "text": "Q or R: Defect, damage and/or deficiencies affecting ship's structure, cargo or equipment, or any other circumstance affecting normal navigation, in accordance with the SOLAS or MARPOL Conventions"
+    },
+    {
+      "l": "R",
+      "req": "if-applicable",
+      "text": "Q or R: as for Q (pollution or dangerous goods lost overboard)"
+    },
+    {
+      "l": "T",
+      "req": "required",
+      "text": "Address for provision of information concerning a cargo of dangerous goods"
+    },
+    {
+      "l": "W",
+      "req": "required",
+      "text": "Number of persons on board"
+    },
+    {
+      "l": "X",
+      "req": "required",
+      "text": "Miscellaneous: estimated quantity of bunker fuel and characteristics for ships carrying over 5,000 tonnes bunker fuel; navigation conditions"
+    }
+  ],
+  "format_note": "Lines as replaced by MSC.251(83) (in force 1 May 2008); before that only A, C or D, E, F, P, Q, R. The French order 2017/85 Annex 3 gives the same list and adds that P, Q and R need not be repeated if already sent in a SURNAV or SURNAV AVARIE message on the same voyage (French national rule).",
+  "area": {
+    "shape": "circle",
+    "points": [],
+    "lines": [],
+    "center": {
+      "n": "C",
+      "name": "Ile d'Ouessant, Stiff radar tower",
+      "lat": "48 28.5N",
+      "lon": "005 03.4W",
+      "inferred": true
+    },
+    "radius_nm": 40,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 48.8,
+      "lon": -5.6
+    },
+    "bbox": [
+      -6.1,
+      47.8,
+      -4.0,
+      49.15
+    ]
+  },
+  "area_quote": "The reporting system covers a circular area 40 miles in radius centred on the Ile d'Ouessant (Stiff radar tower). (MSC.127(75), replacing '35 miles' in MSC.52(66) Annex 2, section 2.) Reference chart: chart No. 6989 of the French Navy Hydrographic and Oceanographic Department.",
+  "sources": [
+    {
+      "title": "IMO MSC.52(66) Mandatory ship reporting systems, Annex 2 Off Ushant",
+      "ref": "Annex 2 sections 1 to 8 and Summary",
+      "date": "1996-05-30",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.52(66).pdf",
+      "primary": true
+    },
+    {
+      "title": "IMO MSC.127(75) Amendments to existing mandatory ship reporting systems (Off Ushant)",
+      "ref": "Annex (radius 40 miles), in force 1 May 2003",
+      "date": "2002-05-20",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.127(75).pdf",
+      "primary": true
+    },
+    {
+      "title": "IMO MSC.251(83) Adoption of amendments to the existing mandatory ship reporting systems Off Ushant, Off Les Casquets and Dover Strait/Pas de Calais",
+      "ref": "Annex and Appendix (new report content, in force 1 May 2008)",
+      "date": "2007-10-08",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.251(83).pdf",
+      "primary": true
+    },
+    {
+      "title": "Prefet maritime de l'Atlantique, arrete n 2017/85 reglementant la navigation dans le DST d'Ouessant et la zone de navigation cotiere associee",
+      "ref": "Art. 2 (40 NM circle, CROSS Corsen OUESSANT TRAFIC, canal 13), Annex 3 (OUESSREP format)",
+      "date": "2017-07-13",
+      "url": "https://www.premar-atlantique.gouv.fr/uploads/atlantique/arretes/1500295643-index-2017-085.pdf",
+      "primary": false
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Ships, radius, centre description, channels and call sign read from MSC.52(66) Annex 2 and MSC.127(75); report lines from MSC.251(83) Appendix; cross-checked with the French order 2017/85 (same radius, call sign, channel and lines). The centre coordinates are NOT printed in any source: the value is the approximate position of the Stiff radar tower, taken from the nearby Stiff lighthouse (48 28 28N 005 03 24W, French heritage inventory, secondary) and marked inferred.",
+  "confidence": "medium",
+  "notes": "The circle centre is not printed; the Stiff radar tower stands about one cable from the Stiff lighthouse, so the inferred centre is good to about 0.1', which does not matter for a 40 NM circle. The radius was 35 NM until 1 May 2003. The resolution's description of the wider Corsen VTS area (south to 47 47.9N, west to 008W, north line to the Baie du Mont St Michel) is the area the VTS gathers traffic data for, NOT the reporting area. The Premar Atlantique site marks order 2017/85 as 'Abroge' (repealed) and I could not find the order that replaced it, so its national details (VHF 16 or 13 for the inshore traffic zone, SURNAV note) are not confirmed as current. French national SURNAV reporting (5 h / 6 h before entering French territorial waters for dangerous or polluting cargo) is a separate system, see the SURNAV records. No amendment after MSC.251(83) found in the IMO index up to MSC 111 (May 2026)."
+}

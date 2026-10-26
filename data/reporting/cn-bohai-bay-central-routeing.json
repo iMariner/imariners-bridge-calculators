@@ -1,0 +1,214 @@
+{
+  "id": "cn-bohai-bay-central-routeing",
+  "system": "China routeing system",
+  "title": "Bohai Bay central waters routeing (渤海湾中部水域船舶定线制): Tianjin VTS rules",
+  "country": "China",
+  "authority": "Tianjin MSA (天津海事局); reports to Tianjin VTS (天津海事局船舶交通管理中心)",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": "2026-01-01",
+  "applies_to": "Ships using the waters of this routeing system (two traffic separation schemes and two precautionary areas in central Bohai Bay, south-west of Caofeidian).",
+  "applies_quote": "使用本定线制水域航行的船舶，在进出本定线制水域时不强制报告。紧急情况应向天津 VTS 报告。",
+  "when": [
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "No compulsory report when entering or leaving the routeing system. In an emergency report to Tianjin VTS. (4.1) (在进出本定线制水域时不强制报告。紧急情况应向天津 VTS 报告。)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Avoid crossing the traffic lanes. If a ship must cross to avoid danger, first report to Tianjin VTS, tell nearby ships its intentions in good time, and cross only when no ship following the lane is closing. (4.2 (3)) (……不得不穿越时，应先向天津 VTS 报告，并提前与周围船舶通报本船动态……)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Overtaking only when really needed: get the other ship's consent first and report to Tianjin VTS. (4.2 (5)) (确需追越时，应提前征得被追越船同意并报天津 VTS)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "No anchoring, fishing or fish farming in the precautionary areas, the lanes or near their ends. (4.2 (6))"
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 09",
+      "to": "Tianjin VTS (天津 VTS)",
+      "note": "keep watch (4.2 (2))"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 16",
+      "to": "Tianjin VTS",
+      "note": "keep watch (4.2 (2))"
+    }
+  ],
+  "addressee": null,
+  "heading": null,
+  "lines": [],
+  "format_note": "No set report format. Westbound lanes 295 T, eastbound 115 T.",
+  "area": {
+    "shape": "lines",
+    "points": [
+      {
+        "n": "A",
+        "name": "TSS 1 separation zone centre line, east",
+        "lat": "38 39 02.102N",
+        "lon": "118 38 19.806E",
+        "inferred": false
+      },
+      {
+        "n": "B",
+        "name": "TSS 1 separation zone centre line, west",
+        "lat": "38 41 16.693N",
+        "lon": "118 32 11.751E",
+        "inferred": false
+      },
+      {
+        "n": "C",
+        "name": "TSS 1 north limit, east",
+        "lat": "38 40 10.498N",
+        "lon": "118 39 00.476E",
+        "inferred": false
+      },
+      {
+        "n": "D",
+        "name": "TSS 1 north limit, west",
+        "lat": "38 42 25.074N",
+        "lon": "118 32 52.494E",
+        "inferred": false
+      },
+      {
+        "n": "E",
+        "name": "TSS 1 south limit, east",
+        "lat": "38 37 53.688N",
+        "lon": "118 37 39.136E",
+        "inferred": false
+      },
+      {
+        "n": "F",
+        "name": "TSS 1 south limit, west",
+        "lat": "38 40 08.356N",
+        "lon": "118 31 31.099E",
+        "inferred": false
+      },
+      {
+        "n": "O",
+        "name": "Centre of precautionary area 1 arc, radius 1.925 NM",
+        "lat": "38 38 25.091N",
+        "lon": "118 40 00.974E",
+        "inferred": false
+      },
+      {
+        "n": "G",
+        "name": "TSS 2 separation zone centre line, east",
+        "lat": "38 43 35.810N",
+        "lon": "118 25 50.500E",
+        "inferred": false
+      },
+      {
+        "n": "H",
+        "name": "TSS 2 separation zone centre line, west",
+        "lat": "38 45 38.812N",
+        "lon": "118 20 13.562E",
+        "inferred": false
+      },
+      {
+        "n": "I",
+        "name": "TSS 2 north limit, east",
+        "lat": "38 44 44.197N",
+        "lon": "118 26 31.185E",
+        "inferred": false
+      },
+      {
+        "n": "J",
+        "name": "TSS 2 north limit, west",
+        "lat": "38 46 47.201N",
+        "lon": "118 20 54.232E",
+        "inferred": false
+      },
+      {
+        "n": "K",
+        "name": "TSS 2 south limit, east",
+        "lat": "38 42 27.533N",
+        "lon": "118 25 09.845E",
+        "inferred": false
+      },
+      {
+        "n": "L",
+        "name": "TSS 2 south limit, west",
+        "lat": "38 44 30.603N",
+        "lon": "118 19 32.892E",
+        "inferred": false
+      }
+    ],
+    "lines": [
+      [
+        "J",
+        "I",
+        "D",
+        "C"
+      ],
+      [
+        "L",
+        "K",
+        "F",
+        "E"
+      ]
+    ],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 38.667,
+      "lon": 118.588
+    },
+    "bbox": [
+      118.25,
+      38.58,
+      118.75,
+      38.82
+    ]
+  },
+  "area_quote": "本定线制由第一分道通航制、第一警戒区、第二分道通航制和第二警戒区组成。…第一警戒区为以点 O（38°38′25.091″N/118°40′00.974″E）为圆心、半径 1.925 海里的圆弧与下列三点连线围成的水域。C… A… E…  第二警戒区为下列地理位置依次连线围成的水域：I… D… F… K…",
+  "sources": [
+    {
+      "title": "关于发布渤海湾中部水域船舶定线制的通告 津航通〔2025〕0124号",
+      "ref": "notice (in force 2026-01-01, valid 5 years)",
+      "date": "2025-12-08",
+      "url": "https://www.msa.gov.cn/html/cnmsa/hxaq/article/2025/f55fa5a8dcdf4b5f92c0519c1af685d1.html",
+      "primary": true
+    },
+    {
+      "title": "渤海湾中部水域船舶定线制 (PDF attachment)",
+      "ref": "sections 1 to 5",
+      "date": "2025-12-08",
+      "url": "https://www.msa.gov.cn/public/documents/document/ndq4/nja1/~edisp/cnmsa7453000704448605378.pdf",
+      "primary": true
+    },
+    {
+      "title": "中华人民共和国海事局关于发布《渤海湾中部水域船舶定线制》的公告 (2025年第19号)",
+      "ref": "national announcement",
+      "date": "2025-12-08",
+      "url": "https://www.msa.gov.cn/html/cnmsa/xxgk/article/2025/5a6912f8265d4b2eb051d8e909e3d544.html",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Text and coordinates from the official PDF attached to 津航通〔2025〕0124号 on msa.gov.cn (pdftotext). Coordinates copied as printed (seconds with 3 decimals), CGCS2000 = WGS-84 for navigation.",
+  "confidence": "high",
+  "notes": "Replaces the 2024 trial version (津航通〔2024〕0049). The two 'lines' are the outer north and south limits (J-I-D-C and L-K-F-E). The east end is closed by the arc of precautionary area 1 (centre O, radius 1.925 NM, from C to E); the west end (J to L) is open. Lies just south of the Caofeidian routeing (watch VHF08 there) and partly inside the Caofeidian reporting area (south line 38 43.00N): a ship bound for Caofeidian still makes the Caofeidian report at its report line."
+}

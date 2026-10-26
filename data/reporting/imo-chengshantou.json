@@ -1,0 +1,186 @@
+{
+  "id": "imo-chengshantou",
+  "system": "Chengshan Jiao VTS (mandatory ship reporting system)",
+  "title": "Mandatory ship reporting system off Chengshan Jiao Promontory",
+  "country": "China",
+  "authority": "Weihai Maritime Safety Administration, China; Chengshan Jiao VTS Centre",
+  "kind": "mandatory-imo",
+  "resolution": "MSC.93(72), amended by MSC.389(94)",
+  "status": "in effect",
+  "effective": "2015-06-01",
+  "applies_to": "Passenger ships; all oil tankers of 150 GT and over and all ships carrying hazardous cargo (IMDG, IBC ch. 17, IGC ch. 19, MARPOL I oils, MARPOL II and III substances, INF); ships over 200 m LOA or over 12 m draught; ships towing or pushing, any size; and any ship that is not under command or at anchor in the TSSs, restricted in her ability to manoeuvre, or has defective navigation equipment. A laden or ballast crude tanker of 150 GT and over must report.",
+  "applies_quote": "1.1 The following ships are required to participate in the system: .1 passenger ships; .2 all oil tankers 150 gross tonnage and above, all ships carrying hazardous cargo; .3 ships of LOA more than 200 m or draft more than 12 m; .4 ships engaged in towing or pushing another ship, regardless of gross tonnage; and .5 ships are compulsory to report to VTS in circumstances where they: .1 are \"not under command\" or at anchor in the TSSs, .2 are \"restricted in their ability to manoeuvre\"; or .3 have defective navigational equipment.",
+  "when": [
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "SP",
+      "text": "Report lines A, C or D, E, F, G, I (optional), Q and U when entering the reporting area. No report is needed when leaving the area."
+    },
+    {
+      "event": "departure",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "When leaving a port inside the reporting area: name, position, departure time and port of destination."
+    },
+    {
+      "event": "arrival",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "When arriving at a port or anchorage inside the area: on arrival at the berth, report name, position and arrival time."
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Traffic or pollution incident inside the area: report at once the type, time and place of the incident, the damage or pollution, and whether help is needed; give any more information the VTS asks for."
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Keep a listening watch on the VTS working channel while in the area."
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 08",
+      "to": "Chengshan Jiao VTS Centre",
+      "note": "primary channel"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 09",
+      "to": "Chengshan Jiao VTS Centre",
+      "note": "secondary channel (09 or 65)"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 65",
+      "to": "Chengshan Jiao VTS Centre",
+      "note": "secondary channel (09 or 65)"
+    },
+    {
+      "type": "email",
+      "value": "whvts@whmsa.gov.cn",
+      "to": "Chengshan Jiao VTS Centre",
+      "note": "alternative if VHF fails"
+    },
+    {
+      "type": "fax",
+      "value": "+86-631-5232467",
+      "to": "Chengshan Jiao VTS Centre",
+      "note": "alternative if VHF fails"
+    },
+    {
+      "type": "phone",
+      "value": "+86-631-5203320",
+      "to": "Chengshan Jiao VTS Centre",
+      "note": "mobile phone, alternative if VHF fails"
+    },
+    {
+      "type": "phone",
+      "value": "+86-631-5190330",
+      "to": "Chengshan Jiao VTS Centre",
+      "note": "mobile phone, alternative if VHF fails"
+    }
+  ],
+  "addressee": "Chengshan Jiao VTS Centre",
+  "heading": null,
+  "lines": [
+    {
+      "l": "A",
+      "req": "required",
+      "text": "Name of ship, call sign, and IMO number (if applicable)"
+    },
+    {
+      "l": "C",
+      "req": "required",
+      "text": "Position (latitude and longitude); or D: position in relation to a landmark"
+    },
+    {
+      "l": "E",
+      "req": "required",
+      "text": "Course"
+    },
+    {
+      "l": "F",
+      "req": "required",
+      "text": "Speed"
+    },
+    {
+      "l": "G",
+      "req": "required",
+      "text": "Port of departure"
+    },
+    {
+      "l": "I",
+      "req": "optional",
+      "text": "Port of destination (optional)"
+    },
+    {
+      "l": "Q",
+      "req": "if-applicable",
+      "text": "Defects and limitation (ships towing are to report length of tow and name of object in tow)"
+    },
+    {
+      "l": "U",
+      "req": "required",
+      "text": "Overall length and gross tonnage"
+    }
+  ],
+  "format_note": "A.851(20) letters. Language Chinese or English, using IMO Standard Marine Communication Phrases. Call sign of the centre: \"Chengshan Jiao VTS Centre\".",
+  "area": {
+    "shape": "circle",
+    "points": [],
+    "lines": [],
+    "center": {
+      "n": "VTS",
+      "name": "Chengshan Jiao VTS Centre",
+      "lat": "37 23.65N",
+      "lon": "122 42.12E",
+      "inferred": false
+    },
+    "radius_nm": 24,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 37.35,
+      "lon": 122.9
+    },
+    "bbox": [
+      122.2,
+      36.98,
+      123.21,
+      37.79
+    ]
+  },
+  "area_quote": "2.1 The waters covered by the Ship Reporting System is the water area with the VTS Centre (geographical position is 37°23′.65N, 122°42′.12E) as the centre and 24 miles as the radius. 2.2 The relevant charts are Chinese charts Nos.1305, 35001. Chart datum is World Geodetic System 1984 (WGS 84) Datum.",
+  "sources": [
+    {
+      "title": "IMO resolution MSC.389(94), Amendments to the existing mandatory ship reporting system \"Off Chengshan Jiao Promontory\"",
+      "ref": "Annex, paras 1 to 9",
+      "date": "2014-11-21",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC%20389%2094.pdf",
+      "primary": true
+    },
+    {
+      "title": "IMO resolution MSC.93(72), Adoption of a mandatory ship reporting system off Chengshan Jiao Promontory (original system, in force 2000-12-01)",
+      "ref": "whole resolution",
+      "date": "2000-05-19",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.93(72).pdf",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "All parts read from the MSC.389(94) annex PDF (IMO website), which replaces the whole system text. Centre position, radius, channels, fax, email and phones copied exactly. The bbox is computed from the 24 NM circle.",
+  "confidence": "high",
+  "notes": "In force at 0000 UTC 1 June 2015 (MSC.389(94)); the first system (MSC.93(72), 2000) named Yantai MSA as the authority and covered fishing vessels of 24 m and over, cargo ships of 300 GT and over and passenger ships. The 2015 text names Weihai MSA. The circle covers the Chengshan Jiao TSSs. Contacts are from 2014: the whmsa.gov.cn email may have moved to an sd.msa.gov.cn address; check the latest Chinese notices. Inside the area the ship is also in the Chinese territorial sea: the separate national report on entering the territorial sea (cn-territorial-sea-report) still applies to tankers. The VTS gives traffic, weather and safety information when needed and watches 24 hours."
+}

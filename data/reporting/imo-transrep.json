@@ -1,0 +1,258 @@
+{
+  "id": "imo-transrep",
+  "system": "TRANSREP",
+  "title": "TRANSREP off the south and south-west coast of Iceland",
+  "country": "Iceland",
+  "authority": "Icelandic Maritime Traffic Service (MTS), Reykjavik, operated by the Icelandic Coast Guard",
+  "kind": "mandatory-imo",
+  "resolution": "MSC.250(83), amended by MSC.316(88)",
+  "status": "in effect",
+  "effective": "2008-07-01",
+  "applies_to": "Ships calling at ports inside the eastern ATBA off the south and south-west coast of Iceland; ships under 5,000 GT allowed to transit the eastern ATBA south of 63 45N on voyages between Icelandic ports without dangerous or noxious bulk cargo; ships up to 20,000 GT to or from Faxaflói Bay without dangerous goods or noxious bulk cargo that may transit the eastern ATBA south of 63 45N; passenger ships of any size, which may only transit the inner route (Húllid Passage) and the eastern ATBA from 1 May to 1 October. Not for government ships, fishing vessels with fishing rights in Iceland's EEZ, or research vessels.",
+  "applies_quote": "1.1 Ships of the following categories are required to participate in the system: .1 ships calling at ports located within the eastern ATBA off the south and southwest coast of Iceland; and .2 ships of less than 5,000 gross tonnage permitted to transit the eastern ATBA south of latitude 63° 45' N when engaged on voyages between Icelandic ports and not carrying dangerous or noxious cargoes in bulk or in cargo tanks. [added by MSC.316(88):] .3 ships of up to 20,000 gross tonnage, en route to or from Faxaflói Bay, which neither carry dangerous goods nor noxious materials in bulk or cargo tanks and which may transit the Eastern ATBA south of latitude 63° 45' N; and .4 passenger ships of unlimited size, which may only transit the inner route (Húllid Passage) and the Eastern ATBA during the period 1 May to 1 October. [MSC.250(83):] Pursuant to SOLAS 1974, the mandatory ship reporting system does not apply to any warship, naval auxiliary, coast guard vessel, or other vessel owned or operated by a contracting government and used, for the time being, only on government non-commercial service. However, such ships are encouraged to participate in the reporting system. The mandatory ship reporting system does not apply to fishing vessels with fishing rights within Iceland's exclusive economic zone (EEZ) and research vessels.",
+  "when": [
+    {
+      "event": "before_entry",
+      "hours_before": 4,
+      "interval_h": null,
+      "report": null,
+      "text": "Ships entering the ATBA shall report to the MTS their estimated time of crossing the area limits, specified in paragraph 2, 4 hours prior to entering the area or when departing from harbours in Faxaflói Bay."
+    },
+    {
+      "event": "departure",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Ships leaving harbours within the ATBA shall report on departure."
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 70 (16)",
+      "to": "Icelandic Maritime Traffic Service (MTS), Reykjavik",
+      "note": "MSC.250(83) para 5.2: \"The call to the shore-based Authority shall be made on VHF channel 70 (16).\" Reports by VHF voice (para 3, 5.1). Channel 70 is the VHF DSC channel, so this reads as a DSC call on 70 with voice on 16; the resolution does not say more."
+    },
+    {
+      "type": "mf",
+      "value": "MF DSC",
+      "to": "Icelandic Maritime Traffic Service (MTS)",
+      "note": "MSC.250(83) para 5.3: a ship which cannot use VHF channel 70 (16) should use MF DSC or INMARSAT."
+    },
+    {
+      "type": "inmarsat-c",
+      "value": "INMARSAT",
+      "to": "Icelandic Maritime Traffic Service (MTS)",
+      "note": "MSC.250(83) para 5.3 (no number printed). The Icelandic Coast Guard MTS vessel reporting form on lhg.is (form version June 2005, file dated 2025-01) gives Inmarsat C 581425101519 and MMSI 002516200."
+    },
+    {
+      "type": "phone",
+      "value": "+354 545 2100",
+      "to": "Icelandic Coast Guard, navigation control / watch station (MTS)",
+      "note": "Not in the resolution. Icelandic Coast Guard web site (lhg.is/en/contact-us), read 2026-10-26: \"Navigation control/watch station 545 2100\"; same number in the ICG MTS vessel reporting form and in Icelandic Notices to Mariners 9-10/2010."
+    },
+    {
+      "type": "email",
+      "value": "sar@lhg.is",
+      "to": "Icelandic Maritime Traffic Service (MTS)",
+      "note": "Not in the resolution. From the ICG MTS vessel reporting form on lhg.is (file dated 2025-01) and Icelandic Notices to Mariners 9-10/2010. TRANSREP reports themselves are by VHF voice; e-mail is for contact."
+    }
+  ],
+  "addressee": null,
+  "heading": "TRANSREP",
+  "lines": [
+    {
+      "l": "A",
+      "req": "required",
+      "text": "Name of ship, call sign and IMO number"
+    },
+    {
+      "l": "C or D",
+      "req": "required",
+      "text": "Position (latitude and longitude or in relation to a landmark)"
+    },
+    {
+      "l": "E",
+      "req": "required",
+      "text": "Course"
+    },
+    {
+      "l": "F",
+      "req": "required",
+      "text": "Speed"
+    },
+    {
+      "l": "G",
+      "req": "required",
+      "text": "Port of departure"
+    },
+    {
+      "l": "H",
+      "req": "required",
+      "text": "Date, time and point of entry into system"
+    },
+    {
+      "l": "I",
+      "req": "required",
+      "text": "Port of destination"
+    },
+    {
+      "l": "K",
+      "req": "required",
+      "text": "Date, time and point of exit from system or departure from a harbour within the ATBA"
+    },
+    {
+      "l": "L",
+      "req": "required",
+      "text": "Intended track within the ATBA"
+    }
+  ],
+  "format_note": "Short title \"TRANSREP\"; format derived from paragraph 2 of the appendix to resolution A.851(20) (para 3.1). VHF voice, English, IMO SMCP where necessary (para 5.4). \"In the event of defect, pollution or goods lost overboard, additional information may be requested.\"",
+  "area": {
+    "shape": "lines",
+    "points": [
+      {
+        "n": "25",
+        "name": "Dyrhólaey Light",
+        "lat": "63 24.13N",
+        "lon": "019 07.83W",
+        "inferred": false
+      },
+      {
+        "n": "24",
+        "name": "S of Surtsey Island",
+        "lat": "63 10.00N",
+        "lon": "020 38.00W",
+        "inferred": false
+      },
+      {
+        "n": "23",
+        "name": "S of Reykjanes Point",
+        "lat": "63 40.90N",
+        "lon": "022 40.20W",
+        "inferred": false
+      },
+      {
+        "n": "22",
+        "name": "SW of Reykjanes Point",
+        "lat": "63 45.80N",
+        "lon": "022 44.40W",
+        "inferred": false
+      },
+      {
+        "n": "21",
+        "name": "Húllid Passage SE part",
+        "lat": "63 47.00N",
+        "lon": "022 47.60W",
+        "inferred": false
+      },
+      {
+        "n": "20",
+        "name": "Húllid Passage NE part",
+        "lat": "63 48.00N",
+        "lon": "022 48.40W",
+        "inferred": false
+      },
+      {
+        "n": "19",
+        "name": "SW of Litla Sandvik",
+        "lat": "63 49.20N",
+        "lon": "022 47.30W",
+        "inferred": false
+      },
+      {
+        "n": "18",
+        "name": "Off Sandgerdi",
+        "lat": "64 01.70N",
+        "lon": "022 58.30W",
+        "inferred": false
+      },
+      {
+        "n": "8",
+        "name": "NW of Gardskagi Point",
+        "lat": "64 07.20N",
+        "lon": "022 47.50W",
+        "inferred": false
+      },
+      {
+        "n": "9",
+        "name": "N of Gardskagi Point",
+        "lat": "64 07.20N",
+        "lon": "022 41.40W",
+        "inferred": false
+      },
+      {
+        "n": "17",
+        "name": "Gardskagi Light",
+        "lat": "64 04.92N",
+        "lon": "022 41.40W",
+        "inferred": false
+      }
+    ],
+    "lines": [
+      [
+        "25",
+        "24",
+        "23",
+        "22",
+        "21",
+        "20",
+        "19",
+        "18",
+        "8",
+        "9",
+        "17"
+      ]
+    ],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 63.55,
+      "lon": -21.0
+    },
+    "bbox": [
+      -23.3,
+      63.0,
+      -18.7,
+      64.3
+    ]
+  },
+  "area_quote": "The reporting system covers the proposed ATBA (the eastern area) off the south and southwest coast of Iceland located entirely within Icelandic territorial waters, and is bounded by lines connecting the following geographical positions: (25) Dyrhólaey Light 63° 24'.13 N 019° 07'.83 W; (24) S of Surtsey Island 63° 10'.00 N 020° 38'.00 W; (23) S of Reykjanes Point 63° 40'.90 N 022° 40'.20 W; (22) SW of Reykjanes Point 63° 45'.80 N 022° 44'.40 W; (21) Húllid Passage SE part 63° 47'.00 N 022° 47'.60 W; (20) Húllid Passage NE part 63° 48'.00 N 022° 48'.40 W; (19) SW of Litla Sandvik 63° 49'.20 N 022° 47'.30 W; (18) Off Sandgerdi 64° 01'.70 N 022° 58'.30 W; (8) NW of Gardskagi Point 64° 07'.20 N 022° 47'.50 W; (9) N of Gardskagi Point 64° 07'.20 N 022° 41'.40 W; (17) Gardskagi Light 64° 04'.92 N 022° 41'.40 W. [Reference chart as amended by MSC.316(88):] Icelandic chart No.31 (INT 1103) Dyrhólaey - Snæfellsnes (May 2008 edition), based on datum WGS 84.",
+  "sources": [
+    {
+      "title": "IMO MSC.250(83) Adoption of a new mandatory ship reporting system \"Off the south and southwest coast of Iceland (TRANSREP)\"",
+      "ref": "Annex paras 1 to 8",
+      "date": "2007-10-08",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.250(83).pdf",
+      "primary": true
+    },
+    {
+      "title": "IMO MSC.316(88) Amendments to TRANSREP",
+      "ref": "Annex sections 1 and 2",
+      "date": "2010-11-29",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.316(88).pdf",
+      "primary": true
+    },
+    {
+      "title": "IMO MSC 88/26/Add.1/Corr.1 (corrigendum to MSC.316(88): entry into force 1 June 2011)",
+      "ref": "operative para 2",
+      "date": "2011-05-03",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC%2088-26-Add.1-Corr.1.pdf",
+      "primary": true
+    },
+    {
+      "title": "Icelandic Coast Guard, contact page and JRCC vessel reports page (MTS reporting form)",
+      "ref": "read 2026-10-26",
+      "date": "2026-10-26",
+      "url": "https://www.lhg.is/en/contact-us/",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Text from the IMO PDFs of MSC.250(83) and MSC.316(88) (pdftotext). Every coordinate digit checked against the rendered PDF page 3 of MSC.250(83) (annex page 2) at 150 dpi. The IMO index page MSC 2010-13 (read 2026-10-26) lists MSC.316(88) and a corrigendum; the corrigendum (MSC 88/26/Add.1/Corr.1) was downloaded and read: it changes the entry into force of the amendments from 1 July 2011 to 1 June 2011. No later amendment is listed in the IMO index up to MSC 2026-27. Phone and e-mail come from the Icelandic Coast Guard web site and its MTS reporting form (read 2026-10-26), not from the resolution. The area points were checked on a map: the line runs south of Surtsey, past Reykjanes through the Húllid passage, up the west side of the Reykjanes peninsula to Gardskagi; it is closed by the coast between the two lights (17 and 25).",
+  "confidence": "medium",
+  "notes": "The area is the eastern ATBA as defined in the 2007 text. Points 25 (Dyrhólaey Light) and 17 (Gardskagi Light) are lights on land; between them the area is closed by the south and south-west coast of Iceland (shape \"lines\"). The ATBA itself is a separate IMO routeing measure that decides which ships may transit it; this record does not check its current version. The amendments of MSC.316(88) (categories .3 and .4 and the new reference chart) entered into force on 1 June 2011 (corrigendum; the resolution text still says 1 July 2011). The resolution prints no phone or e-mail; the MTS phone +354 545 2100 is confirmed on the current Coast Guard web site, the e-mail sar@lhg.is only on its reporting form and older notices. \"VHF channel 70 (16)\" is copied as printed; I found no current Icelandic page that explains the TRANSREP call procedure. The original reference chart was Icelandic Chart No.31, INT 1105 (June 2004); MSC.316(88) replaced it with chart No.31 (INT 1103), May 2008 edition."
+}

@@ -1,0 +1,233 @@
+{
+  "id": "cn-vts-qingdao",
+  "system": "China VTS",
+  "title": "Qingdao VTS (Qingdao port, Jiaozhou Bay, Huangdao and Qianwan)",
+  "country": "China",
+  "authority": "Qingdao MSA (中华人民共和国青岛海事局), Qingdao VTS Centre (青岛海事局船舶交通管理中心)",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": "2025-01-01",
+  "applies_to": "All foreign ships; ships of 300 GT and over; ships receiving oily water or other waste, bunkering or supplying water, doing construction, lightering (ship to ship) or repairs; port tugs and pilot boats going into or out of the VTS area. Not military, government, fishing or sports craft. A foreign crude oil tanker is always included.",
+  "applies_quote": "第四条 除军用船、公务船、渔船和体育运动船舶外，下列船舶在VTS区域内航行、停泊和作业时，应向VTS中心报告：（一）外国籍船舶；（二）300总吨及以上的船舶；（三）从事油污水等污染物接收、油水供给、工程施工、过驳作业、航修作业等活动的船舶；（四）驶出、驶入VTS区域的港口作业拖轮、引航艇。",
+  "when": [
+    {
+      "event": "before_arrival",
+      "hours_before": 12,
+      "interval_h": null,
+      "report": null,
+      "text": "Very large ships (actual maximum draught 15 m or more) that will use the main channel deep water channel in or out: report to the VTS 12 hours ahead, and again if the plan changes. (第三十一条 拟经深水航道进出港的超大型船舶，应提前12小时向VTS中心报告。如航行计划改变，应及时报告。)"
+    },
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Inbound ships report when abeam Chaolian Dao, when abeam Zhucha Dao and when passing the line between Dagong Dao and Xiaogong Dao: ship's name, call sign and the reporting line passed. (第五条 进港船舶正横朝连岛、竹岔岛时和通过大公岛与小公岛连线时应报告船名、呼号、所通过的报告线等信息。)"
+    },
+    {
+      "event": "arrival",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "After anchoring: anchor position and time anchored. Before heaving up: the ship's movement. (第六条 船舶锚泊后应报告锚位、抛锚时间等信息，起锚前应报告船舶动态等信息。)"
+    },
+    {
+      "event": "arrival",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "After all fast at the berth: time all fast. Before leaving the berth: the berth and the ship's movement. (第七条 船舶靠妥码头后应报告靠妥时间，驶离码头前应报告所在泊位、船舶动态等信息。)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "With a pilot on board the pilot may make the reports. The pilot reports his number, boarding place and the pilotage movement before starting, and reports again before leaving the ship. (第八条 有引航员在船引领的船舶，可由引航员履行船舶报告义务。引航员开始引航作业前应报告工号、登轮地点、引航作业动态等信息。引航员完成引航作业后离船之前应向VTS中心报告。)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Before starting and after finishing: opening up main engine, steering gear, windlass, boiler or other gear that affects manoeuvring; engine or sea trials; going alongside another ship at anchor; towing connect or let go; any other work that may affect safety. (第九条 ……在作业开始前和结束后，向VTS中心报告：（一）拆检主机、舵机、锚机、锅炉……（二）试车、试航；（三）锚地并靠作业；（四）拖航船舶或船组解系缆；（五）其他可能影响海上交通安全的作业。)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "At once: ship or persons in distress; accident; machinery or equipment failure that affects safe navigation; pollution; aids to navigation not normal; obstructions or unknown floating objects; security incidents; any other emergency or abnormal event. (第十条 船舶发生或发现下列情况，应立即报告 ……)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Plan delayed, machinery or electrical failure or other abnormal events: report to Qingdao VTS at once and do not drift in busy waters (2025 notice on the main channel to Chaolian Dao, part 3 item 4). (船舶出现计划推迟、机电设备故障等异常情况时，应第一时间向青岛VTS中心报告，并避免在通航密集水域漂航。)"
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 08",
+      "to": "Qingdao VTS Centre",
+      "note": "VTS working channel (art. 24). Keep watch on it in the VTS area. Call name is not printed in the 2025 rules."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 16",
+      "to": "Qingdao VTS Centre",
+      "note": "VTS broadcasts safety information on CH 16 at set times, and at once on CH 08 when needed (art. 20)"
+    },
+    {
+      "type": "phone",
+      "value": "0532-58663106 58663107 58663108",
+      "to": "Qingdao VTS Centre",
+      "note": "from 8 July 2021 (鲁航通〔2021〕0288号)"
+    },
+    {
+      "type": "fax",
+      "value": "0532-58663109",
+      "to": "Qingdao VTS Centre",
+      "note": "from 8 July 2021 (鲁航通〔2021〕0288号)"
+    },
+    {
+      "type": "email",
+      "value": "jgzx@sd.msa.gov.cn",
+      "to": "Qingdao VTS Centre",
+      "note": "from 8 July 2021 (鲁航通〔2021〕0288号)"
+    },
+    {
+      "type": "phone",
+      "value": "12395",
+      "to": "Qingdao Maritime Search and Rescue Centre",
+      "note": "national maritime distress number, for accidents (2025 Chaolian Dao notice part 3 item 5)"
+    }
+  ],
+  "addressee": null,
+  "heading": null,
+  "lines": [
+    {
+      "l": "1",
+      "req": "required",
+      "text": "Ship's name (船名)"
+    },
+    {
+      "l": "2",
+      "req": "required",
+      "text": "Call sign (呼号)"
+    },
+    {
+      "l": "3",
+      "req": "if-applicable",
+      "text": "Reporting line passed (所通过的报告线), on the inbound calls"
+    },
+    {
+      "l": "4",
+      "req": "if-applicable",
+      "text": "Anchor position and time, berth and time all fast, or the ship's movement, as the event needs (arts. 6 and 7)"
+    },
+    {
+      "l": "5",
+      "req": "optional",
+      "text": "Other information the VTS asks for"
+    }
+  ],
+  "format_note": "Voice reports on VHF CH 08. Working language Mandarin or English (art. 28). Use standard marine communication phrases (art. 27).",
+  "area": {
+    "shape": "lines",
+    "points": [
+      {
+        "n": "1",
+        "lat": "36 05 30.0N",
+        "lon": "120 35 04.5E",
+        "inferred": false
+      },
+      {
+        "n": "2",
+        "lat": "35 59 47.2N",
+        "lon": "120 35 04.5E",
+        "inferred": false
+      },
+      {
+        "n": "3",
+        "lat": "35 57 38.7N",
+        "lon": "120 29 34.2E",
+        "inferred": false
+      },
+      {
+        "n": "4",
+        "lat": "35 56 31.0N",
+        "lon": "120 26 38.8E",
+        "inferred": false
+      },
+      {
+        "n": "5",
+        "lat": "35 56 31.0N",
+        "lon": "120 13 36.0E",
+        "inferred": false
+      }
+    ],
+    "lines": [
+      [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    ],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 35.996,
+      "lon": 120.48
+    },
+    "bbox": [
+      120.15,
+      35.88,
+      120.65,
+      36.2
+    ]
+  },
+  "area_quote": "（四）“VTS区域”是指青岛VTS区域,即以下五点连线以内的水域：1.36°05′30.0″N，120°35′04.5″E；2.35°59′47.2″N，120°35′04.5″E；3.35°57′38.7″N，120°29′34.2″E；4.35°56′31.0″N，120°26′38.8″E；5.35°56′31.0″N，120°13′36.0″E。",
+  "sources": [
+    {
+      "title": "山东海事局关于公布《青岛船舶交通管理系统安全监督管理细则》的通告 (Shandong MSA notice No. 14, Qingdao VTS rules)",
+      "ref": "Attachment .doc: arts. 4 to 10 (reports), 24 (channel), 29 to 33 (deep water channel), 37 (VTS area)",
+      "date": "2024-11-28",
+      "url": "https://www.sd.msa.gov.cn/art/2024/11/28/art_124_1819183.html",
+      "primary": true
+    },
+    {
+      "title": "青岛海事局船舶交通管理中心信息变更通告 鲁航通〔2021〕0288号 (Qingdao VTS Centre contact change)",
+      "ref": "full text",
+      "date": "2021-07-07",
+      "url": "https://www.msa.gov.cn/html/cnmsa/hxaq/article/2021/2a25c5dcb6c445c8ab61450eef33a843.html",
+      "primary": true
+    },
+    {
+      "title": "青岛海事局关于发布青岛港主航道至朝连岛水域航行航法及注意事项的通告 (Qingdao MSA, routes from the main channel to Chaolian Dao)",
+      "ref": "Attachment (Chinese and English .docx), parts 2 and 3",
+      "date": "2025-03-21",
+      "url": "https://www.sd.msa.gov.cn/art/2025/3/24/art_124_1821520.html",
+      "primary": true
+    },
+    {
+      "title": "《青岛船舶交通管理系统安全监督管理细则》与《青岛VTS用户指南》 Shandong MSA notice 2019 No. 9 (replaced on 2025-01-01), copy on mcrrc.top (Shandong Jiaotong University law library)",
+      "ref": "青岛VTS用户指南 parts 1, 4, 6",
+      "date": "2019-12-02",
+      "url": "https://www.mcrrc.top/bmgz/jy/bhhs/zsjfg/sdhsj/1550.html",
+      "primary": false
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Rules and area read from the official .doc attached to the Shandong MSA notice of 28 Nov 2024 (sd.msa.gov.cn), compared with the mcrrc.top copy (2606.html): identical. Contacts from the China MSA notice 鲁航通〔2021〕0288号. Pilot boarding areas and the older report table only from the 2019 user guide copy, which was replaced.",
+  "confidence": "high",
+  "notes": "The five points are an open line; the area is closed by the coast at both ends (inferred from the shape, the text says only 'water inside the line joining five points'). The first inbound calls (abeam Chaolian Dao and Zhucha Dao) are outside the printed VTS area: Chaolian Dao lies east of the outer limit at 120°35′04.5″E. Speed max 12 kn in traffic lane 1 of the main channel routeing; no overtaking for ships 50 m and over in the basins, Jiaozhou Bay channels, lane 1 and the deep water channel without VTS consent; foreign ships may not enter the 'fourth line' (第四线) or Lingshan Shuidao (灵山水道) without consent. Very large ships (draught 15 m or more) must use the deep water channel (points: 36°00′11.3″N 120°26′51.0″E; 35°59′25.2″N 120°31′02.0″E; 35°59′57.4″N 120°26′47.5″E; 35°59′11.4″N 120°30′58.1″E) with pilot on board, master on the bridge, chief engineer in the engine room, UKC at least 15% of draught, visibility 1.5 NM or more, wind not over Beaufort 8, waves not over 2.5 m, escort ready, convoy at least 2 NM apart; the pilot boards them abeam Xiaogong Dao (arts. 29 to 33). 2025 notice: dangerous goods ships (a laden tanker) do not use Chaolian Dao No. 1 anchorage; they anchor in the open water SE of Chaolian Dao, clear of other ships; foreign ships entering the territorial sea must also report to the designated MSA. The 2019 user guide (replaced, no new guide found) listed pilot areas: draught under 15 m in No. 2 precautionary area of the Qingdao routeing (36°01′.78N 120°19′.18E; 36°01′.13N 120°19′.02E; 36°01′.58N 120°20′.40E; 36°00′.90N 120°20′.20E); draught 15 m or more: circle 500 m round 35°58′.63N 120°34′.73E, or the area 35°51′.40N 120°16′.30E; 35°52′.30N 120°17′.60E; 35°53′.60N 120°17′.60E; 35°52′.80N 120°16′.30E. Its old address (21 Wuxia Road, tel 86-532-86671271, email qdvts@263.net) was changed in 2021. Not confirmed: the call name to use on CH 08 (the rules give none; 'Qingdao VTS' is normal). VTS reports do not replace port entry, territorial sea or arrival reports (art. 35). Dongjiakou is a separate VTS (see cn-vts-dongjiakou)."
+}

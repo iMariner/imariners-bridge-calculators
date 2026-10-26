@@ -1,0 +1,90 @@
+{
+  "id": "surnav-reunion",
+  "system": "SURNAV",
+  "title": "SURNAV La Réunion (South Indian Ocean maritime zone)",
+  "country": "France",
+  "authority": "Préfet de La Réunion, délégué du Gouvernement pour l'action de l'État en mer dans la zone maritime sud de l'océan Indien; reports go to CROSS SOI (MRCC La Réunion)",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": "2022-10-14",
+  "applies_to": "Ships carrying dangerous goods, defined as ships over 300 UMS (gross tonnage) carrying dangerous goods, dangerous substances in bulk or in packages, oil or oil gas residues within the meaning of MARPOL, IMDG, IBC, BC, IGC and INF, that intend to enter the territorial and internal waters adjacent to La Réunion (Art. 2.2, Art. 5.2). The arrêté as a whole applies to ships of 300 UMS or more, or over 24 m, French or foreign, in the French EEZs of the South Indian Ocean and in the territorial and internal waters adjacent to La Réunion (Art. 3.1). State and war ships, ships under 24 m, yachts, and ships in a place of refuge procedure or giving assistance are excluded (Art. 3.3).",
+  "applies_quote": "2.2. Navire transportant des matières dangereuses : les navires de jauge supérieure à 300 UMS transportant des matières dangereuses, substances dangereuses en vrac ou en colis, des hydrocarbures ou des résidus gazeux d'hydrocarbures au sens des conventions, codes et protocoles MARPOL, IMDG, IBC, BC, IGC, INF en vigueur. [...] 5.2. Les navires transportant des matières dangereuses ayant l'intention de pénétrer dans les eaux territoriales et intérieures adjacentes à La Réunion doivent le signaler avec un préavis (article 15) au titre de la prévention des sinistres maritimes au moyen du formulaire en annexe VI. Ces comptes-rendus sont adressés au CROSS SOI dont les coordonnées figurent en annexe VII.",
+
+  "when": [
+    { "event": "before_entry", "hours_before": null, "interval_h": null, "report": null,
+      "text": "Before entering the territorial and internal waters adjacent to La Réunion, with advance notice, using the Annex VI form. Art. 5.2 refers to Art. 15 for the notice; Art. 15 sets three working days, but only for the request to approach within 7 NM or anchor within 3 NM. The text gives no number of hours for the Annex VI notice itself (see notes).",
+      "text_quote": "doivent le signaler avec un préavis (article 15) au titre de la prévention des sinistres maritimes au moyen du formulaire en annexe VI." },
+    { "event": "before_entry", "hours_before": null, "interval_h": null, "report": null,
+      "text": "Dangerous-goods ships wanting to approach within 7 NM of the coast, or to stop or anchor within 3 NM: send the derogation request (Annex IX form) at least three working days before the planned entry into the 7 NM band, with the movement intentions in territorial waters and the state of manoeuvring and navigation capabilities. If the intentions or capabilities change afterwards, send a new corrected form at once.",
+      "text_quote": "15.1. Pour les navires transportant des matières dangereuses, l'approche à moins de sept milles marins des côtes ou le stationnement ou le mouillage à moins de trois milles marins des côtes est soumis à une demande de dérogation telle que prévue à l'article 11.2 au moyen du formulaire figurant en annexe IX qui doit être transmise selon les modalités suivantes : • au moins trois jours ouvrés avant la date prévue d'entrée dans la bande des sept milles marins ; • communiquer ses intentions de mouvements dans les eaux territoriales ; • communiquer l'état de ses capacités de manœuvre et de navigation." },
+    { "event": "before_entry", "hours_before": 6, "interval_h": null, "report": null,
+      "text": "Any ship wanting to anchor or stop in the territorial sea (prior authorisation, Art. 10): request at least six hours before entering the French territorial waters adjacent to La Réunion. For a ship that also sends the Annex VI notice, the anchoring request may be attached to it (Art. 14.4).",
+      "text_quote": "14.1. Les demandes d'autorisation prévues dans l'article 10 sont adressées par le capitaine du navire ou son représentant au CROSS SOI, dans les délais suivants : • au moins six heures avant l'entrée dans les eaux territoriales françaises adjacentes à La Réunion ; • au moins une heure avant l'appareillage d'un port ou d'un mouillage situé dans les eaux territoriales françaises adjacentes à La Réunion." },
+    { "event": "departure", "hours_before": 1, "interval_h": null, "report": null,
+      "text": "Anchoring or stopping request when coming from a port or anchorage inside these territorial waters: at least one hour before sailing (Art. 14.1). Late requests may be refused.",
+      "text_quote": "au moins une heure avant l'appareillage d'un port ou d'un mouillage situé dans les eaux territoriales françaises adjacentes à La Réunion. Le non-respect de ces délais est un motif possible de refus." }
+  ],
+
+  "how": [
+    { "type": "phone", "value": "+262 (0)262 43 43 43", "to": "CROSS SOI (MRCC La Réunion)", "note": "Annex VII, priority 1 ('Tel'). Emergency number 196 from a French phone." },
+    { "type": "telex", "value": "RE 916140", "to": "CROSS SOI", "note": "Annex VII, priority 2." },
+    { "type": "email", "value": "reunion@mrccfr.eu", "to": "CROSS SOI", "note": "Annex VII, priority 3 (Email). The annex gives a second address: lareunion.mrcc@developpement-durable.gouv.fr." },
+    { "type": "email", "value": "lareunion.mrcc@developpement-durable.gouv.fr", "to": "CROSS SOI", "note": "Annex VII, alternative to reunion@mrccfr.eu." },
+    { "type": "inmarsat-c", "value": "422 799 193", "to": "CROSS SOI", "note": "Annex VII, priority 4." },
+    { "type": "vhf", "value": "CH 16", "to": "CROSS SOI", "note": "Annex VII: coverage 30 NM." },
+    { "type": "mf", "value": "2182 kHz", "to": "CROSS SOI", "note": "Annex VII: coverage 200 to 300 NM; use MF only when no other means is available. MMSI of CROSS SOI 006601000." },
+    { "type": "fax", "value": "+262 (0)262 71 15 95", "to": "CROSS SOI", "note": "Annex VII." },
+    { "type": "phone", "value": "881 631 448 080", "to": "CROSS SOI", "note": "Annex VII: Iridium." },
+    { "type": "email", "value": "dm-soi@developpement-durable.gouv.fr", "to": "Direction de la mer sud océan Indien", "note": "Annex IX only: 'Action' address for the 3 working days derogation request (approach within 7 NM / anchoring within 3 NM). Same request also to czm.aemsec@gmail.com (action) and, for information, reunion@mrccfr.eu and off-port@reunion.port.fr, all as printed in Annex IX." },
+    { "type": "email", "value": "czm.aemsec@gmail.com", "to": "Commandant de la zone maritime sud océan Indien (AEM)", "note": "Annex IX only: 'Action' address for the derogation request, printed in the arrêté as given." }
+  ],
+  "addressee": "CROSS SOI",
+  "heading": "RAPPORT SURNAV – CIRCULATION EAUX TERRITORIALES/SIGNALEMENT CARGAISON TRANSPORTEE",
+
+  "lines": [
+    { "l": "A", "req": "required", "text": "Ship's name, call sign, MMSI number and flag.", "text_quote": "Nom, indicatif d'appel, numéro MMSI et pavillon du navire," },
+    { "l": "B", "req": "required", "text": "Date and time UTC as six digits DDHHMM (Z).", "text_quote": "Date et heure UTC sous forme de six chiffres JJHHMM (Z)" },
+    { "l": "C", "req": "required", "text": "Position (lat./long.).", "text_quote": "Position (Lat./Long)" },
+    { "l": "D", "req": "required", "text": "Course.", "text_quote": "Route" },
+    { "l": "E", "req": "required", "text": "Speed.", "text_quote": "Vitesse" },
+    { "l": "F", "req": "required", "text": "Port of departure.", "text_quote": "Port de départ" },
+    { "l": "G", "req": "required", "text": "Date, time UTC and point of entry into French territorial waters, or date, time and place of sailing.", "text_quote": "Date, heure UTC et point d'entrée dans les eaux territoriales françaises ou date, heure et lieu d'appareillage" },
+    { "l": "H", "req": "required", "text": "Destination and ETA.", "text_quote": "Destination et ETA" },
+    { "l": "I", "req": "required", "text": "Date, time UTC and point of exit from territorial waters, or date and time UTC of arrival at the destination port, anchorage, waiting or lightening area in French waters.", "text_quote": "Date, heure UTC et point de sortie des eaux territoriales ou date et heure UTC d'arrivée au port, mouillage, zone d'attente ou de délestage de destination dans les eaux françaises" },
+    { "l": "J", "req": "required", "text": "Intentions.", "text_quote": "Intentions" },
+    { "l": "K", "req": "required", "text": "Radio watch kept.", "text_quote": "Veille radio assurée" },
+    { "l": "L", "req": "required", "text": "Correct technical name of the dangerous or polluting goods on board; UN number, IMO hazard class (IMDG Code, IBC and IGC Codes) and, where relevant, the ship's class under the INF Code or the BC Code.", "text_quote": "Appellation technique exacte des marchandises dangereuses ou polluantes détenues à bord ; numéro ONU attribué, class de risques OMI déterminées conformément au code IMDG et aux recueils IBC et IGC et le cas échéant, catégorie du navire au sens du recueil INF ou recueil BC l'environnement" },
+    { "l": "M", "req": "required", "text": "Defects, damage, deficiencies, restrictions.", "text_quote": "Défectuosités, avaries, défaillances, restrictions" },
+    { "l": "N", "req": "required", "text": "Weather in the area.", "text_quote": "Météo sur zone" },
+    { "l": "O", "req": "required", "text": "Which authorities hold the information (list, manifest, stowage plan) on the dangerous goods on board.", "text_quote": "Indication des autorités correspondantes détenant les informations (liste, manifeste, plan de chargement) relatives aux matières dangereuses détenues à bord" },
+    { "l": "P", "req": "required", "text": "Type of ship (length, draught and air draught).", "text_quote": "Type de navire (longueur, tirant d'eau et tirant d'air)" },
+    { "l": "Q", "req": "required", "text": "Number of persons on board.", "text_quote": "Nombre de personnes à bord" },
+    { "l": "R", "req": "optional", "text": "Other remarks.", "text_quote": "Remarques diverses" },
+    { "l": "S", "req": "required", "text": "End of report.", "text_quote": "Fin du compte rendu" }
+  ],
+  "format_note": "NOT the IMO A.851(20) letters: Annex VI uses its own consecutive letters A to S (spoken ALPHA ... SIERRA), so D is course, E speed, L the dangerous goods, P ship type, Q persons on board, S end of report. The model starts 'Origine : Navire XX / Destinataire : CROSS SOI / Texte : RAPPORT SURNAV – CIRCULATION EAUX TERRITORIALES/SIGNALEMENT CARGAISON TRANSPORTEE'. Incident reports use Annex IV ('RAPPORT SURNAV AVARIES', also own letters A to S) and assisting ships Annex V. Anchoring requests use Annex VIII; derogation requests Annex IX (with certificates: Bunker Oil, Nairobi wreck removal, P&I, cargo manifest).",
+
+  "area": {
+    "shape": "territorial-sea",
+    "points": [],
+    "lines": [],
+    "center": null, "radius_nm": null,
+    "state": "France",
+    "zone": "French territorial and internal waters adjacent to La Réunion (outer limit: décret n° 2018-24 du 16 janvier 2018; baselines: décret n° 2014-1309)",
+    "ports": [],
+    "inside_hint": { "lat": -20.85, "lon": 55.3 },
+    "bbox": [ 54.9, -21.6, 56.1, -20.6 ]
+  },
+  "area_quote": "5.2. Les navires transportant des matières dangereuses ayant l'intention de pénétrer dans les eaux territoriales et intérieures adjacentes à La Réunion doivent le signaler [...] Annexe I [...] limite des eaux territoriales : cf. décret n°2018-24 du 16 janvier 2018 établissant la limite extérieure de la mer territoriale au large de l'ile de La Réunion.",
+
+  "sources": [
+    { "title": "Arrêté n° 2080/2022 réglementant les comptes rendus obligatoires, le suivi du trafic, le mouillage et le stationnement dans les zones économiques exclusives et eaux territoriales françaises du sud de l'océan Indien (Préfet de La Réunion, DDG AEM)", "ref": "Art. 1 to 5, 10, 11, 14, 15, 20; Annexes VI, VII, IX", "date": "2022-10-14", "url": "https://www.reunion.gouv.fr/contenu/telechargement/34574/259920/file/20221014%20-%20Arr%C3%AAt%C3%A9%202080-2022%20r%C3%A9glementant%20les%20comptes%20rendus%20obligatoires%2C%20le%20suivi%20du%20trafic%2C%20le%20mouillage%20et%20le%20stationnement%20dans%20les%20zones%20%C3%A9conomiques%20exclusives%20et%20eaux%20territoriales%20fran%C3%A7aises%20du%20sud%20de%20l%E2%80%99oc%C3%A9an%20Indien.pdf", "primary": true },
+    { "title": "Préfecture de La Réunion, Arrêtés DDGAEM relatifs au mouillage, au stationnement et au transit dans les ZEE et eaux territoriales françaises du sud de l'océan Indien (lists 2080/2022 as the current text)", "ref": "listing", "date": "2023-04-13", "url": "https://www.reunion.gouv.fr/Actions-de-l-Etat/Action-de-l-Etat-en-mer/Reglementations/Arretes-du-delegue-du-gouvernement-pour-l-action-de-l-Etat-en-mer/Arretes-DDGAEM-relatifs-au-mouillage-au-stationnement-et-au-transit-dans-les-zones-economiques-exclusives-et-eaux-territoriales-francaises-du-sud-de-l-ocean-Indien", "primary": true },
+    { "title": "CROSS Réunion, Bilan d'activités 2015 (describes the repealed arrêté 828 of 16 April 2004: 6 hour notice before entering the 12 NM territorial waters for dangerous-goods ships)", "ref": "Part II SURNAV", "date": "2016", "url": "https://www.dm.sud-ocean-indien.developpement-durable.gouv.fr/IMG/pdf/bilan_cross_2015v3_cle5111c3.pdf", "primary": false }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Arrêté 2080/2022 downloaded from the prefecture site and read in full (text layer, 25 pages). Heading, letters and contacts copied from Annexes VI, VII and IX. It is the only text listed on the prefecture's page for transit and reporting, and its Art. 20 repeals arrêté 0828 of 16 April 2004 and 2098 of 2 July 2020. The old 6 hour rule was read in the CROSS Réunion 2015 report (secondary), not in the 2004 text itself.",
+  "confidence": "medium",
+  "notes": "Notice period is unclear in the current text: Art. 5.2 says the notice is given 'avec un préavis (article 15)', but Art. 15 is the three working days rule for approaching within 7 NM or anchoring within 3 NM; no number of hours is printed for the Annex VI notice itself (the Annex VI and VII headings also refer to 'article 13', another cross-reference that does not fit). The repealed 2004 arrêté (828) required 6 hours before entering the 12 NM territorial waters, and the current text keeps 6 hours for anchoring requests. Sending the Annex VI notice at least 6 hours before entry, and three working days ahead whenever you need to come within 7 NM, is a safe reading but is NOT confirmed by the text; ask CROSS SOI. The old addressee 'CROSS RU' / 'CROSSRU' is no longer used: the centre is now CROSS SOI (MRCC La Réunion), though reunion@mrccfr.eu is unchanged. Mayotte: the arrêté applies in all French EEZs of the South Indian Ocean zone (incident reporting Art. 6, general duties Art. 4: VHF 16 and MF 2182 watch, AIS on, report damage to CROSS SOI), but the Annex VI entry notice and the 7 NM rule are written for the territorial waters adjacent to La Réunion; anchoring in the territorial waters of Mayotte and the TAAF is set by separate arrêtés of the préfet de Mayotte and the TAAF administrator (Art. 1.2), which were not found or read. Other rules: Art. 5.1, dangerous-goods ships keep at least 7 NM from the French coast in territorial waters; Art. 11.1, oil and liquefied gas carriers may not anchor or stop in the territorial waters of La Réunion (derogation possible, Art. 11.2); Art. 9.4, no bunkering in these waters except by specific arrêté; Art. 13.1, approach and anchoring forbidden to all ships during a cyclone alert. Penalties: Code des transports L. 5242-1 and following."
+}

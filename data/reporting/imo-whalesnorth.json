@@ -1,0 +1,208 @@
+{
+  "id": "imo-whalesnorth",
+  "system": "WHALESNORTH",
+  "title": "Right whale mandatory ship reporting system, north-eastern United States (WHALESNORTH)",
+  "country": "United States",
+  "authority": "United States Coast Guard (shore-based authority); system run with NOAA Fisheries",
+  "kind": "mandatory-imo",
+  "resolution": "MSC.85(70)",
+  "status": "in effect",
+  "effective": "1999-07-01",
+  "applies_to": "Every self-propelled ship of 300 gross tons or more. Government ships exempt under SOLAS are encouraged to report.",
+  "applies_quote": "Each self-propelled ship of 300 gross tons or greater must participate in the reporting systems, except government ships exempted from reporting by regulation V/8-1(c) of SOLAS. However, exempt ships are encouraged to participate in the reporting systems. (33 CFR 169.125)",
+  "when": [
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Participating ships must report to the shore-based authority upon entering the area covered by a reporting system. Additional reports are not necessary for movements made within a system or for ships exiting a system. (33 CFR 169.130) The mandatory ship reporting system in the northeastern United States operates year-round. (33 CFR 169.110)"
+    }
+  ],
+  "how": [
+    {
+      "type": "inmarsat-c",
+      "value": "RightWhale.MSR@noaa.gov",
+      "to": "Right whale MSR system (US Coast Guard / NOAA)",
+      "note": "Primary. Ships fitted with Inmarsat C must report by Inmarsat C in the IMO standard format (33 CFR 169.135(a)); address as printed in US Coast Pilot 1. An automatic return message with whale information should come back."
+    },
+    {
+      "type": "telex",
+      "value": "48156090",
+      "to": "Right whale MSR system",
+      "note": "Alternative address printed in US Coast Pilot 1."
+    },
+    {
+      "type": "email",
+      "value": "rightwhale.msr@noaa.gov",
+      "to": "Right whale MSR system",
+      "note": "Ships NOT fitted with Inmarsat C: first choice (33 CFR 169.135(b)(1))."
+    },
+    {
+      "type": "other",
+      "value": "HF voice 4125, 6215, 8291, 12290 or 16420 kHz",
+      "to": "USCG Communication Area Master Station Atlantic (CAMSLANT), Chesapeake VA",
+      "note": "Ships not fitted with Inmarsat C or telex (33 CFR 169.135(b)(2); frequencies from US Coast Pilot 1). Give every required item to the watchstander."
+    },
+    {
+      "type": "phone",
+      "value": "800-742-8519x0",
+      "to": "USCG CAMSLANT",
+      "note": "Printed in US Coast Pilot 1 as an alternative to HF voice (US toll-free number)."
+    },
+    {
+      "type": "vhf",
+      "value": "VHF voice (no channel published)",
+      "to": "Nearest U.S. Coast Guard Sector office",
+      "note": "Only for ships fitted with VHF voice only (33 CFR 169.135(b)(3), US Coast Pilot 1)."
+    }
+  ],
+  "addressee": null,
+  "heading": "WHALESNORTH//",
+  "lines": [
+    {
+      "l": "M",
+      "req": "if-applicable",
+      "text": "INMARSAT Number: vessel INMARSAT number."
+    },
+    {
+      "l": "A",
+      "req": "required",
+      "text": "Ship: the name, call sign or ship station identity, IMO number, and flag of the vessel."
+    },
+    {
+      "l": "B",
+      "req": "required",
+      "text": "Date and time of event: a 6-digit group giving day of month (first two digits), hours and minutes (last four digits)."
+    },
+    {
+      "l": "E",
+      "req": "required",
+      "text": "True course: a 3-digit group indicating true course."
+    },
+    {
+      "l": "F",
+      "req": "required",
+      "text": "Speed in knots and tenths of knots: a 3-digit group."
+    },
+    {
+      "l": "H",
+      "req": "required",
+      "text": "Date, time and point of entry into system: entry time expressed as in (B) and entry position as a 4-digit latitude group with N or S and a 5-digit longitude group with E or W, or true bearing and distance in nautical miles from a clearly identified landmark."
+    },
+    {
+      "l": "I",
+      "req": "required",
+      "text": "Destination and expected time of arrival: name of port and date time group expressed as in (B)."
+    },
+    {
+      "l": "L",
+      "req": "required",
+      "text": "Route information: intended track."
+    }
+  ],
+  "format_note": "Message starts with the system identifier line (WHALESNORTH//). Each line is the letter, a slash, the data and ends with //, as in the US Coast Pilot example (e.g. H/031410Z APR/4104N/06918W//, L/WP/4104N/06918W/15.5//; several L lines allowed). US Coast Pilot: extra greetings or comments in the message stop the automatic system from accepting it. Note: the example in the 1998 IMO resolution (Appendix 3) uses different letters (B call sign, D course, E speed); the current US rule (33 CFR 169.140) and Coast Pilot use the A.851(20) letters given here.",
+  "area": {
+    "shape": "lines",
+    "points": [
+      {
+        "n": "1",
+        "name": "Cape Ann, Massachusetts (on the coast)",
+        "lat": "42 39.00N",
+        "lon": "070 37.00W",
+        "inferred": false
+      },
+      {
+        "n": "2",
+        "lat": "42 45.00N",
+        "lon": "070 13.00W",
+        "inferred": false
+      },
+      {
+        "n": "3",
+        "lat": "42 10.00N",
+        "lon": "068 31.00W",
+        "inferred": false
+      },
+      {
+        "n": "4",
+        "lat": "41 00.00N",
+        "lon": "068 31.00W",
+        "inferred": false
+      },
+      {
+        "n": "5",
+        "lat": "41 00.00N",
+        "lon": "069 17.00W",
+        "inferred": false
+      },
+      {
+        "n": "6",
+        "lat": "42 05.00N",
+        "lon": "070 02.00W",
+        "inferred": false
+      },
+      {
+        "n": "7",
+        "name": "then along the Massachusetts shoreline back to point 1",
+        "lat": "42 04.00N",
+        "lon": "070 10.00W",
+        "inferred": false
+      }
+    ],
+    "lines": [
+      [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ]
+    ],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 41.5,
+      "lon": -69.0
+    },
+    "bbox": [
+      -71.0,
+      40.8,
+      -68.3,
+      43.0
+    ]
+  },
+  "area_quote": "Northeastern United States: Geographical boundaries of the proposed northeast area include the water of Cape Cod Bay, Massachusetts Bay, and the Great South Channel east and southeast of Massachusetts (Appendix 1). Co-ordinates of the proposed area are as follows: from a point on Cape Ann, Massachusetts at 42°39'.00 N, 70°37'.00 W; then northeast to 42°45'.00 N, 70°13'.00 W; then southeast to 42°10'.00 N, 68°31'.00 W; then south to 41°00'.00 N, 68°31'.00 W; then west to 41°00'.00 N, 69°17'.00 W; then northeast to 42°05'.00 N, 70°02'.00 W, then west to 42°04'.00 N, 70°10'.00 W; and then along the Massachusetts shoreline of Cape Cod Bay and Massachusetts Bay back to the point on Cape Anne at 42°39'.00 N, 70°37'.00 W. NOAA Chart No.13009. (MSC.85(70), Annex 1, para 2.1)",
+  "sources": [
+    {
+      "title": "IMO resolution MSC.85(70) Mandatory ship reporting systems (Annex 1: off the north-eastern and south-eastern coasts of the United States)",
+      "ref": "Annex 1, paras 1 to 8 and Appendix 3",
+      "date": "1998-12-07",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.85(70).pdf",
+      "primary": true
+    },
+    {
+      "title": "33 CFR Part 169 Subpart B (Mandatory ship reporting systems, right whales), current text via eCFR",
+      "ref": "sections 169.100 to 169.140",
+      "date": "2026-10-01",
+      "url": "https://www.ecfr.gov/current/title-33/chapter-I/subchapter-P/part-169",
+      "primary": true
+    },
+    {
+      "title": "NOAA U.S. Coast Pilot 1, Chapter 3 (18 Oct 2026 edition), Mandatory Ship Reporting (MSR) Systems WHALESNORTH and WHALESSOUTH",
+      "ref": "paragraphs (74) to (82)",
+      "date": "2026-10-18",
+      "url": "https://nauticalcharts.noaa.gov/publications/coast-pilot/files/cp1/CPB1_C03_WEB.pdf",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Boundary read from MSC.85(70) Annex 1 para 2.1 (IMO PDF, page 2) and checked point by point against the identical list in 33 CFR 169.105 (eCFR, NAD 83). Who, when and report lines from the current 33 CFR 169.125 to 169.140 (eCFR text as of 2026-10-01). Addresses, telex and HF frequencies from US Coast Pilot 1, chapter 3, 18 Oct 2026 edition (NOAA, public domain). Reporting email checked against 33 CFR 169.135(b)(1) as amended in 2020.",
+  "confidence": "high",
+  "notes": "Report once, when entering the area. Not needed when leaving a port inside the area or when leaving the area. The boundary runs from point 1 through point 7 and then follows the Massachusetts shoreline back to point 1 (Cape Cod Bay and Massachusetts Bay). Coordinates are NAD 83 in the US rule (same values as the IMO text). The return message gives recent right whale sightings and precautions; if no return message comes, US Coast Pilot says to tell the local USCG Sector office. Separate US rules also apply here, not covered by this record: speed limits of 10 knots in Seasonal Management Areas (50 CFR 224.105), the 500 yard approach limit (50 CFR 224.103), the Boston TSS and the seasonal Great South Channel area to be avoided."
+}

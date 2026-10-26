@@ -1,0 +1,291 @@
+{
+  "id": "imo-gibrep",
+  "system": "GIBREP",
+  "title": "GIBREP Strait of Gibraltar",
+  "country": "Spain and Morocco",
+  "authority": "MRCC Tarifa (TARIFA TRAFFIC, Salvamento Maritimo, Spain) and CSTM Tanger (TANGIER TRAFFIC, Morocco)",
+  "kind": "mandatory-imo",
+  "resolution": "MSC.63(67) Annex 2, as amended by MSC.300(87)",
+  "status": "in effect",
+  "effective": "2010-12-01",
+  "applies_to": "Ships of 300 GT and over; any ship with hazardous or potentially polluting cargo; any ship towing or pushing; ships under 300 GT using the traffic lanes or separation zone to fish or in an emergency. Regular cross-Strait ferries can have special arrangements.",
+  "applies_quote": "1.1 Ships of the following general categories are required to participate in the reporting system: .1 all ships of 300 gross tonnage and over; .2 all ships, regardless of gross tonnage, carrying hazardous and/or potentially polluting cargo, as defined in paragraph 1.4 of the Guidelines and criteria for ship reporting systems (resolution MSC.43(64)); .3 ships engaged in towing or pushing another vessel regardless of gross tonnage; .4 any category of vessel less than 300 gross tonnage which is using the appropriate traffic lane or separation zone in order to engage in fishing; and .5 any category of ships less than 300 gross tonnage which is using the appropriate traffic separation zone in an emergency in order to avoid immediate danger. Exemption 1.2 Recognizing that regular cross-Strait ferries, including passenger high-speed craft, generally operate according to published schedules, special reporting arrangements can be made on a ship-by-ship basis, subject to the approval of both TARIFA TRAFFIC and TANGIER TRAFFIC.",
+  "when": [
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "3.3.1 Westbound traffic should report to TARIFA TRAFFIC on the Spanish coast when crossing the meridian 005°15'.00 W (appendix)."
+    },
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "3.3.2 Eastbound traffic should report to TANGIER TRAFFIC on the Moroccan coast when crossing the meridian 005° 58'.00 W (appendix)."
+    },
+    {
+      "event": "departure",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "3.3.3 Reports to the nearer of the two shore stations should be made on departure from the limits of a port or anchorage within the coverage area, except vessels departing from Tangier-Med ports and its anchorage areas which should report to TANGIER TRAFFIC (appendix)."
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "3.3.4 Further reports should be made to the relevant shore station whenever there is a change of navigational circumstances, particularly in relation to items Q and R of the reporting format detailed in section 3.2."
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 10",
+      "to": "TARIFA TRAFFIC",
+      "note": "Westbound ships and departures nearer Tarifa. MSC.300(87) Annex, para 5.1.1: \"channel 10 for reporting to TARIFA TRAFFIC, with the channel 67 as a supplementary option\"."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 67",
+      "to": "TARIFA TRAFFIC",
+      "note": "Supplementary option. MSC.300(87) Annex, para 5.1.1."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 69",
+      "to": "TANGIER TRAFFIC",
+      "note": "Eastbound ships and departures from Tangier-Med. MSC.300(87) Annex, para 5.1.2: \"channel 69 for reporting to TANGIER TRAFFIC, with the channel 68 as a supplementary option\"."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 68",
+      "to": "TANGIER TRAFFIC",
+      "note": "Supplementary option. MSC.300(87) Annex, para 5.1.2."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 16",
+      "to": "TARIFA TRAFFIC and TANGIER TRAFFIC",
+      "note": "Both centres keep a continuous listening watch on VHF 16 and the working channels (MSC.300(87) Annex, paras 7.1.4 and 7.2.3). Reports themselves go on the working channels."
+    },
+    {
+      "type": "mf",
+      "value": "hectometric wave band (no frequency given)",
+      "to": "TARIFA TRAFFIC or TANGIER TRAFFIC",
+      "note": "In special circumstances only. MSC.300(87) Annex, para 5.2."
+    },
+    {
+      "type": "email",
+      "value": "tarifa@sasemar.es",
+      "to": "TARIFA TRAFFIC",
+      "note": "For commercially confidential information (non-verbal means). MSC.300(87) Annex, para 5.3. Not reconfirmed on a current Salvamento Maritimo page."
+    },
+    {
+      "type": "fax",
+      "value": "+ 34 956 68 06 06",
+      "to": "TARIFA TRAFFIC",
+      "note": "As printed in MSC.300(87) Annex, para 5.3 (confidential information)."
+    },
+    {
+      "type": "telex",
+      "value": "422423126",
+      "to": "TARIFA TRAFFIC",
+      "note": "Inmarsat telex as printed in MSC.300(87) Annex, para 5.3."
+    },
+    {
+      "type": "email",
+      "value": "tangiervts@dmm.gov.ma",
+      "to": "TANGIER TRAFFIC",
+      "note": "For commercially confidential information. MSC.300(87) Annex, para 5.3. The Moroccan authority web sites could not be reached on 2026-10-26, so this is not reconfirmed."
+    },
+    {
+      "type": "fax",
+      "value": "+ 212 539 93 45 71",
+      "to": "TANGIER TRAFFIC",
+      "note": "As printed in MSC.300(87) Annex, para 5.3."
+    },
+    {
+      "type": "telex",
+      "value": "424241310",
+      "to": "TANGIER TRAFFIC",
+      "note": "Inmarsat telex as printed in MSC.300(87) Annex, para 5.3."
+    },
+    {
+      "type": "phone",
+      "value": "956 684 740",
+      "to": "Centro de Coordinacion de Salvamento de Tarifa",
+      "note": "Office number from the Salvamento Maritimo web page 'Contacto CCS y BEC' (read 2026-10-26), phone service 08:00 to 15:00. Spanish number as printed (from abroad add +34). Not a reporting channel in the resolution."
+    }
+  ],
+  "addressee": "TARIFA TRAFFIC (westbound) or TANGIER TRAFFIC (eastbound)",
+  "heading": "GIBREP",
+  "lines": [
+    {
+      "l": "A",
+      "req": "required",
+      "text": "Name of the ship, call sign, IMO identification number;"
+    },
+    {
+      "l": "B",
+      "req": "required",
+      "text": "Date and time of event;"
+    },
+    {
+      "l": "C",
+      "req": "required",
+      "text": "Position in latitude and longitude or true bearing and distance from a clearly identified landmark; (C or D)"
+    },
+    {
+      "l": "D",
+      "req": "optional",
+      "text": "Position in latitude and longitude or true bearing and distance from a clearly identified landmark; (C or D)"
+    },
+    {
+      "l": "E",
+      "req": "required",
+      "text": "True course;"
+    },
+    {
+      "l": "F",
+      "req": "required",
+      "text": "Speed in knots;"
+    },
+    {
+      "l": "G",
+      "req": "required",
+      "text": "Port of departure;"
+    },
+    {
+      "l": "I",
+      "req": "required",
+      "text": "Port of destination and expected time of arrival;"
+    },
+    {
+      "l": "P",
+      "req": "required",
+      "text": "Cargo and quantity and if dangerous goods are on board IMO classes and quantities;"
+    },
+    {
+      "l": "Q",
+      "req": "if-applicable",
+      "text": "Defect, damage and/or deficiencies affecting the structure, cargo or equipment of the ship or any other circumstances affecting normal navigation, in accordance with the provisions of relevant IMO Conventions; (Q or R)"
+    },
+    {
+      "l": "R",
+      "req": "if-applicable",
+      "text": "Defect, damage and/or deficiencies affecting the structure, cargo or equipment of the ship or any other circumstances affecting normal navigation, in accordance with the provisions of relevant IMO Conventions; (Q or R)"
+    },
+    {
+      "l": "T",
+      "req": "if-applicable",
+      "text": "Address for provision of information concerning a cargo of dangerous goods;"
+    },
+    {
+      "l": "W",
+      "req": "required",
+      "text": "Total number of persons on board;"
+    },
+    {
+      "l": "X",
+      "req": "required",
+      "text": "Miscellaneous: - Estimated quantity of bunker fuel and characteristics for ships carrying over 5,000 tonnes bunker fuel; - Navigation conditions."
+    }
+  ],
+  "format_note": "Standard reporting format of resolution A.851(20), paragraph 2 of the appendix (MSC.300(87) Annex, para 3.1.1). Reports by VHF voice. The cargo section (line P) of the GIBREP ENTRY report may be sent by non-verbal means before entering the system (para 3.1.2). Language: English, using the IMO SMCP where necessary, or Spanish, French or Arabic, if appropriate. Reporting is free of charge. Q, R and T are marked if-applicable here because of what they describe; the resolution lists every line as essential.",
+  "area": {
+    "shape": "lines",
+    "points": [
+      {
+        "n": "W-N",
+        "name": "Meridian 005 58W at the Spanish coast (COAST POINT)",
+        "lat": "36 10.8N",
+        "lon": "005 58.00W",
+        "inferred": true
+      },
+      {
+        "n": "W-S",
+        "name": "Meridian 005 58W at the Moroccan coast (COAST POINT)",
+        "lat": "35 40.0N",
+        "lon": "005 58.00W",
+        "inferred": true
+      },
+      {
+        "n": "E-N",
+        "name": "Meridian 005 15W at the Spanish coast (COAST POINT)",
+        "lat": "36 18.2N",
+        "lon": "005 15.00W",
+        "inferred": true
+      },
+      {
+        "n": "E-S",
+        "name": "Meridian 005 15W at the Moroccan coast (COAST POINT)",
+        "lat": "35 35.1N",
+        "lon": "005 15.00W",
+        "inferred": true
+      }
+    ],
+    "lines": [
+      [
+        "W-N",
+        "W-S"
+      ],
+      [
+        "E-N",
+        "E-S"
+      ]
+    ],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 35.95,
+      "lon": -5.58
+    },
+    "bbox": [
+      -6.1,
+      35.5,
+      -5.1,
+      36.4
+    ]
+  },
+  "area_quote": "2.1 The reporting system will cover the area (appendix) between longitudes 005° 58'.00 W and 005° 15'.00 W. This area includes the amended traffic separation scheme \"In the Strait of Gibraltar\" (IMO circular COLREG.2/Circ.58).",
+  "sources": [
+    {
+      "title": "IMO MSC.300(87) Adoption of amendments to the existing mandatory ship reporting system In the Strait of Gibraltar (GIBREP)",
+      "ref": "Annex, paras 1 to 9 (MSC 87/26/Add.1 Annex 19)",
+      "date": "2010-05-17",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.300(87).pdf",
+      "primary": true
+    },
+    {
+      "title": "IMO MSC.63(67) Mandatory ship reporting systems, Annex 2 In the Strait of Gibraltar",
+      "ref": "Annex 2 and Appendix 1 chartlet (original 1996 text)",
+      "date": "1996-12-03",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.63(67).pdf",
+      "primary": true
+    },
+    {
+      "title": "Salvamento Maritimo: Dispositivos de separacion de trafico",
+      "ref": "Estrecho de Gibraltar section",
+      "date": "2026-10-26",
+      "url": "https://www.salvamentomaritimo.es/mejora-tu-seguridad/control-y-servicios-en-la-mar/dispositivos-de-separacion-de-trafico",
+      "primary": false
+    },
+    {
+      "title": "Salvamento Maritimo: Contacto CCS y BEC",
+      "ref": "Tarifa",
+      "date": "2026-10-26",
+      "url": "https://www.salvamentomaritimo.es/conocenos/nuestra-empresa/contacto-ccs-y-bec",
+      "primary": false
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "All rules, lines and contacts from MSC.300(87) Annex: every page rendered at 120 dpi and read against the extracted text (pages 2 to 7); the IMO PDF has no appendix chartlet. The reporting meridians 005 58W and 005 15W also appear on the 1996 chartlet of MSC.63(67) Appendix 1 (rendered and read). The four coast points are NOT printed: they were computed where each meridian meets the Natural Earth 10m land outline (accuracy a few hundred metres) and are only for drawing. Salvamento Maritimo web page (read 2026-10-26) confirms CCS Tarifa provides the traffic service in the Strait and the mandatory reporting system; it lists no VHF channel. The Moroccan authority sites (dmm.gov.ma, equipement.gov.ma) did not answer on 2026-10-26.",
+  "confidence": "medium",
+  "notes": "The boundary is two meridians, 005 58W (west) and 005 15W (east), from coast to coast; the coast points are inferred COAST POINTs. Westbound ships report to TARIFA TRAFFIC at 005 15W; eastbound ships report to TANGIER TRAFFIC at 005 58W. Ships leaving a port or anchorage inside the area report to the nearer station, but from Tangier-Med always to TANGIER TRAFFIC. MSC.300(87) (in force 1 December 2010) replaced the 1996 text: before that the threshold was 50 m LOA and all reports went to Tarifa on VHF 16 and 10 (67 supplementary). Broadcasts: Tarifa on VHF 10 at 00:15, 04:15, 08:15, 12:15, 16:15, 20:15 UTC; Tangier on VHF 69 at 02:15, 06:15, 10:15, 14:15, 18:15, 22:15 UTC, each announced on VHF 16 (MSC.300(87) para 3.5.2). Email, fax and Inmarsat telex are as printed in 2010 and were not reconfirmed on current official pages. Later amendments: none found. Checked the Swedish Transport Agency list of IMO ship reporting systems (2017), the NCSR 12 report to MSC (NCSR 12/20/Add.1, 2025), the MSC 111 summary (May 2026: only ADRIREP, SOUNDREP, BELTREP were adopted) and the NCSR 13 draft report (NCSR 13/WP.1/Rev.1: proposals only for TRANSREP, BONIFREP, WETREP, CALDOVREP). An EU proposal at NCSR 12 to add insurance certificate lines to about ten European systems is still being handled at IMO; if it reaches this system the report lines will change."
+}

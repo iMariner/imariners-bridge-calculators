@@ -1,0 +1,87 @@
+{
+  "id": "surnav-guyane",
+  "system": "SURNAV",
+  "title": "SURNAV French Guiana",
+  "country": "France",
+  "authority": "Préfet de la Guyane, délégué du Gouvernement pour l'action de l'État en mer; reports go to CROSS Antilles-Guyane (MRCC Fort-de-France)",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": "2018-12-01",
+  "applies_to": "The SURNAV notice (Art. 4, Annex II) is for the master of any ship in Art. 1 §2 about to pass through or stay in French territorial waters of the Guiana maritime zone: ships carrying dangerous or polluting goods, oil, or dangerous or polluting oil gas residues as defined by the conventions, codes and protocols in force, however stowed, and empty tankers and empty towed craft carrying or having carried dangerous or polluting goods. Art. 1 as a whole covers commercial ships (and towed craft) of 300 GT or more, passenger ships of 80 m or more and yachts of 80 m or more; §2 begins with 'notamment' (in particular). Passenger ships and yachts of 80 m or more send 'SURNAV CROISIERE' (Art. 8, Annex III). Warships and French State ships on non-commercial public service are exempt (Art. 2).",
+  "applies_quote": "Article 1er : Le présent arrêté s'applique, dans les limites de la zone économique exclusive (ZEE) française de Guyane : 1. à tous les navires, y compris engins remorqués, d'une jauge brute supérieure ou égale à 300, effectuant une navigation commerciale ; 2. notamment aux navires transportant des marchandises dangereuses ou polluantes, des hydrocarbures ou résidus gazeux d'hydrocarbures dangereux ou polluants au sens des conventions, codes et protocoles en vigueur quel que soit leur mode de stockage, ainsi qu'aux navires citernes lèges et engins remorqués lèges transportant ou ayant transporté des matières dangereuses ou polluantes ; 3. à tous les navires à passagers d'une longueur supérieure ou égale à 80 mètres ; 4. à tous les navires de plaisance d'une longueur supérieure ou égale à 80 mètres. [...] Article 4 : Le capitaine de tout navire visé au paragraphe 2. de l'article 1er s'apprêtant à passer ou à séjourner dans les eaux territoriales françaises de la zone maritime Guyane est tenu de signaler au CROSS AG, par un message conforme au modèle figurant en annexe II et acheminé selon les dispositions de l'annexe I : 1. ses intentions de mouvement dans les eaux territoriales ; 2. sa cargaison ; 3. l'état de ses capacités de manœuvre et de navigation.",
+
+  "when": [
+    { "event": "before_entry", "hours_before": 6, "interval_h": null, "report": null,
+      "text": "The message must reach CROSS AG at least six hours before entering French territorial waters if the ship comes from outside.",
+      "text_quote": "Ce message doit parvenir au CROSS AG au moins six heures avant l'entrée dans les eaux territoriales françaises si le navire vient de l'extérieur," },
+    { "event": "departure", "hours_before": 6, "interval_h": null, "report": null,
+      "text": "At least six hours before sailing if the ship is about to leave these territorial waters from a port or from an anchorage, waiting or lightening area.",
+      "text_quote": "et au moins six heures avant l'appareillage si le navire se prépare à quitter ces mêmes eaux territoriales à partir d'un port ou d'une zone de mouillage, d'attente ou de délestage." },
+    { "event": "deviation", "hours_before": null, "interval_h": null, "report": null,
+      "text": "Any change to the programme given in the message must be reported to CROSS AG at once by a correcting message, same model and same way as the first.",
+      "text_quote": "Toute modification survenant dans le programme d'activité renseigné dans le message susvisé de ces navires doit aussitôt être signalée au CROSS AG par un message correctif selon le même modèle et les mêmes modalités que le message initial." },
+    { "event": "before_entry", "hours_before": 6, "interval_h": null, "report": null,
+      "text": "Passenger ships and yachts of 80 m or more (Art. 8, 'SURNAV CROISIERE', Annex III): at least six hours before entering the territorial waters of the Guiana maritime zone if coming from outside.",
+      "text_quote": "Ce message doit parvenir au CROSS AG au moins six heures avant l'entrée dans les eaux territoriales françaises de la zone maritime Guyane si le navire vient de l'extérieur," },
+    { "event": "departure", "hours_before": 1, "interval_h": null, "report": null,
+      "text": "Passenger ships and yachts of 80 m or more (Art. 8): at least one hour before sailing from a port or from an anchorage, waiting or lightening area.",
+      "text_quote": "et au moins une heure avant l'appareillage si le navire se prépare à quitter ces mêmes eaux territoriales françaises à partir d'un port ou d'une zone de mouillage, d'attente ou de délestage." },
+    { "event": "other", "hours_before": null, "interval_h": null, "report": null,
+      "text": "Anchoring outside the zones run by the Grand Port Maritime de la Guyane needs prior authorisation (Art. 14). Ask CROSS AG in the Art. 4 or Art. 8 message, giving the chosen position and planned duration; the authorisation is deemed given if no refusal or request for more information reaches the master within 4 hours (Art. 16). Report the actual anchoring position, departure and any incident to CROSS AG without delay.",
+      "text_quote": "Les capitaines des navires visés à l'article 1er et souhaitant mouiller émettent leur demande au CROSS AG lors de l'envoi du message prévu aux articles 4 et 8, en précisant la position qu'ils choisissent et la durée de mouillage qu'ils prévoient. L'autorisation est réputée accordée en absence de refus ou de demande de renseignement complémentaire communiqués au capitaine du navire sous 4 heures." }
+  ],
+
+  "how": [
+    { "type": "email", "value": "antilles@mrccfr.eu", "to": "CROSS AG / MRCC Fort-de-France", "note": "Annex I: e-mail is preferred ('l'envoi par mail est à privilégier')." },
+    { "type": "vhf", "value": "CH 16", "to": "CROSS AG", "note": "Annex I. Call sign for traffic matters: 'Antilles trafic' (French) or 'French West Indies traffic' (English)." },
+    { "type": "phone", "value": "+596 596 70 92 92", "to": "CROSS AG", "note": "Annex I." },
+    { "type": "fax", "value": "+596 596 63 24 50", "to": "CROSS AG", "note": "Annex I." },
+    { "type": "inmarsat-c", "value": "422 799 024", "to": "CROSS AG", "note": "Annex I: AOR W." },
+    { "type": "inmarsat-c", "value": "422 799 244", "to": "CROSS AG", "note": "Annex I: AOR E." }
+  ],
+  "addressee": "CROSS AG – MRCC Fort-de-France",
+  "heading": "SURNAV",
+
+  "lines": [
+    { "l": "A", "req": "required", "text": "Ship's name, call sign, IMO number, MMSI number and flag.", "text_quote": "Nom, indicatif d'appel, n° OMI, n° MMSI et pavillon du navire" },
+    { "l": "B", "req": "required", "text": "Date and time UT as DD HH MM (UTC) of the position given in CHARLIE.", "text_quote": "Date et heure T.U. sous forme : JJ HH MM (UTC) de la position mentionnée au para. CHARLIE" },
+    { "l": "C", "req": "required", "text": "Position (lat. and long.).", "text_quote": "Position (Lat. et Long.)" },
+    { "l": "E", "req": "required", "text": "Course.", "text_quote": "Route" },
+    { "l": "F", "req": "required", "text": "Speed.", "text_quote": "Vitesse" },
+    { "l": "G", "req": "required", "text": "Port of departure.", "text_quote": "Port de départ" },
+    { "l": "H", "req": "required", "text": "Date/time UTC and point of entry into French territorial waters, or date/time UTC and place of sailing.", "text_quote": "Date/heure UTC et point d'entrée dans les eaux territoriales françaises ou Date/heure UTC et lieu d'appareillage" },
+    { "l": "I", "req": "required", "text": "Destination and ETA.", "text_quote": "Destination et ETA" },
+    { "l": "K", "req": "required", "text": "Date/time (UTC) and point of exit from French territorial waters, or date/time of arrival at the destination port, anchorage, waiting or lightening area in French waters.", "text_quote": "Date/heure (UTC) et point de sortie des eaux territoriales françaises ou Date/heure d'arrivée au port, mouillage, zone d'attente ou de délestage, de destination dans les eaux françaises" },
+    { "l": "M", "req": "required", "text": "Radiotelephone watch kept.", "text_quote": "Veille radiotéléphonique assurée" },
+    { "l": "O", "req": "required", "text": "Draught.", "text_quote": "Tirant d'eau" },
+    { "l": "P", "req": "required", "text": "Cargo: quantity, UN number and IMO hazard classes (as set by the codes in force).", "text_quote": "Cargaison : quantité, N° ONU et classes de risque OMI (déterminées conformément aux différents recueils et codes en vigueur)" },
+    { "l": "Q", "req": "required", "text": "Defects, damage, deficiencies, other restrictions; navigation and manoeuvring capability normal or reduced by total or partial failure of (a) propulsion, (b) steering gear, (c) anchoring gear.", "text_quote": "Défectuosité / avarie / défaillance / autres restrictions : Capacités de navigation ou de manœuvre normales ou diminuées par suite d'avarie totale ou partielle : a) de l'appareil propulsif ; b) de l'appareil à gouverner ; c) des apparaux de mouillage." },
+    { "l": "U", "req": "required", "text": "Type of ship, main particulars, tonnage.", "text_quote": "Type de navire, caractéristiques principales, tonnage" },
+    { "l": "W", "req": "required", "text": "Total number of persons on board.", "text_quote": "Nombre total de personnes à bord" },
+    { "l": "X", "req": "optional", "text": "Other remarks.", "text_quote": "Remarques diverses" }
+  ],
+  "format_note": "Annex II model, identical to the Antilles Annex II. Passenger ships and yachts of 80 m or more use Annex III, heading 'SURNAV CROISIERE', letters A B C E F G H I K M O Q R U W X (no cargo line; R = infectious disease on board and time the Maritime Declaration of Health was sent; W = passengers / crew). Incidents (Art. 10) use Annex IV. During a space launch from Kourou a no-navigation zone is set about 5 hours before launch (Art. 21, Annex VI), announced by AVURNAV.",
+
+  "area": {
+    "shape": "territorial-sea",
+    "points": [],
+    "lines": [],
+    "center": null, "radius_nm": null,
+    "state": "France",
+    "zone": "French territorial waters of the Guiana maritime zone (French Guiana)",
+    "ports": [],
+    "inside_hint": { "lat": 5.25, "lon": -52.5 },
+    "bbox": [ -54.6, 3.8, -51.0, 6.5 ]
+  },
+  "area_quote": "s'apprêtant à passer ou à séjourner dans les eaux territoriales françaises de la zone maritime Guyane",
+
+  "sources": [
+    { "title": "Arrêté préfectoral du 22 novembre 2018 portant règlement de la navigation et des mouillages dans la zone maritime de la Guyane en vue de prévenir les pollutions en mer et de garantir la sécurité des personnes et des biens (Préfet de Guyane, DDG AEM)", "ref": "Art. 1 to 24, Annexes I to III", "date": "2018-11-22", "url": "https://www.guyane.gouv.fr/contenu/telechargement/33007/256289/file/AP_2018_SURNAV.pdf", "primary": true },
+    { "title": "Préfecture de la Guyane, Mer, Navigation et sécurité maritime, Règlementation (page updated 16/04/2026, lists AP_2018_SURNAV)", "ref": "listing", "date": "2026-04-16", "url": "https://www.guyane.gouv.fr/Actions-de-l-Etat/Mer-Littoral-et-Fleuves/Mer/Navigation-et-securite-maritime/Reglementation", "primary": true }
+  ],
+  "checked": "2026-10-26",
+  "verification": "The arrêté PDF is a scan with no text layer: pages 1 to 9 of 14 were rendered and read as images (Art. 1 to 24, Annexes I, II, III); Annexes IV to VI were not read. Everything here was transcribed by hand from the images. The prefecture's regulation page (updated April 2026) still lists this arrêté as the Guiana text.",
+  "confidence": "high",
+  "notes": "Came into force on 1 December 2018 (Art. 23) and repealed arrêtés 445/EMZD of 17 March 2004 and 261/EMZD/AEM of 25 February 2005. Same CROSS and same contacts as the Antilles (separate arrêté, separate préfet). Other rules: Art. 3, VHF 16 watch in territorial and internal waters including at anchor; Art. 5, §2 ships of 3000 GT or more keep more than 7 NM off the coast (taking into account the moving coastal bathymetry) and cross the band by the most direct route to or from a French port; Art. 6 and 7, exceptions with a pilot on board, and for bunkering or crew change between 5 and 7 NM if stated in the Art. 4 message; Art. 9, passenger ships of 80 m or more keep more than 2 NM off; Art. 15, CROSS AG grants anchoring for up to 36 hours, within 0.1 NM of the listed positions (Dégrad des Cannes, Larivot, Iles du Salut / Kourou, Saint-Laurent du Maroni). Penalties: Code des transports L. 5242-1 and following, Code pénal 131-13-1 and R. 610-5, and professional sanctions under L. 5524-1."
+}

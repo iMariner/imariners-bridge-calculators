@@ -1,0 +1,222 @@
+{
+  "id": "imo-straitrep",
+  "system": "STRAITREP",
+  "title": "Straits of Malacca and Singapore mandatory ship reporting system (STRAITREP)",
+  "country": "Malaysia and Singapore (with Indonesia as a littoral State)",
+  "authority": "Klang VTS (sectors 1 to 5) and Johor VTS (sector 6), Marine Department Malaysia; Singapore VTS (sectors 7 to 9), Maritime and Port Authority of Singapore",
+  "kind": "mandatory-imo",
+  "resolution": "MSC.73(69)",
+  "status": "in effect",
+  "effective": "1998-12-01",
+  "applies_to": "Ships of 300 GT and above; ships of 50 m or more; tows or pushed units of 300 GT or 50 m combined; ships of any size carrying hazardous cargo; all passenger ships fitted with VHF; smaller ships with VHF that use the traffic lane or separation zone in an emergency.",
+  "applies_quote": "Ships of the following categories are required to participate in the ship reporting system: .1 vessels of 300 GT and above; .2 vessels of 50 metres or more in length; .3 vessels engaged in towing or pushing with a combined GT of 300 and above, or with a combined length of 50 metres or more; .4 vessels of any tonnage carrying hazardous cargo, as defined in paragraph 1.4 of resolution MSC.43(64); .5 all passenger vessels that are fitted with VHF, regardless of length or GT; and .6 any category of vessels less than 50 metres in length or less than 300 GT which are fitted with VHF and in an emergency, uses the appropriate traffic lane or separation zone, in order to avoid immediate danger. (MSC.73(69), Annex 1, para 1.1)",
+  "when": [
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Ships entering the operational area shall report when crossing the limits mentioned in paragraph 3 or when crossing a line joining Tg. Piai (01°15'.50N 103°30'.75E) and Pulau Karimun Kecil (01°09'.20N 103°24'.35E) or when leaving port or anchorages in the area or before joining the traffic lane of the TSS. (para 3.3.1)"
+    },
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Ships entering the operational area shall also report when approaching from the south via Selat Riau, abeam of Karang Galang Lt. (01°09'.58N 104°11'.47E) or via Selat Durian, report when Pulau Jangkat Beacon (00°57'.89N 103°42'72E) is abeam and when approaching from the East Johor Strait, abeam of Eastern Buoy (01°17'.87N, 104°05'.99E). (para 3.3.2)"
+    },
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "A ship approaching from any direction other than those specified above shall on reaching sector 7, sector 8 or sector 9 as appropriate report by giving the vessel's position in term of bearing and distance from one of the following reference points: Pu Iyu Kechil Lt (01°11'.48N 103°21'.23E), Sultan Shoal Lt (01°14'.38N 103°38'.98E), Raffles Lt (01°09'.60N 103°44'.55E), Sakijang Lt Bn (01°13'.30N 103°51'.37E), Bedok Lt (01°18'.54N 103°56'.06E), Tg. Stapa Lt (01°20'.57N 104°08'.24E), Horsburgh Lt (01°19'.81N 104°24'.44E). As an alternative the position can also be given in latitude and longitude. (para 3.3.3)"
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 66",
+      "to": "Klang VTS",
+      "note": "STRAITREP sector 1. Call on the sector channel; report on it or on another channel the VTS assigns. Keep a listening watch on the sector channel."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 88",
+      "to": "Klang VTS",
+      "note": "STRAITREP sector 2. Call on the sector channel; report on it or on another channel the VTS assigns. Keep a listening watch on the sector channel."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 84",
+      "to": "Klang VTS",
+      "note": "STRAITREP sector 3. Call on the sector channel; report on it or on another channel the VTS assigns. Keep a listening watch on the sector channel."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 61",
+      "to": "Klang VTS",
+      "note": "STRAITREP sector 4. Call on the sector channel; report on it or on another channel the VTS assigns. Keep a listening watch on the sector channel."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 88",
+      "to": "Klang VTS",
+      "note": "STRAITREP sector 5. Call on the sector channel; report on it or on another channel the VTS assigns. Keep a listening watch on the sector channel."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 88",
+      "to": "Johor VTS",
+      "note": "STRAITREP sector 6. Call on the sector channel; report on it or on another channel the VTS assigns. Keep a listening watch on the sector channel."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 73",
+      "to": "Singapore VTS",
+      "note": "STRAITREP sector 7. Call on the sector channel; report on it or on another channel the VTS assigns. Keep a listening watch on the sector channel."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 14",
+      "to": "Singapore VTS",
+      "note": "STRAITREP sector 8. Call on the sector channel; report on it or on another channel the VTS assigns. Keep a listening watch on the sector channel."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 10",
+      "to": "Singapore VTS",
+      "note": "STRAITREP sector 9. Call on the sector channel; report on it or on another channel the VTS assigns. Keep a listening watch on the sector channel."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 16",
+      "to": "All VTS authorities (broadcasts)",
+      "note": "Information of general interest is broadcast on VHF channel 16 and any other channel specified by the VTS, preceded by an announcement on the sector channel (para 4.2). Not a reporting channel."
+    }
+  ],
+  "addressee": null,
+  "heading": "STRAITREP",
+  "lines": [
+    {
+      "l": "A",
+      "req": "required",
+      "text": "Ship: name of ship, call sign, IMO identification number (if available)."
+    },
+    {
+      "l": "C",
+      "req": "required",
+      "text": "Position: a 4-digit group giving latitude in degrees and minutes suffixed with N or S and a 5-digit group giving longitude in degrees and minutes suffixed with E or W (C or D)."
+    },
+    {
+      "l": "D",
+      "req": "optional",
+      "text": "Position: true bearing (first 3 digits) and distance in nautical miles from a clearly identifiable point (state landmark), instead of C."
+    },
+    {
+      "l": "E",
+      "req": "optional",
+      "text": "True course: a 3-digit group. Information considered necessary when requested by VTS authority."
+    },
+    {
+      "l": "F",
+      "req": "optional",
+      "text": "Speed in knots and tenths of knots: a 3-digit group. When requested by VTS authority."
+    },
+    {
+      "l": "P",
+      "req": "required",
+      "text": "Hazardous cargo on board: indicate Yes or No to whether vessel is carrying hazardous cargo. If Yes the class if applicable."
+    },
+    {
+      "l": "Q",
+      "req": "if-applicable",
+      "text": "Defects/damage/deficiencies/other limitations: brief detail of defects, deficiencies or other limitations (Q or R: breakdown, damage and/or deficiencies affecting the structure, cargo or equipment of the ship or any other circumstances affecting normal navigation)."
+    },
+    {
+      "l": "R",
+      "req": "if-applicable",
+      "text": "Description of pollution or dangerous goods lost overboard: brief detail of type of pollution (oil, chemicals, etc.) or dangerous goods lost overboard; position expressed as in (C) or (D)."
+    }
+  ],
+  "format_note": "Voice report on VHF, interactive with the VTS, in English (IMO SMCP where necessary). Essential: A, C or D, P, Q or R. E and F only when the VTS asks. Commercially confidential information may be sent by non-verbal means.",
+  "area": {
+    "shape": "lines",
+    "points": [
+      {
+        "n": "W1",
+        "name": "western limit, longitude 100 40E (drawn end, not official)",
+        "lat": "04 30N",
+        "lon": "100 40E",
+        "inferred": true
+      },
+      {
+        "n": "W2",
+        "name": "western limit, longitude 100 40E (drawn end, not official)",
+        "lat": "02 00N",
+        "lon": "100 40E",
+        "inferred": true
+      },
+      {
+        "n": "E1",
+        "name": "eastern limit, longitude 104 23E (drawn end, not official)",
+        "lat": "01 40N",
+        "lon": "104 23E",
+        "inferred": true
+      },
+      {
+        "n": "E2",
+        "name": "eastern limit, longitude 104 23E (drawn end, not official)",
+        "lat": "01 00N",
+        "lon": "104 23E",
+        "inferred": true
+      }
+    ],
+    "lines": [
+      [
+        "W1",
+        "W2"
+      ],
+      [
+        "E1",
+        "E2"
+      ]
+    ],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 2.7,
+      "lon": 101.1
+    },
+    "bbox": [
+      100.5,
+      0.8,
+      104.6,
+      4.6
+    ]
+  },
+  "area_quote": "The operational area of STRAITREP covers the Straits of Malacca and Singapore between longitudes 100°40'E and 104°23'E as shown in the chartlets attached as appendix 1 and appendix 2. The area includes the routeing system in the Straits of Malacca and Singapore. The area is divided into nine sectors, each has an assigned VHF channel as shown in appendix 3. The reference charts which include the operational area of STRAITREP are the Malaysian Chart Series MAL 515, 521 and 523 of the Hydrographer, Royal Malaysian Navy or the equivalent charts published by the competent hydrographic authority. (MSC.73(69), Annex 1, paras 2.1 and 2.2)",
+  "sources": [
+    {
+      "title": "IMO resolution MSC.73(69) Mandatory ship reporting systems (Annex 1: in the Straits of Malacca and Singapore, STRAITREP)",
+      "ref": "Annex 1, paras 1 to 8 and appendices 3 and 4",
+      "date": "1998-05-19",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.73(69).pdf",
+      "primary": true
+    },
+    {
+      "title": "Maritime and Port Authority of Singapore, Vessel Traffic Information System, Operational Areas (STRAITREP sectors, VHF channels, VTS authorities)",
+      "ref": "STRAITREP sector table",
+      "date": "2026-10-26",
+      "url": "https://www.mpa.gov.sg/port-marine-ops/operations/vessel-traffic-information-system/operational-areas",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Area, who, when, lines and the 1998 sector channels read from MSC.73(69) Annex 1 (IMO PDF pages 2 to 4, 10 and 11; the text layer prints the degree sign as 'E', corrected here, e.g. 01E15'.50N = 01°15'.50N). Sector channels and VTS authorities checked against the current MPA Singapore STRAITREP table (same nine channels). No IMO amendment to STRAITREP found in a scan of MSC resolutions 43 to 599. Malaysian side not checked against a current Marine Department Malaysia notice.",
+  "confidence": "medium",
+  "notes": "The IMO text gives the area only as the strait between longitudes 100 40E and 104 23E; the limits between the nine sectors are shown only on the chartlets (images), so this record has no sector boundaries. The four points are flagged inferred: they only draw the two limiting meridians across the strait. Report on entering at the western or eastern limit, at the Tg Piai to Pulau Karimun Kecil line, on leaving a port or anchorage in the area, before joining a TSS lane, or at the southern approach points (Selat Riau, Selat Durian, East Johor Strait). Channel 88 is used in sectors 2, 5 and 6: check the sector before calling. The Pulau Jangkat Beacon longitude is printed '103°42'72E' (the decimal point is missing in the source; most likely 103°42'.72E). Rules for vessels navigating through the Straits of Malacca and Singapore and the TSS also apply. Singapore port arrivals have separate port reporting rules (not covered)."
+}

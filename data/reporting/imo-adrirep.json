@@ -1,0 +1,406 @@
+{
+  "id": "imo-adrirep",
+  "system": "ADRIREP",
+  "title": "ADRIREP Adriatic Sea (rules until 30 Nov 2026)",
+  "country": "Italy, Croatia, Montenegro, Slovenia",
+  "authority": "ADRIATIC TRAFFIC shore-based authorities: Brindisi Coast Guard, Bar MRCC, Rijeka MRCC, Ancona MRSC, Venezia MRSC, Trieste MRSC, Koper MRCC",
+  "kind": "mandatory-imo",
+  "resolution": "MSC.139(76) Annex 2",
+  "status": "in effect",
+  "effective": "2003-07-01",
+  "applies_to": "Oil tankers of 150 GT and above; ships of 300 GT and above carrying dangerous or polluting goods as cargo, in bulk or in packages.",
+  "applies_quote": "1.1 Ships of the following categories are required to participate in the system: - all oil tanker ships of 150 gross tonnage and above; - all ships of 300 gross tonnage and above, carrying on board, as cargo, dangerous or polluting goods, in bulk or in packages. 1.2 For the purpose of this system: - \"dangerous goods\" means goods classified in the IMDG Code, in Chapter 17 of the IBC Code and in Chapter 19 of the IGC Code; - \"polluting goods\" means oils as defined in MARPOL Annex I, noxious liquid substances as defined in MARPOL Annex II, harmful substances as defined in MARPOL Annex III.",
+  "when": [
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Sailing northwards (3.3.1.1): The ship shall transmit the first report to the competent shore-based authority of the interested sector when: - entering the Adriatic Sea by crossing northwards the parallel 40° 25'.00 N; - entering the Adriatic Sea by leaving a port inside the area covered by the system."
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "PR",
+      "text": "Sailing northwards (3.3.1.2): The ship shall transmit the position report to the competent shore-based authorities when: - entering a new sector by crossing northwards its southern borderline, as per annex 2; - entering the port of destination in the area covered by the system."
+    },
+    {
+      "event": "departure",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Sailing southwards (3.3.2.1 and .2): The ship shall transmit the first report to the competent shore-based authority of the interested sector when leaving a port inside the area covered by the system. The shore-based authority to whom the first report shall be transmitted is that of the Country of the port the ship is leaving."
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "PR",
+      "text": "Sailing southwards (3.3.2.4): The ship shall transmit the position reports to the competent shore-based authorities when: - entering a new sector by crossing southwards its northern borderline, as per annex 2; - entering the port of destination in the area covered by the system."
+    },
+    {
+      "event": "arrival",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "PR",
+      "text": "(3.3.1.2 and 3.3.2.4) The ship shall transmit the position report to the competent shore-based authorities when: ... entering the port of destination in the area covered by the system."
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "PR",
+      "text": "Crossing the Adriatic Sea (3.3.3.1): The ship shall send the position report to the closest shore based authority of the country the ship is leaving, which shall inform the maritime authority of the port of destination."
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "PR",
+      "text": "Special cases (3.3.4.1): The ship which, sailing northwards or southwards, enters Sector 5 shall transmit the report to, alternatively, one of the competent authorities as per annex 2, according to where the ship is going to or coming from."
+    },
+    {
+      "event": "final",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Special cases (3.3.4.2): The ship crossing southwards the latitude 40° 25'.00 N and going out either of Sector 1 or of the area covered by the system shall transmit an additional final position report to Brindisi Coast Guard."
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 10",
+      "to": "Brindisi Coast Guard (Italy)",
+      "note": "Sector 1, latitude 40° 25'.00 N to 41° 30'.00 N. MSC.139(76) Annex 2, table in its annex 2; para 5.2: call on the VHF channel assigned to the sector in which the ship is located."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 12",
+      "to": "Bar MRCC (printed \"Yugoslavia\"; now Montenegro)",
+      "note": "Sector 2, latitude 41° 30'.00 N to 42° 00'.00 N. MSC.139(76) Annex 2, table in its annex 2."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 10",
+      "to": "Rijeka MRCC (Croatia)",
+      "note": "Sector 3, latitude 42° 00'.00 N to 43° 20'.00 N. MSC.139(76) Annex 2, table in its annex 2. Croatia now runs this as VTS Croatia (call sign VTS CROATIA, VHF Ch 10, 60 per the Croatian Hydrographic Institute \"Radio Services\" 2024)."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 10",
+      "to": "Ancona MRSC (Italy)",
+      "note": "Sector 4, latitude 43° 20'.00 N to 44° 30'.00 N. MSC.139(76) Annex 2, table in its annex 2."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 10",
+      "to": "Venezia MRSC (Italy)",
+      "note": "Sector 5, latitude 44° 30'.00 N to the coastline. MSC.139(76) Annex 2, table in its annex 2 (MSC.598(111) gives CH 9 for VTS Venezia from 1 Dec 2026)."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 10",
+      "to": "Trieste MRSC (Italy)",
+      "note": "Sector 5, latitude 44° 30'.00 N to the coastline. MSC.139(76) Annex 2, table in its annex 2 (MSC.598(111) gives CH 11 for VTS Trieste from 1 Dec 2026)."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 12",
+      "to": "Koper MRCC (Slovenia)",
+      "note": "Sector 5, latitude 44° 30'.00 N to the coastline. MSC.139(76) Annex 2, table in its annex 2."
+    },
+    {
+      "type": "other",
+      "value": "MF, HF or INMARSAT via coast station",
+      "to": "the competent shore-based authority",
+      "note": "Only for a ship which cannot use the VHF channels (MSC.139(76) Annex 2 para 5.3)."
+    },
+    {
+      "type": "phone",
+      "value": "+39 0831 590219",
+      "to": "Brindisi",
+      "note": "Not in MSC.139(76). From MSC.598(111) Appendix 2 (VTS Brindisi, May 2026), for contact only; the 2002 rules ask for VHF voice reports."
+    },
+    {
+      "type": "email",
+      "value": "so.cpbrindisi@mit.gov.it",
+      "to": "Brindisi",
+      "note": "Not in MSC.139(76). From MSC.598(111) Appendix 2, for contact only."
+    },
+    {
+      "type": "phone",
+      "value": "+38267642179",
+      "to": "Bar MRCC (Montenegro)",
+      "note": "Not in MSC.139(76). From MSC.598(111) Appendix 2; the same number (+382 67 642179, mobile) is in the Croatian Hydrographic Institute \"Radio Services\" 2024, which also says Bar Radio/MRCC accepts ADRIREP reports."
+    },
+    {
+      "type": "email",
+      "value": "barradio@pomorstvo.me",
+      "to": "Bar MRCC (Montenegro)",
+      "note": "Not in MSC.139(76). From MSC.598(111) Appendix 2; same address in the Croatian \"Radio Services\" 2024."
+    },
+    {
+      "type": "phone",
+      "value": "+38551 312300",
+      "to": "Rijeka (VTS Croatia)",
+      "note": "Not in MSC.139(76). From MSC.598(111) Appendix 2 (VTS CROATIA); the Croatian \"Radio Services\" 2024 gives +385 (0)51 312300 for VTS Hrvatska, Rijeka."
+    },
+    {
+      "type": "email",
+      "value": "vts3@pomorstvo.hr",
+      "to": "Rijeka (VTS Croatia)",
+      "note": "Not in MSC.139(76). From MSC.598(111) Appendix 2. The Croatian \"Radio Services\" 2024 gives vts-rijeka@pomorstvo.hr for VTS Hrvatska, Rijeka (north of 43° 20'N)."
+    },
+    {
+      "type": "phone",
+      "value": "+39 071 502101",
+      "to": "Ancona",
+      "note": "Not in MSC.139(76). From MSC.598(111) Appendix 2 (Ancona Coast Guard), for contact only."
+    },
+    {
+      "type": "email",
+      "value": "so.cpancona@mit.gov.it",
+      "to": "Ancona",
+      "note": "Not in MSC.139(76). From MSC.598(111) Appendix 2, for contact only."
+    },
+    {
+      "type": "phone",
+      "value": "+39 041 240 5706",
+      "to": "Venezia",
+      "note": "Not in MSC.139(76). From MSC.598(111) Appendix 2 (VTS Venezia), for contact only."
+    },
+    {
+      "type": "email",
+      "value": "so.cpvenezia@mit.gov.it",
+      "to": "Venezia",
+      "note": "Not in MSC.139(76). From MSC.598(111) Appendix 2, for contact only."
+    },
+    {
+      "type": "phone",
+      "value": "+39 040 676616",
+      "to": "Trieste",
+      "note": "Not in MSC.139(76). From MSC.598(111) Appendix 2 (VTS Trieste), for contact only."
+    },
+    {
+      "type": "email",
+      "value": "so.cptrieste@mit.gov.it",
+      "to": "Trieste",
+      "note": "Not in MSC.139(76). From MSC.598(111) Appendix 2, for contact only."
+    },
+    {
+      "type": "phone",
+      "value": "+38656632106",
+      "to": "Koper MRCC (Slovenia)",
+      "note": "Not in MSC.139(76). From MSC.598(111) Appendix 2, which also lists +38656632107 and +38656632108."
+    },
+    {
+      "type": "email",
+      "value": "koper.mrcc@gov.si",
+      "to": "Koper MRCC (Slovenia)",
+      "note": "Not in MSC.139(76). From MSC.598(111) Appendix 2, which also lists kp.promet@gov.si."
+    }
+  ],
+  "addressee": null,
+  "heading": "ADRIREP",
+  "lines": [
+    {
+      "l": "A",
+      "req": "required",
+      "text": "Ship - Name, call sign, IMO identification number and flag of the vessel"
+    },
+    {
+      "l": "B",
+      "req": "required",
+      "text": "Date/time (UTC) - A 6 - digit group giving date of month (first two digits), hours and minutes (last 4 digits)"
+    },
+    {
+      "l": "C",
+      "req": "required",
+      "text": "Present position - A 4-digit group giving latitude in degrees and minutes suffixed with \"N\" or \"S\" and a five-digit group giving longitude in degrees and minutes suffixed with \"E\" or \"W\""
+    },
+    {
+      "l": "E",
+      "req": "required",
+      "text": "Course - a three digit group giving the course in degrees"
+    },
+    {
+      "l": "F",
+      "req": "required",
+      "text": "Speed - a three digit group giving a speed in Knots"
+    },
+    {
+      "l": "G",
+      "req": "required",
+      "text": "Departure - port of departure"
+    },
+    {
+      "l": "I",
+      "req": "required",
+      "text": "Destination and estimated time of arrival - ETA in UTC expressed as in B above, followed by port of destination"
+    },
+    {
+      "l": "N",
+      "req": "required",
+      "text": "Estimated time of arrival at the next check point - Date/time group expressed by a 6-digit group, as in B above, followed by the parallel of the check point"
+    },
+    {
+      "l": "O",
+      "req": "required",
+      "text": "Draught of the vessel - draught expressed by a four digit group indicating centimetres"
+    },
+    {
+      "l": "P",
+      "req": "required",
+      "text": "Cargo information - the general category of hazardous cargo as defined by the IMDG, IBC, IGC Codes and MARPOL Annex I."
+    },
+    {
+      "l": "T",
+      "req": "required",
+      "text": "Agent - ship's representative and/or owner available on 24-hour basis"
+    },
+    {
+      "l": "U",
+      "req": "required",
+      "text": "Size and type - type, DWT, GT, and length overall in meters"
+    },
+    {
+      "l": "W",
+      "req": "required",
+      "text": "Total number of persons on board - The total number of crew and other persons on board"
+    },
+    {
+      "l": "X",
+      "req": "optional",
+      "text": "Miscellaneous - Any other relevant information"
+    }
+  ],
+  "format_note": "Message identifier ADRIREP. The lines above are the first report, type 01/FR (annex 3). Position reports 01/PR, 02/PR, 03/PR and the final report ER use lines A, B, C, E, F, G, I, N and X (annex 4), plus \"any other field which differs from the information provided in the last report\". Careful: in this 2002 system FR means First report, not Final report; the final report is ER. In the last section of the first report ships shall also report any defect, damage, deficiency or limitations and, if necessary, pollution incident or loss of cargo (para 3.1.3). VHF voice, English, IMO Standard Marine Communication Phrases where necessary (para 5.4).",
+  "area": {
+    "shape": "lines",
+    "points": [
+      {
+        "n": "S-IT",
+        "name": "Parallel 40 25.00N at the Italian coast (Salento), longitude not printed",
+        "lat": "40 25.00N",
+        "lon": "018 16.6E",
+        "inferred": true
+      },
+      {
+        "n": "S-AL",
+        "name": "Parallel 40 25.00N at the Albanian coast (Karaburun peninsula), longitude not printed",
+        "lat": "40 25.00N",
+        "lon": "019 17.7E",
+        "inferred": true
+      }
+    ],
+    "lines": [
+      [
+        "S-IT",
+        "S-AL"
+      ]
+    ],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 42.8,
+      "lon": 15.0
+    },
+    "bbox": [
+      12.0,
+      40.25,
+      20.0,
+      46.0
+    ],
+    "sectors": [
+      {
+        "sector": "1",
+        "south": "40 25.00N",
+        "north": "41 30.00N",
+        "authority": "Brindisi Coast Guard (Italy)",
+        "vhf": "Channel 10"
+      },
+      {
+        "sector": "2",
+        "south": "41 30.00N",
+        "north": "42 00.00N",
+        "authority": "Bar MRCC (Yugoslavia)",
+        "vhf": "Channel 12"
+      },
+      {
+        "sector": "3",
+        "south": "42 00.00N",
+        "north": "43 20.00N",
+        "authority": "Rijeka MRCC (Croatia)",
+        "vhf": "Channel 10"
+      },
+      {
+        "sector": "4",
+        "south": "43 20.00N",
+        "north": "44 30.00N",
+        "authority": "Ancona MRSC (Italy)",
+        "vhf": "Channel 10"
+      },
+      {
+        "sector": "5",
+        "south": "44 30.00N",
+        "north": "Coastline",
+        "authority": "Venezia MRSC (Italy)",
+        "vhf": "Channel 10"
+      },
+      {
+        "sector": "5",
+        "south": "44 30.00N",
+        "north": "Coastline",
+        "authority": "Trieste MRSC (Italy)",
+        "vhf": "Channel 10"
+      },
+      {
+        "sector": "5",
+        "south": "44 30.00N",
+        "north": "Coastline",
+        "authority": "Koper MRCC (Slovenia)",
+        "vhf": "Channel 12"
+      }
+    ]
+  },
+  "area_quote": "2.1 The operational area of the mandatory ship reporting system covers the whole Adriatic Sea, north from the latitude 40° 25'.00 N as shown in the attached chartlet as annex 1: the area is divided into 5 (five) sectors, each of them assigned to a competent authority, operating on a VHF channel as shown in the attached table as annex 2. [Annex 2 table: Sector 1 Latitude 40° 25'.00 N to Latitude 41° 30'.00 N, Brindisi Coast Guard (Italy), Channel 10; Sector 2 41° 30'.00 N to 42° 00'.00 N, Bar MRCC (Yugoslavia), Channel 12; Sector 3 42° 00'.00 N to 43° 20'.00 N, Rijeka MRCC (Croatia), Channel 10; Sector 4 43° 20'.00 N to 44° 30'.00 N, Ancona MRSC (Italy), Channel 10; Sector 5 44° 30'.00 N to Coastline, Venezia MRSC (Italy) Channel 10, Trieste MRSC (Italy) Channel 10, Koper MRCC (Slovenia) Channel 12.]",
+  "sources": [
+    {
+      "title": "IMO MSC.139(76) Mandatory ship reporting systems, Annex 2 (In the Adriatic Sea)",
+      "ref": "Annex 2 paras 1 to 9 and its annexes 1 to 4",
+      "date": "2002-12-05",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.139(76).pdf",
+      "primary": true
+    },
+    {
+      "title": "IMO MSC.598(111) Revised ADRIREP (revokes annex 2 of MSC.139(76) from 0000 UTC 1 Dec 2026)",
+      "ref": "operative paras 1, 2 and 4; Appendix 2 (contact details)",
+      "date": "2026-05-22",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.598(111).pdf",
+      "primary": true
+    },
+    {
+      "title": "Croatian Hydrographic Institute, Radio Services (Radioslužba) 2024",
+      "ref": "Bar Radio and MRCC; VTS Hrvatska contact data",
+      "date": "2024",
+      "url": "https://www.hhi.hr/Portals/0/adam/HHI/X_zz1OrshUuqLO_JddKm5w/PdfView/RS_2024.pdf",
+      "primary": false
+    },
+    {
+      "title": "IMO Index of MSC resolutions, MSC 2000-03 to MSC 2026-27",
+      "ref": "no amendment of ADRIREP between 2002 and MSC.598(111)",
+      "date": "2026-10-26",
+      "url": "https://www.imo.org/en/KnowledgeCentre/IndexofIMOResolutions/Pages/MSC-2026-27.aspx",
+      "primary": false
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Rules, report formats and the sector table from the IMO PDF of MSC.139(76) Annex 2 (pdftotext), with the sector table checked digit by digit against the rendered PDF page 21 (annex page 20) and the chartlet on page 20 looked at. The IMO index pages of MSC resolutions (read 2026-10-26) show no amendment of ADRIREP before MSC.598(111). Phone numbers and e-mails are not in MSC.139(76); they are copied from MSC.598(111) Appendix 2 (checked against the rendered page 11) and only Bar MRCC and the VTS Croatia phone could be matched with a national publication (Croatian Hydrographic Institute Radio Services 2024). The end points of the 40 25N line on the coast are computed from Natural Earth 10m land (inferred). No Italian official web page on ADRIREP was found.",
+  "confidence": "medium",
+  "notes": "These are the rules of MSC.139(76) annex 2, in force since 1 July 2003. They are REPLACED at 0000 UTC on 1 December 2026 by MSC.598(111) (see record imo-adrirep-2026): new categories (all ships of 10,000 GT and above, any ship with hazardous cargo), no sectors, electronic reporting through SafeSeaNet. One record with a sector table is used instead of one record per sector because all sectors share one outer boundary (the 40 25N parallel and the coast), the sector limits are only parallels of latitude, and the reports depend on the voyage (northbound, southbound, crossing) rather than on a separate address per area; the sector table is in area.sectors and in \"how\". The authority names are those of 2002: Bar MRCC was printed as \"Yugoslavia\" (now Montenegro); Rijeka MRCC is now run as VTS Croatia; Italian MRSCs are now Coast Guard operations rooms and VTS centres; channels in use today may differ from the 2002 table (MSC.598(111) gives VTS Venezia CH 9 and VTS Trieste CH 11). Phone and e-mail entries come from the May 2026 resolution and are given for contact only. The only printed limit is the parallel 40° 25'.00 N; the rest of the boundary is the coast of the Adriatic Sea. The two end points of that parallel (S-IT, S-AL) are where it meets the coast in Natural Earth 10m land data (computed, inferred), only so the map can close the area; the Albanian end is the west coast of the Karaburun peninsula, so Vlore Bay north of 40 25N is inside. Reference charts: Italian Chart No.435 INT 306 (1993, ED-50) and Croatian Chart No. 101 (1998, Bessel)."
+}

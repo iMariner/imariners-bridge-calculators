@@ -1,0 +1,149 @@
+{
+  "id": "kr-port-arrival",
+  "system": "Korea port entry report and ISPS pre-arrival",
+  "title": "Korea: report before entering or leaving a trade port, ship security information 24 h before arrival",
+  "country": "Republic of Korea",
+  "authority": "Ministry of Oceans and Fisheries (해양수산부): Regional Maritime Affairs and Port Office (지방해양수산청), city or province, or Port Authority (항만공사)",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": null,
+  "applies_to": "Masters of ships entering or leaving the water area of a Korean trade port (무역항의 수상구역등); ships under 5 GT and a few others are exempt. Security information: every foreign-flag ship on an international voyage that will enter a Korean port.",
+  "applies_quote": "선박입출항법 제4조① 무역항의 수상구역등에 출입하려는 선박의 선장은 대통령령으로 정하는 바에 따라 관리청에 신고하여야 한다. 국제선박항만보안법 제19조④ 대한민국의 항만에 입항하려는 외국 국적의 국제항해선박은 그 항만에 입항하기 24시간 이전에 해양수산부령으로 정하는 바에 따라 해당 선박의 보안에 관한 정보(이하 “선박보안정보”라 한다)를 해양수산부장관에게 통보하여야 한다.",
+  "when": [
+    {
+      "event": "before_arrival",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Foreign-going ship: submit the foreign-going ship entry/departure report (외항선 출입신고서) with passenger list and crew list before entering the port water area, and before leaving it. No fixed number of hours is set in the law; in practice the agent files it in Port-MIS. (외항선이 무역항의 수상구역등의 안으로 입항하는 경우에는 입항 전에, 무역항의 수상구역등의 밖으로 출항하려는 경우에는 출항 전에 ... 외항선 출입 신고서를 관리청에 제출할 것)"
+    },
+    {
+      "event": "before_arrival",
+      "hours_before": 24,
+      "interval_h": null,
+      "report": null,
+      "text": "Ship security information at least 24 hours before entering a Korean port: ship details (name, flag, type, call sign, IMO number, GT), port and ETA, security level and valid ISSC, security information for the last 10 ports, security incidents on the voyage. May be sent on arrival if the passage from the last port is under 24 h, or for distress, piracy avoidance, medical emergency or urgent repairs. (그 항만에 입항하기 24시간 이전에 ... 선박보안정보를 ... 통보하여야 한다)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "If the entry or departure time changes after the report, report the change at once. Arrival and departure may be reported together if the departure time is already fixed. (출입 일시가 변경된 경우에는 지체 없이 그 사실을 ... 신고하여야 한다)"
+    },
+    {
+      "event": "before_arrival",
+      "hours_before": 72,
+      "interval_h": null,
+      "report": null,
+      "text": "Entry permission (not just a report) at least 3 days before, for: foreign ships whose next port after leaving Korea is in North Korea; foreign ships entering a Korean trade port for the first time within one year after calling North Korea; and some other ships named for national security. (무역항의 수상구역등에 출입하기 3일 전까지 ... 출입 허가 신청서를 ... 제출하여야 한다)"
+    }
+  ],
+  "how": [
+    {
+      "type": "web",
+      "value": "Port-MIS (선박입출항정보시스템 / 항만운영정보시스템)",
+      "to": "Regional Maritime Affairs and Port Office or Port Authority",
+      "note": "Normally filed by the ship's agent. The law names the paper forms and the port information system; no public web address was recorded."
+    },
+    {
+      "type": "other",
+      "value": "Ship's agent",
+      "to": "관리청 (port authority)",
+      "note": "usual route for foreign ships"
+    }
+  ],
+  "addressee": null,
+  "heading": null,
+  "lines": [
+    {
+      "l": "1",
+      "req": "required",
+      "text": "Foreign-going ship entry/departure report, Form 2 of the Port Entry Rule, with passenger list (Form 1-2) and crew list (Form 2-2)"
+    },
+    {
+      "l": "2",
+      "req": "required",
+      "text": "Ship security information: ship details, port and ETA, security level and ISSC, last 10 ports, security incidents (ISPS Act Rule)"
+    }
+  ],
+  "format_note": "Forms from the Enforcement Rule of the Ship Entry and Departure Act (선박입출항법 시행규칙 별지 제2호서식). Not a radio report.",
+  "area": {
+    "shape": "port",
+    "points": [],
+    "lines": [],
+    "center": null,
+    "radius_nm": null,
+    "state": "Republic of Korea",
+    "zone": "Water area of every Korean trade port (무역항의 수상구역등)",
+    "ports": [
+      "Ulsan",
+      "Busan",
+      "Busan New Port",
+      "Pohang",
+      "Yeosu-Gwangyang",
+      "Masan",
+      "Incheon",
+      "Pyeongtaek-Dangjin",
+      "Daesan",
+      "Gunsan",
+      "Mokpo",
+      "Donghae",
+      "Jeju",
+      "other Korean trade ports"
+    ],
+    "inside_hint": {
+      "lat": 35.45,
+      "lon": 129.42
+    },
+    "bbox": [
+      124.5,
+      33.0,
+      131.0,
+      38.7
+    ]
+  },
+  "area_quote": "무역항의 수상구역등에 출입하려는 선박 (선박입출항법 제4조); 대한민국의 항만에 입항하려는 외국 국적의 국제항해선박 (국제선박항만보안법 제19조)",
+  "sources": [
+    {
+      "title": "선박의 입항 및 출항 등에 관한 법률 (Ship Entry and Departure Act)",
+      "ref": "Art. 4",
+      "date": "2026-05-12",
+      "url": "https://www.law.go.kr/법령/선박의입항및출항등에관한법률",
+      "primary": true
+    },
+    {
+      "title": "선박의 입항 및 출항 등에 관한 법률 시행령",
+      "ref": "Art. 2 to 4",
+      "date": "2023-12-12",
+      "url": "https://www.law.go.kr/법령/선박의입항및출항등에관한법률시행령",
+      "primary": true
+    },
+    {
+      "title": "선박의 입항 및 출항 등에 관한 법률 시행규칙",
+      "ref": "Art. 3 to 5",
+      "date": "2024-11-13",
+      "url": "https://www.law.go.kr/법령/선박의입항및출항등에관한법률시행규칙",
+      "primary": true
+    },
+    {
+      "title": "국제항해선박 및 항만시설의 보안에 관한 법률 (ISPS Act)",
+      "ref": "Art. 19(4)",
+      "date": "2024-07-24",
+      "url": "https://www.law.go.kr/법령/국제항해선박및항만시설의보안에관한법률",
+      "primary": true
+    },
+    {
+      "title": "국제항해선박 및 항만시설의 보안에 관한 법률 시행규칙",
+      "ref": "ship security information items and exemptions",
+      "date": "2026-03-25",
+      "url": "https://www.law.go.kr/법령/국제항해선박및항만시설의보안에관한법률시행규칙",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Article texts read on law.go.kr (current versions with the dates shown).",
+  "confidence": "high",
+  "notes": "The coordinator's '24 h pre-arrival to Port-MIS' is the ship security information (24 h, ISPS Act art. 19(4)); the port entry report itself must only be filed before entry, with no fixed hours in the law. Local practice and other notices (customs, quarantine, immigration, dangerous cargo report under art. 34 of the Ship Entry Act) are not covered here. On arrival inside a VTS area the VTS entry and anchoring or mooring reports are separate (see the kr-vts records). Not relevant to the coming voyage except at the next Korean call."
+}

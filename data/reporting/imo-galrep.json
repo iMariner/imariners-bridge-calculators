@@ -1,0 +1,295 @@
+{
+  "id": "imo-galrep",
+  "system": "GALREP",
+  "title": "Galapagos PSSA mandatory ship reporting system (GALREP)",
+  "country": "Ecuador",
+  "authority": "Santa Cruz Maritime Rescue Sub-Centre (MRSC Puerto Ayora) via Puerto Ayora Radio (HCY); alternate Baquerizo Moreno Radio (HCW). National maritime authority: DIRNEA (formerly DIGMER).",
+  "kind": "mandatory-imo",
+  "resolution": "MSC.229(82)",
+  "status": "in effect",
+  "effective": "2007-07-01",
+  "applies_to": "All ships.",
+  "applies_quote": "All ships are required to participate in the mandatory ship reporting system. (MSC.229(82), Annex, para 1.1)",
+  "when": [
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "SP",
+      "text": "A ship must give a full report at the following positions: .1 on entering the reporting area; (para 3.4.1)"
+    },
+    {
+      "event": "departure",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "SP",
+      "text": ".2 immediately after leaving a port or anchorage located in the Galapagos PSSA (the co-ordinates of which are at appendix 4); (para 3.4.1)"
+    },
+    {
+      "event": "deviation",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "DR",
+      "text": ".3 when deviating from the route leading to the port of destination or anchorage reported originally; .4 when it is necessary to deviate from the planned route owing to weather conditions, damaged equipment or a change in navigational status; (para 3.4.1)"
+    },
+    {
+      "event": "exit",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "FR",
+      "text": ".5 on finally leaving the reporting area. (para 3.4.1) Final report: FR (on finally leaving reporting area) to include only A, B, C, E and F. (appendix 3)"
+    }
+  ],
+  "how": [
+    {
+      "type": "email",
+      "value": "ayoraradio@islasantacruz.com",
+      "to": "Puerto Ayora Radio (HCY), MRSC Puerto Ayora",
+      "note": "Primary station (para 3.5.1). Address as printed in 2006; not confirmed current."
+    },
+    {
+      "type": "inmarsat-c",
+      "value": "473575713",
+      "to": "Puerto Ayora Radio (HCY)",
+      "note": "As printed in 2006 (appendix 2); not confirmed current."
+    },
+    {
+      "type": "phone",
+      "value": "+ 593 5 2527473",
+      "to": "Puerto Ayora Radio (HCY)",
+      "note": "Tel. and fax, as printed in 2006."
+    },
+    {
+      "type": "fax",
+      "value": "+ 593 5 2527473",
+      "to": "Puerto Ayora Radio (HCY)",
+      "note": "As printed in 2006."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 16 (156.800 MHz)",
+      "to": "Puerto Ayora Radio (HCY)",
+      "note": "H-24 simplex. MMSI 007354757."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 70 (156.525 MHz)",
+      "to": "Puerto Ayora Radio (HCY)",
+      "note": "Printed as 'H-24 SIMPLEX C-70'. Channel 70 is the VHF DSC channel: use it for DSC calls only, not voice."
+    },
+    {
+      "type": "mf",
+      "value": "4125.0 kHz (C-421)",
+      "to": "Puerto Ayora Radio (HCY)",
+      "note": "H-24 simplex (4125 kHz is an HF frequency, listed under MF channels in the resolution)."
+    },
+    {
+      "type": "mf",
+      "value": "2182.0 kHz",
+      "to": "Puerto Ayora Radio (HCY)",
+      "note": "H-24 simplex."
+    },
+    {
+      "type": "mf",
+      "value": "2187.5 kHz DSC",
+      "to": "Puerto Ayora Radio (HCY)",
+      "note": "H-24 DSC."
+    },
+    {
+      "type": "other",
+      "value": "Inmarsat Mini-M voice 761609548, fax 761609549, data 761609550",
+      "to": "Puerto Ayora Radio (HCY)",
+      "note": "As printed in 2006; Inmarsat Mini-M service has since been closed by Inmarsat, so these numbers are very likely dead."
+    },
+    {
+      "type": "email",
+      "value": "capbaq@digmer.org",
+      "to": "Baquerizo Moreno Radio (HCW), MRSC Puerto Baquerizo Moreno",
+      "note": "Use if Puerto Ayora Radio cannot be reached (para 3.5.2). As printed in 2006; DIGMER is now DIRNEA, so this address may be dead."
+    },
+    {
+      "type": "phone",
+      "value": "+593 5 2520346",
+      "to": "Baquerizo Moreno Radio (HCW)",
+      "note": "Tel. and fax, as printed in 2006."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 16 (156.800 MHz)",
+      "to": "Baquerizo Moreno Radio (HCW)",
+      "note": "H-24 simplex; also CH 70 (DSC), 4125.0 kHz, 2182.0 kHz, 2187.5 kHz DSC. MMSI 007350090."
+    }
+  ],
+  "addressee": null,
+  "heading": "GALREP SP / GALREP FR / GALREP DR",
+  "lines": [
+    {
+      "l": "A",
+      "req": "required",
+      "text": "Ship: Name and call sign (Name of ship, call sign, IMO No. and MMSI No.), (e.g., TAURUS/HC4019/T-04-0561)"
+    },
+    {
+      "l": "B",
+      "req": "required",
+      "text": "Date and time corresponding to position at C, expressed as UTC: a six-digit group followed by a Z (e.g., 081340Z)."
+    },
+    {
+      "l": "C",
+      "req": "required",
+      "text": "Position (latitude and longitude): a 4-digit group giving latitude in degrees and minutes, with the suffix N or S, and a 5-digit group giving longitude in degrees and minutes, with the suffix W (e.g., 0030S 08805W)."
+    },
+    {
+      "l": "E",
+      "req": "required",
+      "text": "Course: true course. A 3-digit group (e.g., 270)."
+    },
+    {
+      "l": "F",
+      "req": "required",
+      "text": "Speed: speed in knots. A 2-digit group (e.g., 14)."
+    },
+    {
+      "l": "G",
+      "req": "required",
+      "text": "Name of last port of call (e.g., Guayaquil). Sailing plan only."
+    },
+    {
+      "l": "I",
+      "req": "required",
+      "text": "Destination and ETA (UTC): name of destination and date and time group as expressed in B (e.g., Puerto Ayora 082200Z). Sailing plan and deviation report."
+    },
+    {
+      "l": "P",
+      "req": "required",
+      "text": "Cargo: type(s) of oil cargo, quantity, quality and density of heavy crude, heavy fuel, asphalt and coal tar. If the ships are carrying other potentially hazardous cargoes, indicate type, quantity and IMO classification (e.g., 10,000 TN DIESEL OIL). Sailing plan only."
+    },
+    {
+      "l": "Q",
+      "req": "if-applicable",
+      "text": "Defects, damage, deficiencies, limitations: brief details of defects, including damage, deficiencies and other circumstances that impair normal navigation. Included whenever a problem arises in the reporting area."
+    },
+    {
+      "l": "T",
+      "req": "required",
+      "text": "Address for the communication of cargo information: name, telephone no., and either fax or e-mail. Sailing plan only."
+    },
+    {
+      "l": "W",
+      "req": "required",
+      "text": "Total no. of people on board: state how many. Sailing plan only."
+    },
+    {
+      "l": "X",
+      "req": "required",
+      "text": "Miscellaneous: characteristics and approximate quantity of bunker fuel for tankers carrying an amount of it greater than 5,000 tonnes; navigational status (e.g., at anchor, moving under own propulsion, no steering, limited manoeuvrability, depth restriction, moored, aground, etc.). Sailing plan only."
+    }
+  ],
+  "format_note": "Every message must begin with the word GALREP and the two-letter report type: SP sailing plan, FR final report, DR deviation report (messages with these prefixes are free of charge). SP: A, B, C, E, F, G, I, P, T, W and X are compulsory. FR: only A, B, C, E and F. DR: only A, B, C, E, F and I. Q is added whenever a defect or problem arises. Language: Spanish or English, IMO SMCP where necessary. Commercially confidential information may be sent by non-verbal means.",
+  "area": {
+    "shape": "polygon",
+    "points": [
+      {
+        "n": "A",
+        "lat": "02 30N",
+        "lon": "092 21W",
+        "inferred": false
+      },
+      {
+        "n": "D1",
+        "lat": "01 26N",
+        "lon": "089 03W",
+        "inferred": false
+      },
+      {
+        "n": "E1",
+        "lat": "00 01S",
+        "lon": "088 06W",
+        "inferred": false
+      },
+      {
+        "n": "F1",
+        "lat": "00 12S",
+        "lon": "088 01W",
+        "inferred": false
+      },
+      {
+        "n": "G1",
+        "lat": "00 35S",
+        "lon": "087 54W",
+        "inferred": false
+      },
+      {
+        "n": "H1",
+        "lat": "01 02S",
+        "lon": "087 53W",
+        "inferred": false
+      },
+      {
+        "n": "I1",
+        "lat": "02 34S",
+        "lon": "088 48W",
+        "inferred": false
+      },
+      {
+        "n": "J1",
+        "lat": "02 46S",
+        "lon": "089 30W",
+        "inferred": false
+      },
+      {
+        "n": "K1",
+        "lat": "02 42S",
+        "lon": "090 42W",
+        "inferred": false
+      },
+      {
+        "n": "L1",
+        "lat": "02 05S",
+        "lon": "092 18W",
+        "inferred": false
+      },
+      {
+        "n": "M1",
+        "lat": "01 32S",
+        "lon": "092 44W",
+        "inferred": false
+      },
+      {
+        "n": "L",
+        "lat": "01 49N",
+        "lon": "092 40W",
+        "inferred": false
+      }
+    ],
+    "lines": [],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 0.0,
+      "lon": -88.8
+    },
+    "bbox": [
+      -92.9,
+      -3.0,
+      -87.6,
+      2.7
+    ]
+  },
+  "area_quote": "The operational area of GALREP covers the Galapagos Area to be Avoided and the Particularly Sensitive Sea Area as shown on the chartlet given in appendix 1. The co-ordinates of the mandatory ship reporting system are as follows: A 02° 30´ N 092° 21´ W; D1 01° 26´ N 089° 03´ W; E1 00° 01´ S 088° 06´ W; F1 00° 12´ S 088° 01´ W; G1 00° 35´ S 087° 54´ W; H1 01° 02´ S 087° 53´ W; I1 02° 34´ S 088° 48´ W; J1 02° 46´ S 089° 30´ W; K1 02° 42´ S 090° 42´ W; L1 02° 05´ S 092° 18´ W; M1 01° 32´ S 092° 44´ W; L 01° 49´ N 092° 40´ W. The reference chart is I.O.A 20 (2nd edition 1992, updated and reprinted in 2006), issued by the Ecuadorean Navy Oceanography Institute (INOCAR), based on WGS 84 Datum. (MSC.229(82), Annex, paras 2.1, 2.1.1, 2.2)",
+  "sources": [
+    {
+      "title": "IMO resolution MSC.229(82) Adoption of a new mandatory ship reporting system in the Galapagos Particularly Sensitive Sea Area (PSSA) (GALREP)",
+      "ref": "Annex paras 1 to 9, appendices 2 to 4",
+      "date": "2006-12-05",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.229(82).pdf",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "All 12 boundary points read from MSC.229(82) Annex para 2.1.1 (IMO PDF page 2) with pdftotext -layout and re-read against the page. Who, when, format and lines from paras 1, 3.3, 3.4 and appendix 3; stations, numbers and frequencies from appendix 2 (page 7). No later IMO amendment found (scan of IMO MSC resolutions 43 to 599). No current Ecuadorian (DIRNEA / INOCAR) notice with GALREP contacts was found on line.",
+  "confidence": "medium",
+  "notes": "Boundary: high confidence (straight lines between the 12 printed points, WGS 84). The PSSA points in appendix 4 (A to L, a smaller polygon) are the PSSA limit, not the reporting area. Contacts: low confidence. Every email, phone, fax and Inmarsat number here is copied from the 2006 resolution; none was confirmed current (the islasantacruz.com and digmer.org domains and the Inmarsat Mini-M service are likely obsolete). Before entering, check the current Ecuadorian notices (DIRNEA, INOCAR) or the local agent. Ships must keep a continuous listening watch in the area. Ships must also respect the Galapagos Area to be Avoided (IMO) and Ecuador's own rules for entering the Galapagos Marine Reserve, which this record does not cover."
+}

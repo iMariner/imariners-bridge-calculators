@@ -1,0 +1,205 @@
+{
+  "id": "ru-vts-peter-great-bay-sector-4",
+  "system": "Peter the Great Bay regional VTS, Sector 4 (port of Posyet, Slavyansky Bay section)",
+  "title": "Vladivostok Traffic: Sector 4, Slavyansky Bay (Slavyanka) and southern Amur Bay",
+  "country": "Russia",
+  "authority": "Regional VTS of Peter the Great Bay acting as the port VTS, call sign \"Владивосток-Трафик\"; harbour master of the port of Posyet (port control Славянка-Порт-контроль)",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": null,
+  "applies_to": "All ships in the port of Posyet (Slavyansky Bay section, Slavyanka terminal, RPK Slavyanka and Slavyanka-2) and in Sector 4, whatever their flag.",
+  "applies_quote": "Настоящие Обязательные постановления подлежат исполнению судами независимо от их национальной и ведомственной принадлежности ...",
+  "when": [
+    {
+      "event": "before_arrival",
+      "hours_before": 72,
+      "interval_h": null,
+      "report": null,
+      "text": "Arrival and departure information to the harbour master through www.portcall.marinet.ru (Posyet p. 18). Times per the General Rules: 120 to 72 hours before arrival, confirm 48 to 24 hours before; arrival application within 4 hours of first anchoring or mooring; departure application 4 hours before departure (ru-general-prearrival). From a foreign port the entry permission must also be agreed with the FSB (ru-entry-fsb-permission)."
+    },
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "In the port, VTS communication on VHF CH 71 and the Appendix 4 channels, call sign Владивосток-Трафик (p. 43). Give the General Rules p. 29 data on entering. Ask VTS permission before any movement (p. 23). Ships under way or at anchor keep watch on CH 16 and 71 (p. 78); ships at the berths in Slavyansky Bay and Naezdnik Bay watch CH 30 (p. 80). Entry to the Slavyansky Bay section is through the south passage between Cape Bryusa and Gerasimova Island, then by the approach channel (p. 19). Pilot request is confirmed 4 hours before departure, shifting or leaving anchorage on VHF (p. 29)."
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "VTS announces traffic restrictions on CH 67 and 16 (p. 44). Navigation and weather information on CH 71 daily at 14.30 local time (p. 111); storm warnings on CH 12 and 16 (p. 112)."
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 71",
+      "to": "Владивосток-Трафик (VTS)",
+      "note": "Working channel; calling CH 16 (Appendix 4)"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 16",
+      "to": "Владивосток-Трафик (VTS)",
+      "note": "Calling channel"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 30",
+      "to": "Славянка-Порт-контроль (state port control, Slavyansky Bay section)",
+      "note": "Appendix 4: calling 16, working 30"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 10",
+      "to": "Посьет, Лоцман (pilots)",
+      "note": "Appendix 4: calling 10, working 10"
+    },
+    {
+      "type": "web",
+      "value": "www.portcall.marinet.ru",
+      "to": "Harbour master of Posyet",
+      "note": "Arrival information (p. 18)"
+    }
+  ],
+  "addressee": null,
+  "heading": null,
+  "lines": [
+    {
+      "l": "1",
+      "req": "required",
+      "text": "Ship's name and type"
+    },
+    {
+      "l": "2",
+      "req": "required",
+      "text": "Flag"
+    },
+    {
+      "l": "3",
+      "req": "required",
+      "text": "Port of destination"
+    },
+    {
+      "l": "4",
+      "req": "required",
+      "text": "Maximum present draught and air draught"
+    },
+    {
+      "l": "5",
+      "req": "required",
+      "text": "Kind of cargo, dangerous cargo on board"
+    },
+    {
+      "l": "6",
+      "req": "if-applicable",
+      "text": "Defects of ship equipment and other limits that affect safe navigation"
+    }
+  ],
+  "format_note": "Report items from General Rules p. 29.",
+  "area": {
+    "shape": "lines",
+    "points": [
+      {
+        "n": "A1",
+        "name": "мыс Перевозный (Cape Perevozny)",
+        "lat": "43 03.1N",
+        "lon": "131 35.4E",
+        "inferred": true
+      },
+      {
+        "n": "A2",
+        "name": "мыс Васильева (Cape Vasilyeva)",
+        "lat": "43 00.3N",
+        "lon": "131 45.4E",
+        "inferred": true
+      },
+      {
+        "n": "K",
+        "name": "мыс Клерка (Cape Klerka)",
+        "lat": "42 45.8N",
+        "lon": "131 21.8E",
+        "inferred": true
+      },
+      {
+        "n": "2",
+        "lat": "42 46.00N",
+        "lon": "131 42.00E",
+        "inferred": false
+      },
+      {
+        "n": "3",
+        "lat": "42 53.00N",
+        "lon": "131 57.00E",
+        "inferred": false
+      },
+      {
+        "n": "T",
+        "name": "мыс Тобизина (Cape Tobizina)",
+        "lat": "42 56.7N",
+        "lon": "131 52.2E",
+        "inferred": true
+      }
+    ],
+    "lines": [
+      [
+        "A1",
+        "A2"
+      ],
+      [
+        "K",
+        "2",
+        "3",
+        "T"
+      ]
+    ],
+    "center": null,
+    "radius_nm": null,
+    "state": "Russia",
+    "zone": "Slavyansky Bay and the southern part of Amur Bay with the adjacent part of Peter the Great Bay",
+    "ports": [
+      "Posyet: Slavyansky Bay section (Slavyanka marine terminal, RPK Slavyanka, RPK Slavyanka-2)"
+    ],
+    "inside_hint": {
+      "lat": 42.9,
+      "lon": 131.55
+    },
+    "bbox": [
+      131.3,
+      42.7,
+      132.0,
+      43.1
+    ]
+  },
+  "area_quote": "42. Сектор N 4 включает в себя Славянский залив и южную часть Амурского залива с прилегающей частью залива Петра Великого и ограничен: в Амурском заливе - линией, соединяющей мыс Перевозный и мыс Васильева; со стороны открытой части залива Петра Великого - линиями, соединяющими мыс Клерка, точку с координатами 42°46,00' северной широты и 131°42,00' восточной долготы, точку с координатами 42°53,00' северной широты и 131°57,00' восточной долготы и мыс Тобизина.",
+  "sources": [
+    {
+      "title": "Обязательные постановления в морском порту Посьет, Приказ Минтранса России от 19.10.2012 № 379 (ред. от 11.09.2014)",
+      "ref": "pp. 16.1, 18, 20, 23, 29, 41 to 44, 78 to 82, 111, 112, Appendix 4",
+      "date": "2014-09-11",
+      "url": "https://rulaws.ru/acts/Prikaz-Mintransa-Rossii-ot-19.10.2012-N-379/",
+      "primary": true
+    },
+    {
+      "title": "Приказ Минтранса России от 10.03.2023 № 74 (amends order № 379: valid to 01.09.2029; tug table)",
+      "ref": "official publication",
+      "date": "2023-03-10",
+      "url": "http://publication.pravo.gov.ru/document/0001202304120030",
+      "primary": true
+    },
+    {
+      "title": "Общие правила плавания и стоянки судов (Приказ Минтранса № 395, ред. от 23.12.2025)",
+      "ref": "pp. 29, 39, 40, 43, 45",
+      "date": "2025-12-23",
+      "url": "https://legalacts.ru/doc/prikaz-mintransa-rossii-ot-12112021-n-395-ob-utverzhdenii/",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Consolidated text (ред. от 11.09.2014) read on rulaws.ru; the 2023 amendment № 74 read on rulaws.ru (changes validity and the tug table only).",
+  "confidence": "medium",
+  "notes": "Slavyanka is not a separate seaport: it is the Slavyansky Bay section of the seaport of Posyet. Cape positions are from OpenStreetMap (inferred). The text base is 2014; the 2023 order only extended validity (to 01.09.2029) and changed the tug table. Since 01.03.2026 the Vladivostok regulations use the line Cape Klerka, 42°46,00'N 131°42,00'E, 42°53,00'N 131°57,00'E as the west limit of Vladivostok Sector 1A (CH 71, same call sign), so Sector 4 and Sector 1A meet on that line. Harbour master phone and email not found."
+}

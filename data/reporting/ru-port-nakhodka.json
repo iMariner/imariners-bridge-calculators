@@ -1,0 +1,149 @@
+{
+  "id": "ru-port-nakhodka",
+  "system": "Port of Nakhodka, harbour master",
+  "title": "Nakhodka port: harbour master channels (Nakhodka Bay, Novitsky Bay) and arrival notice",
+  "country": "Russia",
+  "authority": "Harbour master of the seaport of Nakhodka (Находка-5; Новицкий-5 in Novitsky Bay), FGBU AMP of Primorsky Krai and the Eastern Arctic",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": null,
+  "applies_to": "All ships in the port of Nakhodka, whatever their flag. In Nakhodka Bay, Novitsky Bay and some small bays the harbour master, not the VTS, regulates traffic.",
+  "applies_quote": "56. В бухте Находка регулирование движения судов и связь с ними осуществляет капитан морского порта на рабочем канале 69 ОВЧ, позывной \"Находка-5\". 57. В бухте Новицкого регулирование движения судов и связь с ними осуществляет капитан морского порта на рабочем канале 34 ОВЧ, позывной \"Новицкий-5\".",
+  "when": [
+    {
+      "event": "before_arrival",
+      "hours_before": 72,
+      "interval_h": null,
+      "report": null,
+      "text": "Arrival and departure information to the harbour master through www.portcall.marinet.ru (Nakhodka p. 19). Times per the General Rules: 120 to 72 hours before arrival, confirm 48 to 24 hours before; arrival application within 4 hours of first anchoring or mooring; departure application 4 hours before departure (ru-general-prearrival). From a foreign port the entry permission must also be agreed with the FSB (ru-entry-fsb-permission)."
+    },
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Crossing the line Cape Likhacheva to Cape Povorotny: call Nakhodka Traffic on CH 13 (ru-vts-nakhodka-sector-2). From the entrance buoy No. 1 of Nakhodka Gulf to the pilot points the ship goes under VTS guidance (p. 33). Pilot boarding for Nakhodka Bay berths at 42 48 00N 132 56 24E; for the Novitsky Bay oil terminal at 42 45 50N 132 56 24E (pp. 31, 32). In Nakhodka Bay work the harbour master on CH 69 (Находка-5); in Novitsky Bay on CH 34 (Новицкий-5)."
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Anchoring, weighing anchor and mooring only with the harbour master's permission (p. 25). Ships under way keep watch on CH 13 (p. 86). Tugs: CH 74 or 96 in Nakhodka Bay, CH 34 at the Novitsky oil berths (p. 87). Pilot order cancelled at least 1 hour before (p. 35). Daily forecast by the VTS at 14.30 local time (p. 102)."
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 69",
+      "to": "Находка-5 (harbour master)",
+      "note": "Appendix 4: watch 69, working 69; Nakhodka Bay"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 34",
+      "to": "Новицкий-5 (port administration in Novitsky Bay)",
+      "note": "Appendix 4: watch 16, 34, working 34"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 13",
+      "to": "Находка-Трафик (VTS)",
+      "note": "Appendix 4: watch 16, working 13, 9"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 74",
+      "to": "Находка-Пайлот (pilots, Nakhodka Gulf)",
+      "note": "Appendix 4: watch 16, working 74, 96"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 34",
+      "to": "Лоцман-1 (pilots, Novitsky Bay)",
+      "note": "Appendix 4"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 33",
+      "to": "Новицкий-2 (oil berth operator dispatcher, Novitsky Bay)",
+      "note": "Appendix 4: watch 16, 33, working 33"
+    },
+    {
+      "type": "web",
+      "value": "www.portcall.marinet.ru",
+      "to": "Harbour master of Nakhodka",
+      "note": "Arrival information (p. 19)"
+    }
+  ],
+  "addressee": null,
+  "heading": null,
+  "lines": [],
+  "format_note": "No own format; arrival data per General Rules p. 38 through the agent.",
+  "area": {
+    "shape": "port",
+    "points": [
+      {
+        "n": "PB1",
+        "name": "Pilot boarding, berths in Nakhodka Bay",
+        "lat": "42 48 00N",
+        "lon": "132 56 24E",
+        "inferred": false
+      },
+      {
+        "n": "PB2",
+        "name": "Pilot boarding, Novitsky Bay oil terminal",
+        "lat": "42 45 50N",
+        "lon": "132 56 24E",
+        "inferred": false
+      }
+    ],
+    "lines": [],
+    "center": null,
+    "radius_nm": null,
+    "state": "Russia",
+    "zone": null,
+    "ports": [
+      "Nakhodka (Nakhodka Bay, Novitsky Bay, Cape Astafyeva and small bays)"
+    ],
+    "inside_hint": {
+      "lat": 42.785,
+      "lon": 132.89
+    },
+    "bbox": [
+      132.8,
+      42.7,
+      133.0,
+      42.85
+    ]
+  },
+  "area_quote": "55. СУДС не осуществляет регулирование движения судов в бухтах Находка, Новицкого, Андреева, Гайдамак, Южно-Морская, Назимова, Подъяпольского, Пяти Охотников, Преображения, Моряк-Рыболов и в устье реки Опричнинка. На указанных в абзаце первом настоящего пункта участках акватории морского порта регулирование движения судов и связь с ними осуществляет капитан морского порта.",
+  "sources": [
+    {
+      "title": "Обязательные постановления в морском порту Находка, Приказ Минтранса России от 23.06.2011 № 169 (ред. от 15.12.2017)",
+      "ref": "pp. 19, 21 to 26, 31 to 35, 55 to 57, 86, 87, 100 to 102, Appendix 4",
+      "date": "2017-12-15",
+      "url": "https://pravo.ppt.ru/prikaz/mintrans/n-169-15191",
+      "primary": true
+    },
+    {
+      "title": "Приказ Минтранса России от 15.12.2017 № 522 (latest amendment found)",
+      "ref": "official publication",
+      "date": "2017-12-15",
+      "url": "http://publication.pravo.gov.ru/document/0001201712280062",
+      "primary": true
+    },
+    {
+      "title": "Общие правила плавания и стоянки судов (Приказ Минтранса № 395, ред. от 23.12.2025)",
+      "ref": "pp. 29, 39, 40, 43, 45",
+      "date": "2025-12-23",
+      "url": "https://legalacts.ru/doc/prikaz-mintransa-rossii-ot-12112021-n-395-ob-utverzhdenii/",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Text (ред. от 15.12.2017) read on pravo.ppt.ru; pilot coordinates printed in degrees, minutes and seconds and kept in that form.",
+  "confidence": "medium",
+  "notes": "Pilot points are printed as 42°48'00\" N 132°56'24\" E and 42°45'50\" N 132°56'24\" E (degrees minutes seconds). The Nakhodka regulations were last amended in 2017; no later order was found on publication.pravo.gov.ru, and the current validity of order № 169 was not confirmed. Harbour master phone and email not found (pma.ru blocked; head office +7 (423) 230-28-93, amp@pma.ru from a 2023 archive)."
+}

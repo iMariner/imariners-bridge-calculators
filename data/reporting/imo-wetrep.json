@@ -1,0 +1,460 @@
+{
+  "id": "imo-wetrep",
+  "system": "WETREP",
+  "title": "WETREP West European Tanker Reporting System (Western European PSSA)",
+  "country": "IMO region: Belgium, France, Ireland, Portugal, Spain, United Kingdom",
+  "authority": "Coastal State centres listed in Appendix 1 of MSC.190(79): MRCC Oostende, CROSS Gris-Nez, CROSS Corsen, MRCC Dublin, Roca Control (Portugal), MRCC Madrid, MRCC Finisterre, MRCC Bilbao, UK HM Coastguard",
+  "kind": "mandatory-imo",
+  "resolution": "MSC.190(79), amended by MSC.301(87)",
+  "status": "in effect",
+  "effective": "2005-07-01",
+  "applies_to": "Oil tankers of more than 600 tonnes deadweight carrying heavy crude oil, heavy fuel oil, or bitumen and tar and their emulsions. Not warships or other government ships on non-commercial service.",
+  "applies_quote": "Every kind of oil tanker of more than 600 tonnes deadweight, carrying a cargo of: heavy crude oil, meaning crude oils with a density at 15°C of higher than 900 kg/m3; heavy fuel oils, meaning fuel oils with a density at 15°C of higher than 900 kg/m3, or a kinematic viscosity at 50°C of higher than 180 mm2/s; bitumen and tar and their emulsions.",
+  "when": [
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "SP",
+      "text": "on entry into the Reporting Area as defined in paragraph 2. Sailing Plan (SP) to be sent as a first report: On entering the Reporting Area as defined in paragraph 2.1."
+    },
+    {
+      "event": "departure",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "SP",
+      "text": "immediately on departing from a port, terminal or anchorage within the Reporting Area. Sailing Plan (SP): Immediately on departing from a port located within the Reporting Area."
+    },
+    {
+      "event": "deviation",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "DR",
+      "text": "when they deviate from routeing to their original declared destination port/terminal/anchorage or position \"for orders\" given at time of entry into Reporting Area; or when deviation from planned route is necessary due to weather or equipment malfunction or a change in the navigational status."
+    },
+    {
+      "event": "exit",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "FR",
+      "text": "when finally exiting from Reporting Area. Final Report (FR) to be sent: On leaving the Reporting Area. On arrival in a port situated within the Reporting Area."
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Ships need not report if, while on normal passage routeing during transit of Reporting Area, the boundary of the Reporting Area is crossed on other occasions apart from the initial entry and final exit."
+    }
+  ],
+  "how": [
+    {
+      "type": "other",
+      "value": "Nearest participating coastal or communication station in Appendix 1",
+      "to": "Nearest centre below",
+      "note": "MSC.190(79) Annex 1, para 3.1.1 and 3.4.2: send to the nearest station; if that fails, to the next-nearest. Para 3.4.3: any modern communication form, including Inmarsat-C, telefax and e-mail as appropriate. Reports are free of charge (para 5.5)."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 9, 16, 67, 70",
+      "to": "MRCC Oostende (Belgium)",
+      "note": "As printed in MSC.190(79) Appendix 1 (2004). Also MF 2182, MMSI 00 205 99 81, Tel +32 59 70 10 00 / +32 59 70 11 00, Fax +32 59 70 36 05. Not reconfirmed on a current Belgian page."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 16, 70",
+      "to": "MRCC (CROSS) Gris-Nez (France)",
+      "note": "As printed in MSC.190(79) Appendix 1 (2004). CH 70 is the DSC channel. Inmarsat-C 422799256, MMSI 002275100. Not reconfirmed."
+    },
+    {
+      "type": "phone",
+      "value": "+33 3 21 87 21 87",
+      "to": "MRCC (CROSS) Gris-Nez (France)",
+      "note": "As printed in MSC.190(79) Appendix 1 (2004). Fax +33 3 21 87 78 55. Not reconfirmed."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 16, 70",
+      "to": "MRCC (CROSS) Corsen (France)",
+      "note": "As printed in MSC.190(79) Appendix 1 (2004). CH 70 is the DSC channel. MMSI 002275300. Not reconfirmed."
+    },
+    {
+      "type": "phone",
+      "value": "+33 2 98 89 31 31",
+      "to": "MRCC (CROSS) Corsen (France)",
+      "note": "As printed in MSC.190(79) Appendix 1 (2004). Fax +33 2 98 89 65 75. Not reconfirmed."
+    },
+    {
+      "type": "email",
+      "value": "mrccdublin@irishcoastguard.ie",
+      "to": "MRCC Dublin (Ireland)",
+      "note": "As printed in MSC.190(79) Appendix 1 (2004). Tel +353 1 6620922/23, Fax +353 1 6620795. Communications may also go via MRSC Valentia (EJK) and MRSC Malin Head (EJM). Not reconfirmed."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 22 & 79",
+      "to": "Roca Control (Portugal)",
+      "note": "As printed in MSC.301(87) (replaced the Portugal entry from 1 Dec 2010). MMSI 002633030."
+    },
+    {
+      "type": "email",
+      "value": "oper.vts@marad.pt",
+      "to": "Roca Control (Portugal)",
+      "note": "Current address on the Portuguese DGRM page 'Contactos do VTS Costeiro (ROCA CONTROL)', read 2026-10-26 (found for the COPREP record). MSC.301(87) prints oper.vts@imarpor.pt; IMARPOR no longer exists."
+    },
+    {
+      "type": "phone",
+      "value": "+351 214464838",
+      "to": "Roca Control (Portugal)",
+      "note": "As printed in MSC.301(87). Fax +351 214464839 in the resolution; the DGRM page gives a different fax (+351 214 464 848)."
+    },
+    {
+      "type": "email",
+      "value": "cncs@sasemar.es",
+      "to": "MRCC Madrid (Spain)",
+      "note": "As printed in MSC.190(79) Appendix 1 (2004). Tel +34 91 7559133, Fax +34 91 5261440. Not reconfirmed."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 16 & 11",
+      "to": "MRCC Finisterre (Spain)",
+      "note": "As printed in MSC.190(79) Appendix 1 (2004). MF 2182, MMSI 002240993, Tel +34 981 767500, Fax +34 981 767740."
+    },
+    {
+      "type": "email",
+      "value": "finister@sasemar.es",
+      "to": "MRCC Finisterre (Spain)",
+      "note": "As printed in MSC.190(79) Appendix 1 (2004). Not reconfirmed."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 16 & 10",
+      "to": "MRCC Bilbao (Spain)",
+      "note": "As printed in MSC.190(79) Appendix 1 (2004). MMSI 002241021, Tel +34 944 839286, Fax +34 944 839161."
+    },
+    {
+      "type": "email",
+      "value": "bilbao@sasemar.es",
+      "to": "MRCC Bilbao (Spain)",
+      "note": "As printed in MSC.190(79) Appendix 1 (2004). Not reconfirmed."
+    },
+    {
+      "type": "phone",
+      "value": "+(0)1326 317575",
+      "to": "MRCC Falmouth (United Kingdom)",
+      "note": "As printed in MSC.190(79) Appendix 1 (2004), with e-mail falmouthcoastguard@mcga.gov.uk, Fax +(0)1326 318342, Inmarsat-A and Inmarsat-C. The mcga.gov.uk address is old and almost certainly no longer used; HM Coastguard was reorganised in 2014-2015. Do not rely on it."
+    },
+    {
+      "type": "mf",
+      "value": "MF DSC (Sea Area A2) UK coast stations",
+      "to": "UK HM Coastguard centres",
+      "note": "As printed in MSC.190(79) Appendix 1 (2004), MMSI: Aberdeen 002320004, Clyde 002320022, Falmouth 002320014, Holyhead 002320018, Humber 002320007, Milford Haven 002320017, Shetland 002320001, Stornoway 002320024. MRCC Clyde has since closed. Not reconfirmed."
+    }
+  ],
+  "addressee": "Name of station to which the report is being sent",
+  "heading": "WETREP - SP (or FR, DR). Each report shall begin with the word WETREP and a 2-letter abbreviation for identification of the report.",
+  "lines": [
+    {
+      "l": "A",
+      "req": "required",
+      "text": "Ship: Name and call sign (ship name, call sign, IMO identification number and MMSI Number) (e.g.: NONESUCH/KTOI). In SP, FR and DR."
+    },
+    {
+      "l": "B",
+      "req": "required",
+      "text": "Date Time Group corresponding to the position under designator C given in UTC: A 6-digit group followed by a Z (e.g.: 081340Z). In SP, FR and DR."
+    },
+    {
+      "l": "C",
+      "req": "required",
+      "text": "Position by latitude and longitude: a 4-digit group giving latitude in degrees and minutes suffixed with N, and a 5-digit group giving longitude in degrees and minutes suffixed with W (e.g.: 5512N 03420W). In SP, FR and DR."
+    },
+    {
+      "l": "E",
+      "req": "required",
+      "text": "Course: True course, a 3-digit group (e.g.: 083). In SP, FR and DR."
+    },
+    {
+      "l": "F",
+      "req": "required",
+      "text": "Speed: Speed in knots, a 2-digit group (e.g.: 14). In SP, FR and DR."
+    },
+    {
+      "l": "G",
+      "req": "required",
+      "text": "Name of last port of call (e.g.: New York). SP only."
+    },
+    {
+      "l": "I",
+      "req": "required",
+      "text": "Destination and ETA (UTC): the name of the destination followed by expected time of arrival, expressed as under designator B (e.g.: Milford Haven 181400Z). In SP and DR."
+    },
+    {
+      "l": "P",
+      "req": "required",
+      "text": "Cargo: Oil cargo type(s), quantity, grade(s) and density of heavy crude oil, heavy fuel oil and bitumen and tar. If those tankers carry other hazardous cargo simultaneously: the type, quantity and IMO class of that cargo, as appropriate. SP only."
+    },
+    {
+      "l": "Q",
+      "req": "if-applicable",
+      "text": "Defect, damage, deficiency, limitations: Brief details of defects including breakdown, damage, deficiencies or other circumstances affecting normal navigation. Included at any time such defects occur within the reporting area."
+    },
+    {
+      "l": "T",
+      "req": "required",
+      "text": "Address for the communication of cargo information: Name, telephone number and either: facsimile, e-mail address or URL. SP only."
+    },
+    {
+      "l": "W",
+      "req": "required",
+      "text": "Total number of persons on board: State the number. SP only."
+    },
+    {
+      "l": "X",
+      "req": "required",
+      "text": "Various information applicable for those tankers: characteristics and estimated quantity of bunker fuel, for tankers carrying more than 5,000 tonnes of bunker fuel; navigational status (for example, under way with engines, at anchor, not under command, restricted in ability to manoeuvre, constrained by draught, moored, aground, etc.). SP only."
+    }
+  ],
+  "format_note": "Appendix 2, para 6: A, B, C, E, F, G, I, P, T, W and X are mandatory for a sailing plan report (SP); A, B, C, E and F for a final report (FR); A, B, C, E, F and I for a deviation report (DR). Q is added whenever defects occur within the area. Note: the resolution's own Deviation Report example is headed 'WETREP - FR' (a misprint for DR).",
+  "area": {
+    "shape": "lines",
+    "points": [
+      {
+        "n": "1",
+        "name": "UK coast (longitude printed only as 'UK coast')",
+        "lat": "58 30N",
+        "lon": "003 06W",
+        "inferred": true
+      },
+      {
+        "n": "2",
+        "lat": "58 30N",
+        "lon": "000 00W",
+        "inferred": false
+      },
+      {
+        "n": "3",
+        "lat": "62 00N",
+        "lon": "000 00W",
+        "inferred": false
+      },
+      {
+        "n": "4",
+        "lat": "62 00N",
+        "lon": "003 00W",
+        "inferred": false
+      },
+      {
+        "n": "5",
+        "lat": "56 30N",
+        "lon": "012 00W",
+        "inferred": false
+      },
+      {
+        "n": "6",
+        "lat": "54 40 40.91N",
+        "lon": "015 00W",
+        "inferred": false
+      },
+      {
+        "n": "7",
+        "lat": "50 56 45.36N",
+        "lon": "015 00W",
+        "inferred": false
+      },
+      {
+        "n": "8",
+        "lat": "48 27N",
+        "lon": "006 25W",
+        "inferred": false
+      },
+      {
+        "n": "9",
+        "lat": "48 27N",
+        "lon": "008 00W",
+        "inferred": false
+      },
+      {
+        "n": "10",
+        "lat": "44 52N",
+        "lon": "003 10W",
+        "inferred": false
+      },
+      {
+        "n": "11",
+        "lat": "44 52N",
+        "lon": "010 00W",
+        "inferred": false
+      },
+      {
+        "n": "12",
+        "lat": "44 14N",
+        "lon": "011 34W",
+        "inferred": false
+      },
+      {
+        "n": "13",
+        "lat": "42 55N",
+        "lon": "012 18W",
+        "inferred": false
+      },
+      {
+        "n": "14",
+        "lat": "41 50N",
+        "lon": "011 34W",
+        "inferred": false
+      },
+      {
+        "n": "15",
+        "lat": "37 00N",
+        "lon": "009 49W",
+        "inferred": false
+      },
+      {
+        "n": "16",
+        "lat": "36 20N",
+        "lon": "009 00W",
+        "inferred": false
+      },
+      {
+        "n": "17",
+        "lat": "36 20N",
+        "lon": "007 47W",
+        "inferred": false
+      },
+      {
+        "n": "18",
+        "name": "Guadiana River mouth",
+        "lat": "37 10N",
+        "lon": "007 25W",
+        "inferred": false
+      },
+      {
+        "n": "19",
+        "name": "Border between Belgium and the Netherlands",
+        "lat": "51 22 25N",
+        "lon": "003 21 52.5E",
+        "inferred": false
+      },
+      {
+        "n": "20",
+        "name": "UK east coast (longitude printed only as 'UK east coast')",
+        "lat": "52 12N",
+        "lon": "001 37E",
+        "inferred": true
+      },
+      {
+        "n": "21",
+        "name": "Ireland, south-east coast",
+        "lat": "52 10.3N",
+        "lon": "006 21.8W",
+        "inferred": false
+      },
+      {
+        "n": "22",
+        "name": "Wales",
+        "lat": "52 01.52N",
+        "lon": "005 04.18W",
+        "inferred": false
+      },
+      {
+        "n": "23",
+        "name": "Scotland, Rhins of Galloway",
+        "lat": "54 51.43N",
+        "lon": "005 08.47W",
+        "inferred": false
+      },
+      {
+        "n": "24",
+        "name": "Northern Ireland",
+        "lat": "54 40.39N",
+        "lon": "005 34.34W",
+        "inferred": false
+      }
+    ],
+    "lines": [
+      [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18"
+      ],
+      [
+        "19",
+        "20"
+      ],
+      [
+        "21",
+        "22"
+      ],
+      [
+        "23",
+        "24"
+      ]
+    ],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 50.0,
+      "lon": -8.0
+    },
+    "bbox": [
+      -15.5,
+      36.0,
+      3.6,
+      62.5
+    ]
+  },
+  "area_quote": "2.1 The area covered by the reporting system WETREP is defined within the following co-ordinates and are also shown in the chartlet attached at appendix 3: 1 (UK) 58° 30' N UK coast; 2 (UK) 58° 30' N 000° W; 3 (UK) 62° N 000° W; 4 (UK) 62° N 003° W; 5 (UK+ Irl) 56° 30' N 012° W; 6 (Irl) 54° 40'40\".91 N 015° W; 7 (Irl) 50° 56'45\".36 N 015° W; 8 (Irl+UK+F) 48° 27' N 006° 25' W; 9 (F) 48° 27' N 008° W; 10 (F+S) 44° 52' N 003° 10' W; 11 (S) 44° 52' N 010° W; 12 (S) 44° 14' N 011° 34' W; 13 (S) 42° 55' N 012° 18' W; 14 (S+P) 41° 50' N 011° 34' W; 15(P) 37° N 009° 49' W; 16 (P) 36° 20' N 009° 00' W; 17(P) 36° 20' N 007° 47' W; 18 (P) Guadiana River mouth 37° 10' N 007° 25' W; 19 (B) 51° 22'25\" N 003° 21'52\".5 E (border between B and NL); 20 (UK) 52° 12' N UK east coast; 21 (IRL) 52° 10'.3\" N 006° 21'.8\" W; 22 (UK) 52° 01'.52\" N 005° 04'.18\" W; 23 (UK) 54° 51'.43\" N 005° 08'.47\" W; 24 (UK) 54° 40'.39\" N 005° 34'.34\" W. 2.2 The reference chart is Admiralty Chart No. 4011 (World Geodetic System 1984 Datum (WGS 84)).",
+  "sources": [
+    {
+      "title": "IMO MSC.190(79) Adoption of mandatory ship reporting system in the Western European Particularly Sensitive Sea Area",
+      "ref": "Annex 1 paras 1-5, Appendix 1 (centres), Appendix 2 (rules for drafting), Appendix 3 (chartlet), Annex 2 (summary)",
+      "date": "2004-12-06",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.190(79).pdf",
+      "primary": true
+    },
+    {
+      "title": "IMO MSC.301(87) Adoption of amendments to the existing mandatory ship reporting system in the Western European PSSA (WETREP)",
+      "ref": "Annex, item 3 (new Portugal entry: Roca Control), in force 1 Dec 2010",
+      "date": "2010-05-17",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.301(87).pdf",
+      "primary": true
+    },
+    {
+      "title": "IMO MEPC.121(52) Designation of the Western European Waters as a Particularly Sensitive Sea Area",
+      "ref": "Annex 1, para 1.2 (same 24 points, clearer printing of points 21 to 24)",
+      "date": "2004-10-15",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MEPCDocuments/MEPC.121(52).pdf",
+      "primary": true
+    },
+    {
+      "title": "DGRM (Portugal): Contactos do VTS Costeiro (ROCA CONTROL)",
+      "ref": "contact block",
+      "date": "2026-10-26",
+      "url": "https://www.dgrm.pt/contacto-do-vts-costeiro-roca-contral-",
+      "primary": false
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Ships, reports, lines and centres read from the pdftotext text of MSC.190(79) and MSC.301(87). Every boundary coordinate checked digit by digit against the rendered PDF pages 2 and 3 of MSC.190(79) Annex 1 and against MEPC.121(52) Annex 1. Line order checked against the chartlet (Appendix 3). Points 1 and 20 longitudes are not printed (UK coast); their values here are read off a map and marked inferred. Portugal e-mail taken from the DGRM page via the COPREP record (same day). Other centre details are only as printed in 2004; not reconfirmed on current national pages.",
+  "confidence": "medium",
+  "notes": "Boundary: the official boundary is the line 1 to 18 (from the east coast of Caithness out to 62N, down the west of Ireland, the zigzag 7-8-9-10-11 west of Brittany and in the Bay of Biscay, then down to the Guadiana mouth), plus three closing lines: 19-20 across the southern North Sea (Belgium/Netherlands border to Suffolk), 21-22 across the south of St George's Channel and 23-24 across the North Channel. The rest is the coast. So the Irish Sea, the North Sea north of 52 12N and the outer Bay of Biscay are NOT in the area, but the English Channel is. Point 1 (58 30N on the UK coast) and point 20 (52 12N on the UK east coast) have no printed longitude; 003 06W and 001 37E are approximate coast positions (inferred). Points 21 to 24 are printed in MSC.190(79) as e.g. 52° 01'.52\" (stray quote marks); MEPC.121(52) prints the same points as 52°01.52'N, so they are decimal minutes. Points 6 and 7: MSC.190(79) prints 54° 40'40\".91 N and 50° 56'45\".36 N; MEPC.121(52) prints 54°40'40.9\"N and 50°56'45.3\"N (point 7 differs by 0.06 seconds; MSC.190(79) is used here). The centre list is from 2004 (Portugal from 2010) and is out of date in places (UK coastguard reorganisation, old e-mail domains): use the current list in official national publications and confirm the address on first contact. Points 8 and 10 are labelled (Irl+UK+F) and (F+S) in the source: they mark where the national parts meet. Ships bound to or from a port in the area must also meet EU Directive 2002/59/EC (footnote to para 6.2). No amendment after MSC.301(87) found in the IMO index of MSC resolutions up to MSC 111 (May 2026) or in the Swedish Transport Agency list of 2026."
+}

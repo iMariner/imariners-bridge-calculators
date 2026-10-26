@@ -1,0 +1,104 @@
+{
+  "id": "ru-vts-nakhodka-sector-2",
+  "system": "Peter the Great Bay regional VTS (РСУДС залива Петра Великого), Sector 2",
+  "title": "Nakhodka Traffic: Sector 2, Nakhodka Gulf (Kozmino, Vostochny, Nakhodka)",
+  "country": "Russia",
+  "authority": "Regional VTS of Peter the Great Bay acting as the port VTS, call sign \"Находка-Трафик\" (Nakhodka Traffic); harbour masters of the ports of Vostochny and Nakhodka",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": null,
+  "applies_to": "Ships entering or leaving Nakhodka Gulf, whatever their flag. Tankers bound for the Kozmino oil terminal need VTS permission to enter Nakhodka Gulf.",
+  "applies_quote": "Суда, следующие в залив Находка, при пересечении линии мыс Лихачева - мыс Поворотный устанавливают связь с СУДС на канале 13 ОВЧ.",
+  "when": [
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "When crossing the line Cape Likhacheva to Cape Povorotny inbound, call the VTS on VHF channel 13 and give the General Rules p. 29 data. Tankers for the Kozmino oil terminal must get VTS permission to enter Nakhodka Gulf; if no berth or anchor place is free, wait for VTS permission to enter Kozmino Bay. Quote: \"Танкеры, следующие к нефтеналивному терминалу в бухте Козьмина, получают разрешение СУДС на вход в залив Находка. В случае отсутствия свободных причалов или якорных мест в морском порту танкерам следует ожидать разрешения СУДС на вход в бухту Козьмина.\" (Vostochny p. 57)."
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Inside the zone: permission system. Anchoring, weighing anchor, approach and mooring to a berth, unmooring and leaving, and shifting only with VTS permission (Vostochny p. 23). Report to VTS on anchoring, starting or finishing mooring, and starting to move (General Rules p. 33). Ships under way in the Nakhodka port waters keep a continuous watch on CH 13 (Nakhodka p. 86); ships at anchor in Vostochny port keep watch on CH 14 and 16 (Vostochny p. 62)."
+    },
+    {
+      "event": "exit",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Leaving Nakhodka Gulf, when crossing the line Cape Likhacheva to Cape Povorotny, get VTS permission to stop the radio watch on CH 13. Quote: \"Суда, выходящие из залива Находка, при пересечении линии, соединяющей мысы Лихачева и Поворотный, получают разрешение СУДС на прекращение радиовахты на канале 13 ОВЧ.\""
+    }
+  ],
+  "how": [
+    { "type": "vhf", "value": "CH 13", "to": "Nakhodka Traffic (Находка-Трафик)", "note": "Working channel in Sector 2; navigational and weather information is also broadcast on CH 13 (Vostochny p. 132)" },
+    { "type": "vhf", "value": "CH 16", "to": "Nakhodka Traffic (Находка-Трафик)", "note": "Calling channel (\"на каналах 16 и 13 ОВЧ, позывной «Находка-Трафик»\"); storm warnings and very important messages on CH 13 and 16" },
+    { "type": "vhf", "value": "CH 14", "to": "Kozmino harbour master (Козьмина-АМП Восточный) / Vostochny harbour master (Восточный-5)", "note": "Traffic in Kozmino Bay is regulated by the VTS on CH 13 and by the harbour master on CH 14" },
+    { "type": "vhf", "value": "CH 69", "to": "Nakhodka harbour master (Находка-5)", "note": "Only for Nakhodka Bay, where the harbour master, not the VTS, regulates traffic" },
+    { "type": "vhf", "value": "CH 34", "to": "Novitsky harbour master (Новицкий-5)", "note": "Only for Novitsky Bay oil berths (Nakhodka port)" }
+  ],
+  "addressee": null,
+  "heading": null,
+  "lines": [
+    { "l": "1", "req": "required", "text": "Ship's name and type" },
+    { "l": "2", "req": "required", "text": "Flag" },
+    { "l": "3", "req": "required", "text": "Port of destination" },
+    { "l": "4", "req": "required", "text": "Maximum present draught and air draught" },
+    { "l": "5", "req": "required", "text": "Kind of cargo, dangerous cargo on board" },
+    { "l": "6", "req": "if-applicable", "text": "Defects of ship equipment and other limits that affect safe navigation" }
+  ],
+  "format_note": "Report items from General Rules p. 29. The VTS may ask for more of the p. 38 data.",
+  "area": {
+    "shape": "lines",
+    "points": [
+      { "n": "L", "name": "мыс Лихачева (Cape Likhacheva)", "lat": "42 44.1N", "lon": "132 51.0E", "inferred": true },
+      { "n": "P", "name": "мыс Поворотный (Cape Povorotny)", "lat": "42 40.4N", "lon": "133 02.5E", "inferred": true }
+    ],
+    "lines": [ [ "L", "P" ] ],
+    "center": null,
+    "radius_nm": null,
+    "state": "Russia",
+    "zone": "Internal sea waters of Peter the Great Bay: Nakhodka Gulf north of the line Cape Likhacheva to Cape Povorotny",
+    "ports": [ "Vostochny (Wrangel Bay, Kozmino Bay)", "Nakhodka" ],
+    "inside_hint": { "lat": 42.76, "lon": 132.95 },
+    "bbox": [ 132.8, 42.65, 133.1, 42.85 ]
+  },
+  "area_quote": "Зона действия РСУДС распространяется на внутренние морские воды залива Петра Великого, включает залив Находка с прилегающей частью залива Петра Великого, ограниченной с юга линией, соединяющей мыс Поворотный и мыс Лихачева (далее - сектор N 2). 51. В секторе N 2 РСУДС действует как СУДС морского порта. (Vostochny pp. 50 to 51; Nakhodka pp. 52 to 53.)",
+  "sources": [
+    {
+      "title": "Обязательные постановления в морском порту Восточный, Приказ Минтранса России от 11.01.2011 № 10 (ред. от 13.02.2026)",
+      "ref": "pp. 10, 23, 24, 50 to 57, 62, 96 to 99, 132, 133, Appendix 4",
+      "date": "2026-02-13",
+      "url": "https://legalacts.ru/doc/prikaz-mintransa-rf-ot-11012011-n-10/",
+      "primary": true
+    },
+    {
+      "title": "Обязательные постановления в морском порту Находка, Приказ Минтранса России от 23.06.2011 № 169 (ред. от 15.12.2017)",
+      "ref": "pp. 26, 52 to 57, 86, 100 to 102, Appendix 4",
+      "date": "2017-12-15",
+      "url": "https://pravo.ppt.ru/prikaz/mintrans/n-169-15191",
+      "primary": true
+    },
+    {
+      "title": "Приказ Минтранса России от 17.07.2026 № 337 (new Vostochny regulations from 01.03.2027)",
+      "ref": "pp. 46 to 54",
+      "date": "2026-07-17",
+      "url": "http://publication.pravo.gov.ru/document/0001202609020003",
+      "primary": true
+    },
+    {
+      "title": "Общие правила плавания и стоянки судов (Приказ Минтранса № 395, ред. от 23.12.2025)",
+      "ref": "pp. 29, 32, 33",
+      "date": "2025-12-23",
+      "url": "https://legalacts.ru/doc/prikaz-mintransa-rossii-ot-12112021-n-395-ob-utverzhdenii/",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Texts of both port regulations read in full on legalacts.ru (Vostochny, consolidated to 13.02.2026) and pravo.ppt.ru (Nakhodka, consolidated to 15.12.2017); VHF channels and call signs copied from the paragraphs and Appendix 4 tables. The 2026 amendment to Vostochny (№ 62) checked on the official PDF: no VTS change.",
+  "confidence": "medium",
+  "notes": "The boundary is defined only by two named capes; their positions here are from OpenStreetMap (inferred), not from the regulations. Read the line off the Russian chart. Kozmino Bay is in the seaport of Vostochny (not Nakhodka): \"Акватория морского порта включает в себя участки водной поверхности в бухте Врангеля, устье реки Хмыловка, бухте Козьмина и озере Второе.\" The VTS does not regulate traffic in Nakhodka Bay, Novitsky Bay and some small bays of Nakhodka port (harbour master there: Находка-5 CH 69, Новицкий-5 CH 34). Daily traffic schedule: Vostochny harbour master, published on pma.ru. From 01.03.2027 (new Vostochny regulations, order № 337) Sector 2 is \"акваторию залива Находка ... ограничен с юга линией, соединяющей мыс Поворотный и мыс Лихачева\", CH 13 Находка-Трафик, same crossing reports; ships may wait outside the port limits for VTS permission when no berth or anchor place is free (p. 55). VTS phone and email not in the regulations and not found."
+}

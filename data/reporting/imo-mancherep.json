@@ -1,0 +1,202 @@
+{
+  "id": "imo-mancherep",
+  "system": "MANCHEREP",
+  "title": "MANCHEREP Off Les Casquets and the adjacent coastal area",
+  "country": "France",
+  "authority": "CROSS Jobourg, VTS call sign Jobourg Traffic (printed 'Jobourg Trafic')",
+  "kind": "mandatory-imo",
+  "resolution": "MSC.110(73), amended by MSC.251(83)",
+  "status": "in effect",
+  "effective": "2001-06-01",
+  "applies_to": "Ships of over 300 GT. Ships under 300 GT keep reporting under the voluntary MAREP scheme when not under command or at anchor in the TSS or coastal area, restricted in their ability to manoeuvre, or with defective aids to navigation.",
+  "applies_quote": "The new system will apply to ships of over 300 GT, in line with the MAREP, OUESSREP and CALDOVREP systems already in place in the Channel or west of the Channel.",
+  "when": [
+    {
+      "event": "before_entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "The call should be made 2 nautical miles before entering the area (chart annexed)."
+    },
+    {
+      "event": "departure",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Ships making regular voyages from a port situated within the coverage area or in an adjacent area must send their reports to Jobourg. However, since ferries generally sail in accordance with fixed schedules, it will be possible for arrangements to be made on a case-by-case basis between ships and the Jobourg VTS."
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "A ship may elect, for reasons of commercial confidentiality, to communicate that section of the report which provides information on cargo by non-verbal means prior to entering the system."
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 13",
+      "to": "Jobourg Traffic (CROSS Jobourg)",
+      "note": "MSC.110(73) Annex, para 5: 'VHF channel 13, on which there is continuous watch by the VTS'. Not reconfirmed on a current French national page."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 80",
+      "to": "Jobourg Traffic (CROSS Jobourg)",
+      "note": "MSC.110(73) Annex, para 5: 'channel 80, which is also used for broadcasting safety information' (broadcasts at H+20 and H+50 after a call on CH 16)."
+    },
+    {
+      "type": "other",
+      "value": "AIS / any other means",
+      "to": "Jobourg Traffic",
+      "note": "Para 5: AIS transponders can also be used for transmitting reports; if a ship cannot reach the VTS by VHF it should use any other means of communication available. No e-mail or phone printed."
+    }
+  ],
+  "addressee": "JOBOURG TRAFFIC",
+  "heading": "MANCHEREP",
+  "lines": [
+    {
+      "l": "A",
+      "req": "required",
+      "text": "Name, call sign, IMO No. (or MMSI No. for reporting by transponder)"
+    },
+    {
+      "l": "B",
+      "req": "required",
+      "text": "Date and time"
+    },
+    {
+      "l": "C",
+      "req": "required",
+      "text": "C or D: Position in latitude and longitude or true bearing and distance from a clearly identified landmark"
+    },
+    {
+      "l": "D",
+      "req": "optional",
+      "text": "C or D: true bearing and distance from a clearly identified landmark (instead of C)"
+    },
+    {
+      "l": "E",
+      "req": "required",
+      "text": "True course"
+    },
+    {
+      "l": "F",
+      "req": "required",
+      "text": "Speed"
+    },
+    {
+      "l": "G",
+      "req": "required",
+      "text": "Port of departure"
+    },
+    {
+      "l": "I",
+      "req": "required",
+      "text": "Port of destination and expected time of arrival"
+    },
+    {
+      "l": "O",
+      "req": "required",
+      "text": "Present draught"
+    },
+    {
+      "l": "P",
+      "req": "required",
+      "text": "Cargo and, if dangerous goods are on board, IMO quantity and class"
+    },
+    {
+      "l": "Q",
+      "req": "if-applicable",
+      "text": "Q or R: Defect, damage and/or deficiencies affecting ship's structure, cargo or equipment, or any other circumstance affecting normal navigation, in accordance with the SOLAS or MARPOL Conventions"
+    },
+    {
+      "l": "R",
+      "req": "if-applicable",
+      "text": "Q or R: as for Q (pollution or dangerous goods lost overboard)"
+    },
+    {
+      "l": "T",
+      "req": "required",
+      "text": "Address for provision of information concerning a cargo of dangerous goods"
+    },
+    {
+      "l": "W",
+      "req": "required",
+      "text": "Number of persons on board"
+    },
+    {
+      "l": "X",
+      "req": "required",
+      "text": "Miscellaneous: estimated quantity of bunker fuel and characteristics for ships carrying over 5,000 tonnes bunker fuel; navigation conditions"
+    }
+  ],
+  "format_note": "Lines as replaced by MSC.251(83) (in force 1 May 2008); the original MSC.110(73) list was A, C or D, E and F plus defects, damage, pollution or cargo losses.",
+  "area": {
+    "shape": "polygon",
+    "points": [
+      {
+        "n": "A",
+        "lat": "50 10.0N",
+        "lon": "002 58.0W",
+        "inferred": false
+      },
+      {
+        "n": "B",
+        "lat": "50 10.0N",
+        "lon": "002 00.0W",
+        "inferred": false
+      },
+      {
+        "n": "C",
+        "lat": "49 20.0N",
+        "lon": "002 00.0W",
+        "inferred": false
+      },
+      {
+        "n": "D",
+        "lat": "49 20.0N",
+        "lon": "002 58.0W",
+        "inferred": false
+      }
+    ],
+    "lines": [],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 49.75,
+      "lon": -2.5
+    },
+    "bbox": [
+      -3.1,
+      49.2,
+      -1.9,
+      50.3
+    ]
+  },
+  "area_quote": "The reporting system would cover the TSS of Les Casquets and the adjacent coastal navigation area. Thus, the area covered would be bounded by a line connecting the following four points: A: 50º 10'.0 N / 002º 58'.0 W B: 50º 10'.0 N / 002º 00'.0 W C: 49º 20'.0 N / 002º 00'.0 W D: 49º 20'.0 N / 002º 58'.0 W. Reference chart: French chart No.7311 (International chart No.1071).",
+  "sources": [
+    {
+      "title": "IMO MSC.110(73) Mandatory ship reporting system Off Les Casquets and the adjacent coastal area",
+      "ref": "Annex sections 1 to 8",
+      "date": "2000-12-01",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.110(73).pdf",
+      "primary": true
+    },
+    {
+      "title": "IMO MSC.251(83) Adoption of amendments to the existing mandatory ship reporting systems Off Ushant, Off Les Casquets and Dover Strait/Pas de Calais",
+      "ref": "Annex and Appendix (new report content, in force 1 May 2008)",
+      "date": "2007-10-08",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.251(83).pdf",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Area points, ships, channels, call sign and reporting position read from MSC.110(73) (pdftotext, checked against the printed text); lines from MSC.251(83) Appendix. No current French national order for the Casquets reporting system was found on the Premar Manche site (searched 2026-10-26), so channels are only as printed in 2000.",
+  "confidence": "medium",
+  "notes": "The four points form a rectangle fully at sea (south of Start Point to west of the Cotentin), containing the Casquets TSS, Alderney and the north of Guernsey. Report 2 NM before entering. VHF CH 13 and CH 80 are from the 2000 resolution and not reconfirmed on a current official page. The UK pollution control limits and the French joint order on approaches to the coast (5 h before entering French territorial waters or 6 h before sailing for oil, NLS, noxious and dangerous cargo) are quoted in the resolution; the French rule is now SURNAV, see the SURNAV records. No amendment after MSC.251(83) found in the IMO index up to MSC 111 (May 2026)."
+}

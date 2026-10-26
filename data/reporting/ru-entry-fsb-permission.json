@@ -1,0 +1,93 @@
+{
+  "id": "ru-entry-fsb-permission",
+  "system": "Entry permission agreed with the FSB (Указ № 502)",
+  "title": "Russia: entry permission for ships from foreign ports, agreed with the FSB, and possible underwater hull inspection",
+  "country": "Russia",
+  "authority": "Harbour master of the port of call, with agreement of the authorised official of the FSB (Federal Security Service, includes the Border Service)",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": "2025-07-21",
+  "applies_to": "Ships coming to a Russian seaport from a foreign port (for example Ulsan to Kozmino). The underwater hull inspection is for ships coming from foreign ports through the territorial sea of foreign states with a stay in their ports, when the FSB official decides it is needed.",
+  "applies_quote": "заход в морские порты Российской Федерации судов, следующих из иностранных портов, осуществляется с разрешения капитана морского порта, согласованного с должностным лицом органа федеральной службы безопасности.",
+  "when": [
+    {
+      "event": "before_arrival",
+      "hours_before": 72,
+      "interval_h": null,
+      "report": null,
+      "text": "The trigger is the normal arrival information (General Rules p. 38 to 40, sent 120 to 72 hours before arrival). Within 1 hour of receiving it the harbour master passes it to the FSB official together with information on the ship's last 10 ports of call. Quote: \"не позднее одного часа после получения ... информации о заходе судна в морской порт ... информирует о планируемом заходе судна в морской порт должностное лицо органа федеральной службы безопасности с представлением указанной информации, а также информации о последних 10 портах, в которые это судно осуществляло заход.\" (Rules approved by Government Decree № 1867, p. 2)."
+    },
+    {
+      "event": "before_arrival",
+      "hours_before": 48,
+      "interval_h": null,
+      "report": null,
+      "text": "The FSB official decides within 48 hours from receiving the information: agree the permission, refuse it, or require an inspection of the underwater hull. Only after agreement does the harbour master put the ship in the daily traffic schedule. If refused, the harbour master tells the master, owner or agent and the VTS operator 24 hours before the planned arrival that the ship may not enter (Rules p. 3, 6, 7)."
+    },
+    {
+      "event": "before_arrival",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "If an underwater inspection is ordered: it is done before the ship enters the port, by the receiving terminal operator (divers or technical means). The operator agrees time and place with the harbour master and the owner; the harbour master informs the FSB at least 6 hours before. The master signs the inspection act and supplies the statement that there are no suspicious objects or explosive devices on board; one of the 4 copies stays with the master. A port may stop access, movement and port operations for an arriving ship that was not inspected when inspection was required (inspection Rules p. 5 to 11; Decree № 1637/1651 amendments)."
+    }
+  ],
+  "how": [
+    {
+      "type": "web",
+      "value": "www.portcall.marinet.ru",
+      "to": "Harbour master of the port of call (who forwards to the FSB)",
+      "note": "There is no separate ship-to-FSB message in these rules; the arrival information through the agent starts the process. The ship should also have the last 10 ports of call ready."
+    }
+  ],
+  "addressee": null,
+  "heading": null,
+  "lines": [
+    { "l": "1", "req": "required", "text": "Arrival information as in General Rules p. 38 (see ru-general-prearrival)" },
+    { "l": "2", "req": "required", "text": "Information on the last 10 ports of call of the ship" }
+  ],
+  "format_note": "No own format. Information goes from the agent to the harbour master (portcall.marinet.ru) and from the harbour master to the FSB.",
+  "area": {
+    "shape": "port",
+    "points": [],
+    "lines": [],
+    "center": null,
+    "radius_nm": null,
+    "state": "Russia",
+    "zone": null,
+    "ports": [
+      "All Russian seaports, for ships coming from foreign ports (Vostochny/Kozmino, Nakhodka, Vladivostok, Vanino, De-Kastri, Prigorodnoye, Petropavlovsk-Kamchatsky and others)"
+    ],
+    "inside_hint": { "lat": 42.723, "lon": 133.003 },
+    "bbox": [ 130.5, 42.0, 160.0, 54.0 ]
+  },
+  "area_quote": "Заход в морские порты судов, следующих из иностранных портов, осуществляется с разрешения капитана морского порта, согласованного с должностным лицом органа федеральной службы безопасности (General Rules p. 39(1)).",
+  "sources": [
+    {
+      "title": "Указ Президента Российской Федерации от 21.07.2025 № 502 \"Об особенностях захода судов в морские порты Российской Федерации\"",
+      "ref": "p. 1, p. 4 (in force from the day of publication, 21.07.2025)",
+      "date": "2025-07-21",
+      "url": "http://publication.pravo.gov.ru/document/0001202507210007",
+      "primary": true
+    },
+    {
+      "title": "Постановление Правительства РФ от 25.11.2025 № 1867 (Rules for FSB agreement of entry permission; Rules for underwater hull inspection)",
+      "ref": "Agreement Rules p. 1 to 7; Inspection Rules p. 2 to 16",
+      "date": "2025-11-25",
+      "url": "https://legalacts.ru/doc/postanovlenie-pravitelstva-rf-ot-25112025-n-1867-ob-utverzhdenii/",
+      "primary": true
+    },
+    {
+      "title": "Приказ Минтранса России от 23.12.2025 № 456, adds p. 39(1) to the General Rules",
+      "ref": "Appendix p. 6",
+      "date": "2025-12-23",
+      "url": "http://publication.pravo.gov.ru/document/0001202602060015",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Decree № 502 read on the official scanned PDF (publication.pravo.gov.ru). Government Decree № 1867 read in full on legalacts.ru. Order № 456 read on the official scanned PDF. Entry into force of Decree № 1867 (3 Dec 2025) is from a ppt.ru review only, not checked on the official text.",
+  "confidence": "high",
+  "notes": "Decree № 502 is issued under the Federal Constitutional Law on martial law (1-ФКЗ). Practical for Ulsan to Kozmino: make sure the agent files the arrival information as early as allowed (up to 120 hours before arrival) and has the last 10 ports; the FSB may take up to 48 hours. Expect that the port may order a diver or ROV hull inspection before entry, usually at a waiting area named by the harbour master; the cost can be charged to the ship. Kozmino to Vladivostok is a voyage between Russian ports, so this FSB agreement step should not apply to Vladivostok (it is for ships from foreign ports), but the normal arrival information still does. Not found: any separate report by a foreign merchant ship to the Border Service (ПУ ФСБ) on crossing the state border or entering the territorial sea when bound for a port; the border, customs and fisheries authorities receive the arrival and departure information from the harbour master (General Rules p. 51). Follow any instruction from Border Service ships or VTS."
+}

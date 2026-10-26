@@ -1,0 +1,211 @@
+{
+  "id": "ru-vts-magadan",
+  "system": "Magadan VTS (СУДС морского порта Магадан)",
+  "title": "Magadan Traffic: Nagaev Bay and approaches",
+  "country": "Russia",
+  "authority": "VTS of the seaport of Magadan, call sign \"Магадан-Трафик\"; harbour master of Magadan (Магадан-Радио-5)",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": null,
+  "applies_to": "All ships bound for Nagaev Bay and in the VTS zone, whatever their flag.",
+  "applies_quote": "38. Суда, следующие в бухту Нагаева, при входе в зону действия СУДС до пересечения линии, соединяющей мыс Чирикова и мыс Островной, устанавливают радиосвязь с СУДС и несут постоянную радиовахту на 16 и 67 каналах связи ОВЧ.",
+  "when": [
+    {
+      "event": "before_arrival",
+      "hours_before": 72,
+      "interval_h": null,
+      "report": null,
+      "text": "Arrival and departure information to the harbour master through www.portcall.marinet.ru (p. 22). Times per the General Rules: 120 to 72 hours before arrival, confirm 48 to 24 hours before; arrival application within 4 hours of first anchoring or mooring; departure application 4 hours before departure (ru-general-prearrival). From a foreign port the entry permission must also be agreed with the FSB (ru-entry-fsb-permission)."
+    },
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "On entering the VTS zone, before crossing the line Cape Chirikova to Cape Ostrovnoy, call Magadan Traffic on CH 67 and keep watch on CH 16 and 67 (p. 38); give the General Rules p. 29 data. Movement, anchoring and mooring only with the harbour master's permission; tell the VTS the permission received (p. 25). Pilot request in the arrival information, confirmed to the pilot 2 hours before (p. 32)."
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "At anchor and at berths watch CH 16 (p. 61). Navigation and weather information from the harbour master on CH 9 daily at 9.30 local time (p. 89); storm warnings on CH 16 (p. 90). Ice season: icebreaker HQ radio sessions daily at 02.00 and 09.00 Moscow time on 3730 kHz (reserve 8779 kHz), call sign Магадан-Радио-5 (p. 74)."
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 67",
+      "to": "Магадан-Трафик (VTS)",
+      "note": "Appendix: calling 16, working 67"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 16",
+      "to": "Магадан-Трафик (VTS)",
+      "note": "Calling channel"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 9",
+      "to": "Магадан-Радио-5 (state port control)",
+      "note": "Appendix: calling 16, working 9"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 69",
+      "to": "Магадан-3 (pilot)",
+      "note": "Appendix: calling 16, working 69"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 12",
+      "to": "Лебедь (Border Service checkpoint)",
+      "note": "Appendix: calling 16, working 12"
+    },
+    {
+      "type": "mf",
+      "value": "3730 kHz (reserve 8779 kHz)",
+      "to": "Магадан-Радио-5 (icebreaker operations HQ)",
+      "note": "Ice season, sessions 02.00 and 09.00 Moscow time (p. 74)"
+    },
+    {
+      "type": "web",
+      "value": "www.portcall.marinet.ru",
+      "to": "Harbour master of Magadan",
+      "note": "Arrival information (p. 22)"
+    }
+  ],
+  "addressee": null,
+  "heading": null,
+  "lines": [
+    {
+      "l": "1",
+      "req": "required",
+      "text": "Ship's name and type"
+    },
+    {
+      "l": "2",
+      "req": "required",
+      "text": "Flag"
+    },
+    {
+      "l": "3",
+      "req": "required",
+      "text": "Port of destination"
+    },
+    {
+      "l": "4",
+      "req": "required",
+      "text": "Maximum present draught and air draught"
+    },
+    {
+      "l": "5",
+      "req": "required",
+      "text": "Kind of cargo, dangerous cargo on board"
+    },
+    {
+      "l": "6",
+      "req": "if-applicable",
+      "text": "Defects of ship equipment and other limits that affect safe navigation"
+    }
+  ],
+  "format_note": "Report items from General Rules p. 29.",
+  "area": {
+    "shape": "lines",
+    "points": [
+      {
+        "n": "1",
+        "lat": "59 32.5N",
+        "lon": "150 34.5E",
+        "inferred": false
+      },
+      {
+        "n": "2",
+        "lat": "59 32.5N",
+        "lon": "150 17E",
+        "inferred": false
+      },
+      {
+        "n": "3",
+        "lat": "59 26N",
+        "lon": "150 17E",
+        "inferred": false
+      },
+      {
+        "n": "4",
+        "lat": "59 26N",
+        "lon": "150 30E",
+        "inferred": false
+      },
+      {
+        "n": "5",
+        "lat": "59 29N",
+        "lon": "150 30E",
+        "inferred": false
+      },
+      {
+        "n": "C",
+        "name": "мыс Чирикова (Cape Chirikova), west end of the call line",
+        "lat": "59 29.1N",
+        "lon": "150 30.1E",
+        "inferred": true
+      }
+    ],
+    "lines": [
+      [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    ],
+    "center": null,
+    "radius_nm": null,
+    "state": "Russia",
+    "zone": "Nagaev Bay and approaches, closed by the coast",
+    "ports": [
+      "Magadan (Nagaev Bay)"
+    ],
+    "inside_hint": {
+      "lat": 59.48,
+      "lon": 150.4
+    },
+    "bbox": [
+      150.2,
+      59.38,
+      150.7,
+      59.6
+    ]
+  },
+  "area_quote": "36. Зона действия СУДС морского порта ограничена береговой линией и прямыми линиями, соединяющими по порядку точки с координатами: N 1 59°32,5' северной широты и 150°34,5' восточной долготы; N 2 59°32,5' северной широты и 150°17' восточной долготы; N 3 59°26' северной широты и 150°17' восточной долготы; N 4 59°26' северной широты и 150°30' восточной долготы; N 5 59°29' северной широты и 150°30' восточной долготы.",
+  "sources": [
+    {
+      "title": "Приказ Минтранса России от 05.05.2015 № 160 \"Об утверждении Обязательных постановлений в морском порту Магадан\"",
+      "ref": "pp. 22, 25, 32, 35 to 38, 61 to 64, 74, 89, 90, VHF appendix",
+      "date": "2015-05-05",
+      "url": "https://rulaws.ru/acts/Prikaz-Mintransa-Rossii-ot-05.05.2015-N-160/",
+      "primary": true
+    },
+    {
+      "title": "Same order № 160, official publication",
+      "ref": "publication.pravo.gov.ru",
+      "date": "2015-05-05",
+      "url": "http://publication.pravo.gov.ru/document/0001201506010025",
+      "primary": true
+    },
+    {
+      "title": "Общие правила плавания и стоянки судов (Приказ Минтранса № 395, ред. от 23.12.2025)",
+      "ref": "pp. 29, 39, 40, 43, 45",
+      "date": "2025-12-23",
+      "url": "https://legalacts.ru/doc/prikaz-mintransa-rossii-ot-12112021-n-395-ob-utverzhdenii/",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Text read on rulaws.ru; polygon points copied with the printed precision (some whole minutes).",
+  "confidence": "medium",
+  "notes": "Points are kept exactly as printed (59°26', 150°17' have no decimals). Cape Chirikova position is from OpenStreetMap (inferred); Cape Ostrovnoy (Magadan) was not found there, so the call line is not drawn. The 2015 order: no amendment found on publication.pravo.gov.ru by name search; validity not confirmed. Harbour master phone and email not found."
+}

@@ -1,0 +1,81 @@
+{
+  "id": "ru-vts-petropavlovsk",
+  "system": "Petropavlovsk-Kamchatsky VTS (СУДС морского порта Петропавловск-Камчатский)",
+  "title": "Petropavlovsk Traffic: Petropavlovsk-Kamchatsky and Bechevinskaya sections",
+  "country": "Russia",
+  "authority": "VTS centre (ЦСУДС), call sign \"Петропавловск Трафик\"; harbour master of Petropavlovsk-Kamchatsky (FGBU AMP of Sakhalin, Kuril Islands and Kamchatka)",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": "2024-09-01",
+  "applies_to": "Ships, including autonomous ships, bound for the port; the VTS works in the Petropavlovsk-Kamchatsky and Bechevinskaya sections of the port waters, including the compulsory pilotage areas.",
+  "applies_quote": "Суда, в том числе автономные суда, следующие в морской порт, за две морские мили до пересечения линии зоны действия СУДС, должны установить связь с центром СУДС (далее - ЦСУДС) на радиотелефонных каналах диапазона очень высоких частот морской подвижной службы ... и передать информацию в соответствии с пунктом 29 Общих правил.",
+  "when": [
+    {
+      "event": "before_entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Ships bound for the port call the VTS centre 2 nautical miles before crossing the VTS zone line and give the General Rules p. 29 data. In the zone keep contact on calling CH 16 and working CH 24 (p. 24)."
+    },
+    {
+      "event": "before_arrival",
+      "hours_before": 72,
+      "interval_h": null,
+      "report": null,
+      "text": "Arrival and departure information to the harbour master through www.portcall.marinet.ru (p. 14); times per the General Rules (ru-general-prearrival)."
+    }
+  ],
+  "how": [
+    { "type": "vhf", "value": "CH 24", "to": "Петропавловск Трафик (Petropavlovsk Traffic)", "note": "Working channel; Appendix 3: calling 24, working 24, reserve 86" },
+    { "type": "vhf", "value": "CH 16", "to": "Петропавловск Трафик (Petropavlovsk Traffic)", "note": "Calling channel per p. 24" },
+    { "type": "vhf", "value": "CH 86", "to": "Петропавловск Трафик (Petropavlovsk Traffic)", "note": "Reserve (Appendix 3)" },
+    { "type": "vhf", "value": "CH 11", "to": "Петропавловск портконтроль (harbour master service)", "note": "Appendix 3: calling 16, working 11; also 9" },
+    { "type": "vhf", "value": "CH 8", "to": "Петропавловск-Росморпорт (pilots)", "note": "Appendix 3: calling 14, working 8, 10" },
+    { "type": "web", "value": "www.portcall.marinet.ru", "to": "Harbour master of Petropavlovsk-Kamchatsky", "note": "Arrival and departure information (p. 14)" }
+  ],
+  "addressee": null,
+  "heading": null,
+  "lines": [
+    { "l": "1", "req": "required", "text": "Ship's name and type" },
+    { "l": "2", "req": "required", "text": "Flag" },
+    { "l": "3", "req": "required", "text": "Port of destination" },
+    { "l": "4", "req": "required", "text": "Maximum present draught and air draught" },
+    { "l": "5", "req": "required", "text": "Kind of cargo, dangerous cargo on board" },
+    { "l": "6", "req": "if-applicable", "text": "Defects of ship equipment and other limits that affect safe navigation" }
+  ],
+  "format_note": "Report items from General Rules p. 29, given 2 NM before the zone line.",
+  "area": {
+    "shape": "port",
+    "points": [],
+    "lines": [],
+    "center": null,
+    "radius_nm": null,
+    "state": "Russia",
+    "zone": "Port waters of the Petropavlovsk-Kamchatsky section (Avacha Bay) and the Bechevinskaya section, including the compulsory pilotage areas; no boundary coordinates printed in the VTS paragraph",
+    "ports": [ "Petropavlovsk-Kamchatsky", "Bechevinskaya Bay (section of the port)" ],
+    "inside_hint": { "lat": 52.97, "lon": 158.55 },
+    "bbox": [ 158.3, 52.75, 158.9, 53.15 ]
+  },
+  "area_quote": "23. В акватории участка Петропавловск-Камчатский и участка Бечевинская действует система управления движением судов (далее - СУДС). В зону действия СУДС входят районы обязательной лоцманской проводки.",
+  "sources": [
+    {
+      "title": "Приказ Минтранса России от 25.04.2024 № 147 \"Об утверждении Обязательных постановлений в морском порту Петропавловск-Камчатский\" (in force 01.09.2024, valid to 01.09.2030)",
+      "ref": "pp. 14, 23 to 25, 54, Appendix 3",
+      "date": "2024-04-25",
+      "url": "https://pravo.ppt.ru/prikaz/mintrans/n-147-298556",
+      "primary": true
+    },
+    {
+      "title": "Same order № 147, official publication",
+      "ref": "publication.pravo.gov.ru, published 31.05.2024",
+      "date": "2024-04-25",
+      "url": "http://publication.pravo.gov.ru/document/0001202405310120",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Text read on pravo.ppt.ru; channels and call signs copied as printed. No amendment found on publication.pravo.gov.ru (search 2026-10-26).",
+  "confidence": "medium",
+  "notes": "The VTS zone line is not given as coordinates in the VTS paragraph; it covers the port sections and the compulsory pilotage areas (p. 54 lists them; not copied here). The p. 24 text says calling CH 16 and working CH 24, while Appendix 3 lists the VTS centre with calling CH 24, working CH 24 and reserve CH 86: call on CH 16 or 24 and work on 24. The pilotage area boundaries and the A2 sector were not copied. VTS phone and email not found."
+}

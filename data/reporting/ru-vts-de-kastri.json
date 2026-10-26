@@ -1,0 +1,83 @@
+{
+  "id": "ru-vts-de-kastri",
+  "system": "De-Kastri VTS (СУДС морского порта Де-Кастри)",
+  "title": "De-Kastri Traffic: port of De-Kastri and its Tatar Strait approaches",
+  "country": "Russia",
+  "authority": "VTS of the seaport of De-Kastri, call sign \"Де-Кастри-Трафик\"; harbour master of De-Kastri (call sign Де-Кастри-5) (FGBU AMP of the Sea of Okhotsk and Tatar Strait)",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": null,
+  "applies_to": "All ships in the port of De-Kastri and in its VTS zone, whatever their flag.",
+  "applies_quote": "В зоне действия СУДС действует разрешительный порядок движения. До начала движения судно должно запросить разрешение у дежурного оператора СУДС.",
+  "when": [
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "When approaching the VTS zone, call the VTS duty operator on VHF CH 11 (p. 63 as amended). Give the General Rules p. 29 data. Movement, anchoring and mooring in the VTS zone only with VTS permission (p. 21.1). Quote: \"При подходе к зоне действия СУДС судно должно выйти на связь с дежурным оператором СУДС на 11 канале связи ОВЧ\"."
+    },
+    {
+      "event": "before_arrival",
+      "hours_before": 72,
+      "interval_h": null,
+      "report": null,
+      "text": "Arrival information per the General Rules (ru-general-prearrival). The port's own pre-arrival paragraph was not read (base text of 2012 not obtained)."
+    }
+  ],
+  "how": [
+    { "type": "vhf", "value": "CH 11", "to": "Де-Кастри-Трафик (De-Kastri Traffic)", "note": "VTS regulates traffic on CH 11; watch on CH 11 and 16; working channels 11 and 68" },
+    { "type": "vhf", "value": "CH 68", "to": "Де-Кастри-Трафик (De-Kastri Traffic)", "note": "Second working channel" },
+    { "type": "vhf", "value": "CH 16", "to": "Де-Кастри-Трафик (De-Kastri Traffic)", "note": "Calling channel (Appendix 5: calling 16, working 11, 68)" }
+  ],
+  "addressee": null,
+  "heading": null,
+  "lines": [
+    { "l": "1", "req": "required", "text": "Ship's name and type" },
+    { "l": "2", "req": "required", "text": "Flag" },
+    { "l": "3", "req": "required", "text": "Port of destination" },
+    { "l": "4", "req": "required", "text": "Maximum present draught and air draught" },
+    { "l": "5", "req": "required", "text": "Kind of cargo, dangerous cargo on board" },
+    { "l": "6", "req": "if-applicable", "text": "Defects of ship equipment and other limits that affect safe navigation" }
+  ],
+  "format_note": "Report items from General Rules p. 29.",
+  "area": {
+    "shape": "lines",
+    "points": [
+      { "n": "N1", "name": "Parallel 51°30,00'N at the coast (west end)", "lat": "51 30.00N", "lon": "140 46.0E", "inferred": true },
+      { "n": "N2", "name": "51°30,00'N on meridian 140°58,00'E", "lat": "51 30.00N", "lon": "140 58.00E", "inferred": true },
+      { "n": "S2", "name": "51°25,50'N on meridian 140°58,00'E", "lat": "51 25.50N", "lon": "140 58.00E", "inferred": true },
+      { "n": "S1", "name": "Parallel 51°25,50'N at the coast (west end)", "lat": "51 25.50N", "lon": "140 47.0E", "inferred": true }
+    ],
+    "lines": [ [ "N1", "N2", "S2", "S1" ] ],
+    "center": null,
+    "radius_nm": null,
+    "state": "Russia",
+    "zone": "Port waters and the Tatar Strait approaches between the coast and the printed lines",
+    "ports": [ "De-Kastri" ],
+    "inside_hint": { "lat": 51.47, "lon": 140.90 },
+    "bbox": [ 140.6, 51.35, 141.05, 51.55 ]
+  },
+  "area_quote": "34.1. Зона действия СУДС морского порта включает в себя акваторию порта и район Татарского пролива на подходах к морскому порту между береговой чертой и районом, ограниченным линиями: с севера - параллелью 51°30,00' северной широты; с востока - меридианом 140°58,00' восточной долготы; с юга - параллелью 51°25,50' северной широты. Регулирование движением судов в зоне действия СУДС осуществляется дежурным оператором СУДС на 11 канале связи ОВЧ. СУДС обеспечивает круглосуточное несение радиовахты на 11 и 16 каналах связи ОВЧ. Рабочими каналами СУДС морского порта являются 11 и 68 каналы связи ОВЧ. Позывной СУДС \"Де-Кастри-Трафик\".",
+  "sources": [
+    {
+      "title": "Приказ Минтранса России от 17.05.2018 № 200 \"О внесении изменений в Обязательные постановления в морском порту Де-Кастри, утвержденные приказом Минтранса от 22.03.2012 № 75\"",
+      "ref": "Appendix items 3, 4, 9, 15, 18, 23",
+      "date": "2018-05-17",
+      "url": "https://pravo.ppt.ru/prikaz/mintrans/n-200-200831",
+      "primary": true
+    },
+    {
+      "title": "Same order № 200, official publication",
+      "ref": "publication.pravo.gov.ru, published 14.06.2018",
+      "date": "2018-05-17",
+      "url": "http://publication.pravo.gov.ru/document/0001201806140014",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "VTS zone, channels and call sign read in the text of amendment order № 200 (pravo.ppt.ru). publication.pravo.gov.ru search for the De-Kastri regulations shows amendments of 2016 (№ 300) and 2018 (№ 200) only, none later.",
+  "confidence": "medium",
+  "notes": "Source is the 2018 amendment to the 2012 regulations (order № 75 of 22.03.2012); the consolidated current text and its validity date were not read, so later changes cannot be ruled out. The corners on 140°58,00'E are where the printed parallels meet the printed meridian; the west ends at about 140°46' to 140°47'E are rough coast estimates for drawing only. VTS phone and email not found."
+}

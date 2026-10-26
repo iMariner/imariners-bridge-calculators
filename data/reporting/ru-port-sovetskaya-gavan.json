@@ -1,0 +1,168 @@
+{
+  "id": "ru-port-sovetskaya-gavan",
+  "system": "Port of Sovetskaya Gavan, harbour master; Vanino VTS on the approaches",
+  "title": "Sovetskaya Gavan: entry permission at Cape Krasny Partizan or Cape Burny (Совгавань-радио-5)",
+  "country": "Russia",
+  "authority": "Harbour master of the seaport of Sovetskaya Gavan (Совгавань-радио-5); VTS of Vanino (Ванино-трафик) on the approaches",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": null,
+  "applies_to": "All ships bound for or leaving the port of Sovetskaya Gavan, whatever their flag.",
+  "applies_quote": "45. Суда, следующие в морской порт, не менее чем за 30 минут до входа в зону действия СУДС морского порта Ванино, либо выходящие из морского порта, не менее чем за 30 минут до пересечения границы морского порта должны получить разрешение СУДС морского порта Ванино на вход в зону действия СУДС морского порта Ванино.",
+  "when": [
+    {
+      "event": "before_arrival",
+      "hours_before": 72,
+      "interval_h": null,
+      "report": null,
+      "text": "Arrival and departure information to the harbour master through www.portcall.marinet.ru (p. 26). Times per the General Rules: 120 to 72 hours before arrival, confirm 48 to 24 hours before; arrival application within 4 hours of first anchoring or mooring; departure application 4 hours before departure (ru-general-prearrival). From a foreign port the entry permission must also be agreed with the FSB (ru-entry-fsb-permission)."
+    },
+    {
+      "event": "before_entry",
+      "hours_before": 0.5,
+      "interval_h": null,
+      "report": null,
+      "text": "At least 30 minutes before entering the Vanino VTS zone (inbound), or 30 minutes before crossing the port limit (outbound), get permission from Vanino VTS (CH 14, calling 16, Ванино-трафик) to enter the VTS zone (p. 45)."
+    },
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "From the south, abeam Cape Krasny Partizan, ask the harbour master on CH 12 for permission to enter the port; from the north, abeam Cape Burny, the same (call sign Совгавань-радио-5) (p. 48). Quote: \"Суда, следующие в морской порт с юга, на траверзе мыса Красный Партизан должны запросить на 12 канале связи ОВЧ разрешение капитана морского порта на вход судна в морской порт\"."
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "At the roads watch CH 12 and 16 (p. 82); at berths CH 12 (p. 83). Storm warnings from the harbour master on CH 12 (p. 113). No clearance at the Nelma point (p. 27)."
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 12",
+      "to": "Совгавань-радио-5 (harbour master)",
+      "note": "Appendix 4: calling 16, working 12 (pp. 47, 48)"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 14",
+      "to": "Ванино-трафик (Vanino VTS)",
+      "note": "Appendix 4: calling 16, working 14 (p. 44)"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 12",
+      "to": "Совгавань-радио-2 (terminal)",
+      "note": "Appendix 4: calling 16, working 12"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 9",
+      "to": "Совгавань-радио-1 (bunker port)",
+      "note": "Appendix 4: calling 16, working 9"
+    },
+    {
+      "type": "web",
+      "value": "www.portcall.marinet.ru",
+      "to": "Harbour master of Sovetskaya Gavan",
+      "note": "Arrival information (p. 26)"
+    }
+  ],
+  "addressee": null,
+  "heading": null,
+  "lines": [
+    {
+      "l": "1",
+      "req": "required",
+      "text": "Ship's name and type"
+    },
+    {
+      "l": "2",
+      "req": "required",
+      "text": "Flag"
+    },
+    {
+      "l": "3",
+      "req": "required",
+      "text": "Port of destination"
+    },
+    {
+      "l": "4",
+      "req": "required",
+      "text": "Maximum present draught and air draught"
+    },
+    {
+      "l": "5",
+      "req": "required",
+      "text": "Kind of cargo, dangerous cargo on board"
+    },
+    {
+      "l": "6",
+      "req": "if-applicable",
+      "text": "Defects of ship equipment and other limits that affect safe navigation"
+    }
+  ],
+  "format_note": "Report to the VTS per General Rules p. 29.",
+  "area": {
+    "shape": "port",
+    "points": [
+      {
+        "n": "KP",
+        "name": "мыс Красный Партизан (Cape Krasny Partizan): call point from the south",
+        "lat": "48 58.6N",
+        "lon": "140 23.4E",
+        "inferred": true
+      },
+      {
+        "n": "BU",
+        "name": "мыс Бурный (Cape Burny): call point from the north",
+        "lat": "49 05.7N",
+        "lon": "140 20.6E",
+        "inferred": true
+      }
+    ],
+    "lines": [],
+    "center": null,
+    "radius_nm": null,
+    "state": "Russia",
+    "zone": null,
+    "ports": [
+      "Sovetskaya Gavan"
+    ],
+    "inside_hint": {
+      "lat": 48.97,
+      "lon": 140.3
+    },
+    "bbox": [
+      140.1,
+      48.85,
+      140.6,
+      49.2
+    ]
+  },
+  "area_quote": "43. Зона действия СУДС морского порта Ванино включает в себя бухту Ванина, а также систему разделения движения судов у входа в бухту Ванина, бухту Мучке, залив Советская Гавань и часть Татарского пролива, ограниченную: с севера - параллелью 49°09,00' северной широты (мыс Токи); с востока - меридианом 140°30,00' восточной долготы; с юга - параллелью 48°58,00' северной широты (мыс Красный Партизан).",
+  "sources": [
+    {
+      "title": "Обязательные постановления в морском порту Советская Гавань, Приказ Минтранса России от 12.08.2014 № 224",
+      "ref": "pp. 26, 27, 42 to 48, 82, 83, 113, Appendix 4",
+      "date": "2014-08-12",
+      "url": "https://rulaws.ru/acts/Prikaz-Mintransa-Rossii-ot-12.08.2014-N-224/",
+      "primary": true
+    },
+    {
+      "title": "Общие правила плавания и стоянки судов (Приказ Минтранса № 395, ред. от 23.12.2025)",
+      "ref": "pp. 29, 39, 40, 43, 45",
+      "date": "2025-12-23",
+      "url": "https://legalacts.ru/doc/prikaz-mintransa-rossii-ot-12112021-n-395-ob-utverzhdenii/",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Text read on rulaws.ru (no edition date shown). Not found on publication.pravo.gov.ru by name search; amendments and validity not confirmed.",
+  "confidence": "low",
+  "notes": "Source text is the 2014 order as shown on rulaws.ru; I could not confirm whether it was amended or extended (many orders of that time were given new validity dates in 2023 to 2025). The Sovetskaya Gavan text gives the Vanino VTS south limit as 48°58,00'N, while the current Vanino regulations give 48°58,10'N (see ru-vts-vanino); use the Vanino figure for the VTS zone. Sovetskaya Gavan Bay itself is excluded from the Vanino VTS zone in the Vanino regulations but included in this older text. Cape positions are from OpenStreetMap (inferred). Harbour master phone and email not found."
+}

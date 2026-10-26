@@ -1,0 +1,172 @@
+{
+  "id": "ru-vts-aniva-prigorodnoye",
+  "system": "Aniva Bay VTS (СУДС залива Анива)",
+  "title": "Aniva Traffic: northern Aniva Bay, port of Prigorodnoye (Sakhalin LNG and oil terminal)",
+  "country": "Russia",
+  "authority": "VTS centre of Aniva Bay (ЦСУДС), call sign \"Анива-Трафик\"; harbour master of Prigorodnoye (FGBU AMP of Sakhalin, Kuril Islands and Kamchatka)",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": "2024-03-01",
+  "applies_to": "Ships bound for the port of Prigorodnoye and ships moving in the VTS zone of northern Aniva Bay, whatever their flag.",
+  "applies_quote": "суда, следующие в морской порт, должны установить связь на радиотелефонных каналах диапазона очень высоких частот морской подвижной службы (далее - каналы связи ОВЧ) с ЦСУДС и передать сведения, предусмотренные пунктом 29 Общих правил, за две морские мили до пересечения линии зоны действия СУДС;",
+  "when": [
+    {
+      "event": "before_entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Ships bound for the port call the VTS centre 2 nautical miles before crossing the VTS zone line and give the General Rules p. 29 data. In the zone keep contact on calling CH 16 and working CH 74 (p. 23)."
+    },
+    {
+      "event": "before_arrival",
+      "hours_before": 72,
+      "interval_h": null,
+      "report": null,
+      "text": "Arrival and departure information to the harbour master through www.portcall.marinet.ru (p. 12); times per the General Rules (ru-general-prearrival). Daily traffic schedule approved at 9.00 local time, published on http://ампскк.рф/ (p. 14)."
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 74",
+      "to": "Анива-Трафик (Aniva Traffic)",
+      "note": "Working channel; Appendix 3 reserve CH 67"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 16",
+      "to": "Анива-Трафик (Aniva Traffic)",
+      "note": "Calling channel (p. 23)"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 69",
+      "to": "Пригородное-Портконтроль (state port control)",
+      "note": "Appendix 3: working 69, reserve 13"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 69",
+      "to": "Пригородное - радио - 2 (port dispatcher and pilots)",
+      "note": "Appendix 3: working 69, reserve 73"
+    },
+    {
+      "type": "web",
+      "value": "www.portcall.marinet.ru",
+      "to": "Harbour master of Prigorodnoye",
+      "note": "Arrival and departure information (p. 12)"
+    }
+  ],
+  "addressee": null,
+  "heading": null,
+  "lines": [
+    {
+      "l": "1",
+      "req": "required",
+      "text": "Ship's name and type"
+    },
+    {
+      "l": "2",
+      "req": "required",
+      "text": "Flag"
+    },
+    {
+      "l": "3",
+      "req": "required",
+      "text": "Port of destination"
+    },
+    {
+      "l": "4",
+      "req": "required",
+      "text": "Maximum present draught and air draught"
+    },
+    {
+      "l": "5",
+      "req": "required",
+      "text": "Kind of cargo, dangerous cargo on board"
+    },
+    {
+      "l": "6",
+      "req": "if-applicable",
+      "text": "Defects of ship equipment and other limits that affect safe navigation"
+    }
+  ],
+  "format_note": "Report items from General Rules p. 29, given 2 NM before the zone line.",
+  "area": {
+    "shape": "lines",
+    "points": [
+      {
+        "n": "1",
+        "lat": "46 37.50N",
+        "lon": "142 26.00E",
+        "inferred": false
+      },
+      {
+        "n": "2",
+        "lat": "46 25.00N",
+        "lon": "142 30.00E",
+        "inferred": false
+      },
+      {
+        "n": "3",
+        "lat": "46 25.00N",
+        "lon": "143 04.00E",
+        "inferred": false
+      },
+      {
+        "n": "4",
+        "lat": "46 35.70N",
+        "lon": "143 04.00E",
+        "inferred": false
+      }
+    ],
+    "lines": [
+      [
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    ],
+    "center": null,
+    "radius_nm": null,
+    "state": "Russia",
+    "zone": "Closed by the coast of northern Aniva Bay",
+    "ports": [
+      "Prigorodnoye",
+      "Korsakov (same VTS zone, see ru-port-korsakov)"
+    ],
+    "inside_hint": {
+      "lat": 46.5,
+      "lon": 142.8
+    },
+    "bbox": [
+      142.3,
+      46.35,
+      143.15,
+      46.75
+    ]
+  },
+  "area_quote": "22. В акватории северной части залива Анива действует система управления движением судов (далее - СУДС) залива Анива. Зона действия СУДС ограничена береговой линией и прямыми линиями, соединяющими по порядку точки с координатами: 46°37,50' северной широты и 142°26,00' восточной долготы; 46°25,00' северной широты и 142°30,00' восточной долготы; 46°25,00' северной широты и 143°04,00' восточной долготы; 46°35,70' северной широты и 143°04,00' восточной долготы.",
+  "sources": [
+    {
+      "title": "Приказ Минтранса России от 25.05.2023 № 190 \"Об утверждении Обязательных постановлений в морском порту Пригородное\" (in force 01.03.2024, valid to 01.03.2030)",
+      "ref": "pp. 12, 14, 15, 22, 23, Appendix 3",
+      "date": "2023-05-25",
+      "url": "https://pravo.ppt.ru/prikaz/mintrans/n-190-285306",
+      "primary": true
+    },
+    {
+      "title": "Same order № 190, official publication",
+      "ref": "publication.pravo.gov.ru, published 09.08.2023",
+      "date": "2023-05-25",
+      "url": "http://publication.pravo.gov.ru/document/0001202308090027",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Text read on pravo.ppt.ru; coordinates and channels copied as printed. No amendment found on publication.pravo.gov.ru (search 2026-10-26).",
+  "confidence": "high",
+  "notes": "Channel note: p. 23 gives calling CH 16 and working CH 74; Appendix 3 gives Анива-Трафик working CH 74, reserve CH 67. Do not use CH 13, 16, 67, 69, 73, 74 for talk unrelated to traffic and safety (p. 42). Emergency information on CH 16 (p. 63). VTS phone and email not in the regulations and not found."
+}

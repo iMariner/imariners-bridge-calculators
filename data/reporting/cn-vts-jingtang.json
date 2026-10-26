@@ -1,0 +1,84 @@
+{
+  "id": "cn-vts-jingtang",
+  "system": "China VTS",
+  "title": "Tangshan port, Jingtang port area VTS (唐山港京唐港区)",
+  "country": "China",
+  "authority": "Hebei MSA, Tangshan MSA (唐山海事局) VTS centre",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": null,
+  "applies_to": "Ships navigating, anchoring or berthing in the Jingtang port area waters (no published VTS rules found).",
+  "applies_quote": "冀航警52/22，渤海，唐山港京唐港区VHF09频道受到干扰，暂调至VHF12频道工作,恢复时间另行通知，希各航船注意。",
+  "when": [
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "No local VTS rules with report points were found. Expect the usual Chinese VTS reports on the working channel: on reaching the VTS area, before entering or leaving the channel, before weighing anchor, after anchoring, before unberthing and after berthing. Obey the VTS traffic organisation. (Not printed in a Jingtang source; general practice, inferred.)"
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 09",
+      "to": "VTS centre, Jingtang port area",
+      "note": "VTS working channel of the Jingtang port area, shown by navigation warning 冀航警52/22 (title 'VTS频道干扰'). In Feb 2022 it moved to CH 12 for a while and was restored (冀航警58/22)."
+    }
+  ],
+  "addressee": null,
+  "heading": null,
+  "lines": [],
+  "format_note": null,
+  "area": {
+    "shape": "port",
+    "points": [],
+    "lines": [],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [
+      "Tangshan port, Jingtang port area (唐山港京唐港区), Hebei"
+    ],
+    "inside_hint": {
+      "lat": 39.0,
+      "lon": 119.13
+    },
+    "bbox": [
+      118.95,
+      38.9,
+      119.4,
+      39.3
+    ]
+  },
+  "area_quote": null,
+  "sources": [
+    {
+      "title": "冀航警52/22 VTS频道干扰 (and English HB35/22)",
+      "ref": "whole warning",
+      "date": "2022-02-23",
+      "url": "https://www.msa.gov.cn/html/cnmsa/hxaq/article/2022/c346676885ce46fb8fcd81106f9a58f2.html",
+      "primary": true
+    },
+    {
+      "title": "冀航警58/22 VHF09频道恢复",
+      "ref": "whole warning",
+      "date": "2022-03-03",
+      "url": "https://www.msa.gov.cn/html/cnmsa/hxaq/article/2022/bf5202f5959b4999aad51a46290f0ecd.html",
+      "primary": true
+    },
+    {
+      "title": "关于唐山港京唐港区3号锚地调整的通告",
+      "ref": "anchorages 3-1 and 3-2 (3-2 closed to non-Chinese ships)",
+      "date": "2021-01-28",
+      "url": "https://www.msa.gov.cn/html/cnmsa/hxaq/article/2021/97f407725dcd443996ae2c2ff654f2bd.html",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Only navigation warnings found on msa.gov.cn; no VTS rules, VTS area or report line for Jingtang were found on msa.gov.cn or hb.msa.gov.cn.",
+  "confidence": "low",
+  "notes": "GAP: no published Jingtang VTS rules, VTS area, report lines, call sign or phone found. Channel VHF09 is from a 2022 warning; check with the agent. Anchorage 3-2 is a temporary anchorage closed to non-Chinese ships (2021 notice). Not inside the Caofeidian reporting system (east line 118 55.00E)."
+}

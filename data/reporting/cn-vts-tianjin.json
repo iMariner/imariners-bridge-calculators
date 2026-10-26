@@ -1,0 +1,201 @@
+{
+  "id": "cn-vts-tianjin",
+  "system": "China VTS",
+  "title": "Tianjin VTS (Tianjin port, incl. Nanjiang and Dagang oil terminals)",
+  "country": "China",
+  "authority": "Tianjin MSA (天津海事局), Tianjin VTS Centre (天津海事局船舶交通管理中心, \"天津VTS\")",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": "2020-10-16",
+  "applies_to": "Ships and facilities that navigate, stay or work in the Tianjin MSA VTS area, and their owners, operators and agents. The pre-arrival (24 h) report applies to every ship; the 4 h sailing plan applies to all foreign ships.",
+  "applies_quote": "本规则适用于在天津海事局船舶交通管理系统（以下简称VTS系统）的区域内航行、停泊和作业的船舶、设施（以下简称船舶）及其所有人、经营人、代理人和有关单位及人员。（2017年版第二条）",
+  "when": [
+    {
+      "event": "before_arrival",
+      "hours_before": 24,
+      "interval_h": null,
+      "report": null,
+      "text": "Ship, owner, operator or agent: at least 24 h ahead, in writing or other effective way, report to the VTS centre the ETA, ship name, flag, call sign, draught, ship type, dimensions, cargo, last / next port and other data asked for. Voyage under 24 h: report before leaving the last port. ETA change over 2 h or other main data change: report the change at once. (2017 text, art. 5) (船舶或其所有人、经营人、代理人应至少提前24小时将船舶预计抵达时间、船名、国籍、呼号、吃水、船舶种类、船舶尺度、载货情况、驶来（往）港及主管机关要求的其他资料，以书面或其他有效的方式报告VTS中心。航程不足24小时的，应在驶离上一港前报告。船舶预计抵达时间变更超过2小时……应及时……报告VTS中心。)"
+    },
+    {
+      "event": "before_arrival",
+      "hours_before": 4,
+      "interval_h": null,
+      "report": null,
+      "text": "All foreign ships: report the sailing plan (航行计划) to the VTS centre 4 h before entering or leaving port or shifting in port. Ships using the lock or opening bridges add the expected times. Any change to the plan: report at least 2 h ahead. (2017 text, art. 6) (所有外国籍船舶……进出港或在港内移泊，应提前4小时向VTS中心报告船舶航行计划……航行计划如有变更，应至少提前2小时向VTS中心报告。)"
+    },
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "On VHF, report ship name, position, movement and anything else the VTS asks: when crossing the VTS gate line (VTS门线) and the set report lines. If VHF contact fails, use every other means and get it confirmed. (2017 text, art. 9 (1)) (通过VTS门线及规定的报告线)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Also report name, position and movement on VHF: before entering or leaving a channel; before entering or leaving the lock; before passing an opening bridge; before turning in a channel; before crossing a channel; before weighing anchor; after anchoring; before unberthing; after berthing. (2017 text, art. 9 (2) to (10)) (驶入（出）航道前；……占用航道调头前；穿越航道前；起锚前；锚泊后；离泊前；靠泊后。)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Dagu lighthouse report point on the main channel (大沽灯塔船舶报告点): inbound, report on VHF14 when passing it; outbound, report on VHF09. Entering or leaving the channel west of Dagu lighthouse: report on VHF14; east of it: VHF09. Dagusha channel (Dagukou port area): VHF10. Dagang channel (Dagang port area, oil terminals): VHF08. Coming from a Tianjin anchorage or straight from the approach: report on the channel of the zone the ship is in. (2017 text, art. 27 and 28)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Before and after: repairs to main engine, steering gear, windlass, radio, boilers or other equipment that affects manoeuvring; sea trials or engine trials; lowering boats for drills; fumigation. (2017 text, art. 10)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "At once: traffic accident, pollution, accident to crew or passengers, or other emergency. Promptly: faulty aids to navigation, obstructions or floating objects, ships in distress, pollution. (2017 text, art. 11 and 12)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Anchoring in a channel, harbour basin, channel junction or no-anchoring area only in special cases and only after asking the VTS centre and getting permission. Overtaking in a one-way channel only in emergency, with the other ship's consent and after telling the VTS. (2017 text, art. 23 and 19 (4))"
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 09",
+      "to": "Tianjin VTS (天津VTS)",
+      "note": "Zone 1: all waters not in zones 2 to 5 (VTS area outside the port, approaches, anchorages). Also given as the enquiry channel in the 2020 notice."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 14",
+      "to": "Tianjin VTS",
+      "note": "Zone 2: Xingang lock to west of Dagu lighthouse, channel and waters inside the breakwaters (Xingang / Nanjiang)."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 71",
+      "to": "Tianjin VTS",
+      "note": "Zone 3: Haihe lower reach channel, incl. Xingang lock."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 10",
+      "to": "Tianjin VTS",
+      "note": "Zone 4: Dagusha channel and waters inside its breakwaters, south to the line 1000 m north of the Dagang channel. Gaoshaling channel also uses VHF10 (2023 notice)."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 08",
+      "to": "Tianjin VTS",
+      "note": "Zone 5: Dagang channel and waters inside its breakwaters, and waters south of the line 1000 m north of the Dagang channel (Dagang oil terminals)."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 72, CH 65",
+      "to": "Tianjin VTS",
+      "note": "Standby working channels (2017 text)."
+    },
+    {
+      "type": "phone",
+      "value": "022-25700692",
+      "to": "Tianjin VTS Centre (天津VTS中心)",
+      "note": "Enquiries (2020 notice). Country code +86."
+    }
+  ],
+  "addressee": null,
+  "heading": null,
+  "lines": [
+    {
+      "l": "A",
+      "req": "required",
+      "text": "Ship name (船名)"
+    },
+    {
+      "l": "C",
+      "req": "required",
+      "text": "Position (位置)"
+    },
+    {
+      "l": "E",
+      "req": "required",
+      "text": "Movement / intentions (动态)"
+    },
+    {
+      "l": "X",
+      "req": "if-applicable",
+      "text": "Other information the VTS centre needs (VTS中心需要了解的其他情况)"
+    }
+  ],
+  "format_note": "Plain VHF reports in Mandarin or English (art. 30). Zone rule: near a zone boundary or when crossing it, watch both zone channels (art. 28). The 24 h report goes in writing (usually through the agent).",
+  "area": {
+    "shape": "circle",
+    "points": [],
+    "lines": [],
+    "center": {
+      "n": "C",
+      "name": "Centre of the VTS gate line arc",
+      "lat": "38 58 31.471N",
+      "lon": "117 47 12.461E",
+      "inferred": false
+    },
+    "radius_nm": 20,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 38.95,
+      "lon": 117.95
+    },
+    "bbox": [
+      117.3,
+      38.55,
+      118.3,
+      39.35
+    ]
+  },
+  "area_quote": "VTS区域：是指由主管机关划定并公布的，VTS中心可以实施有效交通组织的天津港航道、锚地、引航员登离轮区域以及VTS门线内其他通航水域。VTS门线：是指以地理坐标（38°58′31.471″N/117°47′12.461″E）为圆心，20海里为半径的海上圆弧线。（2017年版第四条）",
+  "sources": [
+    {
+      "title": "关于发布新版《天津海事局船舶交通管理系统安全监督管理规则》的通告 津航通﹝2020﹞0096",
+      "ref": "whole notice (in force 2020-10-16 for 5 years; VHF09; phone)",
+      "date": "2020-10-13",
+      "url": "https://www.msa.gov.cn/html/cnmsa/hxaq/article/2020/c91fc09efcc943afbdc058945bb8f84d.html",
+      "primary": true
+    },
+    {
+      "title": "天津海事局船舶交通管理系统安全监督管理规则 (2017 edition, in force 2017-01-01), copy reposted on 54seaman.com",
+      "ref": "art. 4, 5, 6, 9, 10, 11, 12, 19, 23, 27, 28, 30",
+      "date": "2016-12-26",
+      "url": "https://54seaman.com/Uploads/Editor/File/2016-12-29/5864b72fd84b1.doc",
+      "primary": false
+    },
+    {
+      "title": "关于公布天津港高沙岭港区航道及附近水域船舶航行规则的通告 津航通﹝2023﹞0022",
+      "ref": "(三) 通信: VHF10, zones 4 and 5 (VHF8); rules amended by Tianjin MSA notice 2023 No. 1",
+      "date": "2023-03-20",
+      "url": "https://www.msa.gov.cn/html/cnmsa/hxaq/article/2023/1a1739ad6d7a412e821f7a833d72bb82.html",
+      "primary": true
+    },
+    {
+      "title": "渤海湾中部水域船舶定线制 (津航通〔2025〕0124号 attachment)",
+      "ref": "3.2 (Tianjin VTS receives reports), 4.2 (2) VHF 09 and 16",
+      "date": "2025-12-08",
+      "url": "https://www.msa.gov.cn/public/documents/document/ndq4/nja1/~edisp/cnmsa7453000704448605378.pdf",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "VTS gate line, report events, zones and channels read from the 2017 edition of the rules (Word copy on 54seaman.com, an old official text). The 2020 notice on msa.gov.cn confirms a new edition from 2020-10-16 (5 years), VHF09 and the phone. The 2023 Gaoshaling notice (msa.gov.cn) confirms zones 4 (VHF10) and 5 (VHF8) still exist. The Bohai Bay central routeing (2026) names Tianjin VTS on VHF09/16. The 2020 and 2023 texts themselves were not seen: tj.msa.gov.cn did not answer.",
+  "confidence": "low",
+  "notes": "OLD TEXT. The full rules here are the 2017 edition. The 2020 edition (津海通航〔2020〕116号) changed some VTS report points and report items, changed the Dagang channel rules and removed the pilot clauses; it was valid 5 years, to about 2025-10-16, and was amended again in 2023 (2023年第1号). No replacement or extension was found on msa.gov.cn; tj.msa.gov.cn could not be reached. Check the current rules with the agent or Tianjin VTS (VHF09, 022-25700692) before arrival. Report points other than the gate line and Dagu lighthouse are not listed here (not in the text seen). The VTS gate line is an arc of 20 NM round the given point, closed by the coast. Tanker notes: ships carrying flash point below 23 C bulk liquids count as 'special dangerous cargo ships' (载运特殊危险货物船舶) with stricter one-way traffic limits in the main channel. Ships may not enter or leave port when visibility is under 1000 m, wind force 9 or more, or ice signal 3 or more (2017 text art. 24). National reports (port entry, dangerous cargo declaration, territorial sea) are separate records."
+}

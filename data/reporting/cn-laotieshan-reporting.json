@@ -1,0 +1,168 @@
+{
+  "id": "cn-laotieshan-reporting",
+  "system": "China VTS",
+  "title": "Laotieshan Channel reporting area (20 NM round Laotieshan lighthouse), Dalian VTS",
+  "country": "China",
+  "authority": "Dalian MSA (大连海事局), Dalian VTS Centre (大连交管中心)",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": "2022-05-01",
+  "applies_to": "Foreign ships, and Chinese passenger ships and other Chinese ships of 300 GT and over. Chinese ships under 300 GT may take part. Military, fishing and sports craft are not covered unless stated. A foreign crude oil tanker is always included.",
+  "applies_quote": "第四条 在大连VTS区域内航行、停泊和作业的外国籍船舶和中国籍客船、300总吨及以上其他船舶，应当向大连交管中心报告。300总吨以下的中国籍船舶，可以自愿参加本规则规定的船舶报告制度。 (指南) 除另有明文规定外，军用船舶、渔业船舶和体育运动船艇不适用本指南的报告要求。",
+  "when": [
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "On entering the Laotieshan reporting area: ship's name, call sign, MMSI, position (lat/long or from a landmark), course, speed, last port, destination, defects and restrictions (a tug gives tow length and the name of the tow), length overall and gross tonnage. (进入老铁山船舶报告制水域时，报告船名，呼号，海上移动业务识别号，位置（经纬度或相对于陆标的位置），航向，航速，始发港，目的港，缺陷及限制（拖船应报告其拖带长度及被拖物名称），总长及总吨)"
+    },
+    {
+      "event": "exit",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "On leaving the area: ship's name. (驶离老铁山船舶报告制水域时，报告船名。)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Crossing the Laotieshan Channel traffic lanes is not allowed; if it cannot be avoided, report to Dalian VTS first and cross only with its permission (Liaoning coastal routeing system 2026, part VI). (不应穿越通航分道，如需穿越，必须提前向大连船舶交管中心报告，得到许可后，方可穿越。)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "No anchoring in or near the precautionary area, the traffic lanes and their ends; if anchoring is needed in an emergency, report to the authority (rules 2024 art. 5)."
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 10",
+      "to": "大连交管中心 (Dalian VTS Centre)",
+      "note": "report channel for the Laotieshan reporting area and the routeing system waters"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 16",
+      "to": "all ships / Dalian Coast Radio",
+      "note": "listening watch on CH 10 and CH 16 in the routeing system (routeing system 2026 part VI 3.3(1); rules 2024 art. 8)"
+    },
+    {
+      "type": "phone",
+      "value": "00-86-411-82622716 / 82624002",
+      "to": "大连交管中心 (Dalian VTS Centre)",
+      "note": "24 hours"
+    },
+    {
+      "type": "email",
+      "value": "dalianvts@126.com",
+      "to": "大连交管中心 (Dalian VTS Centre)",
+      "note": null
+    }
+  ],
+  "addressee": "大连交管中心",
+  "heading": null,
+  "lines": [
+    {
+      "l": "A",
+      "req": "required",
+      "text": "Ship's name, call sign, MMSI (船名，呼号，海上移动业务识别号)"
+    },
+    {
+      "l": "C",
+      "req": "required",
+      "text": "Position, lat/long or bearing and distance from a landmark (位置（经纬度或相对于陆标的位置）)"
+    },
+    {
+      "l": "E",
+      "req": "required",
+      "text": "Course (航向)"
+    },
+    {
+      "l": "F",
+      "req": "required",
+      "text": "Speed (航速)"
+    },
+    {
+      "l": "G",
+      "req": "required",
+      "text": "Last port (始发港)"
+    },
+    {
+      "l": "I",
+      "req": "required",
+      "text": "Destination (目的港)"
+    },
+    {
+      "l": "Q",
+      "req": "if-applicable",
+      "text": "Defects and restrictions; a tug gives tow length and name of the tow (缺陷及限制（拖船应报告其拖带长度及被拖物名称）)"
+    },
+    {
+      "l": "U",
+      "req": "required",
+      "text": "Length overall and gross tonnage (总长及总吨)"
+    }
+  ],
+  "format_note": "Voice report on VHF CH 10 in Mandarin Chinese or English. The letters are given here to match A.851 order; the source lists the items without letters. Exit report: ship's name only.",
+  "area": {
+    "shape": "circle",
+    "points": [],
+    "lines": [],
+    "center": {
+      "n": "C",
+      "name": "Laotieshan lighthouse (老铁山灯塔)",
+      "lat": "38 43 37N",
+      "lon": "121 08 02E",
+      "inferred": false
+    },
+    "radius_nm": 20,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 38.6,
+      "lon": 121.0
+    },
+    "bbox": [
+      120.65,
+      38.38,
+      121.6,
+      39.06
+    ]
+  },
+  "area_quote": "老铁山水道船舶报告制水域 ... 进入、驶离老铁山船舶报告制水域（以老铁山灯塔38°43′37″N/121°08′02″E为中心，半径20海里以内的水域）时。 ... 在VHF10频道报告。",
+  "sources": [
+    {
+      "title": "中华人民共和国大连船舶交通管理系统安全监督管理规则 (附 VTS服务指南（中国）（大连交管中心）), Liaoning MSA, in force 2022-05-01, valid 5 years",
+      "ref": "Rules art. 2, 4-10, 17; Guide parts 1 (VHF, areas), 2 (reports), 3 (pilots), 5 (anchorages), 6 (contacts)",
+      "date": "2022-05-01",
+      "url": "https://www.mcrrc.top/bmgz/jy/bhhs/zsjfg/lnhsj/636.html",
+      "primary": false
+    },
+    {
+      "title": "中华人民共和国海事局公告 2026年第7号: 辽宁沿海船舶定线制 (Ship's Routeing System for Liaoning Coastal Waters), in force 2026-08-15",
+      "ref": "Part VI 老铁山水道船舶定线制 (Laotieshan Channel), sections (二) and (三); English text pages 110-114",
+      "date": "2026-06-03",
+      "url": "https://www.msa.gov.cn/html/cnmsa/xxgk/article/2026/ba19edc5e37a43b19231d60d4fdc34cd.html",
+      "primary": true
+    },
+    {
+      "title": "老铁山水道船舶定线制实施细则, 辽宁海事局通告〔2024〕2号, in force 2024-07-07, valid 5 years",
+      "ref": "Art. 5, 7, 8",
+      "date": "2024-07-07",
+      "url": "https://www.mcrrc.top/bmgz/2469.html",
+      "primary": false
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Area, channel and report items from the 'other reports' part of the Dalian VTS guide (copy on mcrrc.top). Copy of the official text on mcrrc.top (maritime law database run by Shandong Jiaotong University). The Liaoning MSA site www.ln.msa.gov.cn, where the original is published, could not be reached from here; the notice number of the 2022 issue is not shown in the copy. The crossing rule and the CH 10/16 watch are from the official China MSA announcement No. 7 of 2026 (PDF read in full, Chinese and English). The 2024 implementing rules (copy on mcrrc.top) refer to an MSA announcement '关于实施老铁山水道船舶定线制和船舶报告制的公告' as the basis of the reporting system; that original announcement was not found.",
+  "confidence": "medium",
+  "notes": "This is the report every tanker entering or leaving the Bohai by the Laotieshan Channel makes. The circle also covers Lushun New Port subarea (also CH 10). Shandong side of the Bohai Strait (Yantai VTS, Chengshantou) is a separate record. Masters must be on the bridge with at least one more watchkeeper in the channel; in poor visibility at least two besides the master, engines ready and a man forward (rules 2024 art. 3). Check all navigation and radio equipment before entering (art. 7). Military exercises are often notified in this area (see current navigation warnings). The rules and guide came into force on 2022-05-01 with 5 years validity (to 2027-04-30), replacing 辽海指挥〔2020〕74号. Check for a newer issue after the Liaoning coastal routeing system (in force 2026-08-15)."
+}

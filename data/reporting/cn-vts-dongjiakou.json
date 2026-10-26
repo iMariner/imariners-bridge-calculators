@@ -1,0 +1,274 @@
+{
+  "id": "cn-vts-dongjiakou",
+  "system": "China VTS",
+  "title": "Dongjiakou VTS (Qingdao port, Dongjiakou port area)",
+  "country": "China",
+  "authority": "Dongjiakou MSA (中华人民共和国董家口海事局), Dongjiakou VTS Centre (董家口海事局船舶交通管理中心, 董家口交管中心)",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": "2022-05-01",
+  "applies_to": "Foreign ships; Chinese ships of 300 GT and over; passenger ships; ships carrying dangerous goods; ships restricted in their ability to manoeuvre; ships receiving oily water or waste, bunkering, supplying water, doing construction or lightering; others who join by choice. A foreign crude oil tanker is always included.",
+  "applies_quote": "第四条 以下船舶通过董家口VTS报告线时，应通过甚高频无线电话或其他有效手段向VTS中心进行船舶动态报告：（一）外国籍船舶；（二）300总吨及以上中国籍船舶；（三）客船;（四）载运危险货物的船舶；（五）操纵能力受到限制的船舶；（六）从事油污水等污染物接收、油水供给、工程施工、过驳作业等活动的船舶；（七）其他自愿参加VTS动态报告的船舶。",
+  "when": [
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Entry report: when passing a reporting line, or before heaving up anchor in the anchorage: ship's name, position, movement and anything else the VTS asks. (进港报告 报告时机：船舶通过报告线或锚地起锚前 … 报告内容：船名、船位、动态及VTS 中心询问的其他信息。)"
+    },
+    {
+      "event": "arrival",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Arrival report: on arrival at the berth or anchorage in the VTS area: name, position, movement, other. (抵港报告 报告时机：船舶抵达VTS区域内泊位或者锚地。)"
+    },
+    {
+      "event": "departure",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Departure report: before leaving the berth, shifting or heaving up anchor: name, position, movement, other. (开航报告 报告时机：船舶离、移泊或起锚前。) Rules art. 5 also asks for a report before going into or out of the channel."
+    },
+    {
+      "event": "exit",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Outbound report: when passing a reporting line: name, position, movement, other. (离港报告 报告时机：船舶通过报告线。)"
+    },
+    {
+      "event": "deviation",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Change report: when the pre-arrival plan details change: the items that changed. (变化报告 报告时机：船舶预报计划信息发生变化 报告内容：变化的项目。)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Accident report (traffic accident or pollution: details); abnormal situation report (anything that may endanger traffic); before crossing a channel or a temporary control area (only with VTS consent). (事故报告；异常情况报告；第九条 穿越航道、临时交通管制区 … 经VTS中心同意 …)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Activity report before starting and when finished: opening up main engine, boiler, windlass, steering gear or other gear that affects manoeuvring; trials; compass adjusting; launching lifeboats or rafts; going alongside or lightering at anchor; works in or under water; towing; oily water or bunker/water supply work; other work affecting safety. (活动报告 应在作业开始前和结束时报告 …)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Pilot report: after the pilot boards or before he leaves: pilot's name or number, ship's name and call sign, boarding or landing place, destination. (引航报告 报告时机：引航员登轮后或离轮前。)"
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 12",
+      "to": "Dongjiakou VTS (董家口交管中心)",
+      "note": "VTS working channel; call Dongjiakou VTS and keep watch on CH 12 in the area"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 68",
+      "to": "Dongjiakou port control (港口调度)",
+      "note": "other channel listed in the user guide"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 11",
+      "to": "Pilots (引航)",
+      "note": "other channel listed in the user guide"
+    },
+    {
+      "type": "phone",
+      "value": "86-532-82989550 82989551",
+      "to": "Dongjiakou VTS Centre",
+      "note": null
+    },
+    {
+      "type": "fax",
+      "value": "86-532-82989553",
+      "to": "Dongjiakou VTS Centre",
+      "note": null
+    },
+    {
+      "type": "email",
+      "value": "djkvts@126.com",
+      "to": "Dongjiakou VTS Centre",
+      "note": null
+    },
+    {
+      "type": "phone",
+      "value": "86-532-12395",
+      "to": "Maritime distress (海上遇险报警专用电话)",
+      "note": null
+    },
+    {
+      "type": "phone",
+      "value": "86-532-82982389 82985930",
+      "to": "Qingdao Pilot Station (青岛港引航站)",
+      "note": "fax 86-532-82985926"
+    },
+    {
+      "type": "phone",
+      "value": "86-532-82989201 82989202 82989203",
+      "to": "Dongjiakou port control (董家口港调度)",
+      "note": null
+    }
+  ],
+  "addressee": "董家口交管中心 / Dongjiakou VTS",
+  "heading": null,
+  "lines": [
+    {
+      "l": "1",
+      "req": "required",
+      "text": "Ship's name (船名)"
+    },
+    {
+      "l": "2",
+      "req": "required",
+      "text": "Position (船位)"
+    },
+    {
+      "l": "3",
+      "req": "required",
+      "text": "Movement (动态)"
+    },
+    {
+      "l": "4",
+      "req": "optional",
+      "text": "Other information the VTS asks (VTS 中心询问的其他信息)"
+    }
+  ],
+  "format_note": "Voice reports on VHF CH 12. Mandarin or English. VTS works 0000 to 2400 Beijing time (UTC+8).",
+  "area": {
+    "shape": "lines",
+    "points": [
+      {
+        "n": "H",
+        "lat": "35 36 52N",
+        "lon": "119 52 26E",
+        "inferred": false
+      },
+      {
+        "n": "I",
+        "lat": "35 35 16N",
+        "lon": "119 54 20E",
+        "inferred": false
+      },
+      {
+        "n": "J",
+        "lat": "35 31 36N",
+        "lon": "119 54 21E",
+        "inferred": false
+      },
+      {
+        "n": "K",
+        "lat": "35 33 05N",
+        "lon": "119 57 07E",
+        "inferred": false
+      },
+      {
+        "n": "A",
+        "lat": "35 38 28N",
+        "lon": "120 01 36E",
+        "inferred": false
+      },
+      {
+        "n": "B",
+        "lat": "35 38 28N",
+        "lon": "120 04 12E",
+        "inferred": false
+      },
+      {
+        "n": "C",
+        "lat": "35 27 12N",
+        "lon": "119 58 15E",
+        "inferred": false
+      },
+      {
+        "n": "D",
+        "lat": "35 27 12N",
+        "lon": "119 50 49E",
+        "inferred": false
+      },
+      {
+        "n": "E",
+        "lat": "35 31 54N",
+        "lon": "119 45 44E",
+        "inferred": false
+      },
+      {
+        "n": "F",
+        "lat": "35 34 33N",
+        "lon": "119 44 50E",
+        "inferred": false
+      },
+      {
+        "n": "G",
+        "lat": "35 34 57N",
+        "lon": "119 45 27E",
+        "inferred": false
+      }
+    ],
+    "lines": [
+      [
+        "H",
+        "I",
+        "J",
+        "K",
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ]
+    ],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 35.5,
+      "lon": 119.93
+    },
+    "bbox": [
+      119.7,
+      35.4,
+      120.12,
+      35.7
+    ]
+  },
+  "area_quote": "“报告线”是指：第一报告线：A点（35°38′28″N/120°01′36″E）和B点（35°38′28″N/120°04′12″E）两点连线（正横青石栏灯桩）。第二报告线：C点（35°27＇12″N/119°58′15″E）、D点（35°27＇12″N/119°50′49″E）、E点（35°31′54″N/119°45′44″E）、F点（35°34′33″N/119°44′50″E）和G点（35°34＇57″N/119°45′27″E）五点连线。“VTS区域”是指以下11点连线与港区岸线围成的水域：35°36′52″N/119°52′26″E（H点）… 35°34＇57″N/119°45′27″E（G点）",
+  "sources": [
+    {
+      "title": "山东海事局关于公布《董家口船舶交通管理系统安全监督管理细则》的通告 (Dongjiakou VTS rules and Dongjiakou VTS user guide)",
+      "ref": "Attachment .doc: rules arts. 4 to 9, 23, 31; user guide parts 1 to 6",
+      "date": "2022-04-01",
+      "url": "https://www.sd.msa.gov.cn/art/2022/4/1/art_124_1769372.html",
+      "primary": true
+    },
+    {
+      "title": "Same text, copy on mcrrc.top (Shandong Jiaotong University law library)",
+      "ref": "1546.html",
+      "date": "2022-04-01",
+      "url": "https://www.mcrrc.top/bmgz/jy/bhhs/zsjfg/sdhsj/1546.html",
+      "primary": false
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Rules, user guide, points, channels and contacts read from the official .doc attached to the Shandong MSA notice of 1 April 2022 (sd.msa.gov.cn); same as the mcrrc.top copy. Points are printed in seconds and copied as printed (the source mixes ′ and ＇ for minutes).",
+  "confidence": "high",
+  "notes": "Valid to 30 April 2027 (art. 32), so a new version may come out in 2027. The VTS area is the 11 points H to G joined in the printed order and closed by the port coastline. Reporting lines: first line A-B (abeam Qingshilan light beacon, 青石栏灯桩), second line C-D-E-F-G. Pilotage is compulsory for foreign ships and for VLCCs. Pilot boarding areas (user guide): LNG ships and draught 19 m or more: No. 1 area 35°20′.30N 119°59′.80E; 35°18′.75N 120°01′.42E; 35°17′.68N 119°59′.93E; 35°19′.18N 119°58′.32E. Draught 12 m to under 19 m: No. 2 area 35°27′.18N 119°52′.35E; 35°25′.68N 119°53′.97E; 35°24′.61N 119°52′.49E; 35°26′.11N 119°50′.86E. Draught under 12 m: No. 3 area (5 points, see source). Main channel 318°39′16″ / 138°39′16″, max draught 22.8 m, one way for 300,000 t ships on the tide. No anchoring outside the anchorages, no lightering or going alongside at anchor, and no trials in the channel or anchorages without approval. Foreign ships may not enter Lingshan Shuidao without approval. Not checked: later Dongjiakou anchorage notices (e.g. the LNG emergency anchorage, 鲁航通〔2024〕0779号)."
+}

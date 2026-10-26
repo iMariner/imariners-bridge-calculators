@@ -1,0 +1,278 @@
+{
+  "id": "cn-vts-yingkou",
+  "system": "China VTS",
+  "title": "Yingkou VTS (Yingkou, Bayuquan, Xianrendao)",
+  "country": "China",
+  "authority": "Yingkou MSA (营口海事局), Yingkou VTS Centre (营口交管中心)",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": "2023-02-06",
+  "applies_to": "Foreign ships, and Chinese passenger ships and other Chinese ships of 300 GT and over. Chinese ships under 300 GT may take part. Military, fishing and sports craft are not covered unless stated. A foreign crude oil tanker is always included.",
+  "applies_quote": "（一）适用船舶 1.外国籍船舶；2.中国籍的下列船舶：(1)客船；(2)300总吨及以上的其他船舶。注：300总吨以下的中国籍船舶，可自愿参加本规则规定的船舶报告制度。除另有明文规定外，军用船舶、渔业船舶和体育运动船艇不适用本指南的报告要求。",
+  "when": [
+    {
+      "event": "before_arrival",
+      "hours_before": 24,
+      "interval_h": null,
+      "report": null,
+      "text": "Arrival pre-report on the internet by the company or agent 24 hours before entering the VTS area (voyage under 24 hours: on leaving the last port). Site www.dpn.com.cn. Content: ship's name, call sign, IMO number, DWT, voyage, last port, port of call, ETA, ETD, arrival draught, cargo. The port operator files the berthing plan and the pilot station the pilotage plan within 24 hours before. (船公司或者代理公司应当在船舶进入VTS区域前24小时（航程不足24小时的，应在离开最后港口时），在互联网上提交船舶抵港预报。)"
+    },
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Entry report on crossing the report line into the VTS area; the VTS must acknowledge. Content: ship's name, nationality, call sign, draught, dimensions, last port, destination, cargo, pilot needed or not, loading or discharging plan, intentions. (进区报告: 船舶通过报告线进入VTS区域 ... 船名、国籍、呼号（如有）、吃水、船舶尺度、出发港、目的港、载货情况、是否需要引航员、装(卸)计划、航行意图等。规则第五条 ... 并应得到营口交管中心的确认。)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "30 minutes before entering the fairway (channel): report; do not enter without VTS confirmation. Content: ship's name, call sign, position, intention to enter the channel, intended berth. (船舶在进入航道前, 应提前30分钟向营口交管中心报告，未经确认禁止进入航道。)"
+    },
+    {
+      "event": "arrival",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Arrival report on reaching a berth, anchorage or temporary stop: ship's name, call sign, time of berthing or anchoring, position. After anchoring also give anchor position and time. (抵港报告: 船舶抵达泊位、锚地或临时停泊点 ... 船名、呼号（如有）、靠泊或抛锚时间、船位 ...)"
+    },
+    {
+      "event": "departure",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Sailing report before unberthing or weighing anchor: ship's name, call sign, time, position, destination. Shifting berth, mooring to or leaving buoys, leaving an anchorage and other activities that affect safety: report the plan 30 minutes before and wait for approval; report when finished. (开航报告: 船舶离泊或起锚前 ... 规则第七条 ... 应提前30分钟向营口交管中心报告其活动计划，经同意后，方可进行。)"
+    },
+    {
+      "event": "exit",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Leaving report on crossing the report line out of the area: ship's name, call sign, time of crossing, position. (离区报告: 船舶通过报告线离开VTS区域 ... 船名、呼号（如有）、通过报告线时间、船位等。)"
+    },
+    {
+      "event": "deviation",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Change report when the pre-reported plan or the anchor position or activity plan changes. (变化报告)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Pilot report when the pilot boards and leaves: ship's name, call sign, time, place, pilot's name or number. (引航报告: 引航员登离轮)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Activity report before: towing or speed trials in a fairway, shifting berth, anchoring outside anchorages, engine trials, sea trials, compass testing. STS in an anchorage must follow the rules and be reported. Dragging anchor: report and warn nearby ships. (活动报告; 规则第十一条)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Accident, pollution or emergency: report at once by all means. Abnormal situations (aids to navigation out of order, obstructions, drifting objects): at once by all means. (水上交通事故报告 / 异常情况报告: 采用一切有效手段报告营口交管中心)"
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 69",
+      "to": "营口交管中心 (Yingkou VTS Centre)",
+      "note": "working channel in all four parts (Yingkou port, Bayuquan, Xianrendao, report line and other waters); keep watch"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 08",
+      "to": "tugs, pilots, port (拖轮、引航、港口)",
+      "note": "guide part 1(2)"
+    },
+    {
+      "type": "web",
+      "value": "www.dpn.com.cn",
+      "to": "营口交管中心 (Yingkou VTS Centre)",
+      "note": "24 h arrival pre-report by company or agent"
+    },
+    {
+      "type": "phone",
+      "value": "0417-6245459",
+      "to": "营口海事局交管中心 (Yingkou VTS Centre)",
+      "note": "from abroad +86 417 6245459"
+    },
+    {
+      "type": "phone",
+      "value": "0417-6249979",
+      "to": "营口海事局交管中心 (Yingkou VTS Centre)",
+      "note": "from abroad +86 417 6249979"
+    },
+    {
+      "type": "phone",
+      "value": "0417-12395",
+      "to": "maritime search and rescue (海上搜救专用电话)",
+      "note": null
+    }
+  ],
+  "addressee": "营口交管中心",
+  "heading": null,
+  "lines": [
+    {
+      "l": "A",
+      "req": "required",
+      "text": "Ship's name, nationality, call sign (船名、国籍、呼号（如有）)"
+    },
+    {
+      "l": "O",
+      "req": "required",
+      "text": "Draught (吃水)"
+    },
+    {
+      "l": "U",
+      "req": "required",
+      "text": "Ship's dimensions (船舶尺度)"
+    },
+    {
+      "l": "G",
+      "req": "required",
+      "text": "Last port (出发港)"
+    },
+    {
+      "l": "I",
+      "req": "required",
+      "text": "Destination (目的港)"
+    },
+    {
+      "l": "P",
+      "req": "required",
+      "text": "Cargo (载货情况)"
+    },
+    {
+      "l": "X",
+      "req": "required",
+      "text": "Pilot needed or not, loading or discharging plan, intentions (是否需要引航员、装(卸)计划、航行意图等)"
+    }
+  ],
+  "format_note": "Voice reports on VHF CH 69 in Mandarin Chinese or English (rules art. 17). Letters follow A.851 order for convenience; the source has no letters. Call name printed only in Chinese ('营口交管中心'); 'Yingkou VTS' is the usual English form but is not printed.",
+  "area": {
+    "shape": "lines",
+    "points": [
+      {
+        "n": "A",
+        "lat": "40 40 50.17N",
+        "lon": "122 08 58.22E",
+        "inferred": false
+      },
+      {
+        "n": "B",
+        "lat": "40 39 08.48N",
+        "lon": "122 08 59.51E",
+        "inferred": false
+      },
+      {
+        "n": "C",
+        "lat": "40 39 07.23N",
+        "lon": "122 06 13.97E",
+        "inferred": false
+      },
+      {
+        "n": "D",
+        "lat": "40 34 38.02N",
+        "lon": "121 59 05.92E",
+        "inferred": false
+      },
+      {
+        "n": "E",
+        "lat": "40 32 53.28N",
+        "lon": "121 59 08.08E",
+        "inferred": false
+      },
+      {
+        "n": "F",
+        "lat": "40 32 51.95N",
+        "lon": "121 56 39.91E",
+        "inferred": false
+      },
+      {
+        "n": "G",
+        "lat": "40 25 23.54N",
+        "lon": "121 56 46.93E",
+        "inferred": false
+      },
+      {
+        "n": "H",
+        "lat": "40 25 13.73N",
+        "lon": "121 42 04.54E",
+        "inferred": false
+      },
+      {
+        "n": "I",
+        "lat": "40 12 00.00N",
+        "lon": "121 41 19.16E",
+        "inferred": false
+      },
+      {
+        "n": "J",
+        "lat": "40 12 00.00N",
+        "lon": "121 57 21.52E",
+        "inferred": false
+      }
+    ],
+    "lines": [
+      [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J"
+      ]
+    ],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 40.25,
+      "lon": 121.75
+    },
+    "bbox": [
+      121.6,
+      40.15,
+      122.3,
+      40.75
+    ]
+  },
+  "area_quote": "营口VTS区域的范围为以下十点顺序连结与岸线之间的水域：A、40°40′50.17″N，122°08′58.22″E；B、40°39′08.48″N，122°08′59.51″E；C、40°39′07.23″N，122°06′13.97″E；D、40°34′38.02″N，121°59′05.92″E；E、40°32′53.28″N，121°59′08.08″E；F、40°32′51.95″N，121°56′39.91″E；G、40°25′23.54″N，121°56′46.93″E；H、40°25′13.73″N，121°42′04.54″E；I、40°12′00.00″N，121°41′19.16″E；J、40°12′00.00″N，121°57′21.52″E。营口VTS区域报告线为A、B、C、D、E、F、G、H、I、J十点连线。",
+  "sources": [
+    {
+      "title": "辽宁海事局关于发布《营口船舶交通管理系统安全监督管理规则》和《VTS服务指南（中国）（营口交管中心）》的通告, dated 2023-01-03, in force 2023-02-06, valid 5 years",
+      "ref": "Rules art. 4-18; Guide parts 1 (VHF, area), 2 (reports), 3 (pilots), 5 (anchorages), 6 (contacts)",
+      "date": "2023-01-03",
+      "url": "https://www.mcrrc.top/bmgz/jy/bhhs/zsjfg/lnhsj/1859.html",
+      "primary": false
+    },
+    {
+      "title": "营口船舶交通管理系统安全监督管理规则 (Annex 1 only), PDF copy on 54seaman.com",
+      "ref": "Art. 1-39",
+      "date": "2023-01-09",
+      "url": "https://img-oss.54seaman.com/Editor/Picture/20230109/f6d7c05b685d619fe4f90b0cca4ea8eb.pdf",
+      "primary": false
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Notice, rules and guide read in full from the copy on mcrrc.top; the rules (annex 1) also checked against a second copy, the 54seaman.com PDF, word for word on the reporting articles. The guide (annex 2, area points, channels, phones) is only in the mcrrc.top copy. Points A-G are the same as points A-G of the Panjin reporting area (the shared boundary) and point H lies on Panjin's line G-H, which supports the copy.",
+  "confidence": "medium",
+  "notes": "Rules and guide in force 2023-02-06, valid 5 years (to 2028-02-05); they replaced 辽海指挥〔2018〕195号. Pilot boarding by draught for Bayuquan: under 13 m at 40 18.40N 121 54.00E (0.3 NM); 13 to 16 m at 40 12.75N 121 43.00E (0.3 NM); 16 to 20 m at Xianrendao No. 1, 40 09.17N 121 37.33E (0.5 NM); 20 m and more at Xianrendao No. 2, 40 04.00N 121 30.00E (0.5 NM). Xianrendao: under 16 m at 40 12.75N 121 43.00E; 16-20 m and 20 m+ as above. Yingkou (old) port: 40 32.10N 121 59.00E (0.5 NM). Anchorages in the guide: quarantine and pilot anchorage round the Yingkou light vessel (40 31 05N 121 58 54.9E, 1.8 NM, three-quarter circle), No. 1, 2, 4 and 5 anchorages and the Yingkou inner anchorage. Berthing and unberthing are planned by the VTS from the port's electronic plan. Yingkou harbour also has its own routeing system (营口港港区船舶定线制), not entered here. Bayuquan phones: pilots 0417-6269440, port control 0417-6269485. A national notice of 1984 (水监字〔1984〕132号) sets a foreign-ship prohibited area in western Liaodong Bay (see cn-rep-jinzhou notes); the routes to Yingkou are east of it."
+}

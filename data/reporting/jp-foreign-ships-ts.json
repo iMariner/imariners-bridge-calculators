@@ -1,0 +1,213 @@
+{
+  "id": "jp-foreign-ships-ts",
+  "system": "Japan foreign ships in the territorial sea",
+  "title": "Japan: notice before stopping, anchoring or hovering in the territorial sea (Act No. 64 of 2008)",
+  "country": "Japan",
+  "authority": "Japan Coast Guard (海上保安庁), nearest office (Regional Coast Guard Headquarters)",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": "2008-07-01",
+  "applies_to": "Masters of foreign ships (not warships or non-commercial government ships) in Japanese territorial sea or internal waters. No report is needed for continuous and expeditious passage or for going to or from a port facility.",
+  "applies_quote": "第五条 外国船舶の船長等は、領海等において当該外国船舶に停留等をさせ、又は内水において当該外国船舶に通過航行をさせる必要があるときは、国土交通省令で定めるところにより、あらかじめ、当該外国船舶の名称、船籍港、停留等又は通過航行をさせようとする理由その他の国土交通省令で定める事項（次項において「通報事項」という。）を最寄りの海上保安庁の事務所に通報しなければならない。",
+  "when": [
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "In advance, before the ship stops, anchors (outside a port anchorage), moors (outside a mooring facility) or hovers in the territorial sea or internal waters, or passes through internal waters (such as the Seto Inland Sea) without calling at a port, for an allowed reason (bad weather, distress, rescue, serious damage, COLREG or other law, official guidance). Notify the nearest JCG office by radio or the fastest means. (あらかじめ ... 最寄りの海上保安庁の事務所に通報しなければならない)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "If urgent danger made advance notice impossible: notify at once after avoiding the danger. (急迫した危険を避けるためあらかじめ通報することができないときは ... 当該危険を避けた後直ちに ... 通報しなければならない)"
+    },
+    {
+      "event": "deviation",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "If any notified item changes, notify the same office at once (Ordinance art. 5(2))."
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 16",
+      "to": "Nearest coast guard radio: e.g. MAIZURU HOAN (MAIZURU COAST GUARD RADIO, 8th Region), NIIGATA HOAN (9th), HOKKAIDO HOAN (1st), MOJI HOAN (7th)",
+      "note": "the JCG leaflet lists the international VHF call signs; the Hakodate notice says contact by VHF; working channel is given by the station"
+    },
+    {
+      "type": "phone",
+      "value": "0773-76-4100 (ex.3112)",
+      "to": "8th Regional Coast Guard HQs, Maizuru",
+      "note": "Sea of Japan, Kyoto to Tottori area"
+    },
+    {
+      "type": "phone",
+      "value": "025-245-0118 (ex.3115)",
+      "to": "9th Regional Coast Guard HQs, Niigata",
+      "note": "Sea of Japan, Niigata area"
+    },
+    {
+      "type": "phone",
+      "value": "093-321-2931 (ex.3115)",
+      "to": "7th Regional Coast Guard HQs, Moji",
+      "note": "Tsushima, Kanmon, north Kyushu"
+    },
+    {
+      "type": "phone",
+      "value": "0134-27-0118 (ex.3112)",
+      "to": "1st Regional Coast Guard HQs, Otaru",
+      "note": "Hokkaido, Tsugaru Strait north side"
+    }
+  ],
+  "addressee": null,
+  "heading": null,
+  "lines": [
+    {
+      "l": "1",
+      "req": "required",
+      "text": "Name of ship"
+    },
+    {
+      "l": "2",
+      "req": "required",
+      "text": "IMO number"
+    },
+    {
+      "l": "3",
+      "req": "required",
+      "text": "Type of ship"
+    },
+    {
+      "l": "4",
+      "req": "required",
+      "text": "Nationality (flag)"
+    },
+    {
+      "l": "5",
+      "req": "required",
+      "text": "Port of registry"
+    },
+    {
+      "l": "6",
+      "req": "required",
+      "text": "Gross tonnage"
+    },
+    {
+      "l": "7",
+      "req": "required",
+      "text": "Registered owner, name and address"
+    },
+    {
+      "l": "8",
+      "req": "required",
+      "text": "Operator, name and address"
+    },
+    {
+      "l": "9",
+      "req": "required",
+      "text": "Name of master"
+    },
+    {
+      "l": "10",
+      "req": "if-applicable",
+      "text": "Name and address of the notifier if owner or agent notifies"
+    },
+    {
+      "l": "11",
+      "req": "required",
+      "text": "Present position"
+    },
+    {
+      "l": "12",
+      "req": "required",
+      "text": "Reason for stopping, anchoring, hovering or passage"
+    },
+    {
+      "l": "13",
+      "req": "required",
+      "text": "Position, date and time of stopping etc., or sea area of passage and entry point, date and time"
+    },
+    {
+      "l": "14",
+      "req": "required",
+      "text": "Port of departure and ports of call"
+    },
+    {
+      "l": "15",
+      "req": "required",
+      "text": "Type and quantity of cargo"
+    },
+    {
+      "l": "16",
+      "req": "required",
+      "text": "Call sign and ship station identity (MMSI)"
+    },
+    {
+      "l": "17",
+      "req": "required",
+      "text": "How to contact the ship (means of communication with JCG)"
+    }
+  ],
+  "format_note": "Items from Ordinance art. 6 (MLIT Ordinance No. 40 of 2008), same as the 17 items in the JCG English leaflet. Owner or agent may notify for the master.",
+  "area": {
+    "shape": "territorial-sea",
+    "points": [],
+    "lines": [],
+    "center": null,
+    "radius_nm": null,
+    "state": "Japan",
+    "zone": "Japanese territorial sea and internal waters (領海等). In the specified straits (Soya, Tsugaru, Tsushima East and West Channels, Osumi) the territorial sea is only 3 NM from the baseline.",
+    "ports": [],
+    "inside_hint": {
+      "lat": 35.6,
+      "lon": 135.25
+    },
+    "bbox": [
+      122,
+      24,
+      154,
+      46
+    ]
+  },
+  "area_quote": "第二条 一 領海等 我が国の領海及び内水をいう。 / 領海及び接続水域に関する法律 附則2: 当分の間、宗谷海峡、津軽海峡、対馬海峡東水道、対馬海峡西水道及び大隅海峡 ... については ... 特定海域に係る領海は、それぞれ、基線からその外側三海里の線及びこれと接続して引かれる線までの海域とする。",
+  "sources": [
+    {
+      "title": "領海等における外国船舶の航行に関する法律 (Act No. 64 of 2008), e-Gov",
+      "ref": "Art. 2 to 8, 12, 13",
+      "date": "2025-06-01",
+      "url": "https://laws.e-gov.go.jp/law/420AC0000000064",
+      "primary": true
+    },
+    {
+      "title": "領海等における外国船舶の航行に関する法律施行規則 (MLIT Ordinance No. 40 of 2008), e-Gov",
+      "ref": "Art. 4 to 7",
+      "date": "2016-04-01",
+      "url": "https://laws.e-gov.go.jp/law/420M60000800040",
+      "primary": true
+    },
+    {
+      "title": "JCG Hakodate Coast Guard Office: Emergency entry of foreign ships into the territorial sea or internal waters of Japan, with English leaflet",
+      "ref": "notice and leaflet 20210226",
+      "date": "2021-02-26",
+      "url": "https://www.kaiho.mlit.go.jp/01kanku/hakodate/kinkyunyuiki.html",
+      "primary": true
+    },
+    {
+      "title": "領海及び接続水域に関する法律 (Territorial Sea Act), e-Gov",
+      "ref": "Supplementary provision 2 (specified sea areas, 3 NM)",
+      "date": "2026-10-26",
+      "url": "https://laws.e-gov.go.jp/law/352AC0000000030",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Law and ordinance texts from the e-Gov law API (current versions). Contact list and the 17 items cross-checked with the JCG English leaflet (Hakodate office, 2021).",
+  "confidence": "high",
+  "notes": "Innocent, continuous and expeditious passage needs no report. Waiting for a pilot in the pilot boarding area with the pilot flag up, or acting on an order or guidance from a Japanese authority, needs no notice (Ordinance art. 7). Changing the next Japanese port after entering the territorial sea is allowed if the ship heads there continuously, after the ISPS port entry notice (Ordinance art. 4(7)). Failure to notify is not itself fined, but JCG may board, advise and order the ship out; breaking the order: up to 1 year prison or JPY 500,000 fine (Act art. 12); obstructing inspection: up to 6 months or JPY 300,000 (art. 13). Sheltering in Japanese waters in bad weather (e.g. Kikonai Bay near Hakodate in winter) needs prior contact with the coast guard radio by VHF, and the JCG then gives the area to use; keep AIS on and answer CH 16. The Ulsan to Peter the Great Bay track stays far from Japanese waters. Japan has no VTS in the Tsushima Strait, the Sea of Japan or the Tsugaru Strait; JCG VTS centres are in Tokyo Bay, Ise Bay, Nagoya, Osaka Bay, Bisan Seto, Kurushima and Kanmon only (JCG listing found by search, not opened)."
+}

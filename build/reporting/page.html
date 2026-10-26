@@ -1,0 +1,128 @@
+    <section class="tool" id="ship-reporting" hidden>
+      <div class="tool-head">
+        <h1>Ship Reporting Systems</h1>
+        <p>Where and when to report on your passage, to whom, and the message ready to send. From the official texts, each with its source.</p>
+      </div>
+      <div class="sr-layout">
+        <div class="sr-side">
+          <form class="card" id="sr-pass" autocomplete="off" onsubmit="return false">
+            <h2>Passage</h2>
+            <div class="ship-line" id="sr-ship-line"></div>
+            <div class="field">
+              <label for="sr-route">Route: departure, waypoints, arrival (one per line)</label>
+              <textarea id="sr-route" class="text-input sr-route" rows="7" spellcheck="false" placeholder="Ulsan 35 25.0N 129 25.0E&#10;WP1 36 30.0N 130 30.0E&#10;Kozmino 42 43.5N 133 05.0E"></textarea>
+              <div class="hint" id="sr-route-msg">Any format: 3525.0N 12925.0E, 35 25.0 N 129 25.0 E, 35-25.0N. A name in front is kept.</div>
+            </div>
+            <div class="sr-row3">
+              <div class="field"><label for="sr-date">Departure date (UTC)</label><input id="sr-date" class="text-input" type="date"></div>
+              <div class="field"><label for="sr-time">Time (UTC)</label><input id="sr-time" class="text-input" type="time"></div>
+            </div>
+            <div class="sr-row3 u-mt-2h">
+              <div class="field"><label for="sr-speed">Speed</label><div class="input-wrap"><input id="sr-speed" type="text" inputmode="decimal" placeholder="12.0" maxlength="5"><span class="unit">kn</span></div></div>
+              <div class="field sr-nowbtn"><button type="button" class="btn" id="sr-now">UTC now</button></div>
+            </div>
+            <div class="actions u-mt-2h">
+              <button type="button" class="btn" id="sr-example">Load example</button>
+              <button type="button" class="btn" id="sr-clear">Clear</button>
+            </div>
+          </form>
+          <div class="card" id="sr-list-card">
+            <h2>Reporting systems</h2>
+            <div class="segmented sr-filter" role="radiogroup" aria-label="Which systems to list">
+              <input type="radio" name="sr-filter" id="sr-f-route" value="route"><label for="sr-f-route">On my route</label>
+              <input type="radio" name="sr-filter" id="sr-f-all" value="all"><label for="sr-f-all">All</label>
+            </div>
+            <input id="sr-search" class="text-input u-mt-2h" type="search" placeholder="Search: SURNAV, Vladivostok, China…" aria-label="Search reporting systems" autocomplete="off">
+            <div id="sr-list" class="sr-list"></div>
+          </div>
+        </div>
+        <div class="sr-main">
+          <div class="card sr-mapcard">
+            <h2>Chart</h2>
+            <div class="sr-toolbar">
+              <button type="button" class="btn" id="sr-zin" aria-label="Zoom in">+</button>
+              <button type="button" class="btn" id="sr-zout" aria-label="Zoom out">−</button>
+              <button type="button" class="btn" id="sr-fitroute">Fit route</button>
+              <button type="button" class="btn" id="sr-fitsys">Fit system</button>
+              <button type="button" class="btn" id="sr-world">World</button>
+            </div>
+            <div class="sr-canvaswrap" id="sr-wrap"><canvas id="sr-canvas" aria-label="Chart of ship reporting areas and the route" tabindex="0"></canvas></div>
+            <div class="sr-status">
+              <div class="mono sr-cursor" id="sr-cursor">Move over the chart to read a position. Click an area to open it.</div>
+              <div class="sr-key small">
+                <span><i class="sr-sw k-imo"></i>Mandatory, IMO</span>
+                <span><i class="sr-sw k-nat"></i>Mandatory, national</span>
+                <span><i class="sr-sw k-vol"></i>Voluntary</span>
+                <span><i class="sr-sw k-route"></i>Route and report points</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" id="sr-plan-card">
+            <h2>Reports on this passage</h2>
+            <p class="small muted u-sub" id="sr-plan-sub">Enter the route, departure time and speed: every report falls due in order, with the time to send it.</p>
+            <div class="tbl-scroll"><table class="sr-plan" id="sr-plan"></table></div>
+            <div class="callout warn u-mt-2h" id="sr-plan-warn" hidden></div>
+          </div>
+
+          <div class="card" id="sr-sys" hidden>
+            <div class="sr-d-head">
+              <div>
+                <h2 class="u-mb-0" id="sr-d-sys"></h2>
+                <div class="sr-d-title" id="sr-d-title"></div>
+                <div class="sr-d-tags" id="sr-d-tags"></div>
+              </div>
+              <div class="actions u-mt-0"><button type="button" class="btn" id="sr-d-zoom">Show on chart</button></div>
+            </div>
+            <div class="sr-facts" id="sr-facts"></div>
+            <details class="u-mt-3" id="sr-d-area"><summary>Area and boundary points</summary><div id="sr-d-areabody"></div></details>
+            <div class="field u-mt-3">
+              <label for="sr-notes">Ship's notes for this system (from your ALRS, Notices to Mariners, agent)</label>
+              <textarea id="sr-notes" class="text-input" rows="2" placeholder="e.g. NtM 1234/26: new e-mail address …"></textarea>
+            </div>
+            <div class="small muted u-mt-2h" id="sr-d-src"></div>
+          </div>
+
+          <div class="card" id="sr-msg" hidden>
+            <h2>Message</h2>
+            <div class="sr-msg-top">
+              <div class="field"><label for="sr-m-event">Report</label><select id="sr-m-event" class="text-input"></select></div>
+              <div class="field"><label for="sr-m-time">Time of the report, line B (UTC)</label><input id="sr-m-time" class="text-input" type="datetime-local"></div>
+            </div>
+            <div class="tbl-scroll"><table class="sr-lines" id="sr-lines"></table></div>
+            <details class="u-mt-3" id="sr-voy">
+              <summary>Voyage details used in the messages (saved for this ship)</summary>
+              <div class="sr-voygrid u-mt-2h">
+                <div class="field"><label for="sr-v-last">Last port and departure (line G)</label><input id="sr-v-last" class="text-input" maxlength="80" placeholder="e.g. Ulsan, Korea"></div>
+                <div class="field"><label for="sr-v-dest">Destination (line I)</label><input id="sr-v-dest" class="text-input" maxlength="80" placeholder="e.g. Kozmino, Russia"></div>
+                <div class="field"><label for="sr-v-dfwd">Draught forward</label><div class="input-wrap"><input id="sr-v-dfwd" type="text" inputmode="decimal" maxlength="5" placeholder="0.00"><span class="unit">m</span></div></div>
+                <div class="field"><label for="sr-v-daft">Draught aft</label><div class="input-wrap"><input id="sr-v-daft" type="text" inputmode="decimal" maxlength="5" placeholder="0.00"><span class="unit">m</span></div></div>
+                <div class="field"><label for="sr-v-cargo">Cargo, type and quantity (line P)</label><input id="sr-v-cargo" class="text-input" maxlength="120" placeholder="e.g. 148632 MT crude oil, UN 1267"></div>
+                <div class="field"><label for="sr-v-pob">Persons on board (line W)</label><input id="sr-v-pob" class="text-input" maxlength="4" inputmode="numeric"></div>
+                <div class="field"><label for="sr-v-agent">Agent (line T)</label><input id="sr-v-agent" class="text-input" maxlength="120"></div>
+                <div class="field"><label for="sr-v-radio">Radio watch (line M)</label><input id="sr-v-radio" class="text-input" maxlength="80" placeholder="VHF CH 16, INMARSAT C"></div>
+              </div>
+            </details>
+            <h3 class="sr-h3">Ready to send</h3>
+            <div class="sr-send" id="sr-send"></div>
+            <pre class="sr-out mono" id="sr-out"></pre>
+            <div class="actions">
+              <button type="button" class="btn primary" id="sr-copy">Copy message</button>
+              <button type="button" class="btn" id="sr-mail">Open in e-mail</button>
+              <button type="button" class="btn" id="sr-reset">Reset typed lines</button>
+            </div>
+            <p class="small muted u-mt-2h">Check every line before sending. Lines worked out from the route are in teal; your own words stay as you typed them for this system.</p>
+          </div>
+
+          <details class="card ge-fold" id="sr-how">
+            <summary>How it works and where the data comes from</summary>
+            <ol class="small muted u-mt-2h u-list" id="sr-how-list">
+              <li>The route is rhumb lines between your positions on WGS84, as ECDIS draws them. Each time the route crosses a reporting boundary the time is worked out from the departure time and speed.</li>
+              <li>Report due = time at the boundary, less the notice the system asks for (for example 6 hours before entering).</li>
+              <li>Boundaries given as points in an IMO resolution or a national order are drawn exactly from those points. Where a system uses the territorial sea, the 12 NM limit is drawn from the Marine Regions data set (Flanders Marine Institute, CC BY 4.0); it is marked "derived, not official".</li>
+              <li>Every system shows its official source and the date it was checked. Rules, e-mail addresses and channels change: confirm with your latest ALRS and Notices to Mariners, and keep your corrections in the ship's notes.</li>
+            </ol>
+          </details>
+        </div>
+      </div>
+    </section>

@@ -1,0 +1,189 @@
+{
+  "id": "imo-whalessouth",
+  "system": "WHALESSOUTH",
+  "title": "Right whale mandatory ship reporting system, south-eastern United States (WHALESSOUTH)",
+  "country": "United States",
+  "authority": "United States Coast Guard (shore-based authority); system run with NOAA Fisheries",
+  "kind": "mandatory-imo",
+  "resolution": "MSC.85(70)",
+  "status": "in effect",
+  "effective": "1999-07-01",
+  "applies_to": "Every self-propelled ship of 300 gross tons or more, during the season 15 November to 15 April (US rule says to 16 April). Government ships exempt under SOLAS are encouraged to report.",
+  "applies_quote": "Each self-propelled ship of 300 gross tons or greater must participate in the reporting systems, except government ships exempted from reporting by regulation V/8-1(c) of SOLAS. However, exempt ships are encouraged to participate in the reporting systems. (33 CFR 169.125)",
+  "when": [
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Participating ships must report to the shore-based authority upon entering the area covered by a reporting system. Additional reports are not necessary for movements made within a system or for ships exiting a system. (33 CFR 169.130) The mandatory ship reporting system in the southeastern United States operates during the period beginning on November 15 each year through April 16 of the following year. (33 CFR 169.120)"
+    }
+  ],
+  "how": [
+    {
+      "type": "inmarsat-c",
+      "value": "RightWhale.MSR@noaa.gov",
+      "to": "Right whale MSR system (US Coast Guard / NOAA)",
+      "note": "Primary. Ships fitted with Inmarsat C must report by Inmarsat C in the IMO standard format (33 CFR 169.135(a)); address as printed in US Coast Pilot 1. An automatic return message with whale information should come back."
+    },
+    {
+      "type": "telex",
+      "value": "48156090",
+      "to": "Right whale MSR system",
+      "note": "Alternative address printed in US Coast Pilot 1."
+    },
+    {
+      "type": "email",
+      "value": "rightwhale.msr@noaa.gov",
+      "to": "Right whale MSR system",
+      "note": "Ships NOT fitted with Inmarsat C: first choice (33 CFR 169.135(b)(1))."
+    },
+    {
+      "type": "other",
+      "value": "HF voice 4125, 6215, 8291, 12290 or 16420 kHz",
+      "to": "USCG Communication Area Master Station Atlantic (CAMSLANT), Chesapeake VA",
+      "note": "Ships not fitted with Inmarsat C or telex (33 CFR 169.135(b)(2); frequencies from US Coast Pilot 1). Give every required item to the watchstander."
+    },
+    {
+      "type": "phone",
+      "value": "800-742-8519x0",
+      "to": "USCG CAMSLANT",
+      "note": "Printed in US Coast Pilot 1 as an alternative to HF voice (US toll-free number)."
+    },
+    {
+      "type": "vhf",
+      "value": "VHF voice (no channel published)",
+      "to": "Nearest U.S. Coast Guard Sector office",
+      "note": "Only for ships fitted with VHF voice only (33 CFR 169.135(b)(3), US Coast Pilot 1)."
+    }
+  ],
+  "addressee": null,
+  "heading": "WHALESSOUTH//",
+  "lines": [
+    {
+      "l": "M",
+      "req": "if-applicable",
+      "text": "INMARSAT Number: vessel INMARSAT number."
+    },
+    {
+      "l": "A",
+      "req": "required",
+      "text": "Ship: the name, call sign or ship station identity, IMO number, and flag of the vessel."
+    },
+    {
+      "l": "B",
+      "req": "required",
+      "text": "Date and time of event: a 6-digit group giving day of month (first two digits), hours and minutes (last four digits)."
+    },
+    {
+      "l": "E",
+      "req": "required",
+      "text": "True course: a 3-digit group indicating true course."
+    },
+    {
+      "l": "F",
+      "req": "required",
+      "text": "Speed in knots and tenths of knots: a 3-digit group."
+    },
+    {
+      "l": "H",
+      "req": "required",
+      "text": "Date, time and point of entry into system: entry time expressed as in (B) and entry position as a 4-digit latitude group with N or S and a 5-digit longitude group with E or W, or true bearing and distance in nautical miles from a clearly identified landmark."
+    },
+    {
+      "l": "I",
+      "req": "required",
+      "text": "Destination and expected time of arrival: name of port and date time group expressed as in (B)."
+    },
+    {
+      "l": "L",
+      "req": "required",
+      "text": "Route information: intended track."
+    }
+  ],
+  "format_note": "Message starts with the system identifier line (WHALESSOUTH//). Each line is the letter, a slash, the data and ends with //, as in the US Coast Pilot example (e.g. H/031410Z APR/4104N/06918W//, L/WP/4104N/06918W/15.5//; several L lines allowed). US Coast Pilot: extra greetings or comments in the message stop the automatic system from accepting it. Note: the example in the 1998 IMO resolution (Appendix 3) uses different letters (B call sign, D course, E speed); the current US rule (33 CFR 169.140) and Coast Pilot use the A.851(20) letters given here.",
+  "area": {
+    "shape": "lines",
+    "points": [
+      {
+        "n": "N",
+        "name": "coast at the northern limit (approximate)",
+        "lat": "31 27.00N",
+        "lon": "081 13.00W",
+        "inferred": true
+      },
+      {
+        "n": "NE",
+        "name": "northern limit meets 80 51.6W",
+        "lat": "31 27.00N",
+        "lon": "080 51.60W",
+        "inferred": true
+      },
+      {
+        "n": "SE",
+        "name": "southern limit meets 80 51.6W",
+        "lat": "30 00.00N",
+        "lon": "080 51.60W",
+        "inferred": true
+      },
+      {
+        "n": "S",
+        "name": "coast at the southern limit (approximate)",
+        "lat": "30 00.00N",
+        "lon": "081 20.00W",
+        "inferred": true
+      }
+    ],
+    "lines": [
+      [
+        "N",
+        "NE",
+        "SE",
+        "S"
+      ]
+    ],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 30.7,
+      "lon": -81.1
+    },
+    "bbox": [
+      -81.6,
+      29.8,
+      -80.6,
+      31.7
+    ]
+  },
+  "area_quote": "Southeastern United States. Geographical boundaries of the proposed southeast area include coastal waters within about 25 nautical miles along a 90 nautical miles stretch of the Atlantic seaboard in Florida and Georgia (Appendix 2). The area extends from the shoreline east to longitude 80°51'.60 W with the southern and northern boundary at latitudes 30°00'.00 N and 31°27'.00 N, respectively. NOAA Chart No.11009. (MSC.85(70), Annex 1, para 2.2)",
+  "sources": [
+    {
+      "title": "IMO resolution MSC.85(70) Mandatory ship reporting systems (Annex 1: off the north-eastern and south-eastern coasts of the United States)",
+      "ref": "Annex 1, paras 1 to 8 and Appendix 3",
+      "date": "1998-12-07",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.85(70).pdf",
+      "primary": true
+    },
+    {
+      "title": "33 CFR Part 169 Subpart B (Mandatory ship reporting systems, right whales), current text via eCFR",
+      "ref": "sections 169.100 to 169.140",
+      "date": "2026-10-01",
+      "url": "https://www.ecfr.gov/current/title-33/chapter-I/subchapter-P/part-169",
+      "primary": true
+    },
+    {
+      "title": "NOAA U.S. Coast Pilot 1, Chapter 3 (18 Oct 2026 edition), Mandatory Ship Reporting (MSR) Systems WHALESNORTH and WHALESSOUTH",
+      "ref": "paragraphs (74) to (82)",
+      "date": "2026-10-18",
+      "url": "https://nauticalcharts.noaa.gov/publications/coast-pilot/files/cp1/CPB1_C03_WEB.pdf",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Limits read from MSC.85(70) Annex 1 para 2.2 (IMO PDF, page 2) and checked against 33 CFR 169.115 (same values, NAD 83). Season from 33 CFR 169.120 (as amended 66 FR 58070, 20 Nov 2001) and from MSC.85(70) para 5.1 and US Coast Pilot 1 (both 15 November to 15 April). Who, when, lines and addresses as for WHALESNORTH (33 CFR 169.125 to 169.140, US Coast Pilot 1, 18 Oct 2026).",
+  "confidence": "high",
+  "notes": "The IMO text gives only three limits: latitude 31 27.00N (north), latitude 30 00.00N (south) and longitude 080 51.60W (east); the coast closes the area on the west. The two corner points on 080 51.60W are the exact meeting points of those printed limits but are not printed as points, so they are flagged inferred. The two coast points are only approximate positions where the latitude limits meet the Georgia and Florida coast; they are there to draw the map and are NOT official. Season: the US regulation (33 CFR 169.120) says 15 November through 16 April; the IMO resolution and US Coast Pilot 1 say 15 November through 15 April. Report if in doubt. Report once on entering; no report when leaving a port inside the area or leaving the area. Separate US rules (Seasonal Management Area speed limit of 10 knots, 500 yard approach limit, recommended routes into Brunswick, Fernandina and Jacksonville) are not covered by this record."
+}

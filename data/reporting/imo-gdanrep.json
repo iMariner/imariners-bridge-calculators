@@ -1,0 +1,289 @@
+{
+  "id": "imo-gdanrep",
+  "system": "GDANREP",
+  "title": "GDANREP Approaches to the Polish ports in the Gulf of Gdansk",
+  "country": "Poland",
+  "authority": "Director of the Maritime Office in Gdynia; reports to VTS Centre Gulf of Gdansk (voice call sign VTS Zatoka)",
+  "kind": "mandatory-imo",
+  "resolution": "MSC.249(83)",
+  "status": "in effect",
+  "effective": "2008-05-01",
+  "applies_to": "All passenger ships, ships of 150 GT and above, and all vessels engaged in towing, going to or from Polish ports or passing through the area between Polish ports in the Gulf of Gdansk, or visiting the area.",
+  "applies_quote": "1.1 Ships of the following categories are required to participate in the system proceeding to or from Polish ports or passing through the reporting area between Polish ports in the Gulf of Gdańsk, or ships visiting the area: - all passenger ships as defined in Chapter 1 of 1974 SOLAS, as amended; - ships of 150 gross tonnage and above; - all vessels engaged in towing.",
+  "when": [
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "SP",
+      "text": "3.3.1 The ship shall transmit the Sailing Plan (SP) on entry into the ship reporting system area by crossing Reporting Line."
+    },
+    {
+      "event": "position",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "PR",
+      "text": "3.3.2 The ship shall transmit the Position Report (PR) on passing the Reporting Points."
+    },
+    {
+      "event": "final",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "FR",
+      "text": "3.3.3 The ship shall transmit the Final Report (FR) when finally exiting from the ship reporting system area by crossing Reporting Line."
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "3.3.4 In the case of incidents or accidents as described in paragraph 3.2.4 the ship(s) shall transmit the Other Report(s) immediately to the shore-based Authority. The vessel(s) shall provide any additional information related to the incident or accident as requested by the shore-based Authority."
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 71",
+      "to": "VTS Zatoka (VTS Centre Gulf of Gdansk)",
+      "note": "Primary working channel, call and short report information. MSC.249(83) Annex, paras 5.2, 5.4, 5.5. Same channel (71) on the Maritime Office Gdynia VTS page, read 2026-10-26."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 66",
+      "to": "VTS Zatoka (VTS Centre Gulf of Gdansk)",
+      "note": "Reserve channel, as designated by VTS. MSC.249(83) Annex, para 5.5. Not mentioned on the Maritime Office web page read 2026-10-26."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 16",
+      "to": "VTS Zatoka (VTS Centre Gulf of Gdansk)",
+      "note": "Call and distress. MSC.249(83) Annex, para 5.5."
+    },
+    {
+      "type": "phone",
+      "value": "+48 58 355 3610",
+      "to": "VTS Centre Zatoka Gdanska duty service (24/7)",
+      "note": "Maritime Office in Gdynia VTS page (English and Polish), read 2026-10-26. Mobile +48 601 991 331, satellite +870 772 265 042. Not in the IMO text."
+    },
+    {
+      "type": "email",
+      "value": "vts@umgdy.gov.pl",
+      "to": "VTS Centre Zatoka Gdanska duty service",
+      "note": "Maritime Office in Gdynia VTS page, read 2026-10-26. Not in the IMO text. Para 5.7: confidential (cargo) information may be sent by other means, including electronically."
+    },
+    {
+      "type": "fax",
+      "value": "+48 58 620 5363",
+      "to": "VTS Centre Zatoka Gdanska duty service",
+      "note": "Maritime Office in Gdynia VTS page, read 2026-10-26; also +48 58 620 5328. Not in the IMO text."
+    }
+  ],
+  "addressee": null,
+  "heading": "GDANREP",
+  "lines": [
+    {
+      "l": "A",
+      "req": "required",
+      "text": "Name of the ship, call sign, IMO identification number (if applicable), MMSI number, flag"
+    },
+    {
+      "l": "C",
+      "req": "required",
+      "text": "Position (expressed in latitude and longitude or bearing to and distance from a landmark)"
+    },
+    {
+      "l": "D",
+      "req": "optional",
+      "text": "Position (expressed in latitude and longitude or bearing to and distance from a landmark)"
+    },
+    {
+      "l": "E",
+      "req": "required",
+      "text": "Course and speed of the ship"
+    },
+    {
+      "l": "F",
+      "req": "required",
+      "text": "Course and speed of the ship"
+    },
+    {
+      "l": "G",
+      "req": "required",
+      "text": "Name of last port of call"
+    },
+    {
+      "l": "I",
+      "req": "required",
+      "text": "Destination, ETA and ETD"
+    },
+    {
+      "l": "O",
+      "req": "required",
+      "text": "Maximum present draught"
+    },
+    {
+      "l": "P",
+      "req": "required",
+      "text": "Cargo and, if dangerous or polluting goods present on board, quantity and UN numbers and IMO hazard classes or pollution category thereof, as appropriate"
+    },
+    {
+      "l": "Q",
+      "req": "if-applicable",
+      "text": "Defects, damage, deficiencies or other limitations (vessels towing are to report length of tow and name of object in tow) or any other circumstances affecting normal navigation in accordance with the provisions of the SOLAS and MARPOL Conventions"
+    },
+    {
+      "l": "R",
+      "req": "if-applicable",
+      "text": "Defects, damage, deficiencies or other limitations (vessels towing are to report length of tow and name of object in tow) or any other circumstances affecting normal navigation in accordance with the provisions of the SOLAS and MARPOL Conventions"
+    },
+    {
+      "l": "T",
+      "req": "required",
+      "text": "Contact information of ship's agent or owner"
+    },
+    {
+      "l": "W",
+      "req": "required",
+      "text": "Total number of persons on board"
+    },
+    {
+      "l": "X",
+      "req": "required",
+      "text": "Miscellaneous remarks, amount and nature of bunkers if over 5000 tons, navigational status"
+    }
+  ],
+  "format_note": "Line texts are the Sailing Plan (SP) items of para 3.2.1; the resolution prints C or D, E and F, and Q or R as one item each. System identifier: GDANREP (SP)(PR)(FR); the identifier GDANREP can be omitted when reporting (para 5.3). Sailing Plan (SP): A, C or D, E and F, G, I, O, P, Q or R, T, W, X. Position Report (PR): A (name, call sign, IMO number, or MMSI for transponder reports) and C or D. Final Report (FR): A and C or D. Other Reports after an incident: type, time and location of the incident, extent of damage or pollution, and whether assistance is needed, in the A.851(20) detailed report format when appropriate. All reports by voice on the primary VTS working channel. Language English or Polish (IMO SMCP).",
+  "area": {
+    "shape": "lines",
+    "points": [
+      {
+        "n": "1",
+        "name": "Reporting Line (1), on the Hel Peninsula",
+        "lat": "54 45.00N",
+        "lon": "018 32.56E",
+        "inferred": false
+      },
+      {
+        "n": "2",
+        "name": "Reporting Line (2)",
+        "lat": "54 45.00N",
+        "lon": "019 06.10E",
+        "inferred": false
+      },
+      {
+        "n": "3",
+        "name": "Reporting Line (3)",
+        "lat": "54 36.20N",
+        "lon": "019 24.20E",
+        "inferred": false
+      },
+      {
+        "n": "4",
+        "name": "Reporting Line (4), on the Vistula Spit",
+        "lat": "54 27.49N",
+        "lon": "019 38.30E",
+        "inferred": false
+      },
+      {
+        "n": "5",
+        "name": "Reporting Point (5), Position Report",
+        "lat": "54 35.58N",
+        "lon": "018 52.82E",
+        "inferred": false
+      },
+      {
+        "n": "6",
+        "name": "Reporting Point (6), Position Report",
+        "lat": "54 35.23N",
+        "lon": "018 53.76E",
+        "inferred": false
+      },
+      {
+        "n": "8",
+        "name": "Reporting Point (8), Position Report",
+        "lat": "54 36.76N",
+        "lon": "019 04.67E",
+        "inferred": false
+      },
+      {
+        "n": "9",
+        "name": "Reporting Point (9), Position Report",
+        "lat": "54 36.66N",
+        "lon": "019 07.51E",
+        "inferred": false
+      },
+      {
+        "n": "10",
+        "name": "Reporting Point (10), Position Report",
+        "lat": "54 31.70N",
+        "lon": "018 40.70E",
+        "inferred": false
+      },
+      {
+        "n": "11",
+        "name": "Reporting Point (11), Position Report",
+        "lat": "54 28.10N",
+        "lon": "018 42.90E",
+        "inferred": false
+      },
+      {
+        "n": "12",
+        "name": "Reporting Point (12), Position Report",
+        "lat": "54 25.30N",
+        "lon": "018 54.80E",
+        "inferred": false
+      }
+    ],
+    "lines": [
+      [
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    ],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 54.5,
+      "lon": 19.0
+    },
+    "bbox": [
+      18.35,
+      54.25,
+      19.75,
+      54.85
+    ]
+  },
+  "area_quote": "2.1 The operational area of the mandatory ship reporting system covers the territorial and internal waters of Poland in the Gulf of Gdańsk, south of parallel 54° 45′ N, between Reporting Line and Polish coastline. ... 2.3 For the purpose of this system Reporting Line means the line joining the following geographical positions: (1) 54° 45′.00 N 018° 32′.56 E (2) 54° 45′.00 N 019° 06′.10 E (3) 54° 36′.20 N 019° 24′.20 E (4) 54° 27′.49 N 019° 38′.30 E. 2.4 For the purpose of this system Reporting Points are situated at the following geographical positions: (5) 54° 35′.58 N 018° 52′.82 E (6) 54° 35′.23 N 018° 53′.76 E (8) 54° 36′.76 N 019° 04′.67 E (9) 54° 36′.66 N 019° 07′.51 E (10) 54° 31′.70 N 018° 40′.70 E (11) 54° 28′.10 N 018° 42′.90 E (12) 54° 25′.30 N 018° 54′.80 E",
+  "sources": [
+    {
+      "title": "IMO MSC.249(83) Adoption of a new mandatory ship reporting system on the approaches to the Polish ports in the Gulf of Gdansk (GDANREP)",
+      "ref": "Annex, paras 1.1, 2.1-2.4, 3.1-3.4, 5.2-5.8",
+      "date": "2007-10-08",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.249(83).pdf",
+      "primary": true
+    },
+    {
+      "title": "Maritime Office in Gdynia: VTS Zatoka Gdanska (English page)",
+      "ref": "VTS area, duty service contact details",
+      "date": "2026-10-26",
+      "url": "https://www.umgdy.gov.pl/en/marine-safety/vts-zatoka-gdanska-en/",
+      "primary": false
+    },
+    {
+      "title": "Urzad Morski w Gdyni: Uzytkownicy VTS Zatoka Gdanska (Polish page, modified 2024-01-23)",
+      "ref": "Obowiazki statkow, item 2",
+      "date": "2026-10-26",
+      "url": "https://www.umgdy.gov.pl/bezpieczenstwo-morskie/vts-zatoka-gdanska/uzytkownicy-vts-zatoka-gdanska/",
+      "primary": false
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Reporting Line points (1)-(4) and Reporting Points (5), (6), (8)-(12) were taken from the text layer of MSC.249(83) Annex page 2 (PDF page 3) and every digit was checked against a 150 dpi render of the page. The Maritime Office in Gdynia VTS page prints the same four Reporting Line positions as the outer limit of VTS Zatoka Gdanska. Point (1) lies on the Hel Peninsula where it meets parallel 54 45N and point (4) on the Vistula Spit near the Polish / Russian border, so the line closes the gulf from coast to coast; the coast closes the rest. Rules and report contents: MSC.249(83), no later IMO amendment found in the IMO index of MSC resolutions (read 2026-10-26). Channel 71 and phone, e-mail and fax: Maritime Office in Gdynia web page, read 2026-10-26.",
+  "confidence": "high",
+  "notes": "Reporting Point (7) is not printed in the resolution: the list goes (5), (6), (8), (9) ... and is copied as printed. The reporting points are given for the Position Report and are not part of the boundary. The area is Polish territorial and internal waters south of 54 45N, so Puck Bay north of 54 45N is outside. The resolution does not say when a ship leaving a Polish port gives its Sailing Plan; it only says SP on entry by crossing the Reporting Line and FR when finally exiting. The Maritime Office page (2024) says all ships entering or in the VTS area must use the VTS reporting system under Order No 11 of the Director of the Maritime Office in Gdynia of 17 May 2023 (VTS regulations), and that the ships listed in GDANREP may not enter the VTS area, or leave a berth or anchorage in it, without a traffic clearance from VTS; check that order for the national details. Inside the ports and roads of Gdynia and Gdansk the harbour master's traffic services act as VTS. Separate from GDANREP: VTS Lawica Slupska (Slupsk Bank TSS) uses VHF 73 and vtslawica@umgdy.gov.pl (Maritime Office page, 2025); it is a national VTS, not an IMO ship reporting system."
+}

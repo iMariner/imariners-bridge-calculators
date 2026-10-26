@@ -1,0 +1,241 @@
+{
+  "id": "cn-vts-rizhao-lanshan",
+  "system": "China VTS",
+  "title": "Rizhao VTS, Lanshan management and service area",
+  "country": "China",
+  "authority": "Rizhao MSA (中华人民共和国日照海事局), Rizhao VTS Centre (日照海事局船舶交通管理中心), Lanshan sector",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": "2023-05-01",
+  "applies_to": "Foreign ships; Chinese ships of 500 GT and over; passenger ships over 50 m; ships carrying dangerous goods; ships restricted in their ability to manoeuvre; ships receiving oily water or other waste. Not military, government, fishing or sports craft. A foreign crude oil tanker is always included.",
+  "applies_quote": "第四条 除军用船、公务船、渔船和体育运动船舶外，下列船舶在VTS区域内航行、停泊和作业时，应向VTS中心报告：（一）外国籍船舶；（二）500总吨及以上中国籍船舶；（三）50米以上客船；（四）载运危险货物的船舶；（五）操纵能力受到限制的船舶；（六）从事油污水等污染物接收的船舶。",
+  "when": [
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Entry report at the reporting line: ship's name, position, draught, purpose of entry and other items the VTS asks. (驶入报告 报告时机或位置：日照VTS管理服务区报告线和岚山VTS管理服务区报告线 … 报告内容：船名、船位、吃水、进港目的以及VTS要求的其他信息)"
+    },
+    {
+      "event": "arrival",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Arrival report after berthing or anchoring: name, berth or anchor position, time completed. (到达报告 报告时机或位置：船舶靠泊或者锚泊后 报告内容：船名、泊位或锚位、完成时间)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Movement report when about to anchor, heave up, shift anchorage or shift berth: name, intended berth or anchorage. (动态报告 报告时机或位置：拟进行抛锚、起锚、移锚、移泊等活动时 报告内容：船名、预抵泊位或锚地)"
+    },
+    {
+      "event": "departure",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Sailing report before leaving the berth or weighing anchor to sail: name, position. (开航报告 报告时机或位置：离泊或由锚地起锚开航前 报告内容：船名、位置)"
+    },
+    {
+      "event": "final",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "FR",
+      "text": "Final report on leaving the reporting line: name, position. (最终报告 报告时机或位置：船舶驶离报告线 报告内容：船名、位置)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Work report before starting and after finishing: opening up main engine, steering gear, windlass, boiler or other gear that affects manoeuvring; engine or sea trials; going alongside at anchor; towing connect or let go; oily water or waste handling; other work affecting safety: name, position, the work, other. (作业报告 …)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Emergency report (accident, pollution, machinery damage, injury or death, other emergency) and abnormal report (aids to navigation not normal, obstructions, drifting objects): by every means, name, position, the event, other. (紧急报告；异常报告)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Pilot report after the pilot boards and before he leaves: ship's name, time, place, pilot's name or number, the ship's movement. (引航报告 报告时机或位置：引航员登轮后和离船前)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "If the master or pilot departs from the rules to avoid an emergency, report to the VTS at once (art. 30). Emergency anchoring in a channel or basin: report at once (art. 13)."
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 09",
+      "to": "Lanshan VTS (岚山交管)",
+      "note": "working channel for the Lanshan management and service area; keep watch on it"
+    },
+    {
+      "type": "phone",
+      "value": "+86-633-8385429",
+      "to": "Rizhao VTS Centre (日照海事局船舶交通管理中心)",
+      "note": null
+    },
+    {
+      "type": "fax",
+      "value": "+86-633-7989820",
+      "to": "Rizhao VTS Centre",
+      "note": null
+    },
+    {
+      "type": "email",
+      "value": "rizhao5429@163.com",
+      "to": "Rizhao VTS Centre",
+      "note": null
+    },
+    {
+      "type": "phone",
+      "value": "+86-633-12395",
+      "to": "Maritime distress (海上遇险报警专用电话)",
+      "note": null
+    }
+  ],
+  "addressee": "岚山交管 / Lanshan VTS",
+  "heading": null,
+  "lines": [
+    {
+      "l": "1",
+      "req": "required",
+      "text": "Ship's name (船名)"
+    },
+    {
+      "l": "2",
+      "req": "required",
+      "text": "Position (船位), or berth / anchor position after arrival"
+    },
+    {
+      "l": "3",
+      "req": "if-applicable",
+      "text": "Draught and purpose of entry (吃水、进港目的), in the entry report"
+    },
+    {
+      "l": "4",
+      "req": "if-applicable",
+      "text": "Time completed (完成时间), in the arrival report; intended berth or anchorage in the movement report"
+    },
+    {
+      "l": "5",
+      "req": "optional",
+      "text": "Other information the VTS asks (VTS要求的其他信息)"
+    }
+  ],
+  "format_note": "Voice reports on VHF CH 09. Mandarin and/or English.",
+  "area": {
+    "shape": "lines",
+    "points": [
+      {
+        "n": "A",
+        "lat": "35 13.0N",
+        "lon": "119 23.3E",
+        "inferred": false
+      },
+      {
+        "n": "B",
+        "lat": "35 13.0N",
+        "lon": "119 26.2E",
+        "inferred": false
+      },
+      {
+        "n": "C",
+        "lat": "35 11.1N",
+        "lon": "119 27.0E",
+        "inferred": false
+      },
+      {
+        "n": "D",
+        "lat": "35 09.5N",
+        "lon": "119 30.4E",
+        "inferred": false
+      },
+      {
+        "n": "E",
+        "lat": "35 09.5N",
+        "lon": "119 40.6E",
+        "inferred": false
+      },
+      {
+        "n": "F",
+        "lat": "35 00.0N",
+        "lon": "119 40.6E",
+        "inferred": false
+      },
+      {
+        "n": "G",
+        "lat": "35 00.0N",
+        "lon": "119 25.7E",
+        "inferred": false
+      },
+      {
+        "n": "H",
+        "lat": "35 04.7N",
+        "lon": "119 21.1E",
+        "inferred": false
+      }
+    ],
+    "lines": [
+      [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H"
+      ]
+    ],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 35.08,
+      "lon": 119.55
+    },
+    "bbox": [
+      119.3,
+      34.95,
+      119.72,
+      35.25
+    ]
+  },
+  "area_quote": "2.岚山管理服务区报告线为以下八点连线：A:35°13′.0N 119°23′.3E B:35°13′.0N 119°26′.2E C:35°11′.1N 119°27′.0E D:35°09′.5N 119°30′.4E；E:35°09′.5N 119°40′.6E; F:35°00′.0N 119°40′.6E; G:35°00′.0N 119°25′.7E; H:35°04′.7N 119°21′.1E。… 2.岚山管理服务区，为岚山管理服务区报告线内水域。",
+  "sources": [
+    {
+      "title": "山东海事局关于公布《日照船舶交通管理系统安全监督管理细则》的通告 (Rizhao VTS rules and Rizhao VTS user guide, Chinese and English)",
+      "ref": "Attachment .docx: rules arts. 4 to 10, 23, 31; user guide parts 1 to 7",
+      "date": "2023-03-03",
+      "url": "https://www.sd.msa.gov.cn/art/2023/3/6/art_124_1807678.html",
+      "primary": true
+    },
+    {
+      "title": "Same text, copy on 54seaman.com",
+      "ref": "detail_41373",
+      "date": "2023-03-16",
+      "url": "https://www.54seaman.com/group/detail_41373.html",
+      "primary": false
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Rules, user guide, points, channels and contacts read from the official .docx attached to the Shandong MSA notice of 3 March 2023 (sd.msa.gov.cn) and compared with the 54seaman.com copy: identical (the copy hides the email behind an address guard; decoded it is the same). Points printed as degrees, minutes and tenths (35°22′.9N) and copied with only the notation changed. In the Chinese user guide point G of the Lanshan line is shown as '***' in the 54seaman copy; the rules, the official file and the English guide all give G as 35°00′.0N 119°25′.7E.",
+  "confidence": "high",
+  "notes": "The reporting line A-H is also the area limit; the area is closed by the coast. Valid to 30 April 2028 (art. 32). Speed limit in the VTS area: passenger ships 15 kn, all other ships 12 kn (art. 14). No overtaking in basins or channels and no crossing of channels or anchorages without VTS consent. No entry, leaving or shifting when wind is force 8 or more (gusts included), visibility under 500 m or swell 3 m or more; VLCCs and LNG ships must meet special conditions (user guide part 6). The port operator, ship or agent must report entry, leaving and shifting plans in advance (art. 17; no hours given). Pilotage is compulsory for foreign ships (user guide part 3). Many fish farms and fishing boats near Rizhao and Lanshan, positions change with the season. VTS reports do not replace the port entry approval, the territorial sea report or arrival reports (art. 29). VTS works 0000 to 2400 Beijing time; VHF range 24 NM, radar 16 NM. Rizhao and Lanshan share one VTS Centre (address 101 Tianjin Road, Rizhao). Lanshan pilot boarding areas: South area No. 1 circle 500 m round 35°02′.25N 119°30′.00E (draught under 14 m and length under 250 m); South No. 2 circle 500 m round 35°03′.80N 119°37′.77E (draught 14 m or more or length 250 m or more); Middle area No. 1 circle 1500 m round 35°04′.50N 120°02′.50E (VLCC only, draught over 20.5 m); Middle No. 2 circle 1000 m round 35°07′.50N 119°46′.00E (draught 15.0 m to 20.5 m or length 300 m or more); Middle No. 3 circle 1000 m round 35°06′.00N 119°34′.00E (draught under 15 m and length under 300 m). Note: the VLCC pilot area and Middle No. 2 lie east of the line E-F (119°40′.6E), so outside the printed VTS area: call Lanshan VTS before you get there (practical advice, not printed). Dumping grounds: circle 1.5 km round 35°00′.00N 119°24′.00E; circle 1.0 km round 35°11′.00N 119°39′.38E."
+}

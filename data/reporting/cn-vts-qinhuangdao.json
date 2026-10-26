@@ -1,0 +1,77 @@
+{
+  "id": "cn-vts-qinhuangdao",
+  "system": "China VTS",
+  "title": "Qinhuangdao VTS (秦皇岛港)",
+  "country": "China",
+  "authority": "Hebei MSA, Qinhuangdao MSA (秦皇岛海事局) VTS centre",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": null,
+  "applies_to": "Ships in Qinhuangdao port waters, anchorages and waiting areas (no published VTS rules found).",
+  "applies_quote": "相关船舶应遵守船舶交通管理规定及港前待泊区相关管理制度，服从VTS中心交通组织、指挥。（冀航通〔2025〕0286号）",
+  "when": [
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Ships in the waiting areas (港前待泊区) must follow the ship traffic management rules and obey the traffic organisation and orders of the VTS centre. (冀航通〔2025〕0286号, 三.1)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "No local VTS rules with report points were found. Expect the usual Chinese VTS reports: on reaching the VTS area, before entering or leaving the channel, before weighing anchor, after anchoring, before unberthing and after berthing. (Inferred, not printed in a Qinhuangdao source.)"
+    }
+  ],
+  "how": [],
+  "addressee": null,
+  "heading": null,
+  "lines": [],
+  "format_note": null,
+  "area": {
+    "shape": "port",
+    "points": [],
+    "lines": [],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [
+      "Qinhuangdao (秦皇岛港), incl. East port and Shanhaiguan waiting areas, Hebei"
+    ],
+    "inside_hint": {
+      "lat": 39.9,
+      "lon": 119.67
+    },
+    "bbox": [
+      119.5,
+      39.7,
+      119.95,
+      40.02
+    ]
+  },
+  "area_quote": null,
+  "sources": [
+    {
+      "title": "关于公布新选划秦皇岛港港前待泊区的通告 冀航通〔2025〕0286号",
+      "ref": "三、注意事项",
+      "date": "2025-09-20",
+      "url": "https://www.msa.gov.cn/html/cnmsa/hxaq/article/2025/52558717d4114f26ba83eb659ddc5c56.html",
+      "primary": true
+    },
+    {
+      "title": "Hebei MSA site: 2026年秦皇岛海事局VTS中心社会满意度调查问卷 (shows the VTS centre exists)",
+      "ref": "title only",
+      "date": "2026",
+      "url": "https://www.hb.msa.gov.cn/zjdc/103406.jhtml",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Searched msa.gov.cn (title and full text) and hb.msa.gov.cn site search for Qinhuangdao VTS rules, channels and report lines; found only the 2025 waiting area notice and the VTS centre survey.",
+  "confidence": "low",
+  "notes": "GAP: no official Qinhuangdao VTS channel, call sign, area, report lines or phone found; ask the agent or call on VHF16. Waiting areas since 2025-09-21: East port 1# to 8# (bulk carriers in ballast, 100,000 t and below) and Shanhaiguan 1# and 2# (up to 300,000 t, max draught 10.0 m and 11.0 m); the old 1# to 3# waiting areas are closed. The port closes to traffic in strong wind (traffic control notices on hb.msa.gov.cn, e.g. wind 7 or more)."
+}

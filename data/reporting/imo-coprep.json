@@ -1,0 +1,287 @@
+{
+  "id": "imo-coprep",
+  "system": "COPREP",
+  "title": "COPREP Off the coast of Portugal",
+  "country": "Portugal",
+  "authority": "ROCA CONTROL (Portuguese coastal VTS, Centro de Controlo de Trafego Maritimo do Continente, DGRM)",
+  "kind": "mandatory-imo",
+  "resolution": "MSC.278(85)",
+  "status": "in effect",
+  "effective": "2009-06-01",
+  "applies_to": "Ships of 300 GT and above; all ships with dangerous, hazardous or potentially polluting cargo; all passenger ships; towing or pushing units over 100 m combined; fishing vessels of 24 m LOA or more. Others are invited to report voluntarily.",
+  "applies_quote": "The following vessels are required to participate in the COPREP System: (a) all vessels of 300 gross tonnage or above; (b) all vessels carrying dangerous, hazardous and/or potentially polluting cargo; (c) all passenger vessels; (d) vessels engaged in towing or pushing where the combined length of the vessel and tow or pushed vessel is more than 100 m LOA; (e) fishing vessels with an LOA of 24 m or above; and (f) any other type of vessel is invited to voluntarily participate in the System.",
+  "when": [
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "3.3.1 Ships must submit a report: (a) on entering the reporting area as defined in paragraph 2.1"
+    },
+    {
+      "event": "departure",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "(b) immediately after leaving a port, terminal or anchorage situated in the reporting area"
+    },
+    {
+      "event": "deviation",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "(c) when deviating from the route leading to the originally declared destination, port, terminal, anchorage or position \"for orders\" given on entry into the reporting area"
+    },
+    {
+      "event": "deviation",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "(d) when it is necessary to deviate from the planned route owing to weather conditions, damaged equipment or a change in navigational status"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "(e) when something is detected that could affect safety of navigation in the area"
+    },
+    {
+      "event": "exit",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "(f) on finally leaving the reporting area"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "(g) when requested by COPREP operator."
+    },
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "3.3.2 Ships who have submitted a voluntary report with the same designator letters prior to entering the reporting area are only required to submit a mandatory report: (a) if there are any changes in previously submitted information; (b) with designator letters \"A\" and \"H\" when entering the reporting area."
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 22",
+      "to": "Roca Control",
+      "note": "Primary channel. MSC.278(85) Annex, para 5(a): \"Primary channels: 22 and 79 Secondary channel: 69\"."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 79",
+      "to": "Roca Control",
+      "note": "Primary channel. MSC.278(85) Annex, para 5(a)."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 69",
+      "to": "Roca Control",
+      "note": "Secondary channel. MSC.278(85) Annex, para 5(a). The DGRM contact page (read 2026-10-26) lists VHF as \"69,77 3 79\" (printed like that, no explanation); it does not match the resolution, so ask on first contact."
+    },
+    {
+      "type": "email",
+      "value": "oper.vts@marad.pt",
+      "to": "Roca Control",
+      "note": "Current address on the DGRM page 'Contactos do VTS Costeiro (ROCA CONTROL)', read 2026-10-26. The resolution prints oper.vts@imarpor.pt (IMARPOR no longer exists; it became part of DGRM). The EMSA DONA page for Portugal gives oper.vts@dgrm.mm.gov.pt for the same centre."
+    },
+    {
+      "type": "email",
+      "value": "oper.vts@dgrm.mm.gov.pt",
+      "to": "Centro de Controlo de Trafego Maritimo do Continente (CCTMC)",
+      "note": "From the EMSA DONA contact page for Portugal (read 2026-10-26), listed as operational 24h/7. Secondary source (EU agency, not the national authority)."
+    },
+    {
+      "type": "phone",
+      "value": "+351 214 464 830",
+      "to": "Roca Control",
+      "note": "DGRM page read 2026-10-26. Same number as the resolution (printed there as 351-214464830, MSC.278(85) Annex, para 5(a)). EMSA DONA also gives +351 214464838 as Duty Officer 24/7."
+    },
+    {
+      "type": "fax",
+      "value": "+351 214 464 848",
+      "to": "Roca Control",
+      "note": "DGRM page read 2026-10-26. The resolution prints 351-214464839 (MSC.278(85) Annex, para 5(a)); the current DGRM number differs."
+    },
+    {
+      "type": "other",
+      "value": "Call sign CSG229, MMSI 00 263 3030",
+      "to": "Roca Control",
+      "note": "As printed in MSC.278(85) Annex, para 5(a). The DGRM page shows only \"MMSI:263\" (cut short)."
+    }
+  ],
+  "addressee": "Roca Control",
+  "heading": "COPREP",
+  "lines": [
+    {
+      "l": "A",
+      "req": "required",
+      "text": "Ship's name and callsign. IMO identification or MMSI number on request"
+    },
+    {
+      "l": "C",
+      "req": "required",
+      "text": "Position (Latitude - Longitude), or"
+    },
+    {
+      "l": "D",
+      "req": "optional",
+      "text": "Distance and bearing from a landmark"
+    },
+    {
+      "l": "E",
+      "req": "required",
+      "text": "True course in a three(3)-digit group"
+    },
+    {
+      "l": "F",
+      "req": "required",
+      "text": "Speed in knots"
+    },
+    {
+      "l": "G",
+      "req": "required",
+      "text": "Last port of call"
+    },
+    {
+      "l": "H",
+      "req": "required",
+      "text": "Time (UTC) and point of entry in the reporting sector"
+    },
+    {
+      "l": "I",
+      "req": "required",
+      "text": "Next port of call and ETA"
+    },
+    {
+      "l": "P",
+      "req": "if-applicable",
+      "text": "Hazardous cargo, IMO class or UN number and quantity"
+    },
+    {
+      "l": "Q",
+      "req": "if-applicable",
+      "text": "Breakdown, damage and/or deficiencies affecting, the structure, cargo or equipment of the vessel or any other circumstances affecting normal navigation, in accordance with the provisions of the SOLAS and MARPOL Conventions (Q or R)"
+    },
+    {
+      "l": "R",
+      "req": "if-applicable",
+      "text": "Breakdown, damage and/or deficiencies affecting, the structure, cargo or equipment of the vessel or any other circumstances affecting normal navigation, in accordance with the provisions of the SOLAS and MARPOL Conventions (Q or R)"
+    },
+    {
+      "l": "W",
+      "req": "optional",
+      "text": "Total number of persons on board (when requested)"
+    },
+    {
+      "l": "X",
+      "req": "optional",
+      "text": "Miscellaneous remarks (when requested)"
+    }
+  ],
+  "format_note": "Format derived from resolution A.851(20) (MSC.278(85) Annex, para 3.1); short title \"COPREP\", sent to Roca Control. C or D for position. W and X only when requested. Cargo information (line P) may be sent by non-verbal means before entering, for commercial confidentiality. Language: Portuguese or English, using the IMO SMCP where necessary. The call is made on the VHF channel assigned to the VTS on the Portuguese coast, or by the other means listed.",
+  "area": {
+    "shape": "lines",
+    "points": [
+      {
+        "n": "N-coast",
+        "name": "Latitude 39 45N at the shore (COAST POINT)",
+        "lat": "39 45N",
+        "lon": "009 02.3W",
+        "inferred": true
+      },
+      {
+        "n": "i",
+        "lat": "39 45N",
+        "lon": "010 14W",
+        "inferred": false
+      },
+      {
+        "n": "ii",
+        "lat": "38 41N",
+        "lon": "010 14W",
+        "inferred": false
+      },
+      {
+        "n": "iii",
+        "lat": "36 30N",
+        "lon": "009 35W",
+        "inferred": false
+      },
+      {
+        "n": "iv",
+        "lat": "36 15N",
+        "lon": "008 30W",
+        "inferred": false
+      },
+      {
+        "n": "E-coast",
+        "name": "Longitude 008 30W at the shore (COAST POINT)",
+        "lat": "37 06.1N",
+        "lon": "008 30W",
+        "inferred": true
+      }
+    ],
+    "lines": [
+      [
+        "N-coast",
+        "i",
+        "ii",
+        "iii",
+        "iv",
+        "E-coast"
+      ]
+    ],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 38.5,
+      "lon": -9.8
+    },
+    "bbox": [
+      -10.4,
+      36.1,
+      -8.4,
+      39.9
+    ]
+  },
+  "area_quote": "2.1 The Ship Reporting System area is bounded by the shore and: (a) In the North: latitude 39º 45' N (b) In the West and South: By a line joining the following geographical positions: (i) 39º 45' N 010º 14' W (ii) 38º 41' N 010º14' W (iii) 36º 30' N 009º 35' W (iv) 36º 15' N 008º 30' W (c) In the East: longitude 008º 30' W. 2.2 The reference chart is \"Cabo Finisterra a Casablanca\", Number 21101, Catalogue of Nautical Charts of the Portuguese Hydrographic Office, 4th impression - April 2002 (Note: This chart is based on WGS 84 Datum).",
+  "sources": [
+    {
+      "title": "IMO MSC.278(85) Adoption of the new mandatory ship reporting system Off the coast of Portugal - COPREP",
+      "ref": "Annex, paras 1 to 9 (MSC 85/26/Add.1 Annex 16)",
+      "date": "2008-12-01",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.278(85).pdf",
+      "primary": true
+    },
+    {
+      "title": "DGRM: Contactos do VTS Costeiro (ROCA CONTROL)",
+      "ref": "contact block",
+      "date": "2026-10-26",
+      "url": "https://www.dgrm.pt/contacto-do-vts-costeiro-roca-contral-",
+      "primary": false
+    },
+    {
+      "title": "EMSA DONA: Contact details Portugal",
+      "ref": "Centro de Controlo de Trafego Maritimo do Continente - CCTMC",
+      "date": "2026-10-26",
+      "url": "https://portal.emsa.europa.eu/web/dona/contact-details-portugal",
+      "primary": false
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Rules, lines, area points and the 2008 contacts: MSC.278(85) pages 2 to 5 of the annex rendered at 120 dpi and every digit read against the extracted text. Points (i) to (iv) are printed in whole minutes. N-coast and E-coast are NOT printed: their latitude 39 45N and longitude 008 30W are printed, the other coordinate was computed where the line meets the Natural Earth 10m land outline (a few hundred metres accuracy), for drawing only. Current phone, fax, email: DGRM official page read 2026-10-26 (fetched as HTML). EMSA DONA page read the same day. Geometry check: (i) to (ii) runs south along 010 14W, (ii) to (iv) runs SE off Cabo de Sao Vicente to south of the Algarve, all at sea.",
+  "confidence": "medium",
+  "notes": "Area: the shore and 39 45N in the north, the line (i) to (iv) in the west and south, 008 30W in the east (from (iv) north to the Algarve coast). The email in the resolution (oper.vts@imarpor.pt) is out of date; DGRM now shows oper.vts@marad.pt and EMSA shows oper.vts@dgrm.mm.gov.pt. Phone +351 214 464 830 is the same in all sources. The DGRM page lists VHF as \"69,77 3 79\", which does not match the resolution channels 22 and 79 (primary) and 69 (secondary); the IMO text is kept here as the rule. A ship that already sent a voluntary report with the same letters only needs A and H on entry, unless something changed. Later amendments: none found. Checked the Swedish Transport Agency list of IMO ship reporting systems (2017), the NCSR 12 report to MSC (NCSR 12/20/Add.1, 2025), the MSC 111 summary (May 2026: only ADRIREP, SOUNDREP, BELTREP were adopted) and the NCSR 13 draft report (NCSR 13/WP.1/Rev.1: proposals only for TRANSREP, BONIFREP, WETREP, CALDOVREP). An EU proposal at NCSR 12 to add insurance certificate lines to about ten European systems is still being handled at IMO; if it reaches this system the report lines will change."
+}

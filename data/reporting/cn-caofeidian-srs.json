@@ -1,0 +1,178 @@
+{
+  "id": "cn-caofeidian-srs",
+  "system": "China ship reporting system",
+  "title": "Caofeidian ship reporting system (曹妃甸水域船舶报告制) and routeing",
+  "country": "China",
+  "authority": "Hebei MSA (河北海事局); reports to Caofeidian VTS Centre (曹妃甸船舶交通管理中心, \"曹妃甸VTS中心\")",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": "2018-07-01",
+  "applies_to": "Passenger ships; dangerous goods ships; other ships of 500 GT and over; ships under 500 GT that join on their own. A crude oil tanker is always included.",
+  "applies_quote": "本报告制适用于下列船舶: 1.1客船; 1.2危险品船舶; 1.3 500总吨及以上的其他船舶; 1.4 500总吨以下自愿加入本报告制的船舶。",
+  "when": [
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Ships entering the reporting area report at the report line, with the items in 3.2 (see lines). (3.3 1)) (驶入本报告制水域的船舶抵达报告线时应按照3.2的要求报告)"
+    },
+    {
+      "event": "exit",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Ships leaving the reporting area may report only the ship name when reaching the report line. (3.3 2)) (驶离本报告制水域的船舶抵达报告线时可仅报告船名)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Traffic or pollution accident in the area: report at once the type, time and place of the accident, the extent of damage or pollution and whether help is needed, and give other details the authority asks for. (3.3 3))"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Routeing: do not cross the traffic lanes or separation zones; if a ship must cross, first report to Caofeidian VTS. No overtaking on the recommended route. Keep watch on VHF08 when using the routeing. (Routeing 3.1, 3.3, 3.5) (如需穿越，须先向曹妃甸VTS中心报告。)"
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 08",
+      "to": "Caofeidian VTS (曹妃甸VTS中心)",
+      "note": "calling channel; keep continuous watch while in the system (5.1, 5.3)"
+    }
+  ],
+  "addressee": null,
+  "heading": null,
+  "lines": [
+    {
+      "l": "A",
+      "req": "required",
+      "text": "Ship name and call sign (船名、呼号). Without working AIS: also IMO number if any."
+    },
+    {
+      "l": "C",
+      "req": "if-applicable",
+      "text": "Position, latitude and longitude, or D bearing and distance from a landmark. Only ships without working AIS."
+    },
+    {
+      "l": "E",
+      "req": "if-applicable",
+      "text": "Course. Only ships without working AIS."
+    },
+    {
+      "l": "F",
+      "req": "if-applicable",
+      "text": "Speed. Only ships without working AIS."
+    },
+    {
+      "l": "G",
+      "req": "required",
+      "text": "Last port of call (上一停靠港)"
+    },
+    {
+      "l": "I",
+      "req": "required",
+      "text": "Destination (目的港)"
+    },
+    {
+      "l": "O",
+      "req": "required",
+      "text": "Draught (吃水). For ships bound for Caofeidian; not asked from transiting ships."
+    },
+    {
+      "l": "Q",
+      "req": "required",
+      "text": "Defects and limitations; tugs give tow length and name of tow (缺陷及限制). Transiting ships: if applicable."
+    },
+    {
+      "l": "DG",
+      "req": "required",
+      "text": "Dangerous cargo (危险货物). Transiting ships: if applicable."
+    }
+  ],
+  "format_note": "IMO A.851(20) format. Ships bound for Caofeidian with working AIS: A, G, I, O, Q, DG only. Without AIS: A, C or D, E, F, G, I, O, Q, DG. Transit ships: A, G, I, Q (if any), DG (if any). Language: Mandarin or English.",
+  "area": {
+    "shape": "lines",
+    "points": [
+      {
+        "n": "E-N",
+        "name": "East report line (118 55.00E), north end: runs to the coast; this point is on land, not printed",
+        "lat": "39 20.00N",
+        "lon": "118 55.00E",
+        "inferred": true
+      },
+      {
+        "n": "SE",
+        "name": "East line meets south line (computed, not printed)",
+        "lat": "38 43.00N",
+        "lon": "118 55.00E",
+        "inferred": true
+      },
+      {
+        "n": "SW",
+        "name": "South line meets west line (computed, not printed)",
+        "lat": "38 43.00N",
+        "lon": "118 15.00E",
+        "inferred": true
+      },
+      {
+        "n": "W-N",
+        "name": "West report line (118 15.00E), north end: runs to the coast; this point is on land, not printed",
+        "lat": "39 20.00N",
+        "lon": "118 15.00E",
+        "inferred": true
+      }
+    ],
+    "lines": [
+      [
+        "E-N",
+        "SE",
+        "SW",
+        "W-N"
+      ]
+    ],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 38.83,
+      "lon": 118.65
+    },
+    "bbox": [
+      118.1,
+      38.6,
+      119.05,
+      39.3
+    ]
+  },
+  "area_quote": "本报告制适用的地理范围为三条报告线与岸线所围成的水域: 1)东报告线为东经118°55.00'线; 2)西报告线为东经118°15.00'线; 3)南报告线为北纬38°43.00'线。",
+  "sources": [
+    {
+      "title": "冀航通〔2024〕0014号 关于《曹妃甸水域船舶定线制》《曹妃甸水域船舶报告制》继续有效实施的通告 (attachments 1 and 2 in the page)",
+      "ref": "Attachment 2 sections 1 to 7; attachment 1 section 3",
+      "date": "2024-01-17",
+      "url": "https://www.msa.gov.cn/html/cnmsa/hxaq/article/2024/e57bdb920a1c495cb8538aa2dff1eef7.html",
+      "primary": true
+    },
+    {
+      "title": "曹妃甸水域船舶定线制（2018）and 曹妃甸水域船舶报告制（2018）, scanned copy on 54seaman.com",
+      "ref": "same text, 2018 edition; section 8: in force 2018-07-01 for 5 years",
+      "date": "2018-05-02",
+      "url": "https://img-oss.54seaman.com/Editor/Picture/20230101/c9259ea956a2b12f7b6346eb2207ea56.pdf",
+      "primary": false
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Full text read on msa.gov.cn (冀航通〔2024〕0014号, HTML text of both attachments). Same wording as the 2018 scan on 54seaman.com. The report lines are printed as one meridian and one parallel each; the corner and coast points are computed.",
+  "confidence": "high",
+  "notes": "The report lines are whole lines (118 55.00E, 118 15.00E, 38 43.00N) closed by the coast; the four points here are only to draw them (all inferred, north ends placed on land). The 2018 texts (Ministry of Transport, issued 2018-05-02) were in force from 2018-07-01 for five years; Hebei MSA notice 2024 No. 1 (冀航通〔2024〕0014号, 2024-01-17) keeps both in force, with no new end date given. Coordinates in CGCS2000 (= WGS-84 for navigation). No phone or email for Caofeidian VTS was found in an official source. The VTS gives traffic, weather and safety information on request; manned 24 h. Jingtang port area (about 119 00E) is east of the east line and is not in this system. Caofeidian has 300,000 to 400,000 t crude oil terminals; port entry permission and the national reports are separate records."
+}

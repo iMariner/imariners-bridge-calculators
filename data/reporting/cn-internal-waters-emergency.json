@@ -1,0 +1,101 @@
+{
+  "id": "cn-internal-waters-emergency",
+  "system": "China emergency entry into internal waters report (MSA Announcement No. 4 of 2025)",
+  "title": "Urgent report by foreign ships entering Chinese internal waters in an emergency",
+  "country": "China",
+  "authority": "Maritime Safety Administration of the People's Republic of China; the local maritime administration",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": "2025-03-01",
+  "applies_to": "Foreign ships that must enter Chinese internal waters urgently because of emergency (urgent illness, machinery failure, distress, shelter from weather) before they have a permit to enter port.",
+  "applies_quote": "适用于外国籍船舶因人员病急、机件故障、遇难、避风等紧急情况，未及获得进入口岸许可，需紧急进入中华人民共和国内水的情形。",
+  "when": [
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "At the same time as entering internal waters, report urgently to the local maritime administration: 1 name, IMO number, call sign, flag, ship type, contact; 2 owner, operator, manager; 3 position, course, speed, planned route; 4 expected time in and out; 5 main dimensions and draught; 6 number of crew and passengers and their health, number in distress, ill or hurt; 7 cargo, and for dangerous goods the proper name, UN number, pollution category and quantity; 8 direct cause of the emergency entry, action taken, help asked for; 9 after entry, fill in and send the Emergency Report Form at once. (外国籍船舶应当在紧急进入中华人民共和国内水的同时向当地海事管理机构紧急报告 ...)"
+    },
+    {
+      "event": "position",
+      "hours_before": null,
+      "interval_h": 1,
+      "report": null,
+      "text": "If AIS does not work properly after entry, a ship under way reports every 1 hour: name, call sign, IMO number; present position, intended course and speed; until she leaves internal waters or gets the permit to enter port."
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "The ship must follow the orders and supervision of the maritime administration while in internal waters."
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "VHF (radiotelephone or DSC)",
+      "to": "local maritime administration / VTS",
+      "note": "the notice lists means, not channels"
+    },
+    {
+      "type": "mf",
+      "value": "MF/HF DSC or radiotelephone",
+      "to": "local maritime administration",
+      "note": null
+    },
+    {
+      "type": "phone",
+      "value": "12395",
+      "to": "China national maritime distress hotline",
+      "note": "national search and rescue number; also satellite phone, wired phone, fax or other means"
+    }
+  ],
+  "addressee": null,
+  "heading": null,
+  "lines": [],
+  "format_note": "Nine items plus the Emergency Report Form (appendix to the notice: ship data, entry data, persons on board, cargo, reason). No A.851 letters.",
+  "area": {
+    "shape": "territorial-sea",
+    "points": [],
+    "lines": [],
+    "center": null,
+    "radius_nm": null,
+    "state": "China",
+    "zone": "Internal waters of the People's Republic of China (waters inside the territorial sea baselines, including the Bohai Sea)",
+    "ports": [],
+    "inside_hint": {
+      "lat": 38.8,
+      "lon": 119.5
+    },
+    "bbox": [
+      117.5,
+      37.0,
+      122.5,
+      41.0
+    ]
+  },
+  "area_quote": "外国籍船舶紧急进入中华人民共和国内水应当向海事管理机构紧急报告。",
+  "sources": [
+    {
+      "title": "中华人民共和国海事局关于外国籍船舶紧急进入中华人民共和国内水报告要求的公告 (MSA Announcement No. 4 of 2025), page with Chinese and English PDFs",
+      "ref": "Parts 1 to 4 and appendix",
+      "date": "2025-01-21",
+      "url": "https://www.msa.gov.cn/html/cnmsa/xxgk/article/2025/299923fe156e40a1a7654e7a9c08f8c9.html",
+      "primary": true
+    },
+    {
+      "title": "Same, official English PDF",
+      "ref": "Parts 1 to 4",
+      "date": "2025-01-21",
+      "url": "https://www.msa.gov.cn/public/documents/document/mdgw/otm4/~edisp/20250123080938286.pdf",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Read from the official Chinese and English PDFs on msa.gov.cn (published 2025-01-23).",
+  "confidence": "high",
+  "notes": "Only for unplanned entry. A ship going to a Chinese port enters internal waters with the normal port entry permission (cn-port-entry). Shape set to territorial-sea for lack of an internal-waters shape: the area is the waters landward of the Chinese baselines, not the 12 NM belt. bbox is the Bohai and north Yellow Sea part only."
+}

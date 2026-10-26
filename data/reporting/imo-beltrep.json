@@ -1,0 +1,348 @@
+{
+  "id": "imo-beltrep",
+  "system": "BELTREP",
+  "title": "BELTREP Storebælt (Great Belt) traffic area",
+  "country": "Denmark",
+  "authority": "Great Belt VTS, call sign Belt Traffic (VTS Authority: Admiral Danish Fleet as printed; now Royal Danish Navy, Naval Base Korsør)",
+  "kind": "mandatory-imo",
+  "resolution": "MSC.332(90); revised text MSC.332(90)/Rev.1 adopted 22 May 2026, implemented 1 December 2026",
+  "status": "in effect",
+  "effective": "2013-07-01",
+  "applies_to": "Ships of 50 GT and above and all ships with an air draught of 15 m or more, passing through or going to or from ports and anchorages in the BELTREP area. Pleasure craft under 15 m length or under 50 GT are exempt.",
+  "applies_quote": "1.1 Ships passing through or proceeding to and from ports and anchorages in the BELTREP area are required to participate in the ship reporting system as follows: 1.1.1 ships with a gross tonnage of 50 and above; 1.1.2 all ships with an air draught of 15 m or more; and 1.1.3 pleasure craft with a length less than 15 m or with a gross tonnage less than 50 are exempted from participation.",
+  "when": [
+    {
+      "event": "before_entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "3.5.2 Previously forwarded reports can be submitted at any time after entering the Danish Exclusive Economic Zone (EEZ) and until in reach of VHF range of Great Belt VTS at an approximate distance of 20 NM from the BELTREP area. As the Great Belt VTS must be able to timely handle incoming prior reporting, it will not be possible to undertake pre-entry reports within the 20 NM VHF range. The reporting option is then verbal reporting by VHF when crossing the report line of entry."
+    },
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "3.5.1 Ships entering the BELTREP operational area shall submit a report when crossing the report line or on departure from a port or anchorage within the operational area. 3.1.4 ... must, as a minimum, carry out a VHF voice transmission to communicate the name of the ship (part of designator A), air draught and deadweight tonnage (designator U) and the report line of entry to the Great Belt VTS when actually entering the area."
+    },
+    {
+      "event": "departure",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "3.5.1 ... or on departure from a port or anchorage within the operational area. 3.5.3 Ships departing a port or leaving an anchorage within the 20 NM range of the BELTREP area or in the BELTREP area, may submit a pre-entry report for designators H, L, P, T and X if transmitted one hour before departure for enabling the Great Belt VTS to timely handle incoming prior reports."
+    },
+    {
+      "event": "deviation",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Note a) The master of the ship must forthwith inform the Great Belt VTS concerned of any change in navigational status or in previous information notified, particularly in relation to designator Q or R. 3.1.5 Designator Q or R, if applicable, shall at all times be given using VHF voice transmission to Great Belt VTS."
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "3.2 Verbal reporting is not required when a ship passes the BELTREP sector line at latitude 55° 35′.00 N. However, sector change of VHF frequency is required according to appendix 2."
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 74",
+      "to": "Belt Traffic (Great Belt VTS), Sector 1 North",
+      "note": "North of 55 35N. MSC.332(90) and Rev.1, appendix 2. Same on the Danish Defence BELTREP page (updated 9 Jan 2024), read 2026-10-26."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 11",
+      "to": "Belt Traffic (Great Belt VTS), Sector 2 South",
+      "note": "South of 55 35N. MSC.332(90) and Rev.1, appendix 2; same on the Danish Defence page."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 10",
+      "to": "Belt Traffic (Great Belt VTS)",
+      "note": "Broadcast, individual assistance, reserve channel (appendix 2). Danish Defence page: spare for both sectors."
+    },
+    {
+      "type": "vhf",
+      "value": "CH 16",
+      "to": "Belt Traffic (Great Belt VTS)",
+      "note": "Continuous monitoring (appendix 2). Ships must keep watch on the sector channel and CH 16 (para 4.1)."
+    },
+    {
+      "type": "email",
+      "value": "vts@beltrep.org",
+      "to": "Great Belt VTS",
+      "note": "For pre-entry non-verbal reports (L, P, T, X with A and H). Danish Defence (Royal Danish Navy) BELTREP contact page, updated 9 Jan 2024, read 2026-10-26. Differs from the address printed in both IMO texts (beltrep@sok.dk, next entry)."
+    },
+    {
+      "type": "email",
+      "value": "beltrep@sok.dk",
+      "to": "Great Belt VTS",
+      "note": "As printed in MSC.332(90) appendix 2 and again in MSC.332(90)/Rev.1 (2026) appendix 2. The operator's own web page gives vts@beltrep.org instead; not checked which one is read."
+    },
+    {
+      "type": "phone",
+      "value": "+45 58 37 68 68",
+      "to": "Great Belt VTS duty officer (H24)",
+      "note": "MSC.332(90) and Rev.1 appendix 2; Danish Defence page prints the same number as +45 5837 6868. Mobile phone is accepted for L, P, T and X before entry (para 3.1.3)."
+    },
+    {
+      "type": "fax",
+      "value": "+45 58 37 28 19",
+      "to": "Great Belt VTS",
+      "note": "MSC.332(90) and Rev.1 appendix 2. Not on the Danish Defence page."
+    },
+    {
+      "type": "web",
+      "value": "http://www.beltrep.org/transit/",
+      "to": "Great Belt VTS",
+      "note": "Expected transit request (ETR), linked from the Danish Defence BELTREP page, read 2026-10-26. The IMO texts give the web page www.beltrep.org. A VHF voice call on entry is still required."
+    },
+    {
+      "type": "other",
+      "value": "AIS",
+      "to": "Great Belt VTS",
+      "note": "Correct and updated AIS class A information fulfils A, B, C, E, F, G and I, O and W (para 3.1.2). MMSI of Great Belt VTS: 002190001 (appendix 2)."
+    }
+  ],
+  "addressee": null,
+  "heading": null,
+  "lines": [
+    {
+      "l": "A",
+      "req": "required",
+      "text": "name of the ship, call sign, MMSI no. and, if available, IMO identification number"
+    },
+    {
+      "l": "B",
+      "req": "required",
+      "text": "date and time"
+    },
+    {
+      "l": "C",
+      "req": "required",
+      "text": "position expressed in latitude and longitude"
+    },
+    {
+      "l": "E",
+      "req": "required",
+      "text": "true course"
+    },
+    {
+      "l": "F",
+      "req": "required",
+      "text": "speed"
+    },
+    {
+      "l": "G",
+      "req": "required",
+      "text": "last port of call, destination and ETA"
+    },
+    {
+      "l": "I",
+      "req": "required",
+      "text": "last port of call, destination and ETA"
+    },
+    {
+      "l": "H",
+      "req": "if-applicable",
+      "text": "date, time (UTC) and report line of entry into the BELTREP area"
+    },
+    {
+      "l": "L",
+      "req": "required",
+      "text": "route information on the intended route through the BELTREP area"
+    },
+    {
+      "l": "O",
+      "req": "required",
+      "text": "maximum present draught"
+    },
+    {
+      "l": "P",
+      "req": "required",
+      "text": "cargo and, if dangerous goods present on board, quantity and IMO class. Dangerous goods information must be summarized in total tonnes per IMO class"
+    },
+    {
+      "l": "Q",
+      "req": "if-applicable",
+      "text": "defects, deficiencies, limitations - pollution or dangerous goods lost overboard"
+    },
+    {
+      "l": "R",
+      "req": "if-applicable",
+      "text": "defects, deficiencies, limitations - pollution or dangerous goods lost overboard"
+    },
+    {
+      "l": "T",
+      "req": "required",
+      "text": "address for the communication of cargo information"
+    },
+    {
+      "l": "U",
+      "req": "required",
+      "text": "air draught, deadweight tonnage"
+    },
+    {
+      "l": "W",
+      "req": "required",
+      "text": "total number of persons on board"
+    },
+    {
+      "l": "X",
+      "req": "if-applicable",
+      "text": "type and estimated quantity of bunker fuel, for ships of 1,000 GT and above. Must be summarized in total tonnes per type. From 1 December 2026 (MSC.332(90)/Rev.1) also: One or more Convention certificates of insurance issued by a party to the Conventions and carried on board the ship, providing evidence of existence of insurance for maritime claims, as well as civil liability certificates, as applicable, issued in accordance with: the International Convention on Civil Liability for Oil Pollution Damage, 1992, as amended (1992 Civil Liability Convention); the International Convention on Civil Liability for Bunker Oil Pollution Damage, 2001 (2001 Bunkers Convention); and, the Nairobi International Convention on the Removal of Wrecks, 2007 (2007 Nairobi WRC)."
+    }
+  ],
+  "format_note": "Line texts from para 3.4.1 of MSC.332(90) (G and I, and Q or R, are printed as one item each). Appendix 3: AIS can give A, B, C, E, F, G and I, O and W; e-mail or similar before entry can give L, P, T and X, and such a partial report must also state A and H (H is only needed then); VHF voice must at least give the ship's name (part of A), U (air draught and deadweight, also for a tow) and the report line of entry; Q or R always by VHF voice. L is coded: report lines RN, RW, RS, RSW; DW-T3 (deep-water route Hatter), TSS-T5 (At Hatter Barn), BE (East Bridge / route T), BW (West Bridge), DW-T4 (deep-water route Langeland), RH (route Hotel), KAL FJ (Kalundborg Fjord anchorage), ports as UN LOCODE, e.g. 'L: RN, TSS-T5, BE, RH, RS'. G and I by AIS in UN LOCODE. O as e.g. 6.1 or 10.4. Language English (IMO SMCP).",
+  "area": {
+    "shape": "lines",
+    "points": [
+      {
+        "n": "1",
+        "name": "Korshavn (Fyn), RW",
+        "lat": "55 36.00N",
+        "lon": "010 38.00E",
+        "inferred": false
+      },
+      {
+        "n": "2",
+        "name": "East coast of Samsø, RW and RN",
+        "lat": "55 47.00N",
+        "lon": "010 38.00E",
+        "inferred": false
+      },
+      {
+        "n": "3",
+        "name": "At sea near Marthe Flak, RN",
+        "lat": "56 00.00N",
+        "lon": "010 56.00E",
+        "inferred": false
+      },
+      {
+        "n": "4",
+        "name": "Sjællands Odde, RN",
+        "lat": "56 00.00N",
+        "lon": "011 17.00E",
+        "inferred": false
+      },
+      {
+        "n": "5",
+        "name": "Gulfhavn (Stigsnæs), RS",
+        "lat": "55 12.00N",
+        "lon": "011 15.40E",
+        "inferred": false
+      },
+      {
+        "n": "6",
+        "name": "Ørespids, Omø, RS",
+        "lat": "55 08.40N",
+        "lon": "011 09.00E",
+        "inferred": false
+      },
+      {
+        "n": "7",
+        "name": "At sea south of Ørespids, RS",
+        "lat": "55 05.00N",
+        "lon": "011 09.00E",
+        "inferred": false
+      },
+      {
+        "n": "8",
+        "name": "Snøde Øre (Langeland E), RS",
+        "lat": "55 05.00N",
+        "lon": "010 56.10E",
+        "inferred": false
+      },
+      {
+        "n": "9",
+        "name": "South of Korsebølle Rev (Langeland W), RSW",
+        "lat": "55 00.00N",
+        "lon": "010 48.70E",
+        "inferred": false
+      },
+      {
+        "n": "10",
+        "name": "Thurø Rev Light buoy, RSW",
+        "lat": "55 01.20N",
+        "lon": "010 44.00E",
+        "inferred": false
+      }
+    ],
+    "lines": [
+      [
+        "1",
+        "2"
+      ],
+      [
+        "2",
+        "3",
+        "4"
+      ],
+      [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      [
+        "9",
+        "10"
+      ]
+    ],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 55.55,
+      "lon": 10.9
+    },
+    "bbox": [
+      10.45,
+      54.9,
+      11.5,
+      56.1
+    ]
+  },
+  "area_quote": "2.2 The operational area of BELTREP covers the central and northern part of the Storebælt (Great Belt) and the Hatter Barn area north of Storebælt (Great Belt) at the entrance to the Baltic Sea, as shown below and on the chartlet given in appendix 1-A. ... Datum; World Geodetic System 1984 (WGS 84): 2.2.1 Report- and borderline West (RW) Fyn: 1) 55° 36′.00 N, 010° 38′.00 E (Korshavn) Samsø: 2) 55° 47′.00 N, 010° 38′.00 E (East coast of Samsø) 2.2.2 Report- and borderline North (RN) Samsø: 2) 55° 47′.00 N, 010° 38′.00 E (East coast of Samsø) 3) 56° 00′.00 N, 010° 56′.00 E (At sea near Marthe Flak) Sjælland: 4) 56° 00′.00 N, 011° 17′.00 E (Sjællands Odde) 2.2.3 Report- and borderline South (RS) Stigsnæs: 5) 55° 12′.00 N, 011° 15′.40 E (Gulfhavn) Omø: 6) 55° 08′.40 N, 011° 09′.00 E (Ørespids, Omø) 7) 55° 05′.00 N, 011° 09′.00 E (At sea south of Ørespids) Langeland E: 8) 55° 05′.00 N, 010° 56′.10 E (Snøde Øre) 2.2.4 Report- and borderline Southwest (RSW) Langeland W: 9) 55° 00′.00 N, 010° 48′.70 E (South of Korsebølle Rev) Thurø Rev: 10) 55° 01′.20 N, 010° 44′.00 E (Thurø Rev Light buoy) 2.2.5 Sector division The BELTREP area is divided into two sectors at latitude 11) 55°35′.00 N; sector 1 northerly and sector 2 southerly.",
+  "sources": [
+    {
+      "title": "IMO MSC.332(90) Adoption of amendments to the existing mandatory ship reporting system in the Storebælt (Great Belt) traffic area (BELTREP)",
+      "ref": "Annex, paras 1.1, 2.1-2.2.5, 3.1-3.7, 4.1, appendices 1-A, 2 and 3",
+      "date": "2012-05-22",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.332(90).pdf",
+      "primary": true
+    },
+    {
+      "title": "IMO MSC.332(90)/Rev.1 Mandatory ship reporting system in the Storebælt (Great Belt) traffic area (BELTREP), revised text, implemented 1 December 2026",
+      "ref": "Annex 29 of MSC 111/22/Add.2: paras 1.1, 2.2, 3.1.3, 3.4.1 X, appendix 2",
+      "date": "2026-05-22",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.332(90)%20Rev.1.pdf",
+      "primary": true
+    },
+    {
+      "title": "Danish Defence (Royal Danish Navy): BELTREP contact information and links",
+      "ref": "Contact, call sign and channels (page updated 9 January 2024)",
+      "date": "2026-10-26",
+      "url": "https://www.forsvaret.dk/da/organisation/soevaernet/civile-opgaver/beltrep/contact-information/",
+      "primary": false
+    },
+    {
+      "title": "Danish Maritime Authority: Mandatory Ship Reporting Systems (MSRS) and Vessel Traffic Services (VTS)",
+      "ref": "BELTREP and SOUNDREP",
+      "date": "2026-10-26",
+      "url": "https://dma.dk/safety-at-sea/safety-of-navigation/mandatory-ship-reporting-systems-msrs-and-vessel-traffic-services-vts",
+      "primary": false
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Points 1 to 10 and the sector latitude were taken from the text layer of MSC.332(90) Annex page 2 and compared with MSC.332(90)/Rev.1 (identical); every digit was checked against a 140 dpi render of Rev.1 Annex 29 page 2 (PDF page 3). The lines were compared with the chartlet in Rev.1 appendix 1-A: RW runs from Korshavn on Fyn north to Samsø, RN from Samsø to the sea near Marthe Flak and east to Sjællands Odde, RS from Stigsnæs over Omø and the sea to Langeland's east coast, RSW from Langeland's west coast to the Thurø Rev light buoy; the coast closes the rest. A text diff of MSC.332(90) and Rev.1 showed the only changes of substance are the insurance certificates added to X and in 3.1.3, the liability note in 9.3 (action on missing liability certificates only if the flag State is party to the Conventions), and the revocation of MSC.63(67) annex 1 and MSC.332(90) from 1 December 2026. VHF channels and phone from both IMO texts; e-mail and ETR web link checked on the Danish Defence BELTREP pages, read 2026-10-26.",
+  "confidence": "high",
+  "notes": "From 0000 UTC 1 December 2026 MSC.332(90)/Rev.1 replaces MSC.332(90) and annex 1 of MSC.63(67); boundary, ships, channels and phone stay the same, and line X then also asks for the insurance / civil liability certificates (CLC 1992, Bunkers 2001, Nairobi WRC 2007); the company may give the certificate information (SOLAS IX/1.2). E-mail: the IMO texts print beltrep@sok.dk, the Danish Defence page (2024) gives vts@beltrep.org; use the web page address first and confirm by VHF or phone if unsure. Point 10 is a light buoy at sea, not a coast point: the RSW line is drawn only between points 9 and 10, so the short gap from the buoy to Thurø is not printed. Pre-entry non-verbal reports are possible only from entering the Danish EEZ until about 20 NM from the area (chartlet in appendix 1-B); inside 20 NM report by VHF at the report line. Bridges: West Bridge spans only for ships under 1,000 dwt and air draught under 18.00 m (route BW); East Bridge for air draught under 65.00 m (route BE, route T); recommended speed limit 20 knots in TSS Korsoer - Sprogoe. Ships with draught 11 m or more on route T, and INF cargo ships, are recommended to take a pilot (IMO Recommendation on navigation through the entrances to the Baltic Sea). National order: BEK nr. 820 af 26/06/2013 (BELTREP), named on the Danish Defence page. History: first adopted by MSC.63(67) annex 1 (in force 3 June 1997), amended by A.978(24) (1 July 2006) and MSC.230(82) (1 July 2007), then MSC.332(90) (1 July 2013)."
+}

@@ -1,0 +1,178 @@
+{
+  "id": "imo-greenpos",
+  "system": "GREENPOS",
+  "title": "Greenland ship reporting system GREENPOS (ships on voyage to and from Greenland)",
+  "country": "Denmark (Greenland)",
+  "authority": "Joint Arctic Command / JRCC Greenland, Nuuk (formerly Island Commander Greenland / MRCC Grønnedal)",
+  "kind": "mandatory-imo",
+  "resolution": "MSC.126(75)",
+  "status": "in effect",
+  "effective": "2002-12-01",
+  "applies_to": "All ships on voyage to or from Greenland ports and places of call, while within the continental shelf or exclusive economic zone of Greenland.",
+  "applies_quote": "Ships required to participate in the reporting system GREENPOS: All ships, on voyage to or from Greenland ports and places of call. (MSC.126(75), Annex, para 1.1)",
+  "when": [
+    {
+      "event": "entry",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "SP",
+      "text": "Sailing Plan (\"SP\") to be sent as a first report: a. When entering the reporting area (Appendix 1, para 5)"
+    },
+    {
+      "event": "departure",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "SP",
+      "text": "b. On last departure from Greenland port (Appendix 1, para 5)"
+    },
+    {
+      "event": "position",
+      "hours_before": null,
+      "interval_h": 6,
+      "report": "PR",
+      "text": "Position Report (\"PR\") to be sent 4 times a day: At 0000-0030Z, 0600-0630Z, 1200-1230Z and 1800-1830Z. (Appendix 1, para 6)"
+    },
+    {
+      "event": "deviation",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "DR",
+      "text": "Deviation Report (\"DR\") to be sent: When the position of the ship is or will be changed considerably compared with the position, at which the ship, based on former reports, is expected to be. (Appendix 1, para 8)"
+    },
+    {
+      "event": "final",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "FR",
+      "text": "Final Report (\"FR\") to be sent: a. When leaving the reporting area. b. On arrival at Greenland destination. (Appendix 1, para 7)"
+    }
+  ],
+  "how": [
+    {
+      "type": "email",
+      "value": "jrcc@jrcc.gl",
+      "to": "JRCC Greenland (Joint Arctic Command)",
+      "note": "Contact published by Danish Defence for JRCC Greenland (page updated 2021). The IMO text and the 2003 Order send GREENPOS reports to Island Command Greenland via Naval Radio Grønnedal (OVC/GLK), which has since moved to Joint Arctic Command in Nuuk; no official page found that names this address for GREENPOS reports. Confirm before use."
+    },
+    {
+      "type": "phone",
+      "value": "+ 299 36 40 10",
+      "to": "JRCC Greenland (Joint Arctic Command)",
+      "note": "As published by Danish Defence (2021)."
+    },
+    {
+      "type": "other",
+      "value": "via a Greenland coast radio station",
+      "to": "Joint Arctic Command",
+      "note": "The rules allow reports via a coast radio station (Appendix 1, para 2). The 2182 kHz watch at Grønnedal named in the 2002 and 2003 texts is not confirmed current."
+    }
+  ],
+  "addressee": "GLK GROENNEDAL (as in the 2002 IMO examples; now Joint Arctic Command)",
+  "heading": "GREENPOS - SP (or PR, FR, DR)",
+  "lines": [
+    {
+      "l": "A",
+      "req": "required",
+      "text": "Ship: name and call sign (e.g.: AGNETHE NIELSEN/OULH). All reports."
+    },
+    {
+      "l": "B",
+      "req": "required",
+      "text": "Date Time Group corresponding to the position under designator C or D, given in UTC: a 6-digit group followed by a Z (e.g.: 041330Z). All reports."
+    },
+    {
+      "l": "C",
+      "req": "required",
+      "text": "Position by latitude and longitude: a 4-digit group giving latitude in degrees and minutes suffixed with N, and a 5-digit group giving longitude in degrees and minutes suffixed with W (e.g.: 5710N 04112W). C or D for all reports."
+    },
+    {
+      "l": "D",
+      "req": "optional",
+      "text": "Position by geographical name of place: name of place or true bearing (3 digits) and distance in nautical miles (quote the word distance) from an unambiguous known name of place (e.g.: 165 distance 53 Cape Farewell). Instead of C."
+    },
+    {
+      "l": "E",
+      "req": "required",
+      "text": "True course: a 3-digit group (e.g.: 083). SP and PR."
+    },
+    {
+      "l": "F",
+      "req": "required",
+      "text": "Speed in knots: a 2-digit group (e.g.: 14). SP and PR."
+    },
+    {
+      "l": "I",
+      "req": "required",
+      "text": "Destination and ETA (UTC): name of the destination followed by expected time of arrival as under B (e.g.: Nanortalik 181400Z). SP."
+    },
+    {
+      "l": "L",
+      "req": "required",
+      "text": "Intended voyage: a brief description of the intended route, as estimated by the Master. SP (and DR)."
+    },
+    {
+      "l": "Q",
+      "req": "if-applicable",
+      "text": "Defects and deficiencies: brief details of defects and deficiencies of significance for the safety of the ship (e.g.: Breakdown on Radar and VHF)."
+    },
+    {
+      "l": "S",
+      "req": "required",
+      "text": "Weather and ice conditions: brief information about weather at the time of the report and about the ice situation since the last report (e.g.: SW 5, ice edge observed from 6120N03905W). All reports."
+    },
+    {
+      "l": "X",
+      "req": "required",
+      "text": "The total number of persons on board (e.g.: POB 16) and other relevant information of importance to the safety of own or other ships. SP."
+    }
+  ],
+  "format_note": "Each report begins with the word GREENPOS and a 2-letter type: SP sailing plan, PR position report, FR final report, DR deviation report; reports so prefixed are free of charge and carry priority URGENT. SP: A, B, C or D, E, F, I, L, S, X. PR: A, B, C or D, E, F, S. FR: A, B, C or D, S. DR: A, B, C or D and the changed items (example uses L). Times in UTC.",
+  "area": {
+    "shape": "eez",
+    "points": [],
+    "lines": [],
+    "center": null,
+    "radius_nm": null,
+    "state": "Greenland (Denmark)",
+    "zone": "Continental shelf or exclusive economic zone off the coast of Greenland",
+    "ports": [],
+    "inside_hint": {
+      "lat": 60.0,
+      "lon": -48.0
+    },
+    "bbox": [
+      -75.0,
+      58.0,
+      -10.0,
+      84.0
+    ]
+  },
+  "area_quote": "The reporting system GREENPOS covers the area within the Continental Shelf or Exclusive Economic Zone off the coast of Greenland. The reference charts are Danish charts Nos. 1000 (Datum Qornoq 1927), 2000 and 3000 (Datum unknown). (MSC.126(75), Annex, paras 2.1 and 2.2)",
+  "sources": [
+    {
+      "title": "IMO resolution MSC.126(75) Mandatory ship reporting systems (in Greenland waters: GREENPOS and COASTAL CONTROL)",
+      "ref": "Annex paras 1 to 9 and Appendix 1",
+      "date": "2002-05-20",
+      "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.126(75).pdf",
+      "primary": true
+    },
+    {
+      "title": "Danish Maritime Authority Order no. 170 of 17 March 2003 on ship reporting systems in the waters off Greenland (English translation; Danish text BEK nr 170 af 17/03/2003 shown in force on retsinformation.dk)",
+      "ref": "sections 1 to 6 and Annex 1",
+      "date": "2003-03-17",
+      "url": "https://www.dma.dk/Media/637792377868342154/Order%20on%20ship%20reporting%20systems%20in%20waters%20off%20Greenland%20(reporting%20service%20in%20Greenland).pdf",
+      "primary": true
+    },
+    {
+      "title": "Danish Defence, Joint Arctic Command, Search and Rescue Greenland (JRCC Greenland contact information)",
+      "ref": "JRCC contact information",
+      "date": "2021-05-04",
+      "url": "https://www.forsvaret.dk/en/organisation/joint-arctic-command/search-and-rescue-greenland/",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Who, area, report types, times and lines read from MSC.126(75) Annex and Appendix 1 (IMO PDF pages 2 to 9) and checked against the DMA Order no. 170 of 2003 Annex 1 (same content; retsinformation.dk lists the order in force). JRCC Greenland email and phone from the Danish Defence Joint Arctic Command web page (updated 4 May 2021). No IMO amendment to the Greenland system found in a scan of MSC resolutions 43 to 599.",
+  "confidence": "low",
+  "notes": "Rules (who, when, format): high confidence, unchanged since 2002/2003. Address: low confidence. The official texts still name Island Command Greenland / Naval Radio Grønnedal, which closed; the duties moved to Joint Arctic Command (Arktisk Kommando) in Nuuk, whose JRCC is responsible for GREENPOS. The email and phone given are JRCC Greenland's published contacts, not a published GREENPOS address. Confirm the current GREENPOS address (for example with JRCC Greenland or the Danish Maritime Authority) before the voyage. The area is Greenland's continental shelf or EEZ (no coordinates in the source). The second system in the same resolution, COASTAL CONTROL (KYSTKONTROL, ships of 20 GT and more and fishing vessels on voyages between Greenland ports, reports to the coast radio station of the destination area), is not in this record. Greenland lies outside geographical Europe, but is a Danish system: another record set may also list it."
+}

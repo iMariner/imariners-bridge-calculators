@@ -1,0 +1,137 @@
+{
+  "id": "cn-laotieshan-routeing",
+  "system": "China routeing system",
+  "title": "Laotieshan Channel ship routeing system (TSS and precautionary area), 2026",
+  "country": "China",
+  "authority": "China MSA (中华人民共和国海事局); Dalian VTS Centre for reports",
+  "kind": "mandatory-national",
+  "resolution": null,
+  "status": "in effect",
+  "effective": "2026-08-15",
+  "applies_to": "All ships using the routeing system, except in special circumstances (rules 2024: all ships except military ships).",
+  "applies_quote": "1）除特殊情况外，船舶应当使用定线制水域航行。 (实施细则第二条) 本细则适用于使用老铁山水道船舶定线制除军事船舶以外的一切船舶。",
+  "when": [
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Keep a listening watch on VHF 10 and 16 and follow the Dalian VTS rules. (在甚高频（VHF）10/16 频道守听，并遵守《中华人民共和国大连海事局船舶交通管理系统安全监督管理规定》的有关规定。)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Do not cross the traffic lanes. If crossing cannot be avoided, report to Dalian VTS in advance and cross only after permission. (不应穿越通航分道，如需穿越，必须提前向大连船舶交管中心报告，得到许可后，方可穿越。)"
+    },
+    {
+      "event": "other",
+      "hours_before": null,
+      "interval_h": null,
+      "report": null,
+      "text": "Overtaking only with the consent of the ship being overtaken. No anchoring, fishing or aquaculture in the routeing system and at its ends."
+    }
+  ],
+  "how": [
+    {
+      "type": "vhf",
+      "value": "CH 10",
+      "to": "大连交管中心 (Dalian VTS Centre)",
+      "note": "watch and reports"
+    },
+    {
+      "type": "vhf",
+      "value": "CH 16",
+      "to": "all ships",
+      "note": "watch"
+    }
+  ],
+  "addressee": "大连交管中心",
+  "heading": null,
+  "lines": [],
+  "format_note": "No report format of its own; reports are those of the Laotieshan reporting area (cn-laotieshan-reporting).",
+  "area": {
+    "shape": "polygon",
+    "points": [
+      {
+        "n": "N1",
+        "name": "north boundary, west end",
+        "lat": "38 36 42.00N",
+        "lon": "120 57 36.00E",
+        "inferred": false
+      },
+      {
+        "n": "N2",
+        "name": "north boundary, east end",
+        "lat": "38 32 12.00N",
+        "lon": "121 07 36.00E",
+        "inferred": false
+      },
+      {
+        "n": "S2",
+        "name": "south boundary, east end",
+        "lat": "38 27 12.00N",
+        "lon": "121 04 06.00E",
+        "inferred": false
+      },
+      {
+        "n": "S1",
+        "name": "south boundary, west end",
+        "lat": "38 31 54.00N",
+        "lon": "120 54 06.00E",
+        "inferred": false
+      }
+    ],
+    "lines": [],
+    "center": {
+      "n": "PA",
+      "name": "centre of precautionary area",
+      "lat": "38 36 24.00N",
+      "lon": "120 51 18.00E",
+      "inferred": false
+    },
+    "radius_nm": 5,
+    "state": null,
+    "zone": null,
+    "ports": [],
+    "inside_hint": {
+      "lat": 38.535,
+      "lon": 121.01
+    },
+    "bbox": [
+      120.7,
+      38.4,
+      121.2,
+      38.75
+    ]
+  },
+  "area_quote": "老铁山水道分道通航制北边界线为以下两点连线：38°36′42.00″N，120°57′36.00″E；38°32′12.00″N，121°07′36.00″E。老铁山水道分道通航制南边界线为以下两点连线：38°31′54.00″N，120°54′06.00″E；38°27′12.00″N，121°04′06.00″E。 ... 分隔线 38°34′18.00″N，120°55′54.00″E；38°29′48.00″N，121°05′54.00″E ... 分隔带宽度为1海里 ... 东行船舶通航分道 ... 宽度为2.25海里，长度为9海里，主交通流向为120°。西行 ... 300°。老铁山水道警戒区，为以38°36′24.00″N，120°51′18.00″E为圆心，5海里为半径的圆形水域。",
+  "sources": [
+    {
+      "title": "中华人民共和国海事局公告 2026年第7号: 辽宁沿海船舶定线制 (Ship's Routeing System for Liaoning Coastal Waters), in force 2026-08-15",
+      "ref": "Part VI 老铁山水道船舶定线制 (Laotieshan Channel), sections (二) and (三); English text pages 110-114",
+      "date": "2026-06-03",
+      "url": "https://www.msa.gov.cn/html/cnmsa/xxgk/article/2026/ba19edc5e37a43b19231d60d4fdc34cd.html",
+      "primary": true
+    },
+    {
+      "title": "老铁山水道船舶定线制实施细则, 辽宁海事局通告〔2024〕2号, in force 2024-07-07, valid 5 years",
+      "ref": "Art. 5, 7, 8",
+      "date": "2024-07-07",
+      "url": "https://www.mcrrc.top/bmgz/2469.html",
+      "primary": false
+    },
+    {
+      "title": "中华人民共和国大连船舶交通管理系统安全监督管理规则 (附 VTS服务指南（中国）（大连交管中心）), Liaoning MSA, in force 2022-05-01, valid 5 years",
+      "ref": "Rules art. 2, 4-10, 17; Guide parts 1 (VHF, areas), 2 (reports), 3 (pilots), 5 (anchorages), 6 (contacts)",
+      "date": "2022-05-01",
+      "url": "https://www.mcrrc.top/bmgz/jy/bhhs/zsjfg/lnhsj/636.html",
+      "primary": false
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "TSS points and rules from the official China MSA announcement No. 7 of 2026, attachment PDF (msa.gov.cn), Chinese and English text compared. Polygon = the north and south boundary lines joined at their ends; the precautionary area is the 5 NM circle in center/radius_nm (the record carries both). The separation zone corners (1 NM wide) are in the source and not repeated here.",
+  "confidence": "high",
+  "notes": "Eastbound lane (120 deg) is the south lane, westbound (300 deg) the north lane; each 2.25 NM wide, about 9 NM long. The 2022 Dalian VTS guide gives the south-east corner as 38 27 30N 121 04 06E; the 2026 routeing system prints 38 27 12.00N 121 04 06.00E, which is used here. Since 2026-08-15 the Laotieshan Channel is part of the 'Liaoning coastal routeing system', which also has routes from the Laotieshan Channel to the north Bohai (Yingkou, Panjin, Jinzhou), to the north-west Bohai and to the west Bohai, each with VHF 16 watch and the national 'one-off position report' rule. The Dasanshan Channel TSS (Dalian Bay approach, VHF 06/16) is part V of the same system and replaced the 1983 scheme."
+}

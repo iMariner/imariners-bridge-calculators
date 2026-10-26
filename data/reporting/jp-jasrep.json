@@ -1,0 +1,193 @@
+{
+  "id": "jp-jasrep",
+  "system": "JASREP",
+  "title": "JASREP Japanese Ship Reporting System",
+  "country": "Japan",
+  "authority": "Japan Coast Guard (海上保安庁), Operations Center",
+  "kind": "voluntary",
+  "resolution": null,
+  "status": "in effect",
+  "effective": null,
+  "applies_to": "Any ship of any tonnage, flag or type while in the service area. Participation is voluntary.",
+  "applies_quote": "Any ship regardless of tonnage, flag or type is welcome in the JASREP System as far as she is within the service area of the system. Participation is voluntary. (JASREP「日本の船位通報制度」は、広い海における任意の相互救助システムです。)",
+  "when": [
+    {
+      "event": "departure",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "SP",
+      "text": "Sailing Plan when the ship leaves a port inside the service area or enters the area; if sent after departure or entry, as soon as practicable."
+    },
+    {
+      "event": "position",
+      "hours_before": null,
+      "interval_h": 24,
+      "report": "PR",
+      "text": "First Position Report at any time within 24 hours of departure or entry, then no less often than every 24 hours until the Final Report; more often in heavy weather."
+    },
+    {
+      "event": "deviation",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "DR",
+      "text": "Deviation Report whenever the ship is 25 miles or more off the original track, the destination changes, or the sailing plan changes."
+    },
+    {
+      "event": "final",
+      "hours_before": null,
+      "interval_h": null,
+      "report": "FR",
+      "text": "Final Report before or on arrival at port, or when the ship leaves the service area."
+    }
+  ],
+  "how": [
+    {
+      "type": "email",
+      "value": "jasrep@jcgcomm.jp",
+      "to": "Japan Coast Guard",
+      "note": "subject line must read JASREP; this address takes reports only (since 1 Oct 2005)"
+    },
+    {
+      "type": "vhf",
+      "value": "156.6 MHz / 156.8 MHz",
+      "to": "Japan Coast Guard radio stations (e.g. MAIZURU COAST GUARD RADIO JNC, NIIGATA COAST GUARD RADIO JNV, MOJI COAST GUARD RADIO JNR, HOKKAIDO COAST GUARD RADIO JNL)",
+      "note": "printed as F3E 156.6MHz and 156.8MHz (VHF CH 12 and CH 16); MF: station receives F1B 2189.5 kHz (DSC), transmits F1B 2177 kHz (DSC) and J3E 2150 / 2394.5 kHz"
+    },
+    {
+      "type": "other",
+      "value": "HF NBDP / DSC via TOKYO COAST GUARD RADIO (MMSI 004310001)",
+      "to": "Japan Coast Guard",
+      "note": "frequencies listed on the JCG radio station page; HF 6, 18, 19 and 22 MHz were withdrawn from 1 Jan 2007 and more reductions were made on 1 Jul 2009"
+    },
+    {
+      "type": "telex",
+      "value": "720-222-5193 (answer back 2225193 JMSAHQJ)",
+      "to": "Operations Center of Japan Coast Guard",
+      "note": "as on the JCG radio station page; the 2009 manual prints 'Telex No 722225193 JMSAHQ J'. Probably obsolete; use e-mail."
+    },
+    {
+      "type": "phone",
+      "value": "03-3591-6361 ext. 5323",
+      "to": "JCG Operations Center (inquiries)",
+      "note": "from the 2009 user manual (ext. 5920 Search and Rescue Division); may be out of date"
+    }
+  ],
+  "addressee": null,
+  "heading": "JASREP/SP// (PR, DR or FR for the other reports); e-mail subject JASREP",
+  "lines": [
+    {
+      "l": "A",
+      "req": "required",
+      "text": "Ship name / identification signal (call sign)"
+    },
+    {
+      "l": "B",
+      "req": "required",
+      "text": "SP: time of departure; PR: date and time at the position (UTC, ddhhmmZ)"
+    },
+    {
+      "l": "C",
+      "req": "if-applicable",
+      "text": "PR: latitude / longitude (4 and 5 figures, e.g. 2511N / 12505E)"
+    },
+    {
+      "l": "E",
+      "req": "optional",
+      "text": "Current course (3 figures)"
+    },
+    {
+      "l": "F",
+      "req": "optional",
+      "text": "Estimated average speed (3 figures, knots and tenths)"
+    },
+    {
+      "l": "G",
+      "req": "if-applicable",
+      "text": "SP: port of departure / latitude / longitude"
+    },
+    {
+      "l": "I",
+      "req": "if-applicable",
+      "text": "SP: port of destination / latitude / longitude / ETA"
+    },
+    {
+      "l": "K",
+      "req": "if-applicable",
+      "text": "FR: port of arrival / latitude / longitude / time of arrival"
+    },
+    {
+      "l": "L",
+      "req": "if-applicable",
+      "text": "SP: route, at least 3 and at most 12 lines: GC or RL / average speed / latitude / longitude / ETA / landmark or sea area. When entering the area, the first line is the entry point and time."
+    },
+    {
+      "l": "M",
+      "req": "optional",
+      "text": "Current coastal radio station / next station"
+    },
+    {
+      "l": "V",
+      "req": "if-applicable",
+      "text": "SP: onboard medical resources MD, PA, NURSE or NONE"
+    },
+    {
+      "l": "X",
+      "req": "optional",
+      "text": "Up to 65 characters: next report time, cargo, INMARSAT number, DSC ID; 'OBS' if the ship sends weather reports to JMA (then PRs may be left out)"
+    },
+    {
+      "l": "Y",
+      "req": "if-applicable",
+      "text": "AMVER, if the ship also takes part in AMVER"
+    }
+  ],
+  "format_note": "Same letter scheme as AMVER and KOSREP. Times UTC, six figures plus Z. Reports to JCG stations are free of charge; other means at the ship's cost.",
+  "area": {
+    "shape": "lat_limit",
+    "points": [],
+    "lines": [],
+    "center": null,
+    "radius_nm": null,
+    "state": null,
+    "zone": "North of latitude 17N and west of longitude 165E (approximate; JCG manual: 'the sea enclosed by the parallel of latitude 17°N and the meridian of longitude 165°E')",
+    "ports": [],
+    "inside_hint": {
+      "lat": 38.0,
+      "lon": 134.0
+    },
+    "bbox": [
+      117,
+      17,
+      165,
+      52
+    ]
+  },
+  "area_quote": "JASREP Service Area is Latitude 17 degrees and northward and Longitude 165 degrees and westward. / The approximate service area covered by the JASREP System is the sea enclosed by the parallel of latitude 17°N and the meridian of longitude 165°E.",
+  "sources": [
+    {
+      "title": "JCG, JASREP English pages: Participation, Reports, Report by E-mail, Radio stations, Notice",
+      "ref": "participatation_en.html, report_en.html, email_en.html, radiostation1_en.html, info_en.files/notice_en.html",
+      "date": "2026-10-26",
+      "url": "https://www.kaiho.mlit.go.jp/info/jasrep/english/english.htm",
+      "primary": true
+    },
+    {
+      "title": "JCG, JASREP User's Manual for Ocean-going Ships",
+      "ref": "whole",
+      "date": "2009-09",
+      "url": "https://www.kaiho.mlit.go.jp/info/jasrep/manual.files/manual%5benglish%5d2009.pdf",
+      "primary": true
+    },
+    {
+      "title": "JCG, JASREP Japanese pages (top, e-mail)",
+      "ref": "index.htm, mail.html",
+      "date": "2026-10-26",
+      "url": "https://www.kaiho.mlit.go.jp/info/jasrep/index.htm",
+      "primary": true
+    }
+  ],
+  "checked": "2026-10-26",
+  "verification": "Web pages fetched from kaiho.mlit.go.jp on the check date; report formats from the 2009 English manual (PDF). E-mail address on both the English and Japanese pages.",
+  "confidence": "medium",
+  "notes": "JASREP started in 1985, right after the 1979 SAR Convention came into force. The JCG pages and manual are old (manual 2009; page notices 2005 to 2009); the e-mail route is still listed. The web page says JCG checks on a ship that misses its 24 hour report, the 2009 manual says 27 hours; either way, keep PRs within 24 h. The bbox and 'lat_limit' shape are only a map aid: the JCG gives the area as roughly north of 17N and west of 165E without west or north limits. The Sea of Japan crossing from Ulsan to Peter the Great Bay is inside it. A KOSREP report with JASREP on the Y line asks Korea to pass it to Japan as well (KOSREP form notes); a direct JASREP SP by e-mail is simplest."
+}
