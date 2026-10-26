@@ -3277,6 +3277,62 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
 (function () {
   "use strict";
 
+  /* Browsers without flexbox gap (Chrome and Edge before 84, early 84 builds): the gaps are given as margins instead, so the layout
+     looks as designed. In a row, each child after the first one shown gets a left margin of the gap; in a column, a top margin; in a
+     row that wraps, every child gets a right and bottom margin. A margin the page already sets (e.g. auto) is kept. Done again when
+     the page changes. Reads all styles first, then writes, so the browser works out the layout only once. */
+  function flexGapFallback() {
+    var css = document.createElement("style");
+    css.textContent = ".fg-l{margin-left:var(--fg-l)}.fg-t{margin-top:var(--fg-t)}.fg-r{margin-right:var(--fg-r)}.fg-b{margin-bottom:var(--fg-b)}.fg-a::before{margin-right:var(--fg-a)}";
+    document.head.appendChild(css);
+    var CLS = ["fg-l", "fg-t", "fg-r", "fg-b", "fg-a"], timer = null, obs = null;
+    function shown(cs) { return cs.display !== "none" && cs.position !== "absolute" && cs.position !== "fixed"; }
+    function run() {
+      timer = null;
+      var old = document.querySelectorAll(".fg-l, .fg-t, .fg-r, .fg-b, .fg-a"), i, j;
+      for (i = 0; i < old.length; i++) for (j = 0; j < 5; j++) old[i].classList.remove(CLS[j]);
+      var all = document.body.getElementsByTagName("*"), todo = [];
+      for (i = 0; i < all.length; i++) {
+        var box = all[i], cs = getComputedStyle(box); if (cs.display !== "flex" && cs.display !== "inline-flex") continue;
+        var cg = parseFloat(cs.columnGap) || 0, rg = parseFloat(cs.rowGap) || 0; if (!cg && !rg) continue;
+        if (cs.flexDirection.indexOf("reverse") > 0) continue;
+        var col = cs.flexDirection.indexOf("column") === 0, wrap = cs.flexWrap !== "nowrap" && !col, bf = getComputedStyle(box, "::before");
+        var first = true, items = [], n = box.childNodes, prev = null;
+        if (!col && cg && bf.content && bf.content !== "none" && bf.display !== "none" && bf.position !== "absolute" && box.firstChild) { if (parseFloat(bf.marginRight) === 0) todo.push([box, "fg-a", cg]); else first = false; }   /* a dot drawn before the text */
+        for (j = 0; j < n.length; j++) {                                           /* text between elements is a flex item too */
+          if (n[j].nodeType === 3) {                                                /* text cannot take a margin: the element before it takes it */
+            if (/\S/.test(n[j].nodeValue)) { if (wrap) items.push(null); else if (prev && !col && cg && parseFloat(prev[1].marginRight) === 0) todo.push([prev[0], "fg-r", cg]); first = false; prev = null; }
+            continue;
+          }
+          if (n[j].nodeType !== 1) continue;
+          var k = getComputedStyle(n[j]); if (!shown(k)) continue;
+          prev = [n[j], k];
+          if (wrap) items.push([n[j], k]);
+          else if (!first) { if (col) { if (rg && parseFloat(k.marginTop) === 0) todo.push([n[j], "fg-t", rg]); } else if (cg && parseFloat(k.marginLeft) === 0) todo.push([n[j], "fg-l", cg]); }
+          first = false;
+        }
+        if (wrap) {                                                                 /* right margin except at the end of a line, bottom margin except on the last line */
+          var tops = [], line = 0, bot = -1e9, last;                             /* line number of each item: a new line starts below the lowest item so far */
+          items.forEach(function (it) { if (!it) { tops.push(null); return; } var t = it[0].offsetTop, b = t + it[0].offsetHeight; if (bot > -1e9 && t >= bot - 1) { line++; bot = b; } else bot = Math.max(bot, b); tops.push(line); });
+          last = line;
+          for (j = 0; j < items.length; j++) {
+            var it = items[j]; if (!it) continue;
+            var nx = j + 1; while (nx < items.length && !items[nx]) nx++;
+            var endOfLine = nx >= items.length || tops[nx] !== tops[j];
+            if (cg && !endOfLine && parseFloat(it[1].marginRight) === 0) todo.push([it[0], "fg-r", cg]);
+            if (rg && tops[j] < last && parseFloat(it[1].marginBottom) === 0) todo.push([it[0], "fg-b", rg]);
+          }
+        }
+      }
+      for (i = 0; i < todo.length; i++) { todo[i][0].style.setProperty("--" + todo[i][1], todo[i][2] + "px"); todo[i][0].classList.add(todo[i][1]); }
+      if (obs) obs.takeRecords();                                                  /* our own class changes are not page changes */
+    }
+    function later() { if (!timer) timer = setTimeout(run, 100); }
+    run();
+    if (window.MutationObserver) { obs = new MutationObserver(later); obs.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ["hidden", "class"] }); }
+    window.addEventListener("hashchange", later); window.addEventListener("resize", later);
+  }
+
   /* Old-browser check: ships' PCs often never update. Anything from Chrome or Edge 84 (2020) on is fully supported. */
   (function () {
     var msg = "";
@@ -3286,7 +3342,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
       var a = document.createElement("div"), b = document.createElement("div"); a.style.width = "1px"; b.style.width = "1px"; f.appendChild(a); f.appendChild(b);
       document.body.appendChild(f); var gap = f.offsetWidth === 3; document.body.removeChild(f);
       if (!vars) msg = "This browser is too old to show these calculators correctly. Please update Microsoft Edge or Google Chrome (version 84 or newer), or open this file on another PC, then open it again.";
-      else if (!gap) msg = "This browser is a little old: everything works, but the layout will look cramped. Updating Microsoft Edge or Google Chrome (version 84 or newer) fixes it.";
+      else if (!gap) { try { flexGapFallback(); } catch (e2) { msg = "This browser is a little old: everything works, but the layout will look cramped. Updating Microsoft Edge or Google Chrome (version 84 or newer) fixes it."; } }
     } catch (e) { msg = "This browser is too old to show these calculators correctly. Please update Microsoft Edge or Google Chrome."; }
     if (msg) { var el = document.getElementById("oldbrowser"); el.textContent = msg; el.hidden = false; }
   })();
