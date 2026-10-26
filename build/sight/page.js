@@ -98,7 +98,8 @@
             if (r.kind === "star") { var na = el("span", "small muted", ""); refs.na = na; tk.appendChild(na); var lm0 = r.name === "Moon" || r.name === "Sun"; sl.hidden = !lm0; na.hidden = lm0; } LIMBS.forEach(function (x) { var o = el("option", "", x[1]); o.value = x[0]; sl.appendChild(o); }); sl.value = r.limb || "L"; sl.addEventListener("change", function () { r.limb = sl.value; save(); render(); }); tk.appendChild(sl); tr.appendChild(tk); refs.limb = sl; }
         }
         var tp = el("td", "w-dr");                                                     /* the officer's DR at this sight; empty: worked from the first DR, course and speed */
-        if (r.kind === "lat") tp.appendChild(el("span", "small muted", "not needed"));
+        if (r.kind === "lat") tp.appendChild(el("span", "small muted", "only for a latitude worked by hand"));
+        else if (i === 0) { var fx0 = el("span", "sf-dr1 mono"); fx0.title = "Change it in Ship and DR"; tp.appendChild(fx0); refs.dr1 = fx0; delete r.pos; }   /* row 1 is the DR in Ship and DR */
         else { var pi = el("input", "text-input"); pi.type = "text"; pi.maxLength = 40; pi.value = r.pos || ""; pi.placeholder = "e.g. 2122.1N 03757.1E"; pi.setAttribute("aria-label", "DR position at sight " + (i + 1)); pi.addEventListener("input", function () { r.pos = pi.value; save(); render(); });
           pi.addEventListener("blur", function () { var g = parsePos(pi.value); if (pi.value && !g.error) { pi.value = Geo.lat(g.lat) + " " + Geo.lon(g.lon); r.pos = pi.value; save(); render(); } });   /* tidy what was typed */ tp.appendChild(pi); refs.pos = pi; }
         tr.appendChild(tp);
@@ -136,6 +137,7 @@
       var dr0 = ok && first !== null ? { lat: lat0, lon: lon0, ms: base + (first - v.zone * 3600) * 1000, course: v.course || 0, speed: v.speed || 0 } : null;
       var ic = ($("sf-ie-on").checked ? -1 : 1) * (v.ie || 0);
       rowRefs.forEach(function (rf, i) {
+        if (rf.dr1) rf.dr1.textContent = ok ? Geo.lat(lat0) + " " + Geo.lon(lon0) : "from Ship and DR";
         if (!rf.exp) return; var r = rf.r, name = r.kind === "sun" ? "Sun" : r.name, sec = secs[i]; rf.exp.className = "sf-expect"; rf.exp.textContent = "";
         if (dr0 && name && sec === null) { rf.exp.textContent = "type the time to see what the sextant should read"; return; }
         if (!dr0 || !name || sec === null) return;
@@ -196,7 +198,7 @@
         else { d = num(r.hd); m = r.hm === "" ? 0 : num(r.hm); if (isNaN(d) || isNaN(m) || d < 0 || d > 90 || m < 0 || m >= 60) { bad.push("Row " + (i + 1) + ": check the sextant altitude (degrees 0 to 90, minutes under 60)."); return; } val = d + m / 60; }
         if (prev !== null && sec < prev - 12 * 3600) add += 86400; prev = sec;
         var item = { name: name, secLocal: sec, dayAdd: add, rf: rf };
-        if (r.kind !== "lat" && r.pos && String(r.pos).trim()) { var gp = parsePos(r.pos); if (gp.error || Math.abs(gp.lat) > 84) { bad.push("Row " + (i + 1) + ": DR position not understood (" + (gp.error || "latitude above 84") + "). For example 2122.1N 03757.1E or 21 22.1N 037 57.1E."); return; } item.dr = { lat: gp.lat, lon: gp.lon }; }
+        if (r.kind !== "lat" && !rf.dr1 && r.pos && String(r.pos).trim()) { var gp = parsePos(r.pos); if (gp.error || Math.abs(gp.lat) > 84) { bad.push("Row " + (i + 1) + ": DR position not understood (" + (gp.error || "latitude above 84") + "). For example 2122.1N 03757.1E or 21 22.1N 037 57.1E."); return; } item.dr = { lat: gp.lat, lon: gp.lon }; }
         if (r.kind === "lat") item.lat = val; else { item.hs = val; item.limb = r.limb || "L"; }
         out.push(item);
       });
@@ -221,7 +223,7 @@
       if (v.gps) inp.gps = v.gps;
       if ($("sf-ap-first").checked) inp.apMode = "first";
       if (fixMs !== null) inp.fixMs = fixMs;
-      rr.rows.forEach(function (s, k) { if (s.rf.pos) { var q = SightFix.drAt(inp.dr, sights[k].ms); s.rf.pos.placeholder = Geo.lat(q.lat) + " " + Geo.lon(q.lon); } });     /* show the worked DR in grey */
+      rr.rows.forEach(function (s, k) { if (s.rf.dr1) { var q1 = SightFix.drAt(inp.dr, sights[k].ms); s.rf.dr1.textContent = Geo.lat(q1.lat) + " " + Geo.lon(q1.lon); } if (s.rf.pos) { var q = SightFix.drAt(inp.dr, sights[k].ms); s.rf.pos.placeholder = Geo.lat(q.lat) + " " + Geo.lon(q.lon); } });     /* show the worked DR in grey */
       if (one && sights[0].dr) { inp.dr.lat = sights[0].dr.lat; inp.dr.lon = sights[0].dr.lon; }
       var r = one ? SightFix.single(inp) : SightFix.fix(inp);
       if (r.error) { $("sf-out").hidden = true; $("sf-sheet").classList.add("no-print"); $("sf-empty").hidden = false; $("sf-empty").className = "callout warn u-mt-0"; $("sf-empty").textContent = r.error + (/does not fit/.test($("sf-zone-msg").textContent) ? " Also: " + $("sf-zone-msg").textContent : ""); last = null; return; }
@@ -255,24 +257,27 @@
     }
     /* the key under the diagram: a sample of each line and what it means; "Clean" leaves only the final lines and the fix */
     var PKEY = {
-      lop: ['<line class="sp-lop" x1="2" y1="7" x2="40" y2="7"/>', "Position line carried to the fix time"],
-      lop0: ['<line class="sp-lop0" x1="2" y1="7" x2="40" y2="7"/>', "Position line at the time of the sight"],
-      icpt: ['<line class="sp-icpt" x1="2" y1="7" x2="40" y2="7"/>', "Intercept from the assumed position (T towards the body, A away)"],
-      azl: ['<line class="sp-azl" x1="2" y1="7" x2="34" y2="7"/><path class="sp-arrow" d="M34 3 L40 7 L34 11 z"/>', "Azimuth: the direction of the body"],
-      rt: ['<line class="sp-icpt" x1="20" y1="13" x2="20" y2="1"/><line class="sp-lop0" x1="2" y1="7" x2="40" y2="7"/><path class="sp-rt" d="M20 7 L26 7 L26 1"/>', "90°: the position line is square to the azimuth at the intercept"],
+      lop: ['<line class="sp-lop sp-c0" x1="2" y1="7" x2="40" y2="7"/><path class="sp-head sp-c0" d="M41 7 L31 2.5 L31 11.5 z"/><path class="sp-head sp-c0" d="M1 7 L11 2.5 L11 11.5 z"/><path class="sp-head sp-c0" d="M33 7 L23 2.5 L23 11.5 z"/><path class="sp-head sp-c0" d="M9 7 L19 2.5 L19 11.5 z"/>', "Transferred position line, two arrowheads: moved by the run to the fix time"],
+      lop1: ['<line class="sp-lop sp-c0" x1="2" y1="7" x2="40" y2="7"/><path class="sp-head sp-c0" d="M41 7 L31 2.5 L31 11.5 z"/><path class="sp-head sp-c0" d="M1 7 L11 2.5 L11 11.5 z"/>', "Position line, one arrowhead each end (number, body, time, direction)"],
+      lop0: ['<line class="sp-lop0 sp-c0" x1="2" y1="7" x2="40" y2="7"/><path class="sp-head sp-c0" d="M41 7 L31 2.5 L31 11.5 z"/><path class="sp-head sp-c0" d="M1 7 L11 2.5 L11 11.5 z"/>', "Position line at the time of the sight (dashed, one arrowhead)"],
+      icpt: ['<line class="sp-icpt sp-c0" x1="2" y1="7" x2="40" y2="7"/>', "Intercept from the assumed position (T towards the body, A away)"],
+      azl: ['<line class="sp-azl sp-c0" x1="2" y1="7" x2="32" y2="7"/><path class="sp-head sp-c0" d="M41 7 L31 2.5 L31 11.5 z"/>', "Azimuth Zn: the direction of the body"],
+      trk: ['<line class="sp-track" x1="2" y1="7" x2="40" y2="7"/><path class="sp-head sp-trk" d="M30 7 L20 2.5 L20 11.5 z"/><path class="sp-head sp-trk" d="M22 7 L12 2.5 L12 11.5 z"/>', "Ship's run between the sights (ground track, two arrowheads)"],
+      rt: ['<line class="sp-icpt sp-c0" x1="20" y1="13" x2="20" y2="1"/><line class="sp-lop0 sp-c0" x1="2" y1="7" x2="40" y2="7"/><path class="sp-rt" d="M20 7 L26 7 L26 1"/>', "90°: the position line is square to the azimuth at the intercept"],
       ap: ['<circle class="sp-ap" cx="21" cy="7" r="4"/>', "Assumed position: your DR at that sight (numbered 1, 2, 3 ...)"],
       dr: ['<circle class="sp-dr" cx="21" cy="7" r="4"/>', "DR at the fix time"],
       fix: ['<circle class="sp-fixring" cx="21" cy="7" r="6"/><circle class="sp-fixdot" cx="21" cy="7" r="2"/>', "Fix"],
       hat: ['<rect class="sp-hat" x="6" y="1" width="30" height="12"/>', "Cocked hat: where the lines cross"],
+      rose: ['<circle class="sp-rosering" cx="21" cy="7" r="6"/><line class="sp-spoke sp-c0" x1="21" y1="7" x2="25" y2="3"/>', "Compass rose: the azimuth of each sight, by its number; each sight has its own colour"],
       mark: ['<path class="sp-mark" d="M21 1 L27 7 L21 13 L15 7 z"/>', "Longitude by chronometer (or latitude) point"],
       itp: ['<circle class="sp-fixdot" cx="21" cy="7" r="3"/>', "Intercept terminal point (ITP)"]
     };
     function plotKey(single) {
-      var clean = $("sf-pm-clean").checked, keys = single ? ["lop", "icpt", "azl", "itp", "mark", "ap"] : clean ? ["lop", "fix", "dr", "hat"] : ["lop", "lop0", "icpt", "azl", "rt", "ap", "dr", "fix", "hat"];
+      var clean = $("sf-pm-clean").checked, keys = single ? ["lop1", "icpt", "azl", "itp", "mark", "rose"] : clean ? ["lop", "lop1", "fix", "dr", "hat"] : ["lop", "lop0", "lop1", "trk", "icpt", "azl", "rt", "ap", "dr", "fix", "hat", "rose"];
       var box = $("sf-key"); box.innerHTML = keys.map(function (k) { return '<span class="sf-keyitem"><svg class="sf-keyicon" viewBox="0 0 42 14" aria-hidden="true">' + PKEY[k][0] + '</svg>' + PKEY[k][1] + '</span>'; }).join("");
       $("sf-legend").textContent = single ? "The position line runs at 90° to the azimuth through the ITP." : clean ? "Only the final position lines, the cocked hat and the fix: what you copy into the sight book once the working is checked." :
-        "How it is plotted by hand: from each assumed position lay off the intercept along the azimuth (towards or away), then draw the position line at 90° through its end (the red line and the dashed line make a T). Move each line by the ship's run to the fix time (solid line). The fix is where the solid lines meet.";
-      $("sf-ps-key").textContent = keys.map(function (k) { return { lop: "solid: position line at the fix time", lop0: "dashed: position line at the sight", icpt: "red: intercept", azl: "dotted arrow: azimuth", rt: "small square: 90°", ap: "circle: assumed position", dr: "dot: DR", fix: "ring: fix", hat: "shaded: cocked hat", mark: "diamond: long. by chron", itp: "dot: ITP" }[k]; }).join(" · ");
+        "How it is plotted by hand, with a protractor: from each assumed position draw the azimuth Zn (dotted, arrow towards the body) and lay off the intercept along it (heavy line, towards or away), then draw the position line at 90° through its end (dashed, one arrowhead each end). Move each line by the ship's run to the fix time: the transferred position line (solid, two arrowheads each end). The fix is where the solid lines meet. Each sight has its own colour and number; the compass rose shows its Zn.";
+      $("sf-ps-key").textContent = keys.map(function (k) { return { lop: "two arrowheads: transferred position line", lop1: "one arrowhead: position line", lop0: "dashed: position line at the sight", trk: "grey, two arrowheads mid-line: ship's run (ground track)", icpt: "heavy: intercept (T towards, A away)", azl: "dotted with arrowhead: azimuth Zn", rt: "small square: 90°", ap: "circle: assumed position", dr: "dot: DR", fix: "ring: fix", hat: "shaded: cocked hat", rose: "rose: Zn of each sight by number", mark: "diamond: long. by chron", itp: "dot: ITP" }[k]; }).join(" · ");
     }
     function labels(t) { ["sf-l1", "sf-l2", "sf-l3", "sf-l4"].forEach(function (id, i) { $(id).textContent = t[i]; }); }
     function showLine(r, v) {                                                      /* one sight: position line and longitude by chronometer */
@@ -285,17 +290,17 @@
       $("sf-f-set").textContent = byLat ? Geo.lat(r.latChron) : r.lonChron === null ? "—" : Geo.lon(r.lonChron);
       $("sf-f-set-sub").textContent = byLat ? "on the DR longitude " + Geo.lon(s.ap.lon) + " (the body bears near " + (Math.cos(s.zn * Math.PI / 180) > 0 ? "north" : "south") + ")" : r.lonChron === null ? "not usable for this bearing" : "on the DR latitude " + Geo.lat(s.ap.lat);
       $("sf-f-q").textContent = p3(r.lop[0]) + "° / " + p3(r.lop[1]) + "°"; $("sf-f-q-sub").textContent = "through the ITP " + Geo.lat(r.itp.lat) + " " + Geo.lon(r.itp.lon);
-      sightsTable($("sf-tbl"), r, v); $("sf-plotbox").hidden = false; $("sf-plot").innerHTML = linePlot(r, 720, 540, "sfc1"); plotKey(true);
+      sightsTable($("sf-tbl"), r, v); $("sf-plotbox").hidden = false; $("sf-plot").innerHTML = linePlot(r, 720, 620, "sfc1", v.zone); plotKey(true);
       $("sf-log").textContent = s.name + " position line " + localOf(r.time, v.zone) + " LT (" + utText(r.time) + " UT): intercept " + Math.abs(s.a).toFixed(1) + "' " + (s.a >= 0 ? "toward" : "away") + ", Zn " + s.zn.toFixed(1) + "°, ITP " + Geo.lat(r.itp.lat) + " " + Geo.lon(r.itp.lon) + ", line " + p3(r.lop[0]) + "°/" + p3(r.lop[1]) + "°" + (byLat ? " | latitude " + Geo.lat(r.latChron) + " on DR long " + Geo.lon(s.ap.lon) : r.lonChron === null ? "" : " | longitude by chronometer " + Geo.lon(r.lonChron) + " on DR lat " + Geo.lat(s.ap.lat));
       work($("sf-work-tbl"), r, v); sheetLine(r, v);
     }
     function dsp(s) {                                                              /* figures as in the Almanac working (the Moon: geocentric Hc, parallax added to Ho) */
       return s.kind === "moon" ? { ho: s.ho + s.pa / 60, hc: s.hcGeo, lha: s.lhaGeo } : { ho: s.ho, hc: s.hc, lha: s.lha };
     }
-    function linePlot(r, W, H, id) {                                               /* the one position line drawn through its ITP */
+    function linePlot(r, W, H, id, zone) {                                               /* the one position line drawn through its ITP */
       var s = r.sights[0], c = {}, k; for (k in s) c[k] = s[k]; c.hcFix = s.ho;
       var mark = r.lonChron !== null ? { lat: s.ap.lat, lon: r.lonChron, label: "Long. by chron " + Geo.lon(r.lonChron) } : r.latChron !== undefined ? { lat: r.latChron, lon: s.ap.lon, label: "Lat. " + Geo.lat(r.latChron) } : null;
-      return SightPlot.build({ fix: r.itp, time: r.time, sights: [c] }, { dr: { lat: s.ap.lat, lon: s.ap.lon, ms: r.time, course: 0, speed: 0 } }, W, H, id, { single: true, mark: mark });
+      return SightPlot.build({ fix: r.itp, time: r.time, sights: [c] }, { dr: { lat: s.ap.lat, lon: s.ap.lon, ms: r.time, course: 0, speed: 0 } }, W, H, id, { single: true, mark: mark, zone: zone });
     }
     function methodText(r) {                                                       /* "Running fix by Sun", "Fix by stars", or the bodies by name */
       var nm = r.sights.filter(function (s) { return s.name !== "Latitude"; }).map(function (s) { return s.name; }), lat = nm.length < r.sights.length ? " and latitude" : "";
@@ -318,9 +323,10 @@
     }
     function sheet(r, v) {
       var sh = Ships.active(), i = last.inp, ic = i.ic;
-      var po = { clean: $("sf-pm-clean").checked };
-      $("sf-plot").innerHTML = SightPlot.build(r, i, 720, 540, "sfc1", po);
-      $("sf-ps-plot").innerHTML = SightPlot.build(r, i, 760, 300, "sfc2", po);
+      var po = { clean: $("sf-pm-clean").checked, zone: v.zone };
+      $("sf-plot").innerHTML = SightPlot.build(r, i, 720, 620, "sfc1", po);
+      $("sf-ps-plot").innerHTML = SightPlot.build(r, i, 760, 990, "sfc2", po);
+      $("sf-ps-phead").textContent = (sh ? sh.name + " · " : "") + p2(v.date.d) + "/" + p2(v.date.m) + "/" + v.date.y + " · fix " + Geo.lat(r.fix.lat) + " " + Geo.lon(r.fix.lon) + " at " + localOf(r.time, v.zone) + " ship's time";
       fillCells($("sf-ps-info"), [["Ship", sh ? sh.name : "—"], ["IMO number", sh && sh.imo ? sh.imo : "—"], ["Date (ship's time)", p2(v.date.d) + "/" + p2(v.date.m) + "/" + v.date.y], ["Time zone", (v.zone >= 0 ? "UTC +" : "UTC −") + Math.abs(v.zone) + " h"],
         ["DR at first sight", Geo.lat(i.dr.lat) + " " + Geo.lon(i.dr.lon), 2], ["Course / speed", Math.round(v.course) + "° / " + v.speed + " kn"], ["Height of eye", v.hoe + " m"],
         ["Index error", (ic === 0 ? "nil" : Math.abs(ic).toFixed(1) + "' " + (ic < 0 ? "on" : "off") + " the arc")], ["Temp / pressure", i.temp + " °C / " + i.pres + " hPa"], ["Method", (methodText(r) + apNote()), 2]]);
@@ -334,7 +340,8 @@
     }
     function sheetLine(r, v) {
       var sh = Ships.active(), i = last.inp, ic = i.ic, s = r.sights[0];
-      $("sf-ps-plot").innerHTML = linePlot(r, 760, 300, "sfc2"); $("sf-ps-plot").style.display = "";
+      $("sf-ps-plot").innerHTML = linePlot(r, 760, 990, "sfc2", v.zone); $("sf-ps-plot").style.display = "";
+      $("sf-ps-phead").textContent = (sh ? sh.name + " · " : "") + p2(v.date.d) + "/" + p2(v.date.m) + "/" + v.date.y + " · " + s.name + " position line at " + localOf(r.time, v.zone) + " ship's time";
       fillCells($("sf-ps-info"), [["Ship", sh ? sh.name : "—"], ["IMO number", sh && sh.imo ? sh.imo : "—"], ["Date (ship's time)", p2(v.date.d) + "/" + p2(v.date.m) + "/" + v.date.y], ["Time zone", (v.zone >= 0 ? "UTC +" : "UTC −") + Math.abs(v.zone) + " h"],
         ["DR at the sight", Geo.lat(i.dr.lat) + " " + Geo.lon(i.dr.lon), 2], ["Height of eye", v.hoe + " m"], ["Index error", (ic === 0 ? "nil" : Math.abs(ic).toFixed(1) + "' " + (ic < 0 ? "on" : "off") + " the arc")],
         ["Temp / pressure", i.temp + " °C / " + i.pres + " hPa"], ["Method", r.lonChron === null && r.latChron !== undefined ? "Position line and latitude" + (s.name === "Polaris" ? " by Pole Star" : "") : "Position line and longitude by chronometer", 3]]);
@@ -488,8 +495,8 @@
       set("sf-hoe", String(EX.hoe)); set("sf-ie", String(EX.ie)); $("sf-ie-off").checked = true; set("sf-temp", String(EX.temp)); set("sf-pres", String(EX.pres));
       set("sf-fixat", m === "noon" ? "12:00" : ""); st.fixAuto = m === "noon"; st.tw = ""; set("sf-starsat", m === "stars" || m === "polaris" ? X.sights[0].time.slice(0, 5) : "");
       st.rows = st.rows || {};
-      if (mode === "sun") st.rows.sun = X.sights.map(function (s) { return { kind: "sun", name: "Sun", time: s.time, hd: s.hd, hm: s.hm, limb: s.limb, pos: s.pos }; }).concat(X.sights.length < 2 ? [{ kind: "sun", name: "Sun", time: "", hd: "", hm: "", limb: "L" }] : []).concat([{ kind: "lat", time: "", ld: "", lm: "", ns: "N" }]);
-      else { var rows = X.sights.map(function (s) { return { kind: "star", name: s.name, time: s.time, hd: s.hd, hm: s.hm, limb: s.limb, pos: s.pos }; }); while (rows.length < 4) rows.push({ kind: "star", name: "", time: "", hd: "", hm: "", limb: "L" }); st.rows.stars = rows; }
+      if (mode === "sun") st.rows.sun = X.sights.map(function (s) { return { kind: "sun", name: "Sun", time: s.time, hd: s.hd, hm: s.hm, limb: s.limb }; }).concat(X.sights.length < 2 ? [{ kind: "sun", name: "Sun", time: "", hd: "", hm: "", limb: "L" }] : []).concat([{ kind: "lat", time: "", ld: "", lm: "", ns: "N" }]);
+      else { var rows = X.sights.map(function (s) { return { kind: "star", name: s.name, time: s.time, hd: s.hd, hm: s.hm, limb: s.limb }; }); while (rows.length < 4) rows.push({ kind: "star", name: "", time: "", hd: "", hm: "", limb: "L" }); st.rows.stars = rows; }
       shipEdited = false; build(); save(); if (st.ship) { if (prior) st.ship[key] = prior; else delete st.ship[key]; store.set(KEY, st); } render();
       toast("Example: sights made from a known true position (the ship was 3' N and 4' W of her DR). Every box is filled, so you can see what goes where.");
     }

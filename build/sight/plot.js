@@ -1,6 +1,6 @@
   /* SIGHTPLOT-BEGIN */
   /* The plotting sheet: DR track, each line of position (dashed where the sight was taken, solid carried to the fix time),
-     the fix, GPS, scale bar, north arrow, latitude and longitude ticks. Returns SVG markup. Needs SightFix. */
+     the fix, GPS, scale bar, compass rose, latitude and longitude ticks. Returns SVG markup. Needs SightFix. */
   var SightPlot = (function () {
     var R = Math.PI / 180, NICE = [0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 30, 60, 120, 300, 600];
     function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;"); }
@@ -81,66 +81,126 @@
         var hat = [], okh = true; for (k = 0; k < adv.length; k++) { var m = meet(adv[k], adv[(k + 1) % adv.length]); if (!m) { okh = false; break; } hat.push(m); }
         if (okh) o.push('<polygon class="sp-hat" points="' + hat.map(function (p) { return f1(X(p.x)) + "," + f1(Y(p.y)); }).join(" ") + '"/>');
       }
-      /* DR track and APs */
+      /* drawn the chartwork way (Admiralty practice): a position line has one arrowhead at each end, a transferred position line
+         two, the ship's run (ground track) two arrowheads along it. Each line carries its number, body, time and direction, each
+         azimuth its Zn, each intercept its length; a compass rose shows the azimuth of every body. opt.zone gives ship's time. */
+      var zone = opt.zone === undefined || opt.zone === null ? 0 : opt.zone, labels = [], fixed = [];
+      function hm(ms) { var t = Math.round(ms / 60000 + zone * 60), m = ((t % 1440) + 1440) % 1440; return ("0" + Math.floor(m / 60)).slice(-2) + ("0" + (m % 60)).slice(-2); }
+      function p3(d) { d = ((Math.round(d) % 360) + 360) % 360; return ("00" + d).slice(-3); }
+      function heads(x, y, ux, uy, n, col) {                                        /* n arrowheads, tip at x, y, pointing along ux, uy (screen) */
+        var s = "";
+        for (var h = 0; h < n; h++) { var tx = x - ux * h * 8, ty = y - uy * h * 8, bx = tx - ux * 10, by = ty - uy * 10;
+          s += '<path class="sp-head ' + col + '" d="M' + f1(tx) + ' ' + f1(ty) + ' L' + f1(bx - uy * 4.5) + ' ' + f1(by + ux * 4.5) + ' L' + f1(bx + uy * 4.5) + ' ' + f1(by - ux * 4.5) + ' z"/>'; }
+        return s;
+      }
+      function across(p, l, cls, col, n) {                                          /* the line through p across the view, n arrowheads at each end */
+        var px = X(p.x), py = Y(p.y), ddx = l.dx * sc, ddy = -l.dy * sc, c = clip(px, py, ddx, ddy, left + 4, top + 4, right - 4, bottom - 4);
+        if (!c) return null;
+        var ax = px + ddx * c[0], ay = py + ddy * c[0], bx = px + ddx * c[1], by = py + ddy * c[1], ln = Math.hypot(bx - ax, by - ay); if (ln < 1) return null;
+        var ux = (bx - ax) / ln, uy = (by - ay) / ln;
+        o.push('<line class="' + cls + ' ' + col + '" x1="' + f1(ax) + '" y1="' + f1(ay) + '" x2="' + f1(bx) + '" y2="' + f1(by) + '"/>');
+        if (n) o.push(heads(bx, by, ux, uy, n, col) + heads(ax, ay, -ux, -uy, n, col));
+        return { x: px, y: py, dx: ddx, dy: ddy, t0: c[0], t1: c[1] };
+      }
+      function clash(b) { return labels.concat(fixed).some(function (o) { return !(b[2] < o.b[0] || b[0] > o.b[2] || b[3] < o.b[1] || b[1] > o.b[3]); }); }
+      function box(x, y, end, txt) { var w = txt.length * 6.7 + 4, bx = end === "start" ? x : end === "end" ? x - w : x - w / 2; return [bx, y - 16, bx + w, y - 1]; }
+      function along(g, txt, cls, fr) {                                             /* a label on a line: try spots along it until it clashes with no other */
+        if (!g) return; var best = null;
+        for (var q = 0; q < fr.length; q++) {
+          var t = g.t0 + fr[q] * (g.t1 - g.t0) * 0.86 + 0.07 * (g.t1 - g.t0), lx = g.x + g.dx * t, ly = g.y + g.dy * t, end = lx < (left + right) / 2 ? "start" : "end";
+          var cand = { x: lx + (end === "start" ? 4 : -4), y: ly, end: end, txt: txt, cls: cls }; cand.b = box(cand.x, ly, end, txt);
+          if (cand.b[0] < left || cand.b[2] > right || cand.b[1] < top) continue;
+          if (!best) best = cand; if (!clash(cand.b)) { best = cand; break; }
+        }
+        if (best) labels.push(best);
+      }
+      function at(x, y, end, txt, cls) {                                            /* a label at a point, kept inside the frame */
+        var b = { x: x, y: Math.min(Math.max(y, top + 16), bottom - 3), end: end, txt: txt, cls: cls }; b.b = box(b.x, b.y, end, txt);
+        if (b.b[2] > right - 3) { b.end = "end"; b.x = Math.min(x, right - 3); } else if (b.b[0] < left + 3) { b.end = "start"; b.x = Math.max(x, left + 3); }
+        b.b = box(b.x, b.y, b.end, txt); fixed.push(b);
+      }
+      /* the compass rose goes in the emptiest corner (scale bar bottom right) */
+      var rr = Math.max(44, Math.min(aw, ah) * 0.12), rose = null, rbest = 1e9;
+      [[left + rr + 34, top + rr + 22], [right - rr - 34, top + rr + 22], [left + rr + 34, bottom - rr - 22]].forEach(function (cd) {
+        var sco = 0;
+        pts.forEach(function (p) { if (Math.hypot(X(p.x) - cd[0], Y(p.y) - cd[1]) < rr + 14) sco += 3; });
+        L.forEach(function (l) { var qx = X(l.f1.x) - cd[0], qy = Y(l.f1.y) - cd[1]; if (Math.abs(qx * -l.dy - qy * l.dx) < rr + 6) sco++; });
+        if (sco < rbest) { rbest = sco; rose = cd; }
+      });
+      if (opt.rose === false) rose = null;
+      if (rose) fixed.push({ b: [rose[0] - rr - 30, rose[1] - rr - 18, rose[0] + rr + 30, rose[1] + rr + 18] });
+      /* ship's run between the sights: the ground track, two arrowheads */
       var runNM = Math.hypot(dF.x - L[0].ap.x, dF.y - L[0].ap.y), first = L[0].ap;
       var tmin = L[0].s.ms; for (k = 1; k < L.length; k++) if (L[k].s.ms < tmin) { tmin = L[k].s.ms; first = L[k].ap; }
-      if (runNM > 0.3 && !opt.clean) o.push('<line class="sp-track" x1="' + f1(X(first.x)) + '" y1="' + f1(Y(first.y)) + '" x2="' + f1(X(dF.x)) + '" y2="' + f1(Y(dF.y)) + '"/>');
-      /* lines */
-      var labels = [];
+      runNM = Math.hypot(dF.x - first.x, dF.y - first.y);
+      var trackG = null;
+      if (runNM > 0.3 && !opt.clean) {
+        var t0x = X(first.x), t0y = Y(first.y), t1x = X(dF.x), t1y = Y(dF.y), tl = Math.hypot(t1x - t0x, t1y - t0y);
+        o.push('<line class="sp-track" x1="' + f1(t0x) + '" y1="' + f1(t0y) + '" x2="' + f1(t1x) + '" y2="' + f1(t1y) + '"/>');
+        if (tl > 40) { var tux = (t1x - t0x) / tl, tuy = (t1y - t0y) / tl; o.push(heads(t0x + tux * (tl * 0.5 + 9), t0y + tuy * (tl * 0.5 + 9), tux, tuy, 2, "sp-trk")); }
+        trackG = { x: t0x, y: t0y, dx: t1x - t0x, dy: t1y - t0y, t0: 0, t1: 1, txt: "Run " + p3(Math.atan2(dF.x - first.x, dF.y - first.y) / R) + "° " + f1(runNM) + " NM" };
+      }
+      /* fixed labels first, so the line labels keep clear of them */
+      if (gps) at(X(gps.x) + 9, Y(gps.y) + 4, "start", "GPS", "sp-lab");
+      at(X(0) + 11, Y(0) - 9, "start", opt.single ? "ITP" : "FIX " + hm(r.time), "sp-lab sp-fixlab");
+      if (mk) at(X(mk.x) + 10, Y(mk.y) + 16, "start", opt.mark.label, "sp-lab");
+      if (!opt.single) at(X(dF.x) + 7, Y(dF.y) + 15, "start", "DR " + hm(r.time), "sp-lab sp-drlab");
+      var fin = [], before = [];
       L.forEach(function (l, i) {
-        var big = (vx1 - vx0 + vy1 - vy0) * 2, dxp = l.dx * sc, dyp = -l.dy * sc;
-        function seg(p, cls) { o.push('<line class="' + cls + '" x1="' + f1(X(p.x - l.dx * big)) + '" y1="' + f1(Y(p.y - l.dy * big)) + '" x2="' + f1(X(p.x + l.dx * big)) + '" y2="' + f1(Y(p.y + l.dy * big)) + '"/>'); }
-        if (runNM > 0.3 && !opt.clean) seg(l.f0, "sp-lop0");
-        if (!opt.single && !opt.clean && l.s.name !== "Latitude") {                                 /* the construction: azimuth from the AP, intercept, right angle */
-          var zr = l.s.zn * R, ux = Math.sin(zr), uy = Math.cos(zr), len = Math.max(Math.abs(l.s.a) + 10 / sc, 26 / sc);
-          o.push('<line class="sp-azl" x1="' + f1(X(l.ap.x)) + '" y1="' + f1(Y(l.ap.y)) + '" x2="' + f1(X(l.ap.x + ux * len)) + '" y2="' + f1(Y(l.ap.y + uy * len)) + '" marker-end="url(#' + id + 'a)"/>');
-          o.push('<line class="sp-icpt" x1="' + f1(X(l.ap.x)) + '" y1="' + f1(Y(l.ap.y)) + '" x2="' + f1(X(l.f0.x)) + '" y2="' + f1(Y(l.f0.y)) + '"/>');
-          var e = 6 / sc, sg = l.s.a >= 0 ? -1 : 1, bx0 = l.f0.x + sg * ux * e, by0 = l.f0.y + sg * uy * e;            /* small square at the ITP */
-          if (Math.abs(l.s.a) * sc > 8) o.push('<path class="sp-rt" d="M' + f1(X(bx0)) + ' ' + f1(Y(by0)) + ' L' + f1(X(bx0 + l.dx * e)) + ' ' + f1(Y(by0 + l.dy * e)) + ' L' + f1(X(l.f0.x + l.dx * e)) + ' ' + f1(Y(l.f0.y + l.dy * e)) + '"/>');
+        var s = l.s, col = "sp-c" + (i % 4), isLat = s.name === "Latitude", moved = !opt.single && Math.abs(s.ms - r.time) > 60000 && runNM > 0.3;
+        var a = (((s.zn + 90) % 180) + 180) % 180, dir = p3(a) + "°/" + p3(a + 180) + "°", nm = isLat ? "Lat" : s.name;
+        var gap = Math.abs((l.f0.x - l.f1.x) * l.dy - (l.f0.y - l.f1.y) * l.dx) * sc;    /* a line moved only a few minutes lies on itself: draw it once */
+        if (moved && !opt.clean && gap > 10) before.push([across(l.f0, l, "sp-lop0", col, 1), (i + 1) + " " + nm + " " + hm(s.ms), "sp-lab sp-lab0 " + col]);
+        if (!opt.single && !opt.clean && !isLat) {                                  /* the construction: azimuth from the AP, intercept, right angle */
+          var zr = s.zn * R, ux = Math.sin(zr), uy = Math.cos(zr), len = Math.max(Math.abs(s.a) + 14 / sc, 34 / sc);
+          var cz = clip(X(l.ap.x), Y(l.ap.y), ux, -uy, left + 34, top + 22, right - 34, bottom - 22); if (cz && cz[1] > 0) len = Math.min(len, Math.max(cz[1], 12) / sc);   /* keep the arrow and its Zn inside the frame */
+          var ex = X(l.ap.x + ux * len), ey = Y(l.ap.y + uy * len);
+          o.push('<line class="sp-azl ' + col + '" x1="' + f1(X(l.ap.x)) + '" y1="' + f1(Y(l.ap.y)) + '" x2="' + f1(ex) + '" y2="' + f1(ey) + '"/>' + heads(ex, ey, ux, -uy, 1, col));
+          at(ex + ux * 6 + (ux >= 0 ? 2 : -2), ey - uy * 6 + 4, ux >= 0 ? "start" : "end", "Zn " + p3(s.zn) + "°", "sp-lab sp-labz " + col);
+          o.push('<line class="sp-icpt ' + col + '" x1="' + f1(X(l.ap.x)) + '" y1="' + f1(Y(l.ap.y)) + '" x2="' + f1(X(l.f0.x)) + '" y2="' + f1(Y(l.f0.y)) + '"/>');
+          if (Math.abs(s.a) * sc > 26) { var mx2 = (X(l.ap.x) + X(l.f0.x)) / 2 + uy * 9, my2 = (Y(l.ap.y) + Y(l.f0.y)) / 2 + ux * 9 + 4; at(mx2, my2, uy >= 0 ? "start" : "end", f1(Math.abs(s.a)) + "' " + (s.a >= 0 ? "T" : "A"), "sp-lab sp-labi " + col); }
+          var e = 6 / sc, sg = s.a >= 0 ? -1 : 1, bx0 = l.f0.x + sg * ux * e, by0 = l.f0.y + sg * uy * e;            /* small square at the ITP */
+          if (Math.abs(s.a) * sc > 8) o.push('<path class="sp-rt" d="M' + f1(X(bx0)) + ' ' + f1(Y(by0)) + ' L' + f1(X(bx0 + l.dx * e)) + ' ' + f1(Y(by0 + l.dy * e)) + ' L' + f1(X(l.f0.x + l.dx * e)) + ' ' + f1(Y(l.f0.y + l.dy * e)) + '"/>');
           o.push('<circle class="sp-foot" cx="' + f1(X(l.f0.x)) + '" cy="' + f1(Y(l.f0.y)) + '" r="2"/>');
         }
         if (!opt.clean) o.push('<circle class="sp-ap" cx="' + f1(X(l.ap.x)) + '" cy="' + f1(Y(l.ap.y)) + '" r="3"/>');
-        if (!opt.single && !opt.clean && runNM > 0.3 && l.s.name !== "Latitude") {                   /* number the ship's DR at each sight, as written in the sight book */
-          var dq = l.s.drSight ? pl(l.s.drSight) : l.ap;
+        if (!opt.single && !opt.clean && runNM > 0.3 && !isLat) {                   /* number the ship's DR at each sight, as written in the sight book */
+          var dq = s.drSight ? pl(s.drSight) : l.ap;
           o.push('<circle class="sp-ap" cx="' + f1(X(dq.x)) + '" cy="' + f1(Y(dq.y)) + '" r="3"/><text class="sp-lab sp-halo" x="' + f1(X(dq.x) - 7) + '" y="' + f1(Y(dq.y) + 4) + '" text-anchor="end">' + (i + 1) + '</text>');
         }
-        seg(l.f1, "sp-lop");
-        var c = clip(X(l.f1.x), Y(l.f1.y), dxp, dyp, left + 6, top + 6, right - 6, bottom - 6);
-        if (c) {                                                                    /* try spots along the line until the label clashes with no other */
-          var w = (l.s.name.length + 14) * 6.6, best = null, fr = [0.1, 0.9, 0.3, 0.7, 0.5, 0.2, 0.8];
-          for (var q = 0; q < fr.length; q++) {
-            var t = c[0] + fr[q] * (c[1] - c[0]), lx = X(l.f1.x) + dxp * t, ly = Y(l.f1.y) + dyp * t, end = lx < (left + right) / 2 ? "start" : "end";
-            var bx = end === "start" ? lx : lx - w, cand = { x: lx, y: ly, end: end, l: l, b: [bx, ly - 16, bx + w, ly - 2] };
-            if (!best) best = cand;
-            if (!labels.some(function (o) { return !(cand.b[2] < o.b[0] || cand.b[0] > o.b[2] || cand.b[3] < o.b[1] || cand.b[1] > o.b[3]); })) { best = cand; break; }
-          }
-          labels.push(best);
-        }
+        fin.push([across(l.f1, l, "sp-lop", col, moved ? 2 : 1), (i + 1) + " " + nm + " " + hm(s.ms) + (moved ? "→" + hm(r.time) : "") + "  " + dir, "sp-lab " + col]);
       });
+      fin.forEach(function (f) { along(f[0], f[1], f[2], [0.05, 0.95, 0.25, 0.75, 0.5, 0.15, 0.85, 0.4, 0.6]); });
+      before.forEach(function (f) { along(f[0], f[1], f[2], [0.95, 0.05, 0.75, 0.25, 0.85, 0.15, 0.5]); });
+      if (trackG) along(trackG, trackG.txt, "sp-lab sp-labt", [0.3, 0.7, 0.2, 0.8]);
       /* fix, GPS */
-      if (gps) o.push('<path class="sp-gps" d="M' + f1(X(gps.x)) + ' ' + f1(Y(gps.y) - 6) + ' l6 6 l-6 6 l-6 -6 z"/><text class="sp-lab" x="' + f1(X(gps.x) + 9) + '" y="' + f1(Y(gps.y) + 4) + '">GPS</text>');
+      if (gps) o.push('<path class="sp-gps" d="M' + f1(X(gps.x)) + ' ' + f1(Y(gps.y) - 6) + ' l6 6 l-6 6 l-6 -6 z"/>');
       o.push('<circle class="sp-dr" cx="' + f1(X(dF.x)) + '" cy="' + f1(Y(dF.y)) + '" r="3.5"/>');
       if (opt.single) {                                                               /* intercept from the DR to the ITP, and the direction of the body */
-        var s0 = L[0].s, zr = s0.zn * R, al = 34 / sc;
+        var s0 = L[0].s, zr0 = s0.zn * R, al = 40 / sc, ax0 = X(dF.x + al * Math.sin(zr0)), ay0 = Y(dF.y + al * Math.cos(zr0));
         o.push('<line class="sp-int" x1="' + f1(X(dF.x)) + '" y1="' + f1(Y(dF.y)) + '" x2="' + f1(X(0)) + '" y2="' + f1(Y(0)) + '"/>');
-        o.push('<line class="sp-az" x1="' + f1(X(dF.x)) + '" y1="' + f1(Y(dF.y)) + '" x2="' + f1(X(dF.x + al * Math.sin(zr))) + '" y2="' + f1(Y(dF.y + al * Math.cos(zr))) + '" marker-end="url(#' + id + 'a)"/>');
+        if (Math.abs(s0.a) * sc > 26) at((X(dF.x) + X(0)) / 2 + Math.cos(zr0) * 9, (Y(dF.y) + Y(0)) / 2 + Math.sin(zr0) * 9 + 4, Math.cos(zr0) >= 0 ? "start" : "end", f1(Math.abs(s0.a)) + "' " + (s0.a >= 0 ? "T" : "A"), "sp-lab");
+        o.push('<line class="sp-az" x1="' + f1(X(dF.x)) + '" y1="' + f1(Y(dF.y)) + '" x2="' + f1(ax0) + '" y2="' + f1(ay0) + '"/>' + heads(ax0, ay0, Math.sin(zr0), -Math.cos(zr0), 1, "sp-trk"));
+        at(ax0 + Math.sin(zr0) * 8, ay0 - Math.cos(zr0) * 8 + 4, Math.sin(zr0) >= 0 ? "start" : "end", "Zn " + p3(s0.zn) + "°", "sp-lab");
         o.push('<circle class="sp-fixdot" cx="' + f1(X(0)) + '" cy="' + f1(Y(0)) + '" r="3"/>');
         if (mk) o.push('<path class="sp-mark" d="M' + f1(X(mk.x)) + ' ' + f1(Y(mk.y) - 6) + ' l6 6 l-6 6 l-6 -6 z"/>');
       }
       else o.push('<circle class="sp-fixring" cx="' + f1(X(0)) + '" cy="' + f1(Y(0)) + '" r="8"/><circle class="sp-fixdot" cx="' + f1(X(0)) + '" cy="' + f1(Y(0)) + '" r="2.2"/>');
-      labels.forEach(function (b) {
-        var s = b.l.s, txt = s.name + " " + Math.round(s.zn) + "°  p " + f1(Math.abs(s.a)) + (s.name === "Latitude" ? "" : (s.a >= 0 ? " T" : " A"));
-        o.push('<text class="sp-lab sp-halo" x="' + f1(b.x) + '" y="' + f1(b.y - 5) + '" text-anchor="' + b.end + '">' + esc(txt) + '</text>');
-      });
-      o.push('<text class="sp-lab sp-fixlab sp-halo" x="' + f1(X(0) + 11) + '" y="' + f1(Y(0) - 9) + '">' + (opt.single ? "ITP" : "FIX") + '</text>');
-      if (mk) o.push('<text class="sp-lab sp-halo" x="' + f1(X(mk.x) + 10) + '" y="' + f1(Y(mk.y) + 16) + '">' + esc(opt.mark.label) + '</text>');
-      o.push('<text class="sp-lab sp-drlab sp-halo" x="' + f1(X(dF.x) + 7) + '" y="' + f1(Y(dF.y) + 15) + '">DR</text>');
+      fixed.concat(labels).forEach(function (b) { if (b.txt) o.push('<text class="' + b.cls + ' sp-halo" x="' + f1(b.x) + '" y="' + f1(b.y - 5) + '" text-anchor="' + b.end + '">' + esc(b.txt) + '</text>'); });
       o.push('</g>');
-      /* scale bar and north arrow */
+      /* compass rose: 10 degree ticks, the azimuth of each body as a numbered spoke */
+      if (rose) {
+        var rx = rose[0], ry = rose[1], g = ['<g class="sp-rose"><circle class="sp-rosebg" cx="' + f1(rx) + '" cy="' + f1(ry) + '" r="' + f1(rr) + '"/><circle class="sp-rosering" cx="' + f1(rx) + '" cy="' + f1(ry) + '" r="' + f1(rr) + '"/>'];
+        for (k = 0; k < 360; k += 10) { var ka = k * R, kl = k % 90 === 0 ? 9 : k % 30 === 0 ? 6 : 3; g.push('<line class="sp-rosetk" x1="' + f1(rx + Math.sin(ka) * rr) + '" y1="' + f1(ry - Math.cos(ka) * rr) + '" x2="' + f1(rx + Math.sin(ka) * (rr - kl)) + '" y2="' + f1(ry - Math.cos(ka) * (rr - kl)) + '"/>'); }
+        [[0, "000"], [90, "090"], [180, "180"], [270, "270"]].forEach(function (c4) { var ca = c4[0] * R, cr = rr + 7; g.push('<text class="sp-rosetx" x="' + f1(rx + Math.sin(ca) * cr + (c4[0] === 90 ? 9 : c4[0] === 270 ? -9 : 0)) + '" y="' + f1(ry - Math.cos(ca) * cr + (c4[0] === 0 ? 0 : c4[0] === 180 ? 7 : 3.5)) + '" text-anchor="middle">' + c4[1] + '</text>'); });
+        L.forEach(function (l, i) { if (l.s.name === "Latitude") return; var za = l.s.zn * R, zx = Math.sin(za), zy = -Math.cos(za), col = "sp-c" + (i % 4);
+          g.push('<line class="sp-spoke ' + col + '" x1="' + f1(rx) + '" y1="' + f1(ry) + '" x2="' + f1(rx + zx * (rr - 3)) + '" y2="' + f1(ry + zy * (rr - 3)) + '"/>' + heads(rx + zx * (rr - 3), ry + zy * (rr - 3), zx, zy, 1, col));
+          g.push('<text class="sp-rosetx sp-lab sp-halo ' + col + '" x="' + f1(rx + zx * rr * 0.55 - zy * 8) + '" y="' + f1(ry + zy * rr * 0.55 + zx * 8 + 3.5) + '" text-anchor="middle">' + (i + 1) + '</text>'); });
+        g.push('<circle class="sp-dr" cx="' + f1(rx) + '" cy="' + f1(ry) + '" r="2"/></g>'); o.push(g.join(""));
+      }
+      /* scale bar */
       var sb = nice(80 / sc), spx = sb * sc, bx = right - 14 - spx, by = bottom - 14;
       o.push('<g class="sp-scale"><line x1="' + f1(bx) + '" x2="' + f1(bx + spx) + '" y1="' + by + '" y2="' + by + '"/><line x1="' + f1(bx) + '" x2="' + f1(bx) + '" y1="' + (by - 4) + '" y2="' + (by + 4) + '"/><line x1="' + f1(bx + spx) + '" x2="' + f1(bx + spx) + '" y1="' + (by - 4) + '" y2="' + (by + 4) + '"/><text class="sp-lab" x="' + f1(bx + spx / 2) + '" y="' + (by - 7) + '" text-anchor="middle">' + sb + ' NM</text></g>');
-      var nx = right - 22, ny = top + 40;
-      o.push('<g class="sp-north"><line x1="' + nx + '" x2="' + nx + '" y1="' + ny + '" y2="' + (ny - 26) + '"/><path d="M' + nx + ' ' + (ny - 30) + ' l-4 9 l8 0 z"/><text class="sp-lab" x="' + nx + '" y="' + (ny - 36) + '" text-anchor="middle">N</text></g>');
       return o.join("");
     }
     return { build: build, geom: geom };

@@ -52,7 +52,10 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
   #sf-sheet .ps-sign { margin-top: 4mm; }
   #sf-sheet .ps-note { margin-top: 1mm; font-size: 6.8pt; line-height: 1.25; }
   #sf-sheet .ps-grid div { padding: .8mm 2.4mm; }
-  .sf-plot, #sf-ps-plot { --surface: #fff; --text: #000; --muted: #555; --border: #ccc; --border-strong: #000; --accent: #000; --danger: #000; --accent-rgb: 0, 0, 0; }
+  .sf-plot, #sf-ps-plot { --surface: #fff; --text: #000; --muted: #555; --border: #ccc; --border-strong: #000; --accent: #000; --danger: #000; --accent-rgb: 0, 0, 0; --sp-c0: #0b6e79; --sp-c1: #b35a00; --sp-c2: #1f4fa8; --sp-c3: #17803d; }
+  #sf-sheet .ps-page2 { break-before: page; page-break-before: always; }
+  #sf-sheet .ps-plotbig { height: 248mm; margin-top: 2mm; }
+  #sf-sheet .ps-plot-head { display: flex; justify-content: space-between; gap: 4mm; font-size: 9pt; border-bottom: 1px solid #000; padding-bottom: 1mm; }
 }
 .sf-apmode { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--sp-3); align-items: center; }
 .sf-methods { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
@@ -137,3 +140,14 @@ table.sf-rows td.n { font-size: var(--fs-base); }
 .sf-steps { margin-top: var(--sp-4); }
 .sf-steps li { margin-bottom: var(--sp-2); line-height: 1.5; }
 .sf-steps p { margin: var(--sp-2) 0 0; }
+table.sf-rows td.w-dr > span.sf-dr1 { font-size: var(--fs-sm); color: var(--text); padding-left: var(--sp-1h); }
+.sf-plot, .sf-keyicon { --sp-c0: var(--accent); --sp-c1: var(--apparent); --sp-c2: var(--ship); --sp-c3: var(--take); }
+.sf-plot .sp-c0, .sf-keyicon .sp-c0 { stroke: var(--sp-c0); } .sf-plot .sp-c1 { stroke: var(--sp-c1); } .sf-plot .sp-c2 { stroke: var(--sp-c2); } .sf-plot .sp-c3 { stroke: var(--sp-c3); }
+.sf-plot text.sp-c0, .sf-plot .sp-head.sp-c0, .sf-keyicon .sp-head.sp-c0 { fill: var(--sp-c0); } .sf-plot text.sp-c1, .sf-plot .sp-head.sp-c1 { fill: var(--sp-c1); } .sf-plot text.sp-c2, .sf-plot .sp-head.sp-c2 { fill: var(--sp-c2); } .sf-plot text.sp-c3, .sf-plot .sp-head.sp-c3 { fill: var(--sp-c3); }
+.sf-plot text.sp-c0, .sf-plot text.sp-c1, .sf-plot text.sp-c2, .sf-plot text.sp-c3 { stroke: var(--surface); }
+.sf-plot .sp-head, .sf-keyicon .sp-head { stroke: none; } .sf-plot .sp-head.sp-trk, .sf-keyicon .sp-head.sp-trk { fill: var(--muted); }
+.sf-plot .sp-icpt, .sf-keyicon .sp-icpt { stroke-width: 2.4; } .sf-plot .sp-lop, .sf-keyicon .sp-lop { stroke-width: 2.2; }
+.sf-plot .sp-lab0, .sf-plot .sp-labz, .sf-plot .sp-labi, .sf-plot .sp-labt { font-weight: var(--fw-medium); } .sf-plot .sp-labt { fill: var(--muted); }
+.sf-plot .sp-rosebg { fill: var(--surface); opacity: .6; } .sf-plot .sp-rosering { fill: none; stroke: var(--muted); stroke-width: 1.2; }
+.sf-plot .sp-rosetk { stroke: var(--muted); stroke-width: 1; } .sf-plot .sp-rosetx { font-family: var(--font-mono); font-size: var(--fs-2xs); fill: var(--muted); } .sf-plot .sp-spoke { stroke-width: 1.8; }
+.sf-plot .sp-rosetx.sp-lab { font-size: var(--fs-xs); font-weight: var(--fw-bold); }
