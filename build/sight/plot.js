@@ -144,7 +144,7 @@
       if (gps) at(X(gps.x) + 9, Y(gps.y) + 4, "start", "GPS", "sp-lab");
       at(X(0) + 11, Y(0) - 9, "start", opt.single ? "ITP" : "FIX " + hm(r.time), "sp-lab sp-fixlab");
       if (mk) at(X(mk.x) + 10, Y(mk.y) + 16, "start", opt.mark.label, "sp-lab");
-      if (!opt.single) at(X(dF.x) + 7, Y(dF.y) + 15, "start", "DR " + hm(r.time), "sp-lab sp-drlab");
+      at(X(dF.x) + 7, Y(dF.y) + 15, "start", opt.single ? "DR" : "DR " + hm(r.time), "sp-lab sp-drlab");
       var fin = [], before = [];
       L.forEach(function (l, i) {
         var s = l.s, col = "sp-c" + (i % 4), isLat = s.name === "Latitude", moved = !opt.single && Math.abs(s.ms - r.time) > 60000 && runNM > 0.3;

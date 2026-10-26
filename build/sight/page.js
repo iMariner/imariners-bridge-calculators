@@ -206,7 +206,7 @@
     }
 
     function render() {
-      var v = read(), rr = readRows(v), msg = $("sf-rows-msg"); starPanel(); merPassBox(v); expectRows(v);
+      var v = read(); merPassBox(v); var rr = readRows(v), msg = $("sf-rows-msg"); starPanel(); expectRows(v);      /* mer pass first: it may fill the noon row time that readRows uses */
       msg.textContent = rr.bad.join(" "); msg.className = rr.bad.length ? "hint error" : "hint";
       var one = rr.rows.length === 1 && rr.rows[0].name !== "Latitude";
       var ready = !Object.keys(v.errs).length && v.lat !== null && v.lon !== null && (one || (v.course !== null && v.speed !== null)) && v.date && v.zone !== null && v.hoe !== null && (one || rr.rows.length >= 2) && !rr.bad.length;
@@ -273,7 +273,7 @@
       itp: ['<circle class="sp-fixdot" cx="21" cy="7" r="3"/>', "Intercept terminal point (ITP)"]
     };
     function plotKey(single) {
-      var clean = $("sf-pm-clean").checked, keys = single ? ["lop1", "icpt", "azl", "itp", "mark", "rose"] : clean ? ["lop", "lop1", "fix", "dr", "hat"] : ["lop", "lop0", "lop1", "trk", "icpt", "azl", "rt", "ap", "dr", "fix", "hat", "rose"];
+      var clean = $("sf-pm-clean").checked, keys = single ? ["lop1", "icpt", "azl", "itp", "mark", "dr", "rose"] : clean ? ["lop", "lop1", "fix", "dr", "hat", "rose"] : ["lop", "lop0", "lop1", "trk", "icpt", "azl", "rt", "ap", "dr", "fix", "hat", "rose"];
       var box = $("sf-key"); box.innerHTML = keys.map(function (k) { return '<span class="sf-keyitem"><svg class="sf-keyicon" viewBox="0 0 42 14" aria-hidden="true">' + PKEY[k][0] + '</svg>' + PKEY[k][1] + '</span>'; }).join("");
       $("sf-legend").textContent = single ? "The position line runs at 90° to the azimuth through the ITP." : clean ? "Only the final position lines, the cocked hat and the fix: what you copy into the sight book once the working is checked." :
         "How it is plotted by hand, with a protractor: from each assumed position draw the azimuth Zn (dotted, arrow towards the body) and lay off the intercept along it (heavy line, towards or away), then draw the position line at 90° through its end (dashed, one arrowhead each end). Move each line by the ship's run to the fix time: the transferred position line (solid, two arrowheads each end). The fix is where the solid lines meet. Each sight has its own colour and number; the compass rose shows its Zn.";

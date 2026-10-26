@@ -1112,6 +1112,21 @@ table.sf-rows td.w-dr > span.sf-dr1 { font-size: var(--fs-sm); color: var(--text
 .sf-plot .sp-head, .sf-keyicon .sp-head { stroke: none; } .sf-plot .sp-head.sp-trk, .sf-keyicon .sp-head.sp-trk { fill: var(--muted); }
 .sf-plot .sp-icpt, .sf-keyicon .sp-icpt { stroke-width: 2.4; } .sf-plot .sp-lop, .sf-keyicon .sp-lop { stroke-width: 2.2; }
 .sf-plot .sp-lab0, .sf-plot .sp-labz, .sf-plot .sp-labi, .sf-plot .sp-labt { font-weight: var(--fw-medium); } .sf-plot .sp-labt { fill: var(--muted); }
+.sf-plot .sp-rosebg { fill: var(--surface); opacity: .6; } .sf-plot .sp-rosering { fill: none; stroke: var(--muted); stroke-width: 1.2; }
+.sf-plot .sp-rosetk { stroke: var(--muted); stroke-width: 1; } .sf-plot .sp-rosetx { font-family: var(--font-mono); font-size: var(--fs-2xs); fill: var(--muted); } .sf-plot .sp-spoke { stroke-width: 1.8; }
+.sf-plot .sp-rosetx.sp-lab { font-size: var(--fs-xs); font-weight: var(--fw-bold); }
+.sf-rows input.sf-auto { color: var(--muted); }
+.sf-steps { margin-top: var(--sp-4); }
+.sf-steps li { margin-bottom: var(--sp-2); line-height: 1.5; }
+.sf-steps p { margin: var(--sp-2) 0 0; }
+table.sf-rows td.w-dr > span.sf-dr1 { font-size: var(--fs-sm); color: var(--text); padding-left: var(--sp-1h); }
+.sf-plot, .sf-keyicon { --sp-c0: var(--accent); --sp-c1: var(--apparent); --sp-c2: var(--ship); --sp-c3: var(--take); }
+.sf-plot .sp-c0, .sf-keyicon .sp-c0 { stroke: var(--sp-c0); } .sf-plot .sp-c1 { stroke: var(--sp-c1); } .sf-plot .sp-c2 { stroke: var(--sp-c2); } .sf-plot .sp-c3 { stroke: var(--sp-c3); }
+.sf-plot text.sp-c0, .sf-plot .sp-head.sp-c0, .sf-keyicon .sp-head.sp-c0 { fill: var(--sp-c0); } .sf-plot text.sp-c1, .sf-plot .sp-head.sp-c1 { fill: var(--sp-c1); } .sf-plot text.sp-c2, .sf-plot .sp-head.sp-c2 { fill: var(--sp-c2); } .sf-plot text.sp-c3, .sf-plot .sp-head.sp-c3 { fill: var(--sp-c3); }
+.sf-plot text.sp-c0, .sf-plot text.sp-c1, .sf-plot text.sp-c2, .sf-plot text.sp-c3 { stroke: var(--surface); }
+.sf-plot .sp-head, .sf-keyicon .sp-head { stroke: none; } .sf-plot .sp-head.sp-trk, .sf-keyicon .sp-head.sp-trk { fill: var(--muted); }
+.sf-plot .sp-icpt, .sf-keyicon .sp-icpt { stroke-width: 2.4; } .sf-plot .sp-lop, .sf-keyicon .sp-lop { stroke-width: 2.2; }
+.sf-plot .sp-lab0, .sf-plot .sp-labz, .sf-plot .sp-labi, .sf-plot .sp-labt { font-weight: var(--fw-medium); } .sf-plot .sp-labt { fill: var(--muted); }
 .sf-plot .sp-rosebg { fill: var(--surface); opacity: .92; stroke: var(--border); } .sf-plot .sp-rosering { fill: none; stroke: var(--muted); stroke-width: 1.2; }
 .sf-plot .sp-rosetk { stroke: var(--muted); stroke-width: 1; } .sf-plot .sp-rosetx { font-family: var(--font-mono); font-size: var(--fs-2xs); fill: var(--muted); } .sf-plot .sp-spoke { stroke-width: 1.8; }
 .sf-plot .sp-rosetx.sp-lab { font-size: var(--fs-xs); font-weight: var(--fw-bold); }
@@ -3177,7 +3192,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
             <p class="sf-merpass" id="sf-merpass" aria-live="polite" hidden></p>
             <div class="dr-gridwrap"><table class="sf-rows" id="sf-rows"></table></div>
             <div class="hint" id="sf-rows-msg"></div>
-            <p class="sf-runnote"><strong>≈</strong> what the sextant should read at that sight's time. <strong>DR at sight</strong>: row 1 is the DR in Ship and DR (change it there); later rows move on with course and speed, type over them if you have your own. <strong>Lat</strong> row: only if you already worked a latitude by hand (for example the noon latitude); leave it empty otherwise.</p>
+            <p class="sf-runnote"><strong>≈</strong> what the sextant should read at that sight's time. <strong>DR at sight</strong>: row 1 follows the DR in Ship and DR (change it there); later rows move on with course and speed, type over them if you have your own. <strong>Lat</strong> row: only if you already worked a latitude by hand (for example the noon latitude); leave it empty otherwise.</p>
             <div class="sf-apmode u-mt-3">
               <span class="small muted"><label for="sf-fixat">Give the fix at (ship's time)</label></span>
               <div class="field"><input id="sf-fixat" class="text-input" type="time" step="60" aria-describedby="sf-fixat-msg"><div class="hint" id="sf-fixat-msg">The time the position is wanted for, e.g. 12:00 for the noon report. Blank: the time of the last sight.</div></div>
@@ -8035,7 +8050,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
       if (gps) at(X(gps.x) + 9, Y(gps.y) + 4, "start", "GPS", "sp-lab");
       at(X(0) + 11, Y(0) - 9, "start", opt.single ? "ITP" : "FIX " + hm(r.time), "sp-lab sp-fixlab");
       if (mk) at(X(mk.x) + 10, Y(mk.y) + 16, "start", opt.mark.label, "sp-lab");
-      if (!opt.single) at(X(dF.x) + 7, Y(dF.y) + 15, "start", "DR " + hm(r.time), "sp-lab sp-drlab");
+      at(X(dF.x) + 7, Y(dF.y) + 15, "start", opt.single ? "DR" : "DR " + hm(r.time), "sp-lab sp-drlab");
       var fin = [], before = [];
       L.forEach(function (l, i) {
         var s = l.s, col = "sp-c" + (i % 4), isLat = s.name === "Latitude", moved = !opt.single && Math.abs(s.ms - r.time) > 60000 && runNM > 0.3;
@@ -8306,7 +8321,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
     }
 
     function render() {
-      var v = read(), rr = readRows(v), msg = $("sf-rows-msg"); starPanel(); merPassBox(v); expectRows(v);
+      var v = read(); merPassBox(v); var rr = readRows(v), msg = $("sf-rows-msg"); starPanel(); expectRows(v);      /* mer pass first: it may fill the noon row time that readRows uses */
       msg.textContent = rr.bad.join(" "); msg.className = rr.bad.length ? "hint error" : "hint";
       var one = rr.rows.length === 1 && rr.rows[0].name !== "Latitude";
       var ready = !Object.keys(v.errs).length && v.lat !== null && v.lon !== null && (one || (v.course !== null && v.speed !== null)) && v.date && v.zone !== null && v.hoe !== null && (one || rr.rows.length >= 2) && !rr.bad.length;
@@ -8373,7 +8388,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
       itp: ['<circle class="sp-fixdot" cx="21" cy="7" r="3"/>', "Intercept terminal point (ITP)"]
     };
     function plotKey(single) {
-      var clean = $("sf-pm-clean").checked, keys = single ? ["lop1", "icpt", "azl", "itp", "mark", "rose"] : clean ? ["lop", "lop1", "fix", "dr", "hat"] : ["lop", "lop0", "lop1", "trk", "icpt", "azl", "rt", "ap", "dr", "fix", "hat", "rose"];
+      var clean = $("sf-pm-clean").checked, keys = single ? ["lop1", "icpt", "azl", "itp", "mark", "dr", "rose"] : clean ? ["lop", "lop1", "fix", "dr", "hat", "rose"] : ["lop", "lop0", "lop1", "trk", "icpt", "azl", "rt", "ap", "dr", "fix", "hat", "rose"];
       var box = $("sf-key"); box.innerHTML = keys.map(function (k) { return '<span class="sf-keyitem"><svg class="sf-keyicon" viewBox="0 0 42 14" aria-hidden="true">' + PKEY[k][0] + '</svg>' + PKEY[k][1] + '</span>'; }).join("");
       $("sf-legend").textContent = single ? "The position line runs at 90° to the azimuth through the ITP." : clean ? "Only the final position lines, the cocked hat and the fix: what you copy into the sight book once the working is checked." :
         "How it is plotted by hand, with a protractor: from each assumed position draw the azimuth Zn (dotted, arrow towards the body) and lay off the intercept along it (heavy line, towards or away), then draw the position line at 90° through its end (dashed, one arrowhead each end). Move each line by the ship's run to the fix time: the transferred position line (solid, two arrowheads each end). The fix is where the solid lines meet. Each sight has its own colour and number; the compass rose shows its Zn.";
@@ -8695,6 +8710,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
     build(); setMethod(st.method, false);
   }
   /* SIGHTPAGE-END */
+
 
 
 
