@@ -33,6 +33,19 @@
       var s = b * AA * (sig - ds), a1 = Math.atan2(cU2 * sl, cU1 * sU2 - sU1 * cU2 * cl), a2 = Math.atan2(cU1 * sl, -sU1 * cU2 + cU1 * sU2 * cl);
       return { dist: s / NM, course: (a1 / R + 360) % 360, finalCourse: (a2 / R + 360) % 360 };
     }
-    return { rhumb: rhumb, geodesic: geodesic, arc: arc, iso: iso };
+    function latOfArc(m) {                                                             /* inverse of arc(): metres from the equator to latitude */
+      var phi = m / A / R;
+      for (var i = 0; i < 8; i++) { var s = Math.sin(phi * R), M = a * (1 - e2) / Math.pow(1 - e2 * s * s, 1.5); phi += (m - arc(phi)) / (M * R); }
+      return phi;
+    }
+    function dest(lat1, lon1, course, dist) {                                          /* rhumb line from a position: { lat, lon }, or null if it runs over a pole */
+      var c = course * R, s = dist * NM, dm = s * Math.cos(c), m2 = arc(lat1) + dm, dl;
+      if (Math.abs(m2) >= arc(90)) return null;
+      var lat2 = Math.abs(dm) < 1e-9 ? lat1 : latOfArc(m2);
+      if (Math.abs(dm) > 1) dl = Math.tan(c) * (iso(lat2) - iso(lat1));
+      else { var p = (lat1 + lat2) / 2 * R, q = Math.sin(p); dl = s * Math.sin(c) * Math.sqrt(1 - e2 * q * q) / (a * Math.cos(p)); }      /* (nearly) along a parallel */
+      return { lat: lat2, lon: n180(lon1 + dl / R) };
+    }
+    return { rhumb: rhumb, geodesic: geodesic, arc: arc, iso: iso, dest: dest };
   })();
   /* WGS84-END */

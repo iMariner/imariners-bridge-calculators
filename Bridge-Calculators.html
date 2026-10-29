@@ -1893,7 +1893,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
     <section class="tool cmp" id="course-speed" hidden>
       <div class="tool-head">
         <h1>Course &amp; Speed Made Good</h1>
-        <p>Course, distance and speed made good between two positions by Mercator sailing.</p>
+        <p>Course, distance and speed made good between two positions, and the new position from a course and distance.</p>
       </div>
 
       <form class="card" id="cs-form" autocomplete="off" onsubmit="return false">
@@ -1966,7 +1966,37 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
         </div>
       </div>
 
-      <details class="card ge-fold" id="cs-fold">
+      <form class="card" id="cs-dr" autocomplete="off" onsubmit="return false">
+      <h2>New position from course and distance</h2>
+      <p class="small muted u-sub">From the <strong>From</strong> position above: steer this course for this distance (or speed and time) to get the DR position.</p>
+      <div class="ge-grid">
+        <div class="field"><label for="cs-dr-co">Course (° T)</label><div class="input-wrap"><input id="cs-dr-co" type="text" inputmode="decimal" placeholder="e.g. 131" maxlength="5"><span class="unit">°T</span></div><div class="hint" id="cs-dr-co-msg"></div></div>
+        <div class="field"><label for="cs-dr-dist">Distance</label><div class="input-wrap"><input id="cs-dr-dist" type="text" inputmode="decimal" placeholder="NM" maxlength="7"><span class="unit">NM</span></div><div class="hint" id="cs-dr-dist-msg"></div></div>
+        <div class="field"><label for="cs-dr-sp">or speed</label><div class="input-wrap"><input id="cs-dr-sp" type="text" inputmode="decimal" placeholder="kn" maxlength="5"><span class="unit">kn</span></div><div class="hint" id="cs-dr-sp-msg"></div></div>
+        <div class="field"><label for="cs-dr-t">and time (h:mm)</label><input id="cs-dr-t" class="text-input" type="text" inputmode="numeric" placeholder="e.g. 4:00" maxlength="8"><div class="hint" id="cs-dr-t-msg"></div></div>
+      </div>
+      <div id="cs-dr-empty" class="empty u-mt-2h">Enter the From position above, then the course and the distance (or the speed and the time).</div>
+      <div id="cs-dr-out" class="u-mt-2h" hidden>
+        <div class="ge-hero">
+          <div class="readout-box"><div class="readout-label">New latitude</div><div class="readout" id="cs-dr-lat">—</div><div class="readout-sub" id="cs-dr-lat-sub"></div></div>
+          <div class="readout-box"><div class="readout-label">New longitude</div><div class="readout" id="cs-dr-lon">—</div><div class="readout-sub" id="cs-dr-lon-sub"></div></div>
+          <div class="readout-box"><div class="readout-label">Distance run</div><div class="readout" id="cs-dr-d">—</div><div class="readout-sub" id="cs-dr-d-sub"></div></div>
+          <div class="readout-box"><div class="readout-label">Course</div><div class="readout" id="cs-dr-c">—</div><div class="readout-sub" id="cs-dr-c-sub"></div></div>
+        </div>
+        <div class="callout warn u-mt-2h" id="cs-dr-warn" hidden></div>
+        <details class="u-mt-2h">
+          <summary class="small">Working (plane sailing, as by hand)</summary>
+          <div class="mp-cols u-mt-2h"><table class="dt wk" id="cs-dr-wl"></table><table class="dt wk" id="cs-dr-wr"></table></div>
+          <p class="small muted u-mt-2h">The answer above is the exact rhumb line on the WGS84 earth, as ECDIS. Plane sailing by mid-latitude (the hand method) is shown as a check; it drifts from the exact answer on long runs, about 1' in 400 NM.</p>
+        </details>
+      </div>
+      <div class="actions">
+        <button type="button" class="btn primary" id="cs-dr-to">Put in To</button>
+        <button type="button" class="btn" id="cs-dr-copy">Copy position</button>
+        <button type="button" class="btn" id="cs-dr-example">Load example</button>
+      </div>
+    </form>
+    <details class="card ge-fold" id="cs-fold">
         <summary>Working and how it is calculated</summary>
         <div class="mp-cols u-mt-2h">
           <table class="dt wk" id="cs-wl"></table>
@@ -2033,7 +2063,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
         <div class="et-opts small muted">
           <label><input type="checkbox" id="et-showpass" checked> Show the passage time</label>
           <label><input type="checkbox" id="et-showutc"> Show UTC as well</label>
-          <span>East of Greenwich is +, west is −. DTG is the distance to go in nautical miles.</span>
+          <span>East of Greenwich is +, west is −; half-hour zones as 9:30 or 9.5. DTG is the distance to go in nautical miles.</span>
         </div>
         <div class="actions">
           <button type="button" class="btn primary" id="et-copy-table">Copy table</button>
@@ -5928,7 +5958,20 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
       var s = b * AA * (sig - ds), a1 = Math.atan2(cU2 * sl, cU1 * sU2 - sU1 * cU2 * cl), a2 = Math.atan2(cU1 * sl, -sU1 * cU2 + cU1 * sU2 * cl);
       return { dist: s / NM, course: (a1 / R + 360) % 360, finalCourse: (a2 / R + 360) % 360 };
     }
-    return { rhumb: rhumb, geodesic: geodesic, arc: arc, iso: iso };
+    function latOfArc(m) {                                                             /* inverse of arc(): metres from the equator to latitude */
+      var phi = m / A / R;
+      for (var i = 0; i < 8; i++) { var s = Math.sin(phi * R), M = a * (1 - e2) / Math.pow(1 - e2 * s * s, 1.5); phi += (m - arc(phi)) / (M * R); }
+      return phi;
+    }
+    function dest(lat1, lon1, course, dist) {                                          /* rhumb line from a position: { lat, lon }, or null if it runs over a pole */
+      var c = course * R, s = dist * NM, dm = s * Math.cos(c), m2 = arc(lat1) + dm, dl;
+      if (Math.abs(m2) >= arc(90)) return null;
+      var lat2 = Math.abs(dm) < 1e-9 ? lat1 : latOfArc(m2);
+      if (Math.abs(dm) > 1) dl = Math.tan(c) * (iso(lat2) - iso(lat1));
+      else { var p = (lat1 + lat2) / 2 * R, q = Math.sin(p); dl = s * Math.sin(c) * Math.sqrt(1 - e2 * q * q) / (a * Math.cos(p)); }      /* (nearly) along a parallel */
+      return { lat: lat2, lon: n180(lon1 + dl / R) };
+    }
+    return { rhumb: rhumb, geodesic: geodesic, arc: arc, iso: iso, dest: dest };
   })();
   /* WGS84-END */
   /* COURSE-BEGIN: course and distance between two positions by Mercator sailing (same as the "Co's & Speed" sheet) */
@@ -5960,9 +6003,9 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
   /* Tool: Course and speed made good */
   function initCourseSpeed() {
     var KEY = "bridgeCalc.courseSpeed";
-    var ids = ["cs-lat1-d", "cs-lat1-m", "cs-lon1-d", "cs-lon1-m", "cs-lat2-d", "cs-lat2-m", "cs-lon2-d", "cs-lon2-m", "cs-time", "cs-rem"];
+    var ids = ["cs-lat1-d", "cs-lat1-m", "cs-lon1-d", "cs-lon1-m", "cs-lat2-d", "cs-lat2-m", "cs-lon2-d", "cs-lon2-m", "cs-time", "cs-rem", "cs-dr-co", "cs-dr-dist", "cs-dr-sp", "cs-dr-t"];
     var selects = ["cs-lat1-h", "cs-lon1-h", "cs-lat2-h", "cs-lon2-h"];
-    var last = null;
+    var last = null, lastDr = null;
 
     function pos2(deg, isLat) {                                   /* 41°23.71'N */
       var t = Math.round(Math.abs(deg) * 6000), d = Math.floor(t / 6000), m = (t - d * 6000) / 100;
@@ -6018,8 +6061,49 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
         " | From " + pos2(r.lat1, true) + " " + pos2(r.lon1, false) + " To " + pos2(r.lat2, true) + " " + pos2(r.lon2, false) + (R.rem ? " | " + R.rem : "");
     }
 
+    function quad(c) {                                            /* 131 -> S 49° E */
+      var t = Math.round(c * 10) / 10 % 360, ns = t > 90 && t < 270 ? "S" : "N", ew = t > 0 && t < 180 ? " E" : (t > 180 ? " W" : "");
+      var q = t <= 90 ? t : t <= 180 ? 180 - t : t <= 270 ? t - 180 : 360 - t;
+      return ns + " " + (Math.round(q * 10) / 10) + "°" + ew;
+    }
+    function hint(id, msg) { var el = $(id + "-msg"); el.textContent = msg || ""; el.className = msg ? "hint error" : "hint"; }
+    function renderDr() {                                         /* new position from the From position, a course and a distance */
+      var errs = {}, a = readPos(1, {}), co = parseNum($("cs-dr-co")), d = parseNum($("cs-dr-dist")), sp = parseNum($("cs-dr-sp")), t = parseTime($("cs-dr-t"));
+      if (isNaN(co) || (co !== null && (co < 0 || co > 360))) errs.co = "Course 0 – 360";
+      if (isNaN(d) || (d !== null && (d <= 0 || d > 20000))) errs.dist = "Distance in NM, e.g. 104";
+      if (isNaN(sp) || (sp !== null && (sp <= 0 || sp > 60))) errs.sp = "Speed 0 – 60 kn";
+      if (isNaN(t) || (t !== null && (t <= 0 || t >= 1000))) errs.t = "Hours and minutes, e.g. 4:00";
+      hint("cs-dr-co", errs.co); hint("cs-dr-dist", errs.dist); hint("cs-dr-sp", errs.sp); hint("cs-dr-t", errs.t);
+      var from = null;
+      if (d === null && !errs.dist && sp !== null && t !== null && !errs.sp && !errs.t) { d = sp * t; from = sp + " kn × " + hm(t); }
+      var ok = !Object.keys(errs).length && a.lat !== null && a.lon !== null && co !== null && d !== null;
+      var p = ok ? WGS84.dest(a.lat, a.lon, co % 360, d) : null;
+      lastDr = null; $("cs-dr-warn").hidden = true;
+      if (ok && !p) { $("cs-dr-warn").hidden = false; $("cs-dr-warn").textContent = "This run goes over the pole: no rhumb line answer."; }
+      $("cs-dr-out").hidden = !p; $("cs-dr-empty").hidden = !!p;
+      if (!p) return;
+      lastDr = { lat: p.lat, lon: p.lon };
+      var c = co % 360, cr = c * Math.PI / 180, dLat = d * Math.cos(cr), mLat = a.lat + dLat / 120, dep = d * Math.sin(cr), dLong = dep / Math.cos(mLat * Math.PI / 180);
+      var pl = { lat: a.lat + dLat / 60, lon: ((a.lon + dLong / 60 + 540) % 360) - 180 };
+      var lt = pos2(p.lat, true), ln = pos2(p.lon, false);
+      $("cs-dr-lat").textContent = lt; $("cs-dr-lat-sub").textContent = "exact rhumb line";
+      $("cs-dr-lon").textContent = ln; $("cs-dr-lon-sub").textContent = Math.abs(a.lon + dLong / 60) > 180 ? "across the date line" : "";
+      $("cs-dr-d").innerHTML = (Math.round(d * 10) / 10) + "<small>NM</small>"; $("cs-dr-d-sub").textContent = from || "as typed";
+      $("cs-dr-c").innerHTML = course3(c) + "<small>°T</small>"; $("cs-dr-c-sub").textContent = quad(c);
+      var mins = function (x, pos, neg) { var v = Math.abs(x), t10 = Math.round(v * 10), dd = Math.floor(t10 / 600), mm = (t10 - dd * 600) / 10; return dd + "°" + (mm < 10 ? "0" : "") + mm.toFixed(1) + "' " + (x < 0 ? neg : pos) + "  (" + v.toFixed(1) + "')"; };
+      fillWork($("cs-dr-wl"), [
+        ["Course", quad(c), course3(c) + "° T"],
+        ["D.Lat", mins(dLat, "N", "S"), "dist × cos co"],
+        ["Mean lat", pos2(mLat, true), "lat A ± (D.Lat ÷ 2)"],
+        ["Dep", Math.abs(dep).toFixed(1) + " NM " + (dep < 0 ? "W" : "E"), "dist × sin co"],
+        ["D.Long", mins(dLong, "E", "W"), "dep ÷ cos mean lat"]]);
+      fillWork($("cs-dr-wr"), [
+        ["From", pos2(a.lat, true) + " " + pos2(a.lon, false), ""],
+        ["Plane sailing", pos2(pl.lat, true) + " " + pos2(pl.lon, false), "hand method"],
+        ["Exact (WGS84)", lt + " " + ln, "rhumb line, as ECDIS", "key"]]);
+    }
     function render() {
-      var v = read(); save();
+      var v = read(); save(); renderDr();
       if (!v) { $("cs-out").hidden = true; $("cs-empty").hidden = false; last = null; csSheet(null); return; }
       var r = courseMadeGood(v.a.lat, v.a.lon, v.b.lat, v.b.lon, v.t), R = { r: r, rem: gv("cs-rem").trim() }; last = R;
       $("cs-out").hidden = false; $("cs-empty").hidden = true;
@@ -6074,6 +6158,23 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
       load(o); render(); $("cs-lat2-d").focus(); toast("Final position is now the starting position");
     });
     $("cs-clear").addEventListener("click", function () { load({}); render(); $("cs-lat1-d").focus(); });
+    $("cs-dr-to").addEventListener("click", function () {
+      if (!lastDr) { toast("Enter the From position, course and distance first"); return; }
+      var o = {}; ids.forEach(function (id) { o[id] = gv(id); }); selects.forEach(function (id) { o[id] = gv(id); });
+      [["lat", lastDr.lat, "N", "S"], ["lon", lastDr.lon, "E", "W"]].forEach(function (k) {
+        var t = Math.round(Math.abs(k[1]) * 6000), dd = Math.floor(t / 6000);
+        o["cs-" + k[0] + "2-d"] = String(dd); o["cs-" + k[0] + "2-m"] = ((t - dd * 6000) / 100).toFixed(2); o["cs-" + k[0] + "2-h"] = k[1] < 0 ? k[3] : k[2];
+      });
+      load(o); render(); toast("New position put in To");
+    });
+    $("cs-dr-copy").addEventListener("click", function () { if (lastDr) copyText(pos2(lastDr.lat, true) + " " + pos2(lastDr.lon, false)); });
+    $("cs-dr-example").addEventListener("click", function () {
+      var o = {}; ids.forEach(function (id) { o[id] = gv(id); }); selects.forEach(function (id) { o[id] = gv(id); });
+      o["cs-lat1-d"] = "22"; o["cs-lat1-m"] = "32.00"; o["cs-lat1-h"] = "N"; o["cs-lon1-d"] = "059"; o["cs-lon1-m"] = "48.00"; o["cs-lon1-h"] = "E";
+      o["cs-dr-co"] = "131"; o["cs-dr-dist"] = "413"; o["cs-dr-sp"] = ""; o["cs-dr-t"] = "";
+      ["cs-lat2-d", "cs-lat2-m", "cs-lon2-d", "cs-lon2-m", "cs-time"].forEach(function (id) { o[id] = ""; }); o["cs-rem"] = "Example: 22 32N 059 48E, 131° T, 413 NM";
+      load(o); render(); toast("Example loaded: expect 18°00.04'N 065°19.65'E");
+    });
     $("cs-print").addEventListener("click", function () { window.print(); });
     window.addEventListener("beforeprint", render);
     $("cs-copy").addEventListener("click", function () { if (last) copyText(entryText(last)); });
@@ -6113,7 +6214,12 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
       return WD[d.getUTCDay()] + " " + TIME.p2(d.getUTCDate()) + " " + TIME.MONTHS[d.getUTCMonth()] + (withYear ? " " + d.getUTCFullYear() : "");
     }
     function clockTxt(ms) { var d = new Date(Math.round(ms / 60000) * 60000); return TIME.p2(d.getUTCHours()) + ":" + TIME.p2(d.getUTCMinutes()); }
-    function zoneTxt(z) { return "UTC" + (z < 0 ? "−" : "+") + Math.abs(z); }
+    function zoneTxt(z) { var m = Math.round(Math.abs(z) * 60); return "UTC" + (z < 0 ? "−" : "+") + Math.floor(m / 60) + (m % 60 ? ":" + TIME.p2(m % 60) : ""); }
+    function parseZone(el) {                                     /* 8, -3.5, +9:30, -3:30 (half and quarter hour zones) */
+      var s = el.value.replace(",", ".").replace("−", "-").trim(), m = /^([+-]?)(\d{1,2}):([0-5]\d)$/.exec(s);
+      if (m) return (m[1] === "-" ? -1 : 1) * ((+m[2]) + (+m[3]) / 60);
+      return parseNum(el);
+    }
     function capName(s) { return (s || "").replace(/(^|[\s\-\/(])([a-z])/g, function (m, a, b) { return a + b.toUpperCase(); }); }   /* "port klang" shows as "Port Klang", as on screen */
 
     /* build the table once: speeds in the header, one input row per destination */
@@ -6149,12 +6255,12 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
 
     function read() {
       var errs = {}, v = { date: parseDateEl($("et-date")), time: parseTimeEl($("et-time")) };
-      var tz = parseNum($("et-tz"));
+      var tz = parseZone($("et-tz"));
       if (isNaN(tz) || (tz !== null && (tz < -12 || tz > 14))) errs.tz = "Enter -12 to +14"; v.tz = tz === null ? 0 : tz;
       setHint("et-tz-msg", errs.tz || "", !!errs.tz, $("et-tz"));
       v.speeds = spIn.map(function (el) { var s = parseNum(el); var bad = isNaN(s) || (s !== null && (s <= 0 || s > 60)); el.setAttribute("aria-invalid", bad ? "true" : "false"); return bad ? NaN : s; });
       v.dests = dest.map(function (o) {
-        var d = parseNum(o.dist), z = parseNum(o.zone);
+        var d = parseNum(o.dist), z = parseZone(o.zone);
         var bd = isNaN(d) || (d !== null && (d <= 0 || d > 60000)), bz = isNaN(z) || (z !== null && (z < -12 || z > 14));
         o.dist.setAttribute("aria-invalid", bd ? "true" : "false"); o.zone.setAttribute("aria-invalid", bz ? "true" : "false");
         return { name: o.name.value.trim(), dist: bd ? NaN : d, zone: bz ? NaN : z };

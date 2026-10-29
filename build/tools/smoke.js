@@ -16,7 +16,9 @@ const STEPS = [
   ['special-areas', "0"], ['charts-pubs', "0"], ['course-speed', "document.getElementById('cs-example').click()"], ['eta', "document.getElementById('et-example') && document.getElementById('et-example').click()"],
   ['daily-reports', "0"], ['true-wind', "document.getElementById('tw-example') && document.getElementById('tw-example').click()"],
   ['heel-draught', "document.getElementById('hd-example') && document.getElementById('hd-example').click()"], ['anchor-depth', "document.getElementById('ad-example') && document.getElementById('ad-example').click()"],
-  ['ship', "0"], ['true-az', "document.getElementById('az-example').click()"], ['design', "0"]
+  ['course-speed', "var g = function (i) { return document.getElementById(i); }; g('cs-dr-example').click(); if (g('cs-dr-out').hidden || g('cs-dr-lat').textContent.indexOf(\"18°00.04'N\") < 0 || g('cs-dr-lon').textContent.indexOf(\"065°19.65'E\") < 0) throw new Error('DR example: ' + g('cs-dr-lat').textContent + ' ' + g('cs-dr-lon').textContent); g('cs-dr-to').click(); if (g('cs-course').textContent.indexOf('131.0') < 0 || g('cs-dist').textContent.indexOf('413.0') < 0) throw new Error('Put in To gives ' + g('cs-course').textContent + ' ' + g('cs-dist').textContent)"],
+  ['eta', "var z = document.getElementById('et-z0'); document.getElementById('et-example').click(); var c0 = document.querySelector('#et-main tbody tr td.cell').textContent; z.value = '+9:30'; z.dispatchEvent(new Event('input', { bubbles: true })); var c1 = document.querySelector('#et-main tbody tr td.cell').textContent; if (z.getAttribute('aria-invalid') === 'true' || c1 === c0 || /zone/.test(c1)) throw new Error('zone 9:30 not taken: ' + c0 + ' / ' + c1)"],
+  ['ship', "0"], ['true-az', "document.getElementById('az-example').click()"], ['design', "document.getElementById('ds-audit-run').click(); var t = document.querySelector('.ds-audit-ok'); if (!t) throw new Error('design check not clean')"]
 ];
 (async () => {
   let t; for (let i = 0; i < 40; i++) { try { t = await (await fetch(`http://127.0.0.1:${PORT}/json`)).json(); if (t.length) break; } catch (e) {} await sleep(250); }
