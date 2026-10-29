@@ -21,6 +21,8 @@ s = sun(ut(2019, 10, 8, 5, 17, 30), dm(15, 36.2), dm(92, 25), dm(68, 26.8), 9.4)
 near(s.zn, 166.2, 0.05, '8 Oct 0517 Zn'); near(s.a, 31.0, 0.15, '8 Oct 0517 intercept');
 s = sun(ut(2019, 10, 8, 1, 26, 30), dm(16, 1.9), dm(92, 0.6), dm(24, 8.6), 9.4);
 near(s.zn, 103.8, 0.05, '8 Oct 0126 Zn'); near(s.a, 29.9, 0.15, '8 Oct 0126 intercept');
+{ const la = dm(16, 1.9) + s.a * Math.cos(s.zn * R) / 60, lo = dm(92, 0.6) + s.a * Math.sin(s.zn * R) / 60 / Math.cos((la + dm(16, 1.9)) / 2 * R);   // ITP; notebook OP 15 36.7N 092 27.8E is wrong
+  near(la, dm(15, 54.7), 0.15 / 60, '8 Oct 0126 ITP lat'); near(lo, dm(92, 30.9), 0.15 / 60, '8 Oct 0126 ITP long'); }
 // Great circle 29 53S 031 02E to 31 57S 115 52E (sphere): 4244.2 NM, 116.5, vertex 39 05.4S 076 00.8E, 33 18.6S at 040E
 { const l1 = -dm(29, 53) * R, l2 = -dm(31, 57) * R, dl = (dm(115, 52) - dm(31, 2)) * R;
   const d = Math.acos(Math.sin(l1) * Math.sin(l2) + Math.cos(l1) * Math.cos(l2) * Math.cos(dl)) / R * 60;

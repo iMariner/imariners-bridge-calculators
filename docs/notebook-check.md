@@ -7,6 +7,7 @@ Checked 29-30 Oct 2026. Every worked example was run through the app's own engin
 | Page | Notebook | Correct | What went wrong |
 |---|---|---|---|
 | Sun sight 9 Oct 2019, 13°03.0'N 094°07.9'E, Hs 20°13.6' | AA 20°23.2', Ho 20°36.9', intercept 15.9' Towards | AA 20°04.0', Ho 20°17.5', intercept **3.4' Away**, Zn 101.7° | Dip was added. Dip is always subtracted: AA = OA − dip. |
+| Sun sight 8 Oct 2019 0126 UT, 16°01.9'N 092°00.6'E: observed position | 15°36.7'N 092°27.8'E (d'lat 25.2' S, d'long 27.2' E) | **15°54.7'N 092°30.9'E** (ITP) | From the intercept 29.9' on 103.8°: d'lat = 29.9 × cos 103.8° = 7.1' S, dep = 29.0' E, d'long = 30.2' E. One sight gives a position line through this point, not a fix. |
 | Plane sailing 01°48.0'S 012°47.0'E, 145° T, 155 NM | 03°37.6'S 014°36.7'E | **03°55.6'S 014°15.9'E** (plane sailing 03°55.0'S 014°16.0'E) | Course taken as S45°E. 180 − 145 = 35, so S35°E. |
 | Plane sailing 18°02.0'S 178°20.0'E to 20°19.0'S 175°25.0'W | 111° T, 382.3 NM | 111.1° T, **379.8 NM** | Course rounded to 69° before dividing. Keep the full angle, or use dist = √(d'lat² + dep²). |
 | Azimuth 3 Jan 2019 | Dec S22°50.4' (d corr added) | Dec **S22°50.2'** | In January the Sun's south declination is decreasing, so the d correction is subtracted. Azimuth is still N 86.4° E. |
