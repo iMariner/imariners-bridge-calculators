@@ -1,6 +1,6 @@
 # Old notebook pages: checked against the app
 
-Checked 29-30 Oct 2026. Every worked example was run through the app's own engines. Test: `node build/tools/test_notebook.js` (34 checks, all with the corrected answers below).
+Checked 29-30 Oct 2026. Every worked example was run through the app's own engines. Test: `node build/tools/test_notebook.js` (36 checks, all with the corrected answers below).
 
 ## Corrections
 
