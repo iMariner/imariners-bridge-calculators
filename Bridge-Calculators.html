@@ -2236,7 +2236,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
             <div class="field">
               <label for="ad-ratedDepth">Rated anchorage depth of windlass</label>
               <div class="input-wrap"><input id="ad-ratedDepth" type="text" inputmode="decimal" placeholder="optional, e.g. 82.5" maxlength="6"><span class="unit">m</span></div>
-              <div class="hint" id="ad-ratedDepth-msg">From the windlass marking or maker's data</div>
+              <div class="hint" id="ad-ratedDepth-msg">Cable hanging, from the windlass marking (standard 82.5 m)</div>
             </div>
           </fieldset>
 
@@ -2352,7 +2352,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
             <h3>What class rules say (IACS UR A3)</h3>
             <p>IACS UR A3, <em>Anchor Windlass Design and Testing</em> (2017, Rev.1 2019; earlier editions of UR A1 had similar requirements), requires the windlass to give a <strong>continuous duty pull</strong> for at least 30 minutes. For Grade 3 cable this is 4.84 × d² kgf, with d the cable diameter in mm. For 114 mm cable that is 62.9 t, which matches the figure in the DHT LEOPARD sheet.</p>
             <p>That rated pull is for an anchorage depth down to <strong>82.5 m (3 shackles)</strong>; deeper anchorages need a windlass with a higher rated pull. The mean hoisting speed must be at least <strong>0.15 m/s (9 m/min)</strong>, measured over two shackles starting with three shackles and the anchor hanging free. That is why the capacity is quoted “@ 9 m/min”.</p>
-            <p>Windlasses certified from July 2018 are <strong>marked with their maximum anchorage depth</strong>. Enter it, or the maker's figure, as the rated anchorage depth. If it is less than the calculated depth, the lower figure governs.</p>
+            <p>Windlasses certified from July 2018 are <strong>marked with their maximum anchorage depth</strong>. Enter it, or the maker's figure, as the rated anchorage depth. UR A3 tests the windlass with three shots (82.5 m) of cable and the anchor hanging free, so the rated depth is <strong>cable hanging from the windlass</strong>, not depth of water: the sheet subtracts the deck height from it as well. If it is less than the calculated depth, the lower figure governs.</p>
           </section>
 
           <section class="ex-sec">
@@ -2371,7 +2371,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
         <div class="ps-formula" id="ad-ps-practical"></div>
         <table class="dt steps ps-steps" id="ad-ps-steps"></table>
         <svg class="ps-diagram ps-anchor-diagram" id="ad-ps-diagram" viewBox="0 0 560 380" aria-hidden="true"></svg>
-        <p class="ps-note"><strong>Method:</strong> usable pull = windlass continuous duty pull less the allowance for friction and age (20 % with weights in air ≈ the IACS UR A3 basis of 70 % hawse-pipe efficiency with weights in seawater). The pull left after lifting the anchor, joining shackle and 1st shackle, divided by the weight of one shackle, gives the further shackles that can be lifted. Do not exceed the windlass's rated anchorage depth. Breaking out is not included. Use the depth of water at the highest expected tide.</p>
+        <p class="ps-note"><strong>Method:</strong> usable pull = windlass continuous duty pull less the allowance for friction and age (20 % with weights in air ≈ the IACS UR A3 basis of 70 % hawse-pipe efficiency with weights in seawater). The pull left after lifting the anchor, joining shackle and 1st shackle, divided by the weight of one shackle, gives the further shackles that can be lifted. Do not exceed the windlass's rated anchorage depth, which is cable hanging (82.5 m = 3 shackles), so the deck height is subtracted from it too. Breaking out is not included. Use the depth of water at the highest expected tide.</p>
         <div class="ps-sign">
           <div>Prepared by: Chief Officer<span>Name / Signature / Date</span></div>
           <div>Approved by: Master<span>Name / Signature / Date</span></div>
@@ -4063,8 +4063,10 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
       deck: deck, whole: whole, wholeDeck: whole * p.len,
       water: p.h === null ? null : deck - p.h, wholeWater: p.h === null ? null : whole * p.len - p.h,
       rated: p.ratedDepth === undefined ? null : p.ratedDepth,
-      governing: p.h !== null && p.ratedDepth != null ? Math.min(deck - p.h, p.ratedDepth) : null,
-      limitedByRating: p.h !== null && p.ratedDepth != null && p.ratedDepth < deck - p.h,
+      /* IACS UR A3: the rated depth is cable hanging free from the windlass (82.5 m = 3 shots), so it is compared deck to seabed */
+      ratedWater: p.h !== null && p.ratedDepth != null ? p.ratedDepth - p.h : null,
+      governing: p.h !== null && p.ratedDepth != null ? Math.min(deck, p.ratedDepth) - p.h : null,
+      limitedByRating: p.ratedDepth != null && p.ratedDepth < deck,
       ok: spare > 0
     };
   }
@@ -4076,7 +4078,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
     KEYS.forEach(function (k) { f[k] = $("ad-" + k); });
     var hints = {
       anchorWt: "From the anchor certificate", jShackleWt: "Anchor (end) shackle", firstShackleWt: "First length incl. kenter",
-      shackleWt: "One length of cable incl. kenter shackle", windlassPull: "Continuous duty pull", ratedDepth: "From the windlass marking or maker's data",
+      shackleWt: "One length of cable incl. kenter shackle", windlassPull: "Continuous duty pull", ratedDepth: "Cable hanging, from the windlass marking (standard 82.5 m)",
       allow: "Allowance, usually 20 %", len: "Standard 27.5 m (15 fathoms)", h: "Optional: gives depth of water"
     };
     var m1 = function (x) { return x.toFixed(1); };
@@ -4185,8 +4187,11 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
         rows.push(["13", "Max depth of water the windlass can lift from (11 − 12)", r.ok ? m1(r.water) : "—", "m", r.rated === null]);
       }
       if (r.rated !== null) {
-        rows.push(["14", "Rated anchorage depth of windlass (marking / maker's data)", m1(r.rated), "m"]);
-        if (v.h !== null) rows.push(["15", "Safe anchoring depth (lower of 13 and 14)", r.ok ? m1(r.governing) : "—", "m", true]);
+        rows.push(["14", "Rated anchorage depth of windlass, cable hanging from deck (marking / maker's data)", m1(r.rated), "m", v.h === null && r.limitedByRating]);
+        if (v.h !== null) {
+          rows.push(["15", "Rated depth as depth of water (14 − 12)", m1(r.ratedWater), "m"]);
+          rows.push(["16", "Safe anchoring depth (lower of 13 and 15)", r.ok ? m1(r.governing) : "—", "m", true]);
+        }
       }
       return rows;
     }
@@ -4214,7 +4219,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
         "Deck to seabed: (1 + " + r.extra.toFixed(2) + ") × " + t3(v.len) + " = " + m1(r.deck) + " m"
       ];
       if (v.h !== null) steps.push("Depth of water: " + m1(r.deck) + " − " + m1(v.h) + " = " + m1(r.water) + " m");
-      if (v.h !== null && r.rated !== null && r.rated !== undefined) steps.push("Safe anchoring depth: lower of " + m1(r.water) + " m and rated " + m1(r.rated) + " m = " + m1(r.governing) + " m");
+      if (v.h !== null && r.rated !== null && r.rated !== undefined) steps.push("Safe anchoring depth: lower of " + m1(r.water) + " m and rated " + m1(r.rated) + " − " + m1(v.h) + " = " + m1(r.ratedWater) + " m, so " + m1(r.governing) + " m");
       var ol = $("ad-ex-steps");
       while (ol.firstChild) ol.removeChild(ol.firstChild);
       steps.forEach(function (t) { var li = document.createElement("li"); li.className = "mono"; li.textContent = t; ol.appendChild(li); });
@@ -4376,8 +4381,8 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
         $("ad-water-box").querySelector(".readout-label").textContent = "Safe anchoring depth";
         $("ad-water").innerHTML = m1(r.governing) + "<small>m</small>";
         $("ad-water-sub").textContent = r.limitedByRating
-          ? "Limited by the windlass rating (calculated " + m1(r.water) + " m)"
-          : "Calculated limit; windlass rated to " + m1(r.rated) + " m";
+          ? "Limited by the windlass rating: " + m1(r.rated) + " m − " + m1(v.h) + " m deck height (calculated " + m1(r.water) + " m)"
+          : "Calculated limit; windlass rated to " + m1(r.rated) + " m of cable (" + m1(r.ratedWater) + " m depth of water)";
       } else if (v.h !== null) {
         $("ad-water-box").querySelector(".readout-label").textContent = "Max depth of water";
         $("ad-water").innerHTML = m1(r.water) + "<small>m</small>";
@@ -4390,7 +4395,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
       $("ad-practical").textContent = "Practical limit, whole shackles: " + r.whole + " shackle" + (r.whole === 1 ? "" : "s") + " = " + m1(r.wholeDeck) + " m deck to seabed" +
         (v.h !== null ? " (" + m1(r.wholeWater) + " m depth of water)" : "") + "." +
         (r.rated === null ? " Also check the windlass's rated anchorage depth (standard design 82.5 m) and use the lower figure." :
-          r.limitedByRating ? " The windlass is rated to " + m1(r.rated) + " m only: do not anchor deeper than that." : "");
+          r.limitedByRating ? " The windlass is rated to " + m1(r.rated) + " m of cable hanging" + (v.h !== null ? " (" + m1(r.ratedWater) + " m depth of water)" : "") + " only: do not anchor deeper than that." : "");
       writeExample(v, r, true);
       drawAnchor($("ad-diagram"), "ad", v, r);
       fillSheet(v, r);
