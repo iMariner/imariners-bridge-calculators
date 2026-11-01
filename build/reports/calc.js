@@ -1,10 +1,16 @@
-  /* REPORTS-BEGIN */
+/* REPORTS-BEGIN */
   /* Vessel daily reportings: distance run, hours and average speed from DTG at each noon report */
   var RP = (function () {
     function num(s) { s = String(s === undefined || s === null ? "" : s).replace(",", ".").trim(); if (s === "") return null; var x = Number(s); return isFinite(x) ? x : NaN; }
     function ok(x) { return x !== null && !isNaN(x); }
+    function zone(s) {                        /* 8, -3.5, +5:30, -3:30, typographic minus: hours East + */
+      s = String(s === undefined || s === null ? "" : s).replace(/[−–]/g, "-").replace(",", ".").trim();
+      var m = /^([+-]?)(\d{1,2}):([0-5]\d)$/.exec(s);
+      if (m) return (m[1] === "-" ? -1 : 1) * ((+m[2]) + (+m[3]) / 60);
+      var z = num(s); return ok(z) && (z < -12 || z > 14) ? NaN : z;
+    }
     function utcMs(r) {                       /* ship's local date and time, zone East +, to UTC milliseconds */
-      var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(r.date || ""), t = /^(\d{1,2}):(\d{2})$/.exec(r.time || ""), z = num(r.zone);
+      var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(r.date || ""), t = /^(\d{1,2}):(\d{2})$/.exec(r.time || ""), z = zone(r.zone);
       if (!m || !t || !ok(z)) return null;
       return Date.UTC(+m[1], +m[2] - 1, +m[3], +t[1], +t[2]) - z * 3600000;
     }
@@ -14,6 +20,7 @@
         var o = { utc: utcMs(r), dtg: num(r.dtg), ovr: num(r.ovr), auto: null, dist: null, hours: null, speed: null, warn: "", start: false, done: false };
         if (isNaN(o.dtg)) { o.warn = "DTG is not a number"; o.dtg = null; }
         if (isNaN(o.ovr)) { o.warn = "Override is not a number"; o.ovr = null; }
+        else if (o.ovr !== null && o.ovr < 0) { o.warn = "Override must be 0 or more (distance run in NM)"; o.ovr = null; }
         var prev = i > 0 ? out[i - 1] : null;
         if (i === 0 || r.type === "cosp") { o.start = true; o.dist = 0; o.hours = 0; }
         else if (rows[i - 1].type === "eosp") { o.start = true; o.dist = 0; o.hours = 0; o.warn = "Arrival was entered above this line. Set this line to Departure to start the next passage."; }
@@ -66,7 +73,6 @@
       var mins = Math.round(h * 60), d = Math.floor(mins / 1440), hh = Math.floor((mins % 1440) / 60), mm = mins % 60;
       return (d ? d + " d " : "") + ("0" + hh).slice(-2) + " h " + ("0" + mm).slice(-2) + " m";
     }
-    return { num: num, utcMs: utcMs, compute: compute, totals: totals, summary: summary, monthOf: monthOf, fmtDist: dist, fmtSpeed: speed, fmtDur: dur };
+    return { num: num, zone: zone, utcMs: utcMs, compute: compute, totals: totals, summary: summary, monthOf: monthOf, fmtDist: dist, fmtSpeed: speed, fmtDur: dur };
   })();
   /* REPORTS-END */
-

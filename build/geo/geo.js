@@ -21,7 +21,8 @@
     }
     /* Reads one line: optional name, then latitude and longitude. Returns {name, lat, lon} or {error}. */
     function parse(line) {
-      var s = String(line || "").replace(/[°º˚]/g, " ").replace(/[′’‘`´']/g, " ").replace(/[″”“"]/g, " ").replace(/−|–/g, "-").replace(/,/g, " , ").replace(/\s+/g, " ").trim();
+      var s = String(line || "").replace(/(\d+(?:\.\d+)?),(\d+)/g, function (m, a, b) { return a.indexOf(".") < 0 ? a + "." + b : m; })   /* decimal comma: 27,5 is 27.5 */
+        .replace(/[°º˚]/g, " ").replace(/[′’‘`´']/g, " ").replace(/[″”“"]/g, " ").replace(/−|–/g, "-").replace(/,/g, " , ").replace(/\s+/g, " ").trim();
       if (!s) return { error: "empty" };
       var up = s.toUpperCase(), la = null, lo = null, name = "", m, cut = -1, end = -1;
       /* decimal pair without letters: 48.4583 -6.4167 / 48.4583, -6.4167 */
@@ -39,13 +40,16 @@
       var reB = new RegExp("(?:^|[\\s,;:=|(-])([NSEW])\\s*" + NUM + after + "(?![\\d.])", "g");            /* N 48 27.5 */
       var reC = new RegExp("(?:^|[\\s,;:=|(-])(\\d{2})(\\d{2}(?:\\.\\d+)?)\\s*([NS])(?![A-Z])|(?:^|[\\s,;:=|(-])(\\d{3})(\\d{2}(?:\\.\\d+)?)\\s*([EW])(?![A-Z])", "g"); /* 4827.5N 00625.0W */
       var found = [], r;
-      function push(mm, d, mi, se, h, maxDeg, idx) { var v = dms(d, mi, se, h, maxDeg); found.push({ i: idx, hemi: h, v: v, text: mm[0], end: idx + mm[0].length }); }
+      function push(mm, d, mi, se, h, maxDeg, idx) { var v = dms(d, mi, se, h, maxDeg); found.push({ i: idx, hemi: h, v: v, text: mm[0], end: idx + mm[0].length, d: d, mi: mi, se: se }); }
       while ((r = reA.exec(up))) { var h = r[4]; push(r, r[1], r[2], r[3], h, /[NS]/.test(h) ? 90 : 180, r.index); }
       if (found.length < 2) { found = []; while ((r = reB.exec(up))) { var hb = r[1]; push(r, r[2], r[3], r[4], hb, /[NS]/.test(hb) ? 90 : 180, r.index); } }
       if (found.length < 2) { found = []; while ((r = reC.exec(up))) { if (r[3]) push(r, r[1], r[2], "", r[3], 90, r.index); else push(r, r[4], r[5], "", r[6], 180, r.index); } }
       if (found.length < 2) return { error: "need a latitude and a longitude, each ending in N, S, E or W" };
       var fLat = found.filter(function (f) { return /[NS]/.test(f.hemi); }), fLon = found.filter(function (f) { return /[EW]/.test(f.hemi); });
       if (fLat.length !== 1 || fLon.length !== 1) return { error: "give one latitude (N or S) and one longitude (E or W)" };
+      /* "WP 2 48 27.5N 006 25.0W": three numbers before N but two before W, so the first one belongs to the name, not the latitude */
+      var L = fLat[0], O = fLon[0], lead;
+      if (L.se && !O.se && O.mi && (/[A-Z][A-Z.#]*\s*$/.test(up.slice(0, L.i + /^\D*/.exec(L.text)[0].length)) || (/\./.test(L.se) && /\./.test(O.mi))) && (lead = /^\D*\d{1,3}(?:\.\d+)?\s+/.exec(L.text))) { L.v = dms(L.mi, L.se, "", L.hemi, 90); L.i += lead[0].length; }
       if (isNaN(fLat[0].v) || isNaN(fLon[0].v)) return { error: "degrees or minutes out of range" };
       var first = Math.min(fLat[0].i, fLon[0].i);
       name = s.slice(0, first).replace(/[\s,:;|=(-]+$/, "").trim();

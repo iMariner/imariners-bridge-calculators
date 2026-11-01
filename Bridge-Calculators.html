@@ -487,6 +487,7 @@ table.dt.ps-steps td { padding: .45mm 1.5mm; border-bottom: 1px solid #ddd; }
   #et-ps-table th, #et-ps-table td { text-align: center; padding: 1.4mm 1.5mm; }
   #et-ps-table th:first-child, #et-ps-table td:first-child { text-align: left; }
   #et-ps-table td.sub { display: block; }
+  #et-ps-table .et-ps-pass { font-size: 7.5pt; color: #555; }
   #cs-sheet table.wk td:first-child { width: 30%; }
   #cs-sheet table.wk td:nth-child(3) { font-size: 7pt; }
   #ge-sheet .ps-mp-cols { grid-template-columns: 1fr 1fr !important; }
@@ -1058,120 +1059,22 @@ table.sf-rows td.n { font-size: var(--fs-base); }
 .sf-merpass { margin: 0 0 var(--sp-3); padding: var(--sp-2) var(--sp-3); border-left: var(--sp-1) solid var(--accent); border-radius: var(--r-md); background: var(--surface-2); font-size: var(--fs-sm); color: var(--text); }
 .sf-merpass strong { color: var(--accent); }
 .sf-merpass span { color: var(--muted); }
+.sf-rows input.sf-auto { color: var(--muted); }
+.sf-steps { margin-top: var(--sp-4); }
+.sf-steps li { margin-bottom: var(--sp-2); line-height: 1.5; }
+.sf-steps p { margin: var(--sp-2) 0 0; }
+table.sf-rows td.w-dr > span.sf-dr1 { font-size: var(--fs-sm); color: var(--text); padding-left: var(--sp-1h); }
+.sf-plot, .sf-keyicon { --sp-c0: var(--accent); --sp-c1: var(--apparent); --sp-c2: var(--ship); --sp-c3: var(--take); }
+.sf-plot .sp-c0, .sf-keyicon .sp-c0 { stroke: var(--sp-c0); } .sf-plot .sp-c1 { stroke: var(--sp-c1); } .sf-plot .sp-c2 { stroke: var(--sp-c2); } .sf-plot .sp-c3 { stroke: var(--sp-c3); }
+.sf-plot text.sp-c0, .sf-plot .sp-head.sp-c0, .sf-keyicon .sp-head.sp-c0 { fill: var(--sp-c0); } .sf-plot text.sp-c1, .sf-plot .sp-head.sp-c1 { fill: var(--sp-c1); } .sf-plot text.sp-c2, .sf-plot .sp-head.sp-c2 { fill: var(--sp-c2); } .sf-plot text.sp-c3, .sf-plot .sp-head.sp-c3 { fill: var(--sp-c3); }
+.sf-plot text.sp-c0, .sf-plot text.sp-c1, .sf-plot text.sp-c2, .sf-plot text.sp-c3 { stroke: var(--surface); }
+.sf-plot .sp-head, .sf-keyicon .sp-head { stroke: none; } .sf-plot .sp-head.sp-trk, .sf-keyicon .sp-head.sp-trk { fill: var(--muted); }
+.sf-plot .sp-icpt, .sf-keyicon .sp-icpt { stroke-width: 2.4; } .sf-plot .sp-lop, .sf-keyicon .sp-lop { stroke-width: 2.2; }
+.sf-plot .sp-lab0, .sf-plot .sp-labz, .sf-plot .sp-labi, .sf-plot .sp-labt { font-weight: var(--fw-medium); } .sf-plot .sp-labt { fill: var(--muted); }
+.sf-plot .sp-rosebg { fill: var(--surface); opacity: .6; } .sf-plot .sp-rosering { fill: none; stroke: var(--muted); stroke-width: 1.2; }
+.sf-plot .sp-rosetk { stroke: var(--muted); stroke-width: 1; } .sf-plot .sp-rosetx { font-family: var(--font-mono); font-size: var(--fs-2xs); fill: var(--muted); } .sf-plot .sp-spoke { stroke-width: 1.8; }
+.sf-plot .sp-rosetx.sp-lab { font-size: var(--fs-xs); font-weight: var(--fw-bold); }
 /* Sight Fix end */
-.sf-rows input.sf-auto { color: var(--muted); }
-.sf-steps { margin-top: var(--sp-4); }
-.sf-steps li { margin-bottom: var(--sp-2); line-height: 1.5; }
-.sf-steps p { margin: var(--sp-2) 0 0; }
-table.sf-rows td.w-dr > span.sf-dr1 { font-size: var(--fs-sm); color: var(--text); padding-left: var(--sp-1h); }
-.sf-plot, .sf-keyicon { --sp-c0: var(--accent); --sp-c1: var(--apparent); --sp-c2: var(--ship); --sp-c3: var(--take); }
-.sf-plot .sp-c0, .sf-keyicon .sp-c0 { stroke: var(--sp-c0); } .sf-plot .sp-c1 { stroke: var(--sp-c1); } .sf-plot .sp-c2 { stroke: var(--sp-c2); } .sf-plot .sp-c3 { stroke: var(--sp-c3); }
-.sf-plot text.sp-c0, .sf-plot .sp-head.sp-c0, .sf-keyicon .sp-head.sp-c0 { fill: var(--sp-c0); } .sf-plot text.sp-c1, .sf-plot .sp-head.sp-c1 { fill: var(--sp-c1); } .sf-plot text.sp-c2, .sf-plot .sp-head.sp-c2 { fill: var(--sp-c2); } .sf-plot text.sp-c3, .sf-plot .sp-head.sp-c3 { fill: var(--sp-c3); }
-.sf-plot text.sp-c0, .sf-plot text.sp-c1, .sf-plot text.sp-c2, .sf-plot text.sp-c3 { stroke: var(--surface); }
-.sf-plot .sp-head, .sf-keyicon .sp-head { stroke: none; } .sf-plot .sp-head.sp-trk, .sf-keyicon .sp-head.sp-trk { fill: var(--muted); }
-.sf-plot .sp-icpt, .sf-keyicon .sp-icpt { stroke-width: 2.4; } .sf-plot .sp-lop, .sf-keyicon .sp-lop { stroke-width: 2.2; }
-.sf-plot .sp-lab0, .sf-plot .sp-labz, .sf-plot .sp-labi, .sf-plot .sp-labt { font-weight: var(--fw-medium); } .sf-plot .sp-labt { fill: var(--muted); }
-.sf-plot .sp-rosebg { fill: var(--surface); opacity: .6; } .sf-plot .sp-rosering { fill: none; stroke: var(--muted); stroke-width: 1.2; }
-.sf-plot .sp-rosetk { stroke: var(--muted); stroke-width: 1; } .sf-plot .sp-rosetx { font-family: var(--font-mono); font-size: var(--fs-2xs); fill: var(--muted); } .sf-plot .sp-spoke { stroke-width: 1.8; }
-.sf-plot .sp-rosetx.sp-lab { font-size: var(--fs-xs); font-weight: var(--fw-bold); }
-.sf-rows input.sf-auto { color: var(--muted); }
-.sf-steps { margin-top: var(--sp-4); }
-.sf-steps li { margin-bottom: var(--sp-2); line-height: 1.5; }
-.sf-steps p { margin: var(--sp-2) 0 0; }
-table.sf-rows td.w-dr > span.sf-dr1 { font-size: var(--fs-sm); color: var(--text); padding-left: var(--sp-1h); }
-.sf-plot, .sf-keyicon { --sp-c0: var(--accent); --sp-c1: var(--apparent); --sp-c2: var(--ship); --sp-c3: var(--take); }
-.sf-plot .sp-c0, .sf-keyicon .sp-c0 { stroke: var(--sp-c0); } .sf-plot .sp-c1 { stroke: var(--sp-c1); } .sf-plot .sp-c2 { stroke: var(--sp-c2); } .sf-plot .sp-c3 { stroke: var(--sp-c3); }
-.sf-plot text.sp-c0, .sf-plot .sp-head.sp-c0, .sf-keyicon .sp-head.sp-c0 { fill: var(--sp-c0); } .sf-plot text.sp-c1, .sf-plot .sp-head.sp-c1 { fill: var(--sp-c1); } .sf-plot text.sp-c2, .sf-plot .sp-head.sp-c2 { fill: var(--sp-c2); } .sf-plot text.sp-c3, .sf-plot .sp-head.sp-c3 { fill: var(--sp-c3); }
-.sf-plot text.sp-c0, .sf-plot text.sp-c1, .sf-plot text.sp-c2, .sf-plot text.sp-c3 { stroke: var(--surface); }
-.sf-plot .sp-head, .sf-keyicon .sp-head { stroke: none; } .sf-plot .sp-head.sp-trk, .sf-keyicon .sp-head.sp-trk { fill: var(--muted); }
-.sf-plot .sp-icpt, .sf-keyicon .sp-icpt { stroke-width: 2.4; } .sf-plot .sp-lop, .sf-keyicon .sp-lop { stroke-width: 2.2; }
-.sf-plot .sp-lab0, .sf-plot .sp-labz, .sf-plot .sp-labi, .sf-plot .sp-labt { font-weight: var(--fw-medium); } .sf-plot .sp-labt { fill: var(--muted); }
-.sf-plot .sp-rosebg { fill: var(--surface); opacity: .6; } .sf-plot .sp-rosering { fill: none; stroke: var(--muted); stroke-width: 1.2; }
-.sf-plot .sp-rosetk { stroke: var(--muted); stroke-width: 1; } .sf-plot .sp-rosetx { font-family: var(--font-mono); font-size: var(--fs-2xs); fill: var(--muted); } .sf-plot .sp-spoke { stroke-width: 1.8; }
-.sf-plot .sp-rosetx.sp-lab { font-size: var(--fs-xs); font-weight: var(--fw-bold); }
-.sf-rows input.sf-auto { color: var(--muted); }
-.sf-steps { margin-top: var(--sp-4); }
-.sf-steps li { margin-bottom: var(--sp-2); line-height: 1.5; }
-.sf-steps p { margin: var(--sp-2) 0 0; }
-table.sf-rows td.w-dr > span.sf-dr1 { font-size: var(--fs-sm); color: var(--text); padding-left: var(--sp-1h); }
-.sf-plot, .sf-keyicon { --sp-c0: var(--accent); --sp-c1: var(--apparent); --sp-c2: var(--ship); --sp-c3: var(--take); }
-.sf-plot .sp-c0, .sf-keyicon .sp-c0 { stroke: var(--sp-c0); } .sf-plot .sp-c1 { stroke: var(--sp-c1); } .sf-plot .sp-c2 { stroke: var(--sp-c2); } .sf-plot .sp-c3 { stroke: var(--sp-c3); }
-.sf-plot text.sp-c0, .sf-plot .sp-head.sp-c0, .sf-keyicon .sp-head.sp-c0 { fill: var(--sp-c0); } .sf-plot text.sp-c1, .sf-plot .sp-head.sp-c1 { fill: var(--sp-c1); } .sf-plot text.sp-c2, .sf-plot .sp-head.sp-c2 { fill: var(--sp-c2); } .sf-plot text.sp-c3, .sf-plot .sp-head.sp-c3 { fill: var(--sp-c3); }
-.sf-plot text.sp-c0, .sf-plot text.sp-c1, .sf-plot text.sp-c2, .sf-plot text.sp-c3 { stroke: var(--surface); }
-.sf-plot .sp-head, .sf-keyicon .sp-head { stroke: none; } .sf-plot .sp-head.sp-trk, .sf-keyicon .sp-head.sp-trk { fill: var(--muted); }
-.sf-plot .sp-icpt, .sf-keyicon .sp-icpt { stroke-width: 2.4; } .sf-plot .sp-lop, .sf-keyicon .sp-lop { stroke-width: 2.2; }
-.sf-plot .sp-lab0, .sf-plot .sp-labz, .sf-plot .sp-labi, .sf-plot .sp-labt { font-weight: var(--fw-medium); } .sf-plot .sp-labt { fill: var(--muted); }
-.sf-plot .sp-rosebg { fill: var(--surface); opacity: .6; } .sf-plot .sp-rosering { fill: none; stroke: var(--muted); stroke-width: 1.2; }
-.sf-plot .sp-rosetk { stroke: var(--muted); stroke-width: 1; } .sf-plot .sp-rosetx { font-family: var(--font-mono); font-size: var(--fs-2xs); fill: var(--muted); } .sf-plot .sp-spoke { stroke-width: 1.8; }
-.sf-plot .sp-rosetx.sp-lab { font-size: var(--fs-xs); font-weight: var(--fw-bold); }
-.sf-rows input.sf-auto { color: var(--muted); }
-.sf-steps { margin-top: var(--sp-4); }
-.sf-steps li { margin-bottom: var(--sp-2); line-height: 1.5; }
-.sf-steps p { margin: var(--sp-2) 0 0; }
-table.sf-rows td.w-dr > span.sf-dr1 { font-size: var(--fs-sm); color: var(--text); padding-left: var(--sp-1h); }
-.sf-plot, .sf-keyicon { --sp-c0: var(--accent); --sp-c1: var(--apparent); --sp-c2: var(--ship); --sp-c3: var(--take); }
-.sf-plot .sp-c0, .sf-keyicon .sp-c0 { stroke: var(--sp-c0); } .sf-plot .sp-c1 { stroke: var(--sp-c1); } .sf-plot .sp-c2 { stroke: var(--sp-c2); } .sf-plot .sp-c3 { stroke: var(--sp-c3); }
-.sf-plot text.sp-c0, .sf-plot .sp-head.sp-c0, .sf-keyicon .sp-head.sp-c0 { fill: var(--sp-c0); } .sf-plot text.sp-c1, .sf-plot .sp-head.sp-c1 { fill: var(--sp-c1); } .sf-plot text.sp-c2, .sf-plot .sp-head.sp-c2 { fill: var(--sp-c2); } .sf-plot text.sp-c3, .sf-plot .sp-head.sp-c3 { fill: var(--sp-c3); }
-.sf-plot text.sp-c0, .sf-plot text.sp-c1, .sf-plot text.sp-c2, .sf-plot text.sp-c3 { stroke: var(--surface); }
-.sf-plot .sp-head, .sf-keyicon .sp-head { stroke: none; } .sf-plot .sp-head.sp-trk, .sf-keyicon .sp-head.sp-trk { fill: var(--muted); }
-.sf-plot .sp-icpt, .sf-keyicon .sp-icpt { stroke-width: 2.4; } .sf-plot .sp-lop, .sf-keyicon .sp-lop { stroke-width: 2.2; }
-.sf-plot .sp-lab0, .sf-plot .sp-labz, .sf-plot .sp-labi, .sf-plot .sp-labt { font-weight: var(--fw-medium); } .sf-plot .sp-labt { fill: var(--muted); }
-.sf-plot .sp-rosebg { fill: var(--surface); opacity: .6; } .sf-plot .sp-rosering { fill: none; stroke: var(--muted); stroke-width: 1.2; }
-.sf-plot .sp-rosetk { stroke: var(--muted); stroke-width: 1; } .sf-plot .sp-rosetx { font-family: var(--font-mono); font-size: var(--fs-2xs); fill: var(--muted); } .sf-plot .sp-spoke { stroke-width: 1.8; }
-.sf-plot .sp-rosetx.sp-lab { font-size: var(--fs-xs); font-weight: var(--fw-bold); }
-.sf-rows input.sf-auto { color: var(--muted); }
-.sf-steps { margin-top: var(--sp-4); }
-.sf-steps li { margin-bottom: var(--sp-2); line-height: 1.5; }
-.sf-steps p { margin: var(--sp-2) 0 0; }
-table.sf-rows td.w-dr > span.sf-dr1 { font-size: var(--fs-sm); color: var(--text); padding-left: var(--sp-1h); }
-.sf-plot, .sf-keyicon { --sp-c0: var(--accent); --sp-c1: var(--apparent); --sp-c2: var(--ship); --sp-c3: var(--take); }
-.sf-plot .sp-c0, .sf-keyicon .sp-c0 { stroke: var(--sp-c0); } .sf-plot .sp-c1 { stroke: var(--sp-c1); } .sf-plot .sp-c2 { stroke: var(--sp-c2); } .sf-plot .sp-c3 { stroke: var(--sp-c3); }
-.sf-plot text.sp-c0, .sf-plot .sp-head.sp-c0, .sf-keyicon .sp-head.sp-c0 { fill: var(--sp-c0); } .sf-plot text.sp-c1, .sf-plot .sp-head.sp-c1 { fill: var(--sp-c1); } .sf-plot text.sp-c2, .sf-plot .sp-head.sp-c2 { fill: var(--sp-c2); } .sf-plot text.sp-c3, .sf-plot .sp-head.sp-c3 { fill: var(--sp-c3); }
-.sf-plot text.sp-c0, .sf-plot text.sp-c1, .sf-plot text.sp-c2, .sf-plot text.sp-c3 { stroke: var(--surface); }
-.sf-plot .sp-head, .sf-keyicon .sp-head { stroke: none; } .sf-plot .sp-head.sp-trk, .sf-keyicon .sp-head.sp-trk { fill: var(--muted); }
-.sf-plot .sp-icpt, .sf-keyicon .sp-icpt { stroke-width: 2.4; } .sf-plot .sp-lop, .sf-keyicon .sp-lop { stroke-width: 2.2; }
-.sf-plot .sp-lab0, .sf-plot .sp-labz, .sf-plot .sp-labi, .sf-plot .sp-labt { font-weight: var(--fw-medium); } .sf-plot .sp-labt { fill: var(--muted); }
-.sf-plot .sp-rosebg { fill: var(--surface); opacity: .6; } .sf-plot .sp-rosering { fill: none; stroke: var(--muted); stroke-width: 1.2; }
-.sf-plot .sp-rosetk { stroke: var(--muted); stroke-width: 1; } .sf-plot .sp-rosetx { font-family: var(--font-mono); font-size: var(--fs-2xs); fill: var(--muted); } .sf-plot .sp-spoke { stroke-width: 1.8; }
-.sf-plot .sp-rosetx.sp-lab { font-size: var(--fs-xs); font-weight: var(--fw-bold); }
-.sf-rows input.sf-auto { color: var(--muted); }
-.sf-steps { margin-top: var(--sp-4); }
-.sf-steps li { margin-bottom: var(--sp-2); line-height: 1.5; }
-.sf-steps p { margin: var(--sp-2) 0 0; }
-table.sf-rows td.w-dr > span.sf-dr1 { font-size: var(--fs-sm); color: var(--text); padding-left: var(--sp-1h); }
-.sf-plot, .sf-keyicon { --sp-c0: var(--accent); --sp-c1: var(--apparent); --sp-c2: var(--ship); --sp-c3: var(--take); }
-.sf-plot .sp-c0, .sf-keyicon .sp-c0 { stroke: var(--sp-c0); } .sf-plot .sp-c1 { stroke: var(--sp-c1); } .sf-plot .sp-c2 { stroke: var(--sp-c2); } .sf-plot .sp-c3 { stroke: var(--sp-c3); }
-.sf-plot text.sp-c0, .sf-plot .sp-head.sp-c0, .sf-keyicon .sp-head.sp-c0 { fill: var(--sp-c0); } .sf-plot text.sp-c1, .sf-plot .sp-head.sp-c1 { fill: var(--sp-c1); } .sf-plot text.sp-c2, .sf-plot .sp-head.sp-c2 { fill: var(--sp-c2); } .sf-plot text.sp-c3, .sf-plot .sp-head.sp-c3 { fill: var(--sp-c3); }
-.sf-plot text.sp-c0, .sf-plot text.sp-c1, .sf-plot text.sp-c2, .sf-plot text.sp-c3 { stroke: var(--surface); }
-.sf-plot .sp-head, .sf-keyicon .sp-head { stroke: none; } .sf-plot .sp-head.sp-trk, .sf-keyicon .sp-head.sp-trk { fill: var(--muted); }
-.sf-plot .sp-icpt, .sf-keyicon .sp-icpt { stroke-width: 2.4; } .sf-plot .sp-lop, .sf-keyicon .sp-lop { stroke-width: 2.2; }
-.sf-plot .sp-lab0, .sf-plot .sp-labz, .sf-plot .sp-labi, .sf-plot .sp-labt { font-weight: var(--fw-medium); } .sf-plot .sp-labt { fill: var(--muted); }
-.sf-plot .sp-rosebg { fill: var(--surface); opacity: .92; stroke: var(--border); } .sf-plot .sp-rosering { fill: none; stroke: var(--muted); stroke-width: 1.2; }
-.sf-plot .sp-rosetk { stroke: var(--muted); stroke-width: 1; } .sf-plot .sp-rosetx { font-family: var(--font-mono); font-size: var(--fs-2xs); fill: var(--muted); } .sf-plot .sp-spoke { stroke-width: 1.8; }
-.sf-plot .sp-rosetx.sp-lab { font-size: var(--fs-xs); font-weight: var(--fw-bold); }
-.sf-rows input.sf-auto { color: var(--muted); }
-.sf-steps { margin-top: var(--sp-4); }
-.sf-steps li { margin-bottom: var(--sp-2); line-height: 1.5; }
-.sf-steps p { margin: var(--sp-2) 0 0; }
-table.sf-rows td.w-dr > span.sf-dr1 { font-size: var(--fs-sm); color: var(--text); padding-left: var(--sp-1h); }
-.sf-plot { --sp-c0: var(--accent); --sp-c1: var(--apparent); --sp-c2: var(--ship); --sp-c3: var(--take); }
-.sf-plot .sp-c0, .sf-keyicon .sp-c0 { stroke: var(--sp-c0); } .sf-plot .sp-c1 { stroke: var(--sp-c1); } .sf-plot .sp-c2 { stroke: var(--sp-c2); } .sf-plot .sp-c3 { stroke: var(--sp-c3); }
-.sf-plot text.sp-c0, .sf-plot .sp-head.sp-c0, .sf-keyicon .sp-head.sp-c0 { fill: var(--sp-c0); } .sf-plot text.sp-c1, .sf-plot .sp-head.sp-c1 { fill: var(--sp-c1); } .sf-plot text.sp-c2, .sf-plot .sp-head.sp-c2 { fill: var(--sp-c2); } .sf-plot text.sp-c3, .sf-plot .sp-head.sp-c3 { fill: var(--sp-c3); }
-.sf-plot text.sp-c0, .sf-plot text.sp-c1, .sf-plot text.sp-c2, .sf-plot text.sp-c3 { stroke: var(--surface); }
-.sf-plot .sp-head, .sf-keyicon .sp-head { stroke: none; } .sf-plot .sp-head.sp-trk, .sf-keyicon .sp-head.sp-trk { fill: var(--muted); }
-.sf-plot .sp-icpt, .sf-keyicon .sp-icpt { stroke-width: 2.4; } .sf-plot .sp-lop, .sf-keyicon .sp-lop { stroke-width: 2.2; }
-.sf-plot .sp-lab0, .sf-plot .sp-labz, .sf-plot .sp-labi, .sf-plot .sp-labt { font-weight: var(--fw-medium); } .sf-plot .sp-labt { fill: var(--muted); }
-.sf-plot .sp-rosebg { fill: var(--surface); opacity: .92; stroke: var(--border); } .sf-plot .sp-rosering { fill: none; stroke: var(--muted); stroke-width: 1.2; }
-.sf-plot .sp-rosetk { stroke: var(--muted); stroke-width: 1; } .sf-plot .sp-rosetx { font-family: var(--font-mono); font-size: var(--fs-2xs); fill: var(--muted); } .sf-plot .sp-spoke { stroke-width: 1.8; }
-.sf-plot .sp-rosetx.sp-lab { font-size: var(--fs-xs); font-weight: var(--fw-bold); }
-.sf-rows input.sf-auto { color: var(--muted); }
-.sf-steps { margin-top: var(--sp-4); }
-.sf-steps li { margin-bottom: var(--sp-2); line-height: 1.5; }
-.sf-steps p { margin: var(--sp-2) 0 0; }
-.sf-rows input.sf-auto { color: var(--muted); }
-.sf-steps { margin-top: var(--sp-4); }
-.sf-steps li { margin-bottom: var(--sp-2); line-height: 1.5; }
-.sf-steps p { margin: var(--sp-2) 0 0; }
 
 /* Ship Reporting */
 .sr-layout { display: grid; grid-template-columns: minmax(300px, 360px) minmax(0, 1fr); gap: var(--sp-5); align-items: start; }
@@ -2003,9 +1906,9 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
           <table class="dt wk" id="cs-wr"></table>
         </div>
         <ol class="small muted u-mt-3 u-list">
-          <li>Meridional parts: MP = 7915.7 log tan (45° + lat ÷ 2) − 23.3 sin lat, worked for each latitude.</li>
+          <li>Meridional parts are worked on the WGS84 earth, as ECDIS does. Norie's MP = 7915.7 log tan (45° + lat ÷ 2) − 23.3 sin lat gives the same within 0.3'.</li>
           <li>D.Lat = difference of latitude in minutes. D.Long = difference of longitude in minutes (the short way round, so a run across 180° is handled). DMP = difference of meridional parts.</li>
-          <li>Course = tan⁻¹ (D.Long ÷ DMP), in the quadrant given by the signs. Distance = D.Lat ÷ cos course (D.Long × cos lat when the course is due east or west).</li>
+          <li>Course = tan⁻¹ (D.Long ÷ DMP), in the quadrant given by the signs. Distance = the meridian distance on the WGS84 earth ÷ cos course (along the parallel when the course is due east or west). D.Lat ÷ cos course is the same idea on a round earth and can differ by up to about 0.5% on long runs.</li>
           <li>Speed = distance ÷ time. The mid-latitude figures are a quick cross-check and agree closely on short runs.</li>
         </ol>
         <p class="small muted u-mt-2h">Same method as the “Co's &amp; Speed” sheet of the Compass Error spreadsheet. Distances are in nautical miles.</p>
@@ -3010,6 +2913,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
 
 
 
+
     <section class="tool" id="charts-pubs" hidden>
       <div class="tool-head">
         <h1>Routeing, Security Charts &amp; Sailing Directions</h1>
@@ -3486,6 +3390,11 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
     if (!/^[+-]?\d*\.?\d+$/.test(s)) return NaN;
     return parseFloat(s);
   }
+  function parseZoneEl(el) {                                       /* time zone in hours East +: 8, -3.5, +9:30, -3:30, typographic minus */
+    var s = el.value.replace(",", ".").replace(/[−–]/g, "-").trim(), m = /^([+-]?)(\d{1,2}):([0-5]\d)$/.exec(s);
+    if (m) return (m[1] === "-" ? -1 : 1) * ((+m[2]) + (+m[3]) / 60);
+    return parseNum({ value: s });
+  }
 
   function fillCells(box, cells) {
     while (box.firstChild) box.removeChild(box.firstChild);
@@ -3850,6 +3759,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
     var f = { pos: $("hd-pos"), date: $("hd-date"), beam: $("hd-beam"), draft: $("hd-draft"), heel: $("hd-heel"), range: $("hd-heel-range") };
     var hints = { beam: "Moulded beam", draft: "Deepest draught, upright", heel: "0 – 30°, either side" };
     var m2 = function (x) { return x.toFixed(2); };
+    var sgn = function (x) { return (x < 0 ? "−" : "+") + Math.abs(x).toFixed(2); };   /* +1.35 or −2.18, never "+-" */
 
     function setMsg(key, text, isErr) {
       var el = $("hd-" + key + "-msg");
@@ -3909,7 +3819,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
           if (current !== null && Math.abs(current - a) < 1e-9) tr.className = "hit";
           tr.insertCell().textContent = a.toFixed(1) + "°";
           tr.insertCell().textContent = m2(r.heeled);
-          tr.insertCell().textContent = "+" + m2(r.increase);
+          tr.insertCell().textContent = sgn(r.increase);
         }
         wrap.appendChild(t);
       });
@@ -4019,7 +3929,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
       text(xl, midY + 14, m2(r.heeled) + " m", { "font-weight": 700, "font-size": 14, fill: "var(--true)" });
       if (r.increase > 0.004) {
         svgEl("line", { x1: xh, y1: keelY, x2: xh, y2: low[1], stroke: "var(--apparent)", "stroke-width": 4 }, svg);
-        text(xl, Math.max(low[1] + 16, midY + 32), "+" + m2(r.increase) + " m increase", { "font-weight": 700, fill: "var(--apparent)" });
+        text(xl, Math.max(low[1] + 16, midY + 32), sgn(r.increase) + " m " + (r.increase < 0 ? "decrease" : "increase"), { "font-weight": 700, fill: "var(--apparent)" });
       }
       svgEl("line", { x1: xh, y1: low[1] + 4, x2: xh, y2: SEABED - 4, stroke: "var(--seabed-edge)", "stroke-width": 1.2, "stroke-dasharray": "2 3" }, svg);
       svgEl("polygon", { points: xh + "," + (SEABED - 2) + " " + (xh - 4) + "," + (SEABED - 9) + " " + (xh + 4) + "," + (SEABED - 9), fill: "var(--seabed-edge)" }, svg);
@@ -4031,7 +3941,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
       var errs = {};
       if (isNaN(v.beam) || (v.beam !== null && (v.beam <= 0 || v.beam > 80))) errs.beam = "Enter 1 – 80 m";
       if (isNaN(v.draft) || (v.draft !== null && (v.draft <= 0 || v.draft > 30))) errs.draft = "Enter 0.1 – 30 m";
-      if (v.heel !== null && v.heel < 0 && v.heel >= -30) v.heel = -v.heel;
+      if (v.heel !== null && v.heel < 0) v.heel = -v.heel;                 /* port or starboard: the size of the angle counts */
       if (isNaN(v.heel) || (v.heel !== null && v.heel > 30)) errs.heel = "Enter 0 – 30°";
       setMsg("draft", errs.draft, !!errs.draft);
       setMsg("heel", errs.heel, !!errs.heel);
@@ -4079,7 +3989,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
         div.appendChild(sp); div.appendChild(st); box.appendChild(div);
       });
       $("ps-new").textContent = r ? m2(r.heeled) + " m" : "—";
-      $("ps-inc").textContent = r ? "+" + m2(r.increase) + " m" : "—";
+      $("ps-inc").textContent = r ? sgn(r.increase) + " m" : "—";
       $("ps-formula").textContent = r ? $("hd-formula").textContent : "";
       if (!r) { var g = $("ps-diagram"); while (g.firstChild) g.removeChild(g.firstChild); }
     }
@@ -4102,7 +4012,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
       $("hd-out").hidden = false; $("hd-empty").hidden = true; $("hd-diagram-card").hidden = false;
       var r = heelDraught(v.beam, v.draft, v.heel);
       $("hd-new").innerHTML = m2(r.heeled) + "<small>m</small>";
-      $("hd-inc").innerHTML = "+" + m2(r.increase) + "<small>m</small>";
+      $("hd-inc").innerHTML = sgn(r.increase) + "<small>m</small>";
       $("hd-inc-sub").textContent = "Over the upright draught of " + m2(v.draft) + " m";
       $("hd-formula").textContent = "(½ × " + m2(v.beam) + " × sin " + v.heel.toFixed(1) + "°) + (" + m2(v.draft) + " × cos " + v.heel.toFixed(1) + "°) = " +
         r.half.toFixed(3) + " + " + r.tilted.toFixed(3) + " = " + m2(r.heeled) + " m";
@@ -4671,7 +4581,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
     load(Ships.active());
   }
 
-  /* ASTRO-BEGIN: sun / moon / planet / star positions (same method as the "Compass Error" spreadsheet; about 0.1 degree) */
+  /* ASTRO-BEGIN: sun / moon / planet / star positions (same method as the "Compass Error" spreadsheet; about 0.1 degree). Bodies used for the azimuth, 2000 to 2060, come from the Sight engine (within 0.2'). */
   var Astro = (function () {
     var R = Math.PI / 180;
     function S(x) { return Math.sin(x * R); }
@@ -4880,7 +4790,16 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
       return { sha: sha, dec: dec, gha: mod(st.gst + sha, 360) };
     }
 
-    function body(name, st) {
+    var SIGHT_NAME = { "Kaus Aust.": "Kaus Australis", "Rigil Kent.": "Rigil Kentaurus", "Zuben'ubi": "Zubenelgenubi" };
+    function precise(name, ms) {                                   /* Sun, Moon, planets and stars from the Sight Fix engine (checked against ERFA and DE440, within 0.2'), 2000 to 2060 */
+      if (!isFinite(ms) || typeof Sight === "undefined") return null;
+      var y = new Date(ms).getUTCFullYear(); if (y < 2000 || y > 2060) return null;
+      var p = Sight.place(ms, SIGHT_NAME[name] || name); if (!p || !isFinite(p.gha)) return null;
+      return { gha: p.gha, dec: p.dec };
+    }
+    function body(name, st, ms) {
+      var pr = precise(name, ms);
+      if (pr) { pr.sha = mod(pr.gha - st.gst, 360); return pr; }
       if (name === "Sun") return sun(st);
       if (name === "Moon") return moon(st);
       if (name === "Venus" || name === "Mars" || name === "Jupiter" || name === "Saturn") return planet(name, st);
@@ -4954,7 +4873,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
     var hr = dd.getUTCHours(), mn = dd.getUTCMinutes(), sc = dd.getUTCSeconds();
     var st = Astro.state(Astro.serialFromMs(ut));
     var stH = Astro.state(Astro.serialFromMs(ut - (mn * 60 + sc) * 1000));
-    var bp = Astro.body(o.body, st);
+    var bp = Astro.body(o.body, st, ut);
     var star = isStarName(o.body);
     var r = { body: o.body, star: star, lat: o.lat, lonE: o.lonE, hr: hr, mn: mn, sc: sc,
       ltText: TIME.dt(ltMs), zoneText: zoneText(-o.zoneH), utLtText: TIME.dt(utLtMs), ctText: ctText, ceText: ceText,
@@ -5135,7 +5054,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
       v.body = sel.value;
       v.date = parseDateEl($("az-date"));
       v.lt = parseTimeEl($("az-lt"));
-      v.zone = parseNum($("az-zone"));
+      v.zone = parseZoneEl($("az-zone"));
       if (isNaN(v.zone) || (v.zone !== null && (v.zone < -14 || v.zone > 14))) errs.zone = "Enter -14 to +14 hours";
       v.ct = parseTimeEl($("az-ct"));
       v.ce = parseMS($("az-ce"));
@@ -5195,7 +5114,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
       fillWork($("az-work"), rows);
       var log = "True azimuth " + r.body + " " + fmtAz(r.zn) + " | UT " + r.utText.replace("  ", " ") +
         " | Lat " + ns(r.lat) + dm(Math.abs(r.lat)) + " Long " + dm(Math.abs(r.lonE)) + ew(r.lonE) +
-        " | LHA " + dm(r.lha) + " Dec " + ns(r.dec) + dm(Math.abs(r.dec)) + " | Alt " + dm(Math.abs(r.alt));
+        " | LHA " + dm(r.lha) + " Dec " + ns(r.dec) + dm(Math.abs(r.dec)) + " | Alt " + (r.alt < 0 ? "−" : "") + dm(Math.abs(r.alt));
       $("az-log").textContent = log;
       azSheet(r, rows, log);
     }
@@ -5347,7 +5266,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
     /* table of every body: altitude and true azimuth */
     function bodyTable(v) {
       var p = position(v), ut = Date.UTC(v.date.y, v.date.m - 1, v.date.d) + v.gmt * 1000, st = Astro.state(Astro.serialFromMs(ut)), rows = [];
-      ALL.forEach(function (n) { var b = Astro.body(n, st), a = Astro.altAz(b.gha, b.dec, p.lat, p.lon); rows.push({ name: n, alt: a.hc, az: a.zn, lha: a.lha }); });
+      ALL.forEach(function (n) { var b = Astro.body(n, st, ut), a = Astro.altAz(b.gha, b.dec, p.lat, p.lon); rows.push({ name: n, alt: a.hc, az: a.zn, lha: a.lha }); });
       return rows;
     }
     /* TAKE / OK / AVOID for each body: stars at 15 - 30 degrees are best; planets, low, high and below the horizon are avoided */
@@ -5435,7 +5354,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
         left.push(["B", Math.abs(t.B).toFixed(5) + " " + (t.B < 0 ? "S" : "N"), ""]);
         left.push(["C", Math.abs(t.Cv).toFixed(5) + " " + (t.Cv < 0 ? "S" : "N"), t.sameNames ? "A + B" : "A − B"]);
       }
-      left.push(["Altitude", dm(Math.abs(t.alt)), ""]);
+      left.push(["Altitude", (t.alt < 0 ? "−" : "") + dm(Math.abs(t.alt)), t.alt < 0 ? "below the horizon" : ""]);
       left.push(["TRUE BEARING", b3(R.tru) + "° T", "", "key"]);
       var right = [["Gyro heading", b3(c.gyroHdg) + "°", ""], ["Gyro bearing", b3(c.gyroBrg) + "°", ""], ["True bearing", b3(R.tru) + "°", ""],
         ["GYRO ERROR", gyroTxt(c.gyroErr), c.gyroErr > 0 ? "reads low, East" : c.gyroErr < 0 ? "reads high, West" : "", "key"], null];
@@ -6047,7 +5966,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
         ["DMP", Math.abs(r.dmp).toFixed(2) + (r.dmp < 0 ? " S" : " N"), ""]];
       if (!r.same) {
         right.push(["Course", course3(r.course) + "° T", "tan⁻¹ (D.Long ÷ DMP)", "key"]);
-        right.push(["Distance", r.dist.toFixed(2) + " NM", "D.Lat ÷ cos course", "key"]);
+        right.push(["Distance", r.dist.toFixed(2) + " NM", "WGS84 rhumb line", "key"]);
         right.push(null);
         right.push(["Mid-lat check", course3(r.midCourse) + "° / " + r.midDist.toFixed(2) + " NM", "course / distance by departure"]);
       }
@@ -6064,6 +5983,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
     function quad(c) {                                            /* 131 -> S 49° E */
       var t = Math.round(c * 10) / 10 % 360, ns = t > 90 && t < 270 ? "S" : "N", ew = t > 0 && t < 180 ? " E" : (t > 180 ? " W" : "");
       var q = t <= 90 ? t : t <= 180 ? 180 - t : t <= 270 ? t - 180 : 360 - t;
+      if (t === 0) return "N"; if (t === 90) return "E"; if (t === 180) return "S"; if (t === 270) return "W";
       return ns + " " + (Math.round(q * 10) / 10) + "°" + ew;
     }
     function hint(id, msg) { var el = $(id + "-msg"); el.textContent = msg || ""; el.className = msg ? "hint error" : "hint"; }
@@ -6090,7 +6010,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
       $("cs-dr-lon").textContent = ln; $("cs-dr-lon-sub").textContent = Math.abs(a.lon + dLong / 60) > 180 ? "across the date line" : "";
       $("cs-dr-d").innerHTML = (Math.round(d * 10) / 10) + "<small>NM</small>"; $("cs-dr-d-sub").textContent = from || "as typed";
       $("cs-dr-c").innerHTML = course3(c) + "<small>°T</small>"; $("cs-dr-c-sub").textContent = quad(c);
-      var mins = function (x, pos, neg) { var v = Math.abs(x), t10 = Math.round(v * 10), dd = Math.floor(t10 / 600), mm = (t10 - dd * 600) / 10; return dd + "°" + (mm < 10 ? "0" : "") + mm.toFixed(1) + "' " + (x < 0 ? neg : pos) + "  (" + v.toFixed(1) + "')"; };
+      var mins = function (x, pos, neg) { var v = Math.abs(x), t10 = Math.round(v * 10), dd = Math.floor(t10 / 600), mm = (t10 - dd * 600) / 10; return dd + "°" + (mm < 10 ? "0" : "") + mm.toFixed(1) + "'" + (t10 ? " " + (x < 0 ? neg : pos) : "") + "  (" + v.toFixed(1) + "')"; };
       fillWork($("cs-dr-wl"), [
         ["Course", quad(c), course3(c) + "° T"],
         ["D.Lat", mins(dLat, "N", "S"), "dist × cos co"],
@@ -6155,6 +6075,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
     $("cs-next").addEventListener("click", function () {
       if (!last) return;
       var o = {}; ["lat", "lon"].forEach(function (k) { ["d", "m", "h"].forEach(function (p) { o["cs-" + k + "1-" + p] = gv("cs-" + k + "2-" + p); }); });
+      ["cs-dr-co", "cs-dr-dist", "cs-dr-sp", "cs-dr-t"].forEach(function (id) { o[id] = gv(id); });       /* the new-position card keeps its course and distance */
       load(o); render(); $("cs-lat2-d").focus(); toast("Final position is now the starting position");
     });
     $("cs-clear").addEventListener("click", function () { load({}); render(); $("cs-lat1-d").focus(); });
@@ -6206,7 +6127,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
     }
     function span(hours) {
       var m = Math.round(hours * 60), d = Math.floor(m / 1440), h = Math.floor((m % 1440) / 60), mm = m % 60;
-      return (d ? d + " d " : "") + TIME.p2(h) + " h" + (d ? "" : " " + TIME.p2(mm) + " m");
+      return (d ? d + " d " : "") + TIME.p2(h) + " h " + TIME.p2(mm) + " m";
     }
     var WD = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     function dayTxt(ms, withYear) {              /* Thu 04 Jan  (with the year when it is not the present year) */
@@ -6215,11 +6136,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
     }
     function clockTxt(ms) { var d = new Date(Math.round(ms / 60000) * 60000); return TIME.p2(d.getUTCHours()) + ":" + TIME.p2(d.getUTCMinutes()); }
     function zoneTxt(z) { var m = Math.round(Math.abs(z) * 60); return "UTC" + (z < 0 ? "−" : "+") + Math.floor(m / 60) + (m % 60 ? ":" + TIME.p2(m % 60) : ""); }
-    function parseZone(el) {                                     /* 8, -3.5, +9:30, -3:30 (half and quarter hour zones) */
-      var s = el.value.replace(",", ".").replace("−", "-").trim(), m = /^([+-]?)(\d{1,2}):([0-5]\d)$/.exec(s);
-      if (m) return (m[1] === "-" ? -1 : 1) * ((+m[2]) + (+m[3]) / 60);
-      return parseNum(el);
-    }
+    var parseZone = parseZoneEl;
     function capName(s) { return (s || "").replace(/(^|[\s\-\/(])([a-z])/g, function (m, a, b) { return a + b.toUpperCase(); }); }   /* "port klang" shows as "Port Klang", as on screen */
 
     /* build the table once: speeds in the header, one input row per destination */
@@ -6300,7 +6217,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
           if (!v.ok || sp === null || isNaN(sp) || d.dist === null || isNaN(d.dist) || sp === undefined) { cell.textContent = "—"; rowOut.res.push(null); return; }
           if (d.zone === null || isNaN(d.zone)) { cell.className = c0 + " zq"; cell.textContent = "zone?"; rowOut.res.push(null); return; }
           var r = etaAt(presentMs - v.tz * 3600000 + v.tz * 3600000, d.dist, sp, v.tz, d.zone), local = r.arrLocal;
-          var yr = new Date(local).getUTCFullYear() !== presentYear;
+          var yr = new Date(Math.round(local / 60000) * 60000).getUTCFullYear() !== presentYear;
           cell.className = c0;
           var bt = document.createElement("b"); bt.className = "tm"; bt.textContent = clockTxt(local); cell.appendChild(bt);
           var bd = document.createElement("span"); bd.className = "dy"; bd.textContent = dayTxt(local, yr); cell.appendChild(bd);
@@ -6338,7 +6255,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
         used.forEach(function (u) {
           var c = document.createElement("td"), q = r.res[u.i];
           c.textContent = q ? q.local : "—";
-          if (q && $("et-showpass").checked) { var sp = document.createElement("div"); sp.className = "sub"; sp.style.cssText = "font-size:7.5pt;color:#555"; sp.textContent = q.pass; c.appendChild(sp); }
+          if (q && $("et-showpass").checked) { var sp = document.createElement("div"); sp.className = "et-ps-pass"; sp.textContent = q.pass; c.appendChild(sp); }
           row.appendChild(c);
         });
         tb.appendChild(row);
@@ -6560,8 +6477,14 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
   var RP = (function () {
     function num(s) { s = String(s === undefined || s === null ? "" : s).replace(",", ".").trim(); if (s === "") return null; var x = Number(s); return isFinite(x) ? x : NaN; }
     function ok(x) { return x !== null && !isNaN(x); }
+    function zone(s) {                        /* 8, -3.5, +5:30, -3:30, typographic minus: hours East + */
+      s = String(s === undefined || s === null ? "" : s).replace(/[−–]/g, "-").replace(",", ".").trim();
+      var m = /^([+-]?)(\d{1,2}):([0-5]\d)$/.exec(s);
+      if (m) return (m[1] === "-" ? -1 : 1) * ((+m[2]) + (+m[3]) / 60);
+      var z = num(s); return ok(z) && (z < -12 || z > 14) ? NaN : z;
+    }
     function utcMs(r) {                       /* ship's local date and time, zone East +, to UTC milliseconds */
-      var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(r.date || ""), t = /^(\d{1,2}):(\d{2})$/.exec(r.time || ""), z = num(r.zone);
+      var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(r.date || ""), t = /^(\d{1,2}):(\d{2})$/.exec(r.time || ""), z = zone(r.zone);
       if (!m || !t || !ok(z)) return null;
       return Date.UTC(+m[1], +m[2] - 1, +m[3], +t[1], +t[2]) - z * 3600000;
     }
@@ -6571,6 +6494,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
         var o = { utc: utcMs(r), dtg: num(r.dtg), ovr: num(r.ovr), auto: null, dist: null, hours: null, speed: null, warn: "", start: false, done: false };
         if (isNaN(o.dtg)) { o.warn = "DTG is not a number"; o.dtg = null; }
         if (isNaN(o.ovr)) { o.warn = "Override is not a number"; o.ovr = null; }
+        else if (o.ovr !== null && o.ovr < 0) { o.warn = "Override must be 0 or more (distance run in NM)"; o.ovr = null; }
         var prev = i > 0 ? out[i - 1] : null;
         if (i === 0 || r.type === "cosp") { o.start = true; o.dist = 0; o.hours = 0; }
         else if (rows[i - 1].type === "eosp") { o.start = true; o.dist = 0; o.hours = 0; o.warn = "Arrival was entered above this line. Set this line to Departure to start the next passage."; }
@@ -6623,7 +6547,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
       var mins = Math.round(h * 60), d = Math.floor(mins / 1440), hh = Math.floor((mins % 1440) / 60), mm = mins % 60;
       return (d ? d + " d " : "") + ("0" + hh).slice(-2) + " h " + ("0" + mm).slice(-2) + " m";
     }
-    return { num: num, utcMs: utcMs, compute: compute, totals: totals, summary: summary, monthOf: monthOf, fmtDist: dist, fmtSpeed: speed, fmtDur: dur };
+    return { num: num, zone: zone, utcMs: utcMs, compute: compute, totals: totals, summary: summary, monthOf: monthOf, fmtDist: dist, fmtSpeed: speed, fmtDur: dur };
   })();
   /* REPORTS-END */
 
@@ -6729,10 +6653,10 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
       }
       renderMonth();
     }
-    function zoneTxt(z) { var n = RP.num(z); return n === null || isNaN(n) ? "" : " (UTC" + (n >= 0 ? "+" : "−") + Math.abs(n) + ")"; }
+    function zoneTxt(z) { var n = RP.zone(z); if (n === null || isNaN(n)) return ""; var m = Math.round(Math.abs(n) * 60); return " (UTC" + (n >= 0 ? "+" : "−") + Math.floor(m / 60) + (m % 60 ? ":" + ("0" + m % 60).slice(-2) : "") + ")"; }
     function lineText(v, ld, tot) {
       var r = ld.row, o = ld.o;
-      return "Noon " + r.date + " " + r.time + zoneTxt(r.zone) + " | " + (v.name || "Voyage") + (v.cond ? " " + v.cond : "") + " | DTG " + RP.fmtDist(o.dtg) + " NM | Run " + RP.fmtDist(o.dist) + " NM in " + RP.fmtDur(o.hours) + " | Avg " + RP.fmtSpeed(o.speed) + " kn | Voyage " + RP.fmtDist(tot.dist) + " NM in " + RP.fmtDur(tot.hours) + ", avg " + RP.fmtSpeed(tot.speed) + " kn";
+      return (r.type === "eosp" ? "Arrival " : r.type === "cosp" ? "Departure " : "Noon ") + r.date + " " + r.time + zoneTxt(r.zone) + " | " + (v.name || "Voyage") + (v.cond ? " " + v.cond : "") + " | DTG " + RP.fmtDist(o.dtg) + " NM | Run " + RP.fmtDist(o.dist) + " NM in " + RP.fmtDur(o.hours) + " | Avg " + RP.fmtSpeed(o.speed) + " kn | Voyage " + RP.fmtDist(tot.dist) + " NM in " + RP.fmtDur(tot.hours) + ", avg " + RP.fmtSpeed(tot.speed) + " kn";
     }
 
     /* month summary */
@@ -6912,7 +6836,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
     function read() {
       var errs = {}, v = {};
       v.date = parseDateEl($("su-date"));
-      v.zone = parseNum($("su-zone"));
+      v.zone = parseZoneEl($("su-zone"));
       if (isNaN(v.zone) || (v.zone !== null && (v.zone < -14 || v.zone > 14))) errs.zone = "Enter -14 to +14 hours";
       v.lat = readDM("su-lat", 90, "Latitude", errs, "lat");
       v.lon = readDM("su-lon", 180, "Longitude", errs, "lon");
@@ -6947,7 +6871,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
       var r = Math.round((ms + offH * 3600000) / 60000) * 60000, d = new Date(r), day = Math.round((Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()) - base) / 86400000);
       return TIME.p2(d.getUTCHours()) + ":" + TIME.p2(d.getUTCMinutes()) + (day ? " (" + (day > 0 ? "+" : "−") + Math.abs(day) + "d)" : "");
     }
-    function zoneTxt(z) { return "UTC" + (z >= 0 ? "+" : "−") + Math.abs(z); }
+    function zoneTxt(z) { var m = Math.round(Math.abs(z) * 60); return "UTC" + (z >= 0 ? "+" : "−") + Math.floor(m / 60) + (m % 60 ? ":" + ("0" + m % 60).slice(-2) : ""); }
     function hm(h) { var m = Math.round(h * 60); return Math.floor(m / 60) + " h " + TIME.p2(m % 60) + " m"; }
 
     function build(v) {
@@ -7078,7 +7002,8 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
     }
     /* Reads one line: optional name, then latitude and longitude. Returns {name, lat, lon} or {error}. */
     function parse(line) {
-      var s = String(line || "").replace(/[°º˚]/g, " ").replace(/[′’‘`´']/g, " ").replace(/[″”“"]/g, " ").replace(/−|–/g, "-").replace(/,/g, " , ").replace(/\s+/g, " ").trim();
+      var s = String(line || "").replace(/(\d+(?:\.\d+)?),(\d+)/g, function (m, a, b) { return a.indexOf(".") < 0 ? a + "." + b : m; })   /* decimal comma: 27,5 is 27.5 */
+        .replace(/[°º˚]/g, " ").replace(/[′’‘`´']/g, " ").replace(/[″”“"]/g, " ").replace(/−|–/g, "-").replace(/,/g, " , ").replace(/\s+/g, " ").trim();
       if (!s) return { error: "empty" };
       var up = s.toUpperCase(), la = null, lo = null, name = "", m, cut = -1, end = -1;
       /* decimal pair without letters: 48.4583 -6.4167 / 48.4583, -6.4167 */
@@ -7096,13 +7021,16 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
       var reB = new RegExp("(?:^|[\\s,;:=|(-])([NSEW])\\s*" + NUM + after + "(?![\\d.])", "g");            /* N 48 27.5 */
       var reC = new RegExp("(?:^|[\\s,;:=|(-])(\\d{2})(\\d{2}(?:\\.\\d+)?)\\s*([NS])(?![A-Z])|(?:^|[\\s,;:=|(-])(\\d{3})(\\d{2}(?:\\.\\d+)?)\\s*([EW])(?![A-Z])", "g"); /* 4827.5N 00625.0W */
       var found = [], r;
-      function push(mm, d, mi, se, h, maxDeg, idx) { var v = dms(d, mi, se, h, maxDeg); found.push({ i: idx, hemi: h, v: v, text: mm[0], end: idx + mm[0].length }); }
+      function push(mm, d, mi, se, h, maxDeg, idx) { var v = dms(d, mi, se, h, maxDeg); found.push({ i: idx, hemi: h, v: v, text: mm[0], end: idx + mm[0].length, d: d, mi: mi, se: se }); }
       while ((r = reA.exec(up))) { var h = r[4]; push(r, r[1], r[2], r[3], h, /[NS]/.test(h) ? 90 : 180, r.index); }
       if (found.length < 2) { found = []; while ((r = reB.exec(up))) { var hb = r[1]; push(r, r[2], r[3], r[4], hb, /[NS]/.test(hb) ? 90 : 180, r.index); } }
       if (found.length < 2) { found = []; while ((r = reC.exec(up))) { if (r[3]) push(r, r[1], r[2], "", r[3], 90, r.index); else push(r, r[4], r[5], "", r[6], 180, r.index); } }
       if (found.length < 2) return { error: "need a latitude and a longitude, each ending in N, S, E or W" };
       var fLat = found.filter(function (f) { return /[NS]/.test(f.hemi); }), fLon = found.filter(function (f) { return /[EW]/.test(f.hemi); });
       if (fLat.length !== 1 || fLon.length !== 1) return { error: "give one latitude (N or S) and one longitude (E or W)" };
+      /* "WP 2 48 27.5N 006 25.0W": three numbers before N but two before W, so the first one belongs to the name, not the latitude */
+      var L = fLat[0], O = fLon[0], lead;
+      if (L.se && !O.se && O.mi && (/[A-Z][A-Z.#]*\s*$/.test(up.slice(0, L.i + /^\D*/.exec(L.text)[0].length)) || (/\./.test(L.se) && /\./.test(O.mi))) && (lead = /^\D*\d{1,3}(?:\.\d+)?\s+/.exec(L.text))) { L.v = dms(L.mi, L.se, "", L.hemi, 90); L.i += lead[0].length; }
       if (isNaN(fLat[0].v) || isNaN(fLon[0].v)) return { error: "degrees or minutes out of range" };
       var first = Math.min(fLat[0].i, fLon[0].i);
       name = s.slice(0, first).replace(/[\s,:;|=(-]+$/, "").trim();
@@ -8410,7 +8338,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
     function read() {
       var errs = {}, v = {};
       v.lat = readDM("sf-lat", 84, "Latitude", errs, "lat"); v.lon = readDM("sf-lon", 180, "Longitude", errs, "lon");
-      v.course = pnum("sf-course"); v.speed = pnum("sf-speed"); v.hoe = pnum("sf-hoe"); v.ie = pnum("sf-ie"); v.temp = pnum("sf-temp"); v.pres = pnum("sf-pres"); v.zone = pnum("sf-zone");
+      v.course = pnum("sf-course"); v.speed = pnum("sf-speed"); v.hoe = pnum("sf-hoe"); v.ie = pnum("sf-ie"); v.temp = pnum("sf-temp"); v.pres = pnum("sf-pres"); v.zone = parseZoneEl($("sf-zone"));
       if (isNaN(v.course) || (v.course !== null && (v.course < 0 || v.course > 360))) errs.course = "0 to 360"; if (isNaN(v.speed) || (v.speed !== null && (v.speed < 0 || v.speed > 40))) errs.speed = "0 to 40 kn";
       if (isNaN(v.hoe) || (v.hoe !== null && (v.hoe < 0 || v.hoe > 80))) errs.hoe = "0 to 80 m"; if (isNaN(v.ie) || (v.ie !== null && (v.ie < 0 || v.ie > 30))) errs.ie = "0 to 30'";
       if (isNaN(v.temp) || (v.temp !== null && (v.temp < -40 || v.temp > 60))) errs.temp = 1; if (isNaN(v.pres) || (v.pres !== null && (v.pres < 800 || v.pres > 1100))) errs.pres = 1;
@@ -8967,6 +8895,9 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
 
 
 
+
+
+
   /* SREP-BEGIN: Ship Reporting Systems. Sources: build/reporting (route.js, map.js, page.js) and data/reporting/*.json packed by build/reporting/build.py */
   /* SREPROUTE-BEGIN: route maths for Ship Reporting. Legs and boundary edges are rhumb lines on WGS84 (straight on a Mercator chart, as ECDIS draws them).
      Crossings are solved exactly in the (longitude, isometric latitude) plane; distances along a leg come from the meridian arc (WGS84 block). */
@@ -9318,15 +9249,26 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
         function row(w, ev, ms, label) { rows.push({ s: s, w: w, ev: ev, due: ms, label: label }); }
         var startEv = { kind: "start", d: 0, lat: plan.pts[0].lat, lon: plan.pts[0].lon, x: plan.pts[0].x }, last = plan.pts[plan.pts.length - 1], endEv = { kind: "end", d: endD, lat: last.lat, lon: last.lon, x: last.x };
         when.forEach(function (w) {
-          var h = isFinite(w.h) && w.h > 0 ? w.h : 0;
-          if (w.e === "before_entry" || w.e === "entry") {
-            entries.forEach(function (e) { var t = tAt(e.d); row(w, e, t === null ? null : t - (w.e === "before_entry" ? h * HOUR : 0), w.e === "before_entry" ? h + " h before entering" : "On entering"); });
+          var h = isFinite(w.h) && w.h > 0 ? w.h : 0, tx = String(w.x || "");
+          var nm = /(\d+(?:\.\d+)?)\s*(?:NM|nautical miles?)\s+before/i.exec(tx), mins = /(\d+)\s*minutes?\s+before/i.exec(tx);
+          nm = nm ? +nm[1] : 0; mins = mins ? +mins[1] : 0;
+          if (w.e === "before_entry") {                                /* hours ahead, or a distance ahead ("2 NM before crossing"), or as the rule says */
+            entries.forEach(function (e) {
+              if (h) { var t = tAt(e.d); row(w, e, t === null ? null : t - h * HOUR, h + " h before entering"); }
+              else if (nm) row(w, e, tAt(Math.max(0, e.d - nm)), nm + " NM before entering");
+              else row(w, e, tAt(e.d), "Before entering (see the rule)");
+            });
+            if (startIn) row(w, startEv, plan.startMs, "Before departure (you start inside)");
+          } else if (w.e === "entry") {
+            entries.forEach(function (e) { row(w, e, tAt(e.d), "On entering"); });
             if (startIn) row(w, startEv, plan.startMs, "Before departure (you start inside)");
           } else if (w.e === "exit" || w.e === "final") {
             exits.forEach(function (e) { row(w, e, tAt(e.d), w.e === "final" ? "Final report, on leaving" : "On leaving"); });
             if (w.e === "final" && endIn) row(w, endEv, endMs, "Final report, on arrival");
-          } else if (w.e === "departure") { if (startIn) row(w, startEv, plan.startMs, "On departure"); }
-          else if (w.e === "before_arrival" || w.e === "arrival") { if (endIn) row(w, endEv, endMs === null ? null : endMs - (w.e === "before_arrival" ? h * HOUR : 0), w.e === "before_arrival" ? h + " h before arrival" : "On arrival"); }
+          } else if (w.e === "departure") {
+            if (startIn) row(w, startEv, plan.startMs - (h ? h * HOUR : mins * 60000), h ? h + " h before sailing" : mins ? mins + " min before sailing" : "On departure");
+          }
+          else if (w.e === "before_arrival" || w.e === "arrival") { if (endIn) row(w, endEv, endMs === null ? null : endMs - (w.e === "before_arrival" ? h * HOUR : 0), w.e === "arrival" ? "On arrival" : h ? h + " h before arrival" : "Before arrival (see the rule)"); }
           else if (w.e === "position" && isFinite(w.iv) && w.iv > 0 && plan.speed) {
             var segs = [], open = startIn ? 0 : null;
             if (c) c.events.forEach(function (e) { if (e.kind === "entry") open = e.d; else if (open !== null) { segs.push([open, e.d]); open = null; } });

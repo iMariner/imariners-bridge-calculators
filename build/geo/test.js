@@ -24,3 +24,9 @@ eq(Geo.distSegNM(60,0,60,1,60,2),30,0.01);       // 1 deg lon at 60N = 30 NM
 eq(Geo.gcNM(0,0,1,0),60.04,0.1);
 var enc=[1000,4000,50,0,0,-50];var dd=Geo.decode(enc);eq(dd[0],10);eq(dd[1],40);eq(dd[2],10.5);eq(dd[3],40);eq(dd[4],10.5);eq(dd[5],39.5);
 console.log('ALL GEO OK');
+// a number in front of the position (route point numbers), and a decimal comma
+[["Point 1 48 27N 006 25W",48.45,-(6+25/60),"Point 1"],["WP 2 48 27.5N 006 25.0W",48+27.5/60,-(6+25/60),"WP 2"],["No 10 50 10.0N 001 20.0W",50+10/60,-(1+20/60),"No 10"],
+ ["1 35 24.0N 129 27.0E",35.4,129.45,"1"],["48 27,5 N 006 25,0 W",48+27.5/60,-(6+25/60),""],["48 27 30N 006 25W",48+27.5/60,-(6+25/60),""],["48.4583,6.4167",48.4583,6.4167,""]].forEach(function(t){
+  var r=Geo.parse(t[0]); assert(!r.error,t[0]+' '+r.error); eq(r.lat,t[1],1e-6); eq(r.lon,t[2],1e-6); assert.strictEqual(r.name,t[3],t[0]+' name '+r.name); });
+console.log('route numbers and decimal comma OK');
+

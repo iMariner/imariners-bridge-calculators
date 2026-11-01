@@ -101,15 +101,26 @@
         function row(w, ev, ms, label) { rows.push({ s: s, w: w, ev: ev, due: ms, label: label }); }
         var startEv = { kind: "start", d: 0, lat: plan.pts[0].lat, lon: plan.pts[0].lon, x: plan.pts[0].x }, last = plan.pts[plan.pts.length - 1], endEv = { kind: "end", d: endD, lat: last.lat, lon: last.lon, x: last.x };
         when.forEach(function (w) {
-          var h = isFinite(w.h) && w.h > 0 ? w.h : 0;
-          if (w.e === "before_entry" || w.e === "entry") {
-            entries.forEach(function (e) { var t = tAt(e.d); row(w, e, t === null ? null : t - (w.e === "before_entry" ? h * HOUR : 0), w.e === "before_entry" ? h + " h before entering" : "On entering"); });
+          var h = isFinite(w.h) && w.h > 0 ? w.h : 0, tx = String(w.x || "");
+          var nm = /(\d+(?:\.\d+)?)\s*(?:NM|nautical miles?)\s+before/i.exec(tx), mins = /(\d+)\s*minutes?\s+before/i.exec(tx);
+          nm = nm ? +nm[1] : 0; mins = mins ? +mins[1] : 0;
+          if (w.e === "before_entry") {                                /* hours ahead, or a distance ahead ("2 NM before crossing"), or as the rule says */
+            entries.forEach(function (e) {
+              if (h) { var t = tAt(e.d); row(w, e, t === null ? null : t - h * HOUR, h + " h before entering"); }
+              else if (nm) row(w, e, tAt(Math.max(0, e.d - nm)), nm + " NM before entering");
+              else row(w, e, tAt(e.d), "Before entering (see the rule)");
+            });
+            if (startIn) row(w, startEv, plan.startMs, "Before departure (you start inside)");
+          } else if (w.e === "entry") {
+            entries.forEach(function (e) { row(w, e, tAt(e.d), "On entering"); });
             if (startIn) row(w, startEv, plan.startMs, "Before departure (you start inside)");
           } else if (w.e === "exit" || w.e === "final") {
             exits.forEach(function (e) { row(w, e, tAt(e.d), w.e === "final" ? "Final report, on leaving" : "On leaving"); });
             if (w.e === "final" && endIn) row(w, endEv, endMs, "Final report, on arrival");
-          } else if (w.e === "departure") { if (startIn) row(w, startEv, plan.startMs, "On departure"); }
-          else if (w.e === "before_arrival" || w.e === "arrival") { if (endIn) row(w, endEv, endMs === null ? null : endMs - (w.e === "before_arrival" ? h * HOUR : 0), w.e === "before_arrival" ? h + " h before arrival" : "On arrival"); }
+          } else if (w.e === "departure") {
+            if (startIn) row(w, startEv, plan.startMs - (h ? h * HOUR : mins * 60000), h ? h + " h before sailing" : mins ? mins + " min before sailing" : "On departure");
+          }
+          else if (w.e === "before_arrival" || w.e === "arrival") { if (endIn) row(w, endEv, endMs === null ? null : endMs - (w.e === "before_arrival" ? h * HOUR : 0), w.e === "arrival" ? "On arrival" : h ? h + " h before arrival" : "Before arrival (see the rule)"); }
           else if (w.e === "position" && isFinite(w.iv) && w.iv > 0 && plan.speed) {
             var segs = [], open = startIn ? 0 : null;
             if (c) c.events.forEach(function (e) { if (e.kind === "entry") open = e.d; else if (open !== null) { segs.push([open, e.d]); open = null; } });

@@ -113,7 +113,7 @@
     function read() {
       var errs = {}, v = {};
       v.lat = readDM("sf-lat", 84, "Latitude", errs, "lat"); v.lon = readDM("sf-lon", 180, "Longitude", errs, "lon");
-      v.course = pnum("sf-course"); v.speed = pnum("sf-speed"); v.hoe = pnum("sf-hoe"); v.ie = pnum("sf-ie"); v.temp = pnum("sf-temp"); v.pres = pnum("sf-pres"); v.zone = pnum("sf-zone");
+      v.course = pnum("sf-course"); v.speed = pnum("sf-speed"); v.hoe = pnum("sf-hoe"); v.ie = pnum("sf-ie"); v.temp = pnum("sf-temp"); v.pres = pnum("sf-pres"); v.zone = parseZoneEl($("sf-zone"));
       if (isNaN(v.course) || (v.course !== null && (v.course < 0 || v.course > 360))) errs.course = "0 to 360"; if (isNaN(v.speed) || (v.speed !== null && (v.speed < 0 || v.speed > 40))) errs.speed = "0 to 40 kn";
       if (isNaN(v.hoe) || (v.hoe !== null && (v.hoe < 0 || v.hoe > 80))) errs.hoe = "0 to 80 m"; if (isNaN(v.ie) || (v.ie !== null && (v.ie < 0 || v.ie > 30))) errs.ie = "0 to 30'";
       if (isNaN(v.temp) || (v.temp !== null && (v.temp < -40 || v.temp > 60))) errs.temp = 1; if (isNaN(v.pres) || (v.pres !== null && (v.pres < 800 || v.pres > 1100))) errs.pres = 1;

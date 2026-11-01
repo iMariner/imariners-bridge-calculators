@@ -136,7 +136,6 @@ table.sf-rows td.n { font-size: var(--fs-base); }
 .sf-merpass { margin: 0 0 var(--sp-3); padding: var(--sp-2) var(--sp-3); border-left: var(--sp-1) solid var(--accent); border-radius: var(--r-md); background: var(--surface-2); font-size: var(--fs-sm); color: var(--text); }
 .sf-merpass strong { color: var(--accent); }
 .sf-merpass span { color: var(--muted); }
-/* Sight Fix end */
 .sf-rows input.sf-auto { color: var(--muted); }
 .sf-steps { margin-top: var(--sp-4); }
 .sf-steps li { margin-bottom: var(--sp-2); line-height: 1.5; }
@@ -152,3 +151,4 @@ table.sf-rows td.w-dr > span.sf-dr1 { font-size: var(--fs-sm); color: var(--text
 .sf-plot .sp-rosebg { fill: var(--surface); opacity: .6; } .sf-plot .sp-rosering { fill: none; stroke: var(--muted); stroke-width: 1.2; }
 .sf-plot .sp-rosetk { stroke: var(--muted); stroke-width: 1; } .sf-plot .sp-rosetx { font-family: var(--font-mono); font-size: var(--fs-2xs); fill: var(--muted); } .sf-plot .sp-spoke { stroke-width: 1.8; }
 .sf-plot .sp-rosetx.sp-lab { font-size: var(--fs-xs); font-weight: var(--fw-bold); }
+/* Sight Fix end */

@@ -29,3 +29,10 @@ assert.strictEqual(s.groups.length,2);assert.strictEqual(s.groups[0].dist,520);a
 var s9=RP.summary(v,'2026-09');assert.strictEqual(s9.total.dist,260);
 console.log('month ok',JSON.stringify(s.groups.map(g=>[g.label,g.dist,RP.fmtDur(g.hours),RP.fmtSpeed(g.speed)])));
 console.log('ALL OK');
+
+// half-hour zones typed with a colon or a typographic minus (India +5:30), and a negative override is refused
+var rz=[{type:'cosp',date:'2026-10-01',time:'12:00',zone:'+5:30',dtg:'1000'},{type:'noon',date:'2026-10-02',time:'12:00',zone:'5:30',dtg:'760'},{type:'noon',date:'2026-10-03',time:'12:00',zone:'5.5',dtg:'520'}];
+var oz=RP.compute(rz); assert.strictEqual(oz[1].hours,24); assert.strictEqual(oz[2].speed,10);
+assert.strictEqual(RP.zone('−3:30'),-3.5); assert.strictEqual(RP.zone('-0:30'),-0.5); assert.ok(isNaN(RP.zone('15'))); assert.ok(isNaN(RP.zone('5:60')));
+rz[2].ovr='-50'; oz=RP.compute(rz); assert.strictEqual(oz[2].dist,240); assert.ok(/0 or more/.test(oz[2].warn));
+console.log('zone and override tests OK');
