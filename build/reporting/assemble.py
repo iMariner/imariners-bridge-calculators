@@ -21,7 +21,7 @@ nav = '''    <a href="#ship-reporting" data-tool-link="ship-reporting">
     </a>
 '''
 h = put(h, '    <a href="#ship-reporting"', '    </a>\n', nav, '    <a href="#charts-pubs" data-tool-link="charts-pubs">')
-h = put(h, '    <section class="tool" id="ship-reporting"', '    </section>\n', rd('page.html').rstrip() + '\n\n', '    <section class="tool" id="charts-pubs"')
+h = put(h, '    <section class="tool" id="ship-reporting"', '    </section>\n', rd('page.html').rstrip() + '\n', '    <section class="tool" id="charts-pubs"')
 h = put(h, '\n/* Ship Reporting */', '/* Ship Reporting end */\n', rd('page.css').rstrip('\n') + '\n', '</style>')
 js = ('  /* SREP-BEGIN: Ship Reporting Systems. Sources: build/reporting (route.js, map.js, page.js) and data/reporting/*.json packed by build/reporting/build.py */\n'
       + rd('route.js').rstrip() + '\n\n' + rd('map.js').rstrip() + '\n\n'

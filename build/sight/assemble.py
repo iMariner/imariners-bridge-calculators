@@ -10,5 +10,5 @@ def swap(h, start, ends, new):
     raise SystemExit('end marker not found for '+start)
 h=swap(h,'    <section class="tool cmp" id="sight-fix"',['    </section>\n'],rd('page.html').rstrip()+'\n')
 h=swap(h,'\n/* Sight Fix */',['/* Sight Fix end */\n','</style>'],rd('page.css').rstrip('\n')+'\n')
-h=swap(h,'  /* SIGHT-BEGIN */',['  /* SIGHTPAGE-END */\n','  /* PASSAGE-BEGIN */','  /* Tool registry and routing */'],rd('engine.js').rstrip()+'\n\n'+rd('fix.js').rstrip()+'\n\n'+rd('plot.js').rstrip()+'\n\n'+rd('page.js').rstrip('\n')+'\n\n')
+h=swap(h,'  /* SIGHT-BEGIN */',['  /* SIGHTPAGE-END */\n','  /* PASSAGE-BEGIN */','  /* Tool registry and routing */'],rd('engine.js').rstrip()+'\n\n'+rd('fix.js').rstrip()+'\n\n'+rd('plot.js').rstrip()+'\n\n'+rd('page.js').rstrip('\n')+'\n')
 open(p,'w',encoding='utf8').write(h)

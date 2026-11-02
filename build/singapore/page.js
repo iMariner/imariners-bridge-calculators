@@ -4,7 +4,10 @@
     var st = isObj(store.get(KEY)) ? store.get(KEY) : {};
     if (!isObj(st.ly)) st.ly = { sr: true, tss: true, port: true, lim: true, bg: true, pts: true };
     if (["east", "west", "arr", "dep"].indexOf(st.tab) < 0) st.tab = "east";
-    function save() { store.set(KEY, { ly: st.ly, tab: st.tab, pos: $("sg-pos").value, haz: $("sg-haz").value, def: $("sg-def").value, view: st.view || null }); }
+    if (!isObj(st.ship)) st.ship = {};                              /* line P and Q/R per ship */
+    if (st.ship._ === undefined && (typeof st.haz === "string" || typeof st.def === "string")) st.ship._ = { haz: st.haz || "", def: st.def || "" };
+    function shipVals() { var k = shipSlot(st.ship); if (!isObj(st.ship[k])) st.ship[k] = { haz: "", def: "" }; return st.ship[k]; }
+    function save() { var v = shipVals(); v.haz = $("sg-haz").value; v.def = $("sg-def").value; store.set(KEY, { ly: st.ly, tab: st.tab, pos: st.pos || "", ship: st.ship, view: st.view || null }); }
     function dec(a) { var o = new Array(a.length), x = 0, y = 0; for (var i = 0; i < a.length; i += 2) { x += a[i]; y += a[i + 1]; o[i] = x / 1e4; o[i + 1] = y / 1e4; } return o; }
     function flat(pts) { var o = []; pts.forEach(function (p) { o.push(p[0], p[1]); }); return o; }
     function boxOf(r) { var b = [1e9, 1e9, -1e9, -1e9]; for (var i = 0; i < r.length; i += 2) { b[0] = Math.min(b[0], r[i]); b[2] = Math.max(b[2], r[i]); b[1] = Math.min(b[1], r[i + 1]); b[3] = Math.max(b[3], r[i + 1]); } return b; }
@@ -16,7 +19,13 @@
     var L = D.sr.line.p, LON7 = D.sr.lons[0].lon, LON8 = D.sr.lons[1].lon, LON9 = D.sr.lons[2].lon;
     function westOfLine(lon, lat) { var a = L[1], b = L[0]; return (b[0] - a[0]) * (lat - a[1]) - (b[1] - a[1]) * (lon - a[0]) > 0; }   /* left of Karimun -> Piai = sector 6 side */
     function lineLonAt(lat) { var a = L[1], b = L[0]; return a[0] + (b[0] - a[0]) * (lat - a[1]) / (b[1] - a[1]); }
-    function sectorAt(lon, lat) { if (westOfLine(lon, lat)) return 6; if (lon < LON7) return 7; if (lon < LON8) return 8; if (lon < LON9) return 9; return 0; }
+    function onChart(lon, lat) { var b = D.bounds; return lon >= b[0] && lon <= b[2] && lat >= b[1] && lat <= b[3]; }
+    var PTP = D.johor.filter(function (j) { return /Pelepas/.test(j.name); }).map(function (j) { return flat(j.p); });
+    function johorWaters(lon, lat) {                                /* the Johor Strait and the Pulai river (Tanjung Pelepas, north of Tg Piai) are not part of STRAITREP */
+      if (lat > L[0][1] && PTP.some(function (r) { return Geo.pointInRing(lon, lat, r); })) return true;   /* Pasir Gudang's limits reach over the TSS, so they are not used */
+      var ps = portSectorAt(lon, lat); return !!ps && / Johor Strait /.test(ps.name + " ");
+    }
+    function sectorAt(lon, lat) { if (!onChart(lon, lat) || johorWaters(lon, lat)) return 0; if (westOfLine(lon, lat)) return 6; if (lon < LON7) return 7; if (lon < LON8) return 8; if (lon < LON9) return 9; return 0; }
     function inPoly(g, lon, lat) { if (!Geo.pointInRing(lon, lat, g[0])) return false; for (var i = 1; i < g.length; i++) if (Geo.pointInRing(lon, lat, g[i])) return false; return true; }
     function portSectorAt(lon, lat) { for (var i = 0; i < PS.length; i++) { var p = PS[i]; if (lon < p.b[0] || lon > p.b[2] || lat < p.b[1] || lat > p.b[3]) continue; for (var k = 0; k < p.g.length; k++) if (inPoly(p.g[k], lon, lat)) return p.s; } return null; }
     function nm(a, b) { var r = WGS84.rhumb(a[1], a[0], b[1], b[0]); return r; }
@@ -127,7 +136,7 @@
       function row(k, v, strong) { var dt = document.createElement("dt"); dt.textContent = k; var dd = document.createElement("dd"); if (strong) { var b = document.createElement("b"); b.textContent = strong; dd.appendChild(b); dd.appendChild(document.createTextNode(v ? "  " + v : "")); } else dd.textContent = v; dl.appendChild(dt); dl.appendChild(dd); }
       var n = sectorAt(lon, lat);
       if (n) row("STRAITREP", "Sector " + n + ", " + VTS[n].who + ". Keep a listening watch on this channel; report here on entering the area, on leaving a port or anchorage, or before joining the traffic lane.", VTS[n].n + " " + VTS[n].ch);
-      else row("STRAITREP", lon > LON9 ? "East of 104°22.9'E: outside STRAITREP (report to VTIS East VHF 10 when crossing it westbound)." : "Outside the sectors shown.");
+      else row("STRAITREP", johorWaters(lon, lat) ? "Johor Strait or the Pulai river (Tanjung Pelepas): not part of STRAITREP. Give the STRAITREP report when you come out into the Strait: VTIS East VHF 10 at Eastern Buoy from the East Johor Strait, VTIS West VHF 73 from the west." : lon > LON9 ? "East of 104°22.9'E: outside STRAITREP (report to VTIS East VHF 10 when crossing it westbound)." : "Outside the sectors shown.");
       var ps = portSectorAt(lon, lat), inLim = Geo.pointInRing(lon, lat, LIMIT);
       if (ps) row("Port sector", ps.name + ". Ask permission before entering, moving within or leaving the sector (Channel Information Report).", ps.st + " " + ps.ch.replace(/ \(.*$/, ""));
       else row("Port", inLim ? "Inside Singapore port limits." : "Outside Singapore port limits.");
@@ -146,13 +155,16 @@
       if (near.length) { var ul = document.createElement("ul"); ul.className = "sg-near"; near.forEach(function (t) { var li = document.createElement("li"); li.textContent = t; ul.appendChild(li); }); box.appendChild(ul); }
       writeMsg();
     }
-    function pick(lat, lon, px, py) { mark = [lon, lat]; $("sg-pos").value = Geo.lat(lat) + " " + Geo.lon(lon); setHint("sg-pos-msg", "Type a position, or tap the chart", false, $("sg-pos")); save(); info(lon, lat, map ? map.api.X(lon) : undefined, map ? map.api.Y(lat) : undefined); if (map) map.draw(); }
+    function pick(lat, lon, px, py) { mark = [lon, lat]; $("sg-pos").value = Geo.lat(lat) + " " + Geo.lon(lon); st.pos = $("sg-pos").value; setHint("sg-pos-msg", "Type a position, or tap the chart", false, $("sg-pos")); save(); info(lon, lat, map ? map.api.X(lon) : undefined, map ? map.api.Y(lat) : undefined); if (map) map.draw(); }
     function hover(lat, lon) { var n = sectorAt(lon, lat), ps = portSectorAt(lon, lat); $("sg-cursor").textContent = fmtPos(lon, lat) + (n ? "   ·  STRAITREP " + n + ": " + VTS[n].n + " " + VTS[n].ch : "") + (ps ? "   ·  " + ps.st + " " + ps.ch.replace(/ \(.*$/, "") : ""); }
     function goPos() {
       var t = $("sg-pos").value.trim(); if (!t) { setHint("sg-pos-msg", "Type a position, or tap the chart", false, $("sg-pos")); return; }
       var g = Geo.parse(t);
-      if (g.error || g.lat < 0.5 || g.lat > 1.9 || g.lon < 103 || g.lon > 104.8) { setHint("sg-pos-msg", g.error ? "Could not read that position" : "That position is outside this chart", true, $("sg-pos")); return; }
-      setHint("sg-pos-msg", "Type a position, or tap the chart", false, $("sg-pos")); mark = [g.lon, g.lat]; save();
+      if (g.error || !onChart(g.lon, g.lat)) {
+        setHint("sg-pos-msg", g.error ? "Could not read that position" : "That position is outside this chart (00°54'N to 01°30'N, 103°15'E to 104°33'E)", true, $("sg-pos"));
+        mark = null; st.pos = ""; save(); $("sg-info").hidden = true; writeMsg(); if (map) map.draw(); return;
+      }
+      setHint("sg-pos-msg", "Type a position, or tap the chart", false, $("sg-pos")); mark = [g.lon, g.lat]; st.pos = t; save();
       if (map) { map.fitBox([g.lon - 0.08, g.lat - 0.05, g.lon + 0.08, g.lat + 0.05], 1); info(g.lon, g.lat, map.api.X(g.lon), map.api.Y(g.lat)); } else info(g.lon, g.lat);
     }
 
@@ -162,18 +174,21 @@
     var STEPS = {
       east: { note: "From the Malacca Strait to the South China Sea. You have already reported to Klang VTS on entering STRAITREP at 100°40'E.", list: [
         { w: "In sector 6 (west of the Tg Piai to Pulau Karimun Kecil line)", c: "Johor VTS VHF 88", t: "Listening watch.", info: true, at: [103.40, 1.20] },
-        { w: "Crossing the line Tg Piai to Pulau Karimun Kecil (MPA: when Pulau Iyu Kechil is abeam)", c: "VTIS West VHF 73", t: "STRAITREP report: A ship, C or D position, P hazardous cargo, Q or R defects or pollution. Port callers add the Confirmation of Arrival (ETA or pilot boarding ground).", at: pt("Pulau Iyu Kechil") },
-        { w: "Passing 103°44.5'E (sector 8)", c: "VTIS Central VHF 14", t: "Change channel and keep a listening watch. Deep-draught ships: keep to the deep water route, 12 kn, UKC 3.5 m.", info: true, at: [LON7, 1.16] },
+        { w: "Calling at Singapore only: Pulau Iyu Kechil abeam (still in sector 6)", c: "VTIS West VHF 73", t: "Confirmation of Arrival (MPA): ETA at the first destination or the pilot boarding ground. Ships passing through do not give this.", at: pt("Pulau Iyu Kechil") },
+        { w: "Crossing the line Tg Piai to Pulau Karimun Kecil (sector 7)", c: "VTIS West VHF 73", t: "STRAITREP report: A ship, C or D position, P hazardous cargo, Q or R defects or pollution.", at: [103.47, 1.21] },
+        { w: "Phillip Channel deep water route (from 103°38.9'E)", c: "VTIS West VHF 73", t: "Eastbound deep-draught ships use the deep water route and, as far as practicable, do not overtake. Deep-draught ships and VLCCs: 12 kn. UKC at least 3.5 m in the whole Straits.", info: true, at: [103.68, 1.10] },
+        { w: "Passing 103°44.5'E (sector 8)", c: "VTIS Central VHF 14", t: "Change channel and keep a listening watch.", info: true, at: [LON7, 1.16] },
         { w: "Passing 104°02.1'E (sector 9)", c: "VTIS East VHF 10", t: "Change channel and keep a listening watch.", info: true, at: [LON8, 1.25] },
         { w: "Passing 104°22.9'E near Horsburgh Lt", c: "None required", t: "You leave STRAITREP. The IMO text has no leaving report; follow any VTIS request.", info: true, at: pt("Horsburgh") }] },
       west: { note: "From the South China Sea into the Strait.", list: [
-        { w: "Crossing 104°22.9'E (MPA: when Horsburgh Lt is abeam)", c: "VTIS East VHF 10", t: "STRAITREP report: A, C or D, P, Q or R. Port callers add the Confirmation of Arrival.", at: pt("Horsburgh") },
+        { w: "Calling at Singapore only: Horsburgh Lt abeam (just east of 104°22.9'E)", c: "VTIS East VHF 10", t: "Confirmation of Arrival (MPA): ETA at the first destination or the pilot boarding ground. Ships passing through do not give this.", at: pt("Horsburgh") },
+        { w: "Crossing 104°22.9'E (sector 9)", c: "VTIS East VHF 10", t: "STRAITREP report: A ship, C or D position, P hazardous cargo, Q or R defects or pollution.", at: [LON9, 1.30] },
         { w: "From the south via Selat Riau: Karang Galang Lt abeam", c: "VTIS East VHF 10", t: "STRAITREP report on entering.", at: pt("Karang Galang") },
         { w: "Passing 104°02.1'E (sector 8)", c: "VTIS Central VHF 14", t: "Change channel and keep a listening watch.", info: true, at: [LON8, 1.25] },
         { w: "Passing 103°44.5'E (sector 7)", c: "VTIS West VHF 73", t: "Change channel and keep a listening watch.", info: true, at: [LON7, 1.16] },
         { w: "Crossing the Tg Piai to Pulau Karimun Kecil line (sector 6)", c: "Johor VTS VHF 88", t: "Listening watch. Then Klang VTS sectors 5 to 1 up the Malacca Strait.", info: true, at: [103.47, 1.21] }] },
       arr: { note: "Calling at Singapore. Send the pre-arrival notices first (see Before arrival).", list: [
-        { w: "At the VTIS reporting point: Horsburgh Lt, Karang Galang Lt or Eastern Buoy abeam (from the east or south), Pulau Iyu Kechil or Pulau Jangkat Bn abeam (from the west or Selat Durian)", c: "VTIS East VHF 10 / VTIS West VHF 73", t: "Confirmation of Arrival: name, call sign, position, persons on board (passenger ships), ETA at first destination or the pilot boarding ground, height if changed. This is also the STRAITREP report.", at: pt("Horsburgh") },
+        { w: "At the VTIS reporting point: Horsburgh Lt, Karang Galang Lt or Eastern Buoy abeam (from the east or south), Pulau Iyu Kechil or Pulau Jangkat Bn abeam (from the west or Selat Durian)", c: "VTIS East VHF 10 / VTIS West VHF 73", t: "Confirmation of Arrival: name, call sign, position, persons on board (passenger ships), ETA at first destination or the pilot boarding ground, height if changed. If you are also entering the STRAITREP area, give the STRAITREP report too (it adds P hazardous cargo and Q or R defects or pollution).", at: pt("Horsburgh") },
         { w: "Before entering port limits or a port sector", c: "Sector control station", t: "Channel Information Report and permission: name or call sign, draft, position, destination, height. East Control Ch 12, Keppel or Cruise Bay Ch 05, Pasir Panjang Ch 18, Sinki or West Control Ch 68, Jurong Ch 22, Sembawang Ch 21.", at: [103.86, 1.23] },
         { w: "Under way in the port", c: "Sector control station", t: "Underway Report when passing each port reporting point; continuous watch on the sector channel.", info: true },
         { w: "At the pilot boarding ground (PEBGA, PEBGB tankers, PEBGC, PWBGA, PWBGB, PSBG, PJSB, PGBG)", c: "Singapore Pilots VHF 20", t: "Pilot ordered through PSA Marine.", at: [103.89, 1.225] },
@@ -201,8 +216,9 @@
     /* ---------- STRAITREP message ---------- */
     var FMT = [["A", "Ship: name, call sign, IMO number"], ["C / D", "Position: latitude and longitude (C), or true bearing and distance from a reference point (D)"], ["P", "Hazardous cargo: yes or no, and the class"], ["Q / R", "Defects, damage, deficiencies or limitations (Q); pollution or dangerous goods lost overboard (R)"], ["E, F", "Course and speed: only when VTIS asks"]];
     function writeMsg() {
-      var s = Ships.active(), name = s ? s.name.toUpperCase() : "(SHIP)", cs = s && s.callsign ? s.callsign : "(CALL SIGN)", imo = s && s.imo ? "IMO " + s.imo : "IMO (number)";
+      var s = Ships.active(), name = s && s.name ? s.name.toUpperCase() : "(SHIP)", cs = s && s.callsign ? s.callsign : "(CALL SIGN)", imo = s && s.imo ? "IMO " + s.imo : "IMO (number)";
       var n = mark ? sectorAt(mark[0], mark[1]) : 0; if (!n && mark && mark[0] > LON9) n = 9;   /* east of the limit: the report on entering goes to VTIS East */
+      if (!n && mark && johorWaters(mark[0], mark[1])) { var jp = portSectorAt(mark[0], mark[1]); n = jp && /East Johor/.test(jp.name) ? 9 : 7; }   /* coming out of the Johor Strait or the Pulai river */
       var v = VTS[n] || { n: "VTIS (sector)", ch: "(sector channel)" }, pos = "(position)", dpos = "";
       if (mark) {
         pos = Geo.lat(mark[1]) + " " + Geo.lon(mark[0]);
@@ -240,8 +256,8 @@
     var RULES = [
       "STRAITREP applies to ships of 300 GT and over, 50 m and over, tows of 300 GT or 50 m combined, any ship with hazardous cargo, and all passenger ships with VHF. Keep a listening watch on the sector channel; general broadcasts come on Ch 16 after an announcement on the sector channel.",
       "Deep-draught vessels (draught 15 m or more) and tankers of 150,000 DWT and over: under keel clearance of at least 3.5 m at all times through the Straits.",
-      "Eastbound deep-draught vessels shall use the deep water routes in Phillip Channel and the Singapore Strait and, as far as practicable, not overtake there.",
-      "Deep-draught vessels and VLCCs: 12 kn over the ground, as far as safe and practicable, in the deep water routes and in the westbound lanes south of St John's Island (IMO rule 7).",
+      "Eastbound deep-draught vessels shall use the deep water routes (in the Malacca Strait, Phillip Channel and the Singapore Strait) and, in Phillip Channel and the Singapore Strait, avoid overtaking as far as practicable.",
+      "Deep-draught vessels and VLCCs: max 12 kn over the ground, as far as safe and practicable, in the One Fathom Bank TSS, the deep water routes in Phillip Channel and the Singapore Strait, and the westbound lane from south of St John's Island to Raffles Lighthouse (IMO rule 7).",
       "Ships crossing the lanes to or from ports and anchorages (300 GT or 50 m and over) are recommended to show three all-round green lights vertically at night, report the intention to VTIS and cross in ample time (IMO recommendation, not mandatory).",
       "East Johor Strait (MPA PC 08/2026, from 1 Sep 2026): max 12 kn, 6 kn past the yards; no night towing between the Causeway and Angler Buoy; no stopping or anchoring in the Traffic Information Area; report ETA changes at once."];
     var SRC = [
@@ -279,12 +295,14 @@
     Array.prototype.forEach.call(document.querySelectorAll('input[name="sg-tab"]'), function (r) { r.addEventListener("change", function () { st.tab = r.value; save(); renderSteps(); }); });
     renderSteps();
     var saved = isObj(store.get(KEY)) ? store.get(KEY) : {};
-    ["pos", "haz", "def"].forEach(function (k) { if (typeof saved[k] === "string") $("sg-" + k).value = saved[k]; });
+    function shipFill() { var v = shipVals(); $("sg-haz").value = v.haz || ""; $("sg-def").value = v.def || ""; }
+    if (typeof saved.pos === "string") { $("sg-pos").value = saved.pos; st.pos = saved.pos; }
+    shipFill();
     $("sg-haz").addEventListener("input", function () { save(); writeMsg(); }); $("sg-def").addEventListener("input", function () { save(); writeMsg(); });
     $("sg-pos").addEventListener("keydown", function (e) { if (e.key === "Enter") goPos(); });
     $("sg-pos-go").addEventListener("click", goPos);
     $("sg-copy").addEventListener("click", function () { copyText($("sg-msg").textContent); toast("Report copied"); });
-    Ships.onChange(writeMsg);
+    Ships.onChange(function () { shipFill(); writeMsg(); });
     var VIEWS = { all: [103.30, 1.02, 104.50, 1.47], port: [103.60, 1.13, 104.12, 1.36], west: [103.28, 1.05, 103.80, 1.32], east: [103.95, 1.10, 104.50, 1.40], ejs: [103.78, 1.25, 104.15, 1.48] };
     Object.keys(VIEWS).forEach(function (k) { $("sg-v-" + k).addEventListener("click", function () { if (map) map.fitBox(VIEWS[k], 1.02); }); });
     $("sg-zin").addEventListener("click", function () { if (map) map.zoomIn(); }); $("sg-zout").addEventListener("click", function () { if (map) map.zoomOut(); });
@@ -294,17 +312,17 @@
       map = SeaMap($("sg-canvas"), $("sg-wrap"), { land: D.land, decode: dec, bounds: D.bounds, home: VIEWS.all, view: isObj(st.view) && isFinite(st.view.s) ? st.view : null,
         tokens: ["true", "accent", "area-eca", "rose", "pos-mark", "map-tss", "ship"], under: under, layers: layers, onPick: pick, onHover: hover, onView: function (v) { st.view = v; save(); } });
       map.resize();
-      if (saved.pos) { var g = Geo.parse(saved.pos); if (!g.error) { mark = [g.lon, g.lat]; info(g.lon, g.lat); } }
+      if (st.pos) { var g = Geo.parse(st.pos); if (!g.error && onChart(g.lon, g.lat)) { mark = [g.lon, g.lat]; info(g.lon, g.lat); } else st.pos = ""; }
       map.draw();
     }
     window.addEventListener("beforeprint", function () {                /* the chart on the print sheet, drawn in day colours */
       if (!map || $("singapore").hidden) return;
       var th = document.documentElement.getAttribute("data-theme");
-      if (th && th !== "day") document.documentElement.setAttribute("data-theme", "day");
+      if (th && th !== "day") { document.documentElement.setAttribute("data-theme", "day"); map.recolor(); }
       var v = st.view ? { cx: st.view.cx, cy: st.view.cy, s: st.view.s } : null;
       map.fitBox(VIEWS.all, 1.02); $("sg-ps-img").src = map.toDataURL(); map.fitBox(VIEWS.port, 1.02); $("sg-ps-img2").src = map.toDataURL();
       if (v) map.setView(v); else map.draw();
-      if (th && th !== "day") document.documentElement.setAttribute("data-theme", th);
+      if (th && th !== "day") { document.documentElement.setAttribute("data-theme", th); map.recolor(); }
     });
     writeMsg();
     makeMap();                                                     /* the page is visible when its init runs, so the canvas has its size */

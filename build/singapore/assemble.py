@@ -21,7 +21,7 @@ nav = '''    <a href="#singapore" data-tool-link="singapore">
     </a>
 '''
 h = put(h, '    <a href="#singapore"', '    </a>\n', nav, '    <a href="#charts-pubs" data-tool-link="charts-pubs">')
-h = put(h, '    <section class="tool" id="singapore"', '    </section>\n', rd('page.html').rstrip() + '\n\n', '    <section class="tool" id="charts-pubs"')
+h = put(h, '    <section class="tool" id="singapore"', '    </section>\n', rd('page.html').rstrip() + '\n', '    <section class="tool" id="charts-pubs"')
 h = put(h, '\n/* Singapore Strait */', '/* Singapore Strait end */\n', rd('page.css').rstrip('\n') + '\n', '</style>')
 js = ('  /* SGS-BEGIN: Singapore Strait reporting chart. Sources: build/singapore (page.js) and data/singapore (build.py) */\n'
       + '  var SGS = ' + data + ';\n\n' + rd('page.js').rstrip() + '\n  /* SGS-END */\n\n')

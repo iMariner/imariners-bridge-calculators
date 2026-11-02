@@ -21,6 +21,7 @@ const TOOLS = [
   ['heel-draught', "0"],
   ['anchor-depth', "0"],
   ['catzoc', "document.getElementById('cz-example').click()"], ['ship', "0"],
+  ['singapore', "var i=document.getElementById('sg-pos');i.value='01 12.0N 103 52.0E';document.getElementById('sg-pos-go').click()"],
   ['design', "0"]
 ];
 (async () => {

@@ -8,7 +8,7 @@
       LAND.push({ r: rs, b: [x0, y0, x1, y1] });
     });
     function css(token) { var e = document.createElement("span"); e.style.cssText = "position:absolute;visibility:hidden;color:var(" + token + ")"; document.body.appendChild(e); var v = getComputedStyle(e).color; document.body.removeChild(e); return v; }
-    function colors() { ["sea", "land", "coast", "grid", "ink"].forEach(function (k) { C[k] = css("--map-" + k); }); (opts.tokens || []).forEach(function (t) { C[t] = css("--" + t); }); C.paper = css("--paper"); C.font = getComputedStyle(document.body).fontFamily; }
+    function colors() { ["sea", "land", "coast", "grid", "ink"].forEach(function (k) { C[k] = css("--map-" + k); }); (opts.tokens || []).forEach(function (t) { C[t] = css("--" + t); }); C.paper = css("--surface");   /* light marks on the chart: white by day, dark at night (--paper is always white) */ C.font = getComputedStyle(document.body).fontFamily; }
     function alpha(rgb, a) { var m = String(rgb).match(/[\d.]+/g) || [0, 0, 0]; return "rgba(" + m[0] + "," + m[1] + "," + m[2] + "," + a + ")"; }
     function minScale() { if (opts.bounds) { var b = opts.bounds; return Math.min(W / (b[2] - b[0]), H / (Geo.mercY(b[3]) - Geo.mercY(b[1]))); } return Math.max(W / 360, H / 170); }
     function X(lon) { return (lon - view.cx) * view.s + W / 2; }
@@ -123,7 +123,7 @@
     new MutationObserver(function () { colors(); draw(); }).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
     colors();
     return { draw: draw, redraw: schedule, resize: resize, world: world, fitBox: fitBox, zoomIn: function () { zoomAt(1.6, W / 2, H / 2); }, zoomOut: function () { zoomAt(1 / 1.6, W / 2, H / 2); },
-      api: api, toDataURL: function () { return cv.toDataURL("image/png"); },
+      api: api, toDataURL: function () { return cv.toDataURL("image/png"); }, recolor: function () { colors(); draw(); },
       setView: function (v) { if (v && isFinite(v.s)) { view = { cx: v.cx, cy: v.cy, s: v.s }; clamp(); changed(); draw(); } } };
   }
   /* SEAMAP-END */

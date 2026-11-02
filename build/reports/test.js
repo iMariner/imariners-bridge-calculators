@@ -1,4 +1,4 @@
-var fs=require('fs');var src=fs.readFileSync('calc.js','utf8');
+var fs=require('fs');var src=fs.readFileSync(require('path').join(__dirname,'calc.js'),'utf8');
 eval(src.replace('var RP =','global.RP ='));
 var assert=require('assert');
 // user's example: DTG 500 then 240, 24 h

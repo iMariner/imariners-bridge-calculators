@@ -1,4 +1,4 @@
-var fs=require('fs');var src=fs.readFileSync('geo.js','utf8');eval(src.replace('var Geo =','global.Geo ='));var assert=require('assert');
+var fs=require('fs');var src=fs.readFileSync(require('path').join(__dirname,'geo.js'),'utf8');eval(src.replace('var Geo =','global.Geo ='));var assert=require('assert');
 var eq=(a,b,t)=>assert(Math.abs(a-b)<(t||1e-9),a+' vs '+b);
 // formatting
 assert.strictEqual(Geo.lat(48.45),"48°27.0'N");assert.strictEqual(Geo.lon(-6.4166667),"006°25.0'W");assert.strictEqual(Geo.lat(-0.5),"00°30.0'S");
