@@ -11,6 +11,8 @@
   function initShipReporting() {
     var UI_KEY = "bridgeCalc.srepUi", RAD = Math.PI / 180, HOUR = 3600000;
     var KIND = { "mandatory-imo": ["imo", "Mandatory, IMO-adopted"], "mandatory-national": ["nat", "Mandatory, national"], "voluntary": ["vol", "Voluntary"] };
+    var BOUND = /^\s*(?:[\d.]+\s+)?(north[- ]?east|north[- ]?west|south[- ]?east|south[- ]?west|north|south|east|west)[- ]?bound\s+(?:traffic|ships|vessels)/i;
+    var DIRS = { north: 0, northeast: 45, east: 90, southeast: 135, south: 180, southwest: 225, west: 270, northwest: 315 };
     var EVENT_NAMES = { before_entry: "before entering", entry: "on entering", exit: "on leaving", departure: "on departure", before_arrival: "before arrival", arrival: "on arrival", position: "position report", deviation: "on a deviation", final: "final report", other: "other" };
     function dec4(arr) { var out = new Array(arr.length), x = 0, y = 0; for (var i = 0; i < arr.length; i += 2) { x += arr[i]; y += arr[i + 1]; out[i] = x / 10000; out[i + 1] = y / 10000; } return out; }
     var SYS = SR_SYSTEMS.map(function (s) {
@@ -98,8 +100,16 @@
         if (!startIn && !endIn && !entries.length) return;
         cross[s.id] = { c: c, startIn: startIn, endIn: endIn, entries: entries, exits: exits }; onRoute[s.id] = true;
         var when = s.when && s.when.length ? s.when : [{ e: "entry", x: "Report on entering the area." }];
-        function row(w, ev, ms, label) { rows.push({ s: s, w: w, ev: ev, due: ms, label: label }); }
+        function row(w, ev, ms, label) {
+          var dir = DIRS[(BOUND.exec(String(w.x || "")) || [])[1] ? BOUND.exec(String(w.x || ""))[1].toLowerCase().replace(/[- ]/g, "") : ""];
+          if (dir !== undefined) {                                    /* "North-east bound traffic should report...": not for a ship going the other way */
+            var q = SRoute.atDist(plan, Math.min(ev.d + 0.01, plan.total)), dc = q && q.course !== null ? Math.abs(((q.course - dir) % 360 + 540) % 360 - 180) : 0;
+            if (dc > 100) return;
+          }
+          rows.push({ s: s, w: w, ev: ev, due: ms, label: label });
+        }
         var startEv = { kind: "start", d: 0, lat: plan.pts[0].lat, lon: plan.pts[0].lon, x: plan.pts[0].x }, last = plan.pts[plan.pts.length - 1], endEv = { kind: "end", d: endD, lat: last.lat, lon: last.lon, x: last.x };
+        var hasDep = when.some(function (w) { return w.e === "departure"; });   /* its own departure rule covers a ship that sails from inside */
         when.forEach(function (w) {
           var h = isFinite(w.h) && w.h > 0 ? w.h : 0, tx = String(w.x || "");
           var nm = /(\d+(?:\.\d+)?)\s*(?:NM|nautical miles?)\s+before/i.exec(tx), mins = /(\d+)\s*minutes?\s+before/i.exec(tx);
@@ -110,10 +120,10 @@
               else if (nm) row(w, e, tAt(Math.max(0, e.d - nm)), nm + " NM before entering");
               else row(w, e, tAt(e.d), "Before entering (see the rule)");
             });
-            if (startIn) row(w, startEv, plan.startMs, "Before departure (you start inside)");
+            if (startIn && !hasDep) row(w, startEv, plan.startMs, "Before departure (you start inside)");
           } else if (w.e === "entry") {
             entries.forEach(function (e) { row(w, e, tAt(e.d), "On entering"); });
-            if (startIn) row(w, startEv, plan.startMs, "Before departure (you start inside)");
+            if (startIn && !hasDep) row(w, startEv, plan.startMs, "Before departure (you start inside)");
           } else if (w.e === "exit" || w.e === "final") {
             exits.forEach(function (e) { row(w, e, tAt(e.d), w.e === "final" ? "Final report, on leaving" : "On leaving"); });
             if (w.e === "final" && endIn) row(w, endEv, endMs, "Final report, on arrival");
@@ -153,8 +163,11 @@
     }
 
     /* ---------- reports on this passage ---------- */
-    function contactTxt(s) {
-      var e = (s.how || []).filter(function (h) { return h.ty === "email"; })[0], v = (s.how || []).filter(function (h) { return h.ty === "vhf"; })[0];
+    function contactTxt(s, w) {
+      var how = s.how || [], tx = w && BOUND.test(String(w.x || "")) ? String(w.x).toLowerCase() : "";   /* only rules for one direction of traffic */
+      var named = how.filter(function (h) { var k = (clean(h.to) || "").toLowerCase().replace(/[^a-z ]/g, " ").trim().split(/\s+/)[0]; return k && k.length > 3 && tx.indexOf(k) >= 0; });
+      if (tx && named.length && named.length < how.length) how = named;    /* that rule names its station (Dover Coastguard, Tarifa Traffic...): show only that one */
+      var e = how.filter(function (h) { return h.ty === "email"; })[0], v = how.filter(function (h) { return h.ty === "vhf"; })[0];
       var vt = v ? "VHF " + String(v.v).replace(/^(VHF\s*)/i, "") + (v.to ? " " + clean(v.to) : "") : "";
       return [e ? e.v : "", vt.length > 48 ? vt.slice(0, 46).replace(/\s+\S*$/, "") + " …" : vt].filter(Boolean);
     }
@@ -180,7 +193,7 @@
         cell("due", r.due === null ? "time?" : whenTxt(r.due).replace(" UTC", ""), [r.due === null ? "needs departure time and speed" : "UTC  ·  " + dtg(r.due)]);
         cell("sys", r.s.t, [r.label + (r.w.rep ? " (" + r.w.rep + ")" : "") + (r.due !== null && plan && plan.startMs !== null && r.due < plan.startMs - 60000 ? ": due before you sail" : "")]);
         cell("at", posTxt(r.ev.lat, r.ev.lon), [r.ev.kind === "entry" ? "boundary, entering" : r.ev.kind === "exit" ? "boundary, leaving" : r.ev.kind === "start" ? "departure" : r.ev.kind === "end" ? "arrival" : "on the route"]);
-        var ct = contactTxt(r.s); cell("to", ct[0] || "see the system card", ct.slice(1));
+        var ct = contactTxt(r.s, r.w); cell("to", ct[0] || "see the system card", ct.slice(1));
         tr2.addEventListener("click", function () { selRow = r; select(r.s.id, false, r); });
         tb.appendChild(tr2);
       });

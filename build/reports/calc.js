@@ -5,7 +5,8 @@
     function ok(x) { return x !== null && !isNaN(x); }
     function zone(s) {                        /* 8, -3.5, +5:30, -3:30, typographic minus: hours East + */
       s = String(s === undefined || s === null ? "" : s).replace(/[−–]/g, "-").replace(",", ".").trim();
-      var m = /^([+-]?)(\d{1,2}):([0-5]\d)$/.exec(s);
+      var m = /^([+-]?)(\d{1,2})(?::([0-5]\d)|\.(30|45))$/.exec(s);    /* 5.30 / 5.45 read as 5:30 / 5:45 */
+      if (m) m[3] = m[3] || m[4];
       if (m) return (m[1] === "-" ? -1 : 1) * ((+m[2]) + (+m[3]) / 60);
       var z = num(s); return ok(z) && (z < -12 || z > 14) ? NaN : z;
     }

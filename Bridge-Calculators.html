@@ -199,6 +199,9 @@ button, input, select, textarea { font-family: inherit; }
 .mono { font-family: var(--font-mono); }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 input[type="checkbox"], input[type="radio"], input[type="range"], progress { accent-color: var(--accent); }
+@supports not (accent-color: red) {                  /* Chrome before 93 cannot colour these: turn the browser blue to red in Night mode */
+  :root[data-theme="night"] input[type="checkbox"], :root[data-theme="night"] input[type="radio"], :root[data-theme="night"] input[type="range"], :root[data-theme="night"] progress { filter: grayscale(1) sepia(1) saturate(6) hue-rotate(-45deg); }
+}
 
 /* App shell: navy sidebar with the logo, slim top bar, page header with a chart ruler */
 .shell { display: grid; grid-template-columns: var(--side-w) minmax(0, 1fr); min-height: 100vh; }
@@ -269,6 +272,8 @@ legend { font-weight: var(--fw-semibold); margin-bottom: var(--sp-2h); padding: 
 }
 .segmented label:last-of-type { border-left: 1px solid var(--border); }
 .segmented input:checked + label { background: var(--accent); color: var(--accent-text); }
+.segmented input:focus + label { outline: 2px solid var(--accent); outline-offset: -2px; }   /* Chrome 84-85 have no :focus-visible */
+.segmented input:focus:not(:focus-visible) + label { outline: none; }                         /* newer browsers: no ring after a mouse click */
 .segmented input:focus-visible + label { outline: 2px solid var(--accent); outline-offset: -2px; }
 
 .actions { display: flex; gap: var(--sp-2); flex-wrap: wrap; margin-top: var(--sp-4); }
@@ -1945,7 +1950,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
         <div class="et-top">
           <div class="field"><label for="et-date">Present date</label><input id="et-date" class="text-input" type="date"><div class="hint" id="et-date-msg"></div></div>
           <div class="field"><label for="et-time">Present time</label><input id="et-time" class="text-input" type="time"><div class="hint" id="et-time-msg"></div></div>
-          <div class="field"><label for="et-tz">Present time is in (UTC ±)</label><div class="input-wrap"><input id="et-tz" type="text" inputmode="decimal" placeholder="0 = GMT" maxlength="5"><span class="unit">h</span></div><div class="hint" id="et-tz-msg"></div></div>
+          <div class="field"><label for="et-tz">Present time is in (UTC ±)</label><div class="input-wrap"><input id="et-tz" type="text" inputmode="decimal" placeholder="0 = GMT" maxlength="6"><span class="unit">h</span></div><div class="hint" id="et-tz-msg"></div></div>
           <div class="field et-btn"><button type="button" class="btn" id="et-now">GMT now</button></div>
           <div class="field et-fill">
             <label>Speeds (kn): type them, or fill</label>
@@ -2914,6 +2919,10 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
 
 
 
+
+
+
+
     <section class="tool" id="charts-pubs" hidden>
       <div class="tool-head">
         <h1>Routeing, Security Charts &amp; Sailing Directions</h1>
@@ -3390,8 +3399,9 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
     if (!/^[+-]?\d*\.?\d+$/.test(s)) return NaN;
     return parseFloat(s);
   }
-  function parseZoneEl(el) {                                       /* time zone in hours East +: 8, -3.5, +9:30, -3:30, typographic minus */
-    var s = el.value.replace(",", ".").replace(/[−–]/g, "-").trim(), m = /^([+-]?)(\d{1,2}):([0-5]\d)$/.exec(s);
+  function parseZoneEl(el) {                                       /* time zone in hours East +: 8, -3.5, +9:30, -3:30, typographic minus; 9.30 / 5.45 read as 9:30 / 5:45 (no zone is 9.3 h) */
+    var s = el.value.replace(",", ".").replace(/[−–]/g, "-").trim(), m = /^([+-]?)(\d{1,2})(?::([0-5]\d)|\.(30|45))$/.exec(s);
+    if (m) m[3] = m[3] || m[4];
     if (m) return (m[1] === "-" ? -1 : 1) * ((+m[2]) + (+m[3]) / 60);
     return parseNum({ value: s });
   }
@@ -4392,10 +4402,14 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
         $("ad-water").innerHTML = "—";
         $("ad-water-sub").textContent = "Enter the deck height above the waterline";
       }
-      $("ad-practical").textContent = "Practical limit, whole shackles: " + r.whole + " shackle" + (r.whole === 1 ? "" : "s") + " = " + m1(r.wholeDeck) + " m deck to seabed" +
-        (v.h !== null ? " (" + m1(r.wholeWater) + " m depth of water)" : "") + "." +
-        (r.rated === null ? " Also check the windlass's rated anchorage depth (standard design 82.5 m) and use the lower figure." :
-          r.limitedByRating ? " The windlass is rated to " + m1(r.rated) + " m of cable hanging" + (v.h !== null ? " (" + m1(r.ratedWater) + " m depth of water)" : "") + " only: do not anchor deeper than that." : "");
+      var pw = r.limitedByRating ? Math.floor(r.rated / v.len + 1e-9) : r.whole;   /* whole shackles within the lower limit */
+      $("ad-practical").textContent = r.limitedByRating
+        ? "Limit set by the windlass rating: " + m1(r.rated) + " m of cable hanging" + (v.h !== null ? " = " + m1(r.ratedWater) + " m depth of water" : "") +
+          " (the pull alone would allow " + m1(r.deck) + " m). Whole shackles: " + pw + " shackle" + (pw === 1 ? "" : "s") + " = " + m1(pw * v.len) + " m deck to seabed" +
+          (v.h !== null ? " (" + m1(pw * v.len - v.h) + " m depth of water)" : "") + "."
+        : "Practical limit, whole shackles: " + r.whole + " shackle" + (r.whole === 1 ? "" : "s") + " = " + m1(r.wholeDeck) + " m deck to seabed" +
+          (v.h !== null ? " (" + m1(r.wholeWater) + " m depth of water)" : "") + "." +
+          (r.rated === null ? " Also check the windlass's rated anchorage depth (standard 82.5 m of cable hanging) and use the lower figure." : "");
       writeExample(v, r, true);
       drawAnchor($("ad-diagram"), "ad", v, r);
       fillSheet(v, r);
@@ -4882,7 +4896,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
     var star = isStarName(o.body);
     var r = { body: o.body, star: star, lat: o.lat, lonE: o.lonE, hr: hr, mn: mn, sc: sc,
       ltText: TIME.dt(ltMs), zoneText: zoneText(-o.zoneH), utLtText: TIME.dt(utLtMs), ctText: ctText, ceText: ceText,
-      utText: TIME.dt(ut), utMs: ut, usedCt: useCt };
+      utText: TIME.dt(ut), utMs: ut, usedCt: useCt, ctDiffMin: useCt ? (ut - utLtMs) / 60000 : 0 };
     var lon = o.lonE;
     if (star) {
       r.ghaHr = q01(stH.gst);
@@ -5114,6 +5128,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
       if (r.alt < 0) warn.push(r.body + " is below the horizon at this time and place.");
       else if (r.alt < 5) warn.push("Altitude is very low: refraction makes the bearing unreliable.");
       if (!r.onMeridian && !r.agree) warn.push("The A, B, C result and the direct calculation differ by more than 0.3°. Check the inputs.");
+      if (Math.abs(r.ctDiffMin) > 10) warn.push("UT from the chronometer (" + r.utText + ") is " + Math.round(Math.abs(r.ctDiffMin)) + " min " + (r.ctDiffMin > 0 ? "later" : "earlier") + " than from ship's time and zone (" + r.utLtText + "). The chronometer is used: check LT, zone, CT and CE.");
       var w = $("az-warn"); w.hidden = !warn.length; w.textContent = warn.join(" ");
       var rows = rowsFor(r);
       fillWork($("az-work"), rows);
@@ -6168,7 +6183,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
         }
         o.name = mk("et-n" + i, "Destination " + (i + 1), null, 30, null); o.name.setAttribute("aria-label", "Destination " + (i + 1) + " name");
         o.dist = mk("et-d" + i, "NM", "92px", 7, "decimal"); o.dist.setAttribute("aria-label", "Distance to go to destination " + (i + 1));
-        o.zone = mk("et-z" + i, "e.g. 8", "92px", 5, "decimal"); o.zone.setAttribute("aria-label", "Time zone of destination " + (i + 1)); o.zone.parentNode.className += " last";
+        o.zone = mk("et-z" + i, "e.g. 8", "92px", 6, "decimal"); o.zone.setAttribute("aria-label", "Time zone of destination " + (i + 1)); o.zone.parentNode.className += " last";
         for (var s2 = 0; s2 < NSP; s2++) { var c = document.createElement("td"); c.className = "cell na"; c.textContent = "—"; tr.appendChild(c); o.cells.push(c); }
         tb.appendChild(tr); dest.push(o);
       }
@@ -6484,7 +6499,8 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
     function ok(x) { return x !== null && !isNaN(x); }
     function zone(s) {                        /* 8, -3.5, +5:30, -3:30, typographic minus: hours East + */
       s = String(s === undefined || s === null ? "" : s).replace(/[−–]/g, "-").replace(",", ".").trim();
-      var m = /^([+-]?)(\d{1,2}):([0-5]\d)$/.exec(s);
+      var m = /^([+-]?)(\d{1,2})(?::([0-5]\d)|\.(30|45))$/.exec(s);    /* 5.30 / 5.45 read as 5:30 / 5:45 */
+      if (m) m[3] = m[3] || m[4];
       if (m) return (m[1] === "-" ? -1 : 1) * ((+m[2]) + (+m[3]) / 60);
       var z = num(s); return ok(z) && (z < -12 || z > 14) ? NaN : z;
     }
@@ -6946,8 +6962,8 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
       fillTable($("su-tbl"), B, v);
       var parts = ["Sunrise " + (s.rise.length ? frame(s.rise[0], v.zone, B.base) : "none") + ", Sunset " + (s.set.length ? frame(s.set[0], v.zone, B.base) : "none") + " (ship's time " + zoneTxt(v.zone) + ")"];
       var nt = L.nautical, ct = L.civil;
-      if (nt.rise.length && nt.set.length) parts.push("Nautical twilight " + frame(nt.rise[0], v.zone, B.base) + " - " + frame(nt.set[0], v.zone, B.base));
-      if (ct.rise.length && ct.set.length) parts.push("Civil twilight " + frame(ct.rise[0], v.zone, B.base) + " - " + frame(ct.set[0], v.zone, B.base));
+      if (nt.rise.length && nt.set.length) parts.push("Nautical twilight begins " + frame(nt.rise[0], v.zone, B.base) + ", ends " + frame(nt.set[0], v.zone, B.base));
+      if (ct.rise.length && ct.set.length) parts.push("Civil twilight begins " + frame(ct.rise[0], v.zone, B.base) + ", ends " + frame(ct.set[0], v.zone, B.base));
       if (R.transit.length) parts.push("LAN " + frame(R.transit[0], v.zone, B.base));
       if (R.moon) parts.push("Moonrise " + (R.moon.rise.length ? frame(R.moon.rise[0], v.zone, B.base) : "none") + ", moonset " + (R.moon.set.length ? frame(R.moon.set[0], v.zone, B.base) : "none") + " (" + Math.round(R.moon.lit * 100) + "% lit)");
       if (v.speed > 0) parts.push("under way " + ("00" + Math.round(v.course)).slice(-3) + "° " + v.speed + " kn from the position at " + (v.postime === null ? "12:00" : $("su-postime").value));
@@ -9164,6 +9180,8 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
   function initShipReporting() {
     var UI_KEY = "bridgeCalc.srepUi", RAD = Math.PI / 180, HOUR = 3600000;
     var KIND = { "mandatory-imo": ["imo", "Mandatory, IMO-adopted"], "mandatory-national": ["nat", "Mandatory, national"], "voluntary": ["vol", "Voluntary"] };
+    var BOUND = /^\s*(?:[\d.]+\s+)?(north[- ]?east|north[- ]?west|south[- ]?east|south[- ]?west|north|south|east|west)[- ]?bound\s+(?:traffic|ships|vessels)/i;
+    var DIRS = { north: 0, northeast: 45, east: 90, southeast: 135, south: 180, southwest: 225, west: 270, northwest: 315 };
     var EVENT_NAMES = { before_entry: "before entering", entry: "on entering", exit: "on leaving", departure: "on departure", before_arrival: "before arrival", arrival: "on arrival", position: "position report", deviation: "on a deviation", final: "final report", other: "other" };
     function dec4(arr) { var out = new Array(arr.length), x = 0, y = 0; for (var i = 0; i < arr.length; i += 2) { x += arr[i]; y += arr[i + 1]; out[i] = x / 10000; out[i + 1] = y / 10000; } return out; }
     var SYS = SR_SYSTEMS.map(function (s) {
@@ -9251,8 +9269,16 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
         if (!startIn && !endIn && !entries.length) return;
         cross[s.id] = { c: c, startIn: startIn, endIn: endIn, entries: entries, exits: exits }; onRoute[s.id] = true;
         var when = s.when && s.when.length ? s.when : [{ e: "entry", x: "Report on entering the area." }];
-        function row(w, ev, ms, label) { rows.push({ s: s, w: w, ev: ev, due: ms, label: label }); }
+        function row(w, ev, ms, label) {
+          var dir = DIRS[(BOUND.exec(String(w.x || "")) || [])[1] ? BOUND.exec(String(w.x || ""))[1].toLowerCase().replace(/[- ]/g, "") : ""];
+          if (dir !== undefined) {                                    /* "North-east bound traffic should report...": not for a ship going the other way */
+            var q = SRoute.atDist(plan, Math.min(ev.d + 0.01, plan.total)), dc = q && q.course !== null ? Math.abs(((q.course - dir) % 360 + 540) % 360 - 180) : 0;
+            if (dc > 100) return;
+          }
+          rows.push({ s: s, w: w, ev: ev, due: ms, label: label });
+        }
         var startEv = { kind: "start", d: 0, lat: plan.pts[0].lat, lon: plan.pts[0].lon, x: plan.pts[0].x }, last = plan.pts[plan.pts.length - 1], endEv = { kind: "end", d: endD, lat: last.lat, lon: last.lon, x: last.x };
+        var hasDep = when.some(function (w) { return w.e === "departure"; });   /* its own departure rule covers a ship that sails from inside */
         when.forEach(function (w) {
           var h = isFinite(w.h) && w.h > 0 ? w.h : 0, tx = String(w.x || "");
           var nm = /(\d+(?:\.\d+)?)\s*(?:NM|nautical miles?)\s+before/i.exec(tx), mins = /(\d+)\s*minutes?\s+before/i.exec(tx);
@@ -9263,10 +9289,10 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
               else if (nm) row(w, e, tAt(Math.max(0, e.d - nm)), nm + " NM before entering");
               else row(w, e, tAt(e.d), "Before entering (see the rule)");
             });
-            if (startIn) row(w, startEv, plan.startMs, "Before departure (you start inside)");
+            if (startIn && !hasDep) row(w, startEv, plan.startMs, "Before departure (you start inside)");
           } else if (w.e === "entry") {
             entries.forEach(function (e) { row(w, e, tAt(e.d), "On entering"); });
-            if (startIn) row(w, startEv, plan.startMs, "Before departure (you start inside)");
+            if (startIn && !hasDep) row(w, startEv, plan.startMs, "Before departure (you start inside)");
           } else if (w.e === "exit" || w.e === "final") {
             exits.forEach(function (e) { row(w, e, tAt(e.d), w.e === "final" ? "Final report, on leaving" : "On leaving"); });
             if (w.e === "final" && endIn) row(w, endEv, endMs, "Final report, on arrival");
@@ -9306,8 +9332,11 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
     }
 
     /* ---------- reports on this passage ---------- */
-    function contactTxt(s) {
-      var e = (s.how || []).filter(function (h) { return h.ty === "email"; })[0], v = (s.how || []).filter(function (h) { return h.ty === "vhf"; })[0];
+    function contactTxt(s, w) {
+      var how = s.how || [], tx = w && BOUND.test(String(w.x || "")) ? String(w.x).toLowerCase() : "";   /* only rules for one direction of traffic */
+      var named = how.filter(function (h) { var k = (clean(h.to) || "").toLowerCase().replace(/[^a-z ]/g, " ").trim().split(/\s+/)[0]; return k && k.length > 3 && tx.indexOf(k) >= 0; });
+      if (tx && named.length && named.length < how.length) how = named;    /* that rule names its station (Dover Coastguard, Tarifa Traffic...): show only that one */
+      var e = how.filter(function (h) { return h.ty === "email"; })[0], v = how.filter(function (h) { return h.ty === "vhf"; })[0];
       var vt = v ? "VHF " + String(v.v).replace(/^(VHF\s*)/i, "") + (v.to ? " " + clean(v.to) : "") : "";
       return [e ? e.v : "", vt.length > 48 ? vt.slice(0, 46).replace(/\s+\S*$/, "") + " …" : vt].filter(Boolean);
     }
@@ -9333,7 +9362,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
         cell("due", r.due === null ? "time?" : whenTxt(r.due).replace(" UTC", ""), [r.due === null ? "needs departure time and speed" : "UTC  ·  " + dtg(r.due)]);
         cell("sys", r.s.t, [r.label + (r.w.rep ? " (" + r.w.rep + ")" : "") + (r.due !== null && plan && plan.startMs !== null && r.due < plan.startMs - 60000 ? ": due before you sail" : "")]);
         cell("at", posTxt(r.ev.lat, r.ev.lon), [r.ev.kind === "entry" ? "boundary, entering" : r.ev.kind === "exit" ? "boundary, leaving" : r.ev.kind === "start" ? "departure" : r.ev.kind === "end" ? "arrival" : "on the route"]);
-        var ct = contactTxt(r.s); cell("to", ct[0] || "see the system card", ct.slice(1));
+        var ct = contactTxt(r.s, r.w); cell("to", ct[0] || "see the system card", ct.slice(1));
         tr2.addEventListener("click", function () { selRow = r; select(r.s.id, false, r); });
         tb.appendChild(tr2);
       });

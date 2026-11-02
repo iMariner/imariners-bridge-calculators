@@ -36,3 +36,6 @@ var oz=RP.compute(rz); assert.strictEqual(oz[1].hours,24); assert.strictEqual(oz
 assert.strictEqual(RP.zone('−3:30'),-3.5); assert.strictEqual(RP.zone('-0:30'),-0.5); assert.ok(isNaN(RP.zone('15'))); assert.ok(isNaN(RP.zone('5:60')));
 rz[2].ovr='-50'; oz=RP.compute(rz); assert.strictEqual(oz[2].dist,240); assert.ok(/0 or more/.test(oz[2].warn));
 console.log('zone and override tests OK');
+// 5.30 / 5.45 typed with a point mean 5:30 / 5:45 (no zone is 5.3 h); 9.5 and 9.3 stay decimal hours
+assert.strictEqual(RP.zone('5.30'), 5.5); assert.strictEqual(RP.zone('5.45'), 5.75); assert.strictEqual(RP.zone('-3.30'), -3.5); assert.strictEqual(RP.zone('9.5'), 9.5); assert.strictEqual(RP.zone('+12:45'), 12.75);
+console.log('zone with a point OK');

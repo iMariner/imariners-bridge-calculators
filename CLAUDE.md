@@ -126,3 +126,12 @@ Route (rhumb legs on WGS84) + departure time + speed -> every reporting system m
 
 ## Safe Anchoring: rated depth is cable hanging (2 Nov 2026)
 IACS UR A3 tests the windlass "with at least three shots of chain (82.5 m ... in length) and the anchor submerged and hanging free", and section 6(b) marks the windlass with its maximum anchorage depth. So the rated depth is compared with deck to seabed, not depth of water: `safeAnchoring` gives `ratedWater = rated - h` and `governing = min(deck, rated) - h`; working rows 14 to 16. Before this the rating was compared with depth of water, which allowed one forecastle height too much.
+
+## Second check (2 Nov 2026)
+- Zones typed with a point and 30 or 45 minutes (9.30, 5.45, -3.30) are read as 9:30 / 5:45 / -3:30 (`parseZoneEl`, `RP.zone`); no real zone is 9.3 h. 9.5 and 9.25 stay decimal hours. ETA zone boxes take 6 characters (+12:45).
+- Ship Reporting: a rule that starts with a traffic direction ("North-east bound traffic should report...", "Westbound traffic...", `BOUND`/`DIRS` in page.js) is skipped when the ship's course at that point is more than 100 deg from it (CALDOVREP, GIBREP), and its To column shows only the station that rule names (Dover Coastguard CH 11, Gris-Nez CH 13, Tarifa, Tangier). A system with its own departure rule no longer also lists "Before departure (you start inside)".
+- Safe Anchoring: when the rating governs, the Practical line gives whole shackles within the rating.
+- True Azimuth: warns when UT from CT and CE differs from LT and zone by more than 10 min.
+- Sunrise log line: "Nautical twilight begins 05:10, ends 18:50" (was a dash between them, wrong order possible).
+- Chrome 84: `.segmented input:focus + label` gives a focus ring (no `:focus-visible` before Chrome 86); Night mode tints checkboxes, radios and sliders red where `accent-color` is missing (`@supports not (accent-color: red)`).
+- Old-browser scan (acorn ES5 parse of the whole script, CSS feature scan, design rules, em dashes, typos): clean apart from the two CSS items above.
