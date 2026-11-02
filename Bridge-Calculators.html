@@ -2430,7 +2430,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
           <div class="row2">
             <div class="field">
               <label for="sp-imo">IMO number</label>
-              <input class="text-input" id="sp-imo" maxlength="20" inputmode="numeric" placeholder="1234567">
+              <input class="text-input" id="sp-imo" maxlength="20" inputmode="numeric" placeholder="1234567"><div class="hint" id="sp-imo-msg"></div>
             </div>
             <div class="field">
               <label for="sp-beam">Beam (moulded)</label>
@@ -2489,11 +2489,11 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
             </div>
             <div class="row2">
               <div class="field"><label for="sp-loa">Length overall</label><div class="input-wrap"><input id="sp-loa" type="text" inputmode="decimal" placeholder="0.00" maxlength="7"><span class="unit">m</span></div><div class="hint" id="sp-loa-msg"></div></div>
-              <div class="field"><label for="sp-gt">Gross tonnage</label><input class="text-input" id="sp-gt" maxlength="9" inputmode="numeric" placeholder="e.g. 84789"></div>
+              <div class="field"><label for="sp-gt">Gross tonnage</label><input class="text-input" id="sp-gt" maxlength="9" inputmode="numeric" placeholder="e.g. 84789"><div class="hint" id="sp-gt-msg"></div></div>
             </div>
             <div class="row2">
-              <div class="field"><label for="sp-dwt">Deadweight</label><div class="input-wrap"><input id="sp-dwt" type="text" inputmode="numeric" placeholder="e.g. 158000" maxlength="9"><span class="unit">t</span></div></div>
-              <div class="field"><label for="sp-pob">Usual persons on board</label><input class="text-input" id="sp-pob" maxlength="4" inputmode="numeric" placeholder="e.g. 25"></div>
+              <div class="field"><label for="sp-dwt">Deadweight</label><div class="input-wrap"><input id="sp-dwt" type="text" inputmode="numeric" placeholder="e.g. 158000" maxlength="9"><span class="unit">t</span></div><div class="hint" id="sp-dwt-msg"></div></div>
+              <div class="field"><label for="sp-pob">Usual persons on board</label><input class="text-input" id="sp-pob" maxlength="4" inputmode="numeric" placeholder="e.g. 25"><div class="hint" id="sp-pob-msg"></div></div>
             </div>
           </fieldset>
           <div class="field">
@@ -2923,6 +2923,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
 
 
 
+
     <section class="tool" id="charts-pubs" hidden>
       <div class="tool-head">
         <h1>Routeing, Security Charts &amp; Sailing Directions</h1>
@@ -3316,6 +3317,12 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
   };
 
   function $(id) { return document.getElementById(id); }
+  function isObj(v) { return !!v && typeof v === "object" && !Array.isArray(v); }   /* saved data of the wrong type is ignored, not trusted */
+  function shipSlot(all) {                                         /* per-ship slot in a saved object; work done before any ship existed ("_") goes to the first ship */
+    var s = Ships.active(); if (!s) return "_";
+    if (all && all._ !== undefined && all[s.id] === undefined && Ships.list().length === 1) { all[s.id] = all._; delete all._; }
+    return s.id;
+  }
 
   function toast(msg) {
     var t = $("toast");
@@ -3451,7 +3458,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
   var Ships = (function () {
     var KEY = "bridgeCalc.ships";
     var data = store.get(KEY);
-    if (!data || !Array.isArray(data.list)) data = { active: null, list: [] };
+    if (!isObj(data) || !Array.isArray(data.list)) data = { active: null, list: [] };
     var listeners = [];
 
     function newId() { return "s" + Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
@@ -3478,6 +3485,8 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
       for (var i = 0; i < data.list.length; i++) if (data.list[i].id === id) return i;
       return -1;
     }
+    data.list = data.list.filter(isObj).map(clean);                 /* an old or damaged entry must not stop the whole app */
+    if (typeof data.active !== "string" || indexOf(data.active) < 0) data.active = data.list.length ? data.list[0].id : null;
     function commit(mutate) {
       var before = JSON.stringify(data);
       mutate();
@@ -3967,8 +3976,19 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
       return { v: v, ok: !errs.beam && !errs.draft && !errs.heel };
     }
 
+    var HALL = store.get("bridgeCalc.heel"), hShip = null;              /* per ship: { v: 2, s: { shipId: { pos, beam, draft, heel } } } */
+    if (!isObj(HALL) || HALL.v !== 2) { var hOld = isObj(HALL) ? HALL : null, hs = Ships.active(); HALL = { v: 2, s: {} }; if (hOld) HALL.s[hs ? hs.id : "_"] = hOld; }
+    if (!isObj(HALL.s)) HALL.s = {};
     function save() {
-      store.set("bridgeCalc.heel", { pos: f.pos.value, beam: f.beam.value, draft: f.draft.value, heel: f.heel.value });
+      HALL.s[shipSlot(HALL.s)] = { pos: f.pos.value, beam: f.beam.value, draft: f.draft.value, heel: f.heel.value };
+      store.set("bridgeCalc.heel", HALL);
+    }
+    function loadShipValues() {                                       /* this ship's own saved figures, or its beam from the particulars */
+      var k = shipSlot(HALL.s), saved = isObj(HALL.s[k]) ? HALL.s[k] : {}, s = Ships.active();
+      hShip = s ? s.id : null;
+      f.pos.value = saved.pos || ""; f.draft.value = saved.draft || ""; f.heel.value = saved.heel || ""; f.beam.value = saved.beam || "";
+      if (!f.beam.value) f.beam.value = s && s.beam ? m2(s.beam) : "";
+      f.range.value = parseFloat(f.heel.value) || 0;
     }
 
     function fmtDate(iso) {
@@ -4031,13 +4051,8 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
       fillSheet(v, r);
     }
 
-    var saved = store.get("bridgeCalc.heel") || {};
-    f.pos.value = saved.pos || "";
-    f.draft.value = saved.draft || "";
-    f.heel.value = saved.heel || "";
-    f.beam.value = saved.beam || "";
+    loadShipValues();
     f.date.value = todayISO();
-    if (!f.beam.value) applyShipBeam();
     shipLine();
 
     ["beam", "draft", "heel", "pos", "date"].forEach(function (k) { f[k].addEventListener("input", render); });
@@ -4046,7 +4061,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
     ["beam", "draft"].forEach(function (k) {
       f[k].addEventListener("blur", function () { var x = parseNum(f[k]); if (x !== null && !isNaN(x) && x > 0) f[k].value = m2(x); });
     });
-    Ships.onChange(function () { applyShipBeam(); shipLine(); render(); });
+    Ships.onChange(function () { var s = Ships.active(); if ((s ? s.id : null) !== hShip) loadShipValues(); else applyShipBeam(); shipLine(); render(); });
     $("hd-clear").addEventListener("click", function () {
       f.pos.value = f.draft.value = f.heel.value = "";
       f.range.value = 0;
@@ -4171,10 +4186,20 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
       return { v: v, ok: ok };
     }
 
+    var AALL = store.get("bridgeCalc.anchor"), aShip = null;            /* per ship: { v: 2, s: { shipId: { pos, allow, len, h, anchor fields } } } */
+    if (!isObj(AALL) || AALL.v !== 2) { var aOld = isObj(AALL) ? AALL : null, as = Ships.active(); AALL = { v: 2, s: {} }; if (aOld) AALL.s[as ? as.id : "_"] = aOld; }
+    if (!isObj(AALL.s)) AALL.s = {};
     function save() {
       var o = { pos: f.pos.value, allow: f.allow.value, len: f.len.value, h: f.h.value };
       KEYS.forEach(function (k) { o[k] = f[k].value; });
-      store.set("bridgeCalc.anchor", o);
+      AALL.s[shipSlot(AALL.s)] = o;
+      store.set("bridgeCalc.anchor", AALL);
+    }
+    function loadShipValues() {                                       /* this ship's own saved figures, or its anchor data from the particulars */
+      var k = shipSlot(AALL.s), saved = isObj(AALL.s[k]) ? AALL.s[k] : null, s = Ships.active(), sv = shipValues(s);
+      aShip = s ? s.id : null;
+      f.pos.value = saved && saved.pos || ""; f.allow.value = saved && saved.allow || "20"; f.len.value = saved && saved.len || "27.5"; f.h.value = saved && saved.h || "";
+      KEYS.forEach(function (key) { f[key].value = saved && saved[key] ? saved[key] : sv[key] !== null ? t3(sv[key]) : ""; });
     }
 
     function stepsRows(v, r) {
@@ -4415,13 +4440,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
       fillSheet(v, r);
     }
 
-    var saved = store.get("bridgeCalc.anchor") || {};
-    f.pos.value = saved.pos || "";
-    f.allow.value = saved.allow || "20";
-    f.len.value = saved.len || "27.5";
-    f.h.value = saved.h || "";
-    KEYS.forEach(function (k) { f[k].value = saved[k] || ""; });
-    if (KEYS.every(function (k) { return !f[k].value; })) applyShip();
+    loadShipValues();
     f.date.value = todayISO();
     shipLine();
 
@@ -4429,7 +4448,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
     KEYS.forEach(function (k) {
       f[k].addEventListener("blur", function () { var x = parseNum(f[k]); if (x !== null && !isNaN(x) && x >= 0) f[k].value = t3(x); });
     });
-    Ships.onChange(function () { applyShip(); shipLine(); render(); });
+    Ships.onChange(function () { var s = Ships.active(); if ((s ? s.id : null) !== aShip) loadShipValues(); else applyShip(); shipLine(); render(); });
     $("ad-clear").addEventListener("click", function () {
       f.pos.value = f.h.value = "";
       KEYS.forEach(function (k) { f[k].value = ""; });
@@ -4443,6 +4462,11 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
   }
 
   /* Ship particulars page */
+  function imoOk(t) {                                               /* 7 digits; digits 1-6 times 7,6,5,4,3,2 summed, last digit of the sum = digit 7 */
+    if (!/^\d{7}$/.test(t)) return false;
+    for (var i = 0, sum = 0; i < 6; i++) sum += (+t.charAt(i)) * (7 - i);
+    return sum % 10 === +t.charAt(6);
+  }
   function initShipPage() {
     var editingId = null, logoData = "";
     var f = { name: $("sp-name"), company: $("sp-company"), imo: $("sp-imo"), beam: $("sp-beam") }, REP = ["callsign", "mmsi", "flag", "shipType", "loa", "gt", "dwt", "pob"];
@@ -4470,7 +4494,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
       $("sp-delete").hidden = !ship;
       var a = Ships.active();
       $("sp-use").hidden = !ship || (a && a.id === ship.id);
-      ["name", "beam", "mmsi", "loa"].concat(ANCHOR_FIELDS.map(function (a) { return a.key; })).forEach(function (k) { $("sp-" + k + "-msg").textContent = ""; $("sp-" + k + "-msg").className = "hint"; f[k].setAttribute("aria-invalid", "false"); });
+      ["name", "beam", "mmsi", "loa", "imo", "gt", "dwt", "pob"].concat(ANCHOR_FIELDS.map(function (a) { return a.key; })).forEach(function (k) { $("sp-" + k + "-msg").textContent = ""; $("sp-" + k + "-msg").className = "hint"; f[k].setAttribute("aria-invalid", "false"); });
       renderList();
     }
 
@@ -4509,11 +4533,17 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
       var name = f.name.value.trim();
       var beam = parseNum(f.beam);
       fieldErr("name", name ? "" : "Enter the ship's name");
-      var beamBad = isNaN(beam) || (beam !== null && (beam <= 0 || beam > 80));
+      var beamBad = isNaN(beam) || (beam !== null && (beam < 1 || beam > 80));
+      var dup = name && Ships.list().some(function (x) { return x.id !== editingId && x.name.toLowerCase() === name.toLowerCase(); });
+      if (dup) fieldErr("name", "Another ship already has this name");
       fieldErr("beam", beamBad ? "Enter 1 – 80 m" : "");
       var rec = { id: editingId, name: name, company: f.company.value, imo: f.imo.value, beam: beam, logo: logoData };
       REP.forEach(function (k) { rec[k] = f[k].value.trim(); });
-      var mmsiBad = !!rec.mmsi && !/^\d{9}$/.test(rec.mmsi), loa = parseNum(f.loa), loaBad = isNaN(loa) || (loa !== null && (loa <= 0 || loa > 500));
+      var mmsiBad = !!rec.mmsi && !/^\d{9}$/.test(rec.mmsi), loa = parseNum(f.loa), loaBad = isNaN(loa) || (loa !== null && (loa < 1 || loa > 500));
+      var imo = f.imo.value.replace(/^\s*IMO\s*/i, "").trim(), imoBad = !!imo && !imoOk(imo); rec.imo = imo;
+      fieldErr("imo", imoBad ? "IMO number: 7 digits (the last one is a check digit)" : "");
+      var intBad = {};
+      [["gt", 1e7], ["dwt", 1e7], ["pob", 9999]].forEach(function (a) { var t = rec[a[0]].replace(/[ ,]/g, ""); intBad[a[0]] = !!t && (!/^\d+$/.test(t) || +t < 1 || +t > a[1]); if (!intBad[a[0]]) rec[a[0]] = t; fieldErr(a[0], intBad[a[0]] ? "Whole number, e.g. " + f[a[0]].placeholder.replace("e.g. ", "") : ""); });
       fieldErr("mmsi", mmsiBad ? "MMSI has 9 digits" : ""); fieldErr("loa", loaBad ? "Enter 1 – 500 m" : ""); rec.loa = loa;
       var anchorBad = false;
       ANCHOR_FIELDS.forEach(function (a) {
@@ -4523,7 +4553,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
         anchorBad = anchorBad || bad;
         rec[a.key] = x;
       });
-      if (!name || beamBad || anchorBad || mmsiBad || loaBad) return;
+      if (!name || dup || beamBad || anchorBad || mmsiBad || loaBad || imoBad || intBad.gt || intBad.dwt || intBad.pob) return;
       var saved = Ships.save(rec);
       if (!saved) { toast("Could not save: browser storage is full. Try a smaller logo."); return; }
       toast("Saved " + saved.name);
@@ -5198,7 +5228,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
   var RealDev = (function () {
     var KEY = "bridgeCalc.realDev", all = store.get(KEY);
     if (!all || typeof all !== "object") all = {};
-    function key() { var s = Ships.active(); return s ? s.id : "_"; }
+    function key() { return shipSlot(all); }
     return {
       load: function () { var a = all[key()], out = []; for (var i = 0; i < 32; i++) out.push(Array.isArray(a) && typeof a[i] === "string" ? a[i].slice(0, 12) : ""); return out; },
       save: function (arr) { all[key()] = arr.map(function (x) { return String(x).slice(0, 12); }); return store.set(KEY, all); }
@@ -5608,7 +5638,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
     var KEY = "bridgeCalc.devCards";
     var all = store.get(KEY);
     if (!all || typeof all !== "object") all = {};
-    function shipKey() { var s = Ships.active(); return s ? s.id : "_"; }
+    function shipKey() { return shipSlot(all); }
     function parse(s) {                       /* "1.5 E", "2W", "-3", "+1" to degrees, East positive; null when empty; NaN when wrong */
       s = String(s === undefined || s === null ? "" : s).replace(",", ".").trim();
       if (s === "") return null;
@@ -5819,9 +5849,12 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
       el.addEventListener("blur", function () { var p = DevCard.parse(el.value); if (p !== null && !isNaN(p)) { el.value = DevCard.fmt(p); render(true); } });
     });
     Object.keys(infoIds).forEach(function (k) { $(infoIds[k]).addEventListener("input", function () { render(true); }); });
-    ["dc-hdg", "dc-var"].forEach(function (id) { $(id).addEventListener("input", function () { render(false); }); });
-    $("dc-var-h").addEventListener("change", function () { render(false); });
-    $("dc-hdg").addEventListener("blur", function () { var n = parseNum($("dc-hdg")); if (n !== null && !isNaN(n) && n >= 0 && n <= 360 && Math.round(n) === n) $("dc-hdg").value = pad3(n); });
+    var look = store.get("bridgeCalc.devLook");                       /* the look-up boxes (heading, variation) save like every other input */
+    if (isObj(look)) { $("dc-hdg").value = typeof look.hdg === "string" ? look.hdg : ""; $("dc-var").value = typeof look.vr === "string" ? look.vr : ""; if (look.h === "E" || look.h === "W") $("dc-var-h").value = look.h; }
+    function saveLook() { store.set("bridgeCalc.devLook", { hdg: $("dc-hdg").value, vr: $("dc-var").value, h: $("dc-var-h").value }); }
+    ["dc-hdg", "dc-var"].forEach(function (id) { $(id).addEventListener("input", function () { saveLook(); render(false); }); });
+    $("dc-var-h").addEventListener("change", function () { saveLook(); render(false); });
+    $("dc-hdg").addEventListener("blur", function () { var n = parseNum($("dc-hdg")); if (n !== null && !isNaN(n) && n >= 0 && n <= 360 && Math.round(n) === n) { $("dc-hdg").value = pad3(n); saveLook(); } });
     $("dc-example").addEventListener("click", function () {
       var ex = [-1, -1, -1, -1, -1, -1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, -1, -2, -2, -3.5, -3.5, -3.5, -3.5, -3.5, -3.5, -3.5, -3.5, -3.5, -3.5, -3.5, -2, -2];
       if (DevCard.hasCard() && !window.confirm("Replace the card on screen with the example?")) return;
@@ -6577,7 +6610,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
     var KEY = "bridgeCalc.reports", all = store.get(KEY);
     if (!all || typeof all !== "object") all = {};
     var rowEls = [], undo = null, TYPES = [["cosp", "Departure"], ["noon", "Noon report"], ["eosp", "Arrival"]];
-    function sk() { var s = Ships.active(); return s ? s.id : "_"; }
+    function sk() { return shipSlot(all); }
     function book() { var k = sk(); if (!all[k] || !Array.isArray(all[k].voyages)) all[k] = { sel: null, month: "", voyages: [] }; return all[k]; }
     function save() { store.set(KEY, all); }
     function uid() { return "v" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6); }
@@ -8250,12 +8283,16 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
     try { localStorage.removeItem("[object Object]"); } catch (e) {} return o;
   }
   function initSightFix() {
-    var KEY = "bridgeCalc.sightFix", st = store.get(KEY) || sfLost() || {}, mode = st.mode === "stars" ? "stars" : "sun", rowsEl = $("sf-rows"), rowRefs = [], last = null, shipEdited = false;
+    var KEY = "bridgeCalc.sightFix", st = store.get(KEY) || sfLost() || {};
+    if (!isObj(st)) st = {};                                          /* damaged or old saved data: start clean rather than stop */
+    ["rows", "ship", "f", "inp"].forEach(function (k) { if (st[k] !== undefined && !isObj(st[k])) delete st[k]; });
+    if (st.rows) ["sun", "stars"].forEach(function (k) { if (st.rows[k] !== undefined && !Array.isArray(st.rows[k])) delete st.rows[k]; else if (st.rows[k]) st.rows[k] = st.rows[k].filter(isObj); });
+    var mode = st.mode === "stars" ? "stars" : "sun", rowsEl = $("sf-rows"), rowRefs = [], last = null, shipEdited = false;
     var LIMBS = [["L", "Lower"], ["U", "Upper"]];
     var NAMES = Sight.names();
     var FIELDS = ["sf-starsat", "sf-fixat", "sf-lat-d", "sf-lat-m", "sf-lon-d", "sf-lon-m", "sf-course", "sf-speed", "sf-date", "sf-zone", "sf-hoe", "sf-ie", "sf-temp", "sf-pres", "sf-gps-lat-d", "sf-gps-lat-m", "sf-gps-lon-d", "sf-gps-lon-m"];
     var RADIOS = ["sf-pm-work", "sf-pm-clean", "sf-ap-each", "sf-ap-first", "sf-lat-n", "sf-lat-s", "sf-lon-e", "sf-lon-w", "sf-ie-on", "sf-ie-off", "sf-gps-lat-n", "sf-gps-lat-s", "sf-gps-lon-e", "sf-gps-lon-w"];
-    function shipKey() { var s = Ships.active(); return s ? s.id : "_"; }
+    function shipKey() { if (!st.ship) st.ship = {}; return shipSlot(st.ship); }
     function p2(n) { return ("0" + n).slice(-2); }
     function hms(sec) { sec = ((Math.round(sec) % 86400) + 86400) % 86400; return p2(Math.floor(sec / 3600)) + ":" + p2(Math.floor(sec % 3600 / 60)) + ":" + p2(sec % 60); }
     function utText(ms) { var d = new Date(ms); return p2(d.getUTCHours()) + ":" + p2(d.getUTCMinutes()) + ":" + p2(d.getUTCSeconds()); }
@@ -8919,6 +8956,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
 
 
 
+
   /* SREP-BEGIN: Ship Reporting Systems. Sources: build/reporting (route.js, map.js, page.js) and data/reporting/*.json packed by build/reporting/build.py */
   /* SREPROUTE-BEGIN: route maths for Ship Reporting. Legs and boundary edges are rhumb lines on WGS84 (straight on a Mercator chart, as ECDIS draws them).
      Crossings are solved exactly in the (longitude, isometric latitude) plane; distances along a leg come from the meridian arc (WGS84 block). */
@@ -9199,13 +9237,18 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
       return s;
     });
     var byId = {}; SYS.forEach(function (s) { byId[s.id] = s; });
-    var ui = store.get(UI_KEY) || {}; if (ui.filter !== "all") ui.filter = "route";
+    var ui = isObj(store.get(UI_KEY)) ? store.get(UI_KEY) : {}; if (ui.filter !== "all") ui.filter = "route";
     var d = {}, plan = null, wps = [], rows = [], onRoute = {}, cross = {}, selRow = null, map = null;
-    function shipKey() { var s = Ships.active(); return "bridgeCalc.srep." + (s ? s.id : "none"); }
+    function shipKey() {
+      var s = Ships.active(); if (!s) return "bridgeCalc.srep.none";
+      var k = "bridgeCalc.srep." + s.id, none = store.get("bridgeCalc.srep.none");   /* work done before the first ship was added goes to that ship */
+      if (none && Ships.list().length === 1 && store.get(k) === null && store.set(k, none)) { try { localStorage.removeItem("bridgeCalc.srep.none"); } catch (e) {} }
+      return k;
+    }
     function saveUi() { store.set(UI_KEY, { filter: ui.filter, q: ui.q || "", sel: ui.sel || null, view: ui.view || null }); }
     function saveShip() { store.set(shipKey(), d); }
     function loadShip() {
-      d = store.get(shipKey()) || {}; d.voy = d.voy || {}; d.notes = d.notes || {}; d.msg = d.msg || {};
+      d = store.get(shipKey()); if (!isObj(d)) d = {}; ["voy", "notes", "msg"].forEach(function (k) { if (!isObj(d[k])) d[k] = {}; });
       $("sr-route").value = d.route || ""; $("sr-date").value = d.date || ""; $("sr-time").value = d.time || ""; $("sr-speed").value = d.speed || "";
       ["last", "dest", "dfwd", "daft", "cargo", "pob", "agent", "radio"].forEach(function (k) { $("sr-v-" + k).value = d.voy[k] || ""; });
       var s = Ships.active(); if (!$("sr-v-pob").value && s && s.pob) $("sr-v-pob").placeholder = s.pob;
@@ -9587,7 +9630,10 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
       var M = d.msg[s.id] = d.msg[s.id] || {}; M.lines = M.lines || {};
       eventOptions(s);
       var x0 = context(s);
-      if (!$("sr-m-time").dataset.typed || $("sr-m-time").dataset.sys !== s.id) { $("sr-m-time").value = x0.r && x0.r.due !== null ? localDT(x0.r.due) : (M.time || ""); $("sr-m-time").dataset.sys = s.id; $("sr-m-time").dataset.typed = ""; }
+      if (!$("sr-m-time").dataset.typed || $("sr-m-time").dataset.sys !== s.id) {
+        var kept = !!M.time && M.tt !== undefined && M.tt === (M.ev || "");   /* a time the officer typed for this report stays after a reload */
+        $("sr-m-time").value = kept ? M.time : x0.r && x0.r.due !== null ? localDT(x0.r.due) : (M.time || ""); $("sr-m-time").dataset.sys = s.id; $("sr-m-time").dataset.typed = kept ? "1" : "";
+      }
       var x = context(s), T = $("sr-lines"); while (T.firstChild) T.removeChild(T.firstChild); lineEls = [];
       var L = s.ln && s.ln.length ? s.ln : "ABCEFGHIKMOPQUWX".split("").map(function (l) { return { l: l, s: l, r: "required", x: "" }; });
       L.forEach(function (ln) {
@@ -9620,6 +9666,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
     /* ---------- selection and redraw ---------- */
     function select(id, fit, row) {
       if (!byId[id]) return; ui.sel = id; if (row === undefined && (!selRow || selRow.s.id !== id)) selRow = null; saveUi();
+      if (row !== undefined && d.msg && isObj(d.msg[id])) delete d.msg[id].tt;   /* a report picked in the passage table starts from its own due time */
       $("sr-m-time").dataset.typed = "";
       renderList(); renderSys(); renderPlan(); if (map) map.draw();
       if (fit && map && byId[id].box) map.fitBox(byId[id].box);
@@ -9634,8 +9681,8 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
     ["sr-route", "sr-date", "sr-time", "sr-speed"].forEach(function (id) { $(id).addEventListener("input", onPass); $(id).addEventListener("change", onPass); });
     ["last", "dest", "dfwd", "daft", "cargo", "pob", "agent", "radio"].forEach(function (k) { $("sr-v-" + k).addEventListener("input", function () { d.voy[k] = this.value; saveShip(); if (k === "dest") { compute(); renderList(); renderPlan(); if (map) map.draw(); } renderMsg(); }); });
     $("sr-notes").addEventListener("input", function () { if (!ui.sel) return; d.notes[ui.sel] = this.value; saveShip(); out(); });
-    $("sr-m-event").addEventListener("change", function () { var s = byId[ui.sel]; if (!s) return; (d.msg[s.id] = d.msg[s.id] || {}).ev = this.value; selRow = null; var o = sysRows(s); if (this.value.charAt(0) === "r") selRow = o[+this.value.slice(1)] || null; saveShip(); $("sr-m-time").dataset.typed = ""; renderMsg(); renderPlan(); if (map) map.draw(); });
-    $("sr-m-time").addEventListener("change", function () { var s = byId[ui.sel]; if (!s) return; this.dataset.typed = "1"; (d.msg[s.id] = d.msg[s.id] || {}).time = this.value; saveShip(); renderMsg(); });
+    $("sr-m-event").addEventListener("change", function () { var s = byId[ui.sel]; if (!s) return; var M0 = d.msg[s.id] = d.msg[s.id] || {}; M0.ev = this.value; delete M0.tt; selRow = null; var o = sysRows(s); if (this.value.charAt(0) === "r") selRow = o[+this.value.slice(1)] || null; saveShip(); $("sr-m-time").dataset.typed = ""; renderMsg(); renderPlan(); if (map) map.draw(); });
+    $("sr-m-time").addEventListener("change", function () { var s = byId[ui.sel]; if (!s) return; this.dataset.typed = "1"; var M = d.msg[s.id] = d.msg[s.id] || {}; M.time = this.value; M.tt = M.ev || ""; saveShip(); renderMsg(); });
     $("sr-copy").addEventListener("click", function () { var s = byId[ui.sel]; if (s) copyText(message(s)); });
     $("sr-mail").addEventListener("click", function () {
       var s = byId[ui.sel]; if (!s) return;

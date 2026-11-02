@@ -30,13 +30,18 @@
       return s;
     });
     var byId = {}; SYS.forEach(function (s) { byId[s.id] = s; });
-    var ui = store.get(UI_KEY) || {}; if (ui.filter !== "all") ui.filter = "route";
+    var ui = isObj(store.get(UI_KEY)) ? store.get(UI_KEY) : {}; if (ui.filter !== "all") ui.filter = "route";
     var d = {}, plan = null, wps = [], rows = [], onRoute = {}, cross = {}, selRow = null, map = null;
-    function shipKey() { var s = Ships.active(); return "bridgeCalc.srep." + (s ? s.id : "none"); }
+    function shipKey() {
+      var s = Ships.active(); if (!s) return "bridgeCalc.srep.none";
+      var k = "bridgeCalc.srep." + s.id, none = store.get("bridgeCalc.srep.none");   /* work done before the first ship was added goes to that ship */
+      if (none && Ships.list().length === 1 && store.get(k) === null && store.set(k, none)) { try { localStorage.removeItem("bridgeCalc.srep.none"); } catch (e) {} }
+      return k;
+    }
     function saveUi() { store.set(UI_KEY, { filter: ui.filter, q: ui.q || "", sel: ui.sel || null, view: ui.view || null }); }
     function saveShip() { store.set(shipKey(), d); }
     function loadShip() {
-      d = store.get(shipKey()) || {}; d.voy = d.voy || {}; d.notes = d.notes || {}; d.msg = d.msg || {};
+      d = store.get(shipKey()); if (!isObj(d)) d = {}; ["voy", "notes", "msg"].forEach(function (k) { if (!isObj(d[k])) d[k] = {}; });
       $("sr-route").value = d.route || ""; $("sr-date").value = d.date || ""; $("sr-time").value = d.time || ""; $("sr-speed").value = d.speed || "";
       ["last", "dest", "dfwd", "daft", "cargo", "pob", "agent", "radio"].forEach(function (k) { $("sr-v-" + k).value = d.voy[k] || ""; });
       var s = Ships.active(); if (!$("sr-v-pob").value && s && s.pob) $("sr-v-pob").placeholder = s.pob;
@@ -418,7 +423,10 @@
       var M = d.msg[s.id] = d.msg[s.id] || {}; M.lines = M.lines || {};
       eventOptions(s);
       var x0 = context(s);
-      if (!$("sr-m-time").dataset.typed || $("sr-m-time").dataset.sys !== s.id) { $("sr-m-time").value = x0.r && x0.r.due !== null ? localDT(x0.r.due) : (M.time || ""); $("sr-m-time").dataset.sys = s.id; $("sr-m-time").dataset.typed = ""; }
+      if (!$("sr-m-time").dataset.typed || $("sr-m-time").dataset.sys !== s.id) {
+        var kept = !!M.time && M.tt !== undefined && M.tt === (M.ev || "");   /* a time the officer typed for this report stays after a reload */
+        $("sr-m-time").value = kept ? M.time : x0.r && x0.r.due !== null ? localDT(x0.r.due) : (M.time || ""); $("sr-m-time").dataset.sys = s.id; $("sr-m-time").dataset.typed = kept ? "1" : "";
+      }
       var x = context(s), T = $("sr-lines"); while (T.firstChild) T.removeChild(T.firstChild); lineEls = [];
       var L = s.ln && s.ln.length ? s.ln : "ABCEFGHIKMOPQUWX".split("").map(function (l) { return { l: l, s: l, r: "required", x: "" }; });
       L.forEach(function (ln) {
@@ -451,6 +459,7 @@
     /* ---------- selection and redraw ---------- */
     function select(id, fit, row) {
       if (!byId[id]) return; ui.sel = id; if (row === undefined && (!selRow || selRow.s.id !== id)) selRow = null; saveUi();
+      if (row !== undefined && d.msg && isObj(d.msg[id])) delete d.msg[id].tt;   /* a report picked in the passage table starts from its own due time */
       $("sr-m-time").dataset.typed = "";
       renderList(); renderSys(); renderPlan(); if (map) map.draw();
       if (fit && map && byId[id].box) map.fitBox(byId[id].box);
@@ -465,8 +474,8 @@
     ["sr-route", "sr-date", "sr-time", "sr-speed"].forEach(function (id) { $(id).addEventListener("input", onPass); $(id).addEventListener("change", onPass); });
     ["last", "dest", "dfwd", "daft", "cargo", "pob", "agent", "radio"].forEach(function (k) { $("sr-v-" + k).addEventListener("input", function () { d.voy[k] = this.value; saveShip(); if (k === "dest") { compute(); renderList(); renderPlan(); if (map) map.draw(); } renderMsg(); }); });
     $("sr-notes").addEventListener("input", function () { if (!ui.sel) return; d.notes[ui.sel] = this.value; saveShip(); out(); });
-    $("sr-m-event").addEventListener("change", function () { var s = byId[ui.sel]; if (!s) return; (d.msg[s.id] = d.msg[s.id] || {}).ev = this.value; selRow = null; var o = sysRows(s); if (this.value.charAt(0) === "r") selRow = o[+this.value.slice(1)] || null; saveShip(); $("sr-m-time").dataset.typed = ""; renderMsg(); renderPlan(); if (map) map.draw(); });
-    $("sr-m-time").addEventListener("change", function () { var s = byId[ui.sel]; if (!s) return; this.dataset.typed = "1"; (d.msg[s.id] = d.msg[s.id] || {}).time = this.value; saveShip(); renderMsg(); });
+    $("sr-m-event").addEventListener("change", function () { var s = byId[ui.sel]; if (!s) return; var M0 = d.msg[s.id] = d.msg[s.id] || {}; M0.ev = this.value; delete M0.tt; selRow = null; var o = sysRows(s); if (this.value.charAt(0) === "r") selRow = o[+this.value.slice(1)] || null; saveShip(); $("sr-m-time").dataset.typed = ""; renderMsg(); renderPlan(); if (map) map.draw(); });
+    $("sr-m-time").addEventListener("change", function () { var s = byId[ui.sel]; if (!s) return; this.dataset.typed = "1"; var M = d.msg[s.id] = d.msg[s.id] || {}; M.time = this.value; M.tt = M.ev || ""; saveShip(); renderMsg(); });
     $("sr-copy").addEventListener("click", function () { var s = byId[ui.sel]; if (s) copyText(message(s)); });
     $("sr-mail").addEventListener("click", function () {
       var s = byId[ui.sel]; if (!s) return;

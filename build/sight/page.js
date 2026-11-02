@@ -4,12 +4,16 @@
     try { localStorage.removeItem("[object Object]"); } catch (e) {} return o;
   }
   function initSightFix() {
-    var KEY = "bridgeCalc.sightFix", st = store.get(KEY) || sfLost() || {}, mode = st.mode === "stars" ? "stars" : "sun", rowsEl = $("sf-rows"), rowRefs = [], last = null, shipEdited = false;
+    var KEY = "bridgeCalc.sightFix", st = store.get(KEY) || sfLost() || {};
+    if (!isObj(st)) st = {};                                          /* damaged or old saved data: start clean rather than stop */
+    ["rows", "ship", "f", "inp"].forEach(function (k) { if (st[k] !== undefined && !isObj(st[k])) delete st[k]; });
+    if (st.rows) ["sun", "stars"].forEach(function (k) { if (st.rows[k] !== undefined && !Array.isArray(st.rows[k])) delete st.rows[k]; else if (st.rows[k]) st.rows[k] = st.rows[k].filter(isObj); });
+    var mode = st.mode === "stars" ? "stars" : "sun", rowsEl = $("sf-rows"), rowRefs = [], last = null, shipEdited = false;
     var LIMBS = [["L", "Lower"], ["U", "Upper"]];
     var NAMES = Sight.names();
     var FIELDS = ["sf-starsat", "sf-fixat", "sf-lat-d", "sf-lat-m", "sf-lon-d", "sf-lon-m", "sf-course", "sf-speed", "sf-date", "sf-zone", "sf-hoe", "sf-ie", "sf-temp", "sf-pres", "sf-gps-lat-d", "sf-gps-lat-m", "sf-gps-lon-d", "sf-gps-lon-m"];
     var RADIOS = ["sf-pm-work", "sf-pm-clean", "sf-ap-each", "sf-ap-first", "sf-lat-n", "sf-lat-s", "sf-lon-e", "sf-lon-w", "sf-ie-on", "sf-ie-off", "sf-gps-lat-n", "sf-gps-lat-s", "sf-gps-lon-e", "sf-gps-lon-w"];
-    function shipKey() { var s = Ships.active(); return s ? s.id : "_"; }
+    function shipKey() { if (!st.ship) st.ship = {}; return shipSlot(st.ship); }
     function p2(n) { return ("0" + n).slice(-2); }
     function hms(sec) { sec = ((Math.round(sec) % 86400) + 86400) % 86400; return p2(Math.floor(sec / 3600)) + ":" + p2(Math.floor(sec % 3600 / 60)) + ":" + p2(sec % 60); }
     function utText(ms) { var d = new Date(ms); return p2(d.getUTCHours()) + ":" + p2(d.getUTCMinutes()) + ":" + p2(d.getUTCSeconds()); }
