@@ -272,9 +272,9 @@ legend { font-weight: var(--fw-semibold); margin-bottom: var(--sp-2h); padding: 
 }
 .segmented label:last-of-type { border-left: 1px solid var(--border); }
 .segmented input:checked + label { background: var(--accent); color: var(--accent-text); }
-.segmented input:focus + label { outline: 2px solid var(--accent); outline-offset: -2px; }   /* Chrome 84-85 have no :focus-visible */
+.segmented input:focus + label { outline: 2px solid var(--text); outline-offset: -4px; }   /* text colour: shows on the filled (chosen) button too */   /* Chrome 84-85 have no :focus-visible */
 .segmented input:focus:not(:focus-visible) + label { outline: none; }                         /* newer browsers: no ring after a mouse click */
-.segmented input:focus-visible + label { outline: 2px solid var(--accent); outline-offset: -2px; }
+.segmented input:focus-visible + label { outline: 2px solid var(--text); outline-offset: -4px; }
 
 .actions { display: flex; gap: var(--sp-2); flex-wrap: wrap; margin-top: var(--sp-4); }
 .btn {
@@ -2573,7 +2573,7 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
           <h3 class="ds-h3 dr-h3">By voyage</h3>
           <table class="dt dr-sum" id="dr-sum-voy"></table>
         </div>
-        <p class="small muted u-mt-2h">A day's distance and hours belong to the month of the report's date. A voyage's condition (Loaded, Ballast...) applies to all its reports.</p>
+        <p class="small muted u-mt-2h">Months run noon to noon: a month closes with the noon report on its last day, and a report after that noon counts in the next month. A voyage's condition (Loaded, Ballast...) applies to all its reports.</p>
       </div>
 
       <div class="print-sheet" id="dr-sheet">
@@ -6578,7 +6578,12 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
       t.speed = t.hours > 0 ? t.dist / t.hours : null;
       return t;
     }
-    function monthOf(r) { return (r.date || "").slice(0, 7); }
+    function monthOf(r) {                    /* months run noon to noon: a report after noon on the last day of a month belongs to the next month */
+      var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(r.date || ""), t = /^(\d{1,2}):(\d{2})$/.exec(r.time || "");
+      if (!m) return (r.date || "").slice(0, 7);
+      var d = new Date(Date.UTC(+m[1], +m[2] - 1, +m[3], t ? +t[1] : 0, t ? +t[2] : 0) + (11 * 60 + 59) * 60000);
+      return d.getUTCFullYear() + "-" + ("0" + (d.getUTCMonth() + 1)).slice(-2);
+    }
     function summary(voyages, ym) {              /* distance and time in one month, by condition and by voyage */
       var groups = [], byKey = {}, vrows = [], tot = { dist: 0, hours: 0, reports: 0 };
       voyages.forEach(function (v) {

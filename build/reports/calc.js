@@ -51,7 +51,12 @@
       t.speed = t.hours > 0 ? t.dist / t.hours : null;
       return t;
     }
-    function monthOf(r) { return (r.date || "").slice(0, 7); }
+    function monthOf(r) {                    /* months run noon to noon: a report after noon on the last day of a month belongs to the next month */
+      var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(r.date || ""), t = /^(\d{1,2}):(\d{2})$/.exec(r.time || "");
+      if (!m) return (r.date || "").slice(0, 7);
+      var d = new Date(Date.UTC(+m[1], +m[2] - 1, +m[3], t ? +t[1] : 0, t ? +t[2] : 0) + (11 * 60 + 59) * 60000);
+      return d.getUTCFullYear() + "-" + ("0" + (d.getUTCMonth() + 1)).slice(-2);
+    }
     function summary(voyages, ym) {              /* distance and time in one month, by condition and by voyage */
       var groups = [], byKey = {}, vrows = [], tot = { dist: 0, hours: 0, reports: 0 };
       voyages.forEach(function (v) {

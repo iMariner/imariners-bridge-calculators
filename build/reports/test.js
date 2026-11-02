@@ -39,3 +39,7 @@ console.log('zone and override tests OK');
 // 5.30 / 5.45 typed with a point mean 5:30 / 5:45 (no zone is 5.3 h); 9.5 and 9.3 stay decimal hours
 assert.strictEqual(RP.zone('5.30'), 5.5); assert.strictEqual(RP.zone('5.45'), 5.75); assert.strictEqual(RP.zone('-3.30'), -3.5); assert.strictEqual(RP.zone('9.5'), 9.5); assert.strictEqual(RP.zone('+12:45'), 12.75);
 console.log('zone with a point OK');
+// months run noon to noon
+assert.strictEqual(RP.monthOf({ date: '2026-10-31', time: '12:00' }), '2026-10'); assert.strictEqual(RP.monthOf({ date: '2026-10-31', time: '18:00' }), '2026-11');
+assert.strictEqual(RP.monthOf({ date: '2026-11-01', time: '06:00' }), '2026-11'); assert.strictEqual(RP.monthOf({ date: '2026-12-31', time: '12:01' }), '2027-01'); assert.strictEqual(RP.monthOf({ date: '2026-10-15' }), '2026-10');
+console.log('noon to noon months OK');
