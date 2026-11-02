@@ -1,0 +1,3204 @@
+{
+ "title": "STRAITREP, Singapore Strait: sectors, reporting points and routeing measures from official texts",
+ "checked": "2026-11-02",
+ "sources": [
+  {
+   "id": "S1",
+   "title": "IMO resolution MSC.73(69), Mandatory ship reporting systems, Annex 1 (STRAITREP) with appendices 1-4 (MSC 69/22/Add.1, Annex 10)",
+   "url": "https://wwwcdn.imo.org/localresources/en/KnowledgeCentre/IndexofIMOResolutions/MSCResolutions/MSC.73(69).pdf",
+   "date": "1998-05-19 (in force 1998-12-01)",
+   "pages": "PDF pp.2-12 (para 2.1 p.3, para 3.3 p.4, Appendix 1 chartlet p.9, Appendix 2 chartlet p.10, Appendix 3 p.11, Appendix 4 p.12)",
+   "local": "sgs/msc73/MSC.73-69.pdf"
+  },
+  {
+   "id": "S2",
+   "title": "MPA Port Marine Circular No. 65 of 1998 (attaches IMO SN/Circ.201 = MSC.73(69) Annex 1, and SN/Circ.201/Corr.1 of 2 Sep 1998)",
+   "url": "https://www.mpa.gov.sg/api/media/78c165e3-67e4-4da3-9496-c196739374d2/-pc98-65.pdf",
+   "date": "1998-10-20",
+   "pages": "13 pp; Corr.1 on PDF p.9",
+   "local": "sgs/pc98-65/pc98-65.pdf"
+  },
+  {
+   "id": "S3",
+   "title": "MPA web page 'Vessels arriving in Singapore' (reporting points for Confirmation of Arrival with WGS 84 positions; table 'VHF Channels for navigational reporting' with STRAITREP sector longitudes)",
+   "url": "https://www.mpa.gov.sg/port-marine-ops/arrivals-and-departures/vessels-arriving-in-singapore",
+   "date": "read 2026-11-02",
+   "pages": "web page",
+   "local": "sgs/mpa-web/arriving.html"
+  },
+  {
+   "id": "S4",
+   "title": "MPA web page 'Operational Areas' (STRAITREP sector / channel / VTS table, chartlets as images)",
+   "url": "https://www.mpa.gov.sg/port-marine-ops/operations/vessel-traffic-information-system/operational-areas",
+   "date": "read 2026-11-02",
+   "pages": "web page"
+  },
+  {
+   "id": "S5",
+   "title": "Singapore Port Information 2026, MPA Hydrographic Division (Updated to 01 Nov 2026): Straits of Malacca and Singapore routeing system, Annexes 1-8, 'based on IMO COLREG.2/Circ.44 (26 May 1998) and COLREG.2/Circ.54 (28 May 2004)', 'coordinates in WGS 84 datum were inserted by Hydrographic Division, MPA'; STRAITREP chartlets",
+   "url": "https://go.gov.sg/spi2026nov1 (redirects to https://file.go.gov.sg/spi2026nov1.pdf)",
+   "date": "2026-11-01",
+   "pages": "PDF pp.7-15 (printed 6-14) TSS; PDF pp.121-123 chartlets",
+   "local": "sgs/spi2026/spi2026.pdf"
+  },
+  {
+   "id": "S5b",
+   "title": "Singapore Port Information 2025 (Updated to 1 Feb 2025), same routeing annexes, used to confirm no change",
+   "url": "https://file.go.gov.sg/spi2025feb01.pdf",
+   "date": "2025-02-01",
+   "pages": "pp.6-14",
+   "local": "sgs/spi2025/spi2025feb01.pdf"
+  },
+  {
+   "id": "S6",
+   "title": "IMO COLREG.2/Circ.54 New and amended traffic separation schemes, Annex 5: Amendment to TSS in the Singapore Strait (Main Strait) (copy of the IMO circular hosted by Shanghai Maritime University CIMRC)",
+   "url": "https://cimrc.shmtu.edu.cn/_upload/article/files/63/dc/35c66be74d12873254dc88a2ef00/37c4b72a-b5a9-4e49-87d4-685a71aa9b6b.pdf",
+   "date": "2004-05-28",
+   "pages": "Annex 5 (last page)",
+   "local": "sgs/cimrc-37c4b72a-b5a9-4e49-87d4-685a71aa9b6b/doc.pdf"
+  },
+  {
+   "id": "S7",
+   "title": "IMO COLREG.2/Circ.54/Add.2 Postponed implementation of the amended TSS 'In the Singapore Strait' to 1 July 2005 0000 UTC (CIMRC copy)",
+   "url": "https://cimrc.shmtu.edu.cn/_upload/article/files/63/dc/35c66be74d12873254dc88a2ef00/3f1aa08d-8219-4712-8d5f-9fd972418ee2.pdf",
+   "date": "2004-12-08",
+   "pages": "1 p",
+   "local": "sgs/cimrc-3f1aa08d-8219-4712-8d5f-9fd972418ee2/doc.pdf"
+  },
+  {
+   "id": "S8",
+   "title": "MPA Port Marine Circular No. 20 of 2019, Complying with Rules for vessels navigating through the Straits of Malacca and Singapore (annex = IMO SN/Circ.198 of 26 May 1998, WGS 84 positions inserted by MPA)",
+   "url": "https://www.mpa.gov.sg/api/media/ea195b5f-8613-420b-8307-416e21a02746/-pc19-020.pdf",
+   "date": "2019-12-01",
+   "pages": "3 pp",
+   "local": "sgs/pc19-020/pc19-020.pdf"
+  },
+  {
+   "id": "S9",
+   "title": "MPA Port Marine Circular No. 04 of 2013, Recommendatory measure for vessels crossing the TSS and precautionary areas in the Singapore Strait during the hours of darkness",
+   "url": "https://www.mpa.gov.sg/api/media/896d3fae-65d4-41a5-88b3-f47b6b41d3b6/-pc13-04.pdf",
+   "date": "2013-05-07",
+   "pages": "4 pp",
+   "local": "sgs/pc13-04/pc13-04.pdf"
+  },
+  {
+   "id": "S10",
+   "title": "IMO NCSR 13/WP.1/Rev.1 Draft report to the MSC (copy on imokorea.org)",
+   "url": "https://www.imokorea.org/upfiles/board/NCSR%2013-WP.1-Rev.1%20-%20Draft%20Report%20To%20The%20Maritime%20Safety%20Committee%20(Secretariat).pdf",
+   "date": "2026-06-30",
+   "pages": "paras 3.9-3.10",
+   "local": "sgs/ncsr13/ncsr13wp1.pdf"
+  },
+  {
+   "id": "S12",
+   "title": "SECONDARY: Safety4Sea 'Malaysia to trial electronic ship reporting system in the Malacca Strait' and Seatrade Maritime (May 2026)",
+   "url": "https://safety4sea.com/malaysia-to-trial-electronic-ship-reporting-system-in-the-malacca-strait/",
+   "date": "2026-05-19",
+   "pages": "-"
+  }
+ ],
+ "datum_note": "MSC.73(69) (1998) positions are on the old (pre-WGS 84) chart datum. Comparing the ten MSC.73(69) positions with MPA's current WGS 84 positions for the same lights and buoys: latitude agrees within 0.014', longitude is 0.089' to 0.105' larger (about 165-195 m east) in the IMO text. For a WGS 84 map use the MPA positions; Tg Piai and Pulau Karimun Kecil have no official WGS 84 version (shift them about 0.1' west only if flagged inferred). The TSS coordinates in S5 are WGS 84 (MPA inserted them; the Main Strait annex is identical to IMO COLREG.2/Circ.54, which is itself WGS 84).",
+ "area": {
+  "text": "Operational area: the Straits of Malacca and Singapore between longitudes 100°40'E and 104°23'E as shown on the chartlets in appendices 1 and 2; includes the routeing system; nine sectors (MSC.73(69) Annex 1 para 2.1). Reference charts MAL 515, 521, 523 (para 2.2).",
+  "western_limit": {
+   "name": "Western limit",
+   "kind": "meridian",
+   "lon_text": "100°40'E",
+   "lon_norm": "100 40E",
+   "lon": 100.666667,
+   "source": "S1",
+   "page": "IMO PDF p.3 para 2.1"
+  },
+  "eastern_limit": [
+   {
+    "name": "Eastern limit (IMO text, old datum)",
+    "kind": "meridian",
+    "lon_text": "104°23'E",
+    "lon_norm": "104 23E",
+    "lon": 104.383333,
+    "source": "S1",
+    "page": "IMO PDF p.3 para 2.1"
+   },
+   {
+    "name": "Eastern limit (MPA chartlet, WGS 84)",
+    "kind": "meridian",
+    "lon_text": "104°22.9'E",
+    "lon_norm": "104 22.9E",
+    "lon": 104.381667,
+    "source": "S5",
+    "page": "PDF p.122"
+   },
+   {
+    "name": "Eastern limit (MPA VTIS table)",
+    "kind": "meridian",
+    "lon_text": "104°23.0'E",
+    "lon_norm": "104 23.0E",
+    "lon": 104.383333,
+    "source": "S3",
+    "page": "VTIS table"
+   }
+  ],
+  "notes": "On both IMO and MPA chartlets the operational area is drawn as a dashed corridor around the routeing system (TSS, precautionary areas), not the whole strait; that corridor has no published coordinates. The north and south limits of each sector are therefore unconfirmed."
+ },
+ "sectors": [
+  {
+   "n": 1,
+   "vts": "Klang VTS",
+   "name": "Sector 1",
+   "channel": "CH 66",
+   "boundary_text": "Not given in words or coordinates in any official text found. Shown only on the chartlet MSC.73(69) Appendix 1 (oblique lines across the strait). Western limit of sector 1 = western limit of STRAITREP, longitude 100°40'E (para 2.1).",
+   "points": [
+    {
+     "name": "Western limit of STRAITREP",
+     "kind": "meridian",
+     "lon_text": "100°40'E",
+     "lon_norm": "100 40E",
+     "lon": 100.666667,
+     "source": "S1",
+     "page": "IMO PDF p.3, Annex 1 para 2.1"
+    }
+   ],
+   "chartlet_station_label": "Angsa",
+   "notes": "Channel from MSC.73(69) Appendix 3 and the current MPA Operational Areas table (identical). Boundaries unconfirmed: draw only from the chartlet if at all, flagged not official."
+  },
+  {
+   "n": 2,
+   "vts": "Klang VTS",
+   "name": "Sector 2",
+   "channel": "CH 88",
+   "boundary_text": "Not given in words or coordinates in any official text found; only on the chartlet MSC.73(69) Appendix 1.",
+   "points": [],
+   "chartlet_station_label": "Jugra",
+   "notes": "Channel from MSC.73(69) Appendix 3 and the current MPA Operational Areas table (identical). Boundaries unconfirmed: draw only from the chartlet if at all, flagged not official."
+  },
+  {
+   "n": 3,
+   "vts": "Klang VTS",
+   "name": "Sector 3",
+   "channel": "CH 84",
+   "boundary_text": "Not given in words or coordinates in any official text found; only on the chartlet MSC.73(69) Appendix 1.",
+   "points": [],
+   "chartlet_station_label": "(Cape Rachado area)",
+   "notes": "Channel from MSC.73(69) Appendix 3 and the current MPA Operational Areas table (identical). Boundaries unconfirmed: draw only from the chartlet if at all, flagged not official."
+  },
+  {
+   "n": 4,
+   "vts": "Klang VTS",
+   "name": "Sector 4",
+   "channel": "CH 61",
+   "boundary_text": "Not given in words or coordinates in any official text found; only on the chartlet MSC.73(69) Appendix 1.",
+   "points": [],
+   "chartlet_station_label": "Undan",
+   "notes": "Channel from MSC.73(69) Appendix 3 and the current MPA Operational Areas table (identical). Boundaries unconfirmed: draw only from the chartlet if at all, flagged not official."
+  },
+  {
+   "n": 5,
+   "vts": "Klang VTS",
+   "name": "Sector 5",
+   "channel": "CH 88",
+   "boundary_text": "Not given in words or coordinates in any official text found; only on the chartlet MSC.73(69) Appendix 1.",
+   "points": [],
+   "chartlet_station_label": "Segenting",
+   "notes": "Channel from MSC.73(69) Appendix 3 and the current MPA Operational Areas table (identical). Boundaries unconfirmed: draw only from the chartlet if at all, flagged not official."
+  },
+  {
+   "n": 6,
+   "vts": "Johor VTS",
+   "name": "Sector 6 (Piai)",
+   "channel": "CH 88",
+   "boundary_text": "Eastern boundary: the line Tg Piai to Pulau Karimun Kecil (this line is the western limit of sector 7 in the MPA text). Western boundary (with sector 5): only on the chartlet, no coordinates found.",
+   "points": [
+    {
+     "name": "Tg. Piai",
+     "lat_text": "01°15'.50N",
+     "lon_text": "103°30'.75E",
+     "lat_norm": "01 15.50N",
+     "lon_norm": "103 30.75E",
+     "lat": 1.258333,
+     "lon": 103.5125,
+     "source": "S1",
+     "page": "IMO PDF p.4, Annex 1 para 3.3",
+     "datum": "as printed in MSC.73(69) (1998, pre-WGS 84 local datum, see datum_note)",
+     "wgs84": null
+    },
+    {
+     "name": "Pulau Karimun Kecil",
+     "lat_text": "01°09'.20N",
+     "lon_text": "103°24'.35E",
+     "lat_norm": "01 09.20N",
+     "lon_norm": "103 24.35E",
+     "lat": 1.153333,
+     "lon": 103.405833,
+     "source": "S1",
+     "page": "IMO PDF p.4, Annex 1 para 3.3",
+     "datum": "as printed in MSC.73(69) (1998, pre-WGS 84 local datum, see datum_note)",
+     "wgs84": null
+    }
+   ],
+   "notes": "Johor VTS = Marine Department Malaysia. No Malaysian official notice reached (navy.mil.my annual Notices to Mariners returned HTTP 500)."
+  },
+  {
+   "n": 7,
+   "vts": "Singapore VTS (VTIS West)",
+   "name": "Sector 7, VTIS West Sector",
+   "channel": "CH 73 (156.675 MHz)",
+   "boundary_text": "MPA: 'area between the line joining Tg Piai and Pulau Karimun Kecil and Long. 103°44.5'E'.",
+   "points": [
+    {
+     "name": "Tg. Piai",
+     "lat_text": "01°15'.50N",
+     "lon_text": "103°30'.75E",
+     "lat_norm": "01 15.50N",
+     "lon_norm": "103 30.75E",
+     "lat": 1.258333,
+     "lon": 103.5125,
+     "source": "S1",
+     "page": "IMO PDF p.4, Annex 1 para 3.3",
+     "datum": "as printed in MSC.73(69) (1998, pre-WGS 84 local datum, see datum_note)",
+     "wgs84": null
+    },
+    {
+     "name": "Pulau Karimun Kecil",
+     "lat_text": "01°09'.20N",
+     "lon_text": "103°24'.35E",
+     "lat_norm": "01 09.20N",
+     "lon_norm": "103 24.35E",
+     "lat": 1.153333,
+     "lon": 103.405833,
+     "source": "S1",
+     "page": "IMO PDF p.4, Annex 1 para 3.3",
+     "datum": "as printed in MSC.73(69) (1998, pre-WGS 84 local datum, see datum_note)",
+     "wgs84": null
+    },
+    {
+     "name": "Sector 7 / 8 boundary",
+     "kind": "meridian",
+     "lon_text": "103°44.5'E",
+     "lon_norm": "103 44.5E",
+     "lon": 103.741667,
+     "source": "S3",
+     "page": "VHF channels for navigational reporting table, VTIS West / VTIS Central rows; also SPI 2026 chartlet p.121 label 'Long 103°44.5'E'"
+    }
+   ],
+   "notes": "One MPA paragraph on the same page says sector 8 covers vessels joining the TSS 'between Longitudes 103° 44.6'E and 104° 02.1'E' (0.1' different); the VTIS table and the MPA chartlet both say 103°44.5'E. The IMO 1998 chartlet (MSC.73(69) Appendix 2) shows the same line, scaled about 103°44.7'E on the old datum (consistent within scale). The line passes about through Raffles Lighthouse (103°44.450'E WGS 84). North and south limits: the chartlets show a dashed outline around the routeing system; no coordinates are given for it."
+  },
+  {
+   "n": 8,
+   "vts": "Singapore VTS (VTIS Central)",
+   "name": "Sector 8, VTIS Central Sector",
+   "channel": "CH 14 (156.700 MHz)",
+   "boundary_text": "MPA: 'area between Long. 103°44.5'E and 104°02.1'E'.",
+   "points": [
+    {
+     "name": "Sector 7 / 8 boundary",
+     "kind": "meridian",
+     "lon_text": "103°44.5'E",
+     "lon_norm": "103 44.5E",
+     "lon": 103.741667,
+     "source": "S3",
+     "page": "VTIS table"
+    },
+    {
+     "name": "Sector 8 / 9 boundary",
+     "kind": "meridian",
+     "lon_text": "104°02.1'E",
+     "lon_norm": "104 02.1E",
+     "lon": 104.035,
+     "source": "S3",
+     "page": "VTIS table; SPI 2026 chartlet p.121 label 'Long 104°02.1'E'"
+    }
+   ],
+   "notes": "VTIS Central: report after departing a port or anchorage north or south of the TSS, when joining the traffic lane between these longitudes (MPA). North/south limits not given in coordinates."
+  },
+  {
+   "n": 9,
+   "vts": "Singapore VTS (VTIS East)",
+   "name": "Sector 9, VTIS East Sector",
+   "channel": "CH 10 (156.500 MHz)",
+   "boundary_text": "MPA: 'area between Long. 104°02.1'E and 104°23.0'E'.",
+   "points": [
+    {
+     "name": "Sector 8 / 9 boundary",
+     "kind": "meridian",
+     "lon_text": "104°02.1'E",
+     "lon_norm": "104 02.1E",
+     "lon": 104.035,
+     "source": "S3",
+     "page": "VTIS table"
+    },
+    {
+     "name": "Eastern limit of STRAITREP (MPA table)",
+     "kind": "meridian",
+     "lon_text": "104°23.0'E",
+     "lon_norm": "104 23.0E",
+     "lon": 104.383333,
+     "source": "S3",
+     "page": "VTIS table"
+    },
+    {
+     "name": "Eastern limit of STRAITREP (MPA chartlet, WGS 84)",
+     "kind": "meridian",
+     "lon_text": "104°22.9'E",
+     "lon_norm": "104 22.9E",
+     "lon": 104.381667,
+     "source": "S5",
+     "page": "PDF p.122 (printed p.121), chartlet label 'Long 104°22.9'E'"
+    },
+    {
+     "name": "Eastern limit of STRAITREP (IMO text)",
+     "kind": "meridian",
+     "lon_text": "104°23'E",
+     "lon_norm": "104 23E",
+     "lon": 104.383333,
+     "source": "S1",
+     "page": "IMO PDF p.3, Annex 1 para 2.1"
+    }
+   ],
+   "notes": "The IMO 1998 value 104°23'E is on the old datum; MPA's current (WGS 84) chartlet labels the same line 104°22.9'E, which matches the 0.1' shift seen at every lighthouse. The MPA web table still writes 104°23.0'E. Difference about 0.1' (about 185 m). Recommend 104°22.9'E for a WGS 84 map, with 104°23'E shown as the IMO wording."
+  }
+ ],
+ "report_points": [
+  {
+   "name": "Reporting line Tg Piai to Pulau Karimun Kecil (also the boundary between sector 6 and sector 7)",
+   "kind": "line",
+   "report": "Entering the operational area: report when crossing this line (para 3.3.1). MPA: VTIS West CH 73 for vessels from the west; Malaysian side Johor VTS CH 88 for sector 6.",
+   "points": [
+    {
+     "name": "Tg. Piai",
+     "lat_text": "01°15'.50N",
+     "lon_text": "103°30'.75E",
+     "lat_norm": "01 15.50N",
+     "lon_norm": "103 30.75E",
+     "lat": 1.258333,
+     "lon": 103.5125,
+     "source": "S1",
+     "page": "IMO PDF p.4, Annex 1 para 3.3",
+     "datum": "as printed in MSC.73(69) (1998, pre-WGS 84 local datum, see datum_note)",
+     "wgs84": null
+    },
+    {
+     "name": "Pulau Karimun Kecil",
+     "lat_text": "01°09'.20N",
+     "lon_text": "103°24'.35E",
+     "lat_norm": "01 09.20N",
+     "lon_norm": "103 24.35E",
+     "lat": 1.153333,
+     "lon": 103.405833,
+     "source": "S1",
+     "page": "IMO PDF p.4, Annex 1 para 3.3",
+     "datum": "as printed in MSC.73(69) (1998, pre-WGS 84 local datum, see datum_note)",
+     "wgs84": null
+    }
+   ],
+   "notes": "No official WGS 84 version of these two positions found. By the shift seen at the ten other points (0.09' to 0.105' of longitude), the WGS 84 positions would be about 0.1' further west; that is inferred, not official. SN/Circ.201/Corr.1 (2 Sep 1998) corrected para 3.3.1 to refer to 'the limits mentioned in paragraph 2.1' (the longitudes 100°40'E and 104°23'E)."
+  },
+  {
+   "name": "Karang Galang Lt (approach from the south via Selat Riau, report when abeam)",
+   "kind": "point",
+   "report": "Entering, abeam (para 3.3.2). MPA: VTIS East CH 10 (sector 9).",
+   "imo": {
+    "name": "Karang Galang Lt.",
+    "lat_text": "01°09'.58N",
+    "lon_text": "104°11'.47E",
+    "lat_norm": "01 09.58N",
+    "lon_norm": "104 11.47E",
+    "lat": 1.159667,
+    "lon": 104.191167,
+    "source": "S1",
+    "page": "IMO PDF p.4, Annex 1 para 3.3"
+   },
+   "wgs84": {
+    "name": "Karang Galang Lt",
+    "lat_text": "01°09.577'N",
+    "lon_text": "104°11.365'E",
+    "lat_norm": "01 09.577N",
+    "lon_norm": "104 11.365E",
+    "lat": 1.159617,
+    "lon": 104.189417,
+    "source": "S3",
+    "page": "Reporting points for Confirmation of Arrival, VTIS East"
+   }
+  },
+  {
+   "name": "Pulau Jangkat Beacon (approach from the south via Selat Durian, report when abeam)",
+   "kind": "point",
+   "report": "Entering, abeam (para 3.3.2). MPA: VTIS West CH 73 (sector 7).",
+   "imo": {
+    "name": "Pulau Jangkat Beacon",
+    "lat_text": "00°57'.89N",
+    "lon_text": "103°42'.72E",
+    "lat_norm": "00 57.89N",
+    "lon_norm": "103 42.72E",
+    "lat": 0.964833,
+    "lon": 103.712,
+    "source": "S1",
+    "page": "IMO PDF p.4, Annex 1 para 3.3",
+    "note": "Printed '103°42'72E' (decimal point missing in the IMO text); read as 103°42'.72E, which the MPA WGS 84 value confirms (0.10' shift like every other point)."
+   },
+   "wgs84": {
+    "name": "Pulau Jangkat Beacon",
+    "lat_text": "00°57.895'N",
+    "lon_text": "103°42.619'E",
+    "lat_norm": "00 57.895N",
+    "lon_norm": "103 42.619E",
+    "lat": 0.964917,
+    "lon": 103.710317,
+    "source": "S3",
+    "page": "Reporting points for Confirmation of Arrival, VTIS West"
+   }
+  },
+  {
+   "name": "Eastern Buoy (approach from the East Johor Strait, report when abeam)",
+   "kind": "point",
+   "report": "Entering, abeam (para 3.3.2). MPA: VTIS East CH 10 (sector 9).",
+   "imo": {
+    "name": "Eastern Buoy",
+    "lat_text": "01°17'.87N",
+    "lon_text": "104°05'.99E",
+    "lat_norm": "01 17.87N",
+    "lon_norm": "104 05.99E",
+    "lat": 1.297833,
+    "lon": 104.099833,
+    "source": "S1",
+    "page": "IMO PDF p.4, Annex 1 para 3.3"
+   },
+   "wgs84": {
+    "name": "Eastern Buoy",
+    "lat_text": "01°17.865'N",
+    "lon_text": "104°05.894'E",
+    "lat_norm": "01 17.865N",
+    "lon_norm": "104 05.894E",
+    "lat": 1.29775,
+    "lon": 104.098233,
+    "source": "S3",
+    "page": "Reporting points for Confirmation of Arrival, VTIS East"
+   }
+  },
+  {
+   "name": "Horsburgh Lt (approach from the east, South China Sea: report when abeam)",
+   "kind": "point",
+   "report": "IMO para 3.3.3 lists it as a reference point; MPA (Confirmation of Arrival / VTIS East CH 10) asks vessels from the east to report when Horsburgh Lt is abeam. The IMO entry trigger from the east is the eastern limit 104°23'E (para 2.1 and 3.3.1).",
+   "imo": {
+    "name": "Horsburgh Lt",
+    "lat_text": "01°19'.81N",
+    "lon_text": "104°24'.44E",
+    "lat_norm": "01 19.81N",
+    "lon_norm": "104 24.44E",
+    "lat": 1.330167,
+    "lon": 104.407333,
+    "source": "S1",
+    "page": "IMO PDF p.4, Annex 1 para 3.3"
+   },
+   "wgs84": {
+    "name": "Horsburgh Lighthouse",
+    "lat_text": "01°19.814'N",
+    "lon_text": "104°24.337'E",
+    "lat_norm": "01 19.814N",
+    "lon_norm": "104 24.337E",
+    "lat": 1.330233,
+    "lon": 104.405617,
+    "source": "S3",
+    "page": "VTIS East reporting points; same in SPI 2026 lighthouse list"
+   }
+  },
+  {
+   "name": "Pulau Iyu Kechil (approach from the west, Malacca Strait: report when abeam, MPA)",
+   "kind": "point",
+   "report": "MPA Confirmation of Arrival: VTIS West CH 73 when Pulau Iyu Kechil is abeam. In the IMO text it is a reference point only (para 3.3.3); the IMO entry line from the west is Tg Piai to P. Karimun Kecil.",
+   "imo": {
+    "name": "Pu Iyu Kechil Lt",
+    "lat_text": "01°11'.48N",
+    "lon_text": "103°21'.23E",
+    "lat_norm": "01 11.48N",
+    "lon_norm": "103 21.23E",
+    "lat": 1.191333,
+    "lon": 103.353833,
+    "source": "S1",
+    "page": "IMO PDF p.4, Annex 1 para 3.3"
+   },
+   "wgs84": {
+    "name": "Pulau Iyu Kechil (abeam point)",
+    "lat_text": "01°11.479'N",
+    "lon_text": "103°21.140'E",
+    "lat_norm": "01 11.479N",
+    "lon_norm": "103 21.140E",
+    "lat": 1.191317,
+    "lon": 103.352333,
+    "source": "S3",
+    "page": "VTIS West reporting points"
+   },
+   "wgs84_alt": {
+    "name": "Pu Iyu Kechil (reference point list)",
+    "lat_text": "01°11.466'N",
+    "lon_text": "103°21.141'E",
+    "lat_norm": "01 11.466N",
+    "lon_norm": "103 21.141E",
+    "lat": 1.1911,
+    "lon": 103.35235,
+    "source": "S3",
+    "page": "reference point list on the same page"
+   },
+   "notes": "MPA gives two slightly different positions on the same page (0.013' of latitude apart, about 24 m)."
+  }
+ ],
+ "reference_points_para_3_3_3": {
+  "text": "A ship approaching from any other direction reports, on reaching sector 7, 8 or 9, its bearing and distance from one of these seven points (or its latitude and longitude).",
+  "points": [
+   {
+    "n": 1,
+    "imo": {
+     "name": "Pu Iyu Kechil Lt",
+     "lat_text": "01°11'.48N",
+     "lon_text": "103°21'.23E",
+     "lat_norm": "01 11.48N",
+     "lon_norm": "103 21.23E",
+     "lat": 1.191333,
+     "lon": 103.353833,
+     "source": "S1",
+     "page": "IMO PDF p.4, Annex 1 para 3.3.3 (i)"
+    },
+    "wgs84": {
+     "name": "Pu Iyu Kechil",
+     "lat_text": "01°11.466'N",
+     "lon_text": "103°21.141'E",
+     "lat_norm": "01 11.466N",
+     "lon_norm": "103 21.141E",
+     "lat": 1.1911,
+     "lon": 103.35235,
+     "source": "S3",
+     "page": "reference points list (Confirmation of Arrival)"
+    },
+    "shift_min": {
+     "dlat": -0.014,
+     "dlon": -0.089
+    }
+   },
+   {
+    "n": 2,
+    "imo": {
+     "name": "Sultan Shoal Lt",
+     "lat_text": "01°14'.38N",
+     "lon_text": "103°38'.98E",
+     "lat_norm": "01 14.38N",
+     "lon_norm": "103 38.98E",
+     "lat": 1.239667,
+     "lon": 103.649667,
+     "source": "S1",
+     "page": "IMO PDF p.4, Annex 1 para 3.3.3 (ii)"
+    },
+    "wgs84": {
+     "name": "Sultan Shoal Lt",
+     "lat_text": "01°14.377'N",
+     "lon_text": "103°38.884'E",
+     "lat_norm": "01 14.377N",
+     "lon_norm": "103 38.884E",
+     "lat": 1.239617,
+     "lon": 103.648067,
+     "source": "S3",
+     "page": "reference points list (Confirmation of Arrival)"
+    },
+    "shift_min": {
+     "dlat": -0.003,
+     "dlon": -0.096
+    }
+   },
+   {
+    "n": 3,
+    "imo": {
+     "name": "Raffles Lt",
+     "lat_text": "01°09'.60N",
+     "lon_text": "103°44'.55E",
+     "lat_norm": "01 09.60N",
+     "lon_norm": "103 44.55E",
+     "lat": 1.16,
+     "lon": 103.7425,
+     "source": "S1",
+     "page": "IMO PDF p.4, Annex 1 para 3.3.3 (iii)"
+    },
+    "wgs84": {
+     "name": "Raffles Lt",
+     "lat_text": "01°09.606'N",
+     "lon_text": "103°44.450'E",
+     "lat_norm": "01 09.606N",
+     "lon_norm": "103 44.450E",
+     "lat": 1.1601,
+     "lon": 103.740833,
+     "source": "S3",
+     "page": "reference points list (Confirmation of Arrival)"
+    },
+    "shift_min": {
+     "dlat": 0.006,
+     "dlon": -0.1
+    }
+   },
+   {
+    "n": 4,
+    "imo": {
+     "name": "Sakijang Lt Bn",
+     "lat_text": "01°13'.30N",
+     "lon_text": "103°51'.37E",
+     "lat_norm": "01 13.30N",
+     "lon_norm": "103 51.37E",
+     "lat": 1.221667,
+     "lon": 103.856167,
+     "source": "S1",
+     "page": "IMO PDF p.4, Annex 1 para 3.3.3 (iv)"
+    },
+    "wgs84": {
+     "name": "Sakijang Lt Bn",
+     "lat_text": "01°13.305'N",
+     "lon_text": "103°51.275'E",
+     "lat_norm": "01 13.305N",
+     "lon_norm": "103 51.275E",
+     "lat": 1.22175,
+     "lon": 103.854583,
+     "source": "S3",
+     "page": "reference points list (Confirmation of Arrival)"
+    },
+    "shift_min": {
+     "dlat": 0.005,
+     "dlon": -0.095
+    }
+   },
+   {
+    "n": 5,
+    "imo": {
+     "name": "Bedok Lt",
+     "lat_text": "01°18'.54N",
+     "lon_text": "103°56'.06E",
+     "lat_norm": "01 18.54N",
+     "lon_norm": "103 56.06E",
+     "lat": 1.309,
+     "lon": 103.934333,
+     "source": "S1",
+     "page": "IMO PDF p.4, Annex 1 para 3.3.3 (v)"
+    },
+    "wgs84": {
+     "name": "Bedok Lt",
+     "lat_text": "01°18.544'N",
+     "lon_text": "103°55.965'E",
+     "lat_norm": "01 18.544N",
+     "lon_norm": "103 55.965E",
+     "lat": 1.309067,
+     "lon": 103.93275,
+     "source": "S3",
+     "page": "reference points list (Confirmation of Arrival)"
+    },
+    "shift_min": {
+     "dlat": 0.004,
+     "dlon": -0.095
+    }
+   },
+   {
+    "n": 6,
+    "imo": {
+     "name": "Tg. Stapa Lt",
+     "lat_text": "01°20'.57N",
+     "lon_text": "104°08'.24E",
+     "lat_norm": "01 20.57N",
+     "lon_norm": "104 08.24E",
+     "lat": 1.342833,
+     "lon": 104.137333,
+     "source": "S1",
+     "page": "IMO PDF p.4, Annex 1 para 3.3.3 (vi)"
+    },
+    "wgs84": {
+     "name": "Tg Setapa Lt",
+     "lat_text": "01°20.574'N",
+     "lon_text": "104°08.135'E",
+     "lat_norm": "01 20.574N",
+     "lon_norm": "104 08.135E",
+     "lat": 1.3429,
+     "lon": 104.135583,
+     "source": "S3",
+     "page": "reference points list (Confirmation of Arrival)"
+    },
+    "shift_min": {
+     "dlat": 0.004,
+     "dlon": -0.105
+    }
+   },
+   {
+    "n": 7,
+    "imo": {
+     "name": "Horsburgh Lt",
+     "lat_text": "01°19'.81N",
+     "lon_text": "104°24'.44E",
+     "lat_norm": "01 19.81N",
+     "lon_norm": "104 24.44E",
+     "lat": 1.330167,
+     "lon": 104.407333,
+     "source": "S1",
+     "page": "IMO PDF p.4, Annex 1 para 3.3.3 (vii)"
+    },
+    "wgs84": {
+     "name": "Horsburgh Lt",
+     "lat_text": "01°19.814'N",
+     "lon_text": "104°24.337'E",
+     "lat_norm": "01 19.814N",
+     "lon_norm": "104 24.337E",
+     "lat": 1.330233,
+     "lon": 104.405617,
+     "source": "S3",
+     "page": "reference points list (Confirmation of Arrival)"
+    },
+    "shift_min": {
+     "dlat": 0.004,
+     "dlon": -0.103
+    }
+   }
+  ]
+ },
+ "tss": [
+  {
+   "region": "Malacca Strait",
+   "scheme": "At One Fathom Bank (TSS)",
+   "annex": "SPI routeing Annex 1",
+   "kind": "separation zone",
+   "closed": true,
+   "points": [
+    {
+     "id": "1",
+     "lat_text": "03°00·68’N",
+     "lon_text": "100°47·32’E",
+     "lat_norm": "03 00.68N",
+     "lon_norm": "100 47.32E",
+     "lat": 3.011333,
+     "lon": 100.788667,
+     "source": "S5",
+     "page": "PDF p.8 (printed p.7)"
+    },
+    {
+     "id": "2",
+     "lat_text": "02°53·68’N",
+     "lon_text": "100°55·72’E",
+     "lat_norm": "02 53.68N",
+     "lon_norm": "100 55.72E",
+     "lat": 2.894667,
+     "lon": 100.928667,
+     "source": "S5",
+     "page": "PDF p.8 (printed p.7)"
+    },
+    {
+     "id": "3",
+     "lat_text": "02°49·48’N",
+     "lon_text": "100°59·42’E",
+     "lat_norm": "02 49.48N",
+     "lon_norm": "100 59.42E",
+     "lat": 2.824667,
+     "lon": 100.990333,
+     "source": "S5",
+     "page": "PDF p.8 (printed p.7)"
+    },
+    {
+     "id": "4",
+     "lat_text": "02°43·89’N",
+     "lon_text": "101°10·22’E",
+     "lat_norm": "02 43.89N",
+     "lon_norm": "101 10.22E",
+     "lat": 2.7315,
+     "lon": 101.170333,
+     "source": "S5",
+     "page": "PDF p.8 (printed p.7)"
+    },
+    {
+     "id": "5",
+     "lat_text": "02°43·39’N",
+     "lon_text": "101°09·92’E",
+     "lat_norm": "02 43.39N",
+     "lon_norm": "101 09.92E",
+     "lat": 2.723167,
+     "lon": 101.165333,
+     "source": "S5",
+     "page": "PDF p.8 (printed p.7)"
+    },
+    {
+     "id": "6",
+     "lat_text": "02°48·98’N",
+     "lon_text": "100°59·42’E",
+     "lat_norm": "02 48.98N",
+     "lon_norm": "100 59.42E",
+     "lat": 2.816333,
+     "lon": 100.990333,
+     "source": "S5",
+     "page": "PDF p.8 (printed p.7)"
+    },
+    {
+     "id": "7",
+     "lat_text": "02°53·38’N",
+     "lon_text": "100°55·32’E",
+     "lat_norm": "02 53.38N",
+     "lon_norm": "100 55.32E",
+     "lat": 2.889667,
+     "lon": 100.922,
+     "source": "S5",
+     "page": "PDF p.8 (printed p.7)"
+    },
+    {
+     "id": "8",
+     "lat_text": "03°00·28’N",
+     "lon_text": "100°47·02’E",
+     "lat_norm": "03 00.28N",
+     "lon_norm": "100 47.02E",
+     "lat": 3.004667,
+     "lon": 100.783667,
+     "source": "S5",
+     "page": "PDF p.8 (printed p.7)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.8 (printed p.7)",
+   "note": ""
+  },
+  {
+   "region": "Malacca Strait",
+   "scheme": "At One Fathom Bank (TSS)",
+   "annex": "SPI routeing Annex 1",
+   "kind": "lane limit (north-west bound lane, outer line)",
+   "closed": false,
+   "points": [
+    {
+     "id": "9",
+     "lat_text": "03°02·68’N",
+     "lon_text": "100°48·72’E",
+     "lat_norm": "03 02.68N",
+     "lon_norm": "100 48.72E",
+     "lat": 3.044667,
+     "lon": 100.812,
+     "source": "S5",
+     "page": "PDF p.8 (printed p.7)"
+    },
+    {
+     "id": "10",
+     "lat_text": "02°52·48’N",
+     "lon_text": "100°59·92’E",
+     "lat_norm": "02 52.48N",
+     "lon_norm": "100 59.92E",
+     "lat": 2.874667,
+     "lon": 100.998667,
+     "source": "S5",
+     "page": "PDF p.8 (printed p.7)"
+    },
+    {
+     "id": "11",
+     "lat_text": "02°46·28’N",
+     "lon_text": "101°11·42’E",
+     "lat_norm": "02 46.28N",
+     "lon_norm": "101 11.42E",
+     "lat": 2.771333,
+     "lon": 101.190333,
+     "source": "S5",
+     "page": "PDF p.8 (printed p.7)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.8 (printed p.7)",
+   "note": ""
+  },
+  {
+   "region": "Malacca Strait",
+   "scheme": "At One Fathom Bank (TSS)",
+   "annex": "SPI routeing Annex 1",
+   "kind": "lane limit (south-east bound lane, outer line)",
+   "closed": false,
+   "points": [
+    {
+     "id": "12",
+     "lat_text": "02°54·68’N",
+     "lon_text": "100°43·02’E",
+     "lat_norm": "02 54.68N",
+     "lon_norm": "100 43.02E",
+     "lat": 2.911333,
+     "lon": 100.717,
+     "source": "S5",
+     "page": "PDF p.8 (printed p.7)"
+    },
+    {
+     "id": "13",
+     "lat_text": "02°41·19’N",
+     "lon_text": "101°08·72’E",
+     "lat_norm": "02 41.19N",
+     "lon_norm": "101 08.72E",
+     "lat": 2.6865,
+     "lon": 101.145333,
+     "source": "S5",
+     "page": "PDF p.8 (printed p.7)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.8 (printed p.7)",
+   "note": ""
+  },
+  {
+   "region": "Malacca Strait",
+   "scheme": "Off Port Klang",
+   "annex": "SPI routeing Annex 1",
+   "kind": "precautionary area",
+   "closed": true,
+   "points": [
+    {
+     "id": "14",
+     "lat_text": "02°46·28’N",
+     "lon_text": "101°11·42’E",
+     "lat_norm": "02 46.28N",
+     "lon_norm": "101 11.42E",
+     "lat": 2.771333,
+     "lon": 101.190333,
+     "source": "S5",
+     "page": "PDF p.8 (printed p.7)"
+    },
+    {
+     "id": "15",
+     "lat_text": "02°44·29’N",
+     "lon_text": "101°14·92’E",
+     "lat_norm": "02 44.29N",
+     "lon_norm": "101 14.92E",
+     "lat": 2.738167,
+     "lon": 101.248667,
+     "source": "S5",
+     "page": "PDF p.8 (printed p.7)"
+    },
+    {
+     "id": "16",
+     "lat_text": "02°39·39’N",
+     "lon_text": "101°12·32’E",
+     "lat_norm": "02 39.39N",
+     "lon_norm": "101 12.32E",
+     "lat": 2.6565,
+     "lon": 101.205333,
+     "source": "S5",
+     "page": "PDF p.8 (printed p.7)"
+    },
+    {
+     "id": "17",
+     "lat_text": "02°41·19’N",
+     "lon_text": "101°08·72’E",
+     "lat_norm": "02 41.19N",
+     "lon_norm": "101 08.72E",
+     "lat": 2.6865,
+     "lon": 101.145333,
+     "source": "S5",
+     "page": "PDF p.8 (printed p.7)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.8 (printed p.7)",
+   "note": ""
+  },
+  {
+   "region": "Malacca Strait",
+   "scheme": "Port Klang to Port Dickson (TSS)",
+   "annex": "SPI routeing Annex 2",
+   "kind": "separation zone",
+   "closed": true,
+   "points": [
+    {
+     "id": "18",
+     "lat_text": "02°41·99’N",
+     "lon_text": "101°13·72’E",
+     "lat_norm": "02 41.99N",
+     "lon_norm": "101 13.72E",
+     "lat": 2.699833,
+     "lon": 101.228667,
+     "source": "S5",
+     "page": "PDF p.9 (printed p.8)"
+    },
+    {
+     "id": "19",
+     "lat_text": "02°34·99’N",
+     "lon_text": "101°27·01’E",
+     "lat_norm": "02 34.99N",
+     "lon_norm": "101 27.01E",
+     "lat": 2.583167,
+     "lon": 101.450167,
+     "source": "S5",
+     "page": "PDF p.9 (printed p.8)"
+    },
+    {
+     "id": "20",
+     "lat_text": "02°27·09’N",
+     "lon_text": "101°37·21’E",
+     "lat_norm": "02 27.09N",
+     "lon_norm": "101 37.21E",
+     "lat": 2.4515,
+     "lon": 101.620167,
+     "source": "S5",
+     "page": "PDF p.9 (printed p.8)"
+    },
+    {
+     "id": "21",
+     "lat_text": "02°26·49’N",
+     "lon_text": "101°36·71’E",
+     "lat_norm": "02 26.49N",
+     "lon_norm": "101 36.71E",
+     "lat": 2.4415,
+     "lon": 101.611833,
+     "source": "S5",
+     "page": "PDF p.9 (printed p.8)"
+    },
+    {
+     "id": "22",
+     "lat_text": "02°35·19’N",
+     "lon_text": "101°25·71’E",
+     "lat_norm": "02 35.19N",
+     "lon_norm": "101 25.71E",
+     "lat": 2.5865,
+     "lon": 101.4285,
+     "source": "S5",
+     "page": "PDF p.9 (printed p.8)"
+    },
+    {
+     "id": "23",
+     "lat_text": "02°41·59’N",
+     "lon_text": "101°13·52’E",
+     "lat_norm": "02 41.59N",
+     "lon_norm": "101 13.52E",
+     "lat": 2.693167,
+     "lon": 101.225333,
+     "source": "S5",
+     "page": "PDF p.9 (printed p.8)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.9 (printed p.8)",
+   "note": ""
+  },
+  {
+   "region": "Malacca Strait",
+   "scheme": "Port Klang to Port Dickson (TSS)",
+   "annex": "SPI routeing Annex 2",
+   "kind": "lane limit (north-west bound lane, separation line to inshore traffic zone)",
+   "closed": false,
+   "points": [
+    {
+     "id": "24",
+     "lat_text": "02°44·29’N",
+     "lon_text": "101°14·92’E",
+     "lat_norm": "02 44.29N",
+     "lon_norm": "101 14.92E",
+     "lat": 2.738167,
+     "lon": 101.248667,
+     "source": "S5",
+     "page": "PDF p.9 (printed p.8)"
+    },
+    {
+     "id": "25",
+     "lat_text": "02°37·39’N",
+     "lon_text": "101°27·91’E",
+     "lat_norm": "02 37.39N",
+     "lon_norm": "101 27.91E",
+     "lat": 2.623167,
+     "lon": 101.465167,
+     "source": "S5",
+     "page": "PDF p.9 (printed p.8)"
+    },
+    {
+     "id": "26",
+     "lat_text": "02°28·99’N",
+     "lon_text": "101°38·71’E",
+     "lat_norm": "02 28.99N",
+     "lon_norm": "101 38.71E",
+     "lat": 2.483167,
+     "lon": 101.645167,
+     "source": "S5",
+     "page": "PDF p.9 (printed p.8)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.9 (printed p.8)",
+   "note": "Inshore traffic zone between this line and the Malaysian coast, closed by a line from (24) on 027 deg and from (26) on 034 deg to the coast (text only; coast end not given)."
+  },
+  {
+   "region": "Malacca Strait",
+   "scheme": "Port Klang to Port Dickson (TSS)",
+   "annex": "SPI routeing Annex 2",
+   "kind": "lane limit (south-east bound lane, outer line)",
+   "closed": false,
+   "points": [
+    {
+     "id": "27",
+     "lat_text": "02°39·39’N",
+     "lon_text": "101°12·32’E",
+     "lat_norm": "02 39.39N",
+     "lon_norm": "101 12.32E",
+     "lat": 2.6565,
+     "lon": 101.205333,
+     "source": "S5",
+     "page": "PDF p.9 (printed p.8)"
+    },
+    {
+     "id": "28",
+     "lat_text": "02°33·99’N",
+     "lon_text": "101°23·21’E",
+     "lat_norm": "02 33.99N",
+     "lon_norm": "101 23.21E",
+     "lat": 2.5665,
+     "lon": 101.386833,
+     "source": "S5",
+     "page": "PDF p.9 (printed p.8)"
+    },
+    {
+     "id": "29",
+     "lat_text": "02°24·59’N",
+     "lon_text": "101°35·21’E",
+     "lat_norm": "02 24.59N",
+     "lon_norm": "101 35.21E",
+     "lat": 2.409833,
+     "lon": 101.586833,
+     "source": "S5",
+     "page": "PDF p.9 (printed p.8)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.9 (printed p.8)",
+   "note": ""
+  },
+  {
+   "region": "Malacca Strait",
+   "scheme": "Off Port Dickson",
+   "annex": "SPI routeing Annex 2",
+   "kind": "precautionary area",
+   "closed": true,
+   "points": [
+    {
+     "id": "30",
+     "lat_text": "02°28·99’N",
+     "lon_text": "101°38·71’E",
+     "lat_norm": "02 28.99N",
+     "lon_norm": "101 38.71E",
+     "lat": 2.483167,
+     "lon": 101.645167,
+     "source": "S5",
+     "page": "PDF p.9 (printed p.8)"
+    },
+    {
+     "id": "31",
+     "lat_text": "02°25·79’N",
+     "lon_text": "101°42·81’E",
+     "lat_norm": "02 25.79N",
+     "lon_norm": "101 42.81E",
+     "lat": 2.429833,
+     "lon": 101.7135,
+     "source": "S5",
+     "page": "PDF p.9 (printed p.8)"
+    },
+    {
+     "id": "32",
+     "lat_text": "02°21·39’N",
+     "lon_text": "101°39·31’E",
+     "lat_norm": "02 21.39N",
+     "lon_norm": "101 39.31E",
+     "lat": 2.3565,
+     "lon": 101.655167,
+     "source": "S5",
+     "page": "PDF p.9 (printed p.8)"
+    },
+    {
+     "id": "33",
+     "lat_text": "02°24·59’N",
+     "lon_text": "101°35·21’E",
+     "lat_norm": "02 24.59N",
+     "lon_norm": "101 35.21E",
+     "lat": 2.409833,
+     "lon": 101.586833,
+     "source": "S5",
+     "page": "PDF p.9 (printed p.8)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.9 (printed p.8)",
+   "note": ""
+  },
+  {
+   "region": "Malacca Strait",
+   "scheme": "Port Dickson to Tanjung Keling (TSS)",
+   "annex": "SPI routeing Annex 3",
+   "kind": "separation zone",
+   "closed": true,
+   "points": [
+    {
+     "id": "34",
+     "lat_text": "02°23·89’N",
+     "lon_text": "101°41·31’E",
+     "lat_norm": "02 23.89N",
+     "lon_norm": "101 41.31E",
+     "lat": 2.398167,
+     "lon": 101.6885,
+     "source": "S5",
+     "page": "PDF p.10 (printed p.9)"
+    },
+    {
+     "id": "35",
+     "lat_text": "02°09·69’N",
+     "lon_text": "101°59·51’E",
+     "lat_norm": "02 09.69N",
+     "lon_norm": "101 59.51E",
+     "lat": 2.1615,
+     "lon": 101.991833,
+     "source": "S5",
+     "page": "PDF p.10 (printed p.9)"
+    },
+    {
+     "id": "36",
+     "lat_text": "02°08·99’N",
+     "lon_text": "101°58·91’E",
+     "lat_norm": "02 08.99N",
+     "lon_norm": "101 58.91E",
+     "lat": 2.149833,
+     "lon": 101.981833,
+     "source": "S5",
+     "page": "PDF p.10 (printed p.9)"
+    },
+    {
+     "id": "37",
+     "lat_text": "02°23·19’N",
+     "lon_text": "101°40·81’E",
+     "lat_norm": "02 23.19N",
+     "lon_norm": "101 40.81E",
+     "lat": 2.3865,
+     "lon": 101.680167,
+     "source": "S5",
+     "page": "PDF p.10 (printed p.9)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.10 (printed p.9)",
+   "note": ""
+  },
+  {
+   "region": "Malacca Strait",
+   "scheme": "Port Dickson to Tanjung Keling (TSS)",
+   "annex": "SPI routeing Annex 3",
+   "kind": "lane limit (north-west bound lane, separation line to inshore traffic zone)",
+   "closed": false,
+   "points": [
+    {
+     "id": "38",
+     "lat_text": "02°25·79’N",
+     "lon_text": "101°42·81’E",
+     "lat_norm": "02 25.79N",
+     "lon_norm": "101 42.81E",
+     "lat": 2.429833,
+     "lon": 101.7135,
+     "source": "S5",
+     "page": "PDF p.10 (printed p.9)"
+    },
+    {
+     "id": "39",
+     "lat_text": "02°11·59’N",
+     "lon_text": "102°00·91’E",
+     "lat_norm": "02 11.59N",
+     "lon_norm": "102 00.91E",
+     "lat": 2.193167,
+     "lon": 102.015167,
+     "source": "S5",
+     "page": "PDF p.10 (printed p.9)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.10 (printed p.9)",
+   "note": "Inshore traffic zone: lines from (38) on 059 deg and from (39) on 034 deg to the Malaysian coast (text only)."
+  },
+  {
+   "region": "Malacca Strait",
+   "scheme": "Port Dickson to Tanjung Keling (TSS)",
+   "annex": "SPI routeing Annex 3",
+   "kind": "lane limit (south-east bound lane, outer line)",
+   "closed": false,
+   "points": [
+    {
+     "id": "40",
+     "lat_text": "02°21·39’N",
+     "lon_text": "101°39·31’E",
+     "lat_norm": "02 21.39N",
+     "lon_norm": "101 39.31E",
+     "lat": 2.3565,
+     "lon": 101.655167,
+     "source": "S5",
+     "page": "PDF p.10 (printed p.9)"
+    },
+    {
+     "id": "41",
+     "lat_text": "02°07·09’N",
+     "lon_text": "101°57·41’E",
+     "lat_norm": "02 07.09N",
+     "lon_norm": "101 57.41E",
+     "lat": 2.118167,
+     "lon": 101.956833,
+     "source": "S5",
+     "page": "PDF p.10 (printed p.9)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.10 (printed p.9)",
+   "note": ""
+  },
+  {
+   "region": "Malacca Strait",
+   "scheme": "Port Dickson to Tanjung Keling (TSS)",
+   "annex": "SPI routeing Annex 3",
+   "kind": "deep water route (south-east bound)",
+   "closed": true,
+   "points": [
+    {
+     "id": "42",
+     "lat_text": "02°21·39’N",
+     "lon_text": "101°39·31’E",
+     "lat_norm": "02 21.39N",
+     "lon_norm": "101 39.31E",
+     "lat": 2.3565,
+     "lon": 101.655167,
+     "source": "S5",
+     "page": "PDF p.10 (printed p.9)"
+    },
+    {
+     "id": "43",
+     "lat_text": "02°13·79’N",
+     "lon_text": "101°39·21’E",
+     "lat_norm": "02 13.79N",
+     "lon_norm": "101 39.21E",
+     "lat": 2.229833,
+     "lon": 101.6535,
+     "source": "S5",
+     "page": "PDF p.10 (printed p.9)"
+    },
+    {
+     "id": "44",
+     "lat_text": "02°05·09’N",
+     "lon_text": "101°55·81’E",
+     "lat_norm": "02 05.09N",
+     "lon_norm": "101 55.81E",
+     "lat": 2.084833,
+     "lon": 101.930167,
+     "source": "S5",
+     "page": "PDF p.10 (printed p.9)"
+    },
+    {
+     "id": "45",
+     "lat_text": "02°02·99’N",
+     "lon_text": "101°54·11’E",
+     "lat_norm": "02 02.99N",
+     "lon_norm": "101 54.11E",
+     "lat": 2.049833,
+     "lon": 101.901833,
+     "source": "S5",
+     "page": "PDF p.10 (printed p.9)"
+    },
+    {
+     "id": "46",
+     "lat_text": "02°12·29’N",
+     "lon_text": "101°36·71’E",
+     "lat_norm": "02 12.29N",
+     "lon_norm": "101 36.71E",
+     "lat": 2.204833,
+     "lon": 101.611833,
+     "source": "S5",
+     "page": "PDF p.10 (printed p.9)"
+    },
+    {
+     "id": "47",
+     "lat_text": "02°22·19’N",
+     "lon_text": "101°36·71’E",
+     "lat_norm": "02 22.19N",
+     "lon_norm": "101 36.71E",
+     "lat": 2.369833,
+     "lon": 101.611833,
+     "source": "S5",
+     "page": "PDF p.10 (printed p.9)"
+    },
+    {
+     "id": "48",
+     "lat_text": "02°23·99’N",
+     "lon_text": "101°36·01’E",
+     "lat_norm": "02 23.99N",
+     "lon_norm": "101 36.01E",
+     "lat": 2.399833,
+     "lon": 101.600167,
+     "source": "S5",
+     "page": "PDF p.10 (printed p.9)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.10 (printed p.9)",
+   "note": ""
+  },
+  {
+   "region": "Malacca Strait",
+   "scheme": "Off Malacca/Dumai",
+   "annex": "SPI routeing Annex 3",
+   "kind": "precautionary area",
+   "closed": true,
+   "points": [
+    {
+     "id": "49",
+     "lat_text": "02°11·59’N",
+     "lon_text": "102°00·91’E",
+     "lat_norm": "02 11.59N",
+     "lon_norm": "102 00.91E",
+     "lat": 2.193167,
+     "lon": 102.015167,
+     "source": "S5",
+     "page": "PDF p.10 (printed p.9)"
+    },
+    {
+     "id": "50",
+     "lat_text": "02°07·19’N",
+     "lon_text": "102°06·11’E",
+     "lat_norm": "02 07.19N",
+     "lon_norm": "102 06.11E",
+     "lat": 2.119833,
+     "lon": 102.101833,
+     "source": "S5",
+     "page": "PDF p.10 (printed p.9)"
+    },
+    {
+     "id": "51",
+     "lat_text": "01°59·99’N",
+     "lon_text": "101°59·71’E",
+     "lat_norm": "01 59.99N",
+     "lon_norm": "101 59.71E",
+     "lat": 1.999833,
+     "lon": 101.995167,
+     "source": "S5",
+     "page": "PDF p.10 (printed p.9)"
+    },
+    {
+     "id": "52",
+     "lat_text": "02°02·99’N",
+     "lon_text": "101°54·11’E",
+     "lat_norm": "02 02.99N",
+     "lon_norm": "101 54.11E",
+     "lat": 2.049833,
+     "lon": 101.901833,
+     "source": "S5",
+     "page": "PDF p.10 (printed p.9)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.10 (printed p.9)",
+   "note": ""
+  },
+  {
+   "region": "Malacca Strait / Singapore Strait western approach",
+   "scheme": "Malacca to Iyu Kecil (TSS)",
+   "annex": "SPI routeing Annex 4",
+   "kind": "separation zone",
+   "closed": true,
+   "points": [
+    {
+     "id": "53",
+     "lat_text": "02°05·39’N",
+     "lon_text": "102°04·51’E",
+     "lat_norm": "02 05.39N",
+     "lon_norm": "102 04.51E",
+     "lat": 2.089833,
+     "lon": 102.075167,
+     "source": "S5",
+     "page": "PDF p.11 (printed p.10)"
+    },
+    {
+     "id": "54",
+     "lat_text": "01°55·69’N",
+     "lon_text": "102°15·31’E",
+     "lat_norm": "01 55.69N",
+     "lon_norm": "102 15.31E",
+     "lat": 1.928167,
+     "lon": 102.255167,
+     "source": "S5",
+     "page": "PDF p.11 (printed p.10)"
+    },
+    {
+     "id": "55",
+     "lat_text": "01°39·99’N",
+     "lon_text": "102°48·21’E",
+     "lat_norm": "01 39.99N",
+     "lon_norm": "102 48.21E",
+     "lat": 1.6665,
+     "lon": 102.8035,
+     "source": "S5",
+     "page": "PDF p.11 (printed p.10)"
+    },
+    {
+     "id": "56",
+     "lat_text": "01°23·20’N",
+     "lon_text": "103°12·30’E",
+     "lat_norm": "01 23.20N",
+     "lon_norm": "103 12.30E",
+     "lat": 1.386667,
+     "lon": 103.205,
+     "source": "S5",
+     "page": "PDF p.11 (printed p.10)"
+    },
+    {
+     "id": "57",
+     "lat_text": "01°13·80’N",
+     "lon_text": "103°23·90’E",
+     "lat_norm": "01 13.80N",
+     "lon_norm": "103 23.90E",
+     "lat": 1.23,
+     "lon": 103.398333,
+     "source": "S5",
+     "page": "PDF p.11 (printed p.10)"
+    },
+    {
+     "id": "58",
+     "lat_text": "01°12·20’N",
+     "lon_text": "103°28·40’E",
+     "lat_norm": "01 12.20N",
+     "lon_norm": "103 28.40E",
+     "lat": 1.203333,
+     "lon": 103.473333,
+     "source": "S5",
+     "page": "PDF p.11 (printed p.10)"
+    },
+    {
+     "id": "59",
+     "lat_text": "01°10·50’N",
+     "lon_text": "103°27·40’E",
+     "lat_norm": "01 10.50N",
+     "lon_norm": "103 27.40E",
+     "lat": 1.175,
+     "lon": 103.456667,
+     "source": "S5",
+     "page": "PDF p.11 (printed p.10)"
+    },
+    {
+     "id": "60",
+     "lat_text": "01°13·20’N",
+     "lon_text": "103°23·30’E",
+     "lat_norm": "01 13.20N",
+     "lon_norm": "103 23.30E",
+     "lat": 1.22,
+     "lon": 103.388333,
+     "source": "S5",
+     "page": "PDF p.11 (printed p.10)"
+    },
+    {
+     "id": "61",
+     "lat_text": "01°23·20’N",
+     "lon_text": "103°12·30’E",
+     "lat_norm": "01 23.20N",
+     "lon_norm": "103 12.30E",
+     "lat": 1.386667,
+     "lon": 103.205,
+     "source": "S5",
+     "page": "PDF p.11 (printed p.10)"
+    },
+    {
+     "id": "62",
+     "lat_text": "01°39·09’N",
+     "lon_text": "102°47·90’E",
+     "lat_norm": "01 39.09N",
+     "lon_norm": "102 47.90E",
+     "lat": 1.6515,
+     "lon": 102.798333,
+     "source": "S5",
+     "page": "PDF p.11 (printed p.10)"
+    },
+    {
+     "id": "63",
+     "lat_text": "01°54·79’N",
+     "lon_text": "102°14·71’E",
+     "lat_norm": "01 54.79N",
+     "lon_norm": "102 14.71E",
+     "lat": 1.913167,
+     "lon": 102.245167,
+     "source": "S5",
+     "page": "PDF p.11 (printed p.10)"
+    },
+    {
+     "id": "64",
+     "lat_text": "02°04·59’N",
+     "lon_text": "102°03·71’E",
+     "lat_norm": "02 04.59N",
+     "lon_norm": "102 03.71E",
+     "lat": 2.0765,
+     "lon": 102.061833,
+     "source": "S5",
+     "page": "PDF p.11 (printed p.10)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.11 (printed p.10)",
+   "note": "Points (56) and (61) are identical as printed (01°23·20’N 103°12·30’E), so the zone is pinched there into two parts. East end (57)-(60) lies west of the Tg Piai / P. Karimun Kecil line."
+  },
+  {
+   "region": "Malacca Strait / Singapore Strait western approach",
+   "scheme": "Malacca to Iyu Kecil (TSS)",
+   "annex": "SPI routeing Annex 4",
+   "kind": "lane limit (north-west bound lane, separation line to inshore traffic zone)",
+   "closed": false,
+   "points": [
+    {
+     "id": "65",
+     "lat_text": "02°07·19’N",
+     "lon_text": "102°06·11’E",
+     "lat_norm": "02 07.19N",
+     "lon_norm": "102 06.11E",
+     "lat": 2.119833,
+     "lon": 102.101833,
+     "source": "S5",
+     "page": "PDF p.11 (printed p.10)"
+    },
+    {
+     "id": "66",
+     "lat_text": "01°57·89’N",
+     "lon_text": "102°16·51’E",
+     "lat_norm": "01 57.89N",
+     "lon_norm": "102 16.51E",
+     "lat": 1.964833,
+     "lon": 102.275167,
+     "source": "S5",
+     "page": "PDF p.11 (printed p.10)"
+    },
+    {
+     "id": "67",
+     "lat_text": "01°38·39’N",
+     "lon_text": "102°59·90’E",
+     "lat_norm": "01 38.39N",
+     "lon_norm": "102 59.90E",
+     "lat": 1.639833,
+     "lon": 102.998333,
+     "source": "S5",
+     "page": "PDF p.11 (printed p.10)"
+    },
+    {
+     "id": "68",
+     "lat_text": "01°25·49’N",
+     "lon_text": "103°14·90’E",
+     "lat_norm": "01 25.49N",
+     "lon_norm": "103 14.90E",
+     "lat": 1.424833,
+     "lon": 103.248333,
+     "source": "S5",
+     "page": "PDF p.11 (printed p.10)"
+    },
+    {
+     "id": "69",
+     "lat_text": "01°15·20’N",
+     "lon_text": "103°25·20’E",
+     "lat_norm": "01 15.20N",
+     "lon_norm": "103 25.20E",
+     "lat": 1.253333,
+     "lon": 103.42,
+     "source": "S5",
+     "page": "PDF p.11 (printed p.10)"
+    },
+    {
+     "id": "70",
+     "lat_text": "01°14·30’N",
+     "lon_text": "103°29·60’E",
+     "lat_norm": "01 14.30N",
+     "lon_norm": "103 29.60E",
+     "lat": 1.238333,
+     "lon": 103.493333,
+     "source": "S5",
+     "page": "PDF p.11 (printed p.10)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.11 (printed p.10)",
+   "note": "Inshore traffic zone: from (65) to Pulau Undan Lighthouse 02°02·90’N 102°20·00’E then 040 deg to the Malaysian coast, and from (70) on 038 deg to the Malaysian coast (text only)."
+  },
+  {
+   "region": "Malacca Strait / Singapore Strait western approach",
+   "scheme": "Malacca to Iyu Kecil (TSS)",
+   "annex": "SPI routeing Annex 4",
+   "kind": "lane limit (south-east bound lane, outer line)",
+   "closed": false,
+   "points": [
+    {
+     "id": "71",
+     "lat_text": "02°02·79’N",
+     "lon_text": "102°02·11’E",
+     "lat_norm": "02 02.79N",
+     "lon_norm": "102 02.11E",
+     "lat": 2.0465,
+     "lon": 102.035167,
+     "source": "S5",
+     "page": "PDF p.11 (printed p.10)"
+    },
+    {
+     "id": "72",
+     "lat_text": "01°52·59’N",
+     "lon_text": "102°13·21’E",
+     "lat_norm": "01 52.59N",
+     "lon_norm": "102 13.21E",
+     "lat": 1.8765,
+     "lon": 102.220167,
+     "source": "S5",
+     "page": "PDF p.11 (printed p.10)"
+    },
+    {
+     "id": "73",
+     "lat_text": "01°36·79’N",
+     "lon_text": "102°46·81’E",
+     "lat_norm": "01 36.79N",
+     "lon_norm": "102 46.81E",
+     "lat": 1.613167,
+     "lon": 102.780167,
+     "source": "S5",
+     "page": "PDF p.11 (printed p.10)"
+    },
+    {
+     "id": "74",
+     "lat_text": "01°22·00’N",
+     "lon_text": "103°11·00’E",
+     "lat_norm": "01 22.00N",
+     "lon_norm": "103 11.00E",
+     "lat": 1.366667,
+     "lon": 103.183333,
+     "source": "S5",
+     "page": "PDF p.11 (printed p.10)"
+    },
+    {
+     "id": "75",
+     "lat_text": "01°11·60’N",
+     "lon_text": "103°22·70’E",
+     "lat_norm": "01 11.60N",
+     "lon_norm": "103 22.70E",
+     "lat": 1.193333,
+     "lon": 103.378333,
+     "source": "S5",
+     "page": "PDF p.11 (printed p.10)"
+    },
+    {
+     "id": "76",
+     "lat_text": "01°09·20’N",
+     "lon_text": "103°26·70’E",
+     "lat_norm": "01 09.20N",
+     "lon_norm": "103 26.70E",
+     "lat": 1.153333,
+     "lon": 103.445,
+     "source": "S5",
+     "page": "PDF p.11 (printed p.10)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.11 (printed p.10)",
+   "note": ""
+  },
+  {
+   "region": "Malacca Strait",
+   "scheme": "Malacca to Iyu Kecil (TSS)",
+   "annex": "SPI routeing Annex 4",
+   "kind": "deep water route (south-east bound)",
+   "closed": true,
+   "points": [
+    {
+     "id": "77",
+     "lat_text": "02°01·89’N",
+     "lon_text": "102°01·41’E",
+     "lat_norm": "02 01.89N",
+     "lon_norm": "102 01.41E",
+     "lat": 2.0315,
+     "lon": 102.0235,
+     "source": "S5",
+     "page": "PDF p.11 (printed p.10)"
+    },
+    {
+     "id": "78",
+     "lat_text": "01°59·69’N",
+     "lon_text": "102°05·51’E",
+     "lat_norm": "01 59.69N",
+     "lon_norm": "102 05.51E",
+     "lat": 1.994833,
+     "lon": 102.091833,
+     "source": "S5",
+     "page": "PDF p.11 (printed p.10)"
+    },
+    {
+     "id": "79",
+     "lat_text": "01°52·59’N",
+     "lon_text": "102°13·21’E",
+     "lat_norm": "01 52.59N",
+     "lon_norm": "102 13.21E",
+     "lat": 1.8765,
+     "lon": 102.220167,
+     "source": "S5",
+     "page": "PDF p.11 (printed p.10)"
+    },
+    {
+     "id": "80",
+     "lat_text": "01°59·99’N",
+     "lon_text": "101°59·71’E",
+     "lat_norm": "01 59.99N",
+     "lon_norm": "101 59.71E",
+     "lat": 1.999833,
+     "lon": 101.995167,
+     "source": "S5",
+     "page": "PDF p.11 (printed p.10)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.11 (printed p.10)",
+   "note": ""
+  },
+  {
+   "region": "Singapore Strait",
+   "scheme": "Off Sultan Shoal Lighthouse",
+   "annex": "SPI routeing Annex 4",
+   "kind": "precautionary area",
+   "closed": true,
+   "points": [
+    {
+     "id": "81",
+     "lat_text": "01°14·28’N",
+     "lon_text": "103°29·63’E",
+     "lat_norm": "01 14.28N",
+     "lon_norm": "103 29.63E",
+     "lat": 1.238,
+     "lon": 103.493833,
+     "source": "S5",
+     "page": "PDF p.11 (printed p.10)"
+    },
+    {
+     "id": "82",
+     "lat_text": "01°12·62’N",
+     "lon_text": "103°36·14’E",
+     "lat_norm": "01 12.62N",
+     "lon_norm": "103 36.14E",
+     "lat": 1.210333,
+     "lon": 103.602333,
+     "source": "S5",
+     "page": "PDF p.11 (printed p.10)"
+    },
+    {
+     "id": "83",
+     "lat_text": "01°05·94’N",
+     "lon_text": "103°32·20’E",
+     "lat_norm": "01 05.94N",
+     "lon_norm": "103 32.20E",
+     "lat": 1.099,
+     "lon": 103.536667,
+     "source": "S5",
+     "page": "PDF p.11 (printed p.10)"
+    },
+    {
+     "id": "84",
+     "lat_text": "01°09·23’N",
+     "lon_text": "103°26·66’E",
+     "lat_norm": "01 09.23N",
+     "lon_norm": "103 26.66E",
+     "lat": 1.153833,
+     "lon": 103.444333,
+     "source": "S5",
+     "page": "PDF p.11 (printed p.10)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.11 (printed p.10)",
+   "note": "Joins the Malacca to Iyu Kecil TSS (west) and the Main Strait TSS (east). Note (81)≈(70) and (84)≈(76) differ by 0.02-0.04' as printed."
+  },
+  {
+   "region": "Singapore Strait",
+   "scheme": "In the Singapore Strait (Main Strait) (TSS)",
+   "annex": "SPI routeing Annex 5",
+   "kind": "separation zone (outer limit)",
+   "closed": true,
+   "points": [
+    {
+     "id": "85",
+     "lat_text": "01°10·35’N",
+     "lon_text": "103°34·90’E",
+     "lat_norm": "01 10.35N",
+     "lon_norm": "103 34.90E",
+     "lat": 1.1725,
+     "lon": 103.581667,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    },
+    {
+     "id": "86",
+     "lat_text": "01°10·35’N",
+     "lon_text": "103°39·85’E",
+     "lat_norm": "01 10.35N",
+     "lon_norm": "103 39.85E",
+     "lat": 1.1725,
+     "lon": 103.664167,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    },
+    {
+     "id": "87",
+     "lat_text": "01°07·50’N",
+     "lon_text": "103°43·72’E",
+     "lat_norm": "01 07.50N",
+     "lon_norm": "103 43.72E",
+     "lat": 1.125,
+     "lon": 103.728667,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    },
+    {
+     "id": "88",
+     "lat_text": "01°08·60’N",
+     "lon_text": "103°45·43’E",
+     "lat_norm": "01 08.60N",
+     "lon_norm": "103 45.43E",
+     "lat": 1.143333,
+     "lon": 103.757167,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    },
+    {
+     "id": "89",
+     "lat_text": "01°05·90’N",
+     "lon_text": "103°43·38’E",
+     "lat_norm": "01 05.90N",
+     "lon_norm": "103 43.38E",
+     "lat": 1.098333,
+     "lon": 103.723,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    },
+    {
+     "id": "90",
+     "lat_text": "01°03·60’N",
+     "lon_text": "103°38·98’E",
+     "lat_norm": "01 03.60N",
+     "lon_norm": "103 38.98E",
+     "lat": 1.06,
+     "lon": 103.649667,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    },
+    {
+     "id": "91",
+     "lat_text": "01°07·06’N",
+     "lon_text": "103°32·96’E",
+     "lat_norm": "01 07.06N",
+     "lon_norm": "103 32.96E",
+     "lat": 1.117667,
+     "lon": 103.549333,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.12 (printed p.11)",
+   "note": "Same values in IMO COLREG.2/Circ.54 annex 5 (WGS 84, in force 1 July 2005 per COLREG.2/Circ.54/Add.2)."
+  },
+  {
+   "region": "Singapore Strait",
+   "scheme": "In the Singapore Strait (Main Strait) (TSS)",
+   "annex": "SPI routeing Annex 5",
+   "kind": "anchorage area inside the separation zone (inner limit of the separation zone)",
+   "closed": true,
+   "points": [
+    {
+     "id": "85a",
+     "lat_text": "01°09·40’N",
+     "lon_text": "103°36·60’E",
+     "lat_norm": "01 09.40N",
+     "lon_norm": "103 36.60E",
+     "lat": 1.156667,
+     "lon": 103.61,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    },
+    {
+     "id": "86b",
+     "lat_text": "01°09·10’N",
+     "lon_text": "103°38·60’E",
+     "lat_norm": "01 09.10N",
+     "lon_norm": "103 38.60E",
+     "lat": 1.151667,
+     "lon": 103.643333,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    },
+    {
+     "id": "89a",
+     "lat_text": "01°05·50’N",
+     "lon_text": "103°40·80’E",
+     "lat_norm": "01 05.50N",
+     "lon_norm": "103 40.80E",
+     "lat": 1.091667,
+     "lon": 103.68,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    },
+    {
+     "id": "90a",
+     "lat_text": "01°04·50’N",
+     "lon_text": "103°38·90’E",
+     "lat_norm": "01 04.50N",
+     "lon_norm": "103 38.90E",
+     "lat": 1.075,
+     "lon": 103.648333,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    },
+    {
+     "id": "91a",
+     "lat_text": "01°06·80’N",
+     "lon_text": "103°35·00’E",
+     "lat_norm": "01 06.80N",
+     "lon_norm": "103 35.00E",
+     "lat": 1.113333,
+     "lon": 103.583333,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.12 (printed p.11)",
+   "note": "COLREG.2/Circ.54 annex 5 (IMO, 2004) amended the separation zone 'to establish an anchorage area in the separation zone'; the separation zone is the ring between the outer and inner coordinates. SPI labels the second inner point '(86b)'; the IMO circular labels it '(86a)'. Same position."
+  },
+  {
+   "region": "Singapore Strait",
+   "scheme": "In the Singapore Strait (Main Strait) (TSS)",
+   "annex": "SPI routeing Annex 5",
+   "kind": "separation line",
+   "closed": false,
+   "points": [
+    {
+     "id": "92",
+     "lat_text": "01°08·60’N",
+     "lon_text": "103°45·33’E",
+     "lat_norm": "01 08.60N",
+     "lon_norm": "103 45.33E",
+     "lat": 1.143333,
+     "lon": 103.7555,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    },
+    {
+     "id": "93",
+     "lat_text": "01°10·26’N",
+     "lon_text": "103°47·81’E",
+     "lat_norm": "01 10.26N",
+     "lon_norm": "103 47.81E",
+     "lat": 1.171,
+     "lon": 103.796833,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    },
+    {
+     "id": "94",
+     "lat_text": "01°10·81’N",
+     "lon_text": "103°49·20’E",
+     "lat_norm": "01 10.81N",
+     "lon_norm": "103 49.20E",
+     "lat": 1.180167,
+     "lon": 103.82,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.12 (printed p.11)",
+   "note": ""
+  },
+  {
+   "region": "Singapore Strait",
+   "scheme": "In the Singapore Strait (Main Strait) (TSS)",
+   "annex": "SPI routeing Annex 5",
+   "kind": "lane limit (westbound lane, outer line)",
+   "closed": false,
+   "points": [
+    {
+     "id": "95",
+     "lat_text": "01°12·62’N",
+     "lon_text": "103°36·14’E",
+     "lat_norm": "01 12.62N",
+     "lon_norm": "103 36.14E",
+     "lat": 1.210333,
+     "lon": 103.602333,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    },
+    {
+     "id": "96",
+     "lat_text": "01°11·50’N",
+     "lon_text": "103°40·45’E",
+     "lat_norm": "01 11.50N",
+     "lon_norm": "103 40.45E",
+     "lat": 1.191667,
+     "lon": 103.674167,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    },
+    {
+     "id": "97",
+     "lat_text": "01°08·65’N",
+     "lon_text": "103°44·30’E",
+     "lat_norm": "01 08.65N",
+     "lon_norm": "103 44.30E",
+     "lat": 1.144167,
+     "lon": 103.738333,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    },
+    {
+     "id": "98",
+     "lat_text": "01°10·45’N",
+     "lon_text": "103°47·40’E",
+     "lat_norm": "01 10.45N",
+     "lon_norm": "103 47.40E",
+     "lat": 1.174167,
+     "lon": 103.79,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    },
+    {
+     "id": "99",
+     "lat_text": "01°11·13’N",
+     "lon_text": "103°49·08’E",
+     "lat_norm": "01 11.13N",
+     "lon_norm": "103 49.08E",
+     "lat": 1.1855,
+     "lon": 103.818,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.12 (printed p.11)",
+   "note": ""
+  },
+  {
+   "region": "Singapore Strait",
+   "scheme": "In the Singapore Strait (Main Strait) (TSS)",
+   "annex": "SPI routeing Annex 5",
+   "kind": "lane limit (eastbound lane, outer line)",
+   "closed": false,
+   "points": [
+    {
+     "id": "100",
+     "lat_text": "01°05·94’N",
+     "lon_text": "103°32·20’E",
+     "lat_norm": "01 05.94N",
+     "lon_norm": "103 32.20E",
+     "lat": 1.099,
+     "lon": 103.536667,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    },
+    {
+     "id": "101",
+     "lat_text": "01°01·60’N",
+     "lon_text": "103°39·55’E",
+     "lat_norm": "01 01.60N",
+     "lon_norm": "103 39.55E",
+     "lat": 1.026667,
+     "lon": 103.659167,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    },
+    {
+     "id": "102",
+     "lat_text": "01°05·00’N",
+     "lon_text": "103°43·57’E",
+     "lat_norm": "01 05.00N",
+     "lon_norm": "103 43.57E",
+     "lat": 1.083333,
+     "lon": 103.726167,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    },
+    {
+     "id": "103",
+     "lat_text": "01°07·80’N",
+     "lon_text": "103°46·15’E",
+     "lat_norm": "01 07.80N",
+     "lon_norm": "103 46.15E",
+     "lat": 1.13,
+     "lon": 103.769167,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    },
+    {
+     "id": "104",
+     "lat_text": "01°09·47’N",
+     "lon_text": "103°48·60’E",
+     "lat_norm": "01 09.47N",
+     "lon_norm": "103 48.60E",
+     "lat": 1.157833,
+     "lon": 103.81,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    },
+    {
+     "id": "105",
+     "lat_text": "01°09·92’N",
+     "lon_text": "103°49·55’E",
+     "lat_norm": "01 09.92N",
+     "lon_norm": "103 49.55E",
+     "lat": 1.165333,
+     "lon": 103.825833,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.12 (printed p.11)",
+   "note": ""
+  },
+  {
+   "region": "Singapore Strait",
+   "scheme": "In the Singapore Strait (Main Strait) (TSS)",
+   "annex": "SPI routeing Annex 5",
+   "kind": "deep water route (eastbound, Phillip Channel)",
+   "closed": true,
+   "points": [
+    {
+     "id": "i",
+     "lat_text": "01°03·60’N",
+     "lon_text": "103°38·85’E",
+     "lat_norm": "01 03.60N",
+     "lon_norm": "103 38.85E",
+     "lat": 1.06,
+     "lon": 103.6475,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    },
+    {
+     "id": "ii",
+     "lat_text": "01°05·90’N",
+     "lon_text": "103°43·28’E",
+     "lat_norm": "01 05.90N",
+     "lon_norm": "103 43.28E",
+     "lat": 1.098333,
+     "lon": 103.721333,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    },
+    {
+     "id": "iii",
+     "lat_text": "01°08·60’N",
+     "lon_text": "103°45·33’E",
+     "lat_norm": "01 08.60N",
+     "lon_norm": "103 45.33E",
+     "lat": 1.143333,
+     "lon": 103.7555,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    },
+    {
+     "id": "iv",
+     "lat_text": "01°10·26’N",
+     "lon_text": "103°47·81’E",
+     "lat_norm": "01 10.26N",
+     "lon_norm": "103 47.81E",
+     "lat": 1.171,
+     "lon": 103.796833,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    },
+    {
+     "id": "v",
+     "lat_text": "01°10·81’N",
+     "lon_text": "103°49·20’E",
+     "lat_norm": "01 10.81N",
+     "lon_norm": "103 49.20E",
+     "lat": 1.180167,
+     "lon": 103.82,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    },
+    {
+     "id": "vi",
+     "lat_text": "01°10·45’N",
+     "lon_text": "103°49·35’E",
+     "lat_norm": "01 10.45N",
+     "lon_norm": "103 49.35E",
+     "lat": 1.174167,
+     "lon": 103.8225,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    },
+    {
+     "id": "vii",
+     "lat_text": "01°09·95’N",
+     "lon_text": "103°48·18’E",
+     "lat_norm": "01 09.95N",
+     "lon_norm": "103 48.18E",
+     "lat": 1.165833,
+     "lon": 103.803,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    },
+    {
+     "id": "viii",
+     "lat_text": "01°08·90’N",
+     "lon_text": "103°46·72’E",
+     "lat_norm": "01 08.90N",
+     "lon_norm": "103 46.72E",
+     "lat": 1.148333,
+     "lon": 103.778667,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    },
+    {
+     "id": "ix",
+     "lat_text": "01°04·95’N",
+     "lon_text": "103°42·77’E",
+     "lat_norm": "01 04.95N",
+     "lon_norm": "103 42.77E",
+     "lat": 1.0825,
+     "lon": 103.712833,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    },
+    {
+     "id": "x",
+     "lat_text": "01°02·97’N",
+     "lon_text": "103°39·00’E",
+     "lat_norm": "01 02.97N",
+     "lon_norm": "103 39.00E",
+     "lat": 1.0495,
+     "lon": 103.65,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.12 (printed p.11)",
+   "note": "SPI text says the DW route lies 'within the eastbound lane described in paragraph (d)', but (d) is the westbound lane; the positions lie in the eastbound lane (e). Text slip in the source, positions used as printed. 'Phillip Channel' is the name used in the IMO Rules (SN/Circ.198) for this DW route."
+  },
+  {
+   "region": "Singapore Strait",
+   "scheme": "Singapore Strait (Off Pulau Sebarok/Pulau Belakang Padang)",
+   "annex": "SPI routeing Annex 5",
+   "kind": "precautionary area",
+   "closed": true,
+   "points": [
+    {
+     "id": "106",
+     "lat_text": "01°11·13’N",
+     "lon_text": "103°49·08’E",
+     "lat_norm": "01 11.13N",
+     "lon_norm": "103 49.08E",
+     "lat": 1.1855,
+     "lon": 103.818,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    },
+    {
+     "id": "107",
+     "lat_text": "01°11·59’N",
+     "lon_text": "103°50·21’E",
+     "lat_norm": "01 11.59N",
+     "lon_norm": "103 50.21E",
+     "lat": 1.193167,
+     "lon": 103.836833,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    },
+    {
+     "id": "108",
+     "lat_text": "01°10·45’N",
+     "lon_text": "103°50·65’E",
+     "lat_norm": "01 10.45N",
+     "lon_norm": "103 50.65E",
+     "lat": 1.174167,
+     "lon": 103.844167,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    },
+    {
+     "id": "109",
+     "lat_text": "01°09·92’N",
+     "lon_text": "103°49·55’E",
+     "lat_norm": "01 09.92N",
+     "lon_norm": "103 49.55E",
+     "lat": 1.165333,
+     "lon": 103.825833,
+     "source": "S5",
+     "page": "PDF p.12 (printed p.11)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.12 (printed p.11)",
+   "note": ""
+  },
+  {
+   "region": "Singapore Strait",
+   "scheme": "Singapore Strait (Off St. John's Island) (TSS)",
+   "annex": "SPI routeing Annex 6",
+   "kind": "separation line",
+   "closed": false,
+   "points": [
+    {
+     "id": "110",
+     "lat_text": "01°11·27’N",
+     "lon_text": "103°50·33’E",
+     "lat_norm": "01 11.27N",
+     "lon_norm": "103 50.33E",
+     "lat": 1.187833,
+     "lon": 103.838833,
+     "source": "S5",
+     "page": "PDF p.13 (printed p.12)"
+    },
+    {
+     "id": "111",
+     "lat_text": "01°12·21’N",
+     "lon_text": "103°52·30’E",
+     "lat_norm": "01 12.21N",
+     "lon_norm": "103 52.30E",
+     "lat": 1.2035,
+     "lon": 103.871667,
+     "source": "S5",
+     "page": "PDF p.13 (printed p.12)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.13 (printed p.12)",
+   "note": ""
+  },
+  {
+   "region": "Singapore Strait",
+   "scheme": "Singapore Strait (Off St. John's Island) (TSS)",
+   "annex": "SPI routeing Annex 6",
+   "kind": "lane limit (westbound lane, outer line)",
+   "closed": false,
+   "points": [
+    {
+     "id": "112",
+     "lat_text": "01°11·59’N",
+     "lon_text": "103°50·21’E",
+     "lat_norm": "01 11.59N",
+     "lon_norm": "103 50.21E",
+     "lat": 1.193167,
+     "lon": 103.836833,
+     "source": "S5",
+     "page": "PDF p.13 (printed p.12)"
+    },
+    {
+     "id": "113",
+     "lat_text": "01°11·96’N",
+     "lon_text": "103°51·11’E",
+     "lat_norm": "01 11.96N",
+     "lon_norm": "103 51.11E",
+     "lat": 1.199333,
+     "lon": 103.851833,
+     "source": "S5",
+     "page": "PDF p.13 (printed p.12)"
+    },
+    {
+     "id": "114",
+     "lat_text": "01°12·51’N",
+     "lon_text": "103°52·15’E",
+     "lat_norm": "01 12.51N",
+     "lon_norm": "103 52.15E",
+     "lat": 1.2085,
+     "lon": 103.869167,
+     "source": "S5",
+     "page": "PDF p.13 (printed p.12)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.13 (printed p.12)",
+   "note": ""
+  },
+  {
+   "region": "Singapore Strait",
+   "scheme": "Singapore Strait (Off St. John's Island) (TSS)",
+   "annex": "SPI routeing Annex 6",
+   "kind": "lane limit (eastbound lane, outer line)",
+   "closed": false,
+   "points": [
+    {
+     "id": "115",
+     "lat_text": "01°10·45’N",
+     "lon_text": "103°50·65’E",
+     "lat_norm": "01 10.45N",
+     "lon_norm": "103 50.65E",
+     "lat": 1.174167,
+     "lon": 103.844167,
+     "source": "S5",
+     "page": "PDF p.13 (printed p.12)"
+    },
+    {
+     "id": "116",
+     "lat_text": "01°11·41’N",
+     "lon_text": "103°52·66’E",
+     "lat_norm": "01 11.41N",
+     "lon_norm": "103 52.66E",
+     "lat": 1.190167,
+     "lon": 103.877667,
+     "source": "S5",
+     "page": "PDF p.13 (printed p.12)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.13 (printed p.12)",
+   "note": ""
+  },
+  {
+   "region": "Singapore Strait",
+   "scheme": "Singapore Strait (Off St. John's Island) (TSS)",
+   "annex": "SPI routeing Annex 6",
+   "kind": "deep water route (eastbound)",
+   "closed": true,
+   "points": [
+    {
+     "id": "xi",
+     "lat_text": "01°11·27’N",
+     "lon_text": "103°50·33’E",
+     "lat_norm": "01 11.27N",
+     "lon_norm": "103 50.33E",
+     "lat": 1.187833,
+     "lon": 103.838833,
+     "source": "S5",
+     "page": "PDF p.13 (printed p.12)"
+    },
+    {
+     "id": "xii",
+     "lat_text": "01°12·21’N",
+     "lon_text": "103°52·30’E",
+     "lat_norm": "01 12.21N",
+     "lon_norm": "103 52.30E",
+     "lat": 1.2035,
+     "lon": 103.871667,
+     "source": "S5",
+     "page": "PDF p.13 (printed p.12)"
+    },
+    {
+     "id": "xiii",
+     "lat_text": "01°11·78’N",
+     "lon_text": "103°52·48’E",
+     "lat_norm": "01 11.78N",
+     "lon_norm": "103 52.48E",
+     "lat": 1.196333,
+     "lon": 103.874667,
+     "source": "S5",
+     "page": "PDF p.13 (printed p.12)"
+    },
+    {
+     "id": "xiv",
+     "lat_text": "01°10·92’N",
+     "lon_text": "103°50·47’E",
+     "lat_norm": "01 10.92N",
+     "lon_norm": "103 50.47E",
+     "lat": 1.182,
+     "lon": 103.841167,
+     "source": "S5",
+     "page": "PDF p.13 (printed p.12)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.13 (printed p.12)",
+   "note": ""
+  },
+  {
+   "region": "Singapore Strait",
+   "scheme": "Singapore Strait (Off St. John's Island/Pulau Sambu)",
+   "annex": "SPI routeing Annex 6",
+   "kind": "precautionary area",
+   "closed": true,
+   "points": [
+    {
+     "id": "117",
+     "lat_text": "01°12·51’N",
+     "lon_text": "103°52·15’E",
+     "lat_norm": "01 12.51N",
+     "lon_norm": "103 52.15E",
+     "lat": 1.2085,
+     "lon": 103.869167,
+     "source": "S5",
+     "page": "PDF p.13 (printed p.12)"
+    },
+    {
+     "id": "118",
+     "lat_text": "01°13·38’N",
+     "lon_text": "103°53·75’E",
+     "lat_norm": "01 13.38N",
+     "lon_norm": "103 53.75E",
+     "lat": 1.223,
+     "lon": 103.895833,
+     "source": "S5",
+     "page": "PDF p.13 (printed p.12)"
+    },
+    {
+     "id": "119",
+     "lat_text": "01°12·11’N",
+     "lon_text": "103°54·30’E",
+     "lat_norm": "01 12.11N",
+     "lon_norm": "103 54.30E",
+     "lat": 1.201833,
+     "lon": 103.905,
+     "source": "S5",
+     "page": "PDF p.13 (printed p.12)"
+    },
+    {
+     "id": "120",
+     "lat_text": "01°11·41’N",
+     "lon_text": "103°52·66’E",
+     "lat_norm": "01 11.41N",
+     "lon_norm": "103 52.66E",
+     "lat": 1.190167,
+     "lon": 103.877667,
+     "source": "S5",
+     "page": "PDF p.13 (printed p.12)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.13 (printed p.12)",
+   "note": ""
+  },
+  {
+   "region": "Singapore Strait",
+   "scheme": "Singapore Strait (Off St. John's Island/Pulau Sambu)",
+   "annex": "SPI routeing Annex 6",
+   "kind": "focal point of the precautionary area; centre of an area to be avoided (circle, diameter one cable)",
+   "closed": false,
+   "points": [
+    {
+     "id": "121",
+     "lat_text": "01°12·60’N",
+     "lon_text": "103°53·10’E",
+     "lat_norm": "01 12.60N",
+     "lon_norm": "103 53.10E",
+     "lat": 1.21,
+     "lon": 103.885,
+     "source": "S5",
+     "page": "PDF p.13 (printed p.12)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.13 (printed p.12)",
+   "note": "Area to be avoided: circle of one cable DIAMETER (radius 0.05 NM) around (121)."
+  },
+  {
+   "region": "Singapore Strait",
+   "scheme": "Singapore Strait (Off Changi/Pulau Batam) (TSS)",
+   "annex": "SPI routeing Annex 7",
+   "kind": "separation line",
+   "closed": false,
+   "points": [
+    {
+     "id": "122",
+     "lat_text": "01°12·97’N",
+     "lon_text": "103°53·93’E",
+     "lat_norm": "01 12.97N",
+     "lon_norm": "103 53.93E",
+     "lat": 1.216167,
+     "lon": 103.898833,
+     "source": "S5",
+     "page": "PDF p.14 (printed p.13)"
+    },
+    {
+     "id": "123",
+     "lat_text": "01°13·57’N",
+     "lon_text": "103°55·30’E",
+     "lat_norm": "01 13.57N",
+     "lon_norm": "103 55.30E",
+     "lat": 1.226167,
+     "lon": 103.921667,
+     "source": "S5",
+     "page": "PDF p.14 (printed p.13)"
+    },
+    {
+     "id": "124",
+     "lat_text": "01°14·89’N",
+     "lon_text": "103°58·91’E",
+     "lat_norm": "01 14.89N",
+     "lon_norm": "103 58.91E",
+     "lat": 1.248167,
+     "lon": 103.981833,
+     "source": "S5",
+     "page": "PDF p.14 (printed p.13)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.14 (printed p.13)",
+   "note": ""
+  },
+  {
+   "region": "Singapore Strait",
+   "scheme": "Singapore Strait (Off Changi/Pulau Batam) (TSS)",
+   "annex": "SPI routeing Annex 7",
+   "kind": "separation zone",
+   "closed": true,
+   "points": [
+    {
+     "id": "125",
+     "lat_text": "01°14·89’N",
+     "lon_text": "103°58·91’E",
+     "lat_norm": "01 14.89N",
+     "lon_norm": "103 58.91E",
+     "lat": 1.248167,
+     "lon": 103.981833,
+     "source": "S5",
+     "page": "PDF p.14 (printed p.13)"
+    },
+    {
+     "id": "126",
+     "lat_text": "01°15·67’N",
+     "lon_text": "104°03·30’E",
+     "lat_norm": "01 15.67N",
+     "lon_norm": "104 03.30E",
+     "lat": 1.261167,
+     "lon": 104.055,
+     "source": "S5",
+     "page": "PDF p.14 (printed p.13)"
+    },
+    {
+     "id": "127",
+     "lat_text": "01°15·42’N",
+     "lon_text": "104°03·35’E",
+     "lat_norm": "01 15.42N",
+     "lon_norm": "104 03.35E",
+     "lat": 1.257,
+     "lon": 104.055833,
+     "source": "S5",
+     "page": "PDF p.14 (printed p.13)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.14 (printed p.13)",
+   "note": "Three points as printed (triangle)."
+  },
+  {
+   "region": "Singapore Strait",
+   "scheme": "Singapore Strait (Off Changi/Pulau Batam) (TSS)",
+   "annex": "SPI routeing Annex 7",
+   "kind": "lane limit (westbound lane, outer line)",
+   "closed": false,
+   "points": [
+    {
+     "id": "128",
+     "lat_text": "01°13·38’N",
+     "lon_text": "103°53·75’E",
+     "lat_norm": "01 13.38N",
+     "lon_norm": "103 53.75E",
+     "lat": 1.223,
+     "lon": 103.895833,
+     "source": "S5",
+     "page": "PDF p.14 (printed p.13)"
+    },
+    {
+     "id": "129",
+     "lat_text": "01°14·07’N",
+     "lon_text": "103°55·08’E",
+     "lat_norm": "01 14.07N",
+     "lon_norm": "103 55.08E",
+     "lat": 1.2345,
+     "lon": 103.918,
+     "source": "S5",
+     "page": "PDF p.14 (printed p.13)"
+    },
+    {
+     "id": "130",
+     "lat_text": "01°16·02’N",
+     "lon_text": "103°59·90’E",
+     "lat_norm": "01 16.02N",
+     "lon_norm": "103 59.90E",
+     "lat": 1.267,
+     "lon": 103.998333,
+     "source": "S5",
+     "page": "PDF p.14 (printed p.13)"
+    },
+    {
+     "id": "131",
+     "lat_text": "01°16·60’N",
+     "lon_text": "104°03·22’E",
+     "lat_norm": "01 16.60N",
+     "lon_norm": "104 03.22E",
+     "lat": 1.276667,
+     "lon": 104.053667,
+     "source": "S5",
+     "page": "PDF p.14 (printed p.13)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.14 (printed p.13)",
+   "note": ""
+  },
+  {
+   "region": "Singapore Strait",
+   "scheme": "Singapore Strait (Off Changi/Pulau Batam) (TSS)",
+   "annex": "SPI routeing Annex 7",
+   "kind": "lane limit (eastbound lane, outer line)",
+   "closed": false,
+   "points": [
+    {
+     "id": "132",
+     "lat_text": "01°12·11’N",
+     "lon_text": "103°54·30’E",
+     "lat_norm": "01 12.11N",
+     "lon_norm": "103 54.30E",
+     "lat": 1.201833,
+     "lon": 103.905,
+     "source": "S5",
+     "page": "PDF p.14 (printed p.13)"
+    },
+    {
+     "id": "133",
+     "lat_text": "01°13·50’N",
+     "lon_text": "103°57·57’E",
+     "lat_norm": "01 13.50N",
+     "lon_norm": "103 57.57E",
+     "lat": 1.225,
+     "lon": 103.9595,
+     "source": "S5",
+     "page": "PDF p.14 (printed p.13)"
+    },
+    {
+     "id": "134",
+     "lat_text": "01°14·05’N",
+     "lon_text": "104°03·48’E",
+     "lat_norm": "01 14.05N",
+     "lon_norm": "104 03.48E",
+     "lat": 1.234167,
+     "lon": 104.058,
+     "source": "S5",
+     "page": "PDF p.14 (printed p.13)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.14 (printed p.13)",
+   "note": ""
+  },
+  {
+   "region": "Singapore Strait",
+   "scheme": "Singapore Strait (Off Tanjung Setapa/Pulau Bintan)",
+   "annex": "SPI routeing Annex 7",
+   "kind": "precautionary area",
+   "closed": true,
+   "points": [
+    {
+     "id": "135",
+     "lat_text": "01°16·60’N",
+     "lon_text": "104°03·22’E",
+     "lat_norm": "01 16.60N",
+     "lon_norm": "104 03.22E",
+     "lat": 1.276667,
+     "lon": 104.053667,
+     "source": "S5",
+     "page": "PDF p.14 (printed p.13)"
+    },
+    {
+     "id": "136",
+     "lat_text": "01°18·63’N",
+     "lon_text": "104°14·89’E",
+     "lat_norm": "01 18.63N",
+     "lon_norm": "104 14.89E",
+     "lat": 1.3105,
+     "lon": 104.248167,
+     "source": "S5",
+     "page": "PDF p.14 (printed p.13)"
+    },
+    {
+     "id": "137",
+     "lat_text": "01°15·40’N",
+     "lon_text": "104°14·89’E",
+     "lat_norm": "01 15.40N",
+     "lon_norm": "104 14.89E",
+     "lat": 1.256667,
+     "lon": 104.248167,
+     "source": "S5",
+     "page": "PDF p.14 (printed p.13)"
+    },
+    {
+     "id": "138",
+     "lat_text": "01°14·05’N",
+     "lon_text": "104°03·48’E",
+     "lat_norm": "01 14.05N",
+     "lon_norm": "104 03.48E",
+     "lat": 1.234167,
+     "lon": 104.058,
+     "source": "S5",
+     "page": "PDF p.14 (printed p.13)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.14 (printed p.13)",
+   "note": ""
+  },
+  {
+   "region": "Singapore Strait",
+   "scheme": "At Horsburgh Lighthouse Area (TSS)",
+   "annex": "SPI routeing Annex 8",
+   "kind": "separation zone",
+   "closed": true,
+   "points": [
+    {
+     "id": "139",
+     "lat_text": "01°17·32’N",
+     "lon_text": "104°14·89’E",
+     "lat_norm": "01 17.32N",
+     "lon_norm": "104 14.89E",
+     "lat": 1.288667,
+     "lon": 104.248167,
+     "source": "S5",
+     "page": "PDF p.15 (printed p.14)"
+    },
+    {
+     "id": "140",
+     "lat_text": "01°18·00’N",
+     "lon_text": "104°19·59’E",
+     "lat_norm": "01 18.00N",
+     "lon_norm": "104 19.59E",
+     "lat": 1.3,
+     "lon": 104.3265,
+     "source": "S5",
+     "page": "PDF p.15 (printed p.14)"
+    },
+    {
+     "id": "141",
+     "lat_text": "01°24·55’N",
+     "lon_text": "104°26·94’E",
+     "lat_norm": "01 24.55N",
+     "lon_norm": "104 26.94E",
+     "lat": 1.409167,
+     "lon": 104.449,
+     "source": "S5",
+     "page": "PDF p.15 (printed p.14)"
+    },
+    {
+     "id": "142",
+     "lat_text": "01°24·30’N",
+     "lon_text": "104°27·14’E",
+     "lat_norm": "01 24.30N",
+     "lon_norm": "104 27.14E",
+     "lat": 1.405,
+     "lon": 104.452333,
+     "source": "S5",
+     "page": "PDF p.15 (printed p.14)"
+    },
+    {
+     "id": "143",
+     "lat_text": "01°17·80’N",
+     "lon_text": "104°19·74’E",
+     "lat_norm": "01 17.80N",
+     "lon_norm": "104 19.74E",
+     "lat": 1.296667,
+     "lon": 104.329,
+     "source": "S5",
+     "page": "PDF p.15 (printed p.14)"
+    },
+    {
+     "id": "144",
+     "lat_text": "01°17·10’N",
+     "lon_text": "104°14·89’E",
+     "lat_norm": "01 17.10N",
+     "lon_norm": "104 14.89E",
+     "lat": 1.285,
+     "lon": 104.248167,
+     "source": "S5",
+     "page": "PDF p.15 (printed p.14)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.15 (printed p.14)",
+   "note": ""
+  },
+  {
+   "region": "Singapore Strait",
+   "scheme": "At Horsburgh Lighthouse Area (TSS)",
+   "annex": "SPI routeing Annex 8",
+   "kind": "lane limit (south-westbound lane, outer line)",
+   "closed": false,
+   "points": [
+    {
+     "id": "145",
+     "lat_text": "01°18·63’N",
+     "lon_text": "104°14·89’E",
+     "lat_norm": "01 18.63N",
+     "lon_norm": "104 14.89E",
+     "lat": 1.3105,
+     "lon": 104.248167,
+     "source": "S5",
+     "page": "PDF p.15 (printed p.14)"
+    },
+    {
+     "id": "146",
+     "lat_text": "01°19·40’N",
+     "lon_text": "104°19·39’E",
+     "lat_norm": "01 19.40N",
+     "lon_norm": "104 19.39E",
+     "lat": 1.323333,
+     "lon": 104.323167,
+     "source": "S5",
+     "page": "PDF p.15 (printed p.14)"
+    },
+    {
+     "id": "147",
+     "lat_text": "01°25·40’N",
+     "lon_text": "104°26·21’E",
+     "lat_norm": "01 25.40N",
+     "lon_norm": "104 26.21E",
+     "lat": 1.423333,
+     "lon": 104.436833,
+     "source": "S5",
+     "page": "PDF p.15 (printed p.14)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.15 (printed p.14)",
+   "note": ""
+  },
+  {
+   "region": "Singapore Strait",
+   "scheme": "At Horsburgh Lighthouse Area (TSS)",
+   "annex": "SPI routeing Annex 8",
+   "kind": "lane limit (north-eastbound lane, outer line)",
+   "closed": false,
+   "points": [
+    {
+     "id": "148",
+     "lat_text": "01°15·40’N",
+     "lon_text": "104°14·89’E",
+     "lat_norm": "01 15.40N",
+     "lon_norm": "104 14.89E",
+     "lat": 1.256667,
+     "lon": 104.248167,
+     "source": "S5",
+     "page": "PDF p.15 (printed p.14)"
+    },
+    {
+     "id": "149",
+     "lat_text": "01°16·30’N",
+     "lon_text": "104°19·74’E",
+     "lat_norm": "01 16.30N",
+     "lon_norm": "104 19.74E",
+     "lat": 1.271667,
+     "lon": 104.329,
+     "source": "S5",
+     "page": "PDF p.15 (printed p.14)"
+    },
+    {
+     "id": "150",
+     "lat_text": "01°23·40’N",
+     "lon_text": "104°27·84’E",
+     "lat_norm": "01 23.40N",
+     "lon_norm": "104 27.84E",
+     "lat": 1.39,
+     "lon": 104.464,
+     "source": "S5",
+     "page": "PDF p.15 (printed p.14)"
+    }
+   ],
+   "source": "S5",
+   "page": "PDF p.15 (printed p.14)",
+   "note": "(147) 104°26·21’E, (150) 104°27·84’E and (141)/(142) lie east of the STRAITREP eastern limit (104°23'E): the TSS runs on past the STRAITREP area."
+  }
+ ],
+ "tss_status": "Current text: TSS adopted at MSC 69 (COLREG.2/Circ.44, 26 May 1998, in force 1 Dec 1998), Main Strait separation zone amended by COLREG.2/Circ.54 (MSC 78, 2004; anchorage area inside the separation zone; in force 1 July 2005 after COLREG.2/Circ.54/Add.2). SPI 2026 (1 Nov 2026) and SPI 2025 (1 Feb 2025) routeing annexes are word-for-word identical and cite only Circ.44 and Circ.54, so no later amendment is known to MPA. COLREG.2/Circ.44 itself was not found online; annexes 4, 6, 7, 8 are therefore taken from MPA's official SPI (WGS 84), not checked against the IMO original.",
+ "other": [
+  {
+   "item": "Rules for vessels navigating through the Straits of Malacca and Singapore (IMO, MSC 69, in force 1 Dec 1998, SN/Circ.198)",
+   "source": "S8",
+   "page": "Annex, PDF pp.2-3",
+   "summary": "Deep-draught vessel = draught 15 m or more; VLCC = tanker 150,000 DWT and above. DDVs and VLCCs keep an under-keel clearance of at least 3.5 m at all times through the whole Straits. Eastbound DDVs shall use the deep water routes and as far as practicable not overtake in the DW routes in Phillip Channel and Singapore Strait. Vessels with defects affecting safety fix them before entering. In an emergency leave the lane to starboard. Westbound vessels near Raffles Lighthouse: caution, do not impede a vessel constrained by her draught crossing to the SPM. Maximum manoeuvring readiness in precautionary areas. Rule 9(b): DDVs, VLCCs and difficult tows are advised to broadcast 8 hours before entering the TSS (name, DWT, draught, speed, times passing One Fathom Bank Lt, Raffles Lt and Horsburgh Lt).",
+   "points": [
+    {
+     "name": "Single point mooring (approximate, Rule 6(a))",
+     "lat_text": "01°11·42’N",
+     "lon_text": "103°47·40’E",
+     "lat_norm": "01 11.42N",
+     "lon_norm": "103 47.40E",
+     "lat": 1.190333,
+     "lon": 103.79,
+     "source": "S8",
+     "page": "Rule 6(a)",
+     "note": "'approximate position' as printed"
+    }
+   ]
+  },
+  {
+   "item": "12 knot speed limit for VLCCs and deep-draught vessels (Rule 7), 'as far as it is safe and practicable', over the ground",
+   "source": "S8",
+   "page": "Rule 7 and PMC 20/2019 para 2(b)",
+   "summary": "Areas: (a) One Fathom Bank TSS; (b) the deep water routes in Phillip Channel and in Singapore Strait; (c) westbound lanes between 01°12·51’N 103°52·15’E and 01°11·59’N 103°50·21’E, and between 01°11·13’N 103°49·08’E and 01°08·65’N 103°44·30’E (MPA: south of St John's Island to Raffles Lighthouse). These four positions equal TSS points (114)/(117), (112)/(107), (99)/(106) and (97).",
+   "points": [
+    {
+     "name": "12 kn westbound stretch A, east end",
+     "lat_text": "01°12·51’N",
+     "lon_text": "103°52·15’E",
+     "lat_norm": "01 12.51N",
+     "lon_norm": "103 52.15E",
+     "lat": 1.2085,
+     "lon": 103.869167,
+     "source": "S8",
+     "page": "Rule 7(c)"
+    },
+    {
+     "name": "12 kn westbound stretch A, west end",
+     "lat_text": "01°11·59’N",
+     "lon_text": "103°50·21’E",
+     "lat_norm": "01 11.59N",
+     "lon_norm": "103 50.21E",
+     "lat": 1.193167,
+     "lon": 103.836833,
+     "source": "S8",
+     "page": "Rule 7(c)"
+    },
+    {
+     "name": "12 kn westbound stretch B, east end",
+     "lat_text": "01°11·13’N",
+     "lon_text": "103°49·08’E",
+     "lat_norm": "01 11.13N",
+     "lon_norm": "103 49.08E",
+     "lat": 1.1855,
+     "lon": 103.818,
+     "source": "S8",
+     "page": "Rule 7(c)"
+    },
+    {
+     "name": "12 kn westbound stretch B, west end",
+     "lat_text": "01°08·65’N",
+     "lon_text": "103°44·30’E",
+     "lat_norm": "01 08.65N",
+     "lon_norm": "103 44.30E",
+     "lat": 1.144167,
+     "lon": 103.738333,
+     "source": "S8",
+     "page": "Rule 7(c)"
+    }
+   ]
+  },
+  {
+   "item": "Night signal for vessels crossing the TSS / precautionary areas in the Singapore Strait (IMO recommendatory measure, MSC 91, full measure from 1 June 2013)",
+   "source": "S9",
+   "page": "Appendix 1",
+   "summary": "Vessels of 300 GT and above, 50 m and above, or tows of 300 GT / 50 m combined, crossing the lanes to or from ports and anchorages are recommended to show three all-round green lights in a vertical line (if carried), report the intention to VTIS in advance, and cross in ample time. Recommendatory, not mandatory."
+  },
+  {
+   "item": "STRAITREP report content",
+   "source": "S1",
+   "page": "Annex 1 para 3.2, Appendix 4",
+   "summary": "Essential: A (name, call sign, IMO number), C or D (position), P (hazardous cargo yes/no, class), Q or R (defects, pollution). E and F (course, speed) only when the VTS asks. VHF voice, English, SMCP. Listening watch on the sector channel; general broadcasts on CH 16 after an announcement on the sector channel."
+  },
+  {
+   "item": "Singapore port callers: Confirmation of Arrival (MPA, national, not STRAITREP)",
+   "source": "S3",
+   "page": "Confirmation procedures for arriving vessels",
+   "summary": "Vessels 300 GT and above, tows of 300 GT combined, and passenger vessels calling at Singapore report Confirmation of Arrival to the VTIS at the same reporting points (VTIS East CH 10, Central CH 14, West CH 73): name, call sign, location, POB (passenger ships), ETA or pilot boarding ground, height if changed. Port VHF: East Control CH 12 east of 103°51.2'E, West Control CH 68 west of 103°51.2'E (port area)."
+  },
+  {
+   "item": "Malaysian electronic STRAITREP reporting trial (sectors 1 to 6, Klang VTS), 1 May to 31 Dec 2026",
+   "source": "S12",
+   "page": "news article",
+   "summary": "UNCONFIRMED: only press reports (Safety4Sea 19 May 2026, Seatrade 18 May 2026) seen; the Marine Department Malaysia notice itself was not found. Reported as an alternative (web portal / e-mail within 24 h before entering) to VHF; VHF reporting remains the IMO rule."
+  },
+  {
+   "item": "STRAITREP review",
+   "source": "S10",
+   "page": "para 3.9-3.10",
+   "summary": "At NCSR 13 (22-26 June 2026) Malaysia submitted NCSR 13/INF.11 on a review of STRAITREP; Indonesia and Singapore commented. Information only; no amendment proposed or adopted. MSC.73(69) remains the text in force."
+  }
+ ],
+ "gaps": [
+  "No official text gives coordinates for the boundaries of STRAITREP sectors 1 to 5, or the sector 5/6 boundary: only the IMO chartlet (Appendix 1). Marine Department Malaysia / Royal Malaysian Navy annual Notices to Mariners could not be downloaded (navy.mil.my returned HTTP 500).",
+  "No coordinates for the north/south limits of sectors 7, 8, 9 (the dashed corridor on the chartlets).",
+  "Tg Piai and Pulau Karimun Kecil: only the 1998 IMO positions (old datum); no official WGS 84 values found.",
+  "MPA uses both 103°44.5'E and 103°44.6'E for the sector 7/8 line on the same page (table and chartlet: 103°44.5'E).",
+  "Eastern limit: IMO 104°23'E (old datum), MPA chartlet 104°22.9'E (WGS 84), MPA table 104°23.0'E.",
+  "IMO COLREG.2/Circ.44 (26 May 1998) original not found online; TSS annexes other than the Main Strait are from MPA SPI 2026 only (official Singapore government source, WGS 84 inserted by MPA).",
+  "Inshore traffic zone outer ends (lines 'to meet the Malaysian coast') have only a start point and a bearing.",
+  "Malaysian electronic reporting trial 2026: seen only in press; official notice not found.",
+  "Indonesian sources (e.g. for Selat Riau / Selat Durian approaches) not searched beyond the IMO and MPA texts."
+ ],
+ "confidence": {
+  "sectors_7_8_9_longitudes": "high (MPA official page and current MPA chartlet; IMO chartlet consistent)",
+  "sectors_1_to_6_boundaries": "low (chartlet only, no coordinates)",
+  "report_points": "high (IMO text and MPA WGS 84 values agree after the datum shift)",
+  "tss": "high for the Main Strait (IMO Circ.54 = MPA SPI); medium-high for the other annexes (MPA official SPI, IMO original not seen)",
+  "other": "high for SN/Circ.198 rules and PMC 04/2013; low for the Malaysian e-reporting trial"
+ }
+}

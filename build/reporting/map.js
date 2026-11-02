@@ -2,15 +2,15 @@
      The page draws its own layers in opts.layers(api) and gets taps in opts.onPick(lat, lon) and the pointer in opts.onHover(lat, lon, px, py). */
   function SeaMap(cv, wrap, opts) {
     var RAD = Math.PI / 180, ctx = cv.getContext("2d"), W = 800, H = 500, dpr = 1, raf = 0, view = opts.view || null, LAND = [], C = {};
-    SA_LAND.forEach(function (rings) {
-      var rs = rings.map(Geo.decode), x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9, ex = rs[0];
+    (opts.land || SA_LAND).forEach(function (rings) {                /* opts.land + opts.decode: a detailed local coastline instead of the world one */
+      var rs = rings.map(opts.decode || Geo.decode), x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9, ex = rs[0];
       for (var i = 0; i < ex.length; i += 2) { if (ex[i] < x0) x0 = ex[i]; if (ex[i] > x1) x1 = ex[i]; if (ex[i + 1] < y0) y0 = ex[i + 1]; if (ex[i + 1] > y1) y1 = ex[i + 1]; }
       LAND.push({ r: rs, b: [x0, y0, x1, y1] });
     });
     function css(token) { var e = document.createElement("span"); e.style.cssText = "position:absolute;visibility:hidden;color:var(" + token + ")"; document.body.appendChild(e); var v = getComputedStyle(e).color; document.body.removeChild(e); return v; }
     function colors() { ["sea", "land", "coast", "grid", "ink"].forEach(function (k) { C[k] = css("--map-" + k); }); (opts.tokens || []).forEach(function (t) { C[t] = css("--" + t); }); C.paper = css("--paper"); C.font = getComputedStyle(document.body).fontFamily; }
     function alpha(rgb, a) { var m = String(rgb).match(/[\d.]+/g) || [0, 0, 0]; return "rgba(" + m[0] + "," + m[1] + "," + m[2] + "," + a + ")"; }
-    function minScale() { return Math.max(W / 360, H / 170); }
+    function minScale() { if (opts.bounds) { var b = opts.bounds; return Math.min(W / (b[2] - b[0]), H / (Geo.mercY(b[3]) - Geo.mercY(b[1]))); } return Math.max(W / 360, H / 170); }
     function X(lon) { return (lon - view.cx) * view.s + W / 2; }
     function Y(lat) { return H / 2 - (Geo.mercY(lat) - view.cy) * view.s; }
     function lonAt(px) { return (px - W / 2) / view.s + view.cx; }
@@ -20,9 +20,10 @@
       var halfH = H / 2 / view.s, lim = Geo.mercY(82);
       view.cy = Math.max(-lim + halfH * 0.2, Math.min(lim - halfH * 0.2, view.cy));
       if (view.cx > 180) view.cx -= 360; if (view.cx < -180) view.cx += 360;
+      if (opts.bounds) { var b = opts.bounds; view.cx = Math.max(b[0], Math.min(b[2], view.cx)); view.cy = Math.max(Geo.mercY(b[1]), Math.min(Geo.mercY(b[3]), view.cy)); }   /* a local chart stays on its area */
     }
     function changed() { if (opts.onView) opts.onView({ cx: view.cx, cy: view.cy, s: view.s }); }
-    function world() { view = { cx: 30, cy: Geo.mercY(25), s: minScale() }; clamp(); changed(); draw(); }
+    function world() { if (opts.home) { view = { cx: 0, cy: 0, s: 1 }; return fitBox(opts.home, 1.02); } view = { cx: 30, cy: Geo.mercY(25), s: minScale() }; clamp(); changed(); draw(); }
     function fitBox(b, pad) {                                      /* b = [lon0, lat0, lon1, lat1]; lon1 may be above 180 for a box across the date line */
       if (!W) return;
       var dx = Math.max(b[2] - b[0], 0.05), dy = Math.max(Geo.mercY(b[3]) - Geo.mercY(b[1]), 0.05), k = pad || 1.15;
@@ -122,6 +123,7 @@
     new MutationObserver(function () { colors(); draw(); }).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
     colors();
     return { draw: draw, redraw: schedule, resize: resize, world: world, fitBox: fitBox, zoomIn: function () { zoomAt(1.6, W / 2, H / 2); }, zoomOut: function () { zoomAt(1 / 1.6, W / 2, H / 2); },
-      api: api, toDataURL: function () { return cv.toDataURL("image/png"); } };
+      api: api, toDataURL: function () { return cv.toDataURL("image/png"); },
+      setView: function (v) { if (v && isFinite(v.s)) { view = { cx: v.cx, cy: v.cy, s: v.s }; clamp(); changed(); draw(); } } };
   }
   /* SEAMAP-END */

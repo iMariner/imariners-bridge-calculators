@@ -1,0 +1,113 @@
+    <section class="tool" id="singapore" hidden>
+      <div class="tool-head">
+        <h1>Singapore Strait: Reporting Chart</h1>
+        <p>STRAITREP sectors, the traffic separation scheme, Singapore port sectors and pilot boarding grounds, with every report and channel in order. From IMO and MPA texts, checked 2 Nov 2026. Planning aid: always follow VTIS instructions and the latest notices.</p>
+      </div>
+
+      <div class="card sg-mapcard">
+        <h2>Chart</h2>
+        <div class="sg-toolbar">
+          <button type="button" class="btn" id="sg-zin" aria-label="Zoom in">+</button>
+          <button type="button" class="btn" id="sg-zout" aria-label="Zoom out">−</button>
+          <button type="button" class="btn" id="sg-v-all">Whole strait</button>
+          <button type="button" class="btn" id="sg-v-port">Port of Singapore</button>
+          <button type="button" class="btn" id="sg-v-west">West approach</button>
+          <button type="button" class="btn" id="sg-v-east">East approach</button>
+          <button type="button" class="btn" id="sg-v-ejs">Johor Strait</button>
+        </div>
+        <div class="sg-layers" id="sg-layers" role="group" aria-label="Chart layers">
+          <label><input type="checkbox" data-ly="sr"><span><i class="sg-sw sg-k-sr"></i>STRAITREP sectors</span></label>
+          <label><input type="checkbox" data-ly="tss"><span><i class="sg-sw sg-k-tss"></i>Traffic separation</span></label>
+          <label><input type="checkbox" data-ly="port"><span><i class="sg-sw sg-k-port"></i>Port sectors</span></label>
+          <label><input type="checkbox" data-ly="lim"><span><i class="sg-sw sg-k-lim"></i>Port limits</span></label>
+          <label><input type="checkbox" data-ly="bg"><span><i class="sg-sw sg-k-bg"></i>Pilot boarding</span></label>
+          <label><input type="checkbox" data-ly="pts"><span><i class="sg-sw sg-k-pts"></i>Report points</span></label>
+        </div>
+        <div class="sg-canvaswrap" id="sg-wrap"><canvas id="sg-canvas" aria-label="Chart of the Singapore Strait with reporting sectors, traffic separation scheme and port sectors" tabindex="0"></canvas></div>
+        <div class="sg-status">
+          <div class="mono sg-cursor" id="sg-cursor">Move over the chart to read a position. Tap the chart to see who to call there.</div>
+        </div>
+        <div class="sg-posrow">
+          <div class="field">
+            <label for="sg-pos">Ship's position</label>
+            <input class="text-input" id="sg-pos" maxlength="60" placeholder="e.g. 01 12.5N 103 50.2E">
+            <div class="hint" id="sg-pos-msg">Type a position, or tap the chart</div>
+          </div>
+          <button type="button" class="btn primary" id="sg-pos-go">Who do I call?</button>
+        </div>
+        <div class="sg-info" id="sg-info" hidden></div>
+      </div>
+
+      <div class="sg-grid u-mt-4">
+        <div class="card">
+          <h2>Reports in order</h2>
+          <div class="segmented sg-tabs" role="radiogroup" aria-label="Passage">
+            <input type="radio" name="sg-tab" id="sg-t-east" value="east"><label for="sg-t-east">Eastbound</label>
+            <input type="radio" name="sg-tab" id="sg-t-west" value="west"><label for="sg-t-west">Westbound</label>
+            <input type="radio" name="sg-tab" id="sg-t-arr" value="arr"><label for="sg-t-arr">Arriving SG</label>
+            <input type="radio" name="sg-tab" id="sg-t-dep" value="dep"><label for="sg-t-dep">Leaving SG</label>
+          </div>
+          <p class="small muted sg-tabnote" id="sg-tabnote"></p>
+          <ol class="sg-steps" id="sg-steps"></ol>
+        </div>
+
+        <div class="card">
+          <h2>STRAITREP report</h2>
+          <p class="small muted">Voice on VHF, in English, on the channel of the sector you are in. Only A, C or D, P and Q or R are needed; E and F only when VTIS asks.</p>
+          <table class="dt sg-fmt" id="sg-fmt"></table>
+          <div class="row2 u-mt-3">
+            <div class="field">
+              <label for="sg-haz">Hazardous cargo (line P)</label>
+              <input class="text-input" id="sg-haz" maxlength="40" placeholder="No, or e.g. Yes, class 3">
+            </div>
+            <div class="field">
+              <label for="sg-def">Defects or pollution (Q or R)</label>
+              <input class="text-input" id="sg-def" maxlength="80" placeholder="Nil">
+            </div>
+          </div>
+          <div class="sg-msg mono" id="sg-msg"></div>
+          <div class="actions">
+            <button type="button" class="btn" id="sg-copy">Copy report</button>
+            <button type="button" class="btn primary" id="sg-print">Print / Save PDF</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="sg-grid u-mt-4">
+        <div class="card">
+          <h2>VHF channels</h2>
+          <div class="sg-wrapx"><table class="dt sg-ch" id="sg-ch"></table></div>
+        </div>
+        <div class="card">
+          <h2>Before arrival at Singapore</h2>
+          <ul class="sg-list" id="sg-before"></ul>
+          <h3 class="sg-h3">Johor ports (Pasir Gudang, Tanjung Pelepas)</h3>
+          <ul class="sg-list" id="sg-johor"></ul>
+        </div>
+      </div>
+
+      <div class="card u-mt-4">
+        <h2>Rules in the Strait</h2>
+        <ul class="sg-list" id="sg-rules"></ul>
+        <details class="method u-mt-3">
+          <summary>Sources, datum and what is not official</summary>
+          <ul class="sg-list small" id="sg-src"></ul>
+        </details>
+      </div>
+
+      <div class="print-sheet" id="sg-sheet">
+        <h3 class="ps-h sg-ps-cap">Singapore Strait: STRAITREP sectors and traffic separation scheme</h3>
+        <div class="sg-ps-map"><img id="sg-ps-img" alt=""></div>
+        <h3 class="ps-h sg-ps-cap">Port of Singapore: port sectors, control channels and pilot boarding grounds</h3>
+        <div class="sg-ps-map"><img id="sg-ps-img2" alt=""></div>
+        <div class="sg-ps-key" id="sg-ps-key"></div>
+        <div class="sg-ps-page2">
+          <div class="sg-ps-cols" id="sg-ps-steps"></div>
+          <h3 class="ps-h">VHF channels</h3>
+          <table class="sg-ps-ch" id="sg-ps-ch"></table>
+          <h3 class="ps-h">Before arrival at Singapore</h3>
+          <ul id="sg-ps-before"></ul>
+          <p class="ps-note" id="sg-ps-src"></p>
+        </div>
+      </div>
+    </section>

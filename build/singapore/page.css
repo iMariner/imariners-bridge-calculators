@@ -1,0 +1,69 @@
+
+/* Singapore Strait */
+.sg-mapcard { padding: var(--sp-3); }
+.sg-toolbar { display: flex; gap: var(--sp-2); flex-wrap: wrap; margin-bottom: var(--sp-2); }
+.sg-layers { display: flex; flex-wrap: wrap; gap: var(--sp-1h) var(--sp-3); margin-bottom: var(--sp-2h); font-size: var(--fs-sm); }
+.sg-layers label { display: inline-flex; align-items: center; gap: var(--sp-1h); cursor: pointer; }
+.sg-layers input { margin: 0; accent-color: var(--accent); }
+.sg-sw { display: inline-block; width: 12px; height: 12px; border-radius: var(--r-xs); margin-right: var(--sp-1h); vertical-align: -1px; }
+.sg-k-sr { background: var(--true); } .sg-k-tss { background: var(--map-tss); } .sg-k-port { background: var(--accent); }
+.sg-k-lim { background: var(--area-eca); } .sg-k-bg { background: var(--pos-mark); border-radius: 0; transform: rotate(45deg) scale(.8); } .sg-k-pts { background: var(--ship); border-radius: var(--r-pill); }
+.sg-canvaswrap { position: relative; height: 640px; border: var(--hair) solid var(--border); border-radius: var(--r-md); overflow: hidden; background: var(--map-sea); touch-action: none; }
+.sg-canvaswrap canvas { position: absolute; top: 0; right: 0; bottom: 0; left: 0; width: 100%; height: 100%; display: block; cursor: grab; }
+.sg-canvaswrap canvas.drag { cursor: grabbing; }
+.sg-status { margin-top: var(--sp-2); }
+.sg-cursor { font-size: var(--fs-sm); color: var(--muted); }
+.sg-posrow { display: flex; align-items: flex-start; gap: var(--sp-3); margin-top: var(--sp-3); flex-wrap: wrap; }
+.sg-posrow .field { flex: 1 1 280px; margin: 0; }
+.sg-posrow .btn { margin-top: var(--sp-5); }
+.sg-info { margin-top: var(--sp-3); border: var(--hair) solid var(--border); border-left: var(--sp-1) solid var(--true); border-radius: var(--r-md); padding: var(--sp-3) var(--sp-4); background: var(--surface-2); }
+.sg-info h3 { margin: 0 0 var(--sp-2); font-size: var(--fs-base); font-family: var(--font-mono); }
+.sg-info dl { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: var(--sp-1h) var(--sp-4); margin: 0; }
+.sg-info dt { color: var(--muted); font-size: var(--fs-sm); }
+.sg-info dd { margin: 0; }
+.sg-info dd b { color: var(--true); }
+.sg-info .sg-near { margin: var(--sp-2) 0 0; padding-left: var(--sp-5); font-size: var(--fs-sm); }
+.sg-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--sp-5); }
+.sg-grid > .card { margin-top: 0; }
+.sg-tabs { grid-template-columns: repeat(4, 1fr); margin-bottom: var(--sp-2); }
+.sg-tabs label + input + label { border-left: 1px solid var(--border); }
+.sg-tabnote { margin: 0 0 var(--sp-3); }
+.sg-steps { margin: 0; padding: 0; list-style: none; counter-reset: sgs; }
+.sg-steps li { position: relative; padding: var(--sp-2) 0 var(--sp-2) var(--sp-8); border-bottom: var(--hair) solid var(--border); counter-increment: sgs; }
+.sg-steps li:last-child { border-bottom: 0; }
+.sg-steps li::before { content: counter(sgs); position: absolute; left: 0; top: var(--sp-2); width: var(--sp-6); height: var(--sp-6); border-radius: var(--r-pill); background: var(--accent); color: var(--accent-text); font-weight: var(--fw-bold); font-size: var(--fs-sm); display: flex; align-items: center; justify-content: center; }
+.sg-steps li.sg-info-step::before { background: var(--surface-2); color: var(--muted); border: var(--hair) solid var(--border-strong); }
+.sg-steps .sg-where { font-weight: var(--fw-semibold); }
+.sg-steps .sg-call { display: block; margin-top: var(--sp-1); }
+.sg-steps .sg-call b { color: var(--true); font-family: var(--font-mono); }
+.sg-steps .sg-what { display: block; margin-top: var(--sp-1); color: var(--muted); font-size: var(--fs-sm); }
+.sg-steps button.sg-show { margin-top: var(--sp-1h); padding: var(--sp-0) var(--sp-2); font-size: var(--fs-xs); }
+table.dt.sg-fmt td, table.dt.sg-fmt th { text-align: left; vertical-align: top; }
+table.dt.sg-fmt td:first-child { font-family: var(--font-mono); font-weight: var(--fw-bold); width: 3.5em; }
+.sg-msg { margin-top: var(--sp-3); padding: var(--sp-3); border: var(--hair) dashed var(--border-strong); border-radius: var(--r-md); white-space: pre-wrap; font-size: var(--fs-sm); background: var(--surface-2); }
+.sg-wrapx { overflow-x: auto; }
+table.dt.sg-ch td, table.dt.sg-ch th { text-align: left; vertical-align: top; }
+table.dt.sg-ch td:nth-child(2) { font-family: var(--font-mono); font-weight: var(--fw-bold); white-space: nowrap; color: var(--true); }
+table.dt.sg-ch tr.sg-grp td { background: var(--surface-2); font-family: var(--font-mono); font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: .6px; color: var(--muted); font-weight: var(--fw-semibold); }
+.sg-list { margin: 0; padding-left: var(--sp-5); }
+.sg-list li + li { margin-top: var(--sp-2); }
+.sg-h3 { font-size: var(--fs-base); margin: var(--sp-4) 0 var(--sp-2); }
+@media (max-width: 960px) { .sg-grid { grid-template-columns: minmax(0, 1fr); } .sg-canvaswrap { height: 480px; } .sg-tabs { grid-template-columns: repeat(2, 1fr); } }
+@media print {
+  #sg-sheet { font-size: 7.4pt; line-height: 1.22; }
+  #sg-sheet .sg-ps-cap { margin: 1mm 0 1mm; font-size: 9pt; }
+  #sg-sheet .sg-ps-map img { display: block; max-width: 100%; max-height: 106mm; width: auto; height: auto; margin: 0 auto; border: 1px solid #999; }
+  #sg-sheet .sg-ps-key { font-size: 7.5pt; color: #333; margin-top: 1.5mm; }
+  #sg-sheet .sg-ps-page2 { break-before: page; page-break-before: always; }
+  #sg-sheet .sg-ps-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm 6mm; }
+  #sg-sheet .sg-ps-cols h4 { margin: 0 0 1mm; font-size: 9pt; }
+  #sg-sheet .sg-ps-cols ol { margin: 0; padding-left: 4.5mm; }
+  #sg-sheet .sg-ps-cols li { margin-top: .4mm; }
+  #sg-sheet .ps-h { margin: 2mm 0 1mm; }
+  #sg-sheet table.sg-ps-ch { width: 100%; border-collapse: collapse; }
+  #sg-sheet table.sg-ps-ch td { border: 1px solid #bbb; padding: .15mm 1.2mm; vertical-align: top; }
+  #sg-sheet table.sg-ps-ch td:nth-child(2) { font-weight: var(--fw-bold); white-space: nowrap; }
+  #sg-sheet ul { margin: 0; padding-left: 4.5mm; }
+  #sg-sheet li { margin-top: .3mm; }
+}
+/* Singapore Strait end */

@@ -1,0 +1,2975 @@
+{
+ "generated": "2026-11-02",
+ "note": "Positions exactly as printed in each source, with decimal degrees computed (minutes/60). Paraphrased; no UKHO ALRS or Sailing Directions text used. MPA Singapore Port Information is copyright: facts only.",
+ "sources": [
+  {
+   "id": "spi2025",
+   "title": "Singapore Port Information 2025 (updated to 1 Aug 2025), MPA Hydrographic Division",
+   "url": "https://file.go.gov.sg/spi2025aug1.pdf",
+   "date": "2025-08-01"
+  },
+  {
+   "id": "pc21-06",
+   "title": "MPA Port Marine Circular No. 06 of 2021: Reporting procedures for vessels manoeuvring in port (in force 1 Mar 2021 0001; supersedes PC 07/2019)",
+   "url": "https://www.mpa.gov.sg/api/media/5d06f03f-6d9f-4580-b1d9-9bb178036526/pc21-06.pdf",
+   "date": "2021-02-01"
+  },
+  {
+   "id": "pc26-08",
+   "title": "MPA Port Marine Circular No. 08 of 2026: VHF reporting procedures for vessels manoeuvring within the Traffic Information Area (TIA) in the East Johor Strait (in force 1 Sep 2026; supersedes PC 41/2020)",
+   "url": "https://www.mpa.gov.sg/api/media/846cfd85-7ce7-4527-8235-8361cc831434/pc26-08.pdf",
+   "date": "2026-08-28"
+  },
+  {
+   "id": "pc24-14",
+   "title": "MPA Port Marine Circular No. 14 of 2024: Changes to Pre-Arrival Notification from 1 January 2025 (supersedes PC 11/2022)",
+   "url": "https://www.mpa.gov.sg/api/media/3f54cd75-ac5b-4bb4-a525-953d741f3466/pc24-1411cdabb5-786d-4704-bdba-b861b755c883.pdf",
+   "date": "2024-12-24"
+  },
+  {
+   "id": "pc25-03",
+   "title": "MPA Port Marine Circular No. 03 of 2025: Revision of anchorages, fairways and channels in port (in force 1 Mar 2025; AVLCC discontinued)",
+   "url": "https://www.mpa.gov.sg/api/media/96db3fe1-957a-48ec-a970-d14ea928af69/pc25-03.pdf",
+   "date": "2025-02-20"
+  },
+  {
+   "id": "mpa-arriving",
+   "title": "MPA web page: Vessels Arriving in Singapore (NOA, confirmation of arrival, general declaration, VHF channel table)",
+   "url": "https://www.mpa.gov.sg/port-marine-ops/arrivals-and-departures/vessels-arriving-in-singapore",
+   "date": "page last updated 2026-10-30, read 2026-11-02"
+  },
+  {
+   "id": "mpa-departing",
+   "title": "MPA web page: General Declaration Requirements on Departures",
+   "url": "https://www.mpa.gov.sg/port-marine-ops/arrivals-and-departures/vessels-departing-singapore",
+   "date": "page last updated 2026-10-30, read 2026-11-02"
+  },
+  {
+   "id": "mpa-pan",
+   "title": "MPA web page: Verification of Pre Arrival Notification",
+   "url": "https://www.mpa.gov.sg/port-marine-ops/port-safety-security/declaration-of-pre-arrival-notification",
+   "date": "page last updated 2026-10-30, read 2026-11-02"
+  },
+  {
+   "id": "mpa-dg",
+   "title": "MPA web page: Declaring Dangerous Goods (DG) and Hazardous and Noxious Substances (HNS)",
+   "url": "https://www.mpa.gov.sg/port-marine-ops/operations/gas-free-hazardous-cargo-info/declaring-dangerous-goods",
+   "date": "read 2026-11-02"
+  },
+  {
+   "id": "mpa-opareas",
+   "title": "MPA web page: VTIS Operational Areas (STRAITREP sectors, channels, VTS authorities)",
+   "url": "https://mpa.gov.sg/port-marine-ops/operations/vessel-traffic-information-system/operational-areas",
+   "date": "page last updated 2026-10-30, read 2026-11-02"
+  },
+  {
+   "id": "sg-portlimits-2010",
+   "title": "Maritime and Port Authority of Singapore (Port Limits) Notification 2010, G.N. No. S 215/2010 (in operation 20 Apr 2010). Copy read from FAOLEX; SSO page returned HTTP 403",
+   "url": "https://faolex.fao.org/docs/pdf/sin109406.pdf  (official: https://sso.agc.gov.sg/SL/MPASA1996-S215-2010)",
+   "date": "2010-04-07"
+  },
+  {
+   "id": "pc18-09",
+   "title": "MPA Port Marine Circular No. 9 of 2018 with S 790/2018 MPA (Port Limits) (Amendment) Notification 2018 (items 3A-3C). Copy read from Britannia P&I mirror of the MPA circular",
+   "url": "https://britanniapandi.com/wp-content/uploads/2025/05/New-Port-Limits-12-2018.pdf",
+   "date": "2018-12-06"
+  },
+  {
+   "id": "pc19-06",
+   "title": "MPA Port Marine Circular No. 06 of 2019: Port Limits (Suspension) Notification 2019, items 3A-3C suspended from 8 Apr 2019 0001 (known from search snippets of the MPA circular; full text not downloaded, MPA URL returns 404)",
+   "url": "https://www.mpa.gov.sg/docs/mpalibraries/circulars-and-notices/port-marine-circulars/-pc19-006",
+   "date": "2019-04-08"
+  },
+  {
+   "id": "lpj-pg-limits",
+   "title": "Malaysia P.U.(B) 493/2013: Declaration of Alteration of Port Limits for Pasir Gudang Port (Merchant Shipping Ordinance 1952 s.6(3)), dated 24 Dec 2013, gazetted 31 Dec 2013 (scanned copy on LPJ site, read visually)",
+   "url": "https://www.lpj.gov.my/images/PDF/Akta/Pengisytiharan_Pengubahan_Had_Pelabuhan_Pasir_Gudang_1_resize_20210617162519.pdf",
+   "date": "2013-12-31"
+  },
+  {
+   "id": "lpj-pg-pilotage",
+   "title": "Malaysia P.U.(B) 118/2014: Declaration of Pilotage District of Pasir Gudang Port (Port Authorities Act 1963 s.29A)",
+   "url": "https://www.lpj.gov.my/images/PDF/Akta/PUB_20140404_P_U_B_118_-_Perisytiharan_Daerah_Pemaliman_Pasir_Gudang.pdf",
+   "date": "2014-04-04"
+  },
+  {
+   "id": "lpj-tp-limits",
+   "title": "Malaysia P.U.(B) 542 [2010]: Perisytiharan Had Pelabuhan Tanjung Pelepas (alters P.U.(B) 394/1999), dated 14 Dec 2010",
+   "url": "https://www.lpj.gov.my/images/PDF/Akta/Had_Pelabuhan_Tg_Pelepas_20210504160810.pdf",
+   "date": "2010-12-14"
+  },
+  {
+   "id": "lpj-tp-pilotage",
+   "title": "Malaysia P.U.(B) 1/2024: Declaration of Pilotage District of Tanjung Pelepas Port (revokes P.U.(B) 552/2019)",
+   "url": "https://www.lpj.gov.my/images/PDF/Akta/Warta_-_Pengisytiharan_Daerah_Pemaliman_Pelabuhan_Tanjung_Pelepas.pdf__diwartakan_20240108111727_1.pdf",
+   "date": "2024-01-03"
+  },
+  {
+   "id": "lpj-notis-6-2015",
+   "title": "Johor Port Authority Port Notice No. 06/2015: arrival and departure reports at Pasir Gudang and Tanjung Pelepas to the LPJ VTMS (in force 1 Jul 2015), with Appendix 1 quoting LPJ By-laws 1979 3(1) and 3(2)",
+   "url": "https://www.lpj.gov.my/images/Notis/2015/Notis-Pelabuhan-Bil-6-2015-VTMS.pdf",
+   "date": "2015-05-17"
+  },
+  {
+   "id": "lpj-mmsw-2025",
+   "title": "Johor Port Authority notice LPJ/IP/T/1JLD6(015): full MMSW Release 1 and 2 (PAN module) at JPB, PTP and private jetties from 1 Mar 2025",
+   "url": "https://www.lpj.gov.my/media/attachments/2025/02/15/lpj-pelaksanaan-mmsw-r1-r2-pan-14-feb-2025.pdf",
+   "date": "2025-02-14"
+  },
+  {
+   "id": "jpb-marine",
+   "title": "Johor Port Berhad (port operator, Pasir Gudang) web page: Marine Services (pilotage, boarding grounds, VTMS)",
+   "url": "https://www.johorport.com.my/services/marine-services",
+   "date": "read 2026-11-02"
+  },
+  {
+   "id": "ptp-marine",
+   "title": "Port of Tanjung Pelepas (port operator) web page: Marine Services (pilot station, booking notice, VHF)",
+   "url": "https://www.ptp.com.my/services/marine-services",
+   "date": "read 2026-11-02"
+  }
+ ],
+ "vtis_sectors": [
+  {
+   "name": "VTIS East (Singapore VTS, STRAITREP Sector 9)",
+   "channel": "VHF 10 (156.500 MHz)",
+   "boundary_text": "Sector 9 of STRAITREP: area between Long. 104°02.1'E and 104°23.0'E (MPA wording). Sector polygon points are in the IMO STRAITREP text, researched separately.",
+   "points": [],
+   "source": [
+    "mpa-arriving",
+    "mpa-opareas"
+   ],
+   "use": "Confirmation of arrival when abeam Horsburgh Lt, Karang Galang Lt or Eastern Buoy; reporting and listening in Sector 9; traffic information."
+  },
+  {
+   "name": "VTIS Central (Singapore VTS, STRAITREP Sector 8)",
+   "channel": "VHF 14 (156.700 MHz)",
+   "boundary_text": "Sector 8 of STRAITREP: area between Long. 103°44.5'E and 104°02.1'E (MPA channel table). The same page says 103°44.6'E in the confirmation-of-arrival paragraph (discrepancy in the source).",
+   "points": [],
+   "source": [
+    "mpa-arriving",
+    "mpa-opareas"
+   ],
+   "use": "Vessels joining the TSS traffic lane between these longitudes after leaving port or anchorages north or south of the TSS report here; reporting and listening in Sector 8; traffic information. Note Port Health also uses VHF 14."
+  },
+  {
+   "name": "VTIS West (Singapore VTS, STRAITREP Sector 7)",
+   "channel": "VHF 73 (156.675 MHz)",
+   "boundary_text": "Sector 7 of STRAITREP: area between the line joining Tg Piai and Pulau Karimun Kecil and Long. 103°44.5'E (MPA wording).",
+   "points": [],
+   "source": [
+    "mpa-arriving",
+    "mpa-opareas"
+   ],
+   "use": "Confirmation of arrival when abeam Pulau Iyu Kechil or Pulau Jangkat Beacon; reporting and listening in Sector 7; traffic information."
+  }
+ ],
+ "port_reporting_sectors": [
+  {
+   "name": "Eastern Sector",
+   "control_station": "East Control",
+   "channel": "VHF 12 (156.600 MHz)",
+   "points": [
+    {
+     "n": "1a",
+     "lat_text": "1°20.313'N",
+     "lon_text": "104°01.514'E",
+     "lat": 1.33855,
+     "lon": 104.025233,
+     "note": "shared with 9f"
+    },
+    {
+     "n": "1b",
+     "lat_text": "1°19.997'N",
+     "lon_text": "104°02.693'E",
+     "lat": 1.333283,
+     "lon": 104.044883,
+     "note": "shared with 9e"
+    },
+    {
+     "n": "1c",
+     "lat_text": "1°19.997'N",
+     "lon_text": "104°03.060'E",
+     "lat": 1.333283,
+     "lon": 104.051,
+     "note": "shared with 9d"
+    },
+    {
+     "n": "1d",
+     "lat_text": "1°18.783'N",
+     "lon_text": "104°04.258'E",
+     "lat": 1.31305,
+     "lon": 104.070967,
+     "note": "shared with 9c"
+    },
+    {
+     "n": "1e",
+     "lat_text": "1°17.449'N",
+     "lon_text": "104°05.206'E",
+     "lat": 1.290817,
+     "lon": 104.086767,
+     "note": "shared with 9b"
+    },
+    {
+     "n": "1e-1f",
+     "along": "thence along the Singapore port limit"
+    },
+    {
+     "n": "1f",
+     "lat_text": "1°12.396'N",
+     "lon_text": "103°51.397'E",
+     "lat": 1.2066,
+     "lon": 103.856617,
+     "note": "shared with 4g"
+    },
+    {
+     "n": "1g",
+     "lat_text": "1°12.898'N",
+     "lon_text": "103°50.963'E",
+     "lat": 1.214967,
+     "lon": 103.849383,
+     "note": "shared with 4f"
+    },
+    {
+     "n": "1g-1h",
+     "along": "thence along the coastline"
+    },
+    {
+     "n": "1h",
+     "lat_text": "1°13.331'N",
+     "lon_text": "103°50.592'E",
+     "lat": 1.222183,
+     "lon": 103.8432,
+     "note": "shared with 4e"
+    },
+    {
+     "n": "1i",
+     "lat_text": "1°13.729'N",
+     "lon_text": "103°50.371'E",
+     "lat": 1.228817,
+     "lon": 103.839517,
+     "note": "shared with 4d"
+    },
+    {
+     "n": "1j",
+     "lat_text": "1°13.984'N",
+     "lon_text": "103°50.181'E",
+     "lat": 1.233067,
+     "lon": 103.83635,
+     "note": "shared with 4c"
+    },
+    {
+     "n": "1k",
+     "lat_text": "1°14.270'N",
+     "lon_text": "103°49.955'E",
+     "lat": 1.237833,
+     "lon": 103.832583,
+     "note": "shared with 4b"
+    },
+    {
+     "n": "1k-1l",
+     "along": "thence along the coastline"
+    },
+    {
+     "n": "1l",
+     "lat_text": "1°15.122'N",
+     "lon_text": "103°50.899'E",
+     "lat": 1.252033,
+     "lon": 103.848317,
+     "note": "shared with 2g (2g printed as 103°50.900'E)"
+    },
+    {
+     "n": "1m",
+     "lat_text": "1°15.037'N",
+     "lon_text": "103°51.766'E",
+     "lat": 1.250617,
+     "lon": 103.862767,
+     "note": "shared with 2f"
+    },
+    {
+     "n": "1n",
+     "lat_text": "1°15.409'N",
+     "lon_text": "103°51.727'E",
+     "lat": 1.256817,
+     "lon": 103.862117,
+     "note": "shared with 2e"
+    },
+    {
+     "n": "1o",
+     "lat_text": "1°15.701'N",
+     "lon_text": "103°52.126'E",
+     "lat": 1.261683,
+     "lon": 103.868767,
+     "note": "shared with 2d"
+    },
+    {
+     "n": "1p",
+     "lat_text": "1°16.200'N",
+     "lon_text": "103°51.777'E",
+     "lat": 1.27,
+     "lon": 103.86295,
+     "note": "shared with 2c"
+    },
+    {
+     "n": "1p-1a",
+     "along": "thence along the coastline, to the point of origin"
+    }
+   ],
+   "source": "pc21-06",
+   "boundary_text": "Points and 'thence along' instructions exactly as in PC 06/2021 Appendix 1 (WGS84 not stated in the appendix; the Singapore Port Information preface says all its positions are WGS84).",
+   "note": "MPA VHF table: East Control covers the port area east of Long 103°51.2'E; all vessels there keep watch on VHF 12."
+  },
+  {
+   "name": "Keppel Harbour Sector",
+   "control_station": "Keppel Control",
+   "channel": "VHF 05",
+   "points": [
+    {
+     "n": "2a",
+     "lat_text": "1°15.614'N",
+     "lon_text": "103°49.467'E",
+     "lat": 1.260233,
+     "lon": 103.82445
+    },
+    {
+     "n": "2b",
+     "lat_text": "1°15.787'N",
+     "lon_text": "103°49.452'E",
+     "lat": 1.263117,
+     "lon": 103.8242
+    },
+    {
+     "n": "2c",
+     "lat_text": "1°16.200'N",
+     "lon_text": "103°51.777'E",
+     "lat": 1.27,
+     "lon": 103.86295
+    },
+    {
+     "n": "2c-2d",
+     "along": "thence along the coastline"
+    },
+    {
+     "n": "2d",
+     "lat_text": "1°15.701'N",
+     "lon_text": "103°52.126'E",
+     "lat": 1.261683,
+     "lon": 103.868767
+    },
+    {
+     "n": "2e",
+     "lat_text": "1°15.409'N",
+     "lon_text": "103°51.727'E",
+     "lat": 1.256817,
+     "lon": 103.862117
+    },
+    {
+     "n": "2f",
+     "lat_text": "1°15.037'N",
+     "lon_text": "103°51.766'E",
+     "lat": 1.250617,
+     "lon": 103.862767
+    },
+    {
+     "n": "2g",
+     "lat_text": "1°15.122'N",
+     "lon_text": "103°50.900'E",
+     "lat": 1.252033,
+     "lon": 103.848333
+    },
+    {
+     "n": "2h",
+     "lat_text": "1°15.191'N",
+     "lon_text": "103°50.785'E",
+     "lat": 1.253183,
+     "lon": 103.846417
+    },
+    {
+     "n": "2i",
+     "lat_text": "1°15.237'N",
+     "lon_text": "103°50.541'E",
+     "lat": 1.25395,
+     "lon": 103.84235
+    },
+    {
+     "n": "2j",
+     "lat_text": "1°15.407'N",
+     "lon_text": "103°50.420'E",
+     "lat": 1.256783,
+     "lon": 103.840333
+    },
+    {
+     "n": "2j-2a",
+     "along": "thence along the coastline, to the point of origin"
+    }
+   ],
+   "source": "pc21-06",
+   "boundary_text": "Points and 'thence along' instructions exactly as in PC 06/2021 Appendix 1 (WGS84 not stated in the appendix; the Singapore Port Information preface says all its positions are WGS84)."
+  },
+  {
+   "name": "Cruise Bay Sector",
+   "control_station": "Cruise Bay Control",
+   "channel": "VHF 05",
+   "points": [
+    {
+     "n": "3a",
+     "lat_text": "1°15.580'N",
+     "lon_text": "103°48.403'E",
+     "lat": 1.259667,
+     "lon": 103.806717,
+     "note": "shared with 4a and 6e"
+    },
+    {
+     "n": "3b",
+     "lat_text": "1°15.743'N",
+     "lon_text": "103°48.312'E",
+     "lat": 1.262383,
+     "lon": 103.8052,
+     "note": "shared with 6f"
+    },
+    {
+     "n": "3b-3a",
+     "along": "thence along the coastline, to the point of origin"
+    }
+   ],
+   "source": "pc21-06",
+   "boundary_text": "Points and 'thence along' instructions exactly as in PC 06/2021 Appendix 1 (WGS84 not stated in the appendix; the Singapore Port Information preface says all its positions are WGS84)."
+  },
+  {
+   "name": "Western Sector",
+   "control_station": "West Control",
+   "channel": "VHF 68 (156.425 MHz)",
+   "points": [
+    {
+     "n": "4a",
+     "lat_text": "1°15.580'N",
+     "lon_text": "103°48.403'E",
+     "lat": 1.259667,
+     "lon": 103.806717
+    },
+    {
+     "n": "4a-4b",
+     "along": "thence along the coastline"
+    },
+    {
+     "n": "4b",
+     "lat_text": "1°14.270'N",
+     "lon_text": "103°49.955'E",
+     "lat": 1.237833,
+     "lon": 103.832583
+    },
+    {
+     "n": "4c",
+     "lat_text": "1°13.984'N",
+     "lon_text": "103°50.181'E",
+     "lat": 1.233067,
+     "lon": 103.83635
+    },
+    {
+     "n": "4d",
+     "lat_text": "1°13.729'N",
+     "lon_text": "103°50.371'E",
+     "lat": 1.228817,
+     "lon": 103.839517
+    },
+    {
+     "n": "4e",
+     "lat_text": "1°13.331'N",
+     "lon_text": "103°50.592'E",
+     "lat": 1.222183,
+     "lon": 103.8432
+    },
+    {
+     "n": "4e-4f",
+     "along": "thence along the coastline"
+    },
+    {
+     "n": "4f",
+     "lat_text": "1°12.898'N",
+     "lon_text": "103°50.963'E",
+     "lat": 1.214967,
+     "lon": 103.849383
+    },
+    {
+     "n": "4g",
+     "lat_text": "1°12.396'N",
+     "lon_text": "103°51.397'E",
+     "lat": 1.2066,
+     "lon": 103.856617
+    },
+    {
+     "n": "4g-4h",
+     "along": "thence along the Singapore port limit"
+    },
+    {
+     "n": "4h",
+     "lat_text": "1°11.541'N",
+     "lon_text": "103°40.845'E",
+     "lat": 1.19235,
+     "lon": 103.68075,
+     "note": "shared with 5f"
+    },
+    {
+     "n": "4i",
+     "lat_text": "1°13.969'N",
+     "lon_text": "103°44.427'E",
+     "lat": 1.232817,
+     "lon": 103.74045,
+     "note": "shared with 5e"
+    },
+    {
+     "n": "4i-4j",
+     "along": "thence along the coastline"
+    },
+    {
+     "n": "4j",
+     "lat_text": "1°14.199'N",
+     "lon_text": "103°44.976'E",
+     "lat": 1.23665,
+     "lon": 103.7496,
+     "note": "shared with 5d"
+    },
+    {
+     "n": "4k",
+     "lat_text": "1°14.465'N",
+     "lon_text": "103°45.786'E",
+     "lat": 1.241083,
+     "lon": 103.7631,
+     "note": "shared with 5c and 6c"
+    },
+    {
+     "n": "4l",
+     "lat_text": "1°14.345'N",
+     "lon_text": "103°47.118'E",
+     "lat": 1.239083,
+     "lon": 103.7853,
+     "note": "shared with 6d"
+    },
+    {
+     "n": "4a",
+     "lat_text": "1°15.580'N",
+     "lon_text": "103°48.403'E",
+     "lat": 1.259667,
+     "lon": 103.806717,
+     "note": "closing point"
+    }
+   ],
+   "source": "pc21-06",
+   "boundary_text": "Points and 'thence along' instructions exactly as in PC 06/2021 Appendix 1 (WGS84 not stated in the appendix; the Singapore Port Information preface says all its positions are WGS84).",
+   "note": "MPA VHF table: West Control covers underway vessels in the port area west of Long 103°51.2'E."
+  },
+  {
+   "name": "Sinki Sector",
+   "control_station": "Sinki Control",
+   "channel": "VHF 68 (156.425 MHz)",
+   "points": [
+    {
+     "n": "5a",
+     "lat_text": "1°16.381'N",
+     "lon_text": "103°44.406'E",
+     "lat": 1.273017,
+     "lon": 103.7401,
+     "note": "shared with 6a"
+    },
+    {
+     "n": "5b",
+     "lat_text": "1°15.585'N",
+     "lon_text": "103°45.472'E",
+     "lat": 1.25975,
+     "lon": 103.757867,
+     "note": "shared with 6b"
+    },
+    {
+     "n": "5c",
+     "lat_text": "1°14.465'N",
+     "lon_text": "103°45.786'E",
+     "lat": 1.241083,
+     "lon": 103.7631
+    },
+    {
+     "n": "5d",
+     "lat_text": "1°14.199'N",
+     "lon_text": "103°44.976'E",
+     "lat": 1.23665,
+     "lon": 103.7496
+    },
+    {
+     "n": "5d-5e",
+     "along": "thence along the coastline"
+    },
+    {
+     "n": "5e",
+     "lat_text": "1°13.969'N",
+     "lon_text": "103°44.427'E",
+     "lat": 1.232817,
+     "lon": 103.74045
+    },
+    {
+     "n": "5f",
+     "lat_text": "1°11.541'N",
+     "lon_text": "103°40.845'E",
+     "lat": 1.19235,
+     "lon": 103.68075
+    },
+    {
+     "n": "5f-5g",
+     "along": "thence along the Singapore port limit"
+    },
+    {
+     "n": "5g",
+     "lat_text": "1°12.099'N",
+     "lon_text": "103°39.208'E",
+     "lat": 1.20165,
+     "lon": 103.653467,
+     "note": "shared with 7b"
+    },
+    {
+     "n": "5h",
+     "lat_text": "1°13.359'N",
+     "lon_text": "103°40.399'E",
+     "lat": 1.22265,
+     "lon": 103.673317,
+     "note": "shared with 7a"
+    },
+    {
+     "n": "5h-5a",
+     "along": "thence along the coastline, to the point of origin"
+    }
+   ],
+   "source": "pc21-06",
+   "boundary_text": "Points and 'thence along' instructions exactly as in PC 06/2021 Appendix 1 (WGS84 not stated in the appendix; the Singapore Port Information preface says all its positions are WGS84).",
+   "note": "Sinki Control and West Control share VHF 68 (as printed)."
+  },
+  {
+   "name": "Pasir Panjang Sector",
+   "control_station": "Pasir Panjang Control",
+   "channel": "VHF 18",
+   "points": [
+    {
+     "n": "6a",
+     "lat_text": "1°16.381'N",
+     "lon_text": "103°44.406'E",
+     "lat": 1.273017,
+     "lon": 103.7401
+    },
+    {
+     "n": "6b",
+     "lat_text": "1°15.585'N",
+     "lon_text": "103°45.472'E",
+     "lat": 1.25975,
+     "lon": 103.757867
+    },
+    {
+     "n": "6c",
+     "lat_text": "1°14.465'N",
+     "lon_text": "103°45.786'E",
+     "lat": 1.241083,
+     "lon": 103.7631
+    },
+    {
+     "n": "6d",
+     "lat_text": "1°14.345'N",
+     "lon_text": "103°47.118'E",
+     "lat": 1.239083,
+     "lon": 103.7853
+    },
+    {
+     "n": "6e",
+     "lat_text": "1°15.580'N",
+     "lon_text": "103°48.403'E",
+     "lat": 1.259667,
+     "lon": 103.806717
+    },
+    {
+     "n": "6f",
+     "lat_text": "1°15.743'N",
+     "lon_text": "103°48.312'E",
+     "lat": 1.262383,
+     "lon": 103.8052
+    },
+    {
+     "n": "6f-6a",
+     "along": "thence along the coastline, to the point of origin"
+    }
+   ],
+   "source": "pc21-06",
+   "boundary_text": "Points and 'thence along' instructions exactly as in PC 06/2021 Appendix 1 (WGS84 not stated in the appendix; the Singapore Port Information preface says all its positions are WGS84).",
+   "note": "Channel changed from VHF 25 to VHF 18 on 1 Mar 2021 (PC 06/2021 para 2)."
+  },
+  {
+   "name": "West Jurong Sector",
+   "control_station": "Jurong Control",
+   "channel": "VHF 22",
+   "points": [
+    {
+     "n": "7a",
+     "lat_text": "1°13.359'N",
+     "lon_text": "103°40.399'E",
+     "lat": 1.22265,
+     "lon": 103.673317
+    },
+    {
+     "n": "7b",
+     "lat_text": "1°12.099'N",
+     "lon_text": "103°39.208'E",
+     "lat": 1.20165,
+     "lon": 103.653467
+    },
+    {
+     "n": "7b-7c",
+     "along": "thence along the Singapore port limit"
+    },
+    {
+     "n": "7c",
+     "lat_text": "1°12.835'N",
+     "lon_text": "103°36.342'E",
+     "lat": 1.213917,
+     "lon": 103.6057,
+     "note": "shared with 8b"
+    },
+    {
+     "n": "7d",
+     "lat_text": "1°13.359'N",
+     "lon_text": "103°36.344'E",
+     "lat": 1.22265,
+     "lon": 103.605733,
+     "note": "shared with 8a"
+    },
+    {
+     "n": "7d-7a",
+     "along": "thence along the coastline, to the point of origin"
+    }
+   ],
+   "source": "pc21-06",
+   "boundary_text": "Points and 'thence along' instructions exactly as in PC 06/2021 Appendix 1 (WGS84 not stated in the appendix; the Singapore Port Information preface says all its positions are WGS84)."
+  },
+  {
+   "name": "West Johor Strait Sector",
+   "control_station": "Jurong Control",
+   "channel": "VHF 22 (if no VHF on board: telephone POCC +65 6325 2493/4)",
+   "points": [
+    {
+     "n": "8a",
+     "lat_text": "1°13.359'N",
+     "lon_text": "103°36.344'E",
+     "lat": 1.22265,
+     "lon": 103.605733
+    },
+    {
+     "n": "8b",
+     "lat_text": "1°12.835'N",
+     "lon_text": "103°36.342'E",
+     "lat": 1.213917,
+     "lon": 103.6057
+    },
+    {
+     "n": "8c",
+     "lat_text": "1°12.908'N",
+     "lon_text": "103°36.071'E",
+     "lat": 1.215133,
+     "lon": 103.601183
+    },
+    {
+     "n": "8c-8a",
+     "along": "thence along the Singapore port limit between Singapore and Malaysia, along the Causeway and then along the coastline"
+    },
+    {
+     "n": "8a",
+     "lat_text": "1°13.359'N",
+     "lon_text": "103°36.344'E",
+     "lat": 1.22265,
+     "lon": 103.605733,
+     "note": "closing point"
+    }
+   ],
+   "source": "pc21-06",
+   "boundary_text": "Points and 'thence along' instructions exactly as in PC 06/2021 Appendix 1 (WGS84 not stated in the appendix; the Singapore Port Information preface says all its positions are WGS84).",
+   "note": "Applies to all vessels transiting the port waters of this sector even without calling at Singapore (PC 06/2021 Annex A para 1(f))."
+  },
+  {
+   "name": "East Johor Strait Sector",
+   "control_station": "Sembawang Control",
+   "channel": "VHF 21 (reserved VHF 13 per PC 08/2026)",
+   "points": [
+    {
+     "n": "9a",
+     "lat_text": "1°17.787'N",
+     "lon_text": "104°07.152'E",
+     "lat": 1.29645,
+     "lon": 104.1192,
+     "note": "PC 08/2026 Appendix 1 point (1) prints 01°17.788'N 104°07.150'E; port limit point (76) prints 01°17.787'N 104°07.152'E"
+    },
+    {
+     "n": "9a-9b",
+     "along": "thence along the coastline"
+    },
+    {
+     "n": "9b",
+     "lat_text": "1°17.449'N",
+     "lon_text": "104°05.206'E",
+     "lat": 1.290817,
+     "lon": 104.086767
+    },
+    {
+     "n": "9c",
+     "lat_text": "1°18.783'N",
+     "lon_text": "104°04.258'E",
+     "lat": 1.31305,
+     "lon": 104.070967
+    },
+    {
+     "n": "9d",
+     "lat_text": "1°19.997'N",
+     "lon_text": "104°03.060'E",
+     "lat": 1.333283,
+     "lon": 104.051
+    },
+    {
+     "n": "9e",
+     "lat_text": "1°19.997'N",
+     "lon_text": "104°02.693'E",
+     "lat": 1.333283,
+     "lon": 104.044883
+    },
+    {
+     "n": "9f",
+     "lat_text": "1°20.313'N",
+     "lon_text": "104°01.514'E",
+     "lat": 1.33855,
+     "lon": 104.025233
+    },
+    {
+     "n": "9f-9a",
+     "along": "thence along the coastline, along the causeway and then, along the Singapore port limit, to the point of origin"
+    }
+   ],
+   "source": "pc21-06",
+   "boundary_text": "Points and 'thence along' instructions exactly as in PC 06/2021 Appendix 1 (WGS84 not stated in the appendix; the Singapore Port Information preface says all its positions are WGS84)."
+  }
+ ],
+ "east_johor_strait_tia": {
+  "name": "Traffic Information Area (TIA), East Johor Strait",
+  "control_station": "Sembawang Control",
+  "channel": "VHF 21; reserved VHF 13",
+  "applies_to": "vessels of 2000 GT or more; vessels over 30 m height; tugs towing/pushing when combined GT 2000 or more or any tug/tow over 30 m height",
+  "source": "pc26-08",
+  "boundary_text": "Bounded by the following points (WGS84), thence to the point of origin.",
+  "points": [
+   {
+    "n": "1",
+    "lat_text": "01°25.33'N",
+    "lon_text": "103°54.69'E",
+    "lat": 1.422167,
+    "lon": 103.9115,
+    "name": "Punggol Buoy"
+   },
+   {
+    "n": "2",
+    "lat_text": "01°24.22'N",
+    "lon_text": "103°55.85'E",
+    "lat": 1.403667,
+    "lon": 103.930833
+   },
+   {
+    "n": "3",
+    "lat_text": "01°22.98'N",
+    "lon_text": "103°57.92'E",
+    "lat": 1.383,
+    "lon": 103.965333,
+    "name": "Loyang Beacon"
+   },
+   {
+    "n": "4",
+    "lat_text": "01°23.52'N",
+    "lon_text": "103°58.34'E",
+    "lat": 1.392,
+    "lon": 103.972333,
+    "name": "Fairy Beacon"
+   },
+   {
+    "n": "5",
+    "lat_text": "01°23.71'N",
+    "lon_text": "103°59.43'E",
+    "lat": 1.395167,
+    "lon": 103.9905,
+    "name": "Changi Buoy"
+   },
+   {
+    "n": "6",
+    "lat_text": "01°23.54'N",
+    "lon_text": "104°00.14'E",
+    "lat": 1.392333,
+    "lon": 104.002333,
+    "name": "Paku Buoy"
+   },
+   {
+    "n": "7",
+    "lat_text": "01°21.10'N",
+    "lon_text": "104°03.01'E",
+    "lat": 1.351667,
+    "lon": 104.050167,
+    "name": "Angler Buoy"
+   },
+   {
+    "n": "8",
+    "lat_text": "01°21.29'N",
+    "lon_text": "104°03.59'E",
+    "lat": 1.354833,
+    "lon": 104.059833
+   },
+   {
+    "n": "9",
+    "lat_text": "01°23.04'N",
+    "lon_text": "104°01.42'E",
+    "lat": 1.384,
+    "lon": 104.023667,
+    "name": "Malang Tiga"
+   },
+   {
+    "n": "10",
+    "lat_text": "01°23.35'N",
+    "lon_text": "104°01.06'E",
+    "lat": 1.389167,
+    "lon": 104.017667
+   },
+   {
+    "n": "11",
+    "lat_text": "01°25.17'N",
+    "lon_text": "104°00.43'E",
+    "lat": 1.4195,
+    "lon": 104.007167,
+    "name": "West Tekong Buoy"
+   },
+   {
+    "n": "12",
+    "lat_text": "01°25.01'N",
+    "lon_text": "103°59.50'E",
+    "lat": 1.416833,
+    "lon": 103.991667
+   },
+   {
+    "n": "13",
+    "lat_text": "01°24.50'N",
+    "lon_text": "103°59.50'E",
+    "lat": 1.408333,
+    "lon": 103.991667,
+    "name": "Chek Jawa Rear Beacon"
+   },
+   {
+    "n": "14",
+    "lat_text": "01°23.90'N",
+    "lon_text": "103°57.87'E",
+    "lat": 1.398333,
+    "lon": 103.9645
+   },
+   {
+    "n": "15",
+    "lat_text": "01°23.90'N",
+    "lon_text": "103°57.27'E",
+    "lat": 1.398333,
+    "lon": 103.9545
+   },
+   {
+    "n": "16",
+    "lat_text": "01°24.60'N",
+    "lon_text": "103°56.35'E",
+    "lat": 1.41,
+    "lon": 103.939167
+   },
+   {
+    "n": "17",
+    "lat_text": "01°25.34'N",
+    "lon_text": "103°55.57'E",
+    "lat": 1.422333,
+    "lon": 103.926167,
+    "name": "Tajam Beacon"
+   }
+  ],
+  "eta_points": [
+   {
+    "n": "ETA-a1",
+    "lat_text": "01°25.17'N",
+    "lon_text": "104°00.43'E",
+    "lat": 1.4195,
+    "lon": 104.007167,
+    "name": "West Tekong Buoy (line to point NE of Pulau Ubin)"
+   },
+   {
+    "n": "ETA-a2",
+    "lat_text": "01°25.00'N",
+    "lon_text": "103°59.47'E",
+    "lat": 1.416667,
+    "lon": 103.991167,
+    "name": "point northeast of Pulau Ubin (or Long 103°59.53'E northwards off E end of Pulau Ubin)"
+   },
+   {
+    "n": "ETA-b",
+    "lat_text": "01°21.10'N",
+    "lon_text": "104°03.01'E",
+    "lat": 1.351667,
+    "lon": 104.050167,
+    "name": "Angler Buoy"
+   },
+   {
+    "n": "ETA-c",
+    "lat_text": "1°22.42'N",
+    "lon_text": "104°01.93'E",
+    "lat": 1.373667,
+    "lon": 104.032167,
+    "name": "Point 1"
+   },
+   {
+    "n": "ETA-d",
+    "lat_text": "01°23.08'N",
+    "lon_text": "104°01.02'E",
+    "lat": 1.384667,
+    "lon": 104.017,
+    "name": "Point 2"
+   },
+   {
+    "n": "ETA-e",
+    "lat_text": "01°23.54'N",
+    "lon_text": "104°00.14'E",
+    "lat": 1.392333,
+    "lon": 104.002333,
+    "name": "Paku Buoy (abeam)"
+   },
+   {
+    "n": "ETA-f",
+    "lat_text": "01°24.10'N",
+    "lon_text": "103°59.34'E",
+    "lat": 1.401667,
+    "lon": 103.989,
+    "name": "Malang Papan Beacon (abeam)"
+   },
+   {
+    "n": "ETA-g",
+    "lat_text": "01°26.53'N",
+    "lon_text": "103°52.60'E",
+    "lat": 1.442167,
+    "lon": 103.876667,
+    "name": "Seletar Buoy (abeam)"
+   }
+  ],
+  "update_points": [
+   {
+    "n": "U-a",
+    "lat_text": "01°20.09'N",
+    "lon_text": "104°05.01'E",
+    "lat": 1.334833,
+    "lon": 104.0835,
+    "name": "Kees Beacon (northbound/westbound, when abeam)"
+   },
+   {
+    "n": "U-b1",
+    "lat_text": "01°25.33'N",
+    "lon_text": "103°54.69'E",
+    "lat": 1.422167,
+    "lon": 103.9115,
+    "name": "Punggol Buoy (eastbound, when abeam)"
+   },
+   {
+    "n": "U-b2",
+    "lat_text": "01°23.66'N",
+    "lon_text": "103°57.68'E",
+    "lat": 1.394333,
+    "lon": 103.961333,
+    "name": "Squance Buoy (eastbound, when abeam)"
+   },
+   {
+    "n": "U-c",
+    "lat_text": "01°25.17'N",
+    "lon_text": "104°00.43'E",
+    "lat": 1.4195,
+    "lon": 104.007167,
+    "name": "West Tekong Buoy (eastbound via Nenas Channel)"
+   },
+   {
+    "n": "U-d",
+    "lat_text": "01°27.00'N",
+    "lon_text": "104°01.10'E",
+    "lat": 1.45,
+    "lon": 104.018333,
+    "name": "Sungai Johor (southbound, when underway)"
+   }
+  ],
+  "rules": [
+   "Max speed 12 kn in the East Johor Strait; 6 kn passing the yards and Changi Sailing Club area (approx 01°23.6'N 103°58.7'E).",
+   "No night towing (1900-0630) between the Causeway and Angler Buoy.",
+   "No vessel south of the line CAAS Buoy 1 (01°23.55'N 103°59.94'E; longitude printed with 'N' in the source, a misprint) to CAAS Buoy 2 (01°23.68'N 103°59.60'E).",
+   "No stopping or anchoring in the TIA; report to Sembawang Control at once if forced to in an emergency.",
+   "Report ETA changes at once: 2 min for Angler, Points 1 and 2, Paku, Malang Papan, West Tekong, NE Pulau Ubin; 15 min for Seletar Buoy."
+  ]
+ },
+ "port_limits": {
+  "name": "Port of Singapore port limits",
+  "source": [
+   "sg-portlimits-2010",
+   "pc18-09",
+   "pc19-06"
+  ],
+  "datum": "WGS84 (as printed)",
+  "boundary_text": "Straight lines joining the points below, from (79) back to the point of origin (1), plus the listed basins, rivers, reservoir dams, piers etc. and the shore within 50 m of high water mark. Items (3A)-(3C) were inserted by S 790/2018 (6 Dec 2018) and suspended by the Port Limits (Suspension) Notification 2019 from 8 Apr 2019 pending Singapore-Malaysia agreement; with them suspended the line runs (3) to (4) directly.",
+  "status_note": "Suspension of 3A-3C confirmed only from 2019 sources; not checked whether it has since been lifted. SSO consolidated text not reachable (HTTP 403).",
+  "points": [
+   {
+    "n": "1",
+    "lat_text": "01°08.972'N",
+    "lon_text": "103°44.315'E",
+    "lat": 1.149533,
+    "lon": 103.738583,
+    "note": "point of origin"
+   },
+   {
+    "n": "2",
+    "lat_text": "01°11.746'N",
+    "lon_text": "103°40.566'E",
+    "lat": 1.195767,
+    "lon": 103.6761
+   },
+   {
+    "n": "3",
+    "lat_text": "01°12.906'N",
+    "lon_text": "103°36.072'E",
+    "lat": 1.2151,
+    "lon": 103.6012
+   },
+   {
+    "n": "3A",
+    "lat_text": "01°13.284'N",
+    "lon_text": "103°34.452'E",
+    "lat": 1.2214,
+    "lon": 103.5742,
+    "status": "SUSPENDED since 8 Apr 2019"
+   },
+   {
+    "n": "3B",
+    "lat_text": "01°13.814'N",
+    "lon_text": "103°34.607'E",
+    "lat": 1.230233,
+    "lon": 103.576783,
+    "status": "SUSPENDED since 8 Apr 2019"
+   },
+   {
+    "n": "3C",
+    "lat_text": "01°15.146'N",
+    "lon_text": "103°34.849'E",
+    "lat": 1.252433,
+    "lon": 103.580817,
+    "status": "SUSPENDED since 8 Apr 2019"
+   },
+   {
+    "n": "4",
+    "lat_text": "01°15.846'N",
+    "lon_text": "103°36.072'E",
+    "lat": 1.2641,
+    "lon": 103.6012
+   },
+   {
+    "n": "5",
+    "lat_text": "01°17.084'N",
+    "lon_text": "103°36.400'E",
+    "lat": 1.284733,
+    "lon": 103.606667
+   },
+   {
+    "n": "6",
+    "lat_text": "01°18.854'N",
+    "lon_text": "103°36.870'E",
+    "lat": 1.314233,
+    "lon": 103.6145
+   },
+   {
+    "n": "7",
+    "lat_text": "01°18.921'N",
+    "lon_text": "103°36.924'E",
+    "lat": 1.31535,
+    "lon": 103.6154
+   },
+   {
+    "n": "8",
+    "lat_text": "01°19.293'N",
+    "lon_text": "103°36.969'E",
+    "lat": 1.32155,
+    "lon": 103.61615
+   },
+   {
+    "n": "9",
+    "lat_text": "01°20.459'N",
+    "lon_text": "103°37.702'E",
+    "lat": 1.340983,
+    "lon": 103.628367
+   },
+   {
+    "n": "10",
+    "lat_text": "01°21.118'N",
+    "lon_text": "103°38.032'E",
+    "lat": 1.351967,
+    "lon": 103.633867
+   },
+   {
+    "n": "11",
+    "lat_text": "01°21.438'N",
+    "lon_text": "103°38.157'E",
+    "lat": 1.3573,
+    "lon": 103.63595
+   },
+   {
+    "n": "12",
+    "lat_text": "01°21.774'N",
+    "lon_text": "103°38.352'E",
+    "lat": 1.3629,
+    "lon": 103.6392
+   },
+   {
+    "n": "13",
+    "lat_text": "01°22.791'N",
+    "lon_text": "103°38.851'E",
+    "lat": 1.37985,
+    "lon": 103.647517
+   },
+   {
+    "n": "14",
+    "lat_text": "01°23.220'N",
+    "lon_text": "103°39.077'E",
+    "lat": 1.387,
+    "lon": 103.651283
+   },
+   {
+    "n": "15",
+    "lat_text": "01°23.472'N",
+    "lon_text": "103°39.109'E",
+    "lat": 1.3912,
+    "lon": 103.651817
+   },
+   {
+    "n": "16",
+    "lat_text": "01°24.020'N",
+    "lon_text": "103°39.329'E",
+    "lat": 1.400333,
+    "lon": 103.655483
+   },
+   {
+    "n": "17",
+    "lat_text": "01°24.623'N",
+    "lon_text": "103°39.734'E",
+    "lat": 1.410383,
+    "lon": 103.662233
+   },
+   {
+    "n": "18",
+    "lat_text": "01°24.940'N",
+    "lon_text": "103°40.065'E",
+    "lat": 1.415667,
+    "lon": 103.66775
+   },
+   {
+    "n": "19",
+    "lat_text": "01°25.683'N",
+    "lon_text": "103°40.332'E",
+    "lat": 1.42805,
+    "lon": 103.6722
+   },
+   {
+    "n": "20",
+    "lat_text": "01°26.230'N",
+    "lon_text": "103°40.898'E",
+    "lat": 1.437167,
+    "lon": 103.681633
+   },
+   {
+    "n": "21",
+    "lat_text": "01°26.388'N",
+    "lon_text": "103°41.541'E",
+    "lat": 1.4398,
+    "lon": 103.69235
+   },
+   {
+    "n": "22",
+    "lat_text": "01°26.593'N",
+    "lon_text": "103°41.830'E",
+    "lat": 1.443217,
+    "lon": 103.697167
+   },
+   {
+    "n": "23",
+    "lat_text": "01°27.042'N",
+    "lon_text": "103°42.123'E",
+    "lat": 1.4507,
+    "lon": 103.70205
+   },
+   {
+    "n": "24",
+    "lat_text": "01°27.443'N",
+    "lon_text": "103°42.745'E",
+    "lat": 1.457383,
+    "lon": 103.712417
+   },
+   {
+    "n": "25",
+    "lat_text": "01°27.603'N",
+    "lon_text": "103°43.598'E",
+    "lat": 1.46005,
+    "lon": 103.726633
+   },
+   {
+    "n": "26",
+    "lat_text": "01°27.272'N",
+    "lon_text": "103°44.286'E",
+    "lat": 1.454533,
+    "lon": 103.7381
+   },
+   {
+    "n": "27",
+    "lat_text": "01°27.018'N",
+    "lon_text": "103°44.705'E",
+    "lat": 1.4503,
+    "lon": 103.745083
+   },
+   {
+    "n": "28",
+    "lat_text": "01°26.898'N",
+    "lon_text": "103°45.540'E",
+    "lat": 1.4483,
+    "lon": 103.759
+   },
+   {
+    "n": "29",
+    "lat_text": "01°27.158'N",
+    "lon_text": "103°46.160'E",
+    "lat": 1.452633,
+    "lon": 103.769333,
+    "note": "western side of the causeway"
+   },
+   {
+    "n": "30",
+    "lat_text": "01°27.162'N",
+    "lon_text": "103°46.165'E",
+    "lat": 1.4527,
+    "lon": 103.769417,
+    "note": "eastern side of the causeway"
+   },
+   {
+    "n": "31",
+    "lat_text": "01°27.903'N",
+    "lon_text": "103°47.326'E",
+    "lat": 1.46505,
+    "lon": 103.788767
+   },
+   {
+    "n": "32",
+    "lat_text": "01°28.585'N",
+    "lon_text": "103°48.117'E",
+    "lat": 1.476417,
+    "lon": 103.80195
+   },
+   {
+    "n": "33",
+    "lat_text": "01°28.703'N",
+    "lon_text": "103°48.657'E",
+    "lat": 1.478383,
+    "lon": 103.81095
+   },
+   {
+    "n": "34",
+    "lat_text": "01°28.597'N",
+    "lon_text": "103°49.227'E",
+    "lat": 1.476617,
+    "lon": 103.82045
+   },
+   {
+    "n": "35",
+    "lat_text": "01°28.375'N",
+    "lon_text": "103°49.947'E",
+    "lat": 1.472917,
+    "lon": 103.83245
+   },
+   {
+    "n": "36",
+    "lat_text": "01°27.965'N",
+    "lon_text": "103°51.017'E",
+    "lat": 1.466083,
+    "lon": 103.850283
+   },
+   {
+    "n": "37",
+    "lat_text": "01°27.772'N",
+    "lon_text": "103°51.417'E",
+    "lat": 1.462867,
+    "lon": 103.85695
+   },
+   {
+    "n": "38",
+    "lat_text": "01°27.528'N",
+    "lon_text": "103°51.795'E",
+    "lat": 1.4588,
+    "lon": 103.86325
+   },
+   {
+    "n": "39",
+    "lat_text": "01°27.388'N",
+    "lon_text": "103°51.987'E",
+    "lat": 1.456467,
+    "lon": 103.86645
+   },
+   {
+    "n": "40",
+    "lat_text": "01°26.934'N",
+    "lon_text": "103°52.399'E",
+    "lat": 1.4489,
+    "lon": 103.873317
+   },
+   {
+    "n": "41",
+    "lat_text": "01°26.104'N",
+    "lon_text": "103°53.065'E",
+    "lat": 1.435067,
+    "lon": 103.884417
+   },
+   {
+    "n": "42",
+    "lat_text": "01°25.673'N",
+    "lon_text": "103°53.769'E",
+    "lat": 1.427883,
+    "lon": 103.89615
+   },
+   {
+    "n": "43",
+    "lat_text": "01°25.648'N",
+    "lon_text": "103°54.662'E",
+    "lat": 1.427467,
+    "lon": 103.911033
+   },
+   {
+    "n": "44",
+    "lat_text": "01°25.596'N",
+    "lon_text": "103°54.907'E",
+    "lat": 1.4266,
+    "lon": 103.915117
+   },
+   {
+    "n": "45",
+    "lat_text": "01°25.691'N",
+    "lon_text": "103°55.297'E",
+    "lat": 1.428183,
+    "lon": 103.921617
+   },
+   {
+    "n": "46",
+    "lat_text": "01°25.821'N",
+    "lon_text": "103°55.901'E",
+    "lat": 1.43035,
+    "lon": 103.931683
+   },
+   {
+    "n": "47",
+    "lat_text": "01°25.824'N",
+    "lon_text": "103°56.158'E",
+    "lat": 1.4304,
+    "lon": 103.935967
+   },
+   {
+    "n": "48",
+    "lat_text": "01°25.666'N",
+    "lon_text": "103°56.448'E",
+    "lat": 1.427767,
+    "lon": 103.9408
+   },
+   {
+    "n": "49",
+    "lat_text": "01°25.518'N",
+    "lon_text": "103°57.048'E",
+    "lat": 1.4253,
+    "lon": 103.9508
+   },
+   {
+    "n": "50",
+    "lat_text": "01°25.461'N",
+    "lon_text": "103°57.349'E",
+    "lat": 1.42435,
+    "lon": 103.955817
+   },
+   {
+    "n": "51",
+    "lat_text": "01°25.481'N",
+    "lon_text": "103°57.536'E",
+    "lat": 1.424683,
+    "lon": 103.958933
+   },
+   {
+    "n": "52",
+    "lat_text": "01°25.326'N",
+    "lon_text": "103°57.904'E",
+    "lat": 1.4221,
+    "lon": 103.965067
+   },
+   {
+    "n": "53",
+    "lat_text": "01°25.313'N",
+    "lon_text": "103°58.241'E",
+    "lat": 1.421883,
+    "lon": 103.970683
+   },
+   {
+    "n": "54",
+    "lat_text": "01°25.461'N",
+    "lon_text": "103°58.691'E",
+    "lat": 1.42435,
+    "lon": 103.978183
+   },
+   {
+    "n": "55",
+    "lat_text": "01°25.453'N",
+    "lon_text": "103°58.911'E",
+    "lat": 1.424217,
+    "lon": 103.98185
+   },
+   {
+    "n": "56",
+    "lat_text": "01°25.491'N",
+    "lon_text": "103°59.066'E",
+    "lat": 1.42485,
+    "lon": 103.984433
+   },
+   {
+    "n": "57",
+    "lat_text": "01°25.483'N",
+    "lon_text": "103°59.238'E",
+    "lat": 1.424717,
+    "lon": 103.9873
+   },
+   {
+    "n": "58",
+    "lat_text": "01°25.496'N",
+    "lon_text": "103°59.471'E",
+    "lat": 1.424933,
+    "lon": 103.991183
+   },
+   {
+    "n": "59",
+    "lat_text": "01°25.418'N",
+    "lon_text": "103°59.611'E",
+    "lat": 1.423633,
+    "lon": 103.993517
+   },
+   {
+    "n": "60",
+    "lat_text": "01°25.233'N",
+    "lon_text": "104°00.068'E",
+    "lat": 1.42055,
+    "lon": 104.001133
+   },
+   {
+    "n": "61",
+    "lat_text": "01°26.344'N",
+    "lon_text": "104°01.294'E",
+    "lat": 1.439067,
+    "lon": 104.021567
+   },
+   {
+    "n": "62",
+    "lat_text": "01°26.629'N",
+    "lon_text": "104°02.346'E",
+    "lat": 1.443817,
+    "lon": 104.0391
+   },
+   {
+    "n": "63",
+    "lat_text": "01°26.388'N",
+    "lon_text": "104°03.343'E",
+    "lat": 1.4398,
+    "lon": 104.055717
+   },
+   {
+    "n": "64",
+    "lat_text": "01°26.074'N",
+    "lon_text": "104°04.167'E",
+    "lat": 1.434567,
+    "lon": 104.06945
+   },
+   {
+    "n": "65",
+    "lat_text": "01°25.851'N",
+    "lon_text": "104°04.483'E",
+    "lat": 1.43085,
+    "lon": 104.074717
+   },
+   {
+    "n": "66",
+    "lat_text": "01°25.051'N",
+    "lon_text": "104°05.203'E",
+    "lat": 1.417517,
+    "lon": 104.086717
+   },
+   {
+    "n": "67",
+    "lat_text": "01°24.926'N",
+    "lon_text": "104°05.280'E",
+    "lat": 1.415433,
+    "lon": 104.088
+   },
+   {
+    "n": "68",
+    "lat_text": "01°24.743'N",
+    "lon_text": "104°05.340'E",
+    "lat": 1.412383,
+    "lon": 104.089
+   },
+   {
+    "n": "69",
+    "lat_text": "01°24.353'N",
+    "lon_text": "104°05.455'E",
+    "lat": 1.405883,
+    "lon": 104.090917
+   },
+   {
+    "n": "70",
+    "lat_text": "01°23.984'N",
+    "lon_text": "104°05.477'E",
+    "lat": 1.399733,
+    "lon": 104.091283
+   },
+   {
+    "n": "71",
+    "lat_text": "01°23.651'N",
+    "lon_text": "104°05.443'E",
+    "lat": 1.394183,
+    "lon": 104.090717
+   },
+   {
+    "n": "72",
+    "lat_text": "01°23.078'N",
+    "lon_text": "104°05.268'E",
+    "lat": 1.384633,
+    "lon": 104.0878
+   },
+   {
+    "n": "73",
+    "lat_text": "01°22.121'N",
+    "lon_text": "104°04.910'E",
+    "lat": 1.368683,
+    "lon": 104.081833
+   },
+   {
+    "n": "74",
+    "lat_text": "01°21.446'N",
+    "lon_text": "104°04.678'E",
+    "lat": 1.357433,
+    "lon": 104.077967
+   },
+   {
+    "n": "75",
+    "lat_text": "01°20.796'N",
+    "lon_text": "104°05.012'E",
+    "lat": 1.3466,
+    "lon": 104.083533
+   },
+   {
+    "n": "76",
+    "lat_text": "01°17.787'N",
+    "lon_text": "104°07.152'E",
+    "lat": 1.29645,
+    "lon": 104.1192
+   },
+   {
+    "n": "77",
+    "lat_text": "01°16.295'N",
+    "lon_text": "103°58.599'E",
+    "lat": 1.271583,
+    "lon": 103.97665
+   },
+   {
+    "n": "78",
+    "lat_text": "01°12.397'N",
+    "lon_text": "103°51.397'E",
+    "lat": 1.206617,
+    "lon": 103.856617
+   },
+   {
+    "n": "79",
+    "lat_text": "01°10.855'N",
+    "lon_text": "103°47.560'E",
+    "lat": 1.180917,
+    "lon": 103.792667
+   },
+   {
+    "n": "79-1",
+    "along": "to the point of origin at (1)"
+   }
+  ]
+ },
+ "boarding_grounds": [
+  {
+   "code": "PEBGA",
+   "name": "Eastern Boarding Ground A",
+   "lat_text": "01°13.517'N",
+   "lon_text": "103°53.447'E",
+   "lat": 1.225283,
+   "lon": 103.890783,
+   "use": "Arriving vessels (PC 14/2015 description: non-tankers from east or west bound for eastern or western sector, or as Port Master directs; SPI 2025 gives position only).",
+   "source": "spi2025"
+  },
+  {
+   "code": "PEBGB",
+   "name": "Eastern Boarding Ground B",
+   "lat_text": "01°15.408'N",
+   "lon_text": "103°56.956'E",
+   "lat": 1.2568,
+   "lon": 103.949267,
+   "use": "All tankers picking up pilots in the eastern sector.",
+   "source": "spi2025"
+  },
+  {
+   "code": "PEBGC",
+   "name": "Eastern Boarding Ground C",
+   "lat_text": "01°15.885'N",
+   "lon_text": "103°57.834'E",
+   "lat": 1.26475,
+   "lon": 103.9639,
+   "use": "Vessels arriving from the east bound for the eastern or western sector, or as directed by the Port Master.",
+   "source": "spi2025"
+  },
+  {
+   "code": "PSBG",
+   "name": "Southern Boarding Ground",
+   "lat_text": "01°11.702'N",
+   "lon_text": "103°49.666'E",
+   "lat": 1.195033,
+   "lon": 103.827767,
+   "use": "SE of Sebarok Beacon; only by prior arrangement with Port Operations Control Centre.",
+   "source": "spi2025"
+  },
+  {
+   "code": "PWBGA",
+   "name": "Western Boarding Ground A",
+   "lat_text": "01°12.906'N",
+   "lon_text": "103°36.073'E",
+   "lat": 1.2151,
+   "lon": 103.601217,
+   "use": "Vessels arriving from the west.",
+   "source": "spi2025"
+  },
+  {
+   "code": "PWBGB",
+   "name": "Western Boarding Ground B",
+   "lat_text": "01°12.027'N",
+   "lon_text": "103°39.481'E",
+   "lat": 1.20045,
+   "lon": 103.658017,
+   "use": "Chemical and gas carriers bound for ASSPU anchorage and facilities on the western side of Singapore.",
+   "source": "spi2025"
+  },
+  {
+   "code": "PJSB",
+   "name": "East Johor Strait Boarding Ground",
+   "lat_text": "01°17.650'N",
+   "lon_text": "104°06.393'E",
+   "lat": 1.294167,
+   "lon": 104.10655,
+   "use": "SE of Eastern Buoy; East Johor Strait.",
+   "source": "spi2025"
+  },
+  {
+   "code": "PGBG",
+   "name": "Gusong Boarding Ground",
+   "lat_text": "01°10.465'N",
+   "lon_text": "103°46.887'E",
+   "lat": 1.174417,
+   "lon": 103.78145,
+   "use": "Vessels from the east calling at Sudong Sector anchorages or Raffles Reserved Anchorage, with prior Port Master permission.",
+   "source": "spi2025"
+  }
+ ],
+ "disembarkation_grounds": [
+  {
+   "code": "DG1",
+   "name": "Pilot disembarkation ground 1",
+   "lat_text": "01°17.618'N",
+   "lon_text": "104°06.195'E",
+   "lat": 1.293633,
+   "lon": 104.10325,
+   "use": "pilot disembarkation",
+   "source": "spi2025"
+  },
+  {
+   "code": "DG2",
+   "name": "Pilot disembarkation ground 2",
+   "lat_text": "01°16.464'N",
+   "lon_text": "103°59.595'E",
+   "lat": 1.2744,
+   "lon": 103.99325,
+   "use": "pilot disembarkation",
+   "source": "spi2025"
+  },
+  {
+   "code": "DG3",
+   "name": "Pilot disembarkation ground 3",
+   "lat_text": "01°15.316'N",
+   "lon_text": "103°56.797'E",
+   "lat": 1.255267,
+   "lon": 103.946617,
+   "use": "pilot disembarkation",
+   "source": "spi2025"
+  },
+  {
+   "code": "DG4",
+   "name": "Pilot disembarkation ground 4",
+   "lat_text": "01°14.237'N",
+   "lon_text": "103°54.697'E",
+   "lat": 1.237283,
+   "lon": 103.911617,
+   "use": "pilot disembarkation",
+   "source": "spi2025"
+  },
+  {
+   "code": "DG5",
+   "name": "Pilot disembarkation ground 5",
+   "lat_text": "01°13.457'N",
+   "lon_text": "103°53.196'E",
+   "lat": 1.224283,
+   "lon": 103.8866,
+   "use": "pilot disembarkation",
+   "source": "spi2025"
+  },
+  {
+   "code": "DG6",
+   "name": "Pilot disembarkation ground 6",
+   "lat_text": "01°15.496'N",
+   "lon_text": "103°51.767'E",
+   "lat": 1.258267,
+   "lon": 103.862783,
+   "use": "pilot disembarkation",
+   "source": "spi2025"
+  },
+  {
+   "code": "DG7",
+   "name": "Pilot disembarkation ground 7",
+   "lat_text": "01°11.574'N",
+   "lon_text": "103°49.347'E",
+   "lat": 1.1929,
+   "lon": 103.82245,
+   "use": "pilot disembarkation",
+   "source": "spi2025"
+  },
+  {
+   "code": "DG8",
+   "name": "Pilot disembarkation ground 8",
+   "lat_text": "01°10.466'N",
+   "lon_text": "103°46.897'E",
+   "lat": 1.174433,
+   "lon": 103.781617,
+   "use": "pilot disembarkation",
+   "source": "spi2025"
+  },
+  {
+   "code": "DG9",
+   "name": "Pilot disembarkation ground 9",
+   "lat_text": "01°12.355'N",
+   "lon_text": "103°38.199'E",
+   "lat": 1.205917,
+   "lon": 103.63665,
+   "use": "pilot disembarkation",
+   "source": "spi2025"
+  },
+  {
+   "code": "DG10",
+   "name": "Pilot disembarkation ground 10",
+   "lat_text": "01°13.994'N",
+   "lon_text": "103°36.072'E",
+   "lat": 1.233233,
+   "lon": 103.6012,
+   "use": "pilot disembarkation",
+   "source": "spi2025"
+  }
+ ],
+ "confirmation_of_arrival_points": [
+  {
+   "name": "Horsburgh Lt",
+   "report_to": "VTIS East VHF 10 (from the east)",
+   "lat_text": "01° 19.814'N",
+   "lon_text": "104°24.337'E",
+   "lat": 1.330233,
+   "lon": 104.405617,
+   "when": "when abeam",
+   "source": "mpa-arriving"
+  },
+  {
+   "name": "Karang Galang Lt",
+   "report_to": "VTIS East VHF 10 (from the south via Selat Riau)",
+   "lat_text": "01 ° 09.577'N",
+   "lon_text": "104° 11.365'E",
+   "lat": 1.159617,
+   "lon": 104.189417,
+   "when": "when abeam",
+   "source": "mpa-arriving"
+  },
+  {
+   "name": "Eastern Buoy",
+   "report_to": "VTIS East VHF 10 (from the East Johor Strait)",
+   "lat_text": "01° 17.865'N",
+   "lon_text": "104° 05.894'E",
+   "lat": 1.29775,
+   "lon": 104.098233,
+   "when": "when abeam",
+   "source": "mpa-arriving"
+  },
+  {
+   "name": "Pulau Jangkat Beacon",
+   "report_to": "VTIS West VHF 73 (from the south via Selat Durian)",
+   "lat_text": "00° 57.895'N",
+   "lon_text": "103°42.619'E",
+   "lat": 0.964917,
+   "lon": 103.710317,
+   "when": "when abeam",
+   "source": "mpa-arriving"
+  },
+  {
+   "name": "Pulau Iyu Kechil",
+   "report_to": "VTIS West VHF 73 (from the west)",
+   "lat_text": "01° 11.479'N",
+   "lon_text": "103° 21.140'E",
+   "lat": 1.191317,
+   "lon": 103.352333,
+   "when": "when abeam",
+   "source": "mpa-arriving"
+  }
+ ],
+ "vtis_reference_points": [
+  {
+   "name": "Pu Iyu Kechil",
+   "lat_text": "01°11.466'N",
+   "lon_text": "103° 21.141'E",
+   "lat": 1.1911,
+   "lon": 103.35235,
+   "source": "mpa-arriving",
+   "use": "bearing and distance reference when calling VTIS from a direction without a designated reporting point"
+  },
+  {
+   "name": "Sultan Shoal Lt",
+   "lat_text": "01°14.377'N",
+   "lon_text": "103° 38.884'E",
+   "lat": 1.239617,
+   "lon": 103.648067,
+   "source": "mpa-arriving",
+   "use": "bearing and distance reference when calling VTIS from a direction without a designated reporting point"
+  },
+  {
+   "name": "Raffles Lt",
+   "lat_text": "01°09.606'N",
+   "lon_text": "103° 44.450'E",
+   "lat": 1.1601,
+   "lon": 103.740833,
+   "source": "mpa-arriving",
+   "use": "bearing and distance reference when calling VTIS from a direction without a designated reporting point"
+  },
+  {
+   "name": "Sakijang Lt Bn",
+   "lat_text": "01°13.305'N",
+   "lon_text": "103° 51.275'E",
+   "lat": 1.22175,
+   "lon": 103.854583,
+   "source": "mpa-arriving",
+   "use": "bearing and distance reference when calling VTIS from a direction without a designated reporting point"
+  },
+  {
+   "name": "Bedok Lt",
+   "lat_text": "01°18.544'N",
+   "lon_text": "103° 55.965'E",
+   "lat": 1.309067,
+   "lon": 103.93275,
+   "source": "mpa-arriving",
+   "use": "bearing and distance reference when calling VTIS from a direction without a designated reporting point"
+  },
+  {
+   "name": "Tg Setapa Lt",
+   "lat_text": "01°20.574'N",
+   "lon_text": "104° 08.135'E",
+   "lat": 1.3429,
+   "lon": 104.135583,
+   "source": "mpa-arriving",
+   "use": "bearing and distance reference when calling VTIS from a direction without a designated reporting point"
+  },
+  {
+   "name": "Horsburgh Lt",
+   "lat_text": "01°19.814'N",
+   "lon_text": "104° 24.337'E",
+   "lat": 1.330233,
+   "lon": 104.405617,
+   "source": "mpa-arriving",
+   "use": "bearing and distance reference when calling VTIS from a direction without a designated reporting point"
+  }
+ ],
+ "underway_reporting_points": [
+  {
+   "name": "Airway Buoy",
+   "location": "Changi Naval Base Corridor",
+   "lat_text": "01° 17.65'N",
+   "lon_text": "104° 01.09'E",
+   "lat": 1.294167,
+   "lon": 104.018167,
+   "source": "pc21-06"
+  },
+  {
+   "name": "Padang Buoy",
+   "location": "Ferry Corridor",
+   "lat_text": "01° 17.49'N",
+   "lon_text": "103° 58.98'E",
+   "lat": 1.2915,
+   "lon": 103.983,
+   "source": "pc21-06"
+  },
+  {
+   "name": "Forward Buoy",
+   "location": "Eastern Fairway/Eastern Corridor",
+   "lat_text": "01° 16.50'N",
+   "lon_text": "103° 55.47'E",
+   "lat": 1.275,
+   "lon": 103.9245,
+   "source": "pc21-06"
+  },
+  {
+   "name": "NE Corridor Buoy",
+   "location": "Eastern Fairway/Eastern Corridor",
+   "lat_text": "01° 15.43'N",
+   "lon_text": "103° 53.81'E",
+   "lat": 1.257167,
+   "lon": 103.896833,
+   "source": "pc21-06"
+  },
+  {
+   "name": "Ro-Ro Buoy",
+   "location": "East Keppel Fairway",
+   "lat_text": "01° 15.91N",
+   "lon_text": "103° 51.45'E",
+   "lat": 1.265167,
+   "lon": 103.8575,
+   "source": "pc21-06"
+  },
+  {
+   "name": "Main Fairway Buoy",
+   "location": "East Keppel Fairway",
+   "lat_text": "01° 14.44'N",
+   "lon_text": "103° 51.93'E",
+   "lat": 1.240667,
+   "lon": 103.8655,
+   "source": "pc21-06"
+  },
+  {
+   "name": "Outer Shoal Beacon",
+   "location": "East Keppel Fairway",
+   "lat_text": "01° 15.02'N",
+   "lon_text": "103° 51.81'E",
+   "lat": 1.250333,
+   "lon": 103.8635,
+   "source": "pc21-06"
+  },
+  {
+   "name": "E Buran Buoy",
+   "location": "Buran Channel",
+   "lat_text": "01° 14.64'N",
+   "lon_text": "103° 50.96'E",
+   "lat": 1.244,
+   "lon": 103.849333,
+   "source": "pc21-06"
+  },
+  {
+   "name": "W Buran Buoy",
+   "location": "Buran Channel",
+   "lat_text": "01° 14.05'N",
+   "lon_text": "103° 50.10'E",
+   "lat": 1.234167,
+   "lon": 103.835,
+   "source": "pc21-06"
+  },
+  {
+   "name": "Tembakul Beacon",
+   "location": "Southern Fairway",
+   "lat_text": "01° 13.34'N",
+   "lon_text": "103° 51.76'E",
+   "lat": 1.222333,
+   "lon": 103.862667,
+   "source": "pc21-06"
+  },
+  {
+   "name": "Palawan Beacon",
+   "location": "Sisters Fairway",
+   "lat_text": "01° 14.97'N",
+   "lon_text": "103° 48.89'E",
+   "lat": 1.2495,
+   "lon": 103.814833,
+   "source": "pc21-06"
+  },
+  {
+   "name": "Selegi Beacon",
+   "location": "Sisters Fairway",
+   "lat_text": "01° 13.58'N",
+   "lon_text": "103° 49.59'E",
+   "lat": 1.226333,
+   "lon": 103.8265,
+   "source": "pc21-06"
+  },
+  {
+   "name": "Sisters Buoy",
+   "location": "Jong Fairway",
+   "lat_text": "01° 12.42'N",
+   "lon_text": "103° 48.77'E",
+   "lat": 1.207,
+   "lon": 103.812833,
+   "source": "pc21-06"
+  },
+  {
+   "name": "Sebarok Beacon",
+   "location": "Jong Fairway",
+   "lat_text": "01° 11.87'N",
+   "lon_text": "103° 48.43'E",
+   "lat": 1.197833,
+   "lon": 103.807167,
+   "source": "pc21-06"
+  },
+  {
+   "name": "Rimau Beacon",
+   "location": "West Keppel Fairway",
+   "lat_text": "01° 15.59N",
+   "lon_text": "103° 48.39'E",
+   "lat": 1.259833,
+   "lon": 103.8065,
+   "source": "pc21-06"
+  },
+  {
+   "name": "Cyrene Beacon",
+   "location": "East Jurong Channel",
+   "lat_text": "01° 15.30'N",
+   "lon_text": "103° 45.54'E",
+   "lat": 1.255,
+   "lon": 103.759,
+   "source": "pc21-06"
+  },
+  {
+   "name": "East Cyrene Buoy",
+   "location": "East Jurong Channel",
+   "lat_text": "01° 15.61'N",
+   "lon_text": "103° 45.89'E",
+   "lat": 1.260167,
+   "lon": 103.764833,
+   "source": "pc21-06"
+  },
+  {
+   "name": "Pusing Buoy",
+   "location": "East Jurong Channel",
+   "lat_text": "01° 17.15'N",
+   "lon_text": "103° 44.19'E",
+   "lat": 1.285833,
+   "lon": 103.7365,
+   "source": "pc21-06"
+  },
+  {
+   "name": "Serebut Bn",
+   "location": "Sinki Fairway/Banyan Basin",
+   "lat_text": "01° 14.83'N",
+   "lon_text": "103° 42.09'E",
+   "lat": 1.247167,
+   "lon": 103.7015,
+   "source": "pc21-06"
+  },
+  {
+   "name": "Sawa Buoy",
+   "location": "Sinki Fairway/Banyan Basin",
+   "lat_text": "01° 15.35'N",
+   "lon_text": "103° 44.05'E",
+   "lat": 1.255833,
+   "lon": 103.734167,
+   "source": "pc21-06"
+  },
+  {
+   "name": "Salu Buoy",
+   "location": "Sinki Fairway/Banyan Basin",
+   "lat_text": "01° 12.22'N",
+   "lon_text": "103° 40.66'E",
+   "lat": 1.203667,
+   "lon": 103.677667,
+   "source": "pc21-06"
+  },
+  {
+   "name": "Temasek Buoy",
+   "location": "Temasek Fairway",
+   "lat_text": "01° 13.03'N",
+   "lon_text": "103° 39.51'E",
+   "lat": 1.217167,
+   "lon": 103.6585,
+   "source": "pc21-06"
+  },
+  {
+   "name": "Anak Pulau Buoy",
+   "location": "Pesek Basin",
+   "lat_text": "01° 17.61'N",
+   "lon_text": "103° 41.95'E",
+   "lat": 1.2935,
+   "lon": 103.699167,
+   "source": "pc21-06"
+  },
+  {
+   "name": "Triton Buoy",
+   "location": "West Jurong Channel",
+   "lat_text": "01° 16.49'N",
+   "lon_text": "103° 39.22'E",
+   "lat": 1.274833,
+   "lon": 103.653667,
+   "source": "pc21-06"
+  },
+  {
+   "name": "Tuas Beacon",
+   "location": "Tuas Channel",
+   "lat_text": "01 16.96'N",
+   "lon_text": "103° 39.35'E",
+   "lat": 1.282667,
+   "lon": 103.655833,
+   "source": "pc21-06"
+  },
+  {
+   "name": "Senang Buoy",
+   "location": "Raffles Reserved Anchorage",
+   "lat_text": "01° 10.41'N",
+   "lon_text": "103° 44.99'E",
+   "lat": 1.1735,
+   "lon": 103.749833,
+   "source": "pc21-06"
+  },
+  {
+   "name": "Eastern Buoy",
+   "location": "East Johor Strait",
+   "lat_text": "01° 17.87'N",
+   "lon_text": "104° 05.89'E",
+   "lat": 1.297833,
+   "lon": 104.098167,
+   "source": "pc21-06"
+  },
+  {
+   "name": "Angler Buoy",
+   "location": "East Johor Strait",
+   "lat_text": "01° 21.09'N",
+   "lon_text": "104° 03.01'E",
+   "lat": 1.3515,
+   "lon": 104.050167,
+   "source": "pc21-06"
+  },
+  {
+   "name": "Punggol Buoy",
+   "location": "East Johor Strait",
+   "lat_text": "01° 25.33'N",
+   "lon_text": "103° 54.69'E",
+   "lat": 1.422167,
+   "lon": 103.9115,
+   "source": "pc21-06"
+  }
+ ],
+ "reports": [
+  {
+   "who": "Owner, agent or master of passenger ships (incl. HSC), cargo ships of 500 GT and above, mobile offshore units",
+   "when": "At least 24 h before arrival; if from a nearby port under 24 h steaming, immediately on departure from that port",
+   "what": "Pre-Arrival Notification (PAN form v11.0): ship particulars and drafts, air draft, CSO and agent contacts, arrival voyage (facility, ETA/ETD, purpose), DG/HNS on board Y/N, ship security level, last 10 port calls with security levels, last 5 STS activities, armed guards, stowaways/rescued persons, arms on board, BCC/CLC/ISSC, Green Ship Programme fuel, BWM certificate and BWMS status, sulphur compliance method and scrubber type, FONOR, drones, declarant and ship position",
+   "how": "Email isps@mpa.gov.sg (Port Security Unit, tel +65 6221 3127); Singapore-based agent may submit via digitalPORT@SG. Once PAN is submitted, no separate NOA is needed. (MPA PAN web page still mentions fax +65 6221 3036 and 'Marinet'; the 2024 circular names email and digitalPORT@SG.)",
+   "channel_or_system": "email / digitalPORT@SG",
+   "source": [
+    "pc24-14",
+    "mpa-pan"
+   ]
+  },
+  {
+   "who": "Owner, agent, master or person in charge of vessels under 500 GT",
+   "when": "At least 12 h before arrival",
+   "what": "Notice of Arrival (NOA) in the PC 14/2024 Annex B Appendix 2 format (incl. last port, height, arms on board, drones, remarks on defects/fire hazards/damage/assistance needed)",
+   "how": "Upload via digitalPORT@SG, or email noa@mpa.gov.sg, or fax +65 6224 5776",
+   "channel_or_system": "digitalPORT@SG / email / fax",
+   "source": [
+    "pc24-14"
+   ]
+  },
+  {
+   "who": "Note on older NOA rule",
+   "when": "MPA 'Vessels Arriving' page still describes NOA for passenger vessels or 300 GT+: 12 h before arrival, on departure if from a port under 12 h away, 24 h if carrying bulk HNS (PC 15/1998)",
+   "what": "Slop/sludge to be declared in NOA item 11 if residues will be discharged in port",
+   "how": "noa@mpa.gov.sg, fax +65 6224 5776, telex RS 34970",
+   "channel_or_system": "email",
+   "source": [
+    "mpa-arriving"
+   ],
+   "status": "Page text appears older than PC 14/2024 (which makes PAN replace NOA for 500 GT+). Treat PC 14/2024 as current; the page is shown for completeness."
+  },
+  {
+   "who": "Single hulled tankers of 5000 DWT and above",
+   "when": "At least 24 h before arrival, or immediately on departure from a nearby port under 24 h steaming",
+   "what": "Pre-arrival declaration form for single hulled tankers to the Port Master",
+   "how": "Fax (65) 6224 5776 or telex RS 34970",
+   "channel_or_system": "fax / telex",
+   "source": [
+    "mpa-arriving"
+   ]
+  },
+  {
+   "who": "Owner, agent or master of vessels carrying or intending to load bulk HNS (MARPOL Annex II NLS, IBC, IGC, IMSBC cargoes, and their residues)",
+   "when": "24 h before arrival, or 24 h before loading if already in port",
+   "what": "Bulk HNS notification",
+   "how": "digitalPORT@SG (hazmat@mpa.gov.sg, +65 6325 2421)",
+   "channel_or_system": "digitalPORT@SG",
+   "source": [
+    "mpa-dg"
+   ]
+  },
+  {
+   "who": "Owner, agent or master of vessels arriving with packaged dangerous goods, or onto which DG will be loaded",
+   "when": "Not less than 12 h before arrival (DG to discharge or in transit), or before loading of DG",
+   "what": "DG declaration",
+   "how": "PSA terminals: PSA PORTNET; Jurong Port: JP-Online; other locations e.g. anchorages: digitalPORT@SG",
+   "channel_or_system": "PORTNET / JP-Online / digitalPORT@SG",
+   "source": [
+    "mpa-dg"
+   ]
+  },
+  {
+   "who": "Vessels of 300 GT or more, tugs towing/pushing with combined 300 GT or more, any passenger vessel, intending to call at Singapore",
+   "when": "Confirmation of arrival: when at the designated reporting point on entering the VTIS area",
+   "what": "Vessel name; call sign; present location (with reference to a reporting point, e.g. when Horsburgh Lt is abeam); number of passengers and crew (passenger vessels only); ETA at first destination in port or name of the pilot boarding ground if taking a pilot; height if different from the NOA/PAN",
+   "how": "VHF to VTIS: East VHF 10 when abeam Horsburgh Lt (01°19.814'N 104°24.337'E), Karang Galang Lt (01°09.577'N 104°11.365'E) or Eastern Buoy (01°17.865'N 104°05.894'E); Central VHF 14 when joining the TSS lane between 103°44.6'E and 104°02.1'E after leaving port or anchorages; West VHF 73 when abeam Pulau Jangkat Beacon (00°57.895'N 103°42.619'E) or Pulau Iyu Kechil (01°11.479'N 103°21.140'E). From other directions call the appropriate VTIS on entering the area and give bearing and distance from a reference point.",
+   "channel_or_system": "VHF 10 / 14 / 73",
+   "source": [
+    "mpa-arriving"
+   ]
+  },
+  {
+   "who": "Vessels of 300 GT and above; tugs towing/pushing with combined 300 GT and above; all passenger vessels; vessels 30 m or more in length; vessels 30 m or more in height",
+   "when": "Channel Information Report: arriving vessel before entering the port; any vessel before moving within or leaving the port. Permission needed before entering, moving within or leaving a reporting sector.",
+   "what": "Name or call sign; draft; present location (position when entering port limit); destination (new location in port or bound for sea); height; remarks (Appendix 5 summary also lists next port)",
+   "how": "VHF to the control station of the sector (East Control 12, Keppel Control 05, Cruise Bay Control 05, Pasir Panjang Control 18, Sinki Control 68, Jurong Control 22, West Control 68, Sembawang Control 21). English, local time, 24-hour clock.",
+   "channel_or_system": "VHF port control channels",
+   "source": [
+    "pc21-06"
+   ]
+  },
+  {
+   "who": "Same vessels as above",
+   "when": "Arrival Report: on arrival at the destination in port (berth or anchorage)",
+   "what": "Terminal: name or call sign, arrival date and time, berth and terminal. Anchorage: name or call sign, arrival date and time, anchorage name, bearing and distance from a reference point (Eastern Buoy 01°17.9'N 104°05.9'E; Amber Beacon 01°17.9'N 103°54.3'E; Rimau Beacon 01°15.5'N 103°48.4'E; Sultan Shoal Lt Ho 01°14.4'N 103°38.9'E). Continuous VHF watch at anchor.",
+   "how": "VHF to the sector control station",
+   "channel_or_system": "VHF port control channels",
+   "source": [
+    "pc21-06",
+    "spi2025"
+   ],
+   "note": "SPI 2025 pilotage section para 21: all vessels above 300 GT report final anchored position by bearing and distance from these reference points."
+  },
+  {
+   "who": "Same vessels as above",
+   "when": "Underway Report: when underway in a channel after leaving an anchorage or berth, and when passing abeam each reporting point in PC 06/2021 Appendix 4",
+   "what": "Name or call sign; present location (e.g. abeam NE Corridor Buoy). Keep continuous watch on the sector channel; additional watch on VHF 16 advised.",
+   "how": "VHF to the sector control station",
+   "channel_or_system": "VHF port control channels",
+   "source": [
+    "pc21-06"
+   ]
+  },
+  {
+   "who": "All vessels regardless of GT entering or leaving the West Johor Strait reporting sector (including those transiting without calling at Singapore)",
+   "when": "Before entering and before leaving the sector",
+   "what": "Name or call sign; draft; present location; destination; height; remarks",
+   "how": "Jurong Control VHF 22; if no VHF, telephone POCC +65 6325 2493/4",
+   "channel_or_system": "VHF 22",
+   "source": [
+    "pc21-06"
+   ]
+  },
+  {
+   "who": "Vessels of 2000 GT or more, vessels over 30 m height, tugs/tows of 2000 GT or more or over 30 m height, in the East Johor Strait",
+   "when": "Before entering, manoeuvring within or leaving the East Johor Strait (clearance required); again when passing each ETA reporting point; ETA updates at Kees Beacon / Punggol and Squance Buoys / West Tekong Buoy / when leaving Sungai Johor",
+   "what": "Name; call sign; present location; destination; draft; height; remarks; ETAs at the line West Tekong Buoy - NE Pulau Ubin, Angler Buoy, Point 1, Point 2, Paku Buoy abeam, Malang Papan Beacon abeam, Seletar Buoy abeam (ETAs are used to coordinate aircraft traffic)",
+   "how": "Sembawang Control VHF 21 (reserved VHF 13); continuous watch on VHF 21 underway or at anchor in EJS; tel 6481 5848, scc@mpa.gov.sg",
+   "channel_or_system": "VHF 21",
+   "source": [
+    "pc26-08"
+   ]
+  },
+  {
+   "who": "Owner, agent or master",
+   "when": "Within 24 h of arrival",
+   "what": "Arrival General Declaration (vessel details, purpose of call, arrival date/time, last port, location on arrival, grid reference, master, crew, passengers, cargo). First call: Application of Vessel Record Creation first; renamed vessel: Application for Change of Vessel Particulars first.",
+   "how": "digitalPORT@SG to MPA Marine Licensing and Permits (MLP)",
+   "channel_or_system": "digitalPORT@SG",
+   "source": [
+    "mpa-arriving"
+   ]
+  },
+  {
+   "who": "Owner, agent or master",
+   "when": "Before departure (combined Arrival and Departure GD allowed for stays of 3 days or less)",
+   "what": "Departure General Declaration (vessel details, purpose, departure date/time, next port, master, crew, passengers, cargo); a Port Clearance Certificate is generated on submission. Vessel must leave within 48 h of port clearance (or shorter period set by the Port Master); agent returns the PCC within 6 h after expiry if not used.",
+   "how": "digitalPORT@SG to MLP",
+   "channel_or_system": "digitalPORT@SG",
+   "source": [
+    "mpa-departing"
+   ]
+  },
+  {
+   "who": "Vessels using pilots",
+   "when": "Order pilotage directly with PSA Marine Pte Ltd (the pilotage service provider)",
+   "what": "Pilot booking. Lead times (6 h before service required time; BGPAN pre-arrival notice to the pilot office 72 h to 2.5 h before boarding ground arrival; confirmation 2 h before) were seen only on an unofficial mirror of the PSA Marine page: UNCONFIRMED.",
+   "how": "PSA Marine; Singapore Pilots VHF 20 (157.000 / 161.600 MHz) for pilotage service and information. Vessels at anchor needing a pilot at night show white-white-red all-round lights vertically; by day flag G.",
+   "channel_or_system": "PSA Marine / VHF 20",
+   "source": [
+    "spi2025",
+    "mpa-arriving"
+   ]
+  }
+ ],
+ "other_vhf_channels": [
+  {
+   "station": "Singapore Port Operations Control",
+   "channel": "VHF 16, VHF 09",
+   "use": "Distress, urgency and safety; MSI broadcasts"
+  },
+  {
+   "station": "Port Marine Safety",
+   "channel": "VHF 07",
+   "use": "Coordination of marine emergencies by MPA (MPA page prints frequency 156.450 for Ch 07, which is the Ch 09 frequency: misprint on the page)"
+  },
+  {
+   "station": "Police Coast Guard",
+   "channel": "VHF 16",
+   "use": "Requesting assistance"
+  },
+  {
+   "station": "Port Security",
+   "channel": "VHF 03",
+   "use": "Security matters"
+  },
+  {
+   "station": "Immigration",
+   "channel": "VHF 74",
+   "use": "Immigration clearance"
+  },
+  {
+   "station": "Port Health",
+   "channel": "VHF 14",
+   "use": "Port health clearance (same channel as VTIS Central)"
+  },
+  {
+   "station": "Singapore Pilots",
+   "channel": "VHF 20",
+   "use": "Pilotage service and information"
+  },
+  {
+   "station": "Tug Deployment / Water Boats",
+   "channel": "VHF 17, VHF 61",
+   "use": "Tugs and fresh water at anchor"
+  },
+  {
+   "station": "Bukom Operations",
+   "channel": "VHF 19",
+   "use": "Berthing/unberthing at Pulau Bukom and Shell SBM"
+  },
+  {
+   "station": "Pulau Ayer Chawan Operations",
+   "channel": "VHF 05",
+   "use": "Berthing/unberthing at Pulau Ayer Chawan and VLCC berths"
+  },
+  {
+   "station": "Singapore Refinery Centre",
+   "channel": "VHF 05",
+   "use": "Berthing/unberthing at Pulau Merlimau"
+  }
+ ],
+ "johor": {
+  "authority": "Johor Port Authority (Lembaga Pelabuhan Johor, LPJ) regulates Pasir Gudang Port (operator Johor Port Berhad) and Tanjung Pelepas Port (operator PTP). Marine Department Malaysia (Jabatan Laut) and Johor VTS (STRAITREP Sector 6, VHF 88 per MPA page) are separate; STRAITREP is researched by another agent.",
+  "datum_note": "None of the Malaysian gazette texts below state a datum. Do not assume WGS84 without checking the chart notes.",
+  "port_limits": [
+   {
+    "name": "Pasir Gudang Port limits",
+    "source": "lpj-pg-limits",
+    "boundary_text": "From the southernmost tip of Tanjung Datuk or Tanjung Penyusop (A) to (B), (C), (D), (E), (F), thence following the boundary of Malaysian territorial waters to the eastern side of the Johore Causeway, along the coastline eastwards back to (A); includes the Johore River up to the Johor Bahru - Kota Tinggi road bridge and other navigable rivers, piers etc., and the shore within 45.72 m of high water.",
+    "points": [
+     {
+      "n": "A",
+      "lat_text": "1°22.20'N",
+      "lon_text": "104°17.05'E",
+      "lat": 1.37,
+      "lon": 104.284167,
+      "name": "S tip of Tanjung Datuk / Tanjung Penyusop"
+     },
+     {
+      "n": "B",
+      "lat_text": "1°20.59'N",
+      "lon_text": "104°19.33'E",
+      "lat": 1.343167,
+      "lon": 104.322167
+     },
+     {
+      "n": "C",
+      "lat_text": "1°19.90'N",
+      "lon_text": "104°19.93'E",
+      "lat": 1.331667,
+      "lon": 104.332167
+     },
+     {
+      "n": "D",
+      "lat_text": "1°19.40'N",
+      "lon_text": "104°19.40'E",
+      "lat": 1.323333,
+      "lon": 104.323333
+     },
+     {
+      "n": "E",
+      "lat_text": "1°17.35'N",
+      "lon_text": "104°07.46'E",
+      "lat": 1.289167,
+      "lon": 104.124333
+     },
+     {
+      "n": "F",
+      "lat_text": "1°18.31'N",
+      "lon_text": "104°06.78'E",
+      "lat": 1.305167,
+      "lon": 104.113
+     }
+    ],
+    "note": "The Pasir Gudang pilotage district (P.U.(B) 118/2014) uses the same six points and wording."
+   },
+   {
+    "name": "Tanjung Pelepas Port limits",
+    "source": "lpj-tp-limits",
+    "boundary_text": "Imaginary lines A to I, thence along the coastline westward back to A; includes navigable rivers, piers etc., and the shore within 45.72 m of high water.",
+    "points": [
+     {
+      "n": "A",
+      "lat_text": "01°15.9'N",
+      "lon_text": "103°31.1'E",
+      "lat": 1.265,
+      "lon": 103.518333
+     },
+     {
+      "n": "B",
+      "lat_text": "01°15.45'N",
+      "lon_text": "103°30.65'E",
+      "lat": 1.2575,
+      "lon": 103.510833
+     },
+     {
+      "n": "C",
+      "lat_text": "01°14.50'N",
+      "lon_text": "103°29.60'E",
+      "lat": 1.241667,
+      "lon": 103.493333
+     },
+     {
+      "n": "D",
+      "lat_text": "01°13.50'N",
+      "lon_text": "103°33.57'E",
+      "lat": 1.225,
+      "lon": 103.5595
+     },
+     {
+      "n": "E",
+      "lat_text": "01°15.35'N",
+      "lon_text": "103°33.93'E",
+      "lat": 1.255833,
+      "lon": 103.5655,
+      "note": "printed without the minute mark"
+     },
+     {
+      "n": "F",
+      "lat_text": "01°15.95'N",
+      "lon_text": "103°35.11'E",
+      "lat": 1.265833,
+      "lon": 103.585167
+     },
+     {
+      "n": "G",
+      "lat_text": "01°18.00'N",
+      "lon_text": "103°36.00'E",
+      "lat": 1.3,
+      "lon": 103.6
+     },
+     {
+      "n": "H",
+      "lat_text": "01°21.15'N",
+      "lon_text": "103°37.65'E",
+      "lat": 1.3525,
+      "lon": 103.6275
+     },
+     {
+      "n": "I",
+      "lat_text": "01°21.45'N",
+      "lon_text": "103°37.25'E",
+      "lat": 1.3575,
+      "lon": 103.620833
+     }
+    ],
+    "note": "Same nine points as the Tanjung Pelepas pilotage district P.U.(B) 1/2024. A 2023 Malaysian NtM (navy.mil.my, not readable: HTTP 500) reportedly amended the charted PTP port limit; not checked. The 2018 Johor Bahru port limit extension off Tanjung Piai is mutually suspended with Singapore's 3A-3C since 2019."
+   }
+  ],
+  "boarding_grounds": [
+   {
+    "code": "JPB-WBG",
+    "name": "Johor Port West Boarding Ground",
+    "lat_text": "01°17.4'N",
+    "lon_text": "104°7.7'E",
+    "lat": 1.29,
+    "lon": 104.128333,
+    "use": "Pasir Gudang (Johor Port) pilots",
+    "source": "jpb-marine",
+    "confidence": "operator website, not a gazette"
+   },
+   {
+    "code": "JPB-EBG-A",
+    "name": "Johor Port East Boarding Ground A",
+    "lat_text": "01°18.2'N",
+    "lon_text": "104°12.2'E",
+    "lat": 1.303333,
+    "lon": 104.203333,
+    "use": "Pasir Gudang (Johor Port) pilots",
+    "source": "jpb-marine",
+    "confidence": "operator website"
+   },
+   {
+    "code": "JPB-EBG-B",
+    "name": "Johor Port East Boarding Ground B",
+    "lat_text": "01°19.0'N",
+    "lon_text": "104°16.9'E",
+    "lat": 1.316667,
+    "lon": 104.281667,
+    "use": "Pasir Gudang (Johor Port) pilots",
+    "source": "jpb-marine",
+    "confidence": "operator website"
+   },
+   {
+    "code": "PTP-PS",
+    "name": "Port of Tanjung Pelepas pilot station",
+    "lat_text": "01°13.93'N",
+    "lon_text": "103°31.87'E",
+    "lat": 1.232167,
+    "lon": 103.531167,
+    "use": "PTP pilots; approach the channel at not more than 20 degrees (cross current at entrance)",
+    "source": "ptp-marine",
+    "confidence": "operator website"
+   }
+  ],
+  "channels": [
+   {
+    "station": "Johor Port Control (LPJ VTMS, Pasir Gudang)",
+    "channel": "VHF 11",
+    "phone": "019 751 4800",
+    "source": "lpj-notis-6-2015"
+   },
+   {
+    "station": "PTP Port Control (LPJ VTMS, Tanjung Pelepas)",
+    "channel": "VHF 75/76 (LPJ notice 2015); PTP website lists 'Channel 83 & Channel 76'",
+    "phone": "019 736 7800",
+    "source": [
+     "lpj-notis-6-2015",
+     "ptp-marine"
+    ],
+    "confidence": "conflict between sources: unconfirmed which is current"
+   }
+  ],
+  "reports": [
+   {
+    "who": "Owner, master or agent of every vessel intending to call (LPJ ports)",
+    "when": "As early as possible and not less than 48 h before ETA",
+    "what": "Written notice of expected time and date of arrival and vessel information the Traffic Manager requires",
+    "how": "To the LPJ Traffic Manager (now via MMSW, see next)",
+    "channel_or_system": "written / MMSW",
+    "source": "lpj-notis-6-2015 (quoting LPJ By-laws 1979, 3(1))"
+   },
+   {
+    "who": "Owner, master or agent of every vessel about to leave (LPJ ports)",
+    "when": "As early as possible and not less than 3 h before ETD",
+    "what": "Written notice of expected time of departure",
+    "how": "To the LPJ Traffic Manager",
+    "channel_or_system": "written / MMSW",
+    "source": "lpj-notis-6-2015 (quoting LPJ By-laws 1979, 3(2))"
+   },
+   {
+    "who": "Every vessel arriving at or departing Pasir Gudang or Tanjung Pelepas",
+    "when": "On arrival and on departure (from 1 Jul 2015)",
+    "what": "Arrival and departure report",
+    "how": "Pasir Gudang: Johor Port Control VHF 11 or tel 019 751 4800. Tanjung Pelepas: PTP Port Control VHF 75/76 or tel 019 736 7800. AIS must be fitted and kept on (LPJ notice 07/07/2010).",
+    "channel_or_system": "VHF",
+    "source": "lpj-notis-6-2015"
+   },
+   {
+    "who": "Ships calling JPB, PTP and private terminals/jetties in LPJ waters",
+    "when": "From 1 Mar 2025 (JCT: SCN application window is 5 days before arrival)",
+    "what": "User and vessel profile registration, Ship Call Number (SCN) application, and Pre-Arrival Notification (ISPS ship security declaration); LPJ eGateway functions for SCN and security declaration ended 1 Mar 2025. Hours-before deadline for the PAN not stated in this notice.",
+    "how": "Malaysia Maritime Single Window https://www.mmsw.gov.my (helpdesk 1-300-133-133, mmsw_support@dagangnet.com)",
+    "channel_or_system": "MMSW",
+    "source": "lpj-mmsw-2025"
+   },
+   {
+    "who": "Vessels for PTP",
+    "when": "Pilotage compulsory in PTP limits; minimum notice 7 days of ETA; pilot booking at least 3 h before arrival and 3 h before departure",
+    "what": "Pilot booking (paperless MRMS system)",
+    "how": "PTP Marine Services",
+    "channel_or_system": "MRMS",
+    "source": "ptp-marine",
+    "confidence": "operator website"
+   },
+   {
+    "who": "Vessels for Pasir Gudang",
+    "when": "Pilotage compulsory for vessels over 45 m LOA and/or 30 m height or more entering or leaving the pilotage district; pilots 24 h",
+    "what": "Pilot booking",
+    "how": "Johor Port Marine",
+    "channel_or_system": "operator",
+    "source": "jpb-marine",
+    "confidence": "operator website"
+   }
+  ]
+ },
+ "batam": {
+  "status": "No official Indonesian text found (searched hubla.dephub.go.id, Distrik Navigasi Batam, KSOP Batam). Only news items and an academic article mention VTS Batam (Indonesian STRAITREP-side sector, broadcasts on VHF 16). Nothing recorded; all Batam data is a gap.",
+  "points": [],
+  "channels": [],
+  "reports": []
+ },
+ "anchorages": {
+  "source": [
+   "spi2025",
+   "pc25-03",
+   "pc21-06"
+  ],
+  "note": "Names and codes as in Singapore Port Information 2025 (after PC 03/2025 discontinued the VLCC Anchorage AVLCC on 1 Mar 2025). Boundary coordinates are in the Second Schedule of the MPA (Port) Regulations (amended 2025, eGazette) and were NOT obtained (SSO returned HTTP 403). The SPI table positions are least-depth high spots, not anchorage limits, so they are not recorded. Purposes: MPA says each anchorage purpose is defined in the eGazette; only what the name implies is known.",
+  "list": [
+   {
+    "sector": "East Johor Strait",
+    "name": "Changi Barge Temporary Holding",
+    "code": "ACBTH",
+    "report_to": "Sembawang Control VHF 21, ref Eastern Buoy"
+   },
+   {
+    "sector": "East Johor Strait",
+    "name": "Changi General Purposes",
+    "code": "ACGP",
+    "report_to": "Sembawang Control VHF 21, ref Eastern Buoy"
+   },
+   {
+    "sector": "Eastern",
+    "name": "Man-of-War",
+    "code": "AMOW",
+    "report_to": "East Control VHF 12, ref Amber Beacon"
+   },
+   {
+    "sector": "Eastern",
+    "name": "Eastern Bunkering A",
+    "code": "AEBA",
+    "report_to": "East Control VHF 12, ref Amber Beacon"
+   },
+   {
+    "sector": "Eastern",
+    "name": "Eastern Bunkering B",
+    "code": "AEBB",
+    "report_to": "East Control VHF 12, ref Amber Beacon"
+   },
+   {
+    "sector": "Eastern",
+    "name": "Eastern Bunkering C",
+    "code": "AEBC",
+    "report_to": "East Control VHF 12, ref Amber Beacon"
+   },
+   {
+    "sector": "Eastern",
+    "name": "Eastern Petroleum A",
+    "code": "AEPA",
+    "report_to": "East Control VHF 12, ref Amber Beacon"
+   },
+   {
+    "sector": "Eastern",
+    "name": "Eastern Petroleum B",
+    "code": "AEPBB",
+    "report_to": "East Control VHF 12, ref Amber Beacon"
+   },
+   {
+    "sector": "Eastern",
+    "name": "Eastern Petroleum C",
+    "code": "AEPBC",
+    "report_to": "East Control VHF 12, ref Amber Beacon"
+   },
+   {
+    "sector": "Eastern",
+    "name": "Small Craft A",
+    "code": "ASCA",
+    "report_to": "East Control VHF 12, ref Amber Beacon"
+   },
+   {
+    "sector": "Eastern",
+    "name": "Small Craft B",
+    "code": "ASCB",
+    "report_to": "East Control VHF 12, ref Amber Beacon"
+   },
+   {
+    "sector": "Eastern",
+    "name": "Eastern Special Purposes A",
+    "code": "AESPA",
+    "report_to": "East Control VHF 12, ref Amber Beacon"
+   },
+   {
+    "sector": "Eastern",
+    "name": "Eastern",
+    "code": "AEW",
+    "report_to": "East Control VHF 12, ref Amber Beacon"
+   },
+   {
+    "sector": "Eastern",
+    "name": "Eastern Holding A",
+    "code": "AEHA",
+    "report_to": "East Control VHF 12, ref Amber Beacon"
+   },
+   {
+    "sector": "Eastern",
+    "name": "Eastern Holding B",
+    "code": "AEHB",
+    "report_to": "East Control VHF 12, ref Amber Beacon"
+   },
+   {
+    "sector": "Eastern",
+    "name": "Eastern Holding C",
+    "code": "AEHC",
+    "report_to": "East Control VHF 12, ref Amber Beacon"
+   },
+   {
+    "sector": "Western",
+    "name": "Western Quarantine and Immigration",
+    "code": "AWQI",
+    "report_to": "West Control VHF 68, ref Rimau Beacon"
+   },
+   {
+    "sector": "Western",
+    "name": "Western",
+    "code": "AWW",
+    "report_to": "West Control VHF 68, ref Rimau Beacon"
+   },
+   {
+    "sector": "Western",
+    "name": "Western Petroleum A",
+    "code": "AWPA",
+    "report_to": "West Control VHF 68, ref Rimau Beacon"
+   },
+   {
+    "sector": "Western",
+    "name": "Western Petroleum B",
+    "code": "AWPB",
+    "report_to": "West Control VHF 68, ref Rimau Beacon"
+   },
+   {
+    "sector": "Western",
+    "name": "Western Holding",
+    "code": "AWH",
+    "report_to": "West Control VHF 68, ref Rimau Beacon"
+   },
+   {
+    "sector": "Western",
+    "name": "Raffles Reserved",
+    "code": "ARAFR",
+    "report_to": "West Control VHF 68"
+   },
+   {
+    "sector": "Western",
+    "name": "Raffles Petroleum",
+    "code": "ARP",
+    "report_to": "West Control VHF 68"
+   },
+   {
+    "sector": "Western",
+    "name": "Selat Pauh",
+    "code": "ASPLU",
+    "report_to": "West Control VHF 68"
+   },
+   {
+    "sector": "Western",
+    "name": "Selat Pauh Petroleum",
+    "code": "ASPP",
+    "report_to": "West Control VHF 68"
+   },
+   {
+    "sector": "Western",
+    "name": "Sudong Petroleum Holding",
+    "code": "ASPH",
+    "report_to": "West Control VHF 68, ref Sultan Shoal Lt Ho"
+   },
+   {
+    "sector": "Western",
+    "name": "Sudong Explosive",
+    "code": "ASUEX",
+    "report_to": "West Control VHF 68, ref Sultan Shoal Lt Ho"
+   },
+   {
+    "sector": "Western",
+    "name": "Sudong Special Purpose",
+    "code": "ASSPU",
+    "report_to": "West Control VHF 68, ref Sultan Shoal Lt Ho"
+   },
+   {
+    "sector": "Western",
+    "name": "Sudong Holding",
+    "code": "ASH",
+    "report_to": "West Control VHF 68, ref Sultan Shoal Lt Ho"
+   }
+  ],
+  "reference_points": [
+   {
+    "n": "Eastern Buoy",
+    "lat_text": "01° 17.9'N",
+    "lon_text": "104° 05.9'E",
+    "lat": 1.298333,
+    "lon": 104.098333
+   },
+   {
+    "n": "Amber Beacon",
+    "lat_text": "01°17.9'N",
+    "lon_text": "103° 54.3'E",
+    "lat": 1.298333,
+    "lon": 103.905
+   },
+   {
+    "n": "Rimau Beacon",
+    "lat_text": "01°15.5'N",
+    "lon_text": "103° 48.4'E",
+    "lat": 1.258333,
+    "lon": 103.806667
+   },
+   {
+    "n": "Sultan Shoal Lt Ho",
+    "lat_text": "01° 14.4'N",
+    "lon_text": "103°38.9'E",
+    "lat": 1.24,
+    "lon": 103.648333
+   }
+  ],
+  "pc21_06_stale": "PC 06/2021 Appendix 3 still lists the Very Large Crude Carrier Anchorage (West Jurong, Jurong Control VHF 22); it was discontinued on 1 Mar 2025 by PC 03/2025."
+ },
+ "gaps": [
+  "VTIS East/Central/West sector polygons: only longitude limits recorded here (MPA wording); the full STRAITREP sector coordinates come from the IMO text being researched by the other agent.",
+  "Singapore port limits: consolidated SSO text not reachable (HTTP 403); points read from the FAOLEX copy of S 215/2010 plus S 790/2018. Status of the 2019 suspension of items 3A-3C after 2019 not confirmed.",
+  "PC 06/2021 is the latest manoeuvring-in-port circular found (cited by SPI 2025 dated 1 Aug 2025); no newer one found, but MPA's active-circular list was not checked.",
+  "Anchorage boundary coordinates (Second Schedule of the MPA (Port) Regulations as amended 2025) not obtained; anchorage purposes not obtained.",
+  "Singapore pilot booking lead times (6 h, BGPAN 72 h to 2.5 h, 2 h confirmation) seen only on an unofficial PSA Marine mirror: unconfirmed. PSA Marine site returned HTTP 403.",
+  "PC 14/2015 (PEBGA use description) not downloaded (MPA URL 404); only the SPI 2025 boarding ground list was read in full.",
+  "MPA 'Vessels Arriving' page NOA text (12 h for 300 GT+) predates PC 14/2024 (PAN 24 h for 500 GT+; NOA 12 h only under 500 GT).",
+  "MPA web VHF table inconsistencies: Pasir Panjang Control usage text says 'East and West Jurong Sector' (PC 06/2021 says Pasir Panjang Sector); Port Marine Safety Ch 07 frequency printed as 156.450.",
+  "VTIS Central longitude printed both 103°44.5'E and 103°44.6'E on the same MPA page.",
+  "PC 08/2026 CAAS Buoy 1 longitude printed with 'N' (103° 59.94'N): misprint in source.",
+  "Johor: datum not stated in any Malaysian gazette text; Johor Bahru (Marine Department) port limits not obtained; Tanjung Langsat / Pengerang limits not obtained; Johor VTS (Marine Department) local procedures not found in an official text.",
+  "Johor: PTP Port Control channel conflict (LPJ 2015 notice VHF 75/76 vs PTP website 83 & 76). Johor Port boarding grounds and PTP pilot station only from operator websites, not gazetted.",
+  "Johor: MMSW PAN deadline (hours before arrival) not stated in the LPJ notice; LPJ Port Notice 02/2022 (ISPS declaration) is a scanned PDF not read and is superseded by MMSW from 1 Mar 2025.",
+  "Johor: 2023 Malaysian NtM on Tanjung Pelepas port limit (navy.mil.my) could not be downloaded (HTTP 500).",
+  "Batam (Indonesia): no official VTS Batam text found; sectors, channels and reporting all unknown."
+ ],
+ "confidence": {
+  "vtis_channels": "high (MPA web pages, current Oct 2026)",
+  "port_reporting_sectors_and_channels": "high for content (PC 06/2021 official PDF); medium for currency (no successor found)",
+  "east_johor_strait_tia": "high (PC 08/2026, in force 1 Sep 2026)",
+  "port_limits": "high for the 2010 points and 2018 items (official texts via FAOLEX and MPA circular copy); medium for status of 3A-3C suspension",
+  "boarding_grounds_singapore": "high (MPA Singapore Port Information 2025)",
+  "pre_arrival_reports_singapore": "high (PC 14/2024, MPA web pages)",
+  "pilot_booking_times_singapore": "unconfirmed",
+  "anchorages": "names high; coordinates not obtained",
+  "johor_port_limits": "high for text (gazettes on LPJ site), datum unknown",
+  "johor_channels_and_boarding": "medium (2015 LPJ notice; operator websites; one conflict)",
+  "batam": "none"
+ }
+}
