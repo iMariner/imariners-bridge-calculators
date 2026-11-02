@@ -1,0 +1,11424 @@
+[
+ {
+  "id": "R000-normal",
+  "own": {
+   "course": 292.6,
+   "speed": 17.0
+  },
+  "brgType": "true",
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "15:05",
+    "brg": 291.531,
+    "rng": 8.2092
+   },
+   {
+    "t": "15:11",
+    "brg": 297.909,
+    "rng": 5.7694
+   },
+   {
+    "t": "15:17",
+    "brg": 313.005,
+    "rng": 3.5012
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "truth": {
+   "tgtCourse": 66.2773,
+   "tgtSpeed": 10.6811,
+   "relCourse": 95.0162,
+   "relSpeed": 25.5711,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R001-normal",
+  "own": {
+   "course": 130.3,
+   "speed": 11.5
+  },
+  "brgType": "true",
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "11:24",
+    "brg": 112.327,
+    "rng": 4.7265
+   },
+   {
+    "t": "11:30",
+    "brg": 109.962,
+    "rng": 3.1692
+   },
+   {
+    "t": "11:36",
+    "brg": 103.081,
+    "rng": 1.6277
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "action": {
+   "t": "11:36",
+   "find": "course",
+   "want": 1.5
+  },
+  "truth": {
+   "tgtCourse": 268.5023,
+   "tgtSpeed": 5.0766,
+   "relCourse": 297.8177,
+   "relSpeed": 15.6546,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R002-normal",
+  "own": {
+   "course": 7.8,
+   "speed": 14.6
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "08:40",
+    "brg": 236.243,
+    "rng": 0.8021
+   },
+   {
+    "t": "08:46",
+    "brg": 218.45,
+    "rng": 1.371
+   },
+   {
+    "t": "08:52",
+    "brg": 211.386,
+    "rng": 1.9933
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "truth": {
+   "tgtCourse": 0.8776,
+   "tgtSpeed": 8.1863,
+   "relCourse": 196.4662,
+   "relSpeed": 6.5481,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R003-stationary",
+  "own": {
+   "course": 210.3,
+   "speed": 13.2
+  },
+  "brgType": "true",
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "04:42",
+    "brg": 210.62,
+    "rng": 8.6556
+   },
+   {
+    "t": "04:48",
+    "brg": 210.804,
+    "rng": 7.3358
+   },
+   {
+    "t": "04:54",
+    "brg": 211.068,
+    "rng": 6.0162
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "action": {
+   "t": "04:57",
+   "course": 242.0,
+   "speed": 22.5,
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": null,
+   "tgtSpeed": 0.0,
+   "relCourse": 30.3,
+   "relSpeed": 13.2,
+   "kind": "stationary"
+  }
+ },
+ {
+  "id": "R004-midnight",
+  "own": {
+   "course": 211.0,
+   "speed": 4.7
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "23:48",
+    "brg": 196.061,
+    "rng": 3.3549
+   },
+   {
+    "t": "23:54",
+    "brg": 173.72,
+    "rng": 3.2492
+   },
+   {
+    "t": "00:00",
+    "brg": 153.135,
+    "rng": 3.6269
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "truth": {
+   "tgtCourse": 111.423,
+   "tgtSpeed": 11.1879,
+   "relCourse": 90.2576,
+   "relSpeed": 12.8357,
+   "kind": "midnight"
+  }
+ },
+ {
+  "id": "R005-normal",
+  "own": {
+   "course": 246.9,
+   "speed": 20.0
+  },
+  "brgType": "true",
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "11:38",
+    "brg": 212.279,
+    "rng": 9.0865
+   },
+   {
+    "t": "11:44",
+    "brg": 202.987,
+    "rng": 7.0483
+   },
+   {
+    "t": "11:50",
+    "brg": 187.026,
+    "rng": 5.3351
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "action": {
+   "t": "11:50",
+   "find": "speed",
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 35.6387,
+   "tgtSpeed": 4.7153,
+   "relCourse": 61.0858,
+   "relSpeed": 24.155,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R006-near000",
+  "own": {
+   "course": 133.9,
+   "speed": 16.8
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "01:44",
+    "brg": 43.809,
+    "rng": 5.5252
+   },
+   {
+    "t": "01:50",
+    "brg": 19.35,
+    "rng": 5.7845
+   },
+   {
+    "t": "01:56",
+    "brg": 0.069,
+    "rng": 6.9282
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "action": {
+   "t": "02:02",
+   "speed": 15.5
+  },
+  "truth": {
+   "tgtCourse": 293.6468,
+   "tgtSpeed": 7.6169,
+   "relCourse": 307.6163,
+   "relSpeed": 24.0907,
+   "kind": "near000"
+  }
+ },
+ {
+  "id": "R007-normal",
+  "own": {
+   "course": 328.9,
+   "speed": 1.7
+  },
+  "brgType": "rel",
+  "heading": 328.9,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "16:50",
+    "brg": 169.902,
+    "rng": 9.1059
+   },
+   {
+    "t": "16:56",
+    "brg": 176.401,
+    "rng": 7.2877
+   },
+   {
+    "t": "17:02",
+    "brg": 186.962,
+    "rng": 5.6232
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "truth": {
+   "tgtCourse": 297.4378,
+   "tgtSpeed": 21.8236,
+   "relCourse": 294.944,
+   "relSpeed": 20.3929,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R008-fixed",
+  "own": {
+   "course": 112.4,
+   "speed": 4.3
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "14:07",
+    "brg": 109.525,
+    "rng": 1.8971
+   },
+   {
+    "t": "14:13",
+    "brg": 108.683,
+    "rng": 1.4678
+   },
+   {
+    "t": "14:19",
+    "brg": 107.146,
+    "rng": 1.0391
+   }
+  ],
+  "fixed": true,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": null,
+   "tgtSpeed": 0.0,
+   "relCourse": 292.4,
+   "relSpeed": 4.3,
+   "kind": "fixed"
+  }
+ },
+ {
+  "id": "R009-normal",
+  "own": {
+   "course": 331.7,
+   "speed": 15.8
+  },
+  "brgType": "rel",
+  "heading": 331.7,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "14:29",
+    "brg": 342.998,
+    "rng": 7.7294
+   },
+   {
+    "t": "14:35",
+    "brg": 341.178,
+    "rng": 6.2447
+   },
+   {
+    "t": "14:41",
+    "brg": 338.229,
+    "rng": 4.7703
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "action": {
+   "t": "14:47",
+   "find": "course",
+   "want": 2.5
+  },
+  "truth": {
+   "tgtCourse": 39.6864,
+   "tgtSpeed": 2.6474,
+   "relCourse": 142.2886,
+   "relSpeed": 15.0097,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R010-opening",
+  "own": {
+   "course": 112.9,
+   "speed": 10.4
+  },
+  "brgType": "rel",
+  "heading": 112.9,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "07:40",
+    "brg": 97.828,
+    "rng": 3.3844
+   },
+   {
+    "t": "07:46",
+    "brg": 114.641,
+    "rng": 3.6995
+   },
+   {
+    "t": "07:52",
+    "brg": 127.885,
+    "rng": 4.2729
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 279.7139,
+   "tgtSpeed": 0.4258,
+   "relCourse": 292.3854,
+   "relSpeed": 10.815,
+   "kind": "opening"
+  }
+ },
+ {
+  "id": "R011-normal",
+  "own": {
+   "course": 351.1,
+   "speed": 3.1
+  },
+  "brgType": "rel",
+  "heading": 351.1,
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "00:38",
+    "brg": 38.541,
+    "rng": 9.2138
+   },
+   {
+    "t": "00:44",
+    "brg": 50.281,
+    "rng": 8.2551
+   },
+   {
+    "t": "00:50",
+    "brg": 64.334,
+    "rng": 7.7203
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "truth": {
+   "tgtCourse": 150.5196,
+   "tgtSpeed": 17.3197,
+   "relCourse": 153.6042,
+   "relSpeed": 20.2512,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R012-normal",
+  "own": {
+   "course": 215.7,
+   "speed": 12.3
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "03:20",
+    "brg": 261.999,
+    "rng": 6.2137
+   },
+   {
+    "t": "03:26",
+    "brg": 266.862,
+    "rng": 5.9423
+   },
+   {
+    "t": "03:32",
+    "brg": 272.148,
+    "rng": 5.7176
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 227.3164,
+   "tgtSpeed": 6.7741,
+   "relCourse": 22.1613,
+   "relSpeed": 5.8266,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R013-normal",
+  "own": {
+   "course": 339.7,
+   "speed": 14.2
+  },
+  "brgType": "rel",
+  "heading": 339.7,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "18:35",
+    "brg": 276.051,
+    "rng": 9.5014
+   },
+   {
+    "t": "18:41",
+    "brg": 273.448,
+    "rng": 8.0998
+   },
+   {
+    "t": "18:47",
+    "brg": 269.767,
+    "rng": 6.7218
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 36.1066,
+   "tgtSpeed": 16.367,
+   "relCourse": 90.3725,
+   "relSpeed": 14.5717,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R014-normal",
+  "own": {
+   "course": 296.5,
+   "speed": 18.8
+  },
+  "brgType": "true",
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "09:28",
+    "brg": 350.451,
+    "rng": 10.5245
+   },
+   {
+    "t": "09:34",
+    "brg": 347.514,
+    "rng": 9.9055
+   },
+   {
+    "t": "09:40",
+    "brg": 344.195,
+    "rng": 9.316
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "action": {
+   "t": "09:46",
+   "speed": 13.7,
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 273.2897,
+   "tgtSpeed": 20.5664,
+   "relCourse": 207.22,
+   "relSpeed": 8.106,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R015-normal",
+  "own": {
+   "course": 352.0,
+   "speed": 5.0
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "09:04",
+    "brg": 233.292,
+    "rng": 6.8416
+   },
+   {
+    "t": "09:10",
+    "brg": 231.976,
+    "rng": 6.0881
+   },
+   {
+    "t": "09:16",
+    "brg": 230.289,
+    "rng": 5.3387
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "truth": {
+   "tgtCourse": 36.5846,
+   "tgtSpeed": 10.3911,
+   "relCourse": 63.7821,
+   "relSpeed": 7.6791,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R016-samevel",
+  "own": {
+   "course": 345.5,
+   "speed": 10.9
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "21:37",
+    "brg": 354.879,
+    "rng": 6.2808
+   },
+   {
+    "t": "21:43",
+    "brg": 354.879,
+    "rng": 6.2808
+   },
+   {
+    "t": "21:49",
+    "brg": 354.879,
+    "rng": 6.2808
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "action": {
+   "t": "21:52",
+   "find": "speed",
+   "want": 1
+  },
+  "truth": {
+   "tgtCourse": 345.5,
+   "tgtSpeed": 10.9,
+   "relCourse": null,
+   "relSpeed": 0.0,
+   "kind": "samevel"
+  }
+ },
+ {
+  "id": "R017-collision",
+  "own": {
+   "course": 56.3,
+   "speed": 2.9
+  },
+  "brgType": "rel",
+  "heading": 56.3,
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "05:55",
+    "brg": 65.5,
+    "rng": 6.6923
+   },
+   {
+    "t": "06:01",
+    "brg": 65.5,
+    "rng": 4.9885
+   },
+   {
+    "t": "06:07",
+    "brg": 65.5,
+    "rng": 3.2848
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "action": {
+   "t": "06:10",
+   "course": 146.0
+  },
+  "truth": {
+   "tgtCourse": 311.2614,
+   "tgtSpeed": 16.0532,
+   "relCourse": 301.8,
+   "relSpeed": 17.0374,
+   "kind": "collision"
+  }
+ },
+ {
+  "id": "R018-normal",
+  "own": {
+   "course": 31.8,
+   "speed": 2.5
+  },
+  "brgType": "true",
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "20:39",
+    "brg": 60.459,
+    "rng": 6.7218
+   },
+   {
+    "t": "20:45",
+    "brg": 74.511,
+    "rng": 5.5855
+   },
+   {
+    "t": "20:51",
+    "brg": 93.849,
+    "rng": 4.9284
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "action": {
+   "t": "20:51",
+   "course": 26.0,
+   "want": 2
+  },
+  "truth": {
+   "tgtCourse": 193.4213,
+   "tgtSpeed": 16.4209,
+   "relCourse": 195.823,
+   "relSpeed": 18.8099,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R019-collision",
+  "own": {
+   "course": 204.2,
+   "speed": 0.8
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "06:57",
+    "brg": 11.6,
+    "rng": 8.9819
+   },
+   {
+    "t": "07:03",
+    "brg": 11.6,
+    "rng": 7.895
+   },
+   {
+    "t": "07:09",
+    "brg": 11.6,
+    "rng": 6.8081
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "07:09",
+   "find": "course",
+   "want": 2.5
+  },
+  "truth": {
+   "tgtCourse": 192.4583,
+   "tgtSpeed": 11.6506,
+   "relCourse": 191.6,
+   "relSpeed": 10.8686,
+   "kind": "collision"
+  }
+ },
+ {
+  "id": "R020-normal",
+  "own": {
+   "course": 12.9,
+   "speed": 15.4
+  },
+  "brgType": "true",
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "18:15",
+    "brg": 321.977,
+    "rng": 5.1737
+   },
+   {
+    "t": "18:21",
+    "brg": 316.403,
+    "rng": 3.521
+   },
+   {
+    "t": "18:27",
+    "brg": 301.533,
+    "rng": 1.9583
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "truth": {
+   "tgtCourse": 90.5646,
+   "tgtSpeed": 11.2926,
+   "relCourse": 152.5548,
+   "relSpeed": 17.0405,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R021-normal",
+  "own": {
+   "course": 207.5,
+   "speed": 2.3
+  },
+  "brgType": "true",
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "04:09",
+    "brg": 344.938,
+    "rng": 4.3659
+   },
+   {
+    "t": "04:15",
+    "brg": 340.142,
+    "rng": 3.0885
+   },
+   {
+    "t": "04:21",
+    "brg": 328.838,
+    "rng": 1.8626
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "action": {
+   "t": "04:24",
+   "find": "speed",
+   "want": 2.5
+  },
+  "truth": {
+   "tgtCourse": 179.9229,
+   "tgtSpeed": 15.1336,
+   "relCourse": 175.2744,
+   "relSpeed": 13.1381,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R022-stationary",
+  "own": {
+   "course": 316.9,
+   "speed": 13.1
+  },
+  "brgType": "true",
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "04:59",
+    "brg": 343.47,
+    "rng": 4.0941
+   },
+   {
+    "t": "05:05",
+    "brg": 354.098,
+    "rng": 2.9534
+   },
+   {
+    "t": "05:11",
+    "brg": 15.95,
+    "rng": 2.0286
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "05:14",
+   "find": "course",
+   "want": 2
+  },
+  "truth": {
+   "tgtCourse": null,
+   "tgtSpeed": 0.0,
+   "relCourse": 136.9,
+   "relSpeed": 13.1,
+   "kind": "stationary"
+  }
+ },
+ {
+  "id": "R023-normal",
+  "own": {
+   "course": 257.0,
+   "speed": 11.0
+  },
+  "brgType": "rel",
+  "heading": 257.0,
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "04:24",
+    "brg": 336.145,
+    "rng": 3.6031
+   },
+   {
+    "t": "04:30",
+    "brg": 323.87,
+    "rng": 2.5722
+   },
+   {
+    "t": "04:36",
+    "brg": 298.614,
+    "rng": 1.7954
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "truth": {
+   "tgtCourse": 103.7928,
+   "tgtSpeed": 1.319,
+   "relCourse": 79.7952,
+   "relSpeed": 12.1919,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R024-normal",
+  "own": {
+   "course": 178.8,
+   "speed": 20.7
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "11:41",
+    "brg": 213.239,
+    "rng": 10.7215
+   },
+   {
+    "t": "11:47",
+    "brg": 220.807,
+    "rng": 8.9566
+   },
+   {
+    "t": "11:53",
+    "brg": 231.777,
+    "rng": 7.4206
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 29.4291,
+   "tgtSpeed": 1.361,
+   "relCourse": 0.6159,
+   "relSpeed": 21.8821,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R025-normal",
+  "own": {
+   "course": 123.9,
+   "speed": 15.4
+  },
+  "brgType": "rel",
+  "heading": 123.9,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "12:43",
+    "brg": 6.906,
+    "rng": 11.9928
+   },
+   {
+    "t": "12:49",
+    "brg": 8.953,
+    "rng": 10.7581
+   },
+   {
+    "t": "12:55",
+    "brg": 11.526,
+    "rng": 9.5407
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "action": {
+   "t": "12:55",
+   "speed": 9.0,
+   "want": 2
+  },
+  "truth": {
+   "tgtCourse": 165.5289,
+   "tgtSpeed": 3.4947,
+   "relCourse": 293.6104,
+   "relSpeed": 12.9968,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R026-normal",
+  "own": {
+   "course": 50.4,
+   "speed": 11.9
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "01:54",
+    "brg": 9.777,
+    "rng": 5.7494
+   },
+   {
+    "t": "02:00",
+    "brg": 1.194,
+    "rng": 4.4305
+   },
+   {
+    "t": "02:06",
+    "brg": 346.075,
+    "rng": 3.2898
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "action": {
+   "t": "02:09",
+   "find": "speed",
+   "want": 1
+  },
+  "truth": {
+   "tgtCourse": 176.0607,
+   "tgtSpeed": 4.7897,
+   "relCourse": 215.5648,
+   "relSpeed": 15.1989,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R027-normal",
+  "own": {
+   "course": 28.4,
+   "speed": 1.9
+  },
+  "brgType": "rel",
+  "heading": 28.4,
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "20:10",
+    "brg": 247.569,
+    "rng": 8.8603
+   },
+   {
+    "t": "20:16",
+    "brg": 248.913,
+    "rng": 7.6153
+   },
+   {
+    "t": "20:22",
+    "brg": 250.781,
+    "rng": 6.3762
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 80.941,
+   "tgtSpeed": 13.6629,
+   "relCourse": 87.8168,
+   "relSpeed": 12.598,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R028-normal",
+  "own": {
+   "course": 26.3,
+   "speed": 7.3
+  },
+  "brgType": "true",
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "16:11",
+    "brg": 20.985,
+    "rng": 4.5973
+   },
+   {
+    "t": "16:17",
+    "brg": 6.702,
+    "rng": 2.8518
+   },
+   {
+    "t": "16:23",
+    "brg": 324.446,
+    "rng": 1.6868
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "16:23",
+   "find": "course",
+   "want": 2
+  },
+  "truth": {
+   "tgtCourse": 227.8118,
+   "tgtSpeed": 12.6655,
+   "relCourse": 219.9783,
+   "relSpeed": 19.6402,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R029-normal",
+  "own": {
+   "course": 56.6,
+   "speed": 19.0
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "12:42",
+    "brg": 261.049,
+    "rng": 3.0338
+   },
+   {
+    "t": "12:48",
+    "brg": 237.688,
+    "rng": 3.9992
+   },
+   {
+    "t": "12:54",
+    "brg": 224.695,
+    "rng": 5.3503
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 117.2536,
+   "tgtSpeed": 13.5333,
+   "relCourse": 192.9535,
+   "relSpeed": 17.0914,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R030-normal",
+  "own": {
+   "course": 44.9,
+   "speed": 22.6
+  },
+  "brgType": "true",
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "02:32",
+    "brg": 41.46,
+    "rng": 1.8582
+   },
+   {
+    "t": "02:38",
+    "brg": 346.892,
+    "rng": 1.1447
+   },
+   {
+    "t": "02:44",
+    "brg": 295.573,
+    "rng": 1.9395
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 4.1396,
+   "tgtSpeed": 13.6583,
+   "relCourse": 260.9426,
+   "relSpeed": 15.1557,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R031-opening",
+  "own": {
+   "course": 123.8,
+   "speed": 13.0
+  },
+  "brgType": "true",
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "12:53",
+    "brg": 72.926,
+    "rng": 5.4722
+   },
+   {
+    "t": "12:59",
+    "brg": 63.556,
+    "rng": 5.9946
+   },
+   {
+    "t": "13:05",
+    "brg": 55.857,
+    "rng": 6.6499
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "truth": {
+   "tgtCourse": 74.9025,
+   "tgtSpeed": 12.8891,
+   "relCourse": 8.8117,
+   "relSpeed": 10.7154,
+   "kind": "opening"
+  }
+ },
+ {
+  "id": "R032-normal",
+  "own": {
+   "course": 306.4,
+   "speed": 2.9
+  },
+  "brgType": "rel",
+  "heading": 306.4,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "16:38",
+    "brg": 9.706,
+    "rng": 4.8223
+   },
+   {
+    "t": "16:44",
+    "brg": 9.629,
+    "rng": 3.2724
+   },
+   {
+    "t": "16:50",
+    "brg": 9.412,
+    "rng": 1.7225
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "16:50",
+   "find": "course",
+   "want": 2.5
+  },
+  "truth": {
+   "tgtCourse": 138.521,
+   "tgtSpeed": 12.6519,
+   "relCourse": 136.2694,
+   "relSpeed": 15.4992,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R033-collision",
+  "own": {
+   "course": 54.1,
+   "speed": 6.0
+  },
+  "brgType": "rel",
+  "heading": 54.1,
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "10:58",
+    "brg": 15.0,
+    "rng": 8.1341
+   },
+   {
+    "t": "11:04",
+    "brg": 15.0,
+    "rng": 5.2338
+   },
+   {
+    "t": "11:10",
+    "brg": 15.0,
+    "rng": 2.3334
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "11:16",
+   "course": 92.0,
+   "speed": 18.1,
+   "want": 2
+  },
+  "truth": {
+   "tgtCourse": 252.9281,
+   "tgtSpeed": 23.2598,
+   "relCourse": 249.1,
+   "relSpeed": 29.0035,
+   "kind": "collision"
+  }
+ },
+ {
+  "id": "R034-normal",
+  "own": {
+   "course": 114.3,
+   "speed": 13.5
+  },
+  "brgType": "rel",
+  "heading": 114.3,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "05:32",
+    "brg": 322.449,
+    "rng": 4.3696
+   },
+   {
+    "t": "05:38",
+    "brg": 308.559,
+    "rng": 3.3982
+   },
+   {
+    "t": "05:44",
+    "brg": 286.233,
+    "rng": 2.7615
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "truth": {
+   "tgtCourse": 170.9572,
+   "tgtSpeed": 0.07,
+   "relCourse": 294.0513,
+   "relSpeed": 13.4617,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R035-near000",
+  "own": {
+   "course": 328.4,
+   "speed": 1.1
+  },
+  "brgType": "rel",
+  "heading": 328.4,
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "15:02",
+    "brg": 23.918,
+    "rng": 10.6185
+   },
+   {
+    "t": "15:08",
+    "brg": 27.504,
+    "rng": 10.6041
+   },
+   {
+    "t": "15:14",
+    "brg": 31.085,
+    "rng": 10.6312
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "truth": {
+   "tgtCourse": 76.2873,
+   "tgtSpeed": 6.2198,
+   "relCourse": 85.3572,
+   "relSpeed": 6.6407,
+   "kind": "near000"
+  }
+ },
+ {
+  "id": "R036-samevel",
+  "own": {
+   "course": 232.9,
+   "speed": 6.0
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "09:21",
+    "brg": 79.823,
+    "rng": 9.401
+   },
+   {
+    "t": "09:27",
+    "brg": 79.823,
+    "rng": 9.401
+   },
+   {
+    "t": "09:33",
+    "brg": 79.823,
+    "rng": 9.401
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "action": {
+   "t": "09:33",
+   "speed": 5.5
+  },
+  "truth": {
+   "tgtCourse": 232.9,
+   "tgtSpeed": 6.0,
+   "relCourse": null,
+   "relSpeed": 0.0,
+   "kind": "samevel"
+  }
+ },
+ {
+  "id": "R037-fixed",
+  "own": {
+   "course": 157.5,
+   "speed": 15.1
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "11:22",
+    "brg": 137.713,
+    "rng": 7.9926
+   },
+   {
+    "t": "11:28",
+    "brg": 133.266,
+    "rng": 6.5916
+   },
+   {
+    "t": "11:34",
+    "brg": 126.487,
+    "rng": 5.2514
+   }
+  ],
+  "fixed": true,
+  "cpaLimit": 1.5,
+  "truth": {
+   "tgtCourse": null,
+   "tgtSpeed": 0.0,
+   "relCourse": 337.5,
+   "relSpeed": 15.1,
+   "kind": "fixed"
+  }
+ },
+ {
+  "id": "R038-normal",
+  "own": {
+   "course": 261.5,
+   "speed": 5.9
+  },
+  "brgType": "true",
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "18:58",
+    "brg": 156.951,
+    "rng": 3.6788
+   },
+   {
+    "t": "19:04",
+    "brg": 163.806,
+    "rng": 2.4216
+   },
+   {
+    "t": "19:10",
+    "brg": 184.046,
+    "rng": 1.2691
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "action": {
+   "t": "19:10",
+   "speed": 3.4,
+   "want": 2
+  },
+  "truth": {
+   "tgtCourse": 305.0513,
+   "tgtSpeed": 16.6962,
+   "relCourse": 323.1746,
+   "relSpeed": 13.0685,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R039-opening",
+  "own": {
+   "course": 51.9,
+   "speed": 12.9
+  },
+  "brgType": "rel",
+  "heading": 51.9,
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "04:21",
+    "brg": 197.391,
+    "rng": 1.0181
+   },
+   {
+    "t": "04:27",
+    "brg": 180.286,
+    "rng": 3.0975
+   },
+   {
+    "t": "04:33",
+    "brg": 177.004,
+    "rng": 5.2304
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "action": {
+   "t": "04:36",
+   "course": 134.0,
+   "want": 1
+  },
+  "truth": {
+   "tgtCourse": 212.837,
+   "tgtSpeed": 8.8432,
+   "relCourse": 224.1629,
+   "relSpeed": 21.4535,
+   "kind": "opening"
+  }
+ },
+ {
+  "id": "R040-normal",
+  "own": {
+   "course": 41.6,
+   "speed": 9.2
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "14:08",
+    "brg": 157.933,
+    "rng": 4.4418
+   },
+   {
+    "t": "14:14",
+    "brg": 151.596,
+    "rng": 2.827
+   },
+   {
+    "t": "14:20",
+    "brg": 130.016,
+    "rng": 1.3328
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "truth": {
+   "tgtCourse": 7.0543,
+   "tgtSpeed": 23.3534,
+   "relCourse": 348.7554,
+   "relSpeed": 16.6159,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R041-normal",
+  "own": {
+   "course": 85.0,
+   "speed": 9.5
+  },
+  "brgType": "true",
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "07:37",
+    "brg": 161.178,
+    "rng": 9.9041
+   },
+   {
+    "t": "07:43",
+    "brg": 172.896,
+    "rng": 8.6616
+   },
+   {
+    "t": "07:49",
+    "brg": 187.673,
+    "rng": 7.8864
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "07:49",
+   "find": "course",
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 308.4207,
+   "tgtSpeed": 14.7634,
+   "relCourse": 291.6468,
+   "relSpeed": 22.6262,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R042-samevel",
+  "own": {
+   "course": 130.9,
+   "speed": 8.7
+  },
+  "brgType": "rel",
+  "heading": 130.9,
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "17:40",
+    "brg": 183.916,
+    "rng": 3.5742
+   },
+   {
+    "t": "17:46",
+    "brg": 183.916,
+    "rng": 3.5742
+   },
+   {
+    "t": "17:52",
+    "brg": 183.916,
+    "rng": 3.5742
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 130.9,
+   "tgtSpeed": 8.7,
+   "relCourse": null,
+   "relSpeed": 0.0,
+   "kind": "samevel"
+  }
+ },
+ {
+  "id": "R043-opening",
+  "own": {
+   "course": 155.6,
+   "speed": 21.7
+  },
+  "brgType": "true",
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "17:17",
+    "brg": 161.485,
+    "rng": 0.2499
+   },
+   {
+    "t": "17:23",
+    "brg": 211.043,
+    "rng": 0.6909
+   },
+   {
+    "t": "17:29",
+    "brg": 219.907,
+    "rng": 1.2344
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "truth": {
+   "tgtCourse": 168.9817,
+   "tgtSpeed": 23.6316,
+   "relCourse": 232.3289,
+   "relSpeed": 5.6193,
+   "kind": "opening"
+  }
+ },
+ {
+  "id": "R044-normal",
+  "own": {
+   "course": 192.2,
+   "speed": 11.5
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "00:45",
+    "brg": 246.123,
+    "rng": 11.8139
+   },
+   {
+    "t": "00:51",
+    "brg": 249.546,
+    "rng": 11.3022
+   },
+   {
+    "t": "00:57",
+    "brg": 253.279,
+    "rng": 10.8345
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 185.8242,
+   "tgtSpeed": 2.9323,
+   "relCourse": 14.372,
+   "relSpeed": 8.592,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R045-normal",
+  "own": {
+   "course": 1.7,
+   "speed": 9.6
+  },
+  "brgType": "true",
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "15:19",
+    "brg": 143.419,
+    "rng": 9.69
+   },
+   {
+    "t": "15:25",
+    "brg": 150.837,
+    "rng": 10.1194
+   },
+   {
+    "t": "15:31",
+    "brg": 157.55,
+    "rng": 10.7032
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "truth": {
+   "tgtCourse": 264.1097,
+   "tgtSpeed": 8.3249,
+   "relCourse": 219.3408,
+   "relSpeed": 13.5121,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R046-normal",
+  "own": {
+   "course": 256.2,
+   "speed": 15.6
+  },
+  "brgType": "true",
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "16:51",
+    "brg": 311.266,
+    "rng": 9.6682
+   },
+   {
+    "t": "16:57",
+    "brg": 323.844,
+    "rng": 6.6236
+   },
+   {
+    "t": "17:03",
+    "brg": 352.763,
+    "rng": 4.3538
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "17:06",
+   "find": "speed",
+   "want": 1
+  },
+  "truth": {
+   "tgtCourse": 129.3358,
+   "tgtSpeed": 23.4831,
+   "relCourse": 108.5275,
+   "relSpeed": 35.1335,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R047-normal",
+  "own": {
+   "course": 141.5,
+   "speed": 15.0
+  },
+  "brgType": "rel",
+  "heading": 141.5,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "21:59",
+    "brg": 52.667,
+    "rng": 8.9542
+   },
+   {
+    "t": "22:05",
+    "brg": 55.751,
+    "rng": 9.6933
+   },
+   {
+    "t": "22:11",
+    "brg": 58.392,
+    "rng": 10.4565
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "22:11",
+   "find": "course",
+   "want": 1
+  },
+  "truth": {
+   "tgtCourse": 171.8469,
+   "tgtSpeed": 17.6715,
+   "relCourse": 229.8949,
+   "relSpeed": 8.9317,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R048-normal",
+  "own": {
+   "course": 303.8,
+   "speed": 4.7
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "17:02",
+    "brg": 287.605,
+    "rng": 7.9464
+   },
+   {
+    "t": "17:08",
+    "brg": 281.086,
+    "rng": 5.145
+   },
+   {
+    "t": "17:14",
+    "brg": 260.446,
+    "rng": 2.5594
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "truth": {
+   "tgtCourse": 118.3684,
+   "tgtSpeed": 24.2591,
+   "relCourse": 119.2492,
+   "relSpeed": 28.9415,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R049-normal",
+  "own": {
+   "course": 288.4,
+   "speed": 10.2
+  },
+  "brgType": "true",
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "09:01",
+    "brg": 196.617,
+    "rng": 3.5332
+   },
+   {
+    "t": "09:07",
+    "brg": 169.368,
+    "rng": 2.0412
+   },
+   {
+    "t": "09:13",
+    "brg": 109.564,
+    "rng": 1.8716
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 11.9497,
+   "tgtSpeed": 17.8772,
+   "relCourse": 43.1561,
+   "relSpeed": 19.5618,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R050-normal",
+  "own": {
+   "course": 187.1,
+   "speed": 21.5
+  },
+  "brgType": "true",
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "13:45",
+    "brg": 191.496,
+    "rng": 7.2683
+   },
+   {
+    "t": "13:51",
+    "brg": 183.503,
+    "rng": 5.9458
+   },
+   {
+    "t": "13:57",
+    "brg": 171.35,
+    "rng": 4.8015
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "truth": {
+   "tgtCourse": 138.9887,
+   "tgtSpeed": 12.7103,
+   "relCourse": 43.1208,
+   "relSpeed": 16.0898,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R051-fixed",
+  "own": {
+   "course": 66.6,
+   "speed": 14.3
+  },
+  "brgType": "rel",
+  "heading": 66.6,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "18:15",
+    "brg": 310.058,
+    "rng": 6.9632
+   },
+   {
+    "t": "18:21",
+    "brg": 299.792,
+    "rng": 6.1412
+   },
+   {
+    "t": "18:27",
+    "brg": 286.92,
+    "rng": 5.5707
+   }
+  ],
+  "fixed": true,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": null,
+   "tgtSpeed": 0.0,
+   "relCourse": 246.6,
+   "relSpeed": 14.3,
+   "kind": "fixed"
+  }
+ },
+ {
+  "id": "R052-normal",
+  "own": {
+   "course": 337.1,
+   "speed": 15.1
+  },
+  "brgType": "rel",
+  "heading": 337.1,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "08:41",
+    "brg": 127.156,
+    "rng": 3.0207
+   },
+   {
+    "t": "08:47",
+    "brg": 136.277,
+    "rng": 3.7141
+   },
+   {
+    "t": "08:53",
+    "brg": 142.424,
+    "rng": 4.4713
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "action": {
+   "t": "08:59",
+   "course": 27.0
+  },
+  "truth": {
+   "tgtCourse": 350.8874,
+   "tgtSpeed": 6.6965,
+   "relCourse": 146.583,
+   "relSpeed": 8.7434,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R053-normal",
+  "own": {
+   "course": 114.4,
+   "speed": 0.5
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "21:59",
+    "brg": 163.248,
+    "rng": 3.7038
+   },
+   {
+    "t": "22:05",
+    "brg": 168.659,
+    "rng": 2.5165
+   },
+   {
+    "t": "22:11",
+    "brg": 183.207,
+    "rng": 1.3903
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "action": {
+   "t": "22:11",
+   "course": 116.0
+  },
+  "truth": {
+   "tgtCourse": 333.5298,
+   "tgtSpeed": 11.8257,
+   "relCourse": 332.0498,
+   "relSpeed": 12.2177,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R054-opening",
+  "own": {
+   "course": 252.0,
+   "speed": 6.0
+  },
+  "brgType": "rel",
+  "heading": 250.4,
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "07:29",
+    "brg": 69.701,
+    "rng": 5.6902
+   },
+   {
+    "t": "07:35",
+    "brg": 70.363,
+    "rng": 6.7863
+   },
+   {
+    "t": "07:41",
+    "brg": 70.841,
+    "rng": 7.883
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "action": {
+   "t": "07:41",
+   "find": "course",
+   "want": 1.5
+  },
+  "truth": {
+   "tgtCourse": 300.1742,
+   "tgtSpeed": 14.0345,
+   "relCourse": 324.1931,
+   "relSpeed": 10.9844,
+   "kind": "opening"
+  }
+ },
+ {
+  "id": "R055-normal",
+  "own": {
+   "course": 41.6,
+   "speed": 19.1
+  },
+  "brgType": "true",
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "03:17",
+    "brg": 11.308,
+    "rng": 9.1097
+   },
+   {
+    "t": "03:23",
+    "brg": 19.009,
+    "rng": 6.7602
+   },
+   {
+    "t": "03:29",
+    "brg": 34.211,
+    "rng": 4.6558
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 124.0746,
+   "tgtSpeed": 19.9533,
+   "relCourse": 171.4094,
+   "relSpeed": 25.7511,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R056-normal",
+  "own": {
+   "course": 325.4,
+   "speed": 5.6
+  },
+  "brgType": "rel",
+  "heading": 325.4,
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "20:59",
+    "brg": 224.201,
+    "rng": 7.1848
+   },
+   {
+    "t": "21:05",
+    "brg": 224.168,
+    "rng": 7.4971
+   },
+   {
+    "t": "21:11",
+    "brg": 224.137,
+    "rng": 7.8094
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "truth": {
+   "tgtCourse": 292.6034,
+   "tgtSpeed": 3.9626,
+   "relCourse": 188.808,
+   "relSpeed": 3.1234,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R057-normal",
+  "own": {
+   "course": 99.8,
+   "speed": 15.3
+  },
+  "brgType": "rel",
+  "heading": 99.8,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "00:35",
+    "brg": 139.069,
+    "rng": 9.3039
+   },
+   {
+    "t": "00:41",
+    "brg": 138.355,
+    "rng": 9.9271
+   },
+   {
+    "t": "00:47",
+    "brg": 137.726,
+    "rng": 10.5516
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "00:53",
+   "course": 74.0,
+   "speed": 23.2,
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 123.5164,
+   "tgtSpeed": 12.4606,
+   "relCourse": 227.6299,
+   "relSpeed": 6.3454,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R058-normal",
+  "own": {
+   "course": 182.4,
+   "speed": 9.1
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "14:00",
+    "brg": 358.854,
+    "rng": 9.9937
+   },
+   {
+    "t": "14:06",
+    "brg": 0.635,
+    "rng": 9.7976
+   },
+   {
+    "t": "14:12",
+    "brg": 2.486,
+    "rng": 9.6114
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "action": {
+   "t": "14:12",
+   "course": 209.0,
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 166.2431,
+   "tgtSpeed": 11.3649,
+   "relCourse": 122.2657,
+   "relSpeed": 3.6468,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R059-normal",
+  "own": {
+   "course": 20.2,
+   "speed": 5.7
+  },
+  "brgType": "true",
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "08:04",
+    "brg": 89.109,
+    "rng": 4.1788
+   },
+   {
+    "t": "08:10",
+    "brg": 73.16,
+    "rng": 2.5476
+   },
+   {
+    "t": "08:16",
+    "brg": 26.33,
+    "rng": 1.5745
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "08:16",
+   "course": 318.0
+  },
+  "truth": {
+   "tgtCourse": 306.225,
+   "tgtSpeed": 19.4073,
+   "relCourse": 289.1481,
+   "relSpeed": 18.6563,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R060-normal",
+  "own": {
+   "course": 284.1,
+   "speed": 1.2
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "02:33",
+    "brg": 238.839,
+    "rng": 2.2568
+   },
+   {
+    "t": "02:39",
+    "brg": 250.645,
+    "rng": 1.9498
+   },
+   {
+    "t": "02:45",
+    "brg": 265.921,
+    "rng": 1.7524
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "action": {
+   "t": "02:48",
+   "find": "speed",
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 357.4228,
+   "tgtSpeed": 5.5134,
+   "relCourse": 9.9607,
+   "relSpeed": 5.2953,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R061-normal",
+  "own": {
+   "course": 162.7,
+   "speed": 17.2
+  },
+  "brgType": "rel",
+  "heading": 161.8,
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "22:18",
+    "brg": 276.511,
+    "rng": 9.7706
+   },
+   {
+    "t": "22:24",
+    "brg": 258.866,
+    "rng": 9.7654
+   },
+   {
+    "t": "22:30",
+    "brg": 242.705,
+    "rng": 10.6403
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 334.9519,
+   "tgtSpeed": 12.8296,
+   "relCourse": 339.3906,
+   "relSpeed": 29.9624,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R062-normal",
+  "own": {
+   "course": 164.7,
+   "speed": 7.1
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "07:59",
+    "brg": 198.859,
+    "rng": 9.0508
+   },
+   {
+    "t": "08:05",
+    "brg": 193.932,
+    "rng": 7.5401
+   },
+   {
+    "t": "08:11",
+    "brg": 186.625,
+    "rng": 6.1124
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "08:14",
+   "find": "course",
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 66.5884,
+   "tgtSpeed": 14.1399,
+   "relCourse": 41.6871,
+   "relSpeed": 16.6936,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R063-collision",
+  "own": {
+   "course": 258.3,
+   "speed": 8.8
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "09:06",
+    "brg": 134.0,
+    "rng": 9.4507
+   },
+   {
+    "t": "09:12",
+    "brg": 134.0,
+    "rng": 8.0304
+   },
+   {
+    "t": "09:18",
+    "brg": 134.0,
+    "rng": 6.6101
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "09:24",
+   "speed": 7.4,
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 293.2244,
+   "tgtSpeed": 20.4947,
+   "relCourse": 314.0,
+   "relSpeed": 14.203,
+   "kind": "collision"
+  }
+ },
+ {
+  "id": "R064-normal",
+  "own": {
+   "course": 203.5,
+   "speed": 16.4
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "12:14",
+    "brg": 164.827,
+    "rng": 7.4276
+   },
+   {
+    "t": "12:20",
+    "brg": 164.114,
+    "rng": 8.0915
+   },
+   {
+    "t": "12:26",
+    "brg": 163.509,
+    "rng": 8.7564
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "action": {
+   "t": "12:32",
+   "course": 213.0,
+   "speed": 17.1,
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 190.2546,
+   "tgtSpeed": 21.5212,
+   "relCourse": 156.1906,
+   "relSpeed": 6.7086,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R065-normal",
+  "own": {
+   "course": 2.9,
+   "speed": 5.5
+  },
+  "brgType": "true",
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "15:57",
+    "brg": 288.485,
+    "rng": 4.9138
+   },
+   {
+    "t": "16:03",
+    "brg": 291.059,
+    "rng": 4.0575
+   },
+   {
+    "t": "16:09",
+    "brg": 294.997,
+    "rng": 3.2137
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "truth": {
+   "tgtCourse": 62.7807,
+   "tgtSpeed": 10.1574,
+   "relCourse": 95.5261,
+   "relSpeed": 8.7952,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R066-normal",
+  "own": {
+   "course": 234.1,
+   "speed": 8.4
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "05:35",
+    "brg": 50.693,
+    "rng": 7.0508
+   },
+   {
+    "t": "05:41",
+    "brg": 54.644,
+    "rng": 6.851
+   },
+   {
+    "t": "05:47",
+    "brg": 58.811,
+    "rng": 6.6855
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 208.8799,
+   "tgtSpeed": 11.3603,
+   "relCourse": 165.2988,
+   "relSpeed": 5.1919,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R067-normal",
+  "own": {
+   "course": 149.2,
+   "speed": 8.2
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "09:27",
+    "brg": 176.302,
+    "rng": 7.572
+   },
+   {
+    "t": "09:33",
+    "brg": 176.343,
+    "rng": 5.2338
+   },
+   {
+    "t": "09:39",
+    "brg": 176.453,
+    "rng": 2.8957
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "action": {
+   "t": "09:45",
+   "speed": 5.1
+  },
+  "truth": {
+   "tgtCourse": 9.2492,
+   "tgtSpeed": 16.5017,
+   "relCourse": 356.2077,
+   "relSpeed": 23.3818,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R068-normal",
+  "own": {
+   "course": 191.3,
+   "speed": 24.8
+  },
+  "brgType": "true",
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "07:47",
+    "brg": 225.25,
+    "rng": 9.8878
+   },
+   {
+    "t": "07:53",
+    "brg": 234.484,
+    "rng": 6.2944
+   },
+   {
+    "t": "07:59",
+    "brg": 263.769,
+    "rng": 3.2437
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 61.264,
+   "tgtSpeed": 17.0925,
+   "relCourse": 31.3825,
+   "relSpeed": 38.1124,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R069-normal",
+  "own": {
+   "course": 66.2,
+   "speed": 12.4
+  },
+  "brgType": "true",
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "00:27",
+    "brg": 40.952,
+    "rng": 5.7606
+   },
+   {
+    "t": "00:33",
+    "brg": 34.819,
+    "rng": 4.6501
+   },
+   {
+    "t": "00:39",
+    "brg": 25.046,
+    "rng": 3.6251
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "action": {
+   "t": "00:39",
+   "find": "course",
+   "want": 2.5
+  },
+  "truth": {
+   "tgtCourse": 155.0293,
+   "tgtSpeed": 0.7906,
+   "relCourse": 242.548,
+   "relSpeed": 12.409,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R070-normal",
+  "own": {
+   "course": 314.1,
+   "speed": 11.5
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "12:35",
+    "brg": 153.426,
+    "rng": 11.4301
+   },
+   {
+    "t": "12:41",
+    "brg": 143.45,
+    "rng": 10.7467
+   },
+   {
+    "t": "12:47",
+    "brg": 132.501,
+    "rng": 10.4258
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "truth": {
+   "tgtCourse": 10.9133,
+   "tgtSpeed": 24.3374,
+   "relCourse": 38.9895,
+   "relSpeed": 20.4491,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R071-normal",
+  "own": {
+   "course": 288.2,
+   "speed": 16.7
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "09:46",
+    "brg": 220.173,
+    "rng": 3.3404
+   },
+   {
+    "t": "09:52",
+    "brg": 158.117,
+    "rng": 3.1243
+   },
+   {
+    "t": "09:58",
+    "brg": 125.902,
+    "rng": 5.5354
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "action": {
+   "t": "10:04",
+   "find": "speed",
+   "want": 1
+  },
+  "truth": {
+   "tgtCourse": 84.2393,
+   "tgtSpeed": 17.4166,
+   "relCourse": 95.9643,
+   "relSpeed": 33.3738,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R072-fixed",
+  "own": {
+   "course": 247.3,
+   "speed": 3.2
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "04:45",
+    "brg": 82.804,
+    "rng": 3.163
+   },
+   {
+    "t": "04:51",
+    "brg": 81.392,
+    "rng": 3.4724
+   },
+   {
+    "t": "04:57",
+    "brg": 80.212,
+    "rng": 3.7836
+   }
+  ],
+  "fixed": true,
+  "cpaLimit": 3,
+  "truth": {
+   "tgtCourse": null,
+   "tgtSpeed": 0.0,
+   "relCourse": 67.3,
+   "relSpeed": 3.2,
+   "kind": "fixed"
+  }
+ },
+ {
+  "id": "R073-near000",
+  "own": {
+   "course": 86.7,
+   "speed": 12.8
+  },
+  "brgType": "true",
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "07:43",
+    "brg": 54.516,
+    "rng": 5.9844
+   },
+   {
+    "t": "07:49",
+    "brg": 31.372,
+    "rng": 4.7992
+   },
+   {
+    "t": "07:55",
+    "brg": 1.503,
+    "rng": 4.7231
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "action": {
+   "t": "07:55",
+   "find": "course",
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 298.8062,
+   "tgtSpeed": 12.7475,
+   "relCourse": 282.7192,
+   "relSpeed": 24.5513,
+   "kind": "near000"
+  }
+ },
+ {
+  "id": "R074-stationary",
+  "own": {
+   "course": 139.2,
+   "speed": 2.4
+  },
+  "brgType": "true",
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "04:43",
+    "brg": 238.833,
+    "rng": 3.8423
+   },
+   {
+    "t": "04:49",
+    "brg": 242.299,
+    "rng": 3.8958
+   },
+   {
+    "t": "04:55",
+    "brg": 245.658,
+    "rng": 3.9631
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "04:55",
+   "find": "course",
+   "want": 1.5
+  },
+  "truth": {
+   "tgtCourse": null,
+   "tgtSpeed": 0.0,
+   "relCourse": 319.2,
+   "relSpeed": 2.4,
+   "kind": "stationary"
+  }
+ },
+ {
+  "id": "R075-normal",
+  "own": {
+   "course": 212.5,
+   "speed": 0.5
+  },
+  "brgType": "rel",
+  "heading": 212.5,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "02:45",
+    "brg": 62.626,
+    "rng": 7.0174
+   },
+   {
+    "t": "02:51",
+    "brg": 45.132,
+    "rng": 6.9445
+   },
+   {
+    "t": "02:57",
+    "brg": 28.795,
+    "rng": 7.499
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 175.2524,
+   "tgtSpeed": 21.64,
+   "relCourse": 174.4362,
+   "relSpeed": 21.2441,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R076-stationary",
+  "own": {
+   "course": 330.1,
+   "speed": 5.8
+  },
+  "brgType": "true",
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "22:49",
+    "brg": 339.315,
+    "rng": 10.7495
+   },
+   {
+    "t": "22:55",
+    "brg": 339.725,
+    "rng": 10.1744
+   },
+   {
+    "t": "23:01",
+    "brg": 340.184,
+    "rng": 9.5998
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "23:01",
+   "find": "speed",
+   "want": 1.5
+  },
+  "truth": {
+   "tgtCourse": null,
+   "tgtSpeed": 0.0,
+   "relCourse": 150.1,
+   "relSpeed": 5.8,
+   "kind": "stationary"
+  }
+ },
+ {
+  "id": "R077-normal",
+  "own": {
+   "course": 108.3,
+   "speed": 9.0
+  },
+  "brgType": "true",
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "07:35",
+    "brg": 27.283,
+    "rng": 7.3655
+   },
+   {
+    "t": "07:41",
+    "brg": 27.995,
+    "rng": 7.0638
+   },
+   {
+    "t": "07:47",
+    "brg": 28.77,
+    "rng": 6.7632
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "action": {
+   "t": "07:47",
+   "course": 91.0,
+   "speed": 18.1,
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 126.4055,
+   "tgtSpeed": 9.9983,
+   "relCourse": 189.0996,
+   "relSpeed": 3.1477,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R078-samevel",
+  "own": {
+   "course": 321.1,
+   "speed": 0.8
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "13:59",
+    "brg": 30.607,
+    "rng": 5.6973
+   },
+   {
+    "t": "14:05",
+    "brg": 30.607,
+    "rng": 5.6973
+   },
+   {
+    "t": "14:11",
+    "brg": 30.607,
+    "rng": 5.6973
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "truth": {
+   "tgtCourse": 321.1,
+   "tgtSpeed": 0.8,
+   "relCourse": null,
+   "relSpeed": 0.0,
+   "kind": "samevel"
+  }
+ },
+ {
+  "id": "R079-normal",
+  "own": {
+   "course": 123.6,
+   "speed": 8.6
+  },
+  "brgType": "rel",
+  "heading": 123.6,
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "08:59",
+    "brg": 26.201,
+    "rng": 5.8509
+   },
+   {
+    "t": "09:05",
+    "brg": 30.974,
+    "rng": 5.7094
+   },
+   {
+    "t": "09:11",
+    "brg": 35.953,
+    "rng": 5.6094
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "09:11",
+   "find": "course",
+   "want": 1
+  },
+  "truth": {
+   "tgtCourse": 158.6815,
+   "tgtSpeed": 6.1777,
+   "relCourse": 258.5518,
+   "relSpeed": 5.017,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R080-normal",
+  "own": {
+   "course": 39.0,
+   "speed": 22.2
+  },
+  "brgType": "true",
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "01:25",
+    "brg": 118.819,
+    "rng": 7.34
+   },
+   {
+    "t": "01:31",
+    "brg": 131.705,
+    "rng": 5.7453
+   },
+   {
+    "t": "01:37",
+    "brg": 152.391,
+    "rng": 4.6342
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "01:37",
+   "find": "course",
+   "want": 1.5
+  },
+  "truth": {
+   "tgtCourse": 331.7815,
+   "tgtSpeed": 15.5086,
+   "relCourse": 260.4419,
+   "relSpeed": 21.6038,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R081-fixed",
+  "own": {
+   "course": 105.5,
+   "speed": 1.3
+  },
+  "brgType": "rel",
+  "heading": 105.5,
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "06:18",
+    "brg": 145.871,
+    "rng": 7.2253
+   },
+   {
+    "t": "06:24",
+    "brg": 146.441,
+    "rng": 7.3332
+   },
+   {
+    "t": "06:30",
+    "brg": 146.994,
+    "rng": 7.4419
+   }
+  ],
+  "fixed": true,
+  "cpaLimit": 1,
+  "action": {
+   "t": "06:33",
+   "course": 121.0,
+   "speed": 22.3
+  },
+  "truth": {
+   "tgtCourse": null,
+   "tgtSpeed": 0.0,
+   "relCourse": 285.5,
+   "relSpeed": 1.3,
+   "kind": "fixed"
+  }
+ },
+ {
+  "id": "R082-normal",
+  "own": {
+   "course": 147.0,
+   "speed": 22.6
+  },
+  "brgType": "true",
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "09:20",
+    "brg": 158.023,
+    "rng": 3.0465
+   },
+   {
+    "t": "09:26",
+    "brg": 190.372,
+    "rng": 1.9717
+   },
+   {
+    "t": "09:32",
+    "brg": 240.333,
+    "rng": 2.1292
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "truth": {
+   "tgtCourse": 194.3287,
+   "tgtSpeed": 10.2343,
+   "relCourse": 301.3398,
+   "relSpeed": 17.377,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R083-normal",
+  "own": {
+   "course": 334.4,
+   "speed": 21.8
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "05:44",
+    "brg": 16.217,
+    "rng": 11.7657
+   },
+   {
+    "t": "05:50",
+    "brg": 24.237,
+    "rng": 10.1239
+   },
+   {
+    "t": "05:56",
+    "brg": 35.047,
+    "rng": 8.7525
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "action": {
+   "t": "05:59",
+   "speed": 17.7,
+   "want": 1
+  },
+  "truth": {
+   "tgtCourse": 215.6836,
+   "tgtSpeed": 1.231,
+   "relCourse": 157.1604,
+   "relSpeed": 22.4175,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R084-normal",
+  "own": {
+   "course": 28.9,
+   "speed": 23.9
+  },
+  "brgType": "rel",
+  "heading": 29.8,
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "15:02",
+    "brg": 15.768,
+    "rng": 10.0437
+   },
+   {
+    "t": "15:08",
+    "brg": 20.492,
+    "rng": 8.7176
+   },
+   {
+    "t": "15:14",
+    "brg": 26.848,
+    "rng": 7.4716
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 47.5592,
+   "tgtSpeed": 9.3449,
+   "relCourse": 197.6613,
+   "relSpeed": 15.3404,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R085-fixed",
+  "own": {
+   "course": 160.1,
+   "speed": 17.0
+  },
+  "brgType": "rel",
+  "heading": 160.1,
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "03:27",
+    "brg": 18.214,
+    "rng": 7.2677
+   },
+   {
+    "t": "03:33",
+    "brg": 23.583,
+    "rng": 5.6778
+   },
+   {
+    "t": "03:39",
+    "brg": 32.958,
+    "rng": 4.1755
+   }
+  ],
+  "fixed": true,
+  "cpaLimit": 2,
+  "action": {
+   "t": "03:39",
+   "find": "course",
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": null,
+   "tgtSpeed": 0.0,
+   "relCourse": 340.1,
+   "relSpeed": 17.0,
+   "kind": "fixed"
+  }
+ },
+ {
+  "id": "R086-normal",
+  "own": {
+   "course": 336.1,
+   "speed": 17.2
+  },
+  "brgType": "true",
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "10:44",
+    "brg": 297.999,
+    "rng": 10.8961
+   },
+   {
+    "t": "10:50",
+    "brg": 285.906,
+    "rng": 9.7144
+   },
+   {
+    "t": "10:56",
+    "brg": 271.324,
+    "rng": 9.0666
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "action": {
+   "t": "11:02",
+   "find": "course",
+   "want": 1.5
+  },
+  "truth": {
+   "tgtCourse": 206.9135,
+   "tgtSpeed": 9.909,
+   "relCourse": 174.2269,
+   "relSpeed": 24.6861,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R087-normal",
+  "own": {
+   "course": 12.8,
+   "speed": 23.2
+  },
+  "brgType": "rel",
+  "heading": 12.8,
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "03:52",
+    "brg": 15.635,
+    "rng": 8.9177
+   },
+   {
+    "t": "03:58",
+    "brg": 32.644,
+    "rng": 7.1376
+   },
+   {
+    "t": "04:04",
+    "brg": 57.056,
+    "rng": 6.312
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "truth": {
+   "tgtCourse": 112.894,
+   "tgtSpeed": 14.6957,
+   "relCourse": 163.4939,
+   "relSpeed": 29.5586,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R088-normal",
+  "own": {
+   "course": 106.5,
+   "speed": 2.5
+  },
+  "brgType": "true",
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "20:31",
+    "brg": 128.887,
+    "rng": 10.1183
+   },
+   {
+    "t": "20:37",
+    "brg": 138.312,
+    "rng": 9.0375
+   },
+   {
+    "t": "20:43",
+    "brg": 149.883,
+    "rng": 8.2612
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "truth": {
+   "tgtCourse": 251.6985,
+   "tgtSpeed": 16.9649,
+   "relCourse": 255.9891,
+   "relSpeed": 19.0712,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R089-normal",
+  "own": {
+   "course": 84.3,
+   "speed": 13.2
+  },
+  "brgType": "rel",
+  "heading": 84.3,
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "00:14",
+    "brg": 346.915,
+    "rng": 5.6453
+   },
+   {
+    "t": "00:20",
+    "brg": 347.313,
+    "rng": 4.399
+   },
+   {
+    "t": "00:26",
+    "brg": 348.024,
+    "rng": 3.1531
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "00:29",
+   "course": 55.0,
+   "speed": 7.1
+  },
+  "truth": {
+   "tgtCourse": 154.4045,
+   "tgtSpeed": 3.3169,
+   "relCourse": 249.8131,
+   "relSpeed": 12.4677,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R090-normal",
+  "own": {
+   "course": 189.6,
+   "speed": 20.2
+  },
+  "brgType": "rel",
+  "heading": 189.6,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "16:57",
+    "brg": 30.19,
+    "rng": 6.9816
+   },
+   {
+    "t": "17:03",
+    "brg": 42.737,
+    "rng": 5.3223
+   },
+   {
+    "t": "17:09",
+    "brg": 64.343,
+    "rng": 4.1191
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "17:09",
+   "course": 133.0,
+   "speed": 16.6,
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 325.8463,
+   "tgtSpeed": 1.4614,
+   "relCourse": 6.8778,
+   "relSpeed": 21.2796,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R091-normal",
+  "own": {
+   "course": 138.6,
+   "speed": 15.7
+  },
+  "brgType": "rel",
+  "heading": 138.6,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "04:07",
+    "brg": 138.204,
+    "rng": 1.2992
+   },
+   {
+    "t": "04:13",
+    "brg": 220.052,
+    "rng": 0.7198
+   },
+   {
+    "t": "04:19",
+    "brg": 265.745,
+    "rng": 1.7972
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "04:22",
+   "find": "speed",
+   "want": 1.5
+  },
+  "truth": {
+   "tgtCourse": 104.8304,
+   "tgtSpeed": 23.9103,
+   "relCourse": 66.0436,
+   "relSpeed": 13.9313,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R092-normal",
+  "own": {
+   "course": 107.6,
+   "speed": 17.5
+  },
+  "brgType": "rel",
+  "heading": 107.6,
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "14:18",
+    "brg": 334.185,
+    "rng": 7.334
+   },
+   {
+    "t": "14:24",
+    "brg": 331.89,
+    "rng": 4.9895
+   },
+   {
+    "t": "14:30",
+    "brg": 325.57,
+    "rng": 2.6671
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "truth": {
+   "tgtCourse": 225.7573,
+   "tgtSpeed": 9.5603,
+   "relCourse": 266.6466,
+   "relSpeed": 23.5701,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R093-normal",
+  "own": {
+   "course": 62.0,
+   "speed": 17.2
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "09:58",
+    "brg": 18.266,
+    "rng": 8.4737
+   },
+   {
+    "t": "10:04",
+    "brg": 23.832,
+    "rng": 5.838
+   },
+   {
+    "t": "10:10",
+    "brg": 38.058,
+    "rng": 3.3449
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "action": {
+   "t": "10:10",
+   "course": 54.0,
+   "speed": 5.3,
+   "want": 2
+  },
+  "truth": {
+   "tgtCourse": 147.2445,
+   "tgtSpeed": 22.5809,
+   "relCourse": 186.2607,
+   "relSpeed": 27.2275,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R094-normal",
+  "own": {
+   "course": 79.3,
+   "speed": 11.4
+  },
+  "brgType": "rel",
+  "heading": 79.3,
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "09:50",
+    "brg": 30.941,
+    "rng": 11.2086
+   },
+   {
+    "t": "09:56",
+    "brg": 34.322,
+    "rng": 9.4743
+   },
+   {
+    "t": "10:02",
+    "brg": 39.192,
+    "rng": 7.7876
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "truth": {
+   "tgtCourse": 292.2708,
+   "tgtSpeed": 7.7349,
+   "relCourse": 272.5411,
+   "relSpeed": 18.3777,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R095-normal",
+  "own": {
+   "course": 293.6,
+   "speed": 5.3
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "21:47",
+    "brg": 11.976,
+    "rng": 6.2595
+   },
+   {
+    "t": "21:53",
+    "brg": 1.739,
+    "rng": 5.4964
+   },
+   {
+    "t": "21:59",
+    "brg": 348.776,
+    "rng": 4.9593
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 255.5382,
+   "tgtSpeed": 16.707,
+   "relCourse": 240.9269,
+   "relSpeed": 12.953,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R096-normal",
+  "own": {
+   "course": 256.1,
+   "speed": 10.9
+  },
+  "brgType": "true",
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "13:33",
+    "brg": 30.349,
+    "rng": 6.8344
+   },
+   {
+    "t": "13:39",
+    "brg": 31.744,
+    "rng": 5.2593
+   },
+   {
+    "t": "13:45",
+    "brg": 34.327,
+    "rng": 3.69
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 224.7296,
+   "tgtSpeed": 24.0721,
+   "relCourse": 203.7084,
+   "relSpeed": 15.8182,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R097-normal",
+  "own": {
+   "course": 297.1,
+   "speed": 21.5
+  },
+  "brgType": "rel",
+  "heading": 297.1,
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "16:55",
+    "brg": 319.01,
+    "rng": 6.683
+   },
+   {
+    "t": "17:01",
+    "brg": 305.371,
+    "rng": 5.7273
+   },
+   {
+    "t": "17:07",
+    "brg": 287.746,
+    "rng": 5.2044
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "truth": {
+   "tgtCourse": 262.847,
+   "tgtSpeed": 5.0917,
+   "relCourse": 126.5106,
+   "relSpeed": 17.5273,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R098-normal",
+  "own": {
+   "course": 323.2,
+   "speed": 2.3
+  },
+  "brgType": "rel",
+  "heading": 323.2,
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "11:17",
+    "brg": 338.586,
+    "rng": 1.2546
+   },
+   {
+    "t": "11:23",
+    "brg": 289.869,
+    "rng": 1.7169
+   },
+   {
+    "t": "11:29",
+    "brg": 269.979,
+    "rng": 2.7712
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "truth": {
+   "tgtCourse": 216.1585,
+   "tgtSpeed": 12.0968,
+   "relCourse": 206.3885,
+   "relSpeed": 12.9587,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R099-normal",
+  "own": {
+   "course": 100.4,
+   "speed": 19.1
+  },
+  "brgType": "rel",
+  "heading": 100.4,
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "14:51",
+    "brg": 339.314,
+    "rng": 11.5996
+   },
+   {
+    "t": "14:57",
+    "brg": 330.535,
+    "rng": 8.4634
+   },
+   {
+    "t": "15:03",
+    "brg": 312.58,
+    "rng": 5.7428
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 282.7859,
+   "tgtSpeed": 15.7443,
+   "relCourse": 281.478,
+   "relSpeed": 34.8368,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R100-normal",
+  "own": {
+   "course": 83.8,
+   "speed": 5.2
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "18:35",
+    "brg": 105.762,
+    "rng": 11.6962
+   },
+   {
+    "t": "18:41",
+    "brg": 101.896,
+    "rng": 9.0113
+   },
+   {
+    "t": "18:47",
+    "brg": 94.822,
+    "rng": 6.4018
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "action": {
+   "t": "18:53",
+   "find": "course",
+   "want": 1.5
+  },
+  "truth": {
+   "tgtCourse": 305.5977,
+   "tgtSpeed": 23.6335,
+   "relCourse": 298.4172,
+   "relSpeed": 27.7276,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R101-normal",
+  "own": {
+   "course": 8.6,
+   "speed": 8.9
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "12:24",
+    "brg": 20.768,
+    "rng": 10.2973
+   },
+   {
+    "t": "12:30",
+    "brg": 26.659,
+    "rng": 9.6685
+   },
+   {
+    "t": "12:36",
+    "brg": 33.289,
+    "rng": 9.1554
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 97.47,
+   "tgtSpeed": 8.2702,
+   "relCourse": 145.1775,
+   "relSpeed": 12.0293,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R102-collision",
+  "own": {
+   "course": 200.8,
+   "speed": 14.0
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "20:42",
+    "brg": 150.3,
+    "rng": 11.7443
+   },
+   {
+    "t": "20:48",
+    "brg": 150.3,
+    "rng": 8.9345
+   },
+   {
+    "t": "20:54",
+    "brg": 150.3,
+    "rng": 6.1246
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "20:54",
+   "speed": 9.6
+  },
+  "truth": {
+   "tgtCourse": 300.9276,
+   "tgtSpeed": 22.0247,
+   "relCourse": 330.3,
+   "relSpeed": 28.0985,
+   "kind": "collision"
+  }
+ },
+ {
+  "id": "R103-normal",
+  "own": {
+   "course": 129.4,
+   "speed": 2.3
+  },
+  "brgType": "rel",
+  "heading": 131.1,
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "01:53",
+    "brg": 10.484,
+    "rng": 11.0346
+   },
+   {
+    "t": "01:59",
+    "brg": 8.152,
+    "rng": 9.964
+   },
+   {
+    "t": "02:05",
+    "brg": 5.265,
+    "rng": 8.9139
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 349.579,
+   "tgtSpeed": 9.672,
+   "relCourse": 342.1815,
+   "relSpeed": 11.5252,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R104-normal",
+  "own": {
+   "course": 81.7,
+   "speed": 17.5
+  },
+  "brgType": "rel",
+  "heading": 81.7,
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "13:46",
+    "brg": 162.889,
+    "rng": 4.6869
+   },
+   {
+    "t": "13:52",
+    "brg": 158.523,
+    "rng": 4.3661
+   },
+   {
+    "t": "13:58",
+    "brg": 153.5,
+    "rng": 4.0745
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "action": {
+   "t": "14:04",
+   "course": 29.0,
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 87.4858,
+   "tgtSpeed": 21.7764,
+   "relCourse": 109.4901,
+   "relSpeed": 4.7085,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R105-collision",
+  "own": {
+   "course": 114.4,
+   "speed": 13.5
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "14:44",
+    "brg": 133.2,
+    "rng": 5.4454
+   },
+   {
+    "t": "14:50",
+    "brg": 133.2,
+    "rng": 3.3184
+   },
+   {
+    "t": "14:56",
+    "brg": 133.2,
+    "rng": 1.1913
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "action": {
+   "t": "14:56",
+   "speed": 3.8
+  },
+  "truth": {
+   "tgtCourse": 340.3301,
+   "tgtSpeed": 9.5405,
+   "relCourse": 313.2,
+   "relSpeed": 21.2706,
+   "kind": "collision"
+  }
+ },
+ {
+  "id": "R106-normal",
+  "own": {
+   "course": 215.7,
+   "speed": 16.4
+  },
+  "brgType": "rel",
+  "heading": 218.7,
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "23:28",
+    "brg": 347.716,
+    "rng": 8.9655
+   },
+   {
+    "t": "23:34",
+    "brg": 332.223,
+    "rng": 5.8141
+   },
+   {
+    "t": "23:40",
+    "brg": 293.515,
+    "rng": 3.8296
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "truth": {
+   "tgtCourse": 62.8696,
+   "tgtSpeed": 21.6851,
+   "relCourse": 51.2054,
+   "relSpeed": 37.0404,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R107-fixed",
+  "own": {
+   "course": 117.6,
+   "speed": 15.3
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "00:59",
+    "brg": 188.786,
+    "rng": 1.9142
+   },
+   {
+    "t": "01:05",
+    "brg": 234.335,
+    "rng": 2.0288
+   },
+   {
+    "t": "01:11",
+    "brg": 261.033,
+    "rng": 3.0413
+   }
+  ],
+  "fixed": true,
+  "cpaLimit": 1,
+  "truth": {
+   "tgtCourse": null,
+   "tgtSpeed": 0.0,
+   "relCourse": 297.6,
+   "relSpeed": 15.3,
+   "kind": "fixed"
+  }
+ },
+ {
+  "id": "R108-normal",
+  "own": {
+   "course": 165.6,
+   "speed": 22.6
+  },
+  "brgType": "rel",
+  "heading": 165.6,
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "14:28",
+    "brg": 2.358,
+    "rng": 1.4098
+   },
+   {
+    "t": "14:34",
+    "brg": 192.542,
+    "rng": 1.2915
+   },
+   {
+    "t": "14:40",
+    "brg": 188.95,
+    "rng": 3.9784
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "truth": {
+   "tgtCourse": 25.1888,
+   "tgtSpeed": 5.311,
+   "relCourse": 352.8264,
+   "relSpeed": 26.9066,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R109-fixed",
+  "own": {
+   "course": 14.0,
+   "speed": 16.3
+  },
+  "brgType": "true",
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "11:01",
+    "brg": 329.312,
+    "rng": 6.494
+   },
+   {
+    "t": "11:07",
+    "brg": 317.025,
+    "rng": 5.4809
+   },
+   {
+    "t": "11:13",
+    "brg": 300.36,
+    "rng": 4.8189
+   }
+  ],
+  "fixed": true,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": null,
+   "tgtSpeed": 0.0,
+   "relCourse": 194.0,
+   "relSpeed": 16.3,
+   "kind": "fixed"
+  }
+ },
+ {
+  "id": "R110-normal",
+  "own": {
+   "course": 1.3,
+   "speed": 14.6
+  },
+  "brgType": "rel",
+  "heading": 1.3,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "02:25",
+    "brg": 253.12,
+    "rng": 5.7152
+   },
+   {
+    "t": "02:31",
+    "brg": 259.952,
+    "rng": 5.0941
+   },
+   {
+    "t": "02:37",
+    "brg": 268.518,
+    "rng": 4.5645
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "02:37",
+   "find": "course",
+   "want": 1.5
+  },
+  "truth": {
+   "tgtCourse": 12.7791,
+   "tgtSpeed": 22.7623,
+   "relCourse": 31.7457,
+   "relSpeed": 8.9397,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R111-normal",
+  "own": {
+   "course": 177.0,
+   "speed": 8.8
+  },
+  "brgType": "rel",
+  "heading": 177.0,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "20:01",
+    "brg": 28.842,
+    "rng": 7.8031
+   },
+   {
+    "t": "20:07",
+    "brg": 31.577,
+    "rng": 5.5683
+   },
+   {
+    "t": "20:13",
+    "brg": 37.933,
+    "rng": 3.3631
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "action": {
+   "t": "20:13",
+   "find": "course",
+   "want": 2
+  },
+  "truth": {
+   "tgtCourse": 32.0079,
+   "tgtSpeed": 14.7884,
+   "relCourse": 19.0815,
+   "relSpeed": 22.5682,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R112-normal",
+  "own": {
+   "course": 9.9,
+   "speed": 6.3
+  },
+  "brgType": "true",
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "13:03",
+    "brg": 53.818,
+    "rng": 4.4259
+   },
+   {
+    "t": "13:09",
+    "brg": 60.743,
+    "rng": 4.0576
+   },
+   {
+    "t": "13:15",
+    "brg": 68.902,
+    "rng": 3.7596
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "action": {
+   "t": "13:21",
+   "course": 351.0
+  },
+  "truth": {
+   "tgtCourse": 97.2493,
+   "tgtSpeed": 0.6878,
+   "relCourse": 183.6448,
+   "relSpeed": 6.3057,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R113-normal",
+  "own": {
+   "course": 145.0,
+   "speed": 9.8
+  },
+  "brgType": "true",
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "17:25",
+    "brg": 182.765,
+    "rng": 7.4651
+   },
+   {
+    "t": "17:31",
+    "brg": 181.46,
+    "rng": 6.3511
+   },
+   {
+    "t": "17:37",
+    "brg": 179.601,
+    "rng": 5.2418
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "action": {
+   "t": "17:37",
+   "find": "course",
+   "want": 1.5
+  },
+  "truth": {
+   "tgtCourse": 67.4387,
+   "tgtSpeed": 8.0247,
+   "relCourse": 9.153,
+   "relSpeed": 11.2498,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R114-opening",
+  "own": {
+   "course": 3.0,
+   "speed": 22.1
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "11:40",
+    "brg": 56.335,
+    "rng": 1.6771
+   },
+   {
+    "t": "11:46",
+    "brg": 143.988,
+    "rng": 0.4195
+   },
+   {
+    "t": "11:52",
+    "brg": 209.3,
+    "rng": 1.8443
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "action": {
+   "t": "11:55",
+   "course": 13.0,
+   "speed": 12.3,
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 312.2232,
+   "tgtSpeed": 13.957,
+   "relCourse": 222.1636,
+   "relSpeed": 17.1206,
+   "kind": "opening"
+  }
+ },
+ {
+  "id": "R115-near000",
+  "own": {
+   "course": 320.7,
+   "speed": 19.3
+  },
+  "brgType": "true",
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "09:49",
+    "brg": 12.249,
+    "rng": 8.4876
+   },
+   {
+    "t": "09:55",
+    "brg": 7.709,
+    "rng": 7.5573
+   },
+   {
+    "t": "10:01",
+    "brg": 1.943,
+    "rng": 6.6875
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "action": {
+   "t": "10:04",
+   "find": "speed",
+   "want": 1.5
+  },
+  "truth": {
+   "tgtCourse": 288.4586,
+   "tgtSpeed": 20.8828,
+   "relCourse": 222.34,
+   "relSpeed": 11.2604,
+   "kind": "near000"
+  }
+ },
+ {
+  "id": "R116-normal",
+  "own": {
+   "course": 76.4,
+   "speed": 24.9
+  },
+  "brgType": "rel",
+  "heading": 79.6,
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "20:55",
+    "brg": 37.0,
+    "rng": 5.6372
+   },
+   {
+    "t": "21:01",
+    "brg": 61.963,
+    "rng": 4.2886
+   },
+   {
+    "t": "21:07",
+    "brg": 96.425,
+    "rng": 4.2044
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "21:10",
+   "course": 127.0,
+   "speed": 11.3
+  },
+  "truth": {
+   "tgtCourse": 169.6373,
+   "tgtSpeed": 2.5371,
+   "relCourse": 250.6244,
+   "relSpeed": 25.171,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R117-normal",
+  "own": {
+   "course": 107.1,
+   "speed": 11.2
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "09:07",
+    "brg": 30.882,
+    "rng": 8.102
+   },
+   {
+    "t": "09:13",
+    "brg": 16.153,
+    "rng": 6.1686
+   },
+   {
+    "t": "09:19",
+    "brg": 351.563,
+    "rng": 4.9505
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 225.3035,
+   "tgtSpeed": 19.3006,
+   "relCourse": 247.1707,
+   "relSpeed": 26.5005,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R118-normal",
+  "own": {
+   "course": 354.0,
+   "speed": 14.1
+  },
+  "brgType": "true",
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "19:19",
+    "brg": 348.294,
+    "rng": 5.7193
+   },
+   {
+    "t": "19:25",
+    "brg": 348.498,
+    "rng": 5.1971
+   },
+   {
+    "t": "19:31",
+    "brg": 348.748,
+    "rng": 4.675
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "action": {
+   "t": "19:34",
+   "speed": 2.7,
+   "want": 1
+  },
+  "truth": {
+   "tgtCourse": 357.6468,
+   "tgtSpeed": 8.9238,
+   "relCourse": 167.7637,
+   "relSpeed": 5.2252,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R119-normal",
+  "own": {
+   "course": 10.5,
+   "speed": 3.3
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "15:15",
+    "brg": 258.935,
+    "rng": 4.3523
+   },
+   {
+    "t": "15:21",
+    "brg": 248.03,
+    "rng": 4.3522
+   },
+   {
+    "t": "15:27",
+    "brg": 237.503,
+    "rng": 4.5065
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "truth": {
+   "tgtCourse": 147.7653,
+   "tgtSpeed": 5.538,
+   "relCourse": 163.4747,
+   "relSpeed": 8.2708,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R120-normal",
+  "own": {
+   "course": 96.7,
+   "speed": 8.7
+  },
+  "brgType": "rel",
+  "heading": 93.6,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "08:43",
+    "brg": 278.708,
+    "rng": 7.1786
+   },
+   {
+    "t": "08:49",
+    "brg": 265.092,
+    "rng": 8.111
+   },
+   {
+    "t": "08:55",
+    "brg": 254.734,
+    "rng": 9.3984
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 319.4152,
+   "tgtSpeed": 13.0855,
+   "relCourse": 302.5586,
+   "relSpeed": 20.3522,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R121-normal",
+  "own": {
+   "course": 328.0,
+   "speed": 2.2
+  },
+  "brgType": "rel",
+  "heading": 325.3,
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "10:43",
+    "brg": 43.967,
+    "rng": 9.393
+   },
+   {
+    "t": "10:49",
+    "brg": 44.21,
+    "rng": 9.0271
+   },
+   {
+    "t": "10:55",
+    "brg": 44.473,
+    "rng": 8.6613
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "action": {
+   "t": "10:55",
+   "find": "course",
+   "want": 2
+  },
+  "truth": {
+   "tgtCourse": 217.3058,
+   "tgtSpeed": 2.2737,
+   "relCourse": 183.3054,
+   "relSpeed": 3.6804,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R122-normal",
+  "own": {
+   "course": 118.2,
+   "speed": 1.8
+  },
+  "brgType": "true",
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "16:56",
+    "brg": 166.923,
+    "rng": 5.4354
+   },
+   {
+    "t": "17:02",
+    "brg": 165.993,
+    "rng": 4.4734
+   },
+   {
+    "t": "17:08",
+    "brg": 164.555,
+    "rng": 3.5131
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "17:11",
+   "find": "course",
+   "want": 2
+  },
+  "truth": {
+   "tgtCourse": 359.6608,
+   "tgtSpeed": 8.6636,
+   "relCourse": 350.2335,
+   "relSpeed": 9.6539,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R123-samevel",
+  "own": {
+   "course": 167.9,
+   "speed": 13.4
+  },
+  "brgType": "rel",
+  "heading": 167.9,
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "21:11",
+    "brg": 60.583,
+    "rng": 10.0781
+   },
+   {
+    "t": "21:17",
+    "brg": 60.583,
+    "rng": 10.0781
+   },
+   {
+    "t": "21:23",
+    "brg": 60.583,
+    "rng": 10.0781
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 167.9,
+   "tgtSpeed": 13.4,
+   "relCourse": null,
+   "relSpeed": 0.0,
+   "kind": "samevel"
+  }
+ },
+ {
+  "id": "R124-normal",
+  "own": {
+   "course": 283.5,
+   "speed": 0.5
+  },
+  "brgType": "true",
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "02:03",
+    "brg": 347.843,
+    "rng": 6.5274
+   },
+   {
+    "t": "02:09",
+    "brg": 358.035,
+    "rng": 5.5529
+   },
+   {
+    "t": "02:15",
+    "brg": 11.894,
+    "rng": 4.8218
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "02:21",
+   "course": 270.0,
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 124.791,
+   "tgtSpeed": 14.0019,
+   "relCourse": 124.072,
+   "relSpeed": 14.4689,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R125-fixed",
+  "own": {
+   "course": 308.8,
+   "speed": 16.2
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "05:19",
+    "brg": 315.853,
+    "rng": 5.29
+   },
+   {
+    "t": "05:25",
+    "brg": 318.946,
+    "rng": 3.6876
+   },
+   {
+    "t": "05:31",
+    "brg": 326.71,
+    "rng": 2.1123
+   }
+  ],
+  "fixed": true,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": null,
+   "tgtSpeed": 0.0,
+   "relCourse": 128.8,
+   "relSpeed": 16.2,
+   "kind": "fixed"
+  }
+ },
+ {
+  "id": "R126-normal",
+  "own": {
+   "course": 130.4,
+   "speed": 5.4
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "08:02",
+    "brg": 187.078,
+    "rng": 4.1107
+   },
+   {
+    "t": "08:08",
+    "brg": 205.387,
+    "rng": 2.8515
+   },
+   {
+    "t": "08:14",
+    "brg": 241.04,
+    "rng": 2.2156
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "truth": {
+   "tgtCourse": 345.198,
+   "tgtSpeed": 11.9292,
+   "relCourse": 334.5325,
+   "relSpeed": 16.6512,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R127-normal",
+  "own": {
+   "course": 168.0,
+   "speed": 8.0
+  },
+  "brgType": "rel",
+  "heading": 168.0,
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "10:25",
+    "brg": 336.47,
+    "rng": 7.7787
+   },
+   {
+    "t": "10:31",
+    "brg": 340.735,
+    "rng": 7.1514
+   },
+   {
+    "t": "10:37",
+    "brg": 345.786,
+    "rng": 6.5712
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "10:37",
+   "speed": 4.2
+  },
+  "truth": {
+   "tgtCourse": 228.6757,
+   "tgtSpeed": 8.5557,
+   "relCourse": 285.0551,
+   "relSpeed": 8.376,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R128-normal",
+  "own": {
+   "course": 132.6,
+   "speed": 19.1
+  },
+  "brgType": "true",
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "12:04",
+    "brg": 177.099,
+    "rng": 10.154
+   },
+   {
+    "t": "12:10",
+    "brg": 182.428,
+    "rng": 8.4151
+   },
+   {
+    "t": "12:16",
+    "brg": 190.416,
+    "rng": 6.7859
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "12:19",
+   "find": "course",
+   "want": 1
+  },
+  "truth": {
+   "tgtCourse": 50.988,
+   "tgtSpeed": 7.1662,
+   "relCourse": 334.0386,
+   "relSpeed": 19.3967,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R129-near000",
+  "own": {
+   "course": 287.7,
+   "speed": 10.4
+  },
+  "brgType": "rel",
+  "heading": 287.7,
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "04:45",
+    "brg": 56.969,
+    "rng": 6.2635
+   },
+   {
+    "t": "04:51",
+    "brg": 64.125,
+    "rng": 5.8124
+   },
+   {
+    "t": "04:57",
+    "brg": 72.331,
+    "rng": 5.466
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 280.1475,
+   "tgtSpeed": 1.6384,
+   "relCourse": 109.1056,
+   "relSpeed": 8.7785,
+   "kind": "near000"
+  }
+ },
+ {
+  "id": "R130-normal",
+  "own": {
+   "course": 318.5,
+   "speed": 17.7
+  },
+  "brgType": "rel",
+  "heading": 322.5,
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "22:29",
+    "brg": 315.993,
+    "rng": 8.9151
+   },
+   {
+    "t": "22:35",
+    "brg": 299.128,
+    "rng": 6.7756
+   },
+   {
+    "t": "22:41",
+    "brg": 271.867,
+    "rng": 5.6467
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "22:41",
+   "find": "course",
+   "want": 2
+  },
+  "truth": {
+   "tgtCourse": 136.0883,
+   "tgtSpeed": 13.5694,
+   "relCourse": 137.4535,
+   "relSpeed": 31.2626,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R131-opening",
+  "own": {
+   "course": 147.2,
+   "speed": 5.9
+  },
+  "brgType": "rel",
+  "heading": 148.0,
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "09:30",
+    "brg": 313.805,
+    "rng": 10.0049
+   },
+   {
+    "t": "09:36",
+    "brg": 324.547,
+    "rng": 9.9498
+   },
+   {
+    "t": "09:42",
+    "brg": 335.039,
+    "rng": 10.2413
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "truth": {
+   "tgtCourse": 187.1584,
+   "tgtSpeed": 22.8211,
+   "relCourse": 198.8574,
+   "relSpeed": 18.6869,
+   "kind": "opening"
+  }
+ },
+ {
+  "id": "R132-midnight",
+  "own": {
+   "course": 167.5,
+   "speed": 10.5
+  },
+  "brgType": "true",
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "23:55",
+    "brg": 55.236,
+    "rng": 0.8128
+   },
+   {
+    "t": "00:01",
+    "brg": 2.568,
+    "rng": 2.4878
+   },
+   {
+    "t": "00:07",
+    "brg": 354.364,
+    "rng": 4.529
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "truth": {
+   "tgtCourse": 339.7404,
+   "tgtSpeed": 10.5175,
+   "relCourse": 343.617,
+   "relSpeed": 20.9693,
+   "kind": "midnight"
+  }
+ },
+ {
+  "id": "R133-collision",
+  "own": {
+   "course": 90.0,
+   "speed": 7.1
+  },
+  "brgType": "rel",
+  "heading": 89.7,
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "19:18",
+    "brg": 6.9,
+    "rng": 3.5049
+   },
+   {
+    "t": "19:24",
+    "brg": 6.9,
+    "rng": 2.9228
+   },
+   {
+    "t": "19:30",
+    "brg": 6.9,
+    "rng": 2.3408
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "action": {
+   "t": "19:30",
+   "course": 55.0,
+   "speed": 9.7,
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 63.0867,
+   "tgtSpeed": 1.478,
+   "relCourse": 276.6,
+   "relSpeed": 5.8206,
+   "kind": "collision"
+  }
+ },
+ {
+  "id": "R134-midnight",
+  "own": {
+   "course": 286.9,
+   "speed": 12.0
+  },
+  "brgType": "rel",
+  "heading": 286.9,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "23:59",
+    "brg": 25.804,
+    "rng": 8.41
+   },
+   {
+    "t": "00:05",
+    "brg": 13.751,
+    "rng": 7.9715
+   },
+   {
+    "t": "00:11",
+    "brg": 0.933,
+    "rng": 7.9157
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "action": {
+   "t": "00:17",
+   "find": "speed",
+   "want": 1
+  },
+  "truth": {
+   "tgtCourse": 234.7365,
+   "tgtSpeed": 22.3602,
+   "relCourse": 202.4501,
+   "relSpeed": 17.7425,
+   "kind": "midnight"
+  }
+ },
+ {
+  "id": "R135-near000",
+  "own": {
+   "course": 270,
+   "speed": 21.1
+  },
+  "brgType": "rel",
+  "heading": 269.3,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "22:11",
+    "brg": 68.775,
+    "rng": 5.067
+   },
+   {
+    "t": "22:17",
+    "brg": 77.684,
+    "rng": 4.2648
+   },
+   {
+    "t": "22:23",
+    "brg": 90.238,
+    "rng": 3.61
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "action": {
+   "t": "22:26",
+   "course": 295.0,
+   "want": 1
+  },
+  "truth": {
+   "tgtCourse": 245.1705,
+   "tgtSpeed": 12.9861,
+   "relCourse": 120.347,
+   "relSpeed": 10.7932,
+   "kind": "near000"
+  }
+ },
+ {
+  "id": "R136-collision",
+  "own": {
+   "course": 41.1,
+   "speed": 1.9
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "18:49",
+    "brg": 58.6,
+    "rng": 9.8844
+   },
+   {
+    "t": "18:55",
+    "brg": 58.6,
+    "rng": 8.4015
+   },
+   {
+    "t": "19:01",
+    "brg": 58.6,
+    "rng": 6.9185
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "action": {
+   "t": "19:04",
+   "find": "speed",
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 241.1131,
+   "tgtSpeed": 13.03,
+   "relCourse": 238.6,
+   "relSpeed": 14.8295,
+   "kind": "collision"
+  }
+ },
+ {
+  "id": "R137-near000",
+  "own": {
+   "course": 136.3,
+   "speed": 23.8
+  },
+  "brgType": "rel",
+  "heading": 135.3,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "15:09",
+    "brg": 242.481,
+    "rng": 5.0752
+   },
+   {
+    "t": "15:15",
+    "brg": 230.463,
+    "rng": 7.2702
+   },
+   {
+    "t": "15:21",
+    "brg": 224.166,
+    "rng": 9.6346
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "15:27",
+   "find": "speed",
+   "want": 2.5
+  },
+  "truth": {
+   "tgtCourse": 50.4842,
+   "tgtSpeed": 10.6873,
+   "relCourse": 341.1451,
+   "relSpeed": 25.3681,
+   "kind": "near000"
+  }
+ },
+ {
+  "id": "R138-normal",
+  "own": {
+   "course": 209.7,
+   "speed": 24.3
+  },
+  "brgType": "true",
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "09:20",
+    "brg": 238.919,
+    "rng": 10.3662
+   },
+   {
+    "t": "09:26",
+    "brg": 237.558,
+    "rng": 10.1245
+   },
+   {
+    "t": "09:32",
+    "brg": 236.131,
+    "rng": 9.8889
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "truth": {
+   "tgtCourse": 201.718,
+   "tgtSpeed": 23.4527,
+   "relCourse": 101.4402,
+   "relSpeed": 3.4294,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R139-midnight",
+  "own": {
+   "course": 306.7,
+   "speed": 4.5
+  },
+  "brgType": "true",
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "23:59",
+    "brg": 90.501,
+    "rng": 5.7732
+   },
+   {
+    "t": "00:05",
+    "brg": 82.932,
+    "rng": 6.6739
+   },
+   {
+    "t": "00:11",
+    "brg": 77.237,
+    "rng": 7.6627
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "action": {
+   "t": "00:11",
+   "speed": 1.7,
+   "want": 1
+  },
+  "truth": {
+   "tgtCourse": 24.6044,
+   "tgtSpeed": 12.2966,
+   "relCourse": 45.7881,
+   "relSpeed": 12.1765,
+   "kind": "midnight"
+  }
+ },
+ {
+  "id": "R140-normal",
+  "own": {
+   "course": 135.8,
+   "speed": 8.1
+  },
+  "brgType": "rel",
+  "heading": 135.8,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "09:22",
+    "brg": 311.306,
+    "rng": 10.6326
+   },
+   {
+    "t": "09:28",
+    "brg": 312.357,
+    "rng": 10.1746
+   },
+   {
+    "t": "09:34",
+    "brg": 313.507,
+    "rng": 9.7203
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "action": {
+   "t": "09:37",
+   "course": 148.0,
+   "speed": 22.9
+  },
+  "truth": {
+   "tgtCourse": 171.7201,
+   "tgtSpeed": 7.9866,
+   "relCourse": 245.0058,
+   "relSpeed": 4.9615,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R141-normal",
+  "own": {
+   "course": 300.9,
+   "speed": 23.6
+  },
+  "brgType": "rel",
+  "heading": 300.9,
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "04:45",
+    "brg": 30.869,
+    "rng": 10.8059
+   },
+   {
+    "t": "04:51",
+    "brg": 42.297,
+    "rng": 6.901
+   },
+   {
+    "t": "04:57",
+    "brg": 75.997,
+    "rng": 3.8589
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 147.3292,
+   "tgtSpeed": 20.2202,
+   "relCourse": 133.0771,
+   "relSpeed": 42.6669,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R142-collision",
+  "own": {
+   "course": 200.8,
+   "speed": 2.0
+  },
+  "brgType": "rel",
+  "heading": 200.8,
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "06:59",
+    "brg": 315.5,
+    "rng": 11.6465
+   },
+   {
+    "t": "07:05",
+    "brg": 315.5,
+    "rng": 11.1967
+   },
+   {
+    "t": "07:11",
+    "brg": 315.5,
+    "rng": 10.747
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "07:11",
+   "find": "course",
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 311.7646,
+   "tgtSpeed": 3.3758,
+   "relCourse": 336.3,
+   "relSpeed": 4.4975,
+   "kind": "collision"
+  }
+ },
+ {
+  "id": "R143-opening",
+  "own": {
+   "course": 356.8,
+   "speed": 6.9
+  },
+  "brgType": "rel",
+  "heading": 356.8,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "00:27",
+    "brg": 197.554,
+    "rng": 8.6198
+   },
+   {
+    "t": "00:33",
+    "brg": 209.927,
+    "rng": 8.6783
+   },
+   {
+    "t": "00:39",
+    "brg": 221.604,
+    "rng": 9.126
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "truth": {
+   "tgtCourse": 305.5267,
+   "tgtSpeed": 22.1741,
+   "relCourse": 288.7518,
+   "relSpeed": 18.6511,
+   "kind": "opening"
+  }
+ },
+ {
+  "id": "R144-normal",
+  "own": {
+   "course": 169.0,
+   "speed": 17.4
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "16:58",
+    "brg": 85.834,
+    "rng": 4.1131
+   },
+   {
+    "t": "17:04",
+    "brg": 37.423,
+    "rng": 3.5589
+   },
+   {
+    "t": "17:10",
+    "brg": 2.388,
+    "rng": 5.3587
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "action": {
+   "t": "17:13",
+   "course": 247.0,
+   "want": 1
+  },
+  "truth": {
+   "tgtCourse": 297.015,
+   "tgtSpeed": 18.0431,
+   "relCourse": 322.5007,
+   "relSpeed": 31.8593,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R145-near000",
+  "own": {
+   "course": 288.7,
+   "speed": 8.5
+  },
+  "brgType": "true",
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "06:17",
+    "brg": 301.646,
+    "rng": 5.6039
+   },
+   {
+    "t": "06:23",
+    "brg": 327.785,
+    "rng": 4.3321
+   },
+   {
+    "t": "06:29",
+    "brg": 1.979,
+    "rng": 4.3928
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "action": {
+   "t": "06:29",
+   "find": "course",
+   "want": 2
+  },
+  "truth": {
+   "tgtCourse": 56.3873,
+   "tgtSpeed": 19.5634,
+   "relCourse": 71.5861,
+   "relSpeed": 25.6574,
+   "kind": "near000"
+  }
+ },
+ {
+  "id": "R146-midnight",
+  "own": {
+   "course": 198.3,
+   "speed": 24.2
+  },
+  "brgType": "rel",
+  "heading": 198.3,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "23:50",
+    "brg": 255.388,
+    "rng": 4.2375
+   },
+   {
+    "t": "23:56",
+    "brg": 208.444,
+    "rng": 5.1854
+   },
+   {
+    "t": "00:02",
+    "brg": 185.952,
+    "rng": 8.0935
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "00:02",
+   "find": "speed",
+   "want": 1
+  },
+  "truth": {
+   "tgtCourse": 321.5834,
+   "tgtSpeed": 19.5053,
+   "relCourse": 353.26,
+   "relSpeed": 38.525,
+   "kind": "midnight"
+  }
+ },
+ {
+  "id": "R147-normal",
+  "own": {
+   "course": 210.9,
+   "speed": 22.0
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "18:16",
+    "brg": 296.107,
+    "rng": 7.2247
+   },
+   {
+    "t": "18:22",
+    "brg": 313.843,
+    "rng": 7.3103
+   },
+   {
+    "t": "18:28",
+    "brg": 329.717,
+    "rng": 8.0461
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 92.2078,
+   "tgtSpeed": 0.8536,
+   "relCourse": 32.8138,
+   "relSpeed": 22.4223,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R148-normal",
+  "own": {
+   "course": 10.0,
+   "speed": 4.0
+  },
+  "brgType": "true",
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "04:21",
+    "brg": 339.909,
+    "rng": 3.6241
+   },
+   {
+    "t": "04:27",
+    "brg": 332.312,
+    "rng": 3.2315
+   },
+   {
+    "t": "04:33",
+    "brg": 322.837,
+    "rng": 2.9103
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "04:39",
+   "course": 40.0
+  },
+  "truth": {
+   "tgtCourse": 226.9727,
+   "tgtSpeed": 2.2987,
+   "relCourse": 203.3264,
+   "relSpeed": 5.998,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R149-normal",
+  "own": {
+   "course": 45.4,
+   "speed": 4.1
+  },
+  "brgType": "true",
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "03:44",
+    "brg": 41.891,
+    "rng": 5.9127
+   },
+   {
+    "t": "03:50",
+    "brg": 34.422,
+    "rng": 3.926
+   },
+   {
+    "t": "03:56",
+    "brg": 13.299,
+    "rng": 2.1329
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 239.5223,
+   "tgtSpeed": 16.8344,
+   "relCourse": 236.7702,
+   "relSpeed": 20.8346,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R150-normal",
+  "own": {
+   "course": 185.9,
+   "speed": 16.8
+  },
+  "brgType": "true",
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "13:55",
+    "brg": 232.189,
+    "rng": 11.1976
+   },
+   {
+    "t": "14:01",
+    "brg": 241.467,
+    "rng": 8.4734
+   },
+   {
+    "t": "14:07",
+    "brg": 258.491,
+    "rng": 6.1659
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "truth": {
+   "tgtCourse": 43.4483,
+   "tgtSpeed": 16.438,
+   "relCourse": 24.462,
+   "relSpeed": 31.4697,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R151-normal",
+  "own": {
+   "course": 114.4,
+   "speed": 18.6
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "06:18",
+    "brg": 116.115,
+    "rng": 6.7991
+   },
+   {
+    "t": "06:24",
+    "brg": 132.482,
+    "rng": 4.9514
+   },
+   {
+    "t": "06:30",
+    "brg": 162.034,
+    "rng": 3.8844
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 214.1572,
+   "tgtSpeed": 13.5281,
+   "relCourse": 261.8565,
+   "relSpeed": 24.7842,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R152-normal",
+  "own": {
+   "course": 86.1,
+   "speed": 11.1
+  },
+  "brgType": "rel",
+  "heading": 86.1,
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "16:52",
+    "brg": 72.737,
+    "rng": 5.8792
+   },
+   {
+    "t": "16:58",
+    "brg": 63.713,
+    "rng": 4.7426
+   },
+   {
+    "t": "17:04",
+    "brg": 49.641,
+    "rng": 3.7926
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "17:04",
+   "find": "course",
+   "want": 2.5
+  },
+  "truth": {
+   "tgtCourse": 43.195,
+   "tgtSpeed": 20.0091,
+   "relCourse": 10.7318,
+   "relSpeed": 14.0784,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R153-near000",
+  "own": {
+   "course": 210.4,
+   "speed": 13.2
+  },
+  "brgType": "rel",
+  "heading": 210.4,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "12:35",
+    "brg": 158.357,
+    "rng": 8.488
+   },
+   {
+    "t": "12:41",
+    "brg": 153.797,
+    "rng": 8.357
+   },
+   {
+    "t": "12:47",
+    "brg": 149.123,
+    "rng": 8.2804
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 228.5032,
+   "tgtSpeed": 18.0054,
+   "relCourse": 265.4234,
+   "relSpeed": 6.828,
+   "kind": "near000"
+  }
+ },
+ {
+  "id": "R154-fixed",
+  "own": {
+   "course": 248.0,
+   "speed": 10.6
+  },
+  "brgType": "rel",
+  "heading": 246.3,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "13:07",
+    "brg": 338.94,
+    "rng": 2.7725
+   },
+   {
+    "t": "13:13",
+    "brg": 326.071,
+    "rng": 1.8412
+   },
+   {
+    "t": "13:19",
+    "brg": 293.847,
+    "rng": 1.158
+   }
+  ],
+  "fixed": true,
+  "cpaLimit": 1.5,
+  "action": {
+   "t": "13:19",
+   "course": 231.0
+  },
+  "truth": {
+   "tgtCourse": null,
+   "tgtSpeed": 0.0,
+   "relCourse": 68.0,
+   "relSpeed": 10.6,
+   "kind": "fixed"
+  }
+ },
+ {
+  "id": "R155-stationary",
+  "own": {
+   "course": 135.2,
+   "speed": 7.1
+  },
+  "brgType": "true",
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "22:50",
+    "brg": 165.678,
+    "rng": 3.2231
+   },
+   {
+    "t": "22:56",
+    "brg": 173.678,
+    "rng": 2.6413
+   },
+   {
+    "t": "23:02",
+    "brg": 185.785,
+    "rng": 2.1385
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "action": {
+   "t": "23:08",
+   "speed": 4.4
+  },
+  "truth": {
+   "tgtCourse": null,
+   "tgtSpeed": 0.0,
+   "relCourse": 315.2,
+   "relSpeed": 7.1,
+   "kind": "stationary"
+  }
+ },
+ {
+  "id": "R156-normal",
+  "own": {
+   "course": 347.3,
+   "speed": 8.8
+  },
+  "brgType": "rel",
+  "heading": 347.3,
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "10:09",
+    "brg": 314.851,
+    "rng": 8.2934
+   },
+   {
+    "t": "10:15",
+    "brg": 308.376,
+    "rng": 6.3748
+   },
+   {
+    "t": "10:21",
+    "brg": 296.66,
+    "rng": 4.6049
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "action": {
+   "t": "10:21",
+   "find": "course",
+   "want": 1.5
+  },
+  "truth": {
+   "tgtCourse": 126.2058,
+   "tgtSpeed": 13.4205,
+   "relCourse": 142.2963,
+   "relSpeed": 20.87,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R157-opening",
+  "own": {
+   "course": 5.6,
+   "speed": 16.3
+  },
+  "brgType": "rel",
+  "heading": 5.6,
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "08:56",
+    "brg": 226.139,
+    "rng": 4.1551
+   },
+   {
+    "t": "09:02",
+    "brg": 208.89,
+    "rng": 6.5531
+   },
+   {
+    "t": "09:08",
+    "brg": 201.211,
+    "rng": 9.2208
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "action": {
+   "t": "09:11",
+   "find": "course",
+   "want": 1.5
+  },
+  "truth": {
+   "tgtCourse": 193.4834,
+   "tgtSpeed": 12.4023,
+   "relCourse": 189.0056,
+   "relSpeed": 28.6357,
+   "kind": "opening"
+  }
+ },
+ {
+  "id": "R158-near000",
+  "own": {
+   "course": 98.8,
+   "speed": 24.2
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "15:35",
+    "brg": 20.426,
+    "rng": 8.0662
+   },
+   {
+    "t": "15:41",
+    "brg": 8.441,
+    "rng": 9.2586
+   },
+   {
+    "t": "15:47",
+    "brg": 359.484,
+    "rng": 10.7581
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 37.2768,
+   "tgtSpeed": 15.4463,
+   "relCourse": 317.686,
+   "relSpeed": 21.628,
+   "kind": "near000"
+  }
+ },
+ {
+  "id": "R159-fixed",
+  "own": {
+   "course": 258.2,
+   "speed": 16.2
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "08:53",
+    "brg": 221.928,
+    "rng": 2.5318
+   },
+   {
+    "t": "08:59",
+    "brg": 183.905,
+    "rng": 1.5559
+   },
+   {
+    "t": "09:05",
+    "brg": 129.527,
+    "rng": 1.9185
+   }
+  ],
+  "fixed": true,
+  "cpaLimit": 2,
+  "action": {
+   "t": "09:11",
+   "course": 268.0,
+   "speed": 18.1
+  },
+  "truth": {
+   "tgtCourse": null,
+   "tgtSpeed": 0.0,
+   "relCourse": 78.2,
+   "relSpeed": 16.2,
+   "kind": "fixed"
+  }
+ },
+ {
+  "id": "R160-normal",
+  "own": {
+   "course": 250.7,
+   "speed": 22.8
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "09:12",
+    "brg": 255.362,
+    "rng": 10.3451
+   },
+   {
+    "t": "09:18",
+    "brg": 263.889,
+    "rng": 6.5093
+   },
+   {
+    "t": "09:24",
+    "brg": 292.71,
+    "rng": 3.182
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "truth": {
+   "tgtCourse": 49.8657,
+   "tgtSpeed": 18.1172,
+   "relCourse": 61.4882,
+   "relSpeed": 40.2517,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R161-fixed",
+  "own": {
+   "course": 141.9,
+   "speed": 6.7
+  },
+  "brgType": "rel",
+  "heading": 143.3,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "13:57",
+    "brg": 119.836,
+    "rng": 8.4497
+   },
+   {
+    "t": "14:03",
+    "brg": 123.562,
+    "rng": 8.8158
+   },
+   {
+    "t": "14:09",
+    "brg": 126.977,
+    "rng": 9.2161
+   }
+  ],
+  "fixed": true,
+  "cpaLimit": 2,
+  "action": {
+   "t": "14:09",
+   "find": "course",
+   "want": 1.5
+  },
+  "truth": {
+   "tgtCourse": null,
+   "tgtSpeed": 0.0,
+   "relCourse": 321.9,
+   "relSpeed": 6.7,
+   "kind": "fixed"
+  }
+ },
+ {
+  "id": "R162-normal",
+  "own": {
+   "course": 41.7,
+   "speed": 7.5
+  },
+  "brgType": "true",
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "18:46",
+    "brg": 292.611,
+    "rng": 10.0971
+   },
+   {
+    "t": "18:52",
+    "brg": 284.597,
+    "rng": 9.4882
+   },
+   {
+    "t": "18:58",
+    "brg": 275.686,
+    "rng": 9.0876
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "truth": {
+   "tgtCourse": 143.2874,
+   "tgtSpeed": 11.5406,
+   "relCourse": 172.6724,
+   "relSpeed": 14.9735,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R163-normal",
+  "own": {
+   "course": 90.6,
+   "speed": 0.4
+  },
+  "brgType": "rel",
+  "heading": 90.6,
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "17:17",
+    "brg": 206.933,
+    "rng": 4.8384
+   },
+   {
+    "t": "17:23",
+    "brg": 211.231,
+    "rng": 3.7301
+   },
+   {
+    "t": "17:29",
+    "brg": 219.066,
+    "rng": 2.6603
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "action": {
+   "t": "17:32",
+   "course": 81.0
+  },
+  "truth": {
+   "tgtCourse": 103.0728,
+   "tgtSpeed": 11.9221,
+   "relCourse": 103.502,
+   "relSpeed": 11.5319,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R164-normal",
+  "own": {
+   "course": 111.9,
+   "speed": 18.5
+  },
+  "brgType": "rel",
+  "heading": 111.9,
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "09:15",
+    "brg": 355.073,
+    "rng": 7.8919
+   },
+   {
+    "t": "09:21",
+    "brg": 1.024,
+    "rng": 5.4237
+   },
+   {
+    "t": "09:27",
+    "brg": 16.29,
+    "rng": 3.1076
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 239.1893,
+   "tgtSpeed": 9.7381,
+   "relCourse": 274.2842,
+   "relSpeed": 25.6002,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R165-opening",
+  "own": {
+   "course": 167.8,
+   "speed": 5.3
+  },
+  "brgType": "rel",
+  "heading": 167.8,
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "18:32",
+    "brg": 52.866,
+    "rng": 3.7287
+   },
+   {
+    "t": "18:38",
+    "brg": 58.626,
+    "rng": 3.9993
+   },
+   {
+    "t": "18:44",
+    "brg": 63.612,
+    "rng": 4.305
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 218.5372,
+   "tgtSpeed": 5.7075,
+   "relCourse": 278.7044,
+   "relSpeed": 4.7304,
+   "kind": "opening"
+  }
+ },
+ {
+  "id": "R166-opening",
+  "own": {
+   "course": 83.1,
+   "speed": 18.3
+  },
+  "brgType": "rel",
+  "heading": 86.5,
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "20:15",
+    "brg": 234.692,
+    "rng": 4.2591
+   },
+   {
+    "t": "20:21",
+    "brg": 216.643,
+    "rng": 5.8237
+   },
+   {
+    "t": "20:27",
+    "brg": 206.79,
+    "rng": 7.7116
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "action": {
+   "t": "20:33",
+   "course": 123.0,
+   "speed": 22.9,
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 282.2762,
+   "tgtSpeed": 3.9938,
+   "relCourse": 266.5014,
+   "relSpeed": 22.1111,
+   "kind": "opening"
+  }
+ },
+ {
+  "id": "R167-fixed",
+  "own": {
+   "course": 133.5,
+   "speed": 10.4
+  },
+  "brgType": "true",
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "07:24",
+    "brg": 213.137,
+    "rng": 8.399
+   },
+   {
+    "t": "07:30",
+    "brg": 220.247,
+    "rng": 8.3026
+   },
+   {
+    "t": "07:36",
+    "brg": 227.411,
+    "rng": 8.3358
+   }
+  ],
+  "fixed": true,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": null,
+   "tgtSpeed": 0.0,
+   "relCourse": 313.5,
+   "relSpeed": 10.4,
+   "kind": "fixed"
+  }
+ },
+ {
+  "id": "R168-normal",
+  "own": {
+   "course": 34.0,
+   "speed": 2.7
+  },
+  "brgType": "rel",
+  "heading": 37.1,
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "02:01",
+    "brg": 17.793,
+    "rng": 9.6188
+   },
+   {
+    "t": "02:07",
+    "brg": 16.907,
+    "rng": 9.2292
+   },
+   {
+    "t": "02:13",
+    "brg": 15.943,
+    "rng": 8.842
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "action": {
+   "t": "02:13",
+   "speed": 2.6
+  },
+  "truth": {
+   "tgtCourse": 294.8087,
+   "tgtSpeed": 2.7617,
+   "relCourse": 254.9555,
+   "relSpeed": 4.1592,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R169-normal",
+  "own": {
+   "course": 7.2,
+   "speed": 1.7
+  },
+  "brgType": "rel",
+  "heading": 9.5,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "00:59",
+    "brg": 333.315,
+    "rng": 4.389
+   },
+   {
+    "t": "01:05",
+    "brg": 326.225,
+    "rng": 3.4652
+   },
+   {
+    "t": "01:11",
+    "brg": 314.344,
+    "rng": 2.6314
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "truth": {
+   "tgtCourse": 187.0187,
+   "tgtSpeed": 8.7207,
+   "relCourse": 187.0483,
+   "relSpeed": 10.4207,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R170-normal",
+  "own": {
+   "course": 199.4,
+   "speed": 12.6
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "05:02",
+    "brg": 243.527,
+    "rng": 7.2902
+   },
+   {
+    "t": "05:08",
+    "brg": 245.232,
+    "rng": 5.3538
+   },
+   {
+    "t": "05:14",
+    "brg": 248.859,
+    "rng": 3.4274
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "truth": {
+   "tgtCourse": 98.2931,
+   "tgtSpeed": 12.592,
+   "relCourse": 58.8315,
+   "relSpeed": 19.4537,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R171-normal",
+  "own": {
+   "course": 321.7,
+   "speed": 2.2
+  },
+  "brgType": "rel",
+  "heading": 321.7,
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "02:42",
+    "brg": 340.182,
+    "rng": 8.4649
+   },
+   {
+    "t": "02:48",
+    "brg": 334.148,
+    "rng": 7.6415
+   },
+   {
+    "t": "02:54",
+    "brg": 326.763,
+    "rng": 6.9224
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "truth": {
+   "tgtCourse": 169.764,
+   "tgtSpeed": 9.8229,
+   "relCourse": 164.7361,
+   "relSpeed": 11.8096,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R172-normal",
+  "own": {
+   "course": 315.3,
+   "speed": 22.6
+  },
+  "brgType": "rel",
+  "heading": 315.3,
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "16:05",
+    "brg": 316.96,
+    "rng": 9.6879
+   },
+   {
+    "t": "16:11",
+    "brg": 305.813,
+    "rng": 7.9158
+   },
+   {
+    "t": "16:17",
+    "brg": 289.323,
+    "rng": 6.5978
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "16:17",
+   "course": 27.0,
+   "want": 1
+  },
+  "truth": {
+   "tgtCourse": 89.6608,
+   "tgtSpeed": 2.6997,
+   "relCourse": 130.7932,
+   "relSpeed": 24.5635,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R173-normal",
+  "own": {
+   "course": 88.8,
+   "speed": 18.0
+  },
+  "brgType": "true",
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "13:48",
+    "brg": 190.662,
+    "rng": 5.4921
+   },
+   {
+    "t": "13:54",
+    "brg": 228.804,
+    "rng": 5.522
+   },
+   {
+    "t": "14:00",
+    "brg": 255.571,
+    "rng": 7.5317
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 321.8383,
+   "tgtSpeed": 22.1667,
+   "relCourse": 298.2824,
+   "relSpeed": 35.9887,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R174-normal",
+  "own": {
+   "course": 296.5,
+   "speed": 20.0
+  },
+  "brgType": "rel",
+  "heading": 296.5,
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "13:50",
+    "brg": 317.768,
+    "rng": 11.1262
+   },
+   {
+    "t": "13:56",
+    "brg": 321.505,
+    "rng": 8.0517
+   },
+   {
+    "t": "14:02",
+    "brg": 329.755,
+    "rng": 5.0532
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "action": {
+   "t": "14:08",
+   "course": 235.0,
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 25.0238,
+   "tgtSpeed": 24.6731,
+   "relCourse": 64.6354,
+   "relSpeed": 31.3582,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R175-normal",
+  "own": {
+   "course": 333.1,
+   "speed": 24.5
+  },
+  "brgType": "true",
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "07:30",
+    "brg": 114.37,
+    "rng": 7.4792
+   },
+   {
+    "t": "07:36",
+    "brg": 119.966,
+    "rng": 7.353
+   },
+   {
+    "t": "07:42",
+    "brg": 125.701,
+    "rng": 7.2989
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "truth": {
+   "tgtCourse": 315.7873,
+   "tgtSpeed": 22.4635,
+   "relCourse": 218.5448,
+   "relSpeed": 7.3495,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R176-normal",
+  "own": {
+   "course": 275.7,
+   "speed": 9.6
+  },
+  "brgType": "rel",
+  "heading": 272.0,
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "20:14",
+    "brg": 339.328,
+    "rng": 4.5038
+   },
+   {
+    "t": "20:20",
+    "brg": 339.613,
+    "rng": 3.776
+   },
+   {
+    "t": "20:26",
+    "brg": 340.034,
+    "rng": 3.0483
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "20:29",
+   "course": 203.0,
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 321.8695,
+   "tgtSpeed": 4.4005,
+   "relCourse": 69.8511,
+   "relSpeed": 7.281,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R177-normal",
+  "own": {
+   "course": 25.5,
+   "speed": 22.9
+  },
+  "brgType": "rel",
+  "heading": 25.5,
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "11:05",
+    "brg": 334.949,
+    "rng": 10.4034
+   },
+   {
+    "t": "11:11",
+    "brg": 334.08,
+    "rng": 8.2095
+   },
+   {
+    "t": "11:17",
+    "brg": 332.578,
+    "rng": 6.0188
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "11:23",
+   "speed": 11.6,
+   "want": 2
+  },
+  "truth": {
+   "tgtCourse": 98.5515,
+   "tgtSpeed": 8.5367,
+   "relCourse": 183.6954,
+   "relSpeed": 21.9843,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R178-normal",
+  "own": {
+   "course": 50.0,
+   "speed": 0.1
+  },
+  "brgType": "rel",
+  "heading": 50.0,
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "12:00",
+    "brg": 48.165,
+    "rng": 6.2971
+   },
+   {
+    "t": "12:06",
+    "brg": 43.525,
+    "rng": 5.1305
+   },
+   {
+    "t": "12:12",
+    "brg": 36.24,
+    "rng": 4.0169
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 297.9133,
+   "tgtSpeed": 12.5032,
+   "relCourse": 297.49,
+   "relSpeed": 12.5412,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R179-normal",
+  "own": {
+   "course": 313.9,
+   "speed": 18.3
+  },
+  "brgType": "true",
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "12:06",
+    "brg": 35.387,
+    "rng": 10.1426
+   },
+   {
+    "t": "12:12",
+    "brg": 40.056,
+    "rng": 10.3179
+   },
+   {
+    "t": "12:18",
+    "brg": 44.541,
+    "rng": 10.5593
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 327.3595,
+   "tgtSpeed": 10.4221,
+   "relCourse": 117.3517,
+   "relSpeed": 8.5169,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R180-collision",
+  "own": {
+   "course": 23.7,
+   "speed": 22.6
+  },
+  "brgType": "rel",
+  "heading": 22.1,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "19:22",
+    "brg": 344.6,
+    "rng": 9.8846
+   },
+   {
+    "t": "19:28",
+    "brg": 344.6,
+    "rng": 6.3729
+   },
+   {
+    "t": "19:34",
+    "brg": 344.6,
+    "rng": 2.8613
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "19:34",
+   "find": "course",
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 160.6279,
+   "tgtSpeed": 15.0343,
+   "relCourse": 186.7,
+   "relSpeed": 35.1169,
+   "kind": "collision"
+  }
+ },
+ {
+  "id": "R181-normal",
+  "own": {
+   "course": 353.9,
+   "speed": 22.0
+  },
+  "brgType": "rel",
+  "heading": 353.6,
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "03:12",
+    "brg": 293.667,
+    "rng": 8.6331
+   },
+   {
+    "t": "03:18",
+    "brg": 277.158,
+    "rng": 9.038
+   },
+   {
+    "t": "03:24",
+    "brg": 263.103,
+    "rng": 10.1013
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "03:24",
+   "find": "course",
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 256.0385,
+   "tgtSpeed": 10.5829,
+   "relCourse": 197.9896,
+   "relSpeed": 25.6844,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R182-normal",
+  "own": {
+   "course": 349.0,
+   "speed": 7.1
+  },
+  "brgType": "rel",
+  "heading": 351.2,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "04:30",
+    "brg": 17.413,
+    "rng": 10.3007
+   },
+   {
+    "t": "04:36",
+    "brg": 23.525,
+    "rng": 9.2588
+   },
+   {
+    "t": "04:42",
+    "brg": 31.075,
+    "rng": 8.3477
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "action": {
+   "t": "04:48",
+   "course": 306.0,
+   "speed": 15.4
+  },
+  "truth": {
+   "tgtCourse": 128.279,
+   "tgtSpeed": 8.6032,
+   "relCourse": 146.6049,
+   "relSpeed": 14.7313,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R183-normal",
+  "own": {
+   "course": 196.7,
+   "speed": 2.3
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "04:31",
+    "brg": 79.6,
+    "rng": 2.375
+   },
+   {
+    "t": "04:37",
+    "brg": 72.647,
+    "rng": 1.8098
+   },
+   {
+    "t": "04:43",
+    "brg": 59.814,
+    "rng": 1.2943
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "action": {
+   "t": "04:49",
+   "find": "course",
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 260.8015,
+   "tgtSpeed": 6.8349,
+   "relCourse": 280.3399,
+   "relSpeed": 6.1865,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R184-normal",
+  "own": {
+   "course": 355.2,
+   "speed": 21.2
+  },
+  "brgType": "rel",
+  "heading": 357.3,
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "06:30",
+    "brg": 31.678,
+    "rng": 1.6896
+   },
+   {
+    "t": "06:36",
+    "brg": 128.478,
+    "rng": 2.4252
+   },
+   {
+    "t": "06:42",
+    "brg": 146.854,
+    "rng": 5.3218
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "action": {
+   "t": "06:45",
+   "course": 17.0
+  },
+  "truth": {
+   "tgtCourse": 128.8804,
+   "tgtSpeed": 12.4807,
+   "relCourse": 158.3595,
+   "relSpeed": 31.1557,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R185-normal",
+  "own": {
+   "course": 70.4,
+   "speed": 10.9
+  },
+  "brgType": "rel",
+  "heading": 72.9,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "20:23",
+    "brg": 341.634,
+    "rng": 7.4798
+   },
+   {
+    "t": "20:29",
+    "brg": 343.573,
+    "rng": 6.0415
+   },
+   {
+    "t": "20:35",
+    "brg": 346.718,
+    "rng": 4.6144
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "action": {
+   "t": "20:35",
+   "find": "speed",
+   "want": 2.5
+  },
+  "truth": {
+   "tgtCourse": 182.5844,
+   "tgtSpeed": 6.3805,
+   "relCourse": 226.4627,
+   "relSpeed": 14.5617,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R186-normal",
+  "own": {
+   "course": 270.3,
+   "speed": 22.0
+  },
+  "brgType": "rel",
+  "heading": 270.3,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "20:10",
+    "brg": 285.491,
+    "rng": 9.6506
+   },
+   {
+    "t": "20:16",
+    "brg": 270.453,
+    "rng": 9.5887
+   },
+   {
+    "t": "20:22",
+    "brg": 256.201,
+    "rng": 10.1703
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "action": {
+   "t": "20:22",
+   "find": "speed",
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 134.0018,
+   "tgtSpeed": 4.1736,
+   "relCourse": 96.875,
+   "relSpeed": 25.1829,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R187-collision",
+  "own": {
+   "course": 351.0,
+   "speed": 23.9
+  },
+  "brgType": "true",
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "12:51",
+    "brg": 354.2,
+    "rng": 5.8332
+   },
+   {
+    "t": "12:57",
+    "brg": 354.2,
+    "rng": 3.757
+   },
+   {
+    "t": "13:03",
+    "brg": 354.2,
+    "rng": 1.6807
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "action": {
+   "t": "13:03",
+   "course": 76.0
+  },
+  "truth": {
+   "tgtCourse": 343.1202,
+   "tgtSpeed": 3.1717,
+   "relCourse": 172.2,
+   "relSpeed": 20.7628,
+   "kind": "collision"
+  }
+ },
+ {
+  "id": "R188-collision",
+  "own": {
+   "course": 5.6,
+   "speed": 8.7
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "06:22",
+    "brg": 258.1,
+    "rng": 5.6784
+   },
+   {
+    "t": "06:28",
+    "brg": 258.1,
+    "rng": 3.6684
+   },
+   {
+    "t": "06:34",
+    "brg": 258.1,
+    "rng": 1.6584
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "action": {
+   "t": "06:40",
+   "find": "speed",
+   "want": 2.5
+  },
+  "truth": {
+   "tgtCourse": 58.0347,
+   "tgtSpeed": 24.184,
+   "relCourse": 78.1,
+   "relSpeed": 20.1,
+   "kind": "collision"
+  }
+ },
+ {
+  "id": "R189-normal",
+  "own": {
+   "course": 162.2,
+   "speed": 15.8
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "03:35",
+    "brg": 111.347,
+    "rng": 6.399
+   },
+   {
+    "t": "03:41",
+    "brg": 97.115,
+    "rng": 5.6455
+   },
+   {
+    "t": "03:47",
+    "brg": 79.935,
+    "rng": 5.326
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 44.8301,
+   "tgtSpeed": 1.773,
+   "relCourse": 347.6136,
+   "relSpeed": 16.6896,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R190-normal",
+  "own": {
+   "course": 353.0,
+   "speed": 2.8
+  },
+  "brgType": "rel",
+  "heading": 353.0,
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "21:35",
+    "brg": 18.41,
+    "rng": 2.3741
+   },
+   {
+    "t": "21:41",
+    "brg": 18.935,
+    "rng": 1.8044
+   },
+   {
+    "t": "21:47",
+    "brg": 19.943,
+    "rng": 1.2351
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "action": {
+   "t": "21:47",
+   "course": 338.0,
+   "speed": 8.2,
+   "want": 1
+  },
+  "truth": {
+   "tgtCourse": 204.7153,
+   "tgtSpeed": 3.1244,
+   "relCourse": 189.7486,
+   "relSpeed": 5.6996,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R191-stationary",
+  "own": {
+   "course": 262.2,
+   "speed": 23.4
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "01:22",
+    "brg": 273.062,
+    "rng": 3.5701
+   },
+   {
+    "t": "01:28",
+    "brg": 292.181,
+    "rng": 1.3463
+   },
+   {
+    "t": "01:34",
+    "brg": 52.383,
+    "rng": 1.353
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "truth": {
+   "tgtCourse": null,
+   "tgtSpeed": 0.0,
+   "relCourse": 82.2,
+   "relSpeed": 23.4,
+   "kind": "stationary"
+  }
+ },
+ {
+  "id": "R192-collision",
+  "own": {
+   "course": 220.1,
+   "speed": 14.4
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "16:41",
+    "brg": 229.8,
+    "rng": 8.912
+   },
+   {
+    "t": "16:47",
+    "brg": 229.8,
+    "rng": 6.2287
+   },
+   {
+    "t": "16:53",
+    "brg": 229.8,
+    "rng": 3.5454
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "16:59",
+   "find": "course",
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 60.6668,
+   "tgtSpeed": 12.8696,
+   "relCourse": 49.8,
+   "relSpeed": 26.8329,
+   "kind": "collision"
+  }
+ },
+ {
+  "id": "R193-normal",
+  "own": {
+   "course": 315.1,
+   "speed": 13.4
+  },
+  "brgType": "true",
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "07:17",
+    "brg": 286.856,
+    "rng": 11.0787
+   },
+   {
+    "t": "07:23",
+    "brg": 294.417,
+    "rng": 9.8311
+   },
+   {
+    "t": "07:29",
+    "brg": 303.952,
+    "rng": 8.8013
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "action": {
+   "t": "07:35",
+   "find": "course",
+   "want": 2
+  },
+  "truth": {
+   "tgtCourse": 19.9522,
+   "tgtSpeed": 19.7642,
+   "relCourse": 60.7174,
+   "relSpeed": 18.5767,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R194-stationary",
+  "own": {
+   "course": 311.7,
+   "speed": 3.1
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "07:15",
+    "brg": 34.183,
+    "rng": 6.909
+   },
+   {
+    "t": "07:21",
+    "brg": 36.745,
+    "rng": 6.8754
+   },
+   {
+    "t": "07:27",
+    "brg": 39.327,
+    "rng": 6.8555
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "07:27",
+   "find": "course",
+   "want": 2.5
+  },
+  "truth": {
+   "tgtCourse": null,
+   "tgtSpeed": 0.0,
+   "relCourse": 131.7,
+   "relSpeed": 3.1,
+   "kind": "stationary"
+  }
+ },
+ {
+  "id": "R195-normal",
+  "own": {
+   "course": 17.8,
+   "speed": 8.4
+  },
+  "brgType": "rel",
+  "heading": 15.6,
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "07:18",
+    "brg": 242.382,
+    "rng": 8.1527
+   },
+   {
+    "t": "07:24",
+    "brg": 229.818,
+    "rng": 7.5026
+   },
+   {
+    "t": "07:30",
+    "brg": 215.694,
+    "rng": 7.2676
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "truth": {
+   "tgtCourse": 113.8923,
+   "tgtSpeed": 15.4007,
+   "relCourse": 141.0353,
+   "relSpeed": 18.3085,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R196-normal",
+  "own": {
+   "course": 158.4,
+   "speed": 18.6
+  },
+  "brgType": "rel",
+  "heading": 158.4,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "22:33",
+    "brg": 345.33,
+    "rng": 6.3465
+   },
+   {
+    "t": "22:39",
+    "brg": 348.938,
+    "rng": 5.1821
+   },
+   {
+    "t": "22:45",
+    "brg": 354.598,
+    "rng": 4.0501
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "action": {
+   "t": "22:48",
+   "find": "course",
+   "want": 2.5
+  },
+  "truth": {
+   "tgtCourse": 195.647,
+   "tgtSpeed": 10.128,
+   "relCourse": 308.2125,
+   "relSpeed": 12.191,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R197-midnight",
+  "own": {
+   "course": 131.4,
+   "speed": 7.5
+  },
+  "brgType": "rel",
+  "heading": 131.4,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "23:48",
+    "brg": 31.537,
+    "rng": 6.6177
+   },
+   {
+    "t": "23:54",
+    "brg": 15.625,
+    "rng": 6.8403
+   },
+   {
+    "t": "00:00",
+    "brg": 1.698,
+    "rng": 7.5382
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "truth": {
+   "tgtCourse": 87.7529,
+   "tgtSpeed": 23.4564,
+   "relCourse": 71.733,
+   "relSpeed": 18.7578,
+   "kind": "midnight"
+  }
+ },
+ {
+  "id": "R198-normal",
+  "own": {
+   "course": 334.2,
+   "speed": 11.8
+  },
+  "brgType": "rel",
+  "heading": 334.2,
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "21:22",
+    "brg": 241.307,
+    "rng": 5.689
+   },
+   {
+    "t": "21:28",
+    "brg": 237.097,
+    "rng": 7.8004
+   },
+   {
+    "t": "21:34",
+    "brg": 234.688,
+    "rng": 9.9358
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "action": {
+   "t": "21:37",
+   "speed": 1.4
+  },
+  "truth": {
+   "tgtCourse": 232.3891,
+   "tgtSpeed": 15.9237,
+   "relCourse": 200.1857,
+   "relSpeed": 21.6731,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R199-samevel",
+  "own": {
+   "course": 139.4,
+   "speed": 8.9
+  },
+  "brgType": "true",
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "19:25",
+    "brg": 32.243,
+    "rng": 9.1098
+   },
+   {
+    "t": "19:31",
+    "brg": 32.243,
+    "rng": 9.1098
+   },
+   {
+    "t": "19:37",
+    "brg": 32.243,
+    "rng": 9.1098
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "truth": {
+   "tgtCourse": 139.4,
+   "tgtSpeed": 8.9,
+   "relCourse": null,
+   "relSpeed": 0.0,
+   "kind": "samevel"
+  }
+ },
+ {
+  "id": "R200-normal",
+  "own": {
+   "course": 256.5,
+   "speed": 20.7
+  },
+  "brgType": "rel",
+  "heading": 256.5,
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "20:18",
+    "brg": 347.785,
+    "rng": 6.6141
+   },
+   {
+    "t": "20:24",
+    "brg": 337.74,
+    "rng": 5.2653
+   },
+   {
+    "t": "20:30",
+    "brg": 321.72,
+    "rng": 4.1802
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "action": {
+   "t": "20:36",
+   "find": "speed",
+   "want": 1.5
+  },
+  "truth": {
+   "tgtCourse": 205.3032,
+   "tgtSpeed": 7.6365,
+   "relCourse": 97.0031,
+   "relSpeed": 16.9909,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R201-normal",
+  "own": {
+   "course": 152.4,
+   "speed": 24.9
+  },
+  "brgType": "rel",
+  "heading": 152.4,
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "14:52",
+    "brg": 317.718,
+    "rng": 7.4496
+   },
+   {
+    "t": "14:58",
+    "brg": 314.034,
+    "rng": 4.9246
+   },
+   {
+    "t": "15:04",
+    "brg": 302.821,
+    "rng": 2.4621
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "truth": {
+   "tgtCourse": 227.1386,
+   "tgtSpeed": 15.2522,
+   "relCourse": 297.234,
+   "relSpeed": 25.5481,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R202-collision",
+  "own": {
+   "course": 22.6,
+   "speed": 15.3
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "15:34",
+    "brg": 3.9,
+    "rng": 9.9319
+   },
+   {
+    "t": "15:40",
+    "brg": 3.9,
+    "rng": 9.0819
+   },
+   {
+    "t": "15:46",
+    "brg": 3.9,
+    "rng": 8.2319
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "15:46",
+   "find": "speed",
+   "want": 1
+  },
+  "truth": {
+   "tgtCourse": 43.2033,
+   "tgtSpeed": 7.7442,
+   "relCourse": 183.9,
+   "relSpeed": 8.4998,
+   "kind": "collision"
+  }
+ },
+ {
+  "id": "R203-collision",
+  "own": {
+   "course": 275.6,
+   "speed": 2.0
+  },
+  "brgType": "rel",
+  "heading": 279.1,
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "15:21",
+    "brg": 231.3,
+    "rng": 8.2057
+   },
+   {
+    "t": "15:27",
+    "brg": 231.3,
+    "rng": 5.9898
+   },
+   {
+    "t": "15:33",
+    "brg": 231.3,
+    "rng": 3.7738
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "action": {
+   "t": "15:39",
+   "speed": 0.4
+  },
+  "truth": {
+   "tgtCourse": 326.3899,
+   "tgtSpeed": 23.3695,
+   "relCourse": 330.4,
+   "relSpeed": 22.1595,
+   "kind": "collision"
+  }
+ },
+ {
+  "id": "R204-normal",
+  "own": {
+   "course": 234.6,
+   "speed": 21.8
+  },
+  "brgType": "true",
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "13:07",
+    "brg": 238.92,
+    "rng": 6.3828
+   },
+   {
+    "t": "13:13",
+    "brg": 241.705,
+    "rng": 4.1866
+   },
+   {
+    "t": "13:19",
+    "brg": 250.526,
+    "rng": 2.0218
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "truth": {
+   "tgtCourse": 89.0634,
+   "tgtSpeed": 0.3693,
+   "relCourse": 55.1416,
+   "relSpeed": 22.1055,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R205-normal",
+  "own": {
+   "course": 293.9,
+   "speed": 7.7
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "18:58",
+    "brg": 69.236,
+    "rng": 3.4566
+   },
+   {
+    "t": "19:04",
+    "brg": 70.497,
+    "rng": 3.3429
+   },
+   {
+    "t": "19:10",
+    "brg": 71.846,
+    "rng": 3.2309
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "action": {
+   "t": "19:13",
+   "find": "course",
+   "want": 2.5
+  },
+  "truth": {
+   "tgtCourse": 284.4689,
+   "tgtSpeed": 8.1071,
+   "relCourse": 216.5221,
+   "relSpeed": 1.3613,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R206-normal",
+  "own": {
+   "course": 172.3,
+   "speed": 6.4
+  },
+  "brgType": "rel",
+  "heading": 172.3,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "06:40",
+    "brg": 3.828,
+    "rng": 2.753
+   },
+   {
+    "t": "06:46",
+    "brg": 317.436,
+    "rng": 1.5802
+   },
+   {
+    "t": "06:52",
+    "brg": 259.765,
+    "rng": 2.359
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "truth": {
+   "tgtCourse": 45.3262,
+   "tgtSpeed": 15.6792,
+   "relCourse": 30.6541,
+   "relSpeed": 20.1867,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R207-collision",
+  "own": {
+   "course": 293.2,
+   "speed": 21.7
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "18:03",
+    "brg": 234.4,
+    "rng": 11.7544
+   },
+   {
+    "t": "18:09",
+    "brg": 234.4,
+    "rng": 9.5849
+   },
+   {
+    "t": "18:15",
+    "brg": 234.4,
+    "rng": 7.4154
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "action": {
+   "t": "18:15",
+   "speed": 5.2,
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 353.7884,
+   "tgtSpeed": 21.3028,
+   "relCourse": 54.4,
+   "relSpeed": 21.695,
+   "kind": "collision"
+  }
+ },
+ {
+  "id": "R208-normal",
+  "own": {
+   "course": 356.4,
+   "speed": 22.0
+  },
+  "brgType": "rel",
+  "heading": 356.4,
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "07:10",
+    "brg": 156.703,
+    "rng": 10.5307
+   },
+   {
+    "t": "07:16",
+    "brg": 155.807,
+    "rng": 10.7345
+   },
+   {
+    "t": "07:22",
+    "brg": 154.944,
+    "rng": 10.9409
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "07:28",
+   "find": "course",
+   "want": 2.5
+  },
+  "truth": {
+   "tgtCourse": 2.8254,
+   "tgtSpeed": 20.9355,
+   "relCourse": 113.4441,
+   "relSpeed": 2.6305,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R209-normal",
+  "own": {
+   "course": 227.2,
+   "speed": 7.3
+  },
+  "brgType": "true",
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "21:40",
+    "brg": 5.457,
+    "rng": 6.3185
+   },
+   {
+    "t": "21:46",
+    "brg": 6.185,
+    "rng": 6.0186
+   },
+   {
+    "t": "21:52",
+    "brg": 6.99,
+    "rng": 5.7197
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 210.8078,
+   "tgtSpeed": 9.3201,
+   "relCourse": 169.1645,
+   "relSpeed": 3.1003,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R210-stationary",
+  "own": {
+   "course": 321.1,
+   "speed": 18.5
+  },
+  "brgType": "rel",
+  "heading": 321.1,
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "05:39",
+    "brg": 355.217,
+    "rng": 5.233
+   },
+   {
+    "t": "05:45",
+    "brg": 352.611,
+    "rng": 3.393
+   },
+   {
+    "t": "05:51",
+    "brg": 343.931,
+    "rng": 1.5764
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "action": {
+   "t": "05:57",
+   "find": "course",
+   "want": 1.5
+  },
+  "truth": {
+   "tgtCourse": null,
+   "tgtSpeed": 0.0,
+   "relCourse": 141.1,
+   "relSpeed": 18.5,
+   "kind": "stationary"
+  }
+ },
+ {
+  "id": "R211-normal",
+  "own": {
+   "course": 315.6,
+   "speed": 12.0
+  },
+  "brgType": "true",
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "12:45",
+    "brg": 245.702,
+    "rng": 7.1698
+   },
+   {
+    "t": "12:51",
+    "brg": 243.997,
+    "rng": 6.8377
+   },
+   {
+    "t": "12:57",
+    "brg": 242.118,
+    "rng": 6.5122
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "truth": {
+   "tgtCourse": 331.3981,
+   "tgtSpeed": 9.3782,
+   "relCourse": 94.9733,
+   "relSpeed": 3.9212,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R212-normal",
+  "own": {
+   "course": 119.9,
+   "speed": 21.4
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "14:47",
+    "brg": 130.342,
+    "rng": 9.5616
+   },
+   {
+    "t": "14:53",
+    "brg": 146.284,
+    "rng": 8.989
+   },
+   {
+    "t": "14:59",
+    "brg": 162.93,
+    "rng": 9.1684
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "truth": {
+   "tgtCourse": 190.6606,
+   "tgtSpeed": 23.9551,
+   "relCourse": 240.7445,
+   "relSpeed": 26.3431,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R213-normal",
+  "own": {
+   "course": 170.8,
+   "speed": 17.0
+  },
+  "brgType": "rel",
+  "heading": 170.8,
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "01:03",
+    "brg": 12.354,
+    "rng": 6.9755
+   },
+   {
+    "t": "01:09",
+    "brg": 16.319,
+    "rng": 5.2554
+   },
+   {
+    "t": "01:15",
+    "brg": 24.051,
+    "rng": 3.5845
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "action": {
+   "t": "01:15",
+   "course": 125.0
+  },
+  "truth": {
+   "tgtCourse": 3.4506,
+   "tgtSpeed": 0.7206,
+   "relCourse": 351.3107,
+   "relSpeed": 17.7038,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R214-normal",
+  "own": {
+   "course": 357.0,
+   "speed": 19.5
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "04:30",
+    "brg": 23.812,
+    "rng": 4.7758
+   },
+   {
+    "t": "04:36",
+    "brg": 33.419,
+    "rng": 3.074
+   },
+   {
+    "t": "04:42",
+    "brg": 62.396,
+    "rng": 1.645
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "action": {
+   "t": "04:42",
+   "course": 56.0,
+   "speed": 7.1,
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 293.0954,
+   "tgtSpeed": 3.6666,
+   "relCourse": 187.4307,
+   "relSpeed": 18.1878,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R215-normal",
+  "own": {
+   "course": 184.1,
+   "speed": 16.5
+  },
+  "brgType": "true",
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "22:58",
+    "brg": 184.131,
+    "rng": 8.8871
+   },
+   {
+    "t": "23:04",
+    "brg": 181.147,
+    "rng": 8.5739
+   },
+   {
+    "t": "23:10",
+    "brg": 177.947,
+    "rng": 8.2857
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "truth": {
+   "tgtCourse": 165.3185,
+   "tgtSpeed": 14.1242,
+   "relCourse": 59.5786,
+   "relSpeed": 5.5193,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R216-normal",
+  "own": {
+   "course": 60.0,
+   "speed": 14.0
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "09:48",
+    "brg": 71.096,
+    "rng": 9.4612
+   },
+   {
+    "t": "09:54",
+    "brg": 66.105,
+    "rng": 6.9031
+   },
+   {
+    "t": "10:00",
+    "brg": 55.465,
+    "rng": 4.4575
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "action": {
+   "t": "10:06",
+   "find": "course",
+   "want": 2
+  },
+  "truth": {
+   "tgtCourse": 286.8008,
+   "tgtSpeed": 14.9064,
+   "relCourse": 264.1779,
+   "relSpeed": 26.5314,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R217-near000",
+  "own": {
+   "course": 225.6,
+   "speed": 3.9
+  },
+  "brgType": "true",
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "09:34",
+    "brg": 0.488,
+    "rng": 10.4863
+   },
+   {
+    "t": "09:40",
+    "brg": 1.245,
+    "rng": 10.617
+   },
+   {
+    "t": "09:46",
+    "brg": 1.984,
+    "rng": 10.7495
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "09:46",
+   "course": 195.0,
+   "speed": 8.4,
+   "want": 2
+  },
+  "truth": {
+   "tgtCourse": 225.4776,
+   "tgtSpeed": 1.989,
+   "relCourse": 45.7274,
+   "relSpeed": 1.9111,
+   "kind": "near000"
+  }
+ },
+ {
+  "id": "R218-normal",
+  "own": {
+   "course": 26.2,
+   "speed": 17.1
+  },
+  "brgType": "true",
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "02:13",
+    "brg": 31.754,
+    "rng": 8.2701
+   },
+   {
+    "t": "02:19",
+    "brg": 19.699,
+    "rng": 4.8978
+   },
+   {
+    "t": "02:25",
+    "brg": 334.376,
+    "rng": 2.429
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "action": {
+   "t": "02:25",
+   "speed": 13.7
+  },
+  "truth": {
+   "tgtCourse": 246.6349,
+   "tgtSpeed": 21.5227,
+   "relCourse": 228.8323,
+   "relSpeed": 36.2753,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R219-fixed",
+  "own": {
+   "course": 152.4,
+   "speed": 15.5
+  },
+  "brgType": "rel",
+  "heading": 151.3,
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "13:46",
+    "brg": 178.141,
+    "rng": 6.368
+   },
+   {
+    "t": "13:52",
+    "brg": 178.72,
+    "rng": 7.9163
+   },
+   {
+    "t": "13:58",
+    "brg": 179.11,
+    "rng": 9.4652
+   }
+  ],
+  "fixed": true,
+  "cpaLimit": 1.5,
+  "truth": {
+   "tgtCourse": null,
+   "tgtSpeed": 0.0,
+   "relCourse": 332.4,
+   "relSpeed": 15.5,
+   "kind": "fixed"
+  }
+ },
+ {
+  "id": "R220-samevel",
+  "own": {
+   "course": 298.3,
+   "speed": 16.7
+  },
+  "brgType": "true",
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "06:48",
+    "brg": 256.625,
+    "rng": 7.9859
+   },
+   {
+    "t": "06:54",
+    "brg": 256.625,
+    "rng": 7.9859
+   },
+   {
+    "t": "07:00",
+    "brg": 256.625,
+    "rng": 7.9859
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 298.3,
+   "tgtSpeed": 16.7,
+   "relCourse": null,
+   "relSpeed": 0.0,
+   "kind": "samevel"
+  }
+ },
+ {
+  "id": "R221-normal",
+  "own": {
+   "course": 163.1,
+   "speed": 17.9
+  },
+  "brgType": "rel",
+  "heading": 164.4,
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "01:45",
+    "brg": 277.061,
+    "rng": 10.4606
+   },
+   {
+    "t": "01:51",
+    "brg": 265.703,
+    "rng": 9.8964
+   },
+   {
+    "t": "01:57",
+    "brg": 253.514,
+    "rng": 9.757
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "action": {
+   "t": "01:57",
+   "find": "speed",
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 281.1343,
+   "tgtSpeed": 5.2856,
+   "relCourse": 330.2085,
+   "relSpeed": 20.9113,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R222-samevel",
+  "own": {
+   "course": 205.6,
+   "speed": 11.2
+  },
+  "brgType": "rel",
+  "heading": 205.6,
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "15:45",
+    "brg": 329.377,
+    "rng": 1.5297
+   },
+   {
+    "t": "15:51",
+    "brg": 329.377,
+    "rng": 1.5297
+   },
+   {
+    "t": "15:57",
+    "brg": 329.377,
+    "rng": 1.5297
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "action": {
+   "t": "16:00",
+   "course": 195.0,
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 205.6,
+   "tgtSpeed": 11.2,
+   "relCourse": null,
+   "relSpeed": 0.0,
+   "kind": "samevel"
+  }
+ },
+ {
+  "id": "R223-normal",
+  "own": {
+   "course": 155.7,
+   "speed": 4.3
+  },
+  "brgType": "true",
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "06:20",
+    "brg": 353.845,
+    "rng": 11.7379
+   },
+   {
+    "t": "06:26",
+    "brg": 353.586,
+    "rng": 10.5644
+   },
+   {
+    "t": "06:32",
+    "brg": 353.264,
+    "rng": 9.3912
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "truth": {
+   "tgtCourse": 169.9861,
+   "tgtSpeed": 15.8644,
+   "relCourse": 175.1693,
+   "relSpeed": 11.7454,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R224-stationary",
+  "own": {
+   "course": 92.5,
+   "speed": 14.5
+  },
+  "brgType": "true",
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "15:35",
+    "brg": 97.264,
+    "rng": 6.736
+   },
+   {
+    "t": "15:41",
+    "brg": 98.758,
+    "rng": 5.2944
+   },
+   {
+    "t": "15:47",
+    "brg": 101.367,
+    "rng": 3.859
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "truth": {
+   "tgtCourse": null,
+   "tgtSpeed": 0.0,
+   "relCourse": 272.5,
+   "relSpeed": 14.5,
+   "kind": "stationary"
+  }
+ },
+ {
+  "id": "R225-normal",
+  "own": {
+   "course": 182.6,
+   "speed": 19.3
+  },
+  "brgType": "rel",
+  "heading": 182.6,
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "12:05",
+    "brg": 26.347,
+    "rng": 2.0947
+   },
+   {
+    "t": "12:11",
+    "brg": 10.471,
+    "rng": 2.3715
+   },
+   {
+    "t": "12:17",
+    "brg": 358.609,
+    "rng": 2.7877
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "12:20",
+   "find": "course",
+   "want": 2.5
+  },
+  "truth": {
+   "tgtCourse": 170.7905,
+   "tgtSpeed": 24.3648,
+   "relCourse": 134.974,
+   "relSpeed": 6.7498,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R226-normal",
+  "own": {
+   "course": 89.2,
+   "speed": 0.2
+  },
+  "brgType": "rel",
+  "heading": 89.2,
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "05:59",
+    "brg": 279.607,
+    "rng": 4.4873
+   },
+   {
+    "t": "06:05",
+    "brg": 273.763,
+    "rng": 3.8101
+   },
+   {
+    "t": "06:11",
+    "brg": 265.527,
+    "rng": 3.189
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "truth": {
+   "tgtCourse": 216.7654,
+   "tgtSpeed": 7.8536,
+   "relCourse": 217.9041,
+   "relSpeed": 7.9771,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R227-collision",
+  "own": {
+   "course": 19.9,
+   "speed": 23.5
+  },
+  "brgType": "rel",
+  "heading": 20.1,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "02:17",
+    "brg": 323.4,
+    "rng": 9.9345
+   },
+   {
+    "t": "02:23",
+    "brg": 323.4,
+    "rng": 7.1484
+   },
+   {
+    "t": "02:29",
+    "brg": 323.4,
+    "rng": 4.3622
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "action": {
+   "t": "02:29",
+   "speed": 13.7,
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 106.1815,
+   "tgtSpeed": 16.5684,
+   "relCourse": 163.5,
+   "relSpeed": 27.8614,
+   "kind": "collision"
+  }
+ },
+ {
+  "id": "R228-normal",
+  "own": {
+   "course": 164.8,
+   "speed": 20.0
+  },
+  "brgType": "rel",
+  "heading": 164.8,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "15:14",
+    "brg": 289.461,
+    "rng": 4.1317
+   },
+   {
+    "t": "15:20",
+    "brg": 239.813,
+    "rng": 1.9797
+   },
+   {
+    "t": "15:26",
+    "brg": 172.003,
+    "rng": 3.4005
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 264.4647,
+   "tgtSpeed": 22.158,
+   "relCourse": 302.1582,
+   "relSpeed": 32.2456,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R229-normal",
+  "own": {
+   "course": 186.8,
+   "speed": 12.8
+  },
+  "brgType": "rel",
+  "heading": 186.8,
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "02:51",
+    "brg": 43.496,
+    "rng": 7.5728
+   },
+   {
+    "t": "02:57",
+    "brg": 51.269,
+    "rng": 6.75
+   },
+   {
+    "t": "03:03",
+    "brg": 60.961,
+    "rng": 6.0836
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "truth": {
+   "tgtCourse": 266.4119,
+   "tgtSpeed": 0.5411,
+   "relCourse": 4.4006,
+   "relSpeed": 12.7136,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R230-normal",
+  "own": {
+   "course": 211.9,
+   "speed": 14.1
+  },
+  "brgType": "rel",
+  "heading": 211.9,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "09:14",
+    "brg": 264.849,
+    "rng": 3.1132
+   },
+   {
+    "t": "09:20",
+    "brg": 255.735,
+    "rng": 2.86
+   },
+   {
+    "t": "09:26",
+    "brg": 245.178,
+    "rng": 2.6916
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "09:26",
+   "speed": 11.3
+  },
+  "truth": {
+   "tgtCourse": 230.3637,
+   "tgtSpeed": 10.3823,
+   "relCourse": 354.1857,
+   "relSpeed": 5.3751,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R231-opening",
+  "own": {
+   "course": 79.9,
+   "speed": 23.6
+  },
+  "brgType": "true",
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "05:38",
+    "brg": 82.762,
+    "rng": 7.209
+   },
+   {
+    "t": "05:44",
+    "brg": 63.794,
+    "rng": 3.4351
+   },
+   {
+    "t": "05:50",
+    "brg": 335.084,
+    "rng": 2.3438
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "action": {
+   "t": "05:56",
+   "course": 79.0,
+   "speed": 24.8
+  },
+  "truth": {
+   "tgtCourse": 296.5073,
+   "tgtSpeed": 19.7212,
+   "relCourse": 276.5072,
+   "relSpeed": 41.1474,
+   "kind": "opening"
+  }
+ },
+ {
+  "id": "R232-fixed",
+  "own": {
+   "course": 275.3,
+   "speed": 14.9
+  },
+  "brgType": "true",
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "03:05",
+    "brg": 268.379,
+    "rng": 8.5403
+   },
+   {
+    "t": "03:11",
+    "brg": 267.069,
+    "rng": 7.0609
+   },
+   {
+    "t": "03:17",
+    "brg": 265.066,
+    "rng": 5.5872
+   }
+  ],
+  "fixed": true,
+  "cpaLimit": 3,
+  "truth": {
+   "tgtCourse": null,
+   "tgtSpeed": 0.0,
+   "relCourse": 95.3,
+   "relSpeed": 14.9,
+   "kind": "fixed"
+  }
+ },
+ {
+  "id": "R233-normal",
+  "own": {
+   "course": 10.3,
+   "speed": 4.0
+  },
+  "brgType": "true",
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "22:40",
+    "brg": 226.183,
+    "rng": 6.8188
+   },
+   {
+    "t": "22:46",
+    "brg": 233.084,
+    "rng": 6.0706
+   },
+   {
+    "t": "22:52",
+    "brg": 241.757,
+    "rng": 5.434
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "truth": {
+   "tgtCourse": 6.4665,
+   "tgtSpeed": 14.7566,
+   "relCourse": 5.0434,
+   "relSpeed": 10.7688,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R234-normal",
+  "own": {
+   "course": 218.6,
+   "speed": 15.8
+  },
+  "brgType": "true",
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "03:03",
+    "brg": 183.103,
+    "rng": 11.0017
+   },
+   {
+    "t": "03:09",
+    "brg": 176.918,
+    "rng": 9.9677
+   },
+   {
+    "t": "03:15",
+    "brg": 169.413,
+    "rng": 9.0754
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "truth": {
+   "tgtCourse": 146.3116,
+   "tgtSpeed": 1.966,
+   "relCourse": 45.6233,
+   "relSpeed": 15.3168,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R235-near000",
+  "own": {
+   "course": 359,
+   "speed": 2.4
+  },
+  "brgType": "rel",
+  "heading": 359,
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "00:43",
+    "brg": 9.809,
+    "rng": 9.3843
+   },
+   {
+    "t": "00:49",
+    "brg": 5.811,
+    "rng": 9.0094
+   },
+   {
+    "t": "00:55",
+    "brg": 1.49,
+    "rng": 8.6819
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "truth": {
+   "tgtCourse": 265.3288,
+   "tgtSpeed": 6.8791,
+   "relCourse": 246.522,
+   "relSpeed": 7.4294,
+   "kind": "near000"
+  }
+ },
+ {
+  "id": "R236-normal",
+  "own": {
+   "course": 29.0,
+   "speed": 4.0
+  },
+  "brgType": "rel",
+  "heading": 27.0,
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "09:31",
+    "brg": 211.66,
+    "rng": 4.9393
+   },
+   {
+    "t": "09:37",
+    "brg": 210.133,
+    "rng": 3.1422
+   },
+   {
+    "t": "09:43",
+    "brg": 204.555,
+    "rng": 1.3534
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "truth": {
+   "tgtCourse": 55.612,
+   "tgtSpeed": 21.4876,
+   "relCourse": 61.3246,
+   "relSpeed": 18.0007,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R237-fixed",
+  "own": {
+   "course": 23.1,
+   "speed": 0.9
+  },
+  "brgType": "rel",
+  "heading": 23.1,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "02:32",
+    "brg": 330.244,
+    "rng": 10.9235
+   },
+   {
+    "t": "02:38",
+    "brg": 330.008,
+    "rng": 10.8455
+   },
+   {
+    "t": "02:44",
+    "brg": 329.769,
+    "rng": 10.7676
+   }
+  ],
+  "fixed": true,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": null,
+   "tgtSpeed": 0.0,
+   "relCourse": 203.1,
+   "relSpeed": 0.9,
+   "kind": "fixed"
+  }
+ },
+ {
+  "id": "R238-normal",
+  "own": {
+   "course": 73.8,
+   "speed": 24.2
+  },
+  "brgType": "rel",
+  "heading": 70.6,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "14:11",
+    "brg": 66.544,
+    "rng": 8.6031
+   },
+   {
+    "t": "14:17",
+    "brg": 78.904,
+    "rng": 7.9285
+   },
+   {
+    "t": "14:23",
+    "brg": 92.783,
+    "rng": 7.6776
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "14:23",
+   "find": "course",
+   "want": 1
+  },
+  "truth": {
+   "tgtCourse": 73.1748,
+   "tgtSpeed": 5.1816,
+   "relCourse": 253.9703,
+   "relSpeed": 19.0188,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R239-stationary",
+  "own": {
+   "course": 198.6,
+   "speed": 3.7
+  },
+  "brgType": "true",
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "05:59",
+    "brg": 115.291,
+    "rng": 10.1144
+   },
+   {
+    "t": "06:05",
+    "brg": 113.198,
+    "rng": 10.0844
+   },
+   {
+    "t": "06:11",
+    "brg": 111.096,
+    "rng": 10.068
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": null,
+   "tgtSpeed": 0.0,
+   "relCourse": 18.6,
+   "relSpeed": 3.7,
+   "kind": "stationary"
+  }
+ },
+ {
+  "id": "R240-stationary",
+  "own": {
+   "course": 91.6,
+   "speed": 0.5
+  },
+  "brgType": "rel",
+  "heading": 91.6,
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "21:40",
+    "brg": 56.149,
+    "rng": 8.2134
+   },
+   {
+    "t": "21:46",
+    "brg": 56.44,
+    "rng": 8.1857
+   },
+   {
+    "t": "21:52",
+    "brg": 56.733,
+    "rng": 8.1582
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "action": {
+   "t": "21:52",
+   "find": "course",
+   "want": 2
+  },
+  "truth": {
+   "tgtCourse": null,
+   "tgtSpeed": 0.0,
+   "relCourse": 271.6,
+   "relSpeed": 0.5,
+   "kind": "stationary"
+  }
+ },
+ {
+  "id": "R241-normal",
+  "own": {
+   "course": 340.7,
+   "speed": 7.0
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "07:18",
+    "brg": 299.872,
+    "rng": 11.0549
+   },
+   {
+    "t": "07:24",
+    "brg": 298.071,
+    "rng": 9.6683
+   },
+   {
+    "t": "07:30",
+    "brg": 295.671,
+    "rng": 8.2944
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "truth": {
+   "tgtCourse": 109.7498,
+   "tgtSpeed": 8.7538,
+   "relCourse": 132.1887,
+   "relSpeed": 14.2421,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R242-opening",
+  "own": {
+   "course": 292.5,
+   "speed": 16.0
+  },
+  "brgType": "true",
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "04:49",
+    "brg": 201.732,
+    "rng": 7.6465
+   },
+   {
+    "t": "04:55",
+    "brg": 183.23,
+    "rng": 6.9247
+   },
+   {
+    "t": "05:01",
+    "brg": 163.039,
+    "rng": 7.0302
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "action": {
+   "t": "05:04",
+   "find": "speed",
+   "want": 1
+  },
+  "truth": {
+   "tgtCourse": 52.6622,
+   "tgtSpeed": 12.162,
+   "relCourse": 87.0653,
+   "relSpeed": 24.4839,
+   "kind": "opening"
+  }
+ },
+ {
+  "id": "R243-normal",
+  "own": {
+   "course": 102.8,
+   "speed": 24.6
+  },
+  "brgType": "true",
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "20:20",
+    "brg": 84.205,
+    "rng": 7.8548
+   },
+   {
+    "t": "20:26",
+    "brg": 71.433,
+    "rng": 5.2463
+   },
+   {
+    "t": "20:32",
+    "brg": 39.92,
+    "rng": 3.3221
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 314.1588,
+   "tgtSpeed": 5.835,
+   "relCourse": 288.6606,
+   "relSpeed": 29.7381,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R244-normal",
+  "own": {
+   "course": 54.4,
+   "speed": 7.6
+  },
+  "brgType": "rel",
+  "heading": 53.2,
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "08:59",
+    "brg": 227.657,
+    "rng": 7.7359
+   },
+   {
+    "t": "09:05",
+    "brg": 236.523,
+    "rng": 7.0194
+   },
+   {
+    "t": "09:11",
+    "brg": 247.085,
+    "rng": 6.5054
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 49.8945,
+   "tgtSpeed": 21.0216,
+   "relCourse": 47.3519,
+   "relSpeed": 13.4584,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R245-normal",
+  "own": {
+   "course": 313.2,
+   "speed": 16.1
+  },
+  "brgType": "true",
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "03:29",
+    "brg": 321.97,
+    "rng": 10.1917
+   },
+   {
+    "t": "03:35",
+    "brg": 325.167,
+    "rng": 7.9433
+   },
+   {
+    "t": "03:41",
+    "brg": 330.85,
+    "rng": 5.739
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "action": {
+   "t": "03:47",
+   "find": "speed",
+   "want": 2.5
+  },
+  "truth": {
+   "tgtCourse": 119.0395,
+   "tgtSpeed": 7.0873,
+   "relCourse": 128.8837,
+   "relSpeed": 23.0373,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R246-normal",
+  "own": {
+   "course": 146.8,
+   "speed": 19.5
+  },
+  "brgType": "rel",
+  "heading": 148.9,
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "05:41",
+    "brg": 347.432,
+    "rng": 1.4277
+   },
+   {
+    "t": "05:47",
+    "brg": 270.433,
+    "rng": 0.3525
+   },
+   {
+    "t": "05:53",
+    "brg": 195.858,
+    "rng": 1.4431
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "05:59",
+   "find": "course",
+   "want": 2.5
+  },
+  "truth": {
+   "tgtCourse": 137.4214,
+   "tgtSpeed": 5.6925,
+   "relCourse": 330.6226,
+   "relSpeed": 13.9146,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R247-normal",
+  "own": {
+   "course": 267.8,
+   "speed": 11.6
+  },
+  "brgType": "true",
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "14:02",
+    "brg": 331.964,
+    "rng": 7.4251
+   },
+   {
+    "t": "14:08",
+    "brg": 348.471,
+    "rng": 4.8519
+   },
+   {
+    "t": "14:14",
+    "brg": 27.694,
+    "rng": 3.3364
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 145.4862,
+   "tgtSpeed": 23.1759,
+   "relCourse": 127.0314,
+   "relSpeed": 30.9694,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R248-fixed",
+  "own": {
+   "course": 325.3,
+   "speed": 23.6
+  },
+  "brgType": "rel",
+  "heading": 325.3,
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "00:36",
+    "brg": 284.169,
+    "rng": 10.1376
+   },
+   {
+    "t": "00:42",
+    "brg": 270.708,
+    "rng": 9.83
+   },
+   {
+    "t": "00:48",
+    "brg": 257.17,
+    "rng": 10.0809
+   }
+  ],
+  "fixed": true,
+  "cpaLimit": 1.5,
+  "action": {
+   "t": "00:54",
+   "find": "course",
+   "want": 1
+  },
+  "truth": {
+   "tgtCourse": null,
+   "tgtSpeed": 0.0,
+   "relCourse": 145.3,
+   "relSpeed": 23.6,
+   "kind": "fixed"
+  }
+ },
+ {
+  "id": "R249-normal",
+  "own": {
+   "course": 213.4,
+   "speed": 7.1
+  },
+  "brgType": "rel",
+  "heading": 211.9,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "01:41",
+    "brg": 108.657,
+    "rng": 9.3741
+   },
+   {
+    "t": "01:47",
+    "brg": 108.526,
+    "rng": 8.7051
+   },
+   {
+    "t": "01:53",
+    "brg": 108.373,
+    "rng": 8.0362
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "01:56",
+   "find": "course",
+   "want": 2.5
+  },
+  "truth": {
+   "tgtCourse": 179.0376,
+   "tgtSpeed": 11.2217,
+   "relCourse": 142.2579,
+   "relSpeed": 6.6931,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R250-normal",
+  "own": {
+   "course": 61.5,
+   "speed": 2.5
+  },
+  "brgType": "true",
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "02:28",
+    "brg": 131.43,
+    "rng": 9.4026
+   },
+   {
+    "t": "02:34",
+    "brg": 134.06,
+    "rng": 7.1595
+   },
+   {
+    "t": "02:40",
+    "brg": 139.064,
+    "rng": 4.945
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "truth": {
+   "tgtCourse": 306.86,
+   "tgtSpeed": 21.5894,
+   "relCourse": 301.1264,
+   "relSpeed": 22.7455,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R251-samevel",
+  "own": {
+   "course": 240.2,
+   "speed": 12.1
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "22:16",
+    "brg": 219.733,
+    "rng": 1.4021
+   },
+   {
+    "t": "22:22",
+    "brg": 219.733,
+    "rng": 1.4021
+   },
+   {
+    "t": "22:28",
+    "brg": 219.733,
+    "rng": 1.4021
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "truth": {
+   "tgtCourse": 240.2,
+   "tgtSpeed": 12.1,
+   "relCourse": null,
+   "relSpeed": 0.0,
+   "kind": "samevel"
+  }
+ },
+ {
+  "id": "R252-samevel",
+  "own": {
+   "course": 200.7,
+   "speed": 20.6
+  },
+  "brgType": "rel",
+  "heading": 199.4,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "02:27",
+    "brg": 193.773,
+    "rng": 4.1751
+   },
+   {
+    "t": "02:33",
+    "brg": 193.773,
+    "rng": 4.1751
+   },
+   {
+    "t": "02:39",
+    "brg": 193.773,
+    "rng": 4.1751
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 200.7,
+   "tgtSpeed": 20.6,
+   "relCourse": null,
+   "relSpeed": 0.0,
+   "kind": "samevel"
+  }
+ },
+ {
+  "id": "R253-midnight",
+  "own": {
+   "course": 59.9,
+   "speed": 0.8
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "23:50",
+    "brg": 124.117,
+    "rng": 3.9971
+   },
+   {
+    "t": "23:56",
+    "brg": 152.685,
+    "rng": 2.8268
+   },
+   {
+    "t": "00:02",
+    "brg": 194.415,
+    "rng": 2.8717
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "truth": {
+   "tgtCourse": 263.2621,
+   "tgtSpeed": 19.5634,
+   "relCourse": 262.3667,
+   "relSpeed": 20.3003,
+   "kind": "midnight"
+  }
+ },
+ {
+  "id": "R254-normal",
+  "own": {
+   "course": 132.1,
+   "speed": 6.2
+  },
+  "brgType": "true",
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "01:01",
+    "brg": 111.447,
+    "rng": 11.6627
+   },
+   {
+    "t": "01:07",
+    "brg": 110.222,
+    "rng": 10.2077
+   },
+   {
+    "t": "01:13",
+    "brg": 108.592,
+    "rng": 8.7589
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "action": {
+   "t": "01:13",
+   "course": 217.0
+  },
+  "truth": {
+   "tgtCourse": 289.756,
+   "tgtSpeed": 8.8111,
+   "relCourse": 298.9605,
+   "relSpeed": 14.7353,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R255-normal",
+  "own": {
+   "course": 300.7,
+   "speed": 13.7
+  },
+  "brgType": "rel",
+  "heading": 298.2,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "15:04",
+    "brg": 341.291,
+    "rng": 11.3276
+   },
+   {
+    "t": "15:10",
+    "brg": 336.654,
+    "rng": 7.7079
+   },
+   {
+    "t": "15:16",
+    "brg": 324.137,
+    "rng": 4.2257
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "truth": {
+   "tgtCourse": 102.5736,
+   "tgtSpeed": 23.7115,
+   "relCourse": 109.1925,
+   "relSpeed": 36.9781,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R256-normal",
+  "own": {
+   "course": 193.9,
+   "speed": 7.7
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "18:50",
+    "brg": 226.508,
+    "rng": 8.9699
+   },
+   {
+    "t": "18:56",
+    "brg": 228.274,
+    "rng": 7.7308
+   },
+   {
+    "t": "19:02",
+    "brg": 230.71,
+    "rng": 6.5018
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "19:02",
+   "speed": 3.9
+  },
+  "truth": {
+   "tgtCourse": 63.0753,
+   "tgtSpeed": 6.1989,
+   "relCourse": 35.6585,
+   "relSpeed": 12.6541,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R257-collision",
+  "own": {
+   "course": 354.1,
+   "speed": 20.1
+  },
+  "brgType": "rel",
+  "heading": 354.1,
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "23:07",
+    "brg": 83.7,
+    "rng": 10.0059
+   },
+   {
+    "t": "23:13",
+    "brg": 83.7,
+    "rng": 8.2809
+   },
+   {
+    "t": "23:19",
+    "brg": 83.7,
+    "rng": 6.5559
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "23:19",
+   "find": "course",
+   "want": 2
+  },
+  "truth": {
+   "tgtCourse": 310.82,
+   "tgtSpeed": 25.0093,
+   "relCourse": 257.8,
+   "relSpeed": 17.2497,
+   "kind": "collision"
+  }
+ },
+ {
+  "id": "R258-normal",
+  "own": {
+   "course": 209.3,
+   "speed": 5.9
+  },
+  "brgType": "rel",
+  "heading": 209.3,
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "21:27",
+    "brg": 86.443,
+    "rng": 1.806
+   },
+   {
+    "t": "21:33",
+    "brg": 83.703,
+    "rng": 1.5014
+   },
+   {
+    "t": "21:39",
+    "brg": 79.585,
+    "rng": 1.202
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "truth": {
+   "tgtCourse": 183.5384,
+   "tgtSpeed": 7.1354,
+   "relCourse": 128.9308,
+   "relSpeed": 3.1456,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R259-normal",
+  "own": {
+   "course": 320.5,
+   "speed": 6.7
+  },
+  "brgType": "true",
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "18:41",
+    "brg": 186.705,
+    "rng": 9.7959
+   },
+   {
+    "t": "18:47",
+    "brg": 185.814,
+    "rng": 8.3902
+   },
+   {
+    "t": "18:53",
+    "brg": 184.564,
+    "rng": 6.9874
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "18:53",
+   "find": "speed",
+   "want": 1
+  },
+  "truth": {
+   "tgtCourse": 356.5135,
+   "tgtSpeed": 18.9865,
+   "relCourse": 12.7051,
+   "relSpeed": 14.1274,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R260-normal",
+  "own": {
+   "course": 266.4,
+   "speed": 11.3
+  },
+  "brgType": "true",
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "13:29",
+    "brg": 248.667,
+    "rng": 2.3036
+   },
+   {
+    "t": "13:35",
+    "brg": 182.521,
+    "rng": 1.5752
+   },
+   {
+    "t": "13:41",
+    "brg": 139.006,
+    "rng": 3.0598
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "13:41",
+   "find": "course",
+   "want": 1
+  },
+  "truth": {
+   "tgtCourse": 128.709,
+   "tgtSpeed": 12.318,
+   "relCourse": 108.51,
+   "relSpeed": 22.0294,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R261-midnight",
+  "own": {
+   "course": 212.3,
+   "speed": 21.2
+  },
+  "brgType": "rel",
+  "heading": 212.3,
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "23:44",
+    "brg": 6.463,
+    "rng": 8.1047
+   },
+   {
+    "t": "23:50",
+    "brg": 26.142,
+    "rng": 5.1549
+   },
+   {
+    "t": "23:56",
+    "brg": 71.679,
+    "rng": 3.824
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "action": {
+   "t": "00:02",
+   "find": "speed",
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 346.1522,
+   "tgtSpeed": 18.8447,
+   "relCourse": 10.6614,
+   "relSpeed": 36.8527,
+   "kind": "midnight"
+  }
+ },
+ {
+  "id": "R262-normal",
+  "own": {
+   "course": 300.4,
+   "speed": 19.1
+  },
+  "brgType": "rel",
+  "heading": 300.4,
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "11:26",
+    "brg": 5.143,
+    "rng": 11.6534
+   },
+   {
+    "t": "11:32",
+    "brg": 6.724,
+    "rng": 9.2811
+   },
+   {
+    "t": "11:38",
+    "brg": 9.386,
+    "rng": 6.9208
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "11:38",
+   "find": "speed",
+   "want": 2
+  },
+  "truth": {
+   "tgtCourse": 115.3803,
+   "tgtSpeed": 4.8102,
+   "relCourse": 119.3908,
+   "relSpeed": 23.8955,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R263-normal",
+  "own": {
+   "course": 15.3,
+   "speed": 0.5
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "14:37",
+    "brg": 66.59,
+    "rng": 9.6364
+   },
+   {
+    "t": "14:43",
+    "brg": 67.572,
+    "rng": 9.5486
+   },
+   {
+    "t": "14:49",
+    "brg": 68.572,
+    "rng": 9.4636
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "14:49",
+   "find": "course",
+   "want": 2
+  },
+  "truth": {
+   "tgtCourse": 181.5314,
+   "tgtSpeed": 1.3746,
+   "relCourse": 185.1917,
+   "relSpeed": 1.864,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R264-normal",
+  "own": {
+   "course": 264.8,
+   "speed": 18.4
+  },
+  "brgType": "true",
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "03:55",
+    "brg": 307.782,
+    "rng": 10.8368
+   },
+   {
+    "t": "04:01",
+    "brg": 308.263,
+    "rng": 8.8171
+   },
+   {
+    "t": "04:07",
+    "brg": 309.03,
+    "rng": 6.7983
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "truth": {
+   "tgtCourse": 186.6605,
+   "tgtSpeed": 12.9661,
+   "relCourse": 123.6838,
+   "relSpeed": 20.2141,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R265-normal",
+  "own": {
+   "course": 173.2,
+   "speed": 7.8
+  },
+  "brgType": "true",
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "02:38",
+    "brg": 122.777,
+    "rng": 7.6464
+   },
+   {
+    "t": "02:44",
+    "brg": 121.771,
+    "rng": 6.089
+   },
+   {
+    "t": "02:50",
+    "brg": 120.075,
+    "rng": 4.5348
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "truth": {
+   "tgtCourse": 275.4969,
+   "tgtSpeed": 11.9732,
+   "relCourse": 304.7002,
+   "relSpeed": 15.6198,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R266-normal",
+  "own": {
+   "course": 120.7,
+   "speed": 19.5
+  },
+  "brgType": "true",
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "01:05",
+    "brg": 113.308,
+    "rng": 8.836
+   },
+   {
+    "t": "01:11",
+    "brg": 101.479,
+    "rng": 4.9909
+   },
+   {
+    "t": "01:17",
+    "brg": 47.84,
+    "rng": 2.2492
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "action": {
+   "t": "01:23",
+   "speed": 3.6
+  },
+  "truth": {
+   "tgtCourse": 312.3715,
+   "tgtSpeed": 21.5258,
+   "relCourse": 306.8249,
+   "relSpeed": 40.8137,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R267-midnight",
+  "own": {
+   "course": 41.7,
+   "speed": 17.0
+  },
+  "brgType": "true",
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "23:48",
+    "brg": 92.626,
+    "rng": 6.3094
+   },
+   {
+    "t": "23:54",
+    "brg": 95.66,
+    "rng": 4.006
+   },
+   {
+    "t": "00:00",
+    "brg": 106.7,
+    "rng": 1.7436
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 315.121,
+   "tgtSpeed": 16.8166,
+   "relCourse": 268.0806,
+   "relSpeed": 23.1879,
+   "kind": "midnight"
+  }
+ },
+ {
+  "id": "R268-normal",
+  "own": {
+   "course": 222.0,
+   "speed": 19.1
+  },
+  "brgType": "true",
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "10:23",
+    "brg": 217.283,
+    "rng": 8.191
+   },
+   {
+    "t": "10:29",
+    "brg": 218.825,
+    "rng": 4.7254
+   },
+   {
+    "t": "10:35",
+    "brg": 228.727,
+    "rng": 1.2819
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "action": {
+   "t": "10:35",
+   "find": "speed",
+   "want": 1
+  },
+  "truth": {
+   "tgtCourse": 24.8301,
+   "tgtSpeed": 15.9862,
+   "relCourse": 34.1826,
+   "relSpeed": 34.6962,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R269-normal",
+  "own": {
+   "course": 153.6,
+   "speed": 16.3
+  },
+  "brgType": "true",
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "14:38",
+    "brg": 160.924,
+    "rng": 6.1614
+   },
+   {
+    "t": "14:44",
+    "brg": 157.935,
+    "rng": 3.9077
+   },
+   {
+    "t": "14:50",
+    "brg": 146.997,
+    "rng": 1.6932
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 10.8854,
+   "tgtSpeed": 7.4507,
+   "relCourse": 345.0781,
+   "relSpeed": 22.6816,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R270-normal",
+  "own": {
+   "course": 316.0,
+   "speed": 13.7
+  },
+  "brgType": "true",
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "10:19",
+    "brg": 19.859,
+    "rng": 5.6991
+   },
+   {
+    "t": "10:25",
+    "brg": 28.69,
+    "rng": 5.1123
+   },
+   {
+    "t": "10:31",
+    "brg": 39.474,
+    "rng": 4.6757
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "10:37",
+   "find": "course",
+   "want": 1.5
+  },
+  "truth": {
+   "tgtCourse": 285.9057,
+   "tgtSpeed": 4.3488,
+   "relCourse": 148.3763,
+   "relSpeed": 10.1739,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R271-normal",
+  "own": {
+   "course": 263.0,
+   "speed": 24.6
+  },
+  "brgType": "rel",
+  "heading": 263.0,
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "07:23",
+    "brg": 146.784,
+    "rng": 2.3689
+   },
+   {
+    "t": "07:29",
+    "brg": 159.797,
+    "rng": 4.199
+   },
+   {
+    "t": "07:35",
+    "brg": 164.803,
+    "rng": 6.1133
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "action": {
+   "t": "07:35",
+   "find": "speed",
+   "want": 2.5
+  },
+  "truth": {
+   "tgtCourse": 279.9177,
+   "tgtSpeed": 5.2383,
+   "relCourse": 78.5503,
+   "relSpeed": 19.6476,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R272-fixed",
+  "own": {
+   "course": 329.8,
+   "speed": 0.8
+  },
+  "brgType": "rel",
+  "heading": 329.8,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "15:42",
+    "brg": 113.014,
+    "rng": 5.158
+   },
+   {
+    "t": "15:48",
+    "brg": 113.827,
+    "rng": 5.1898
+   },
+   {
+    "t": "15:54",
+    "brg": 114.63,
+    "rng": 5.2227
+   }
+  ],
+  "fixed": true,
+  "cpaLimit": 1.5,
+  "action": {
+   "t": "15:54",
+   "course": 330.0,
+   "speed": 2.1,
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": null,
+   "tgtSpeed": 0.0,
+   "relCourse": 149.8,
+   "relSpeed": 0.8,
+   "kind": "fixed"
+  }
+ },
+ {
+  "id": "R273-normal",
+  "own": {
+   "course": 257.9,
+   "speed": 20.4
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "19:30",
+    "brg": 305.218,
+    "rng": 10.773
+   },
+   {
+    "t": "19:36",
+    "brg": 314.569,
+    "rng": 10.2708
+   },
+   {
+    "t": "19:42",
+    "brg": 324.585,
+    "rng": 10.0652
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "action": {
+   "t": "19:48",
+   "course": 233.0,
+   "speed": 5.3
+  },
+  "truth": {
+   "tgtCourse": 318.0242,
+   "tgtSpeed": 7.6327,
+   "relCourse": 56.1605,
+   "relSpeed": 17.8689,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R274-normal",
+  "own": {
+   "course": 113.9,
+   "speed": 23.4
+  },
+  "brgType": "true",
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "20:29",
+    "brg": 123.925,
+    "rng": 9.5063
+   },
+   {
+    "t": "20:35",
+    "brg": 125.342,
+    "rng": 6.1279
+   },
+   {
+    "t": "20:41",
+    "brg": 130.225,
+    "rng": 2.7624
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "truth": {
+   "tgtCourse": 314.3188,
+   "tgtSpeed": 10.9072,
+   "relCourse": 300.3572,
+   "relSpeed": 33.8365,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R275-normal",
+  "own": {
+   "course": 258.5,
+   "speed": 7.3
+  },
+  "brgType": "rel",
+  "heading": 258.5,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "04:51",
+    "brg": 142.364,
+    "rng": 3.522
+   },
+   {
+    "t": "04:57",
+    "brg": 120.379,
+    "rng": 2.4858
+   },
+   {
+    "t": "05:03",
+    "brg": 82.676,
+    "rng": 2.1559
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "05:09",
+   "find": "course",
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 258.3428,
+   "tgtSpeed": 22.6195,
+   "relCourse": 258.2679,
+   "relSpeed": 15.3196,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R276-normal",
+  "own": {
+   "course": 128.7,
+   "speed": 8.3
+  },
+  "brgType": "true",
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "02:56",
+    "brg": 227.818,
+    "rng": 6.9111
+   },
+   {
+    "t": "03:02",
+    "brg": 238.839,
+    "rng": 5.6628
+   },
+   {
+    "t": "03:08",
+    "brg": 255.058,
+    "rng": 4.7303
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "action": {
+   "t": "03:08",
+   "find": "speed",
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 39.2705,
+   "tgtSpeed": 15.2907,
+   "relCourse": 10.6477,
+   "relSpeed": 17.3254,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R277-normal",
+  "own": {
+   "course": 47.4,
+   "speed": 8.6
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "17:41",
+    "brg": 188.932,
+    "rng": 3.5377
+   },
+   {
+    "t": "17:47",
+    "brg": 194.984,
+    "rng": 4.3811
+   },
+   {
+    "t": "17:53",
+    "brg": 199.052,
+    "rng": 5.2574
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "action": {
+   "t": "17:56",
+   "find": "course",
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 162.2761,
+   "tgtSpeed": 1.6293,
+   "relCourse": 218.3549,
+   "relSpeed": 9.4023,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R278-collision",
+  "own": {
+   "course": 273.6,
+   "speed": 15.0
+  },
+  "brgType": "true",
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "17:58",
+    "brg": 336.6,
+    "rng": 11.936
+   },
+   {
+    "t": "18:04",
+    "brg": 336.6,
+    "rng": 10.0218
+   },
+   {
+    "t": "18:10",
+    "brg": 336.6,
+    "rng": 8.1077
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "18:10",
+   "find": "course",
+   "want": 2.5
+  },
+  "truth": {
+   "tgtCourse": 204.4012,
+   "tgtSpeed": 18.3567,
+   "relCourse": 157.3,
+   "relSpeed": 19.1415,
+   "kind": "collision"
+  }
+ },
+ {
+  "id": "R279-normal",
+  "own": {
+   "course": 190.7,
+   "speed": 6.7
+  },
+  "brgType": "rel",
+  "heading": 190.7,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "05:52",
+    "brg": 339.75,
+    "rng": 11.3037
+   },
+   {
+    "t": "05:58",
+    "brg": 334.452,
+    "rng": 10.7737
+   },
+   {
+    "t": "06:04",
+    "brg": 328.662,
+    "rng": 10.3448
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "truth": {
+   "tgtCourse": 84.3943,
+   "tgtSpeed": 7.6464,
+   "relCourse": 50.3772,
+   "relSpeed": 11.4945,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R280-normal",
+  "own": {
+   "course": 234.7,
+   "speed": 18.6
+  },
+  "brgType": "rel",
+  "heading": 234.7,
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "21:35",
+    "brg": 319.947,
+    "rng": 3.7643
+   },
+   {
+    "t": "21:41",
+    "brg": 320.619,
+    "rng": 2.5403
+   },
+   {
+    "t": "21:47",
+    "brg": 322.54,
+    "rng": 1.3174
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "truth": {
+   "tgtCourse": 275.4038,
+   "tgtSpeed": 12.4282,
+   "relCourse": 13.2533,
+   "relSpeed": 12.2447,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R281-normal",
+  "own": {
+   "course": 205.5,
+   "speed": 13.6
+  },
+  "brgType": "rel",
+  "heading": 205.5,
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "00:39",
+    "brg": 359.48,
+    "rng": 3.3391
+   },
+   {
+    "t": "00:45",
+    "brg": 328.289,
+    "rng": 2.0568
+   },
+   {
+    "t": "00:51",
+    "brg": 274.306,
+    "rng": 2.1379
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "action": {
+   "t": "00:57",
+   "find": "course",
+   "want": 1
+  },
+  "truth": {
+   "tgtCourse": 103.195,
+   "tgtSpeed": 10.7549,
+   "relCourse": 58.9727,
+   "relSpeed": 19.0518,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R282-normal",
+  "own": {
+   "course": 342.3,
+   "speed": 24.4
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "13:26",
+    "brg": 23.097,
+    "rng": 8.3716
+   },
+   {
+    "t": "13:32",
+    "brg": 30.213,
+    "rng": 7.1506
+   },
+   {
+    "t": "13:38",
+    "brg": 40.028,
+    "rng": 6.0833
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "action": {
+   "t": "13:44",
+   "course": 71.0
+  },
+  "truth": {
+   "tgtCourse": 331.9732,
+   "tgtSpeed": 9.1003,
+   "relCourse": 168.3285,
+   "relSpeed": 15.533,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R283-opening",
+  "own": {
+   "course": 12.8,
+   "speed": 3.3
+  },
+  "brgType": "true",
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "20:08",
+    "brg": 20.501,
+    "rng": 2.3174
+   },
+   {
+    "t": "20:14",
+    "brg": 67.974,
+    "rng": 2.1487
+   },
+   {
+    "t": "20:20",
+    "brg": 99.993,
+    "rng": 3.2211
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "20:20",
+   "speed": 1.0,
+   "want": 1
+  },
+  "truth": {
+   "tgtCourse": 130.5293,
+   "tgtSpeed": 16.2704,
+   "relCourse": 139.8456,
+   "relSpeed": 18.0438,
+   "kind": "opening"
+  }
+ },
+ {
+  "id": "R284-normal",
+  "own": {
+   "course": 358.0,
+   "speed": 9.2
+  },
+  "brgType": "true",
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "03:49",
+    "brg": 164.517,
+    "rng": 2.6779
+   },
+   {
+    "t": "03:55",
+    "brg": 167.018,
+    "rng": 2.6222
+   },
+   {
+    "t": "04:01",
+    "brg": 169.623,
+    "rng": 2.5718
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 350.4199,
+   "tgtSpeed": 9.5383,
+   "relCourse": 279.4554,
+   "relSpeed": 1.2838,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R285-normal",
+  "own": {
+   "course": 95.2,
+   "speed": 5.1
+  },
+  "brgType": "true",
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "11:24",
+    "brg": 149.598,
+    "rng": 11.0683
+   },
+   {
+    "t": "11:30",
+    "brg": 145.028,
+    "rng": 10.7474
+   },
+   {
+    "t": "11:36",
+    "brg": 140.209,
+    "rng": 10.4988
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "truth": {
+   "tgtCourse": 58.0032,
+   "tgtSpeed": 12.8059,
+   "relCourse": 38.5788,
+   "relSpeed": 9.2711,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R286-normal",
+  "own": {
+   "course": 183.3,
+   "speed": 7.4
+  },
+  "brgType": "rel",
+  "heading": 182.8,
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "18:01",
+    "brg": 201.336,
+    "rng": 10.8942
+   },
+   {
+    "t": "18:07",
+    "brg": 203.015,
+    "rng": 10.546
+   },
+   {
+    "t": "18:13",
+    "brg": 204.807,
+    "rng": 10.2075
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "truth": {
+   "tgtCourse": 175.417,
+   "tgtSpeed": 11.908,
+   "relCourse": 162.9168,
+   "relSpeed": 4.6891,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R287-midnight",
+  "own": {
+   "course": 69.3,
+   "speed": 24.3
+  },
+  "brgType": "rel",
+  "heading": 69.3,
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "23:50",
+    "brg": 10.362,
+    "rng": 5.3201
+   },
+   {
+    "t": "23:56",
+    "brg": 23.715,
+    "rng": 2.8719
+   },
+   {
+    "t": "00:02",
+    "brg": 88.923,
+    "rng": 1.3533
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1,
+  "truth": {
+   "tgtCourse": 200.5876,
+   "tgtSpeed": 2.6361,
+   "relCourse": 244.95,
+   "relSpeed": 26.1146,
+   "kind": "midnight"
+  }
+ },
+ {
+  "id": "R288-normal",
+  "own": {
+   "course": 356.4,
+   "speed": 11.0
+  },
+  "brgType": "rel",
+  "heading": 356.6,
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "16:41",
+    "brg": 128.263,
+    "rng": 5.741
+   },
+   {
+    "t": "16:47",
+    "brg": 134.353,
+    "rng": 6.3307
+   },
+   {
+    "t": "16:53",
+    "brg": 139.359,
+    "rng": 6.9795
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "truth": {
+   "tgtCourse": 0.3946,
+   "tgtSpeed": 2.3009,
+   "relCourse": 175.3451,
+   "relSpeed": 8.7062,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R289-stationary",
+  "own": {
+   "course": 313.9,
+   "speed": 19.6
+  },
+  "brgType": "rel",
+  "heading": 313.9,
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "23:17",
+    "brg": 336.365,
+    "rng": 1.2413
+   },
+   {
+    "t": "23:23",
+    "brg": 211.165,
+    "rng": 0.9616
+   },
+   {
+    "t": "23:29",
+    "brg": 190.139,
+    "rng": 2.827
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "truth": {
+   "tgtCourse": null,
+   "tgtSpeed": 0.0,
+   "relCourse": 133.9,
+   "relSpeed": 19.6,
+   "kind": "stationary"
+  }
+ },
+ {
+  "id": "R290-normal",
+  "own": {
+   "course": 223.2,
+   "speed": 20.7
+  },
+  "brgType": "true",
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "20:47",
+    "brg": 213.277,
+    "rng": 10.7653
+   },
+   {
+    "t": "20:53",
+    "brg": 207.573,
+    "rng": 7.3036
+   },
+   {
+    "t": "20:59",
+    "brg": 192.212,
+    "rng": 4.0395
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 45.1068,
+   "tgtSpeed": 15.0292,
+   "relCourse": 44.0021,
+   "relSpeed": 35.7244,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R291-opening",
+  "own": {
+   "course": 169.8,
+   "speed": 15.2
+  },
+  "brgType": "rel",
+  "heading": 169.8,
+  "ge": 0,
+  "obs": [
+   {
+    "t": "05:05",
+    "brg": 345.889,
+    "rng": 1.5111
+   },
+   {
+    "t": "05:11",
+    "brg": 243.641,
+    "rng": 0.2839
+   },
+   {
+    "t": "05:17",
+    "brg": 184.672,
+    "rng": 1.7234
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "05:17",
+   "find": "course",
+   "want": 2
+  },
+  "truth": {
+   "tgtCourse": 291.9216,
+   "tgtSpeed": 1.3464,
+   "relCourse": 345.7021,
+   "relSpeed": 15.9567,
+   "kind": "opening"
+  }
+ },
+ {
+  "id": "R292-normal",
+  "own": {
+   "course": 343.7,
+   "speed": 12.1
+  },
+  "brgType": "true",
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "01:43",
+    "brg": 259.386,
+    "rng": 10.7663
+   },
+   {
+    "t": "01:49",
+    "brg": 253.008,
+    "rng": 10.4609
+   },
+   {
+    "t": "01:55",
+    "brg": 246.336,
+    "rng": 10.2919
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 70.9016,
+   "tgtSpeed": 2.221,
+   "relCourse": 153.2194,
+   "relSpeed": 12.195,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R293-collision",
+  "own": {
+   "course": 201.1,
+   "speed": 10.4
+  },
+  "brgType": "true",
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "12:42",
+    "brg": 121.8,
+    "rng": 7.3987
+   },
+   {
+    "t": "12:48",
+    "brg": 121.8,
+    "rng": 6.4872
+   },
+   {
+    "t": "12:54",
+    "brg": 121.8,
+    "rng": 5.5756
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 3,
+  "action": {
+   "t": "13:00",
+   "speed": 2.4,
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 246.4881,
+   "tgtSpeed": 12.6216,
+   "relCourse": 300.8,
+   "relSpeed": 9.1154,
+   "kind": "collision"
+  }
+ },
+ {
+  "id": "R294-midnight",
+  "own": {
+   "course": 326.4,
+   "speed": 15.1
+  },
+  "brgType": "true",
+  "ge": 0,
+  "obs": [
+   {
+    "t": "23:59",
+    "brg": 294.399,
+    "rng": 6.5002
+   },
+   {
+    "t": "00:05",
+    "brg": 291.244,
+    "rng": 3.8222
+   },
+   {
+    "t": "00:11",
+    "brg": 274.023,
+    "rng": 1.2083
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "action": {
+   "t": "00:11",
+   "speed": 6.2
+  },
+  "truth": {
+   "tgtCourse": 91.5996,
+   "tgtSpeed": 15.2211,
+   "relCourse": 118.8812,
+   "relSpeed": 26.9195,
+   "kind": "midnight"
+  }
+ },
+ {
+  "id": "R295-normal",
+  "own": {
+   "course": 93.0,
+   "speed": 3.0
+  },
+  "brgType": "rel",
+  "heading": 93.0,
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "22:14",
+    "brg": 355.737,
+    "rng": 6.2618
+   },
+   {
+    "t": "22:20",
+    "brg": 346.143,
+    "rng": 5.2038
+   },
+   {
+    "t": "22:26",
+    "brg": 332.295,
+    "rng": 4.36
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "22:32",
+   "find": "course",
+   "want": 3
+  },
+  "truth": {
+   "tgtCourse": 314.1902,
+   "tgtSpeed": 11.8556,
+   "relCourse": 306.2213,
+   "relSpeed": 14.2508,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R296-normal",
+  "own": {
+   "course": 301.9,
+   "speed": 8.1
+  },
+  "brgType": "rel",
+  "heading": 303.6,
+  "ge": 1.5,
+  "obs": [
+   {
+    "t": "10:08",
+    "brg": 6.998,
+    "rng": 7.4089
+   },
+   {
+    "t": "10:14",
+    "brg": 10.533,
+    "rng": 6.0377
+   },
+   {
+    "t": "10:20",
+    "brg": 16.106,
+    "rng": 4.7029
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 1.5,
+  "truth": {
+   "tgtCourse": 107.3735,
+   "tgtSpeed": 6.3332,
+   "relCourse": 115.5306,
+   "relSpeed": 14.3191,
+   "kind": "normal"
+  }
+ },
+ {
+  "id": "R297-midnight",
+  "own": {
+   "course": 45.3,
+   "speed": 22.7
+  },
+  "brgType": "rel",
+  "heading": 45.3,
+  "ge": 0.7,
+  "obs": [
+   {
+    "t": "23:59",
+    "brg": 19.429,
+    "rng": 6.996
+   },
+   {
+    "t": "00:05",
+    "brg": 29.0,
+    "rng": 4.3425
+   },
+   {
+    "t": "00:11",
+    "brg": 62.07,
+    "rng": 2.1317
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "00:17",
+   "speed": 7.5
+  },
+  "truth": {
+   "tgtCourse": 248.0328,
+   "tgtSpeed": 5.7416,
+   "relCourse": 229.8314,
+   "relSpeed": 28.0834,
+   "kind": "midnight"
+  }
+ },
+ {
+  "id": "R298-near000",
+  "own": {
+   "course": 90,
+   "speed": 18.5
+  },
+  "brgType": "true",
+  "ge": -2.0,
+  "obs": [
+   {
+    "t": "15:26",
+    "brg": 36.351,
+    "rng": 3.864
+   },
+   {
+    "t": "15:32",
+    "brg": 18.181,
+    "rng": 3.9856
+   },
+   {
+    "t": "15:38",
+    "brg": 2.527,
+    "rng": 4.4655
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "truth": {
+   "tgtCourse": 50.7501,
+   "tgtSpeed": 10.0774,
+   "relCourse": 300.7996,
+   "relSpeed": 12.4523,
+   "kind": "near000"
+  }
+ },
+ {
+  "id": "R299-normal",
+  "own": {
+   "course": 100.2,
+   "speed": 2.3
+  },
+  "brgType": "true",
+  "ge": -1.0,
+  "obs": [
+   {
+    "t": "19:42",
+    "brg": 19.074,
+    "rng": 3.3846
+   },
+   {
+    "t": "19:48",
+    "brg": 3.669,
+    "rng": 2.6343
+   },
+   {
+    "t": "19:54",
+    "brg": 339.526,
+    "rng": 2.198
+   }
+  ],
+  "fixed": false,
+  "cpaLimit": 2,
+  "action": {
+   "t": "19:57",
+   "course": 31.0
+  },
+  "truth": {
+   "tgtCourse": 228.1963,
+   "tgtSpeed": 9.4035,
+   "relCourse": 237.7064,
+   "relSpeed": 10.9702,
+   "kind": "normal"
+  }
+ }
+]

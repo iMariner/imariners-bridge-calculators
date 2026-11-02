@@ -1,0 +1,76 @@
+
+/* Radar Plotting */
+#radar-plot .rp-grid { grid-template-columns: minmax(300px, 400px) minmax(0, 1fr); align-items: start; }
+#radar-plot .rp-right { min-width: 0; display: flex; flex-direction: column; gap: var(--sp-4); }
+#radar-plot .rp-right > .card { margin: 0; }
+#radar-plot .rp-h2 { margin-top: var(--sp-5); }
+#radar-plot .row2 { grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); }
+#radar-plot .rp-tabs, #radar-plot .rp-acts { width: 100%; }
+#radar-plot .rp-tabs label, #radar-plot .rp-acts label { flex: 1 1 0; text-align: center; }
+table.rp-obs { width: 100%; border-collapse: collapse; margin-top: var(--sp-3); table-layout: fixed; }
+table.rp-obs th { font-family: var(--font-mono); font-size: var(--fs-xs); font-weight: var(--fw-semibold); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); text-align: left; padding: 0 var(--sp-1) var(--sp-1); }
+table.rp-obs th.rp-c-n { width: 2.2em; }
+table.rp-obs td { padding: var(--sp-1); }
+table.rp-obs td.rp-n { font-family: var(--font-mono); font-weight: var(--fw-bold); color: var(--muted); text-align: center; }
+table.rp-obs .text-input { font-size: var(--fs-md); padding: var(--sp-1h) var(--sp-2); font-variant-numeric: tabular-nums; }
+#radar-plot .rp-obs-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--sp-2); margin-top: var(--sp-2); }
+#radar-plot .rp-fixed { display: flex; align-items: center; gap: var(--sp-2); font-size: var(--fs-sm); }
+#radar-plot .rp-hero { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+#radar-plot .rp-hero .readout { font-size: var(--fs-4xl); white-space: nowrap; }
+#radar-plot .callout.rp-ok { border-color: var(--take); color: var(--take); font-weight: var(--fw-semibold); background: var(--tint-take); }
+#radar-plot .callout.rp-bad { border-color: var(--danger); color: var(--danger); font-weight: var(--fw-semibold); background: var(--tint-danger); }
+#radar-plot table.wk td:first-child { width: 24%; }
+#radar-plot table.wk td:nth-child(2) { width: 36%; white-space: normal; }
+table.rp-act-tbl td, table.rp-act-tbl th { text-align: right; }
+table.rp-act-tbl td.rp-bad { color: var(--danger); font-weight: var(--fw-bold); }
+#radar-plot .rp-rules { margin: var(--sp-3) 0 0; padding-left: var(--sp-5); font-size: var(--fs-sm); }
+#radar-plot .rp-rules li + li { margin-top: var(--sp-1); }
+#radar-plot .rp-rules li.rp-bad { color: var(--danger); font-weight: var(--fw-semibold); }
+.rp-plot { width: 100%; height: auto; display: block; max-width: 640px; margin: 0 auto; }
+.rp-plot .rp-ring { fill: none; stroke: var(--chart-grid); stroke-width: 1; }
+.rp-plot .rp-rim { fill: none; stroke: var(--border-strong); stroke-width: 1.2; }
+.rp-plot .rp-tick { stroke: var(--muted); stroke-width: 1; }
+.rp-plot .rp-tl { fill: var(--muted); font-family: var(--font-mono); font-size: var(--fs-sm); }
+.rp-plot .rp-rl { fill: var(--muted); font-family: var(--font-mono); font-size: var(--fs-xs); }
+.rp-plot .rp-head { stroke: var(--ship); stroke-width: 1.4; stroke-dasharray: 2 4; }
+.rp-plot .rp-safe { fill: none; stroke: var(--danger); stroke-width: 1.2; stroke-dasharray: 5 5; opacity: .7; }
+.rp-plot .rp-own { stroke: var(--ship); stroke-width: 2.4; }
+.rp-plot .rp-relt { stroke: var(--apparent); stroke-width: 2.4; }
+.rp-plot .rp-ext { stroke: var(--apparent); stroke-width: 1.6; stroke-dasharray: 7 5; }
+.rp-plot .rp-tru { stroke: var(--true); stroke-width: 2.6; }
+.rp-plot .rp-cpa { stroke: var(--danger); stroke-width: 2; }
+.rp-plot .rp-new { stroke: var(--take); stroke-width: 2.2; }
+.rp-plot .rp-newx { stroke: var(--take); stroke-width: 1.6; stroke-dasharray: 7 5; }
+.rp-plot .rp-res { stroke: var(--accent); stroke-width: 1.6; stroke-dasharray: 3 4; }
+.rp-plot .rp-dot { fill: var(--surface); stroke: var(--text); stroke-width: 2; }
+.rp-plot .rp-pt { fill: var(--text); }
+.rp-plot .rp-lab { fill: var(--text); font-family: var(--font-mono); font-size: var(--fs-md); font-weight: var(--fw-bold); paint-order: stroke; stroke: var(--surface); stroke-width: 4px; stroke-linejoin: round; }
+.rp-plot .rp-sub { fill: var(--muted); font-family: var(--font-mono); font-size: var(--fs-sm); paint-order: stroke; stroke: var(--surface); stroke-width: 4px; stroke-linejoin: round; }
+.rp-plot .rp-ship { fill: var(--ship); }
+.rp-plot .ah-own { fill: var(--ship); } .rp-plot .ah-rel { fill: var(--apparent); } .rp-plot .ah-tru { fill: var(--true); } .rp-plot .ah-new { fill: var(--take); }
+#radar-plot .rp-key { display: flex; flex-wrap: wrap; gap: var(--sp-1) var(--sp-4); margin-top: var(--sp-3); font-size: var(--fs-sm); color: var(--muted); }
+#radar-plot .rp-key i { display: inline-block; width: 22px; height: 0; border-top: 3px solid; vertical-align: middle; margin-right: var(--sp-1); }
+#radar-plot .rp-key .k-own { border-color: var(--ship); } #radar-plot .rp-key .k-rel { border-color: var(--apparent); } #radar-plot .rp-key .k-tru { border-color: var(--true); }
+#radar-plot .rp-key .k-cpa { border-color: var(--danger); } #radar-plot .rp-key .k-new { border-color: var(--take); } #radar-plot .rp-key .k-safe { border-top-style: dashed; border-color: var(--danger); }
+#radar-plot .rp-key .k-res { border-top-style: dotted; border-color: var(--accent); }
+.rp-steps h4 { margin: var(--sp-3) 0 var(--sp-1); font-size: var(--fs-md); }
+.rp-steps ol { margin: 0; padding-left: var(--sp-6); }
+.rp-steps li { margin-bottom: var(--sp-1h); line-height: 1.45; }
+@media (max-width: 900px) { #radar-plot .rp-grid { grid-template-columns: minmax(0, 1fr); } }
+@media print {
+  #rp-sheet .ps-grid { grid-template-columns: repeat(4, 1fr); }
+  #rp-sheet table.dt { font-size: 9pt; margin-top: 0; }
+  #rp-sheet table.dt th, #rp-sheet table.dt td { padding: .5mm 1.5mm; border-bottom: 1px solid #ddd; font-size: 8.5pt; }
+  #rp-sheet table.dt th { border-bottom: 1px solid #666; font-size: 7pt; }
+  #rp-sheet .ps-remarks { margin-top: 3mm; height: 14mm; border: 1px solid #999; border-radius: 1.5mm; padding: 1mm 2mm; font-size: 8pt; color: #555; }
+  #rp-sheet .rp-ps-page { break-before: page; page-break-before: always; }
+  #rp-sheet .ps-plot-head { display: flex; justify-content: space-between; gap: 4mm; font-size: 9pt; border-bottom: 1px solid #000; padding-bottom: 1mm; }
+  #rp-sheet .rp-ps-plot { width: 180mm; height: 180mm; max-width: none; margin-top: 4mm; }
+  #rp-sheet .rp-plot { --surface: #fff; --text: #000; --muted: #444; --chart-grid: #bbb; --border-strong: #000; --ship: #000; --apparent: #b35a00; --true: #0b6e79; --danger: #c00; --take: #17803d; --accent: #1f4fa8; }
+  #rp-sheet .rp-steps { font-size: 10pt; }
+  #rp-sheet .rp-steps h4 { font-size: 10.5pt; margin: 3mm 0 1mm; }
+  #rp-sheet .rp-steps ol { padding-left: 7mm; }
+  #rp-sheet .rp-steps li { margin-bottom: 1.2mm; break-inside: avoid; }
+  #rp-sheet ul.rp-ps-rules { margin: 1mm 0 0; padding-left: 5mm; font-size: 8.5pt; }
+}
+/* Radar Plotting end */

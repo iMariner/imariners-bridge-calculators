@@ -1,0 +1,8892 @@
+[
+ {
+  "id": "R000-normal",
+  "rel": {
+   "course": 95.017,
+   "speed": 25.571
+  },
+  "tgt": {
+   "course": 66.279,
+   "speed": 10.681
+  },
+  "cpa": {
+   "range": 2.057,
+   "brg": 5.017,
+   "tcpa": 6.647,
+   "time": "15:24"
+  },
+  "aspect": 64.726,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R001-normal",
+  "rel": {
+   "course": 297.819,
+   "speed": 15.654
+  },
+  "tgt": {
+   "course": 268.504,
+   "speed": 5.076
+  },
+  "cpa": {
+   "range": 0.395,
+   "brg": 27.819,
+   "tcpa": 6.052,
+   "time": "11:42"
+  },
+  "aspect": 15.277,
+  "bcr": null,
+  "scr": {
+   "range": 1.827,
+   "t": 12.889
+  },
+  "action": {
+   "stbdAlt": 67,
+   "portAlt": 114,
+   "portCourse": 16.3,
+   "course": 197.3,
+   "speed": 11.5,
+   "relCourse": 351.326,
+   "relSpeed": 10.973,
+   "cpa": 1.504,
+   "brg": 81.326,
+   "tcpa": 3.4,
+   "time": "11:39",
+   "resume": {
+    "t": 7.6,
+    "time": "11:44"
+   }
+  }
+ },
+ {
+  "id": "R002-normal",
+  "rel": {
+   "course": 196.467,
+   "speed": 6.548
+  },
+  "tgt": {
+   "course": 0.876,
+   "speed": 8.186
+  },
+  "cpa": {
+   "passed": true,
+   "range": 1.993
+  },
+  "aspect": 30.51,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R003-stationary",
+  "rel": {
+   "course": 30.299,
+   "speed": 13.2
+  },
+  "tgt": {
+   "course": 304.172,
+   "speed": 0.0
+  },
+  "cpa": {
+   "range": 0.154,
+   "brg": 300.299,
+   "tcpa": 27.337,
+   "time": "05:21"
+  },
+  "aspect": 87.596,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 242.0,
+   "speed": 22.5,
+   "relCourse": 61.999,
+   "relSpeed": 22.5,
+   "cpa": 2.682,
+   "brg": 151.999,
+   "tcpa": 12.364,
+   "time": "05:09",
+   "resume": {
+    "t": 16.1,
+    "time": "05:13"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R004-midnight",
+  "rel": {
+   "course": 90.257,
+   "speed": 12.836
+  },
+  "tgt": {
+   "course": 111.422,
+   "speed": 11.188
+  },
+  "cpa": {
+   "passed": true,
+   "range": 3.627
+  },
+  "aspect": -138.287,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R005-normal",
+  "rel": {
+   "course": 61.087,
+   "speed": 24.155
+  },
+  "tgt": {
+   "course": 35.644,
+   "speed": 4.715
+  },
+  "cpa": {
+   "range": 4.281,
+   "brg": 151.087,
+   "tcpa": 7.909,
+   "time": "11:58"
+  },
+  "aspect": -27.918,
+  "bcr": null,
+  "scr": {
+   "range": 42.265,
+   "t": 112.354
+  },
+  "action": {
+   "course": 246.9,
+   "speed": 20.0,
+   "relCourse": 61.087,
+   "relSpeed": 24.155,
+   "cpa": 4.281,
+   "brg": 151.087,
+   "tcpa": 7.909,
+   "time": "11:58",
+   "resume": {
+    "t": 0.1,
+    "time": "11:50"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R006-near000",
+  "rel": {
+   "course": 307.617,
+   "speed": 24.091
+  },
+  "tgt": {
+   "course": 293.649,
+   "speed": 7.617
+  },
+  "cpa": {
+   "passed": true,
+   "range": 6.928
+  },
+  "aspect": -113.58,
+  "bcr": null,
+  "scr": {
+   "range": 50.193,
+   "t": 113.742
+  },
+  "action": {
+   "course": 133.9,
+   "speed": 15.5,
+   "relCourse": 307.26,
+   "relSpeed": 22.799,
+   "cpa": 8.611,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "02:02"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R007-normal",
+  "rel": {
+   "course": 294.944,
+   "speed": 20.393
+  },
+  "tgt": {
+   "course": 297.438,
+   "speed": 21.824
+  },
+  "cpa": {
+   "range": 3.683,
+   "brg": 204.944,
+   "tcpa": 12.502,
+   "time": "17:15"
+  },
+  "aspect": 38.424,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R008-fixed",
+  "rel": {
+   "course": 292.4,
+   "speed": 4.3
+  },
+  "tgt": {
+   "course": 116.498,
+   "speed": 0.0
+  },
+  "cpa": {
+   "range": 0.095,
+   "brg": 22.4,
+   "tcpa": 14.439,
+   "time": "14:33"
+  },
+  "aspect": null,
+  "bcr": null,
+  "scr": {
+   "range": 51746.847,
+   "t": 722081.999
+  },
+  "ground": {
+   "course": 112.4,
+   "speed": 4.3,
+   "set": 296.498,
+   "drift": 0.0
+  }
+ },
+ {
+  "id": "R009-normal",
+  "rel": {
+   "course": 142.29,
+   "speed": 15.01
+  },
+  "tgt": {
+   "course": 39.684,
+   "speed": 2.647
+  },
+  "cpa": {
+   "range": 1.021,
+   "brg": 232.29,
+   "tcpa": 18.627,
+   "time": "15:00"
+  },
+  "aspect": 90.245,
+  "bcr": null,
+  "scr": {
+   "range": 6.246,
+   "t": 43.257
+  },
+  "action": {
+   "stbdAlt": 29,
+   "portAlt": 71,
+   "portCourse": 260.7,
+   "course": 0.7,
+   "speed": 15.8,
+   "relCourse": 173.79,
+   "relSpeed": 13.843,
+   "cpa": 2.521,
+   "brg": 263.79,
+   "tcpa": 9.361,
+   "time": "14:56",
+   "resume": {
+    "t": 12.3,
+    "time": "14:59"
+   }
+  }
+ },
+ {
+  "id": "R010-opening",
+  "rel": {
+   "course": 292.383,
+   "speed": 10.815
+  },
+  "tgt": {
+   "course": 279.668,
+   "speed": 0.426
+  },
+  "cpa": {
+   "passed": true,
+   "range": 4.273
+  },
+  "aspect": 141.117,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R011-normal",
+  "rel": {
+   "course": 153.604,
+   "speed": 20.251
+  },
+  "tgt": {
+   "course": 150.519,
+   "speed": 17.32
+  },
+  "cpa": {
+   "range": 7.642,
+   "brg": 63.604,
+   "tcpa": 3.25,
+   "time": "00:53"
+  },
+  "aspect": 84.915,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R012-normal",
+  "rel": {
+   "course": 22.165,
+   "speed": 5.826
+  },
+  "tgt": {
+   "course": 227.314,
+   "speed": 6.774
+  },
+  "cpa": {
+   "range": 5.372,
+   "brg": 292.165,
+   "tcpa": 20.154,
+   "time": "03:52"
+  },
+  "aspect": -135.166,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R013-normal",
+  "rel": {
+   "course": 90.374,
+   "speed": 14.572
+  },
+  "tgt": {
+   "course": 36.108,
+   "speed": 16.367
+  },
+  "cpa": {
+   "range": 2.399,
+   "brg": 180.374,
+   "tcpa": 25.855,
+   "time": "19:13"
+  },
+  "aspect": 33.359,
+  "bcr": null,
+  "scr": {
+   "range": 2.564,
+   "t": 29.582
+  }
+ },
+ {
+  "id": "R014-normal",
+  "rel": {
+   "course": 207.221,
+   "speed": 8.106
+  },
+  "tgt": {
+   "course": 273.29,
+   "speed": 20.566
+  },
+  "cpa": {
+   "range": 6.59,
+   "brg": 297.221,
+   "tcpa": 48.738,
+   "time": "10:29"
+  },
+  "aspect": -111.095,
+  "bcr": {
+   "range": 6.591,
+   "t": 49.352
+  },
+  "scr": null,
+  "action": {
+   "course": 296.5,
+   "speed": 13.7,
+   "relCourse": 239.193,
+   "relSpeed": 9.631,
+   "cpa": 8.648,
+   "brg": 329.193,
+   "tcpa": 8.774,
+   "time": "09:55",
+   "resume": {
+    "t": 0.1,
+    "time": "09:46"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R015-normal",
+  "rel": {
+   "course": 63.784,
+   "speed": 7.68
+  },
+  "tgt": {
+   "course": 36.587,
+   "speed": 10.391
+  },
+  "cpa": {
+   "range": 1.246,
+   "brg": 153.784,
+   "tcpa": 40.559,
+   "time": "09:57"
+  },
+  "aspect": 13.702,
+  "bcr": null,
+  "scr": {
+   "range": 1.312,
+   "t": 37.356
+  }
+ },
+ {
+  "id": "R016-samevel",
+  "rel": {
+   "course": null,
+   "speed": 0.0
+  },
+  "tgt": {
+   "course": 345.5,
+   "speed": 10.9
+  },
+  "cpa": {
+   "steady": true,
+   "range": 6.281
+  },
+  "aspect": -170.621,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 345.5,
+   "speed": 10.9,
+   "relCourse": null,
+   "relSpeed": 0.0,
+   "cpa": 6.281,
+   "tcpa": null,
+   "time": null,
+   "steady": true,
+   "resume": {
+    "t": 0.1,
+    "time": "21:52"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R017-collision",
+  "rel": {
+   "course": 301.8,
+   "speed": 17.037
+  },
+  "tgt": {
+   "course": 311.261,
+   "speed": 16.053
+  },
+  "cpa": {
+   "range": 0.0,
+   "brg": null,
+   "tcpa": 11.568,
+   "time": "06:19"
+  },
+  "aspect": -9.461,
+  "bcr": {
+   "range": 0.0,
+   "t": 11.568
+  },
+  "scr": null,
+  "action": {
+   "course": 146.0,
+   "speed": 2.9,
+   "relCourse": 313.502,
+   "relSpeed": 18.872,
+   "cpa": 0.493,
+   "brg": 43.502,
+   "tcpa": 7.574,
+   "time": "06:18",
+   "resume": {
+    "t": 12.1,
+    "time": "06:22"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R018-normal",
+  "rel": {
+   "course": 195.824,
+   "speed": 18.81
+  },
+  "tgt": {
+   "course": 193.422,
+   "speed": 16.421
+  },
+  "cpa": {
+   "range": 4.846,
+   "brg": 105.824,
+   "tcpa": 2.858,
+   "time": "20:54"
+  },
+  "aspect": 81.927,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 26.0,
+   "speed": 2.5,
+   "relCourse": 195.075,
+   "relSpeed": 18.869,
+   "cpa": 4.858,
+   "brg": 105.075,
+   "tcpa": 2.648,
+   "time": "20:54",
+   "resume": {
+    "t": 0.1,
+    "time": "20:51"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R019-collision",
+  "rel": {
+   "course": 191.6,
+   "speed": 10.869
+  },
+  "tgt": {
+   "course": 192.458,
+   "speed": 11.651
+  },
+  "cpa": {
+   "range": 0.0,
+   "brg": null,
+   "tcpa": 37.583,
+   "time": "07:47"
+  },
+  "aspect": -0.858,
+  "bcr": {
+   "range": 0.0,
+   "t": 37.583
+  },
+  "scr": null,
+  "action": {
+   "stbdAlt": null,
+   "portAlt": null,
+   "portCourse": null,
+   "course": null,
+   "speed": 0.8,
+   "cpa": null,
+   "tcpa": null,
+   "time": null,
+   "resume": null
+  }
+ },
+ {
+  "id": "R020-normal",
+  "rel": {
+   "course": 152.555,
+   "speed": 17.04
+  },
+  "tgt": {
+   "course": 90.565,
+   "speed": 11.292
+  },
+  "cpa": {
+   "range": 1.038,
+   "brg": 242.555,
+   "tcpa": 5.846,
+   "time": "18:33"
+  },
+  "aspect": 29.968,
+  "bcr": null,
+  "scr": {
+   "range": 1.604,
+   "t": 10.15
+  }
+ },
+ {
+  "id": "R021-normal",
+  "rel": {
+   "course": 175.275,
+   "speed": 13.138
+  },
+  "tgt": {
+   "course": 179.923,
+   "speed": 15.134
+  },
+  "cpa": {
+   "range": 0.858,
+   "brg": 265.275,
+   "tcpa": 7.549,
+   "time": "04:29"
+  },
+  "aspect": -32.085,
+  "bcr": {
+   "range": 1.609,
+   "t": 13.767
+  },
+  "scr": null,
+  "action": {
+   "course": 207.5,
+   "speed": null,
+   "cpa": null,
+   "tcpa": null,
+   "time": null,
+   "resume": null,
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R022-stationary",
+  "rel": {
+   "course": 136.901,
+   "speed": 13.1
+  },
+  "tgt": {
+   "course": 201.883,
+   "speed": 0.0
+  },
+  "cpa": {
+   "range": 1.702,
+   "brg": 46.901,
+   "tcpa": 5.054,
+   "time": "05:16"
+  },
+  "aspect": -7.933,
+  "bcr": null,
+  "scr": {
+   "range": 80758.912,
+   "t": 369889.563
+  },
+  "action": {
+   "stbdAlt": 166,
+   "portAlt": 15,
+   "portCourse": 301.9,
+   "course": 122.9,
+   "speed": 13.1,
+   "relCourse": 302.899,
+   "relSpeed": 13.1,
+   "cpa": 1.76,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 70.1,
+    "time": "06:24"
+   }
+  }
+ },
+ {
+  "id": "R023-normal",
+  "rel": {
+   "course": 79.796,
+   "speed": 12.192
+  },
+  "tgt": {
+   "course": 103.8,
+   "speed": 1.319
+  },
+  "cpa": {
+   "range": 1.616,
+   "brg": 169.796,
+   "tcpa": 3.848,
+   "time": "04:40"
+  },
+  "aspect": -88.186,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R024-normal",
+  "rel": {
+   "course": 0.617,
+   "speed": 21.882
+  },
+  "tgt": {
+   "course": 29.453,
+   "speed": 1.361
+  },
+  "cpa": {
+   "range": 5.78,
+   "brg": 270.617,
+   "tcpa": 12.761,
+   "time": "12:06"
+  },
+  "aspect": 22.324,
+  "bcr": null,
+  "scr": {
+   "range": 182.302,
+   "t": 512.386
+  }
+ },
+ {
+  "id": "R025-normal",
+  "rel": {
+   "course": 293.61,
+   "speed": 12.996
+  },
+  "tgt": {
+   "course": 165.526,
+   "speed": 3.495
+  },
+  "cpa": {
+   "range": 3.546,
+   "brg": 203.61,
+   "tcpa": 40.891,
+   "time": "13:36"
+  },
+  "aspect": 149.9,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 123.9,
+   "speed": 9.0,
+   "relCourse": 283.925,
+   "relSpeed": 6.796,
+   "cpa": 4.985,
+   "brg": 193.925,
+   "tcpa": 71.816,
+   "time": "14:07",
+   "resume": {
+    "t": 0.1,
+    "time": "12:55"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R026-normal",
+  "rel": {
+   "course": 215.565,
+   "speed": 15.199
+  },
+  "tgt": {
+   "course": 176.062,
+   "speed": 4.79
+  },
+  "cpa": {
+   "range": 2.501,
+   "brg": 305.565,
+   "tcpa": 8.436,
+   "time": "02:14"
+  },
+  "aspect": -9.987,
+  "bcr": null,
+  "scr": {
+   "range": 9.769,
+   "t": 45.713
+  },
+  "action": {
+   "course": 50.4,
+   "speed": 11.9,
+   "relCourse": 215.565,
+   "relSpeed": 15.199,
+   "cpa": 2.501,
+   "brg": 305.565,
+   "tcpa": 5.436,
+   "time": "02:14",
+   "resume": {
+    "t": 0.1,
+    "time": "02:09"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R027-normal",
+  "rel": {
+   "course": 87.817,
+   "speed": 12.598
+  },
+  "tgt": {
+   "course": 80.941,
+   "speed": 13.663
+  },
+  "cpa": {
+   "range": 1.256,
+   "brg": 357.817,
+   "tcpa": 29.773,
+   "time": "20:52"
+  },
+  "aspect": 18.24,
+  "bcr": {
+   "range": 1.459,
+   "t": 33.309
+  },
+  "scr": null
+ },
+ {
+  "id": "R028-normal",
+  "rel": {
+   "course": 219.978,
+   "speed": 19.64
+  },
+  "tgt": {
+   "course": 227.812,
+   "speed": 12.665
+  },
+  "cpa": {
+   "range": 1.647,
+   "brg": 309.978,
+   "tcpa": 1.113,
+   "time": "16:24"
+  },
+  "aspect": -85.366,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "stbdAlt": 35,
+   "portAlt": 162,
+   "portCourse": 224.3,
+   "course": 61.3,
+   "speed": 7.3,
+   "relCourse": 232.736,
+   "relSpeed": 19.837,
+   "cpa": 1.687,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 3.3,
+    "time": "16:26"
+   }
+  }
+ },
+ {
+  "id": "R029-normal",
+  "rel": {
+   "course": 192.953,
+   "speed": 17.091
+  },
+  "tgt": {
+   "course": 117.253,
+   "speed": 13.534
+  },
+  "cpa": {
+   "passed": true,
+   "range": 5.35
+  },
+  "aspect": -72.558,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R030-normal",
+  "rel": {
+   "course": 260.943,
+   "speed": 15.156
+  },
+  "tgt": {
+   "course": 4.14,
+   "speed": 13.658
+  },
+  "cpa": {
+   "passed": true,
+   "range": 1.94
+  },
+  "aspect": 112.933,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R031-opening",
+  "rel": {
+   "course": 8.811,
+   "speed": 10.715
+  },
+  "tgt": {
+   "course": 74.902,
+   "speed": 12.889
+  },
+  "cpa": {
+   "passed": true,
+   "range": 6.65
+  },
+  "aspect": 162.455,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R032-normal",
+  "rel": {
+   "course": 136.269,
+   "speed": 15.499
+  },
+  "tgt": {
+   "course": 138.521,
+   "speed": 12.652
+  },
+  "cpa": {
+   "range": 0.014,
+   "brg": 226.269,
+   "tcpa": 6.668,
+   "time": "16:57"
+  },
+  "aspect": -2.709,
+  "bcr": {
+   "range": 0.08,
+   "t": 6.362
+  },
+  "scr": null,
+  "action": {
+   "stbdAlt": null,
+   "portAlt": null,
+   "portCourse": null,
+   "course": null,
+   "speed": 2.9,
+   "cpa": null,
+   "tcpa": null,
+   "time": null,
+   "resume": null
+  }
+ },
+ {
+  "id": "R033-collision",
+  "rel": {
+   "course": 249.1,
+   "speed": 29.003
+  },
+  "tgt": {
+   "course": 252.928,
+   "speed": 23.26
+  },
+  "cpa": {
+   "range": 0.0,
+   "brg": null,
+   "tcpa": 4.827,
+   "time": "11:15"
+  },
+  "aspect": -3.828,
+  "bcr": {
+   "range": 0.0,
+   "t": 4.827
+  },
+  "scr": null,
+  "action": {
+   "course": 92.0,
+   "speed": 18.1,
+   "relCourse": 261.263,
+   "relSpeed": 40.797,
+   "cpa": 0.567,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 2.2,
+    "time": "11:18"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R034-normal",
+  "rel": {
+   "course": 294.051,
+   "speed": 13.462
+  },
+  "tgt": {
+   "course": 171.021,
+   "speed": 0.07
+  },
+  "cpa": {
+   "range": 2.648,
+   "brg": 24.051,
+   "tcpa": 3.492,
+   "time": "05:47"
+  },
+  "aspect": 49.512,
+  "bcr": null,
+  "scr": {
+   "range": 608.215,
+   "t": 2714.342
+  }
+ },
+ {
+  "id": "R035-near000",
+  "rel": {
+   "course": 85.355,
+   "speed": 6.641
+  },
+  "tgt": {
+   "course": 76.285,
+   "speed": 6.22
+  },
+  "cpa": {
+   "passed": true,
+   "range": 10.631
+  },
+  "aspect": 103.2,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R036-samevel",
+  "rel": {
+   "course": null,
+   "speed": 0.0
+  },
+  "tgt": {
+   "course": 232.9,
+   "speed": 6.0
+  },
+  "cpa": {
+   "steady": true,
+   "range": 9.401
+  },
+  "aspect": 26.923,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 232.9,
+   "speed": 5.5,
+   "relCourse": 232.9,
+   "relSpeed": 0.5,
+   "cpa": 4.257,
+   "brg": 142.9,
+   "tcpa": 1005.85,
+   "time": "02:19",
+   "resume": {
+    "t": 0.1,
+    "time": "09:33"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R037-fixed",
+  "rel": {
+   "course": 337.5,
+   "speed": 15.1
+  },
+  "tgt": {
+   "course": 151.344,
+   "speed": 0.0
+  },
+  "cpa": {
+   "range": 2.706,
+   "brg": 67.5,
+   "tcpa": 17.884,
+   "time": "11:52"
+  },
+  "aspect": null,
+  "bcr": null,
+  "scr": null,
+  "ground": {
+   "course": 157.5,
+   "speed": 15.1,
+   "set": 331.344,
+   "drift": 0.0
+  }
+ },
+ {
+  "id": "R038-normal",
+  "rel": {
+   "course": 323.174,
+   "speed": 13.068
+  },
+  "tgt": {
+   "course": 305.051,
+   "speed": 16.696
+  },
+  "cpa": {
+   "range": 0.814,
+   "brg": 233.174,
+   "tcpa": 4.472,
+   "time": "19:14"
+  },
+  "aspect": 57.995,
+  "bcr": {
+   "range": 0.924,
+   "t": 6.485
+  },
+  "scr": null,
+  "action": {
+   "course": 261.5,
+   "speed": 3.4,
+   "relCourse": 314.398,
+   "relSpeed": 14.424,
+   "cpa": 0.953,
+   "brg": 224.398,
+   "tcpa": 3.488,
+   "time": "19:13",
+   "resume": {
+    "t": 10.9,
+    "time": "19:21"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R039-opening",
+  "rel": {
+   "course": 224.163,
+   "speed": 21.454
+  },
+  "tgt": {
+   "course": 212.837,
+   "speed": 8.843
+  },
+  "cpa": {
+   "passed": true,
+   "range": 5.23
+  },
+  "aspect": -163.933,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 134.0,
+   "speed": 12.9,
+   "relCourse": 276.207,
+   "relSpeed": 14.158,
+   "cpa": 6.3,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "04:36"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R040-normal",
+  "rel": {
+   "course": 348.756,
+   "speed": 16.616
+  },
+  "tgt": {
+   "course": 7.054,
+   "speed": 23.354
+  },
+  "cpa": {
+   "range": 0.834,
+   "brg": 78.756,
+   "tcpa": 3.754,
+   "time": "14:24"
+  },
+  "aspect": -57.038,
+  "bcr": {
+   "range": 1.046,
+   "t": 6.036
+  },
+  "scr": null
+ },
+ {
+  "id": "R041-normal",
+  "rel": {
+   "course": 291.648,
+   "speed": 22.626
+  },
+  "tgt": {
+   "course": 308.422,
+   "speed": 14.764
+  },
+  "cpa": {
+   "range": 7.7,
+   "brg": 201.648,
+   "tcpa": 4.517,
+   "time": "07:54"
+  },
+  "aspect": 60.751,
+  "bcr": null,
+  "scr": {
+   "range": 17.169,
+   "t": 45.209
+  },
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 85.0,
+   "course": 85.0,
+   "speed": 9.5,
+   "relCourse": 291.648,
+   "relSpeed": 22.626,
+   "cpa": 7.7,
+   "brg": 201.648,
+   "tcpa": 4.517,
+   "time": "07:54",
+   "resume": {
+    "t": 0.1,
+    "time": "07:49"
+   }
+  }
+ },
+ {
+  "id": "R042-samevel",
+  "rel": {
+   "course": null,
+   "speed": 0.0
+  },
+  "tgt": {
+   "course": 130.9,
+   "speed": 8.7
+  },
+  "cpa": {
+   "steady": true,
+   "range": 3.574
+  },
+  "aspect": 3.916,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R043-opening",
+  "rel": {
+   "course": 232.326,
+   "speed": 5.619
+  },
+  "tgt": {
+   "course": 168.982,
+   "speed": 23.632
+  },
+  "cpa": {
+   "passed": true,
+   "range": 1.234
+  },
+  "aspect": -127.575,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R044-normal",
+  "rel": {
+   "course": 14.368,
+   "speed": 8.593
+  },
+  "tgt": {
+   "course": 185.835,
+   "speed": 2.932
+  },
+  "cpa": {
+   "range": 9.278,
+   "brg": 284.368,
+   "tcpa": 39.066,
+   "time": "01:36"
+  },
+  "aspect": -112.556,
+  "bcr": null,
+  "scr": {
+   "range": 245.288,
+   "t": 1750.642
+  }
+ },
+ {
+  "id": "R045-normal",
+  "rel": {
+   "course": 219.341,
+   "speed": 13.512
+  },
+  "tgt": {
+   "course": 264.109,
+   "speed": 8.325
+  },
+  "cpa": {
+   "passed": true,
+   "range": 10.703
+  },
+  "aspect": 74.141,
+  "bcr": null,
+  "scr": {
+   "range": 15.342,
+   "t": 30.969
+  }
+ },
+ {
+  "id": "R046-normal",
+  "rel": {
+   "course": 108.527,
+   "speed": 35.134
+  },
+  "tgt": {
+   "course": 129.335,
+   "speed": 23.483
+  },
+  "cpa": {
+   "range": 3.969,
+   "brg": 18.527,
+   "tcpa": 3.055,
+   "time": "17:06"
+  },
+  "aspect": 44.928,
+  "bcr": null,
+  "scr": {
+   "range": 7.422,
+   "t": 13.767
+  },
+  "action": {
+   "course": 256.2,
+   "speed": 15.6,
+   "relCourse": 108.527,
+   "relSpeed": 35.134,
+   "cpa": 3.969,
+   "brg": 18.527,
+   "tcpa": 0.055,
+   "time": "17:06",
+   "resume": {
+    "t": 0.1,
+    "time": "17:06"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R047-normal",
+  "rel": {
+   "course": 229.894,
+   "speed": 8.932
+  },
+  "tgt": {
+   "course": 171.846,
+   "speed": 17.672
+  },
+  "cpa": {
+   "passed": true,
+   "range": 10.456
+  },
+  "aspect": -151.954,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 141.5,
+   "course": 141.5,
+   "speed": 15.0,
+   "relCourse": 229.894,
+   "relSpeed": 8.932,
+   "cpa": 10.456,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "22:11"
+   }
+  }
+ },
+ {
+  "id": "R048-normal",
+  "rel": {
+   "course": 119.249,
+   "speed": 28.942
+  },
+  "tgt": {
+   "course": 118.368,
+   "speed": 24.259
+  },
+  "cpa": {
+   "range": 1.604,
+   "brg": 209.249,
+   "tcpa": 4.135,
+   "time": "17:18"
+  },
+  "aspect": -37.922,
+  "bcr": null,
+  "scr": {
+   "range": 20.214,
+   "t": 45.909
+  }
+ },
+ {
+  "id": "R049-normal",
+  "rel": {
+   "course": 43.156,
+   "speed": 19.562
+  },
+  "tgt": {
+   "course": 11.949,
+   "speed": 17.877
+  },
+  "cpa": {
+   "passed": true,
+   "range": 1.872
+  },
+  "aspect": -84.385,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R050-normal",
+  "rel": {
+   "course": 43.119,
+   "speed": 16.09
+  },
+  "tgt": {
+   "course": 138.988,
+   "speed": 12.71
+  },
+  "cpa": {
+   "range": 3.735,
+   "brg": 133.119,
+   "tcpa": 11.251,
+   "time": "14:08"
+  },
+  "aspect": -146.938,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R051-fixed",
+  "rel": {
+   "course": 246.599,
+   "speed": 14.3
+  },
+  "tgt": {
+   "course": 125.152,
+   "speed": 0.0
+  },
+  "cpa": {
+   "range": 5.33,
+   "brg": 336.599,
+   "tcpa": 6.803,
+   "time": "18:34"
+  },
+  "aspect": null,
+  "bcr": null,
+  "scr": {
+   "range": 487956.793,
+   "t": 2047391.637
+  },
+  "ground": {
+   "course": 66.599,
+   "speed": 14.3,
+   "set": 305.152,
+   "drift": 0.0
+  }
+ },
+ {
+  "id": "R052-normal",
+  "rel": {
+   "course": 146.583,
+   "speed": 8.743
+  },
+  "tgt": {
+   "course": 350.887,
+   "speed": 6.697
+  },
+  "cpa": {
+   "passed": true,
+   "range": 4.471
+  },
+  "aspect": -51.363,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 27.0,
+   "speed": 15.1,
+   "relCourse": 229.162,
+   "relSpeed": 10.463,
+   "cpa": 5.078,
+   "brg": 139.162,
+   "tcpa": 7.97,
+   "time": "09:07",
+   "resume": {
+    "t": 0.1,
+    "time": "08:59"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R053-normal",
+  "rel": {
+   "course": 332.049,
+   "speed": 12.218
+  },
+  "tgt": {
+   "course": 333.529,
+   "speed": 11.826
+  },
+  "cpa": {
+   "range": 0.719,
+   "brg": 242.049,
+   "tcpa": 5.843,
+   "time": "22:17"
+  },
+  "aspect": 29.678,
+  "bcr": null,
+  "scr": {
+   "range": 1.178,
+   "t": 10.422
+  },
+  "action": {
+   "course": 116.0,
+   "speed": 0.5,
+   "relCourse": 332.101,
+   "relSpeed": 12.226,
+   "cpa": 0.718,
+   "brg": 242.101,
+   "tcpa": 5.842,
+   "time": "22:17",
+   "resume": {
+    "t": 9.3,
+    "time": "22:20"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R054-opening",
+  "rel": {
+   "course": 324.195,
+   "speed": 10.984
+  },
+  "tgt": {
+   "course": 300.175,
+   "speed": 14.034
+  },
+  "cpa": {
+   "passed": true,
+   "range": 7.883
+  },
+  "aspect": -158.934,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 252.0,
+   "course": 252.0,
+   "speed": 6.0,
+   "relCourse": 324.195,
+   "relSpeed": 10.984,
+   "cpa": 7.883,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "07:41"
+   }
+  }
+ },
+ {
+  "id": "R055-normal",
+  "rel": {
+   "course": 171.41,
+   "speed": 25.751
+  },
+  "tgt": {
+   "course": 124.074,
+   "speed": 19.953
+  },
+  "cpa": {
+   "range": 3.205,
+   "brg": 81.41,
+   "tcpa": 7.869,
+   "time": "03:37"
+  },
+  "aspect": 90.837,
+  "bcr": {
+   "range": 4.172,
+   "t": 1.645
+  },
+  "scr": null
+ },
+ {
+  "id": "R056-normal",
+  "rel": {
+   "course": 188.801,
+   "speed": 3.123
+  },
+  "tgt": {
+   "course": 292.606,
+   "speed": 3.962
+  },
+  "cpa": {
+   "passed": true,
+   "range": 7.809
+  },
+  "aspect": 76.931,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R057-normal",
+  "rel": {
+   "course": 227.632,
+   "speed": 6.346
+  },
+  "tgt": {
+   "course": 123.517,
+   "speed": 12.46
+  },
+  "cpa": {
+   "passed": true,
+   "range": 10.552
+  },
+  "aspect": -65.991,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 74.0,
+   "speed": 23.2,
+   "relCourse": 221.904,
+   "relSpeed": 17.837,
+   "cpa": 11.177,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "00:53"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R058-normal",
+  "rel": {
+   "course": 122.263,
+   "speed": 3.647
+  },
+  "tgt": {
+   "course": 166.242,
+   "speed": 11.365
+  },
+  "cpa": {
+   "range": 8.342,
+   "brg": 32.263,
+   "tcpa": 78.531,
+   "time": "15:31"
+  },
+  "aspect": 16.244,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 209.0,
+   "speed": 9.1,
+   "relCourse": 113.407,
+   "relSpeed": 7.753,
+   "cpa": 8.978,
+   "brg": 23.407,
+   "tcpa": 26.561,
+   "time": "14:39",
+   "resume": {
+    "t": 0.1,
+    "time": "14:12"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R059-normal",
+  "rel": {
+   "course": 289.148,
+   "speed": 18.656
+  },
+  "tgt": {
+   "course": 306.225,
+   "speed": 19.407
+  },
+  "cpa": {
+   "range": 1.568,
+   "brg": 19.148,
+   "tcpa": 0.457,
+   "time": "08:16"
+  },
+  "aspect": -101.895,
+  "bcr": {
+   "range": 1.568,
+   "t": 0.365
+  },
+  "scr": null,
+  "action": {
+   "course": 318.0,
+   "speed": 5.7,
+   "relCourse": 301.417,
+   "relSpeed": 13.876,
+   "cpa": 1.575,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 4.6,
+    "time": "08:21"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R060-normal",
+  "rel": {
+   "course": 9.962,
+   "speed": 5.295
+  },
+  "tgt": {
+   "course": 357.425,
+   "speed": 5.513
+  },
+  "cpa": {
+   "range": 1.7,
+   "brg": 279.962,
+   "tcpa": 4.817,
+   "time": "02:50"
+  },
+  "aspect": 88.496,
+  "bcr": {
+   "range": 1.704,
+   "t": 6.211
+  },
+  "scr": null,
+  "action": {
+   "course": 284.1,
+   "speed": 0.6,
+   "relCourse": 3.566,
+   "relSpeed": 5.372,
+   "cpa": 1.708,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 27.3,
+    "time": "03:15"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R061-normal",
+  "rel": {
+   "course": 339.39,
+   "speed": 29.963
+  },
+  "tgt": {
+   "course": 334.95,
+   "speed": 12.83
+  },
+  "cpa": {
+   "passed": true,
+   "range": 10.64
+  },
+  "aspect": -110.445,
+  "bcr": null,
+  "scr": {
+   "range": 167.169,
+   "t": 325.228
+  }
+ },
+ {
+  "id": "R062-normal",
+  "rel": {
+   "course": 41.686,
+   "speed": 16.693
+  },
+  "tgt": {
+   "course": 66.587,
+   "speed": 14.14
+  },
+  "cpa": {
+   "range": 3.511,
+   "brg": 131.686,
+   "tcpa": 17.983,
+   "time": "08:29"
+  },
+  "aspect": -59.962,
+  "bcr": {
+   "range": 4.187,
+   "t": 9.783
+  },
+  "scr": null,
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 164.7,
+   "course": 164.7,
+   "speed": 7.1,
+   "relCourse": 41.686,
+   "relSpeed": 16.693,
+   "cpa": 3.511,
+   "brg": 131.686,
+   "tcpa": 14.983,
+   "time": "08:29",
+   "resume": {
+    "t": 0.1,
+    "time": "08:14"
+   }
+  }
+ },
+ {
+  "id": "R063-collision",
+  "rel": {
+   "course": 314.0,
+   "speed": 14.203
+  },
+  "tgt": {
+   "course": 293.224,
+   "speed": 20.495
+  },
+  "cpa": {
+   "range": 0.0,
+   "brg": null,
+   "tcpa": 27.924,
+   "time": "09:46"
+  },
+  "aspect": 20.776,
+  "bcr": {
+   "range": 0.0,
+   "t": 27.924
+  },
+  "scr": null,
+  "action": {
+   "course": 258.3,
+   "speed": 7.4,
+   "relCourse": 309.589,
+   "relSpeed": 15.036,
+   "cpa": 0.399,
+   "brg": 219.589,
+   "tcpa": 20.647,
+   "time": "09:45",
+   "resume": {
+    "t": 32.6,
+    "time": "09:57"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R064-normal",
+  "rel": {
+   "course": 156.193,
+   "speed": 6.708
+  },
+  "tgt": {
+   "course": 190.256,
+   "speed": 21.521
+  },
+  "cpa": {
+   "passed": true,
+   "range": 8.756
+  },
+  "aspect": 153.253,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 213.0,
+   "speed": 17.1,
+   "relCourse": 141.275,
+   "relSpeed": 8.763,
+   "cpa": 9.422,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "12:32"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R065-normal",
+  "rel": {
+   "course": 95.527,
+   "speed": 8.795
+  },
+  "tgt": {
+   "course": 62.78,
+   "speed": 10.157
+  },
+  "cpa": {
+   "range": 1.018,
+   "brg": 5.527,
+   "tcpa": 20.795,
+   "time": "16:30"
+  },
+  "aspect": 51.217,
+  "bcr": {
+   "range": 1.019,
+   "t": 20.476
+  },
+  "scr": null
+ },
+ {
+  "id": "R066-normal",
+  "rel": {
+   "course": 165.296,
+   "speed": 5.192
+  },
+  "tgt": {
+   "course": 208.88,
+   "speed": 11.36
+  },
+  "cpa": {
+   "range": 6.411,
+   "brg": 75.296,
+   "tcpa": 21.925,
+   "time": "06:09"
+  },
+  "aspect": 29.931,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R067-normal",
+  "rel": {
+   "course": 356.208,
+   "speed": 23.382
+  },
+  "tgt": {
+   "course": 9.25,
+   "speed": 16.502
+  },
+  "cpa": {
+   "range": 0.012,
+   "brg": 266.208,
+   "tcpa": 7.431,
+   "time": "09:46"
+  },
+  "aspect": -12.797,
+  "bcr": null,
+  "scr": {
+   "range": 0.027,
+   "t": 7.493
+  },
+  "action": {
+   "course": 149.2,
+   "speed": 5.1,
+   "relCourse": 0.114,
+   "relSpeed": 20.668,
+   "cpa": 0.026,
+   "brg": 90.114,
+   "tcpa": 1.617,
+   "time": "09:47",
+   "resume": {
+    "t": 10.4,
+    "time": "09:55"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R068-normal",
+  "rel": {
+   "course": 31.382,
+   "speed": 38.112
+  },
+  "tgt": {
+   "course": 61.263,
+   "speed": 17.092
+  },
+  "cpa": {
+   "range": 2.62,
+   "brg": 301.382,
+   "tcpa": 3.01,
+   "time": "08:02"
+  },
+  "aspect": 24.006,
+  "bcr": null,
+  "scr": {
+   "range": 7.632,
+   "t": 14.294
+  }
+ },
+ {
+  "id": "R069-normal",
+  "rel": {
+   "course": 242.549,
+   "speed": 12.409
+  },
+  "tgt": {
+   "course": 155.036,
+   "speed": 0.79
+  },
+  "cpa": {
+   "range": 2.306,
+   "brg": 332.549,
+   "tcpa": 13.524,
+   "time": "00:53"
+  },
+  "aspect": 48.01,
+  "bcr": null,
+  "scr": {
+   "range": 36.218,
+   "t": 188.287
+  },
+  "action": {
+   "stbdAlt": 5,
+   "portAlt": 87,
+   "portCourse": 339.2,
+   "course": 71.2,
+   "speed": 12.4,
+   "relCourse": 247.55,
+   "relSpeed": 12.34,
+   "cpa": 2.541,
+   "brg": 337.55,
+   "tcpa": 12.571,
+   "time": "00:52",
+   "resume": {
+    "t": 10.9,
+    "time": "00:50"
+   }
+  }
+ },
+ {
+  "id": "R070-normal",
+  "rel": {
+   "course": 38.99,
+   "speed": 20.449
+  },
+  "tgt": {
+   "course": 10.914,
+   "speed": 24.338
+  },
+  "cpa": {
+   "range": 10.406,
+   "brg": 128.99,
+   "tcpa": 1.873,
+   "time": "12:49"
+  },
+  "aspect": -58.413,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R071-normal",
+  "rel": {
+   "course": 95.964,
+   "speed": 33.374
+  },
+  "tgt": {
+   "course": 84.239,
+   "speed": 17.417
+  },
+  "cpa": {
+   "passed": true,
+   "range": 5.535
+  },
+  "aspect": -138.337,
+  "bcr": null,
+  "scr": {
+   "range": 13.035,
+   "t": 14.278
+  },
+  "action": {
+   "course": 288.2,
+   "speed": 16.7,
+   "relCourse": 95.964,
+   "relSpeed": 33.374,
+   "cpa": 8.59,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "10:04"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R072-fixed",
+  "rel": {
+   "course": 67.298,
+   "speed": 3.2
+  },
+  "tgt": {
+   "course": 21.349,
+   "speed": 0.0
+  },
+  "cpa": {
+   "passed": true,
+   "range": 3.784
+  },
+  "aspect": null,
+  "bcr": null,
+  "scr": {
+   "range": 20646.109,
+   "t": 387030.052
+  },
+  "ground": {
+   "course": 247.298,
+   "speed": 3.2,
+   "set": 201.349,
+   "drift": 0.0
+  }
+ },
+ {
+  "id": "R073-near000",
+  "rel": {
+   "course": 282.72,
+   "speed": 24.551
+  },
+  "tgt": {
+   "course": 298.808,
+   "speed": 12.748
+  },
+  "cpa": {
+   "passed": true,
+   "range": 4.723
+  },
+  "aspect": -119.305,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 86.7,
+   "course": 86.7,
+   "speed": 12.8,
+   "relCourse": 282.72,
+   "relSpeed": 24.551,
+   "cpa": 4.723,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "07:55"
+   }
+  }
+ },
+ {
+  "id": "R074-stationary",
+  "rel": {
+   "course": 319.196,
+   "speed": 2.4
+  },
+  "tgt": {
+   "course": 234.749,
+   "speed": 0.0
+  },
+  "cpa": {
+   "passed": true,
+   "range": 3.963
+  },
+  "aspect": -167.591,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 139.2,
+   "course": 139.2,
+   "speed": 2.4,
+   "relCourse": 319.196,
+   "relSpeed": 2.4,
+   "cpa": 3.963,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "04:55"
+   }
+  }
+ },
+ {
+  "id": "R075-normal",
+  "rel": {
+   "course": 174.436,
+   "speed": 21.244
+  },
+  "tgt": {
+   "course": 175.253,
+   "speed": 21.64
+  },
+  "cpa": {
+   "passed": true,
+   "range": 7.499
+  },
+  "aspect": -113.958,
+  "bcr": {
+   "range": 11.184,
+   "t": 16.547
+  },
+  "scr": null
+ },
+ {
+  "id": "R076-stationary",
+  "rel": {
+   "course": 150.105,
+   "speed": 5.8
+  },
+  "tgt": {
+   "course": 253.878,
+   "speed": 0.0
+  },
+  "cpa": {
+   "range": 1.349,
+   "brg": 60.105,
+   "tcpa": 98.324,
+   "time": "00:39"
+  },
+  "aspect": -95.694,
+  "bcr": null,
+  "scr": {
+   "range": 17011.231,
+   "t": 176079.993
+  },
+  "action": {
+   "course": 330.1,
+   "speed": -0.0,
+   "relCourse": 253.878,
+   "relSpeed": 0.0,
+   "cpa": 9.6,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": null,
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R077-normal",
+  "rel": {
+   "course": 189.095,
+   "speed": 3.148
+  },
+  "tgt": {
+   "course": 126.405,
+   "speed": 9.999
+  },
+  "cpa": {
+   "range": 2.053,
+   "brg": 99.095,
+   "tcpa": 122.832,
+   "time": "09:50"
+  },
+  "aspect": 80.365,
+  "bcr": {
+   "range": 2.08,
+   "t": 129.175
+  },
+  "scr": null,
+  "action": {
+   "course": 91.0,
+   "speed": 18.1,
+   "relCourse": 240.794,
+   "relSpeed": 11.514,
+   "cpa": 3.784,
+   "brg": 330.794,
+   "tcpa": 29.211,
+   "time": "08:16",
+   "resume": {
+    "t": 33.6,
+    "time": "08:21"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R078-samevel",
+  "rel": {
+   "course": null,
+   "speed": 0.0
+  },
+  "tgt": {
+   "course": 321.1,
+   "speed": 0.8
+  },
+  "cpa": {
+   "steady": true,
+   "range": 5.697
+  },
+  "aspect": -110.493,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R079-normal",
+  "rel": {
+   "course": 258.552,
+   "speed": 5.017
+  },
+  "tgt": {
+   "course": 158.681,
+   "speed": 6.178
+  },
+  "cpa": {
+   "range": 5.54,
+   "brg": 168.552,
+   "tcpa": 10.494,
+   "time": "09:21"
+  },
+  "aspect": -179.128,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 123.6,
+   "course": 123.6,
+   "speed": 8.6,
+   "relCourse": 258.552,
+   "relSpeed": 5.017,
+   "cpa": 5.54,
+   "brg": 168.552,
+   "tcpa": 10.494,
+   "time": "09:21",
+   "resume": {
+    "t": 0.1,
+    "time": "09:11"
+   }
+  }
+ },
+ {
+  "id": "R080-normal",
+  "rel": {
+   "course": 260.442,
+   "speed": 21.604
+  },
+  "tgt": {
+   "course": 331.781,
+   "speed": 15.509
+  },
+  "cpa": {
+   "range": 4.353,
+   "brg": 170.442,
+   "tcpa": 4.413,
+   "time": "01:41"
+  },
+  "aspect": -1.39,
+  "bcr": null,
+  "scr": {
+   "range": 6.577,
+   "t": 18.106
+  },
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 39.0,
+   "course": 39.0,
+   "speed": 22.2,
+   "relCourse": 260.442,
+   "relSpeed": 21.604,
+   "cpa": 4.353,
+   "brg": 170.442,
+   "tcpa": 4.413,
+   "time": "01:41",
+   "resume": {
+    "t": 0.1,
+    "time": "01:37"
+   }
+  }
+ },
+ {
+  "id": "R081-fixed",
+  "rel": {
+   "course": 285.502,
+   "speed": 1.3
+  },
+  "tgt": {
+   "course": 95.375,
+   "speed": 0.0
+  },
+  "cpa": {
+   "passed": true,
+   "range": 7.442
+  },
+  "aspect": null,
+  "bcr": null,
+  "scr": {
+   "range": 106783.727,
+   "t": 4929239.367
+  },
+  "ground": {
+   "course": 105.502,
+   "speed": 1.3,
+   "set": 275.375,
+   "drift": 0.0
+  },
+  "action": {
+   "course": 121.0,
+   "speed": 22.3,
+   "relCourse": 301.0,
+   "relSpeed": 22.3,
+   "cpa": 7.496,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "06:33"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R082-normal",
+  "rel": {
+   "course": 301.341,
+   "speed": 17.377
+  },
+  "tgt": {
+   "course": 194.329,
+   "speed": 10.234
+  },
+  "cpa": {
+   "passed": true,
+   "range": 2.129
+  },
+  "aspect": -133.296,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R083-normal",
+  "rel": {
+   "course": 157.161,
+   "speed": 22.418
+  },
+  "tgt": {
+   "course": 215.683,
+   "speed": 1.231
+  },
+  "cpa": {
+   "range": 7.413,
+   "brg": 67.161,
+   "tcpa": 12.453,
+   "time": "06:08"
+  },
+  "aspect": -0.636,
+  "bcr": null,
+  "scr": {
+   "range": 153.877,
+   "t": 423.819
+  },
+  "action": {
+   "course": 334.4,
+   "speed": 17.7,
+   "relCourse": 157.779,
+   "relSpeed": 18.324,
+   "cpa": 7.375,
+   "brg": 67.779,
+   "tcpa": 11.827,
+   "time": "06:11",
+   "resume": {
+    "t": 0.1,
+    "time": "05:59"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R084-normal",
+  "rel": {
+   "course": 197.663,
+   "speed": 15.341
+  },
+  "tgt": {
+   "course": 47.557,
+   "speed": 9.345
+  },
+  "cpa": {
+   "range": 4.7,
+   "brg": 107.663,
+   "tcpa": 22.715,
+   "time": "15:37"
+  },
+  "aspect": -170.909,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R085-fixed",
+  "rel": {
+   "course": 340.101,
+   "speed": 17.0
+  },
+  "tgt": {
+   "course": 52.845,
+   "speed": 0.0
+  },
+  "cpa": {
+   "range": 2.271,
+   "brg": 250.101,
+   "tcpa": 12.366,
+   "time": "03:51"
+  },
+  "aspect": null,
+  "bcr": null,
+  "scr": {
+   "range": 109182.183,
+   "t": 385358.756
+  },
+  "ground": {
+   "course": 160.101,
+   "speed": 17.0,
+   "set": 232.845,
+   "drift": 0.0
+  },
+  "action": {
+   "stbdAlt": 79,
+   "portAlt": 13,
+   "portCourse": 147.1,
+   "course": 239.1,
+   "speed": 17.0,
+   "relCourse": 59.1,
+   "relSpeed": 17.0,
+   "cpa": 3.006,
+   "brg": 149.1,
+   "tcpa": 10.229,
+   "time": "03:49",
+   "resume": {
+    "t": 19.0,
+    "time": "03:58"
+   }
+  }
+ },
+ {
+  "id": "R086-normal",
+  "rel": {
+   "course": 174.227,
+   "speed": 24.686
+  },
+  "tgt": {
+   "course": 206.914,
+   "speed": 9.909
+  },
+  "cpa": {
+   "range": 8.983,
+   "brg": 264.227,
+   "tcpa": 2.99,
+   "time": "10:59"
+  },
+  "aspect": -114.89,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 336.1,
+   "course": 336.1,
+   "speed": 17.2,
+   "relCourse": 174.227,
+   "relSpeed": 24.686,
+   "cpa": 9.068,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "11:02"
+   }
+  }
+ },
+ {
+  "id": "R087-normal",
+  "rel": {
+   "course": 163.494,
+   "speed": 29.559
+  },
+  "tgt": {
+   "course": 112.894,
+   "speed": 14.696
+  },
+  "cpa": {
+   "range": 6.299,
+   "brg": 73.494,
+   "tcpa": 0.813,
+   "time": "04:05"
+  },
+  "aspect": 136.962,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R088-normal",
+  "rel": {
+   "course": 255.988,
+   "speed": 19.071
+  },
+  "tgt": {
+   "course": 251.697,
+   "speed": 16.965
+  },
+  "cpa": {
+   "range": 7.852,
+   "brg": 165.988,
+   "tcpa": 8.077,
+   "time": "20:51"
+  },
+  "aspect": 76.186,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R089-normal",
+  "rel": {
+   "course": 249.813,
+   "speed": 12.468
+  },
+  "tgt": {
+   "course": 154.405,
+   "speed": 3.317
+  },
+  "cpa": {
+   "range": 0.138,
+   "brg": 159.813,
+   "tcpa": 15.16,
+   "time": "00:41"
+  },
+  "aspect": 97.919,
+  "bcr": {
+   "range": 0.552,
+   "t": 12.586
+  },
+  "scr": null,
+  "action": {
+   "course": 55.0,
+   "speed": 7.1,
+   "relCourse": 211.819,
+   "relSpeed": 8.313,
+   "cpa": 1.664,
+   "brg": 121.819,
+   "tcpa": 13.758,
+   "time": "00:43",
+   "resume": {
+    "t": 21.9,
+    "time": "00:51"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R090-normal",
+  "rel": {
+   "course": 6.878,
+   "speed": 21.28
+  },
+  "tgt": {
+   "course": 325.848,
+   "speed": 1.461
+  },
+  "cpa": {
+   "range": 3.793,
+   "brg": 276.878,
+   "tcpa": 4.526,
+   "time": "17:14"
+  },
+  "aspect": 108.095,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 133.0,
+   "speed": 16.6,
+   "relCourse": 314.033,
+   "relSpeed": 18.028,
+   "cpa": 4.119,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "17:09"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R091-normal",
+  "rel": {
+   "course": 66.044,
+   "speed": 13.931
+  },
+  "tgt": {
+   "course": 104.83,
+   "speed": 23.91
+  },
+  "cpa": {
+   "passed": true,
+   "range": 1.797
+  },
+  "aspect": 119.515,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 138.6,
+   "speed": 15.7,
+   "relCourse": 66.044,
+   "relSpeed": 13.931,
+   "cpa": 2.458,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "04:22"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R092-normal",
+  "rel": {
+   "course": 266.647,
+   "speed": 23.57
+  },
+  "tgt": {
+   "course": 225.756,
+   "speed": 9.56
+  },
+  "cpa": {
+   "range": 0.622,
+   "brg": 356.647,
+   "tcpa": 6.603,
+   "time": "14:37"
+  },
+  "aspect": 27.414,
+  "bcr": null,
+  "scr": {
+   "range": 1.738,
+   "t": 10.735
+  }
+ },
+ {
+  "id": "R093-normal",
+  "rel": {
+   "course": 186.261,
+   "speed": 27.227
+  },
+  "tgt": {
+   "course": 147.245,
+   "speed": 22.581
+  },
+  "cpa": {
+   "range": 1.762,
+   "brg": 96.261,
+   "tcpa": 6.265,
+   "time": "10:16"
+  },
+  "aspect": 70.813,
+  "bcr": {
+   "range": 2.132,
+   "t": 3.619
+  },
+  "scr": null,
+  "action": {
+   "course": 54.0,
+   "speed": 5.3,
+   "relCourse": 160.267,
+   "relSpeed": 23.484,
+   "cpa": 2.83,
+   "brg": 70.267,
+   "tcpa": 4.555,
+   "time": "10:15",
+   "resume": {
+    "t": 1.4,
+    "time": "10:11"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R094-normal",
+  "rel": {
+   "course": 272.54,
+   "speed": 18.378
+  },
+  "tgt": {
+   "course": 292.266,
+   "speed": 7.735
+  },
+  "cpa": {
+   "range": 3.408,
+   "brg": 182.54,
+   "tcpa": 22.861,
+   "time": "10:25"
+  },
+  "aspect": 6.226,
+  "bcr": null,
+  "scr": {
+   "range": 14.881,
+   "t": 70.151
+  }
+ },
+ {
+  "id": "R095-normal",
+  "rel": {
+   "course": 240.927,
+   "speed": 12.953
+  },
+  "tgt": {
+   "course": 255.538,
+   "speed": 16.707
+  },
+  "cpa": {
+   "range": 4.721,
+   "brg": 330.927,
+   "tcpa": 7.041,
+   "time": "22:06"
+  },
+  "aspect": -86.762,
+  "bcr": {
+   "range": 5.936,
+   "t": 23.716
+  },
+  "scr": null
+ },
+ {
+  "id": "R096-normal",
+  "rel": {
+   "course": 203.708,
+   "speed": 15.818
+  },
+  "tgt": {
+   "course": 224.729,
+   "speed": 24.072
+  },
+  "cpa": {
+   "range": 0.553,
+   "brg": 113.708,
+   "tcpa": 13.838,
+   "time": "13:59"
+  },
+  "aspect": -12.402,
+  "bcr": null,
+  "scr": {
+   "range": 0.698,
+   "t": 12.223
+  }
+ },
+ {
+  "id": "R097-normal",
+  "rel": {
+   "course": 126.511,
+   "speed": 17.527
+  },
+  "tgt": {
+   "course": 262.848,
+   "speed": 5.092
+  },
+  "cpa": {
+   "range": 5.149,
+   "brg": 216.511,
+   "tcpa": 2.583,
+   "time": "17:10"
+  },
+  "aspect": 141.998,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R098-normal",
+  "rel": {
+   "course": 206.389,
+   "speed": 12.959
+  },
+  "tgt": {
+   "course": 216.159,
+   "speed": 12.097
+  },
+  "cpa": {
+   "passed": true,
+   "range": 2.771
+  },
+  "aspect": -162.98,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R099-normal",
+  "rel": {
+   "course": 281.478,
+   "speed": 34.837
+  },
+  "tgt": {
+   "course": 282.786,
+   "speed": 15.744
+  },
+  "cpa": {
+   "range": 4.301,
+   "brg": 11.478,
+   "tcpa": 6.554,
+   "time": "15:10"
+  },
+  "aspect": -49.806,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R100-normal",
+  "rel": {
+   "course": 298.417,
+   "speed": 27.727
+  },
+  "tgt": {
+   "course": 305.598,
+   "speed": 23.633
+  },
+  "cpa": {
+   "range": 2.562,
+   "brg": 28.417,
+   "tcpa": 12.695,
+   "time": "19:00"
+  },
+  "aspect": -30.776,
+  "bcr": {
+   "range": 4.511,
+   "t": 4.662
+  },
+  "scr": null,
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 83.8,
+   "course": 83.8,
+   "speed": 5.2,
+   "relCourse": 298.417,
+   "relSpeed": 27.727,
+   "cpa": 2.562,
+   "brg": 28.417,
+   "tcpa": 6.695,
+   "time": "19:00",
+   "resume": {
+    "t": 0.1,
+    "time": "18:53"
+   }
+  }
+ },
+ {
+  "id": "R101-normal",
+  "rel": {
+   "course": 145.179,
+   "speed": 12.029
+  },
+  "tgt": {
+   "course": 97.473,
+   "speed": 8.27
+  },
+  "cpa": {
+   "range": 8.495,
+   "brg": 55.179,
+   "tcpa": 17.025,
+   "time": "12:53"
+  },
+  "aspect": 115.816,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R102-collision",
+  "rel": {
+   "course": 330.3,
+   "speed": 28.099
+  },
+  "tgt": {
+   "course": 300.928,
+   "speed": 22.025
+  },
+  "cpa": {
+   "range": 0.0,
+   "brg": null,
+   "tcpa": 13.078,
+   "time": "21:07"
+  },
+  "aspect": 29.372,
+  "bcr": {
+   "range": 0.0,
+   "t": 13.078
+  },
+  "scr": null,
+  "action": {
+   "course": 200.8,
+   "speed": 9.6,
+   "relCourse": 322.657,
+   "relSpeed": 25.527,
+   "cpa": 0.815,
+   "brg": 232.657,
+   "tcpa": 14.268,
+   "time": "21:08",
+   "resume": {
+    "t": 18.6,
+    "time": "21:13"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R103-normal",
+  "rel": {
+   "course": 342.18,
+   "speed": 11.525
+  },
+  "tgt": {
+   "course": 349.577,
+   "speed": 9.672
+  },
+  "cpa": {
+   "range": 3.882,
+   "brg": 72.18,
+   "tcpa": 41.776,
+   "time": "02:47"
+  },
+  "aspect": -33.212,
+  "bcr": {
+   "range": 7.17,
+   "t": 10.394
+  },
+  "scr": null
+ },
+ {
+  "id": "R104-normal",
+  "rel": {
+   "course": 109.491,
+   "speed": 4.708
+  },
+  "tgt": {
+   "course": 87.486,
+   "speed": 21.776
+  },
+  "cpa": {
+   "range": 3.308,
+   "brg": 199.491,
+   "tcpa": 30.307,
+   "time": "14:28"
+  },
+  "aspect": -32.286,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 29.0,
+   "speed": 17.5,
+   "relCourse": 137.238,
+   "relSpeed": 19.546,
+   "cpa": 3.816,
+   "brg": 227.238,
+   "tcpa": 0.453,
+   "time": "14:04",
+   "resume": {
+    "t": 0.1,
+    "time": "14:04"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R105-collision",
+  "rel": {
+   "course": 313.2,
+   "speed": 21.271
+  },
+  "tgt": {
+   "course": 340.33,
+   "speed": 9.54
+  },
+  "cpa": {
+   "range": 0.0,
+   "brg": null,
+   "tcpa": 3.36,
+   "time": "14:59"
+  },
+  "aspect": -27.13,
+  "bcr": {
+   "range": 0.0,
+   "t": 3.36
+  },
+  "scr": null,
+  "action": {
+   "course": 114.4,
+   "speed": 3.8,
+   "relCourse": 327.699,
+   "relSpeed": 12.486,
+   "cpa": 0.298,
+   "brg": 57.699,
+   "tcpa": 5.542,
+   "time": "15:02",
+   "resume": {
+    "t": 10.2,
+    "time": "15:06"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R106-normal",
+  "rel": {
+   "course": 51.206,
+   "speed": 37.04
+  },
+  "tgt": {
+   "course": 62.87,
+   "speed": 21.685
+  },
+  "cpa": {
+   "range": 3.759,
+   "brg": 141.206,
+   "tcpa": 1.185,
+   "time": "23:41"
+  },
+  "aspect": -90.655,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R107-fixed",
+  "rel": {
+   "course": 297.601,
+   "speed": 15.3
+  },
+  "tgt": {
+   "course": 62.97,
+   "speed": 0.0
+  },
+  "cpa": {
+   "passed": true,
+   "range": 3.041
+  },
+  "aspect": null,
+  "bcr": null,
+  "scr": {
+   "range": 167599.984,
+   "t": 657250.304
+  },
+  "ground": {
+   "course": 117.601,
+   "speed": 15.3,
+   "set": 242.97,
+   "drift": 0.0
+  }
+ },
+ {
+  "id": "R108-normal",
+  "rel": {
+   "course": 352.827,
+   "speed": 26.907
+  },
+  "tgt": {
+   "course": 25.19,
+   "speed": 5.311
+  },
+  "cpa": {
+   "passed": true,
+   "range": 3.978
+  },
+  "aspect": 149.36,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R109-fixed",
+  "rel": {
+   "course": 194.0,
+   "speed": 16.3
+  },
+  "tgt": {
+   "course": 213.104,
+   "speed": 0.0
+  },
+  "cpa": {
+   "range": 4.647,
+   "brg": 284.0,
+   "tcpa": 4.698,
+   "time": "11:18"
+  },
+  "aspect": null,
+  "bcr": null,
+  "scr": null,
+  "ground": {
+   "course": 14.0,
+   "speed": 16.3,
+   "set": 33.104,
+   "drift": 0.0
+  }
+ },
+ {
+  "id": "R110-normal",
+  "rel": {
+   "course": 31.745,
+   "speed": 8.94
+  },
+  "tgt": {
+   "course": 12.779,
+   "speed": 22.763
+  },
+  "cpa": {
+   "range": 3.874,
+   "brg": 301.745,
+   "tcpa": 16.2,
+   "time": "02:53"
+  },
+  "aspect": 77.039,
+  "bcr": {
+   "range": 7.645,
+   "t": 60.438
+  },
+  "scr": null,
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 1.3,
+   "course": 1.3,
+   "speed": 14.6,
+   "relCourse": 31.745,
+   "relSpeed": 8.94,
+   "cpa": 3.874,
+   "brg": 301.745,
+   "tcpa": 16.2,
+   "time": "02:53",
+   "resume": {
+    "t": 0.1,
+    "time": "02:37"
+   }
+  }
+ },
+ {
+  "id": "R111-normal",
+  "rel": {
+   "course": 19.081,
+   "speed": 22.568
+  },
+  "tgt": {
+   "course": 32.007,
+   "speed": 14.788
+  },
+  "cpa": {
+   "range": 0.919,
+   "brg": 289.081,
+   "tcpa": 8.601,
+   "time": "20:22"
+  },
+  "aspect": 2.926,
+  "bcr": null,
+  "scr": {
+   "range": 2.444,
+   "t": 14.622
+  },
+  "action": {
+   "stbdAlt": null,
+   "portAlt": 67,
+   "portCourse": 110.0,
+   "course": null,
+   "speed": 8.8,
+   "cpa": null,
+   "tcpa": null,
+   "time": null,
+   "resume": null
+  }
+ },
+ {
+  "id": "R112-normal",
+  "rel": {
+   "course": 183.644,
+   "speed": 6.306
+  },
+  "tgt": {
+   "course": 97.263,
+   "speed": 0.688
+  },
+  "cpa": {
+   "range": 3.433,
+   "brg": 93.644,
+   "tcpa": 14.574,
+   "time": "13:30"
+  },
+  "aspect": 152.339,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 351.0,
+   "speed": 6.3,
+   "relCourse": 165.192,
+   "relSpeed": 6.526,
+   "cpa": 3.55,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "13:21"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R113-normal",
+  "rel": {
+   "course": 9.153,
+   "speed": 11.25
+  },
+  "tgt": {
+   "course": 67.438,
+   "speed": 8.025
+  },
+  "cpa": {
+   "range": 0.96,
+   "brg": 99.153,
+   "tcpa": 27.484,
+   "time": "18:04"
+  },
+  "aspect": -68.837,
+  "bcr": {
+   "range": 1.378,
+   "t": 22.211
+  },
+  "scr": null,
+  "action": {
+   "stbdAlt": 10,
+   "portAlt": 38,
+   "portCourse": 107.0,
+   "course": 155.0,
+   "speed": 9.8,
+   "relCourse": 15.286,
+   "relSpeed": 12.399,
+   "cpa": 1.505,
+   "brg": 105.286,
+   "tcpa": 24.297,
+   "time": "18:01",
+   "resume": {
+    "t": 24.5,
+    "time": "18:02"
+   }
+  }
+ },
+ {
+  "id": "R114-opening",
+  "rel": {
+   "course": 222.164,
+   "speed": 17.12
+  },
+  "tgt": {
+   "course": 312.224,
+   "speed": 13.957
+  },
+  "cpa": {
+   "passed": true,
+   "range": 1.844
+  },
+  "aspect": 77.076,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 13.0,
+   "speed": 12.3,
+   "relCourse": 258.754,
+   "relSpeed": 13.359,
+   "cpa": 2.686,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 2.0,
+    "time": "11:57"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R115-near000",
+  "rel": {
+   "course": 222.339,
+   "speed": 11.26
+  },
+  "tgt": {
+   "course": 288.458,
+   "speed": 20.883
+  },
+  "cpa": {
+   "range": 4.509,
+   "brg": 312.339,
+   "tcpa": 26.315,
+   "time": "10:27"
+  },
+  "aspect": -108.515,
+  "bcr": {
+   "range": 4.558,
+   "t": 22.784
+  },
+  "scr": null,
+  "action": {
+   "course": 320.7,
+   "speed": 19.3,
+   "relCourse": 222.339,
+   "relSpeed": 11.26,
+   "cpa": 4.509,
+   "brg": 312.339,
+   "tcpa": 23.315,
+   "time": "10:27",
+   "resume": {
+    "t": 0.1,
+    "time": "10:04"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R116-normal",
+  "rel": {
+   "course": 250.624,
+   "speed": 25.171
+  },
+  "tgt": {
+   "course": 169.636,
+   "speed": 2.537
+  },
+  "cpa": {
+   "passed": true,
+   "range": 4.204
+  },
+  "aspect": -173.611,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 127.0,
+   "speed": 11.3,
+   "relCourse": 296.675,
+   "relSpeed": 9.589,
+   "cpa": 4.523,
+   "brg": 206.675,
+   "tcpa": 7.946,
+   "time": "21:18",
+   "resume": {
+    "t": 0.1,
+    "time": "21:10"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R117-normal",
+  "rel": {
+   "course": 247.17,
+   "speed": 26.5
+  },
+  "tgt": {
+   "course": 225.303,
+   "speed": 19.301
+  },
+  "cpa": {
+   "range": 4.795,
+   "brg": 337.17,
+   "tcpa": 2.786,
+   "time": "09:22"
+  },
+  "aspect": -53.74,
+  "bcr": null,
+  "scr": {
+   "range": 7.471,
+   "t": 15.757
+  }
+ },
+ {
+  "id": "R118-normal",
+  "rel": {
+   "course": 167.763,
+   "speed": 5.226
+  },
+  "tgt": {
+   "course": 357.648,
+   "speed": 8.923
+  },
+  "cpa": {
+   "range": 0.203,
+   "brg": 77.763,
+   "tcpa": 53.628,
+   "time": "20:25"
+  },
+  "aspect": 172.6,
+  "bcr": {
+   "range": 1.866,
+   "t": 32.331
+  },
+  "scr": null,
+  "action": {
+   "course": 354.0,
+   "speed": 2.7,
+   "relCourse": 359.227,
+   "relSpeed": 6.231,
+   "cpa": 4.414,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 38.7,
+    "time": "20:13"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R119-normal",
+  "rel": {
+   "course": 163.474,
+   "speed": 8.271
+  },
+  "tgt": {
+   "course": 147.765,
+   "speed": 5.538
+  },
+  "cpa": {
+   "passed": true,
+   "range": 4.506
+  },
+  "aspect": -90.262,
+  "bcr": null,
+  "scr": {
+   "range": 9.535,
+   "t": 52.621
+  }
+ },
+ {
+  "id": "R120-normal",
+  "rel": {
+   "course": 302.56,
+   "speed": 20.352
+  },
+  "tgt": {
+   "course": 319.418,
+   "speed": 13.086
+  },
+  "cpa": {
+   "passed": true,
+   "range": 9.398
+  },
+  "aspect": -151.084,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R121-normal",
+  "rel": {
+   "course": 183.302,
+   "speed": 3.68
+  },
+  "tgt": {
+   "course": 217.305,
+   "speed": 2.273
+  },
+  "cpa": {
+   "range": 0.976,
+   "brg": 93.302,
+   "tcpa": 140.313,
+   "time": "13:15"
+  },
+  "aspect": -27.532,
+  "bcr": null,
+  "scr": {
+   "range": 1.689,
+   "t": 162.789
+  },
+  "action": {
+   "stbdAlt": 41,
+   "portAlt": 15,
+   "portCourse": 313.0,
+   "course": 9.0,
+   "speed": 2.2,
+   "relCourse": 203.389,
+   "relSpeed": 4.338,
+   "cpa": 2.039,
+   "brg": 293.389,
+   "tcpa": 116.439,
+   "time": "12:51",
+   "resume": {
+    "t": 119.9,
+    "time": "12:55"
+   }
+  }
+ },
+ {
+  "id": "R122-normal",
+  "rel": {
+   "course": 350.235,
+   "speed": 9.654
+  },
+  "tgt": {
+   "course": 359.662,
+   "speed": 8.663
+  },
+  "cpa": {
+   "range": 0.409,
+   "brg": 80.235,
+   "tcpa": 21.686,
+   "time": "17:30"
+  },
+  "aspect": -16.107,
+  "bcr": {
+   "range": 0.518,
+   "t": 19.705
+  },
+  "scr": null,
+  "action": {
+   "stbdAlt": null,
+   "portAlt": null,
+   "portCourse": null,
+   "course": null,
+   "speed": 1.8,
+   "cpa": null,
+   "tcpa": null,
+   "time": null,
+   "resume": null
+  }
+ },
+ {
+  "id": "R123-samevel",
+  "rel": {
+   "course": null,
+   "speed": 0.0
+  },
+  "tgt": {
+   "course": 167.9,
+   "speed": 13.4
+  },
+  "cpa": {
+   "steady": true,
+   "range": 10.078
+  },
+  "aspect": -119.417,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R124-normal",
+  "rel": {
+   "course": 124.071,
+   "speed": 14.469
+  },
+  "tgt": {
+   "course": 124.79,
+   "speed": 14.002
+  },
+  "cpa": {
+   "range": 4.433,
+   "brg": 34.071,
+   "tcpa": 7.87,
+   "time": "02:23"
+  },
+  "aspect": 66.104,
+  "bcr": null,
+  "scr": {
+   "range": 12.615,
+   "t": 56.848
+  },
+  "action": {
+   "course": 270.0,
+   "speed": 0.5,
+   "relCourse": 123.656,
+   "relSpeed": 14.415,
+   "cpa": 4.436,
+   "brg": 33.656,
+   "tcpa": 1.743,
+   "time": "02:23",
+   "resume": {
+    "t": 0.1,
+    "time": "02:21"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R125-fixed",
+  "rel": {
+   "course": 128.799,
+   "speed": 16.2
+  },
+  "tgt": {
+   "course": 80.569,
+   "speed": 0.0
+  },
+  "cpa": {
+   "range": 0.65,
+   "brg": 38.799,
+   "tcpa": 7.444,
+   "time": "05:38"
+  },
+  "aspect": null,
+  "bcr": null,
+  "scr": null,
+  "ground": {
+   "course": 308.799,
+   "speed": 16.2,
+   "set": 260.569,
+   "drift": 0.0
+  }
+ },
+ {
+  "id": "R126-normal",
+  "rel": {
+   "course": 334.532,
+   "speed": 16.651
+  },
+  "tgt": {
+   "course": 345.197,
+   "speed": 11.929
+  },
+  "cpa": {
+   "range": 2.211,
+   "brg": 244.532,
+   "tcpa": 0.486,
+   "time": "08:14"
+  },
+  "aspect": 75.843,
+  "bcr": null,
+  "scr": {
+   "range": 5.409,
+   "t": 18.274
+  }
+ },
+ {
+  "id": "R127-normal",
+  "rel": {
+   "course": 285.052,
+   "speed": 8.376
+  },
+  "tgt": {
+   "course": 228.675,
+   "speed": 8.556
+  },
+  "cpa": {
+   "range": 4.939,
+   "brg": 195.052,
+   "tcpa": 31.045,
+   "time": "11:08"
+  },
+  "aspect": 105.111,
+  "bcr": {
+   "range": 5.546,
+   "t": 12.978
+  },
+  "scr": null,
+  "action": {
+   "course": 168.0,
+   "speed": 4.2,
+   "relCourse": 258.072,
+   "relSpeed": 7.46,
+   "cpa": 6.368,
+   "brg": 168.072,
+   "tcpa": 13.042,
+   "time": "10:50",
+   "resume": {
+    "t": 0.1,
+    "time": "10:37"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R128-normal",
+  "rel": {
+   "course": 334.039,
+   "speed": 19.397
+  },
+  "tgt": {
+   "course": 50.986,
+   "speed": 7.166
+  },
+  "cpa": {
+   "range": 4.091,
+   "brg": 244.039,
+   "tcpa": 16.747,
+   "time": "12:33"
+  },
+  "aspect": -39.87,
+  "bcr": null,
+  "scr": {
+   "range": 11.193,
+   "t": 48.975
+  },
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 132.6,
+   "course": 132.6,
+   "speed": 19.1,
+   "relCourse": 334.039,
+   "relSpeed": 19.397,
+   "cpa": 4.091,
+   "brg": 244.039,
+   "tcpa": 13.747,
+   "time": "12:33",
+   "resume": {
+    "t": 0.1,
+    "time": "12:19"
+   }
+  }
+ },
+ {
+  "id": "R129-near000",
+  "rel": {
+   "course": 109.104,
+   "speed": 8.778
+  },
+  "tgt": {
+   "course": 280.156,
+   "speed": 1.638
+  },
+  "cpa": {
+   "range": 5.166,
+   "brg": 19.104,
+   "tcpa": 12.208,
+   "time": "05:09"
+  },
+  "aspect": -100.125,
+  "bcr": null,
+  "scr": {
+   "range": 210.824,
+   "t": 1452.741
+  }
+ },
+ {
+  "id": "R130-normal",
+  "rel": {
+   "course": 137.453,
+   "speed": 31.263
+  },
+  "tgt": {
+   "course": 136.088,
+   "speed": 13.569
+  },
+  "cpa": {
+   "range": 5.606,
+   "brg": 227.453,
+   "tcpa": 1.305,
+   "time": "22:42"
+  },
+  "aspect": -81.721,
+  "bcr": null,
+  "scr": {
+   "range": 306.835,
+   "t": 590.094
+  },
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 318.5,
+   "course": 318.5,
+   "speed": 17.7,
+   "relCourse": 137.453,
+   "relSpeed": 31.263,
+   "cpa": 5.606,
+   "brg": 227.453,
+   "tcpa": 1.305,
+   "time": "22:42",
+   "resume": {
+    "t": 0.1,
+    "time": "22:41"
+   }
+  }
+ },
+ {
+  "id": "R131-opening",
+  "rel": {
+   "course": 198.858,
+   "speed": 18.687
+  },
+  "tgt": {
+   "course": 187.159,
+   "speed": 22.821
+  },
+  "cpa": {
+   "passed": true,
+   "range": 10.241
+  },
+  "aspect": 115.88,
+  "bcr": {
+   "range": 12.66,
+   "t": 17.16
+  },
+  "scr": null
+ },
+ {
+  "id": "R132-midnight",
+  "rel": {
+   "course": 343.617,
+   "speed": 20.969
+  },
+  "tgt": {
+   "course": 339.741,
+   "speed": 10.518
+  },
+  "cpa": {
+   "passed": true,
+   "range": 4.529
+  },
+  "aspect": -166.377,
+  "bcr": null,
+  "scr": {
+   "range": 11.323,
+   "t": 19.552
+  }
+ },
+ {
+  "id": "R133-collision",
+  "rel": {
+   "course": 276.6,
+   "speed": 5.82
+  },
+  "tgt": {
+   "course": 63.09,
+   "speed": 1.478
+  },
+  "cpa": {
+   "range": 0.0,
+   "brg": null,
+   "tcpa": 24.13,
+   "time": "19:54"
+  },
+  "aspect": -146.49,
+  "bcr": {
+   "range": 0.0,
+   "t": 24.13
+  },
+  "scr": null,
+  "action": {
+   "course": 55.0,
+   "speed": 9.7,
+   "relCourse": 233.553,
+   "relSpeed": 8.239,
+   "cpa": 1.598,
+   "brg": 143.553,
+   "tcpa": 12.457,
+   "time": "19:42",
+   "resume": {
+    "t": 31.0,
+    "time": "20:01"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R134-midnight",
+  "rel": {
+   "course": 202.45,
+   "speed": 17.743
+  },
+  "tgt": {
+   "course": 234.736,
+   "speed": 22.361
+  },
+  "cpa": {
+   "passed": true,
+   "range": 7.916
+  },
+  "aspect": -126.903,
+  "bcr": {
+   "range": 7.927,
+   "t": 0.438
+  },
+  "scr": null,
+  "action": {
+   "course": 286.9,
+   "speed": 12.0,
+   "relCourse": 202.45,
+   "relSpeed": 17.743,
+   "cpa": 8.25,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "00:17"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R135-near000",
+  "rel": {
+   "course": 120.347,
+   "speed": 10.793
+  },
+  "tgt": {
+   "course": 245.17,
+   "speed": 12.986
+  },
+  "cpa": {
+   "range": 3.101,
+   "brg": 30.347,
+   "tcpa": 10.279,
+   "time": "22:33"
+  },
+  "aspect": -65.632,
+  "bcr": null,
+  "scr": {
+   "range": 6.137,
+   "t": 39.719
+  },
+  "action": {
+   "course": 295.0,
+   "speed": 21.1,
+   "relCourse": 152.951,
+   "relSpeed": 16.135,
+   "cpa": 1.906,
+   "brg": 62.951,
+   "tcpa": 10.314,
+   "time": "22:36",
+   "resume": {
+    "t": 0.1,
+    "time": "22:26"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R136-collision",
+  "rel": {
+   "course": 238.6,
+   "speed": 14.829
+  },
+  "tgt": {
+   "course": 241.113,
+   "speed": 13.03
+  },
+  "cpa": {
+   "range": 0.0,
+   "brg": null,
+   "tcpa": 27.992,
+   "time": "19:29"
+  },
+  "aspect": -2.513,
+  "bcr": {
+   "range": 0.0,
+   "t": 27.992
+  },
+  "scr": null,
+  "action": {
+   "course": 41.1,
+   "speed": null,
+   "cpa": null,
+   "tcpa": null,
+   "time": null,
+   "resume": null,
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R137-near000",
+  "rel": {
+   "course": 341.145,
+   "speed": 25.368
+  },
+  "tgt": {
+   "course": 50.483,
+   "speed": 10.687
+  },
+  "cpa": {
+   "passed": true,
+   "range": 9.635
+  },
+  "aspect": 128.983,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 136.3,
+   "speed": 23.8,
+   "relCourse": 341.145,
+   "relSpeed": 25.368,
+   "cpa": 12.069,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "15:27"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R138-normal",
+  "rel": {
+   "course": 101.446,
+   "speed": 3.43
+  },
+  "tgt": {
+   "course": 201.717,
+   "speed": 23.453
+  },
+  "cpa": {
+   "range": 7.269,
+   "brg": 191.446,
+   "tcpa": 117.29,
+   "time": "11:29"
+  },
+  "aspect": -147.586,
+  "bcr": {
+   "range": 7.654,
+   "t": 75.345
+  },
+  "scr": null
+ },
+ {
+  "id": "R139-midnight",
+  "rel": {
+   "course": 45.786,
+   "speed": 12.176
+  },
+  "tgt": {
+   "course": 24.602,
+   "speed": 12.297
+  },
+  "cpa": {
+   "passed": true,
+   "range": 7.663
+  },
+  "aspect": -125.865,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 306.7,
+   "speed": 1.7,
+   "relCourse": 32.527,
+   "relSpeed": 12.055,
+   "cpa": 7.663,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "00:11"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R140-normal",
+  "rel": {
+   "course": 245.009,
+   "speed": 4.962
+  },
+  "tgt": {
+   "course": 171.723,
+   "speed": 7.986
+  },
+  "cpa": {
+   "range": 4.0,
+   "brg": 155.009,
+   "tcpa": 107.129,
+   "time": "11:21"
+  },
+  "aspect": 97.584,
+  "bcr": {
+   "range": 4.236,
+   "t": 90.277
+  },
+  "scr": null,
+  "action": {
+   "course": 148.0,
+   "speed": 22.9,
+   "relCourse": 316.353,
+   "relSpeed": 15.916,
+   "cpa": 6.879,
+   "brg": 46.353,
+   "tcpa": 24.67,
+   "time": "10:02",
+   "resume": {
+    "t": 0.1,
+    "time": "09:37"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R141-normal",
+  "rel": {
+   "course": 133.077,
+   "speed": 42.667
+  },
+  "tgt": {
+   "course": 147.33,
+   "speed": 20.221
+  },
+  "cpa": {
+   "range": 3.463,
+   "brg": 43.077,
+   "tcpa": 2.394,
+   "time": "04:59"
+  },
+  "aspect": 49.567,
+  "bcr": null,
+  "scr": {
+   "range": 16.417,
+   "t": 24.961
+  }
+ },
+ {
+  "id": "R142-collision",
+  "rel": {
+   "course": 336.3,
+   "speed": 4.497
+  },
+  "tgt": {
+   "course": 311.765,
+   "speed": 3.376
+  },
+  "cpa": {
+   "range": 0.0,
+   "brg": null,
+   "tcpa": 143.373,
+   "time": "09:34"
+  },
+  "aspect": 24.535,
+  "bcr": {
+   "range": 0.0,
+   "t": 143.373
+  },
+  "scr": null,
+  "action": {
+   "stbdAlt": 106,
+   "portAlt": 47,
+   "portCourse": 153.8,
+   "course": 306.8,
+   "speed": 2.0,
+   "relCourse": 318.897,
+   "relSpeed": 1.394,
+   "cpa": 3.214,
+   "brg": 228.897,
+   "tcpa": 441.36,
+   "time": "14:32",
+   "resume": {
+    "t": 431.7,
+    "time": "14:23"
+   }
+  }
+ },
+ {
+  "id": "R143-opening",
+  "rel": {
+   "course": 288.752,
+   "speed": 18.651
+  },
+  "tgt": {
+   "course": 305.527,
+   "speed": 22.174
+  },
+  "cpa": {
+   "passed": true,
+   "range": 9.126
+  },
+  "aspect": 92.877,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R144-normal",
+  "rel": {
+   "course": 322.501,
+   "speed": 31.86
+  },
+  "tgt": {
+   "course": 297.015,
+   "speed": 18.044
+  },
+  "cpa": {
+   "passed": true,
+   "range": 5.359
+  },
+  "aspect": -114.627,
+  "bcr": null,
+  "scr": {
+   "range": 7.702,
+   "t": 5.237
+  },
+  "action": {
+   "course": 247.0,
+   "speed": 17.4,
+   "relCourse": 359.779,
+   "relSpeed": 14.995,
+   "cpa": 6.66,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "17:13"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R145-near000",
+  "rel": {
+   "course": 71.586,
+   "speed": 25.657
+  },
+  "tgt": {
+   "course": 56.388,
+   "speed": 19.563
+  },
+  "cpa": {
+   "passed": true,
+   "range": 4.393
+  },
+  "aspect": 123.591,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 288.7,
+   "course": 288.7,
+   "speed": 8.5,
+   "relCourse": 71.586,
+   "relSpeed": 25.657,
+   "cpa": 4.393,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "06:29"
+   }
+  }
+ },
+ {
+  "id": "R146-midnight",
+  "rel": {
+   "course": 353.26,
+   "speed": 38.525
+  },
+  "tgt": {
+   "course": 321.584,
+   "speed": 19.506
+  },
+  "cpa": {
+   "passed": true,
+   "range": 8.094
+  },
+  "aspect": -117.332,
+  "bcr": null,
+  "scr": {
+   "range": 9.846,
+   "t": 3.088
+  },
+  "action": {
+   "course": 198.3,
+   "speed": 24.2,
+   "relCourse": 353.26,
+   "relSpeed": 38.525,
+   "cpa": 8.094,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "00:02"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R147-normal",
+  "rel": {
+   "course": 32.813,
+   "speed": 22.422
+  },
+  "tgt": {
+   "course": 92.194,
+   "speed": 0.854
+  },
+  "cpa": {
+   "passed": true,
+   "range": 8.046
+  },
+  "aspect": 57.523,
+  "bcr": null,
+  "scr": {
+   "range": 214.896,
+   "t": 564.974
+  }
+ },
+ {
+  "id": "R148-normal",
+  "rel": {
+   "course": 203.326,
+   "speed": 5.998
+  },
+  "tgt": {
+   "course": 226.973,
+   "speed": 2.299
+  },
+  "cpa": {
+   "range": 2.581,
+   "brg": 293.326,
+   "tcpa": 13.448,
+   "time": "04:46"
+  },
+  "aspect": -86.136,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 40.0,
+   "speed": 4.0,
+   "relCourse": 222.544,
+   "relSpeed": 6.288,
+   "cpa": 2.686,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "04:39"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R149-normal",
+  "rel": {
+   "course": 236.771,
+   "speed": 20.834
+  },
+  "tgt": {
+   "course": 239.523,
+   "speed": 16.834
+  },
+  "cpa": {
+   "range": 1.448,
+   "brg": 326.771,
+   "tcpa": 4.509,
+   "time": "04:01"
+  },
+  "aspect": -45.524,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R150-normal",
+  "rel": {
+   "course": 24.462,
+   "speed": 31.47
+  },
+  "tgt": {
+   "course": 43.448,
+   "speed": 16.438
+  },
+  "cpa": {
+   "range": 4.861,
+   "brg": 294.462,
+   "tcpa": 7.233,
+   "time": "14:14"
+  },
+  "aspect": 33.043,
+  "bcr": null,
+  "scr": {
+   "range": 15.27,
+   "t": 34.831
+  }
+ },
+ {
+  "id": "R151-normal",
+  "rel": {
+   "course": 261.856,
+   "speed": 24.784
+  },
+  "tgt": {
+   "course": 214.156,
+   "speed": 13.528
+  },
+  "cpa": {
+   "range": 3.827,
+   "brg": 171.856,
+   "tcpa": 1.604,
+   "time": "06:32"
+  },
+  "aspect": 127.878,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R152-normal",
+  "rel": {
+   "course": 10.732,
+   "speed": 14.079
+  },
+  "tgt": {
+   "course": 43.195,
+   "speed": 20.009
+  },
+  "cpa": {
+   "range": 3.106,
+   "brg": 100.732,
+   "tcpa": 9.273,
+   "time": "17:13"
+  },
+  "aspect": -87.454,
+  "bcr": {
+   "range": 3.211,
+   "t": 12.729
+  },
+  "scr": null,
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 86.1,
+   "course": 86.1,
+   "speed": 11.1,
+   "relCourse": 10.732,
+   "relSpeed": 14.079,
+   "cpa": 3.106,
+   "brg": 100.732,
+   "tcpa": 9.273,
+   "time": "17:13",
+   "resume": {
+    "t": 0.1,
+    "time": "17:04"
+   }
+  }
+ },
+ {
+  "id": "R153-near000",
+  "rel": {
+   "course": 265.424,
+   "speed": 6.828
+  },
+  "tgt": {
+   "course": 228.503,
+   "speed": 18.005
+  },
+  "cpa": {
+   "range": 8.259,
+   "brg": 355.424,
+   "tcpa": 5.201,
+   "time": "12:52"
+  },
+  "aspect": -48.98,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R154-fixed",
+  "rel": {
+   "course": 67.999,
+   "speed": 10.6
+  },
+  "tgt": {
+   "course": 37.323,
+   "speed": 0.0
+  },
+  "cpa": {
+   "range": 1.073,
+   "brg": 157.999,
+   "tcpa": 2.471,
+   "time": "13:21"
+  },
+  "aspect": null,
+  "bcr": null,
+  "scr": {
+   "range": 56907.434,
+   "t": 322109.785
+  },
+  "ground": {
+   "course": 247.999,
+   "speed": 10.6,
+   "set": 217.323,
+   "drift": 0.0
+  },
+  "action": {
+   "course": 231.0,
+   "speed": 10.6,
+   "relCourse": 50.999,
+   "relSpeed": 10.6,
+   "cpa": 0.898,
+   "brg": 140.999,
+   "tcpa": 4.138,
+   "time": "13:23",
+   "resume": {
+    "t": 11.0,
+    "time": "13:30"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R155-stationary",
+  "rel": {
+   "course": 315.2,
+   "speed": 7.1
+  },
+  "tgt": {
+   "course": 307.738,
+   "speed": 0.0
+  },
+  "cpa": {
+   "range": 1.669,
+   "brg": 225.2,
+   "tcpa": 11.303,
+   "time": "23:13"
+  },
+  "aspect": 58.747,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 135.2,
+   "speed": 4.4,
+   "relCourse": 315.2,
+   "relSpeed": 4.4,
+   "cpa": 1.669,
+   "brg": 225.2,
+   "tcpa": 8.556,
+   "time": "23:17",
+   "resume": {
+    "t": 42.6,
+    "time": "23:51"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R156-normal",
+  "rel": {
+   "course": 142.297,
+   "speed": 20.87
+  },
+  "tgt": {
+   "course": 126.207,
+   "speed": 13.421
+  },
+  "cpa": {
+   "range": 2.856,
+   "brg": 232.297,
+   "tcpa": 10.384,
+   "time": "10:31"
+  },
+  "aspect": -22.247,
+  "bcr": null,
+  "scr": {
+   "range": 6.758,
+   "t": 27.992
+  },
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 347.3,
+   "course": 347.3,
+   "speed": 8.8,
+   "relCourse": 142.297,
+   "relSpeed": 20.87,
+   "cpa": 2.856,
+   "brg": 232.297,
+   "tcpa": 10.384,
+   "time": "10:31",
+   "resume": {
+    "t": 0.1,
+    "time": "10:21"
+   }
+  }
+ },
+ {
+  "id": "R157-opening",
+  "rel": {
+   "course": 189.005,
+   "speed": 28.636
+  },
+  "tgt": {
+   "course": 193.483,
+   "speed": 12.402
+  },
+  "cpa": {
+   "passed": true,
+   "range": 9.221
+  },
+  "aspect": -166.672,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 5.6,
+   "course": 5.6,
+   "speed": 16.3,
+   "relCourse": 189.005,
+   "relSpeed": 28.636,
+   "cpa": 10.593,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "09:11"
+   }
+  }
+ },
+ {
+  "id": "R158-near000",
+  "rel": {
+   "course": 317.686,
+   "speed": 21.628
+  },
+  "tgt": {
+   "course": 37.277,
+   "speed": 15.446
+  },
+  "cpa": {
+   "passed": true,
+   "range": 10.758
+  },
+  "aspect": 142.207,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R159-fixed",
+  "rel": {
+   "course": 78.199,
+   "speed": 16.2
+  },
+  "tgt": {
+   "course": 353.521,
+   "speed": 0.0
+  },
+  "cpa": {
+   "passed": true,
+   "range": 1.919
+  },
+  "aspect": null,
+  "bcr": null,
+  "scr": {
+   "range": 118942.842,
+   "t": 440524.089
+  },
+  "ground": {
+   "course": 258.199,
+   "speed": 16.2,
+   "set": 173.521,
+   "drift": 0.0
+  },
+  "action": {
+   "course": 268.0,
+   "speed": 18.1,
+   "relCourse": 87.999,
+   "relSpeed": 18.1,
+   "cpa": 3.192,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "09:11"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R160-normal",
+  "rel": {
+   "course": 61.488,
+   "speed": 40.252
+  },
+  "tgt": {
+   "course": 49.866,
+   "speed": 18.117
+  },
+  "cpa": {
+   "range": 2.481,
+   "brg": 331.488,
+   "tcpa": 2.971,
+   "time": "09:27"
+  },
+  "aspect": 62.844,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R161-fixed",
+  "rel": {
+   "course": 321.897,
+   "speed": 6.7
+  },
+  "tgt": {
+   "course": 196.686,
+   "speed": 0.0
+  },
+  "cpa": {
+   "passed": true,
+   "range": 9.216
+  },
+  "aspect": null,
+  "bcr": null,
+  "scr": null,
+  "ground": {
+   "course": 141.897,
+   "speed": 6.7,
+   "set": 16.686,
+   "drift": 0.0
+  },
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 141.9,
+   "course": 141.9,
+   "speed": 6.7,
+   "relCourse": 321.897,
+   "relSpeed": 6.7,
+   "cpa": 9.216,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "14:09"
+   }
+  }
+ },
+ {
+  "id": "R162-normal",
+  "rel": {
+   "course": 172.671,
+   "speed": 14.973
+  },
+  "tgt": {
+   "course": 143.285,
+   "speed": 11.54
+  },
+  "cpa": {
+   "range": 8.92,
+   "brg": 262.671,
+   "tcpa": 6.958,
+   "time": "19:05"
+  },
+  "aspect": -49.599,
+  "bcr": null,
+  "scr": {
+   "range": 11.814,
+   "t": 37.999
+  }
+ },
+ {
+  "id": "R163-normal",
+  "rel": {
+   "course": 103.502,
+   "speed": 11.532
+  },
+  "tgt": {
+   "course": 103.073,
+   "speed": 11.922
+  },
+  "cpa": {
+   "range": 1.173,
+   "brg": 13.502,
+   "tcpa": 12.423,
+   "time": "17:41"
+  },
+  "aspect": 26.593,
+  "bcr": {
+   "range": 5.253,
+   "t": 39.067
+  },
+  "scr": null,
+  "action": {
+   "course": 81.0,
+   "speed": 0.4,
+   "relCourse": 103.819,
+   "relSpeed": 11.552,
+   "cpa": 1.163,
+   "brg": 13.819,
+   "tcpa": 9.44,
+   "time": "17:41",
+   "resume": {
+    "t": 14.4,
+    "time": "17:46"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R164-normal",
+  "rel": {
+   "course": 274.284,
+   "speed": 25.6
+  },
+  "tgt": {
+   "course": 239.188,
+   "speed": 9.738
+  },
+  "cpa": {
+   "range": 1.734,
+   "brg": 184.284,
+   "tcpa": 6.045,
+   "time": "09:33"
+  },
+  "aspect": 69.002,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R165-opening",
+  "rel": {
+   "course": 278.706,
+   "speed": 4.731
+  },
+  "tgt": {
+   "course": 218.539,
+   "speed": 5.707
+  },
+  "cpa": {
+   "passed": true,
+   "range": 4.305
+  },
+  "aspect": -167.127,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R166-opening",
+  "rel": {
+   "course": 266.502,
+   "speed": 22.111
+  },
+  "tgt": {
+   "course": 282.277,
+   "speed": 3.994
+  },
+  "cpa": {
+   "passed": true,
+   "range": 7.712
+  },
+  "aspect": -168.987,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 123.0,
+   "speed": 22.9,
+   "relCourse": 299.963,
+   "relSpeed": 26.673,
+   "cpa": 9.737,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "20:33"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R167-fixed",
+  "rel": {
+   "course": 313.502,
+   "speed": 10.401
+  },
+  "tgt": {
+   "course": 340.112,
+   "speed": 0.001
+  },
+  "cpa": {
+   "passed": true,
+   "range": 8.336
+  },
+  "aspect": null,
+  "bcr": null,
+  "scr": {
+   "range": 299473.641,
+   "t": 1727632.448
+  },
+  "ground": {
+   "course": 133.502,
+   "speed": 10.401,
+   "set": 160.112,
+   "drift": 0.001
+  }
+ },
+ {
+  "id": "R168-normal",
+  "rel": {
+   "course": 254.96,
+   "speed": 4.16
+  },
+  "tgt": {
+   "course": 294.81,
+   "speed": 2.762
+  },
+  "cpa": {
+   "range": 3.3,
+   "brg": 344.96,
+   "tcpa": 118.324,
+   "time": "04:11"
+  },
+  "aspect": -61.767,
+  "bcr": {
+   "range": 5.035,
+   "t": 63.481
+  },
+  "scr": null,
+  "action": {
+   "course": 34.0,
+   "speed": 2.6,
+   "relCourse": 255.88,
+   "relSpeed": 4.085,
+   "cpa": 3.432,
+   "brg": 345.88,
+   "tcpa": 119.703,
+   "time": "04:13",
+   "resume": {
+    "t": 0.1,
+    "time": "02:13"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R169-normal",
+  "rel": {
+   "course": 187.048,
+   "speed": 10.421
+  },
+  "tgt": {
+   "course": 187.018,
+   "speed": 8.721
+  },
+  "cpa": {
+   "range": 1.801,
+   "brg": 277.048,
+   "tcpa": 11.044,
+   "time": "01:22"
+  },
+  "aspect": -43.174,
+  "bcr": null,
+  "scr": {
+   "range": 678.255,
+   "t": 3916.201
+  }
+ },
+ {
+  "id": "R170-normal",
+  "rel": {
+   "course": 58.831,
+   "speed": 19.453
+  },
+  "tgt": {
+   "course": 98.294,
+   "speed": 12.592
+  },
+  "cpa": {
+   "range": 0.597,
+   "brg": 328.831,
+   "tcpa": 10.41,
+   "time": "05:24"
+  },
+  "aspect": -29.435,
+  "bcr": null,
+  "scr": {
+   "range": 0.94,
+   "t": 12.648
+  }
+ },
+ {
+  "id": "R171-normal",
+  "rel": {
+   "course": 164.737,
+   "speed": 11.81
+  },
+  "tgt": {
+   "course": 169.765,
+   "speed": 9.823
+  },
+  "cpa": {
+   "range": 5.757,
+   "brg": 254.737,
+   "tcpa": 19.527,
+   "time": "03:14"
+  },
+  "aspect": -61.302,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R172-normal",
+  "rel": {
+   "course": 130.794,
+   "speed": 24.563
+  },
+  "tgt": {
+   "course": 89.666,
+   "speed": 2.699
+  },
+  "cpa": {
+   "range": 6.035,
+   "brg": 220.794,
+   "tcpa": 6.511,
+   "time": "16:24"
+  },
+  "aspect": -25.043,
+  "bcr": null,
+  "scr": {
+   "range": 76.825,
+   "t": 193.587
+  },
+  "action": {
+   "course": 27.0,
+   "speed": 22.6,
+   "relCourse": 200.595,
+   "relSpeed": 21.495,
+   "cpa": 6.598,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "16:17"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R173-normal",
+  "rel": {
+   "course": 298.282,
+   "speed": 35.989
+  },
+  "tgt": {
+   "course": 321.838,
+   "speed": 22.167
+  },
+  "cpa": {
+   "passed": true,
+   "range": 7.532
+  },
+  "aspect": 112.733,
+  "bcr": null,
+  "scr": {
+   "range": 10.575,
+   "t": 6.271
+  }
+ },
+ {
+  "id": "R174-normal",
+  "rel": {
+   "course": 64.635,
+   "speed": 31.358
+  },
+  "tgt": {
+   "course": 25.023,
+   "speed": 24.673
+  },
+  "cpa": {
+   "range": 1.862,
+   "brg": 334.635,
+   "tcpa": 8.988,
+   "time": "14:11"
+  },
+  "aspect": 61.232,
+  "bcr": {
+   "range": 2.367,
+   "t": 6.192
+  },
+  "scr": null,
+  "action": {
+   "course": 235.0,
+   "speed": 20.0,
+   "relCourse": 38.407,
+   "relSpeed": 43.17,
+   "cpa": 2.36,
+   "brg": 308.407,
+   "tcpa": 0.804,
+   "time": "14:09",
+   "resume": {
+    "t": 3.4,
+    "time": "14:11"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R175-normal",
+  "rel": {
+   "course": 218.547,
+   "speed": 7.349
+  },
+  "tgt": {
+   "course": 315.787,
+   "speed": 22.464
+  },
+  "cpa": {
+   "range": 7.297,
+   "brg": 128.547,
+   "tcpa": 1.399,
+   "time": "07:43"
+  },
+  "aspect": -8.586,
+  "bcr": null,
+  "scr": {
+   "range": 8.022,
+   "t": 28.614
+  }
+ },
+ {
+  "id": "R176-normal",
+  "rel": {
+   "course": 69.85,
+   "speed": 7.281
+  },
+  "tgt": {
+   "course": 321.871,
+   "speed": 4.401
+  },
+  "cpa": {
+   "range": 0.116,
+   "brg": 339.85,
+   "tcpa": 25.101,
+   "time": "20:51"
+  },
+  "aspect": 110.163,
+  "bcr": {
+   "range": 0.266,
+   "t": 23.126
+  },
+  "scr": null,
+  "action": {
+   "course": 203.0,
+   "speed": 9.6,
+   "relCourse": 4.805,
+   "relSpeed": 12.342,
+   "cpa": 2.481,
+   "brg": 274.805,
+   "tcpa": 4.989,
+   "time": "20:34",
+   "resume": {
+    "t": 15.5,
+    "time": "20:45"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R177-normal",
+  "rel": {
+   "course": 183.695,
+   "speed": 21.984
+  },
+  "tgt": {
+   "course": 98.55,
+   "speed": 8.537
+  },
+  "cpa": {
+   "range": 0.589,
+   "brg": 273.695,
+   "tcpa": 16.348,
+   "time": "11:33"
+  },
+  "aspect": 79.528,
+  "bcr": null,
+  "scr": {
+   "range": 1.586,
+   "t": 20.367
+  },
+  "action": {
+   "course": 25.5,
+   "speed": 11.6,
+   "relCourse": 163.632,
+   "relSpeed": 12.235,
+   "cpa": 0.747,
+   "brg": 73.632,
+   "tcpa": 18.456,
+   "time": "11:41",
+   "resume": {
+    "t": 27.6,
+    "time": "11:51"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R178-normal",
+  "rel": {
+   "course": 297.49,
+   "speed": 12.541
+  },
+  "tgt": {
+   "course": 297.913,
+   "speed": 12.503
+  },
+  "cpa": {
+   "range": 2.084,
+   "brg": 27.49,
+   "tcpa": 16.43,
+   "time": "12:28"
+  },
+  "aspect": -31.673,
+  "bcr": {
+   "range": 2.256,
+   "t": 12.298
+  },
+  "scr": null
+ },
+ {
+  "id": "R179-normal",
+  "rel": {
+   "course": 117.35,
+   "speed": 8.517
+  },
+  "tgt": {
+   "course": 327.361,
+   "speed": 10.422
+  },
+  "cpa": {
+   "passed": true,
+   "range": 10.559
+  },
+  "aspect": -101.32,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R180-collision",
+  "rel": {
+   "course": 186.7,
+   "speed": 35.117
+  },
+  "tgt": {
+   "course": 160.627,
+   "speed": 15.034
+  },
+  "cpa": {
+   "range": 0.0,
+   "brg": null,
+   "tcpa": 4.889,
+   "time": "19:39"
+  },
+  "aspect": 26.073,
+  "bcr": {
+   "range": 0.0,
+   "t": 4.889
+  },
+  "scr": null,
+  "action": {
+   "stbdAlt": 110,
+   "portAlt": 144,
+   "portCourse": 239.7,
+   "course": 133.7,
+   "speed": 22.6,
+   "relCourse": 277.186,
+   "relSpeed": 11.442,
+   "cpa": 2.861,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 15.8,
+    "time": "19:50"
+   }
+  }
+ },
+ {
+  "id": "R181-normal",
+  "rel": {
+   "course": 197.989,
+   "speed": 25.685
+  },
+  "tgt": {
+   "course": 256.037,
+   "speed": 10.583
+  },
+  "cpa": {
+   "passed": true,
+   "range": 10.101
+  },
+  "aspect": -179.334,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 353.9,
+   "course": 353.9,
+   "speed": 22.0,
+   "relCourse": 197.989,
+   "relSpeed": 25.685,
+   "cpa": 10.101,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "03:24"
+   }
+  }
+ },
+ {
+  "id": "R182-normal",
+  "rel": {
+   "course": 146.605,
+   "speed": 14.731
+  },
+  "tgt": {
+   "course": 128.279,
+   "speed": 8.603
+  },
+  "cpa": {
+   "range": 6.894,
+   "brg": 56.605,
+   "tcpa": 19.175,
+   "time": "05:01"
+  },
+  "aspect": 73.996,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 306.0,
+   "speed": 15.4,
+   "relCourse": 126.817,
+   "relSpeed": 23.998,
+   "cpa": 7.582,
+   "brg": 36.817,
+   "tcpa": 1.775,
+   "time": "04:50",
+   "resume": {
+    "t": 0.1,
+    "time": "04:48"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R183-normal",
+  "rel": {
+   "course": 280.339,
+   "speed": 6.186
+  },
+  "tgt": {
+   "course": 260.8,
+   "speed": 6.835
+  },
+  "cpa": {
+   "range": 0.841,
+   "brg": 10.339,
+   "tcpa": 9.542,
+   "time": "04:53"
+  },
+  "aspect": -20.986,
+  "bcr": null,
+  "scr": {
+   "range": 0.846,
+   "t": 8.633
+  },
+  "action": {
+   "stbdAlt": null,
+   "portAlt": null,
+   "portCourse": null,
+   "course": null,
+   "speed": 2.3,
+   "cpa": null,
+   "tcpa": null,
+   "time": null,
+   "resume": null
+  }
+ },
+ {
+  "id": "R184-normal",
+  "rel": {
+   "course": 158.359,
+   "speed": 31.155
+  },
+  "tgt": {
+   "course": 128.879,
+   "speed": 12.48
+  },
+  "cpa": {
+   "passed": true,
+   "range": 5.322
+  },
+  "aspect": -164.725,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 17.0,
+   "speed": 21.2,
+   "relCourse": 172.867,
+   "relSpeed": 28.327,
+   "cpa": 6.843,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "06:45"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R185-normal",
+  "rel": {
+   "course": 226.463,
+   "speed": 14.562
+  },
+  "tgt": {
+   "course": 182.587,
+   "speed": 6.381
+  },
+  "cpa": {
+   "range": 1.05,
+   "brg": 136.463,
+   "tcpa": 18.514,
+   "time": "20:54"
+  },
+  "aspect": 57.031,
+  "bcr": {
+   "range": 2.588,
+   "t": 8.766
+  },
+  "scr": null,
+  "action": {
+   "course": 70.4,
+   "speed": 3.7,
+   "relCourse": 206.359,
+   "relSpeed": 8.499,
+   "cpa": 2.531,
+   "brg": 116.359,
+   "tcpa": 27.24,
+   "time": "21:02",
+   "resume": {
+    "t": 29.8,
+    "time": "21:05"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R186-normal",
+  "rel": {
+   "course": 96.876,
+   "speed": 25.182
+  },
+  "tgt": {
+   "course": 134.01,
+   "speed": 4.173
+  },
+  "cpa": {
+   "passed": true,
+   "range": 10.17
+  },
+  "aspect": -147.509,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 270.3,
+   "speed": 22.0,
+   "relCourse": 96.876,
+   "relSpeed": 25.182,
+   "cpa": 10.17,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "20:22"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R187-collision",
+  "rel": {
+   "course": 172.2,
+   "speed": 20.762
+  },
+  "tgt": {
+   "course": 343.121,
+   "speed": 3.172
+  },
+  "cpa": {
+   "range": 0.0,
+   "brg": null,
+   "tcpa": 4.857,
+   "time": "13:08"
+  },
+  "aspect": -170.921,
+  "bcr": {
+   "range": 0.0,
+   "t": 4.857
+  },
+  "scr": null,
+  "action": {
+   "course": 76.0,
+   "speed": 23.9,
+   "relCourse": 263.501,
+   "relSpeed": 24.267,
+   "cpa": 1.681,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 2.5,
+    "time": "13:06"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R188-collision",
+  "rel": {
+   "course": 78.1,
+   "speed": 20.1
+  },
+  "tgt": {
+   "course": 58.035,
+   "speed": 24.184
+  },
+  "cpa": {
+   "range": 0.0,
+   "brg": null,
+   "tcpa": 4.95,
+   "time": "06:39"
+  },
+  "aspect": 20.065,
+  "bcr": {
+   "range": 0.0,
+   "t": 4.95
+  },
+  "scr": null,
+  "action": {
+   "course": 5.6,
+   "speed": 8.7,
+   "relCourse": 78.1,
+   "relSpeed": 20.1,
+   "cpa": 0.352,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 6.5,
+    "time": "06:47"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R189-normal",
+  "rel": {
+   "course": 347.614,
+   "speed": 16.689
+  },
+  "tgt": {
+   "course": 44.845,
+   "speed": 1.773
+  },
+  "cpa": {
+   "range": 5.322,
+   "brg": 77.614,
+   "tcpa": 0.775,
+   "time": "03:48"
+  },
+  "aspect": -144.91,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R190-normal",
+  "rel": {
+   "course": 189.749,
+   "speed": 5.7
+  },
+  "tgt": {
+   "course": 204.716,
+   "speed": 3.124
+  },
+  "cpa": {
+   "range": 0.069,
+   "brg": 99.749,
+   "tcpa": 12.982,
+   "time": "22:00"
+  },
+  "aspect": -11.773,
+  "bcr": null,
+  "scr": {
+   "range": 0.239,
+   "t": 15.389
+  },
+  "action": {
+   "course": 338.0,
+   "speed": 8.2,
+   "relCourse": 170.403,
+   "relSpeed": 10.589,
+   "cpa": 0.473,
+   "brg": 80.403,
+   "tcpa": 6.464,
+   "time": "21:53",
+   "resume": {
+    "t": 11.5,
+    "time": "21:59"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R191-stationary",
+  "rel": {
+   "course": 82.2,
+   "speed": 23.4
+  },
+  "tgt": {
+   "course": 104.764,
+   "speed": 0.0
+  },
+  "cpa": {
+   "passed": true,
+   "range": 1.353
+  },
+  "aspect": 127.619,
+  "bcr": null,
+  "scr": {
+   "range": 304724.735,
+   "t": 781338.314
+  }
+ },
+ {
+  "id": "R192-collision",
+  "rel": {
+   "course": 49.8,
+   "speed": 26.833
+  },
+  "tgt": {
+   "course": 60.667,
+   "speed": 12.87
+  },
+  "cpa": {
+   "range": 0.0,
+   "brg": null,
+   "tcpa": 7.928,
+   "time": "17:01"
+  },
+  "aspect": -10.867,
+  "bcr": {
+   "range": 0.0,
+   "t": 7.928
+  },
+  "scr": null,
+  "action": {
+   "stbdAlt": 162,
+   "portAlt": 142,
+   "portCourse": 78.1,
+   "course": 22.1,
+   "speed": 14.4,
+   "relCourse": 140.496,
+   "relSpeed": 9.121,
+   "cpa": 0.862,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 19.8,
+    "time": "17:19"
+   }
+  }
+ },
+ {
+  "id": "R193-normal",
+  "rel": {
+   "course": 60.717,
+   "speed": 18.577
+  },
+  "tgt": {
+   "course": 19.952,
+   "speed": 19.764
+  },
+  "cpa": {
+   "range": 7.715,
+   "brg": 330.717,
+   "tcpa": 13.68,
+   "time": "07:43"
+  },
+  "aspect": 102.0,
+  "bcr": {
+   "range": 8.011,
+   "t": 6.714
+  },
+  "scr": null,
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 315.1,
+   "course": 315.1,
+   "speed": 13.4,
+   "relCourse": 60.717,
+   "relSpeed": 18.577,
+   "cpa": 7.715,
+   "brg": 330.717,
+   "tcpa": 7.68,
+   "time": "07:43",
+   "resume": {
+    "t": 0.1,
+    "time": "07:35"
+   }
+  }
+ },
+ {
+  "id": "R194-stationary",
+  "rel": {
+   "course": 131.7,
+   "speed": 3.1
+  },
+  "tgt": {
+   "course": 296.192,
+   "speed": 0.0
+  },
+  "cpa": {
+   "range": 6.85,
+   "brg": 41.7,
+   "tcpa": 5.495,
+   "time": "07:32"
+  },
+  "aspect": -76.865,
+  "bcr": null,
+  "scr": {
+   "range": 1182634.535,
+   "t": 22890183.965
+  },
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 311.7,
+   "course": 311.7,
+   "speed": 3.1,
+   "relCourse": 131.7,
+   "relSpeed": 3.1,
+   "cpa": 6.85,
+   "brg": 41.7,
+   "tcpa": 5.495,
+   "time": "07:32",
+   "resume": {
+    "t": 0.1,
+    "time": "07:27"
+   }
+  }
+ },
+ {
+  "id": "R195-normal",
+  "rel": {
+   "course": 141.035,
+   "speed": 18.308
+  },
+  "tgt": {
+   "course": 113.892,
+   "speed": 15.401
+  },
+  "cpa": {
+   "range": 7.268,
+   "brg": 231.035,
+   "tcpa": 0.108,
+   "time": "07:30"
+  },
+  "aspect": -62.598,
+  "bcr": null,
+  "scr": {
+   "range": 8.689,
+   "t": 15.714
+  }
+ },
+ {
+  "id": "R196-normal",
+  "rel": {
+   "course": 308.213,
+   "speed": 12.191
+  },
+  "tgt": {
+   "course": 195.645,
+   "speed": 10.128
+  },
+  "cpa": {
+   "range": 1.698,
+   "brg": 218.213,
+   "tcpa": 18.097,
+   "time": "23:03"
+  },
+  "aspect": 137.353,
+  "bcr": {
+   "range": 3.377,
+   "t": 3.732
+  },
+  "scr": null,
+  "action": {
+   "stbdAlt": 41,
+   "portAlt": 14,
+   "portCourse": 144.4,
+   "course": 199.4,
+   "speed": 18.6,
+   "relCourse": 23.865,
+   "relSpeed": 8.519,
+   "cpa": 2.551,
+   "brg": 113.865,
+   "tcpa": 16.938,
+   "time": "23:05",
+   "resume": {
+    "t": 30.6,
+    "time": "23:19"
+   }
+  }
+ },
+ {
+  "id": "R197-midnight",
+  "rel": {
+   "course": 71.732,
+   "speed": 18.758
+  },
+  "tgt": {
+   "course": 87.752,
+   "speed": 23.456
+  },
+  "cpa": {
+   "passed": true,
+   "range": 7.538
+  },
+  "aspect": -134.654,
+  "bcr": {
+   "range": 7.666,
+   "t": 0.828
+  },
+  "scr": null
+ },
+ {
+  "id": "R198-normal",
+  "rel": {
+   "course": 200.187,
+   "speed": 21.673
+  },
+  "tgt": {
+   "course": 232.39,
+   "speed": 15.924
+  },
+  "cpa": {
+   "passed": true,
+   "range": 9.936
+  },
+  "aspect": 156.498,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 334.2,
+   "speed": 1.4,
+   "relCourse": 227.558,
+   "relSpeed": 16.268,
+   "cpa": 11.008,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "21:37"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R199-samevel",
+  "rel": {
+   "course": null,
+   "speed": 0.0
+  },
+  "tgt": {
+   "course": 139.4,
+   "speed": 8.9
+  },
+  "cpa": {
+   "steady": true,
+   "range": 9.11
+  },
+  "aspect": 73.543,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R200-normal",
+  "rel": {
+   "course": 97.003,
+   "speed": 16.991
+  },
+  "tgt": {
+   "course": 205.303,
+   "speed": 7.636
+  },
+  "cpa": {
+   "range": 3.575,
+   "brg": 187.003,
+   "tcpa": 7.651,
+   "time": "20:38"
+  },
+  "aspect": -167.083,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 256.5,
+   "speed": 20.7,
+   "relCourse": 97.003,
+   "relSpeed": 16.991,
+   "cpa": 3.575,
+   "brg": 187.003,
+   "tcpa": 1.651,
+   "time": "20:38",
+   "resume": {
+    "t": 0.1,
+    "time": "20:36"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R201-normal",
+  "rel": {
+   "course": 297.234,
+   "speed": 25.548
+  },
+  "tgt": {
+   "course": 227.138,
+   "speed": 15.252
+  },
+  "cpa": {
+   "range": 0.923,
+   "brg": 27.234,
+   "tcpa": 5.361,
+   "time": "15:09"
+  },
+  "aspect": 48.083,
+  "bcr": null,
+  "scr": {
+   "range": 1.602,
+   "t": 8.437
+  }
+ },
+ {
+  "id": "R202-collision",
+  "rel": {
+   "course": 183.9,
+   "speed": 8.5
+  },
+  "tgt": {
+   "course": 43.204,
+   "speed": 7.744
+  },
+  "cpa": {
+   "range": 0.0,
+   "brg": null,
+   "tcpa": 58.108,
+   "time": "16:44"
+  },
+  "aspect": 140.696,
+  "bcr": {
+   "range": 0.0,
+   "t": 58.108
+  },
+  "scr": null,
+  "action": {
+   "course": 22.6,
+   "speed": 12.9,
+   "relCourse": 176.855,
+   "relSpeed": 6.274,
+   "cpa": 1.01,
+   "brg": 86.855,
+   "tcpa": 78.129,
+   "time": "17:04",
+   "resume": {
+    "t": 78.0,
+    "time": "17:04"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R203-collision",
+  "rel": {
+   "course": 330.4,
+   "speed": 22.16
+  },
+  "tgt": {
+   "course": 326.39,
+   "speed": 23.37
+  },
+  "cpa": {
+   "range": 0.0,
+   "brg": null,
+   "tcpa": 10.218,
+   "time": "15:43"
+  },
+  "aspect": 4.01,
+  "bcr": {
+   "range": 0.0,
+   "t": 10.218
+  },
+  "scr": null,
+  "action": {
+   "course": 275.6,
+   "speed": 0.4,
+   "relCourse": 327.158,
+   "relSpeed": 23.119,
+   "cpa": 0.088,
+   "brg": 237.158,
+   "tcpa": 4.037,
+   "time": "15:43",
+   "resume": {
+    "t": 6.7,
+    "time": "15:46"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R204-normal",
+  "rel": {
+   "course": 55.141,
+   "speed": 22.105
+  },
+  "tgt": {
+   "course": 89.045,
+   "speed": 0.369
+  },
+  "cpa": {
+   "range": 0.587,
+   "brg": 325.141,
+   "tcpa": 5.251,
+   "time": "13:24"
+  },
+  "aspect": -17.019,
+  "bcr": null,
+  "scr": {
+   "range": 62.165,
+   "t": 173.976
+  }
+ },
+ {
+  "id": "R205-normal",
+  "rel": {
+   "course": 216.522,
+   "speed": 1.361
+  },
+  "tgt": {
+   "course": 284.47,
+   "speed": 8.107
+  },
+  "cpa": {
+   "range": 1.868,
+   "brg": 126.522,
+   "tcpa": 116.198,
+   "time": "21:06"
+  },
+  "aspect": -32.624,
+  "bcr": null,
+  "scr": {
+   "range": 1.914,
+   "t": 97.758
+  },
+  "action": {
+   "stbdAlt": null,
+   "portAlt": 11,
+   "portCourse": 282.9,
+   "course": null,
+   "speed": 7.7,
+   "cpa": null,
+   "tcpa": null,
+   "time": null,
+   "resume": null
+  }
+ },
+ {
+  "id": "R206-normal",
+  "rel": {
+   "course": 30.654,
+   "speed": 20.187
+  },
+  "tgt": {
+   "course": 45.327,
+   "speed": 15.679
+  },
+  "cpa": {
+   "passed": true,
+   "range": 2.359
+  },
+  "aspect": -153.262,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R207-collision",
+  "rel": {
+   "course": 54.4,
+   "speed": 21.695
+  },
+  "tgt": {
+   "course": 353.788,
+   "speed": 21.303
+  },
+  "cpa": {
+   "range": 0.0,
+   "brg": null,
+   "tcpa": 20.508,
+   "time": "18:36"
+  },
+  "aspect": 60.612,
+  "bcr": {
+   "range": 0.0,
+   "t": 20.508
+  },
+  "scr": null,
+  "action": {
+   "course": 293.2,
+   "speed": 5.2,
+   "relCourse": 7.371,
+   "relSpeed": 19.289,
+   "cpa": 5.426,
+   "brg": 277.371,
+   "tcpa": 15.723,
+   "time": "18:31",
+   "resume": {
+    "t": 12.8,
+    "time": "18:28"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R208-normal",
+  "rel": {
+   "course": 113.44,
+   "speed": 2.631
+  },
+  "tgt": {
+   "course": 2.826,
+   "speed": 20.936
+  },
+  "cpa": {
+   "passed": true,
+   "range": 10.941
+  },
+  "aspect": -31.482,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 356.4,
+   "course": 356.4,
+   "speed": 22.0,
+   "relCourse": 113.44,
+   "relSpeed": 2.631,
+   "cpa": 11.15,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "07:28"
+   }
+  }
+ },
+ {
+  "id": "R209-normal",
+  "rel": {
+   "course": 169.169,
+   "speed": 3.1
+  },
+  "tgt": {
+   "course": 210.81,
+   "speed": 9.32
+  },
+  "cpa": {
+   "range": 1.559,
+   "brg": 79.169,
+   "tcpa": 106.506,
+   "time": "23:39"
+  },
+  "aspect": -25.82,
+  "bcr": null,
+  "scr": {
+   "range": 1.838,
+   "t": 87.67
+  }
+ },
+ {
+  "id": "R210-stationary",
+  "rel": {
+   "course": 141.1,
+   "speed": 18.5
+  },
+  "tgt": {
+   "course": 320.423,
+   "speed": 0.0
+  },
+  "cpa": {
+   "range": 0.436,
+   "brg": 231.1,
+   "tcpa": 4.913,
+   "time": "05:56"
+  },
+  "aspect": 164.608,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 321.1,
+   "course": 321.1,
+   "speed": 18.5,
+   "relCourse": 141.1,
+   "relSpeed": 18.5,
+   "cpa": 0.55,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 3.6,
+    "time": "06:01"
+   }
+  }
+ },
+ {
+  "id": "R211-normal",
+  "rel": {
+   "course": 94.972,
+   "speed": 3.921
+  },
+  "tgt": {
+   "course": 331.399,
+   "speed": 9.378
+  },
+  "cpa": {
+   "range": 3.722,
+   "brg": 184.972,
+   "tcpa": 81.768,
+   "time": "14:19"
+  },
+  "aspect": 88.719,
+  "bcr": null,
+  "scr": {
+   "range": 5.716,
+   "t": 148.14
+  }
+ },
+ {
+  "id": "R212-normal",
+  "rel": {
+   "course": 240.744,
+   "speed": 26.343
+  },
+  "tgt": {
+   "course": 190.659,
+   "speed": 23.955
+  },
+  "cpa": {
+   "passed": true,
+   "range": 9.168
+  },
+  "aspect": 152.271,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R213-normal",
+  "rel": {
+   "course": 351.311,
+   "speed": 17.704
+  },
+  "tgt": {
+   "course": 3.443,
+   "speed": 0.721
+  },
+  "cpa": {
+   "range": 1.432,
+   "brg": 261.311,
+   "tcpa": 11.137,
+   "time": "01:26"
+  },
+  "aspect": 11.408,
+  "bcr": null,
+  "scr": {
+   "range": 160.648,
+   "t": 555.559
+  },
+  "action": {
+   "course": 125.0,
+   "speed": 17.0,
+   "relCourse": 307.024,
+   "relSpeed": 17.388,
+   "cpa": 3.319,
+   "brg": 217.024,
+   "tcpa": 4.668,
+   "time": "01:20",
+   "resume": {
+    "t": 0.1,
+    "time": "01:15"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R214-normal",
+  "rel": {
+   "course": 187.43,
+   "speed": 18.188
+  },
+  "tgt": {
+   "course": 293.093,
+   "speed": 3.666
+  },
+  "cpa": {
+   "range": 1.347,
+   "brg": 97.43,
+   "tcpa": 3.115,
+   "time": "04:45"
+  },
+  "aspect": -50.697,
+  "bcr": null,
+  "scr": {
+   "range": 7.44,
+   "t": 27.254
+  },
+  "action": {
+   "course": 56.0,
+   "speed": 7.1,
+   "relCourse": 254.704,
+   "relSpeed": 9.599,
+   "cpa": 0.351,
+   "brg": 344.704,
+   "tcpa": 10.046,
+   "time": "04:52",
+   "resume": {
+    "t": 28.7,
+    "time": "05:11"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R215-normal",
+  "rel": {
+   "course": 59.583,
+   "speed": 5.52
+  },
+  "tgt": {
+   "course": 165.317,
+   "speed": 14.125
+  },
+  "cpa": {
+   "range": 7.185,
+   "brg": 149.583,
+   "tcpa": 44.849,
+   "time": "23:55"
+  },
+  "aspect": -165.87,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R216-normal",
+  "rel": {
+   "course": 264.178,
+   "speed": 26.531
+  },
+  "tgt": {
+   "course": 286.801,
+   "speed": 14.906
+  },
+  "cpa": {
+   "range": 2.141,
+   "brg": 354.178,
+   "tcpa": 8.841,
+   "time": "10:09"
+  },
+  "aspect": -51.336,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 60.0,
+   "course": 60.0,
+   "speed": 14.0,
+   "relCourse": 264.178,
+   "relSpeed": 26.531,
+   "cpa": 2.141,
+   "brg": 354.178,
+   "tcpa": 2.841,
+   "time": "10:09",
+   "resume": {
+    "t": 0.1,
+    "time": "10:06"
+   }
+  }
+ },
+ {
+  "id": "R217-near000",
+  "rel": {
+   "course": 45.725,
+   "speed": 1.911
+  },
+  "tgt": {
+   "course": 225.48,
+   "speed": 1.989
+  },
+  "cpa": {
+   "passed": true,
+   "range": 10.749
+  },
+  "aspect": -45.496,
+  "bcr": null,
+  "scr": {
+   "range": 3522.604,
+   "t": 110348.766
+  },
+  "action": {
+   "course": 195.0,
+   "speed": 8.4,
+   "relCourse": 6.42,
+   "relSpeed": 6.762,
+   "cpa": 10.749,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "09:46"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R218-normal",
+  "rel": {
+   "course": 228.833,
+   "speed": 36.275
+  },
+  "tgt": {
+   "course": 246.636,
+   "speed": 21.523
+  },
+  "cpa": {
+   "range": 2.332,
+   "brg": 318.833,
+   "tcpa": 1.124,
+   "time": "02:26"
+  },
+  "aspect": -91.56,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 26.2,
+   "speed": 13.7,
+   "relCourse": 231.094,
+   "relSpeed": 33.163,
+   "cpa": 2.357,
+   "brg": 321.094,
+   "tcpa": 1.062,
+   "time": "02:26",
+   "resume": {
+    "t": 4.5,
+    "time": "02:30"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R219-fixed",
+  "rel": {
+   "course": 332.401,
+   "speed": 15.5
+  },
+  "tgt": {
+   "course": 84.408,
+   "speed": 0.0
+  },
+  "cpa": {
+   "passed": true,
+   "range": 9.465
+  },
+  "aspect": null,
+  "bcr": null,
+  "scr": {
+   "range": 22674.017,
+   "t": 87734.285
+  },
+  "ground": {
+   "course": 152.401,
+   "speed": 15.5,
+   "set": 264.408,
+   "drift": 0.0
+  }
+ },
+ {
+  "id": "R220-samevel",
+  "rel": {
+   "course": null,
+   "speed": 0.0
+  },
+  "tgt": {
+   "course": 298.3,
+   "speed": 16.7
+  },
+  "cpa": {
+   "steady": true,
+   "range": 7.986
+  },
+  "aspect": 137.325,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R221-normal",
+  "rel": {
+   "course": 330.208,
+   "speed": 20.912
+  },
+  "tgt": {
+   "course": 281.138,
+   "speed": 5.286
+  },
+  "cpa": {
+   "passed": true,
+   "range": 9.757
+  },
+  "aspect": -43.224,
+  "bcr": null,
+  "scr": {
+   "range": 43.697,
+   "t": 121.093
+  },
+  "action": {
+   "course": 163.1,
+   "speed": 17.9,
+   "relCourse": 330.208,
+   "relSpeed": 20.912,
+   "cpa": 9.757,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "01:57"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R222-samevel",
+  "rel": {
+   "course": null,
+   "speed": 0.0
+  },
+  "tgt": {
+   "course": 205.6,
+   "speed": 11.2
+  },
+  "cpa": {
+   "steady": true,
+   "range": 1.53
+  },
+  "aspect": 149.377,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 195.0,
+   "speed": 11.2,
+   "relCourse": 290.3,
+   "relSpeed": 2.069,
+   "cpa": 1.383,
+   "brg": 200.3,
+   "tcpa": 18.973,
+   "time": "16:19",
+   "resume": {
+    "t": 96.2,
+    "time": "17:36"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R223-normal",
+  "rel": {
+   "course": 175.168,
+   "speed": 11.746
+  },
+  "tgt": {
+   "course": 169.985,
+   "speed": 15.865
+  },
+  "cpa": {
+   "range": 0.476,
+   "brg": 265.168,
+   "tcpa": 47.912,
+   "time": "07:20"
+  },
+  "aspect": 2.279,
+  "bcr": null,
+  "scr": {
+   "range": 1.428,
+   "t": 41.035
+  }
+ },
+ {
+  "id": "R224-stationary",
+  "rel": {
+   "course": 272.501,
+   "speed": 14.5
+  },
+  "tgt": {
+   "course": 301.033,
+   "speed": 0.0
+  },
+  "cpa": {
+   "range": 0.641,
+   "brg": 182.501,
+   "tcpa": 15.746,
+   "time": "16:03"
+  },
+  "aspect": -18.966,
+  "bcr": null,
+  "scr": {
+   "range": 53131.718,
+   "t": 219866.249
+  }
+ },
+ {
+  "id": "R225-normal",
+  "rel": {
+   "course": 134.972,
+   "speed": 6.75
+  },
+  "tgt": {
+   "course": 170.79,
+   "speed": 24.365
+  },
+  "cpa": {
+   "passed": true,
+   "range": 2.788
+  },
+  "aspect": -169.581,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 182.6,
+   "course": 182.6,
+   "speed": 19.3,
+   "relCourse": 134.972,
+   "relSpeed": 6.75,
+   "cpa": 3.031,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "12:20"
+   }
+  }
+ },
+ {
+  "id": "R226-normal",
+  "rel": {
+   "course": 217.903,
+   "speed": 7.977
+  },
+  "tgt": {
+   "course": 216.764,
+   "speed": 7.854
+  },
+  "cpa": {
+   "range": 2.182,
+   "brg": 307.903,
+   "tcpa": 17.492,
+   "time": "06:28"
+  },
+  "aspect": -42.037,
+  "bcr": null,
+  "scr": {
+   "range": 2.796,
+   "t": 30.642
+  }
+ },
+ {
+  "id": "R227-collision",
+  "rel": {
+   "course": 163.5,
+   "speed": 27.862
+  },
+  "tgt": {
+   "course": 106.182,
+   "speed": 16.568
+  },
+  "cpa": {
+   "range": 0.0,
+   "brg": null,
+   "tcpa": 9.394,
+   "time": "02:38"
+  },
+  "aspect": 57.318,
+  "bcr": {
+   "range": 0.0,
+   "t": 9.394
+  },
+  "scr": null,
+  "action": {
+   "course": 19.9,
+   "speed": 13.7,
+   "relCourse": 147.267,
+   "relSpeed": 20.803,
+   "cpa": 1.219,
+   "brg": 57.267,
+   "tcpa": 12.08,
+   "time": "02:41",
+   "resume": {
+    "t": 20.0,
+    "time": "02:49"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R228-normal",
+  "rel": {
+   "course": 302.158,
+   "speed": 32.246
+  },
+  "tgt": {
+   "course": 264.464,
+   "speed": 22.158
+  },
+  "cpa": {
+   "passed": true,
+   "range": 3.401
+  },
+  "aspect": -107.661,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R229-normal",
+  "rel": {
+   "course": 4.401,
+   "speed": 12.713
+  },
+  "tgt": {
+   "course": 266.403,
+   "speed": 0.541
+  },
+  "cpa": {
+   "range": 5.438,
+   "brg": 274.401,
+   "tcpa": 12.873,
+   "time": "03:16"
+  },
+  "aspect": 161.358,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R230-normal",
+  "rel": {
+   "course": 354.183,
+   "speed": 5.375
+  },
+  "tgt": {
+   "course": 230.365,
+   "speed": 10.382
+  },
+  "cpa": {
+   "range": 2.624,
+   "brg": 84.183,
+   "tcpa": 6.705,
+   "time": "09:33"
+  },
+  "aspect": 46.713,
+  "bcr": null,
+  "scr": {
+   "range": 4.289,
+   "t": 44.573
+  },
+  "action": {
+   "course": 211.9,
+   "speed": 11.3,
+   "relCourse": 325.726,
+   "relSpeed": 3.595,
+   "cpa": 2.02,
+   "brg": 55.726,
+   "tcpa": 29.681,
+   "time": "09:56",
+   "resume": {
+    "t": 0.1,
+    "time": "09:26"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R231-opening",
+  "rel": {
+   "course": 276.507,
+   "speed": 41.148
+  },
+  "tgt": {
+   "course": 296.507,
+   "speed": 19.721
+  },
+  "cpa": {
+   "passed": true,
+   "range": 2.344
+  },
+  "aspect": -143.423,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 79.0,
+   "speed": 24.8,
+   "relCourse": 275.535,
+   "relSpeed": 42.189,
+   "cpa": 5.749,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "05:56"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R232-fixed",
+  "rel": {
+   "course": 95.299,
+   "speed": 14.9
+  },
+  "tgt": {
+   "course": 338.144,
+   "speed": 0.0
+  },
+  "cpa": {
+   "range": 0.925,
+   "brg": 185.299,
+   "tcpa": 22.188,
+   "time": "03:39"
+  },
+  "aspect": null,
+  "bcr": null,
+  "scr": {
+   "range": 79129.784,
+   "t": 318667.524
+  },
+  "ground": {
+   "course": 275.299,
+   "speed": 14.9,
+   "set": 158.144,
+   "drift": 0.0
+  }
+ },
+ {
+  "id": "R233-normal",
+  "rel": {
+   "course": 5.042,
+   "speed": 10.769
+  },
+  "tgt": {
+   "course": 6.466,
+   "speed": 14.756
+  },
+  "cpa": {
+   "range": 4.619,
+   "brg": 275.042,
+   "tcpa": 15.948,
+   "time": "23:08"
+  },
+  "aspect": 56.791,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R234-normal",
+  "rel": {
+   "course": 45.623,
+   "speed": 15.316
+  },
+  "tgt": {
+   "course": 146.322,
+   "speed": 1.966
+  },
+  "cpa": {
+   "range": 7.714,
+   "brg": 135.623,
+   "tcpa": 18.729,
+   "time": "03:34"
+  },
+  "aspect": -158.909,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R235-near000",
+  "rel": {
+   "course": 246.52,
+   "speed": 7.43
+  },
+  "tgt": {
+   "course": 265.327,
+   "speed": 6.879
+  },
+  "cpa": {
+   "range": 7.933,
+   "brg": 336.52,
+   "tcpa": 28.484,
+   "time": "01:23"
+  },
+  "aspect": -84.837,
+  "bcr": {
+   "range": 8.586,
+   "t": 1.973
+  },
+  "scr": null
+ },
+ {
+  "id": "R236-normal",
+  "rel": {
+   "course": 61.325,
+   "speed": 18.001
+  },
+  "tgt": {
+   "course": 55.612,
+   "speed": 21.488
+  },
+  "cpa": {
+   "range": 0.23,
+   "brg": 151.325,
+   "tcpa": 4.446,
+   "time": "09:47"
+  },
+  "aspect": -4.057,
+  "bcr": null,
+  "scr": {
+   "range": 0.43,
+   "t": 3.236
+  }
+ },
+ {
+  "id": "R237-fixed",
+  "rel": {
+   "course": 203.08,
+   "speed": 0.9
+  },
+  "tgt": {
+   "course": 86.298,
+   "speed": 0.0
+  },
+  "cpa": {
+   "range": 5.418,
+   "brg": 293.08,
+   "tcpa": 620.449,
+   "time": "13:04"
+  },
+  "aspect": null,
+  "bcr": null,
+  "scr": {
+   "range": 15681.326,
+   "t": 1046224.504
+  },
+  "ground": {
+   "course": 23.08,
+   "speed": 0.9,
+   "set": 266.298,
+   "drift": 0.0
+  }
+ },
+ {
+  "id": "R238-normal",
+  "rel": {
+   "course": 253.971,
+   "speed": 19.019
+  },
+  "tgt": {
+   "course": 73.173,
+   "speed": 5.182
+  },
+  "cpa": {
+   "range": 7.677,
+   "brg": 163.971,
+   "tcpa": 0.248,
+   "time": "14:23"
+  },
+  "aspect": -89.79,
+  "bcr": null,
+  "scr": {
+   "range": 2576.754,
+   "t": 8129.26
+  },
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 73.8,
+   "course": 73.8,
+   "speed": 24.2,
+   "relCourse": 253.971,
+   "relSpeed": 19.019,
+   "cpa": 7.677,
+   "brg": 163.971,
+   "tcpa": 0.248,
+   "time": "14:23",
+   "resume": {
+    "t": 0.1,
+    "time": "14:23"
+   }
+  }
+ },
+ {
+  "id": "R239-stationary",
+  "rel": {
+   "course": 18.602,
+   "speed": 3.701
+  },
+  "tgt": {
+   "course": 27.476,
+   "speed": 0.001
+  },
+  "cpa": {
+   "range": 10.065,
+   "brg": 108.602,
+   "tcpa": 4.257,
+   "time": "06:15"
+  },
+  "aspect": -97.38,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R240-stationary",
+  "rel": {
+   "course": 271.529,
+   "speed": 0.5
+  },
+  "tgt": {
+   "course": 200.258,
+   "speed": 0.001
+  },
+  "cpa": {
+   "range": 6.827,
+   "brg": 181.529,
+   "tcpa": 535.772,
+   "time": "06:48"
+  },
+  "aspect": 128.075,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 91.6,
+   "course": 91.6,
+   "speed": 0.5,
+   "relCourse": 271.529,
+   "relSpeed": 0.5,
+   "cpa": 6.827,
+   "brg": 181.529,
+   "tcpa": 535.772,
+   "time": "06:48",
+   "resume": {
+    "t": 0.1,
+    "time": "21:52"
+   }
+  }
+ },
+ {
+  "id": "R241-normal",
+  "rel": {
+   "course": 132.189,
+   "speed": 14.242
+  },
+  "tgt": {
+   "course": 109.749,
+   "speed": 8.753
+  },
+  "cpa": {
+   "range": 2.358,
+   "brg": 222.189,
+   "tcpa": 33.502,
+   "time": "08:04"
+  },
+  "aspect": 5.922,
+  "bcr": null,
+  "scr": {
+   "range": 4.941,
+   "t": 51.792
+  }
+ },
+ {
+  "id": "R242-opening",
+  "rel": {
+   "course": 87.065,
+   "speed": 24.484
+  },
+  "tgt": {
+   "course": 52.662,
+   "speed": 12.162
+  },
+  "cpa": {
+   "passed": true,
+   "range": 7.03
+  },
+  "aspect": -68.123,
+  "bcr": null,
+  "scr": {
+   "range": 15.979,
+   "t": 31.627
+  },
+  "action": {
+   "course": 292.5,
+   "speed": 16.0,
+   "relCourse": 87.065,
+   "relSpeed": 24.484,
+   "cpa": 7.393,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "05:04"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R243-normal",
+  "rel": {
+   "course": 288.66,
+   "speed": 29.738
+  },
+  "tgt": {
+   "course": 314.157,
+   "speed": 5.835
+  },
+  "cpa": {
+   "range": 3.063,
+   "brg": 18.66,
+   "tcpa": 2.593,
+   "time": "20:35"
+  },
+  "aspect": -92.737,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R244-normal",
+  "rel": {
+   "course": 47.353,
+   "speed": 13.458
+  },
+  "tgt": {
+   "course": 49.895,
+   "speed": 21.022
+  },
+  "cpa": {
+   "range": 6.219,
+   "brg": 317.353,
+   "tcpa": 8.512,
+   "time": "09:20"
+  },
+  "aspect": 70.39,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R245-normal",
+  "rel": {
+   "course": 128.884,
+   "speed": 23.037
+  },
+  "tgt": {
+   "course": 119.042,
+   "speed": 7.087
+  },
+  "cpa": {
+   "range": 1.96,
+   "brg": 38.884,
+   "tcpa": 14.049,
+   "time": "03:55"
+  },
+  "aspect": 29.808,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 313.2,
+   "speed": null,
+   "cpa": null,
+   "tcpa": null,
+   "time": null,
+   "resume": null,
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R246-normal",
+  "rel": {
+   "course": 330.623,
+   "speed": 13.915
+  },
+  "tgt": {
+   "course": 137.42,
+   "speed": 5.692
+  },
+  "cpa": {
+   "passed": true,
+   "range": 1.443
+  },
+  "aspect": 27.338,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 146.8,
+   "course": 146.8,
+   "speed": 19.5,
+   "relCourse": 330.623,
+   "relSpeed": 13.915,
+   "cpa": 2.813,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "05:59"
+   }
+  }
+ },
+ {
+  "id": "R247-normal",
+  "rel": {
+   "course": 127.031,
+   "speed": 30.97
+  },
+  "tgt": {
+   "course": 145.486,
+   "speed": 23.176
+  },
+  "cpa": {
+   "range": 3.305,
+   "brg": 37.031,
+   "tcpa": 0.881,
+   "time": "14:15"
+  },
+  "aspect": 63.708,
+  "bcr": null,
+  "scr": {
+   "range": 5.226,
+   "t": 8.724
+  }
+ },
+ {
+  "id": "R248-fixed",
+  "rel": {
+   "course": 145.3,
+   "speed": 23.6
+  },
+  "tgt": {
+   "course": 161.569,
+   "speed": 0.0
+  },
+  "cpa": {
+   "passed": true,
+   "range": 10.081
+  },
+  "aspect": null,
+  "bcr": null,
+  "scr": null,
+  "ground": {
+   "course": 325.3,
+   "speed": 23.6,
+   "set": 341.569,
+   "drift": 0.0
+  },
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 325.3,
+   "course": 325.3,
+   "speed": 23.6,
+   "relCourse": 145.3,
+   "relSpeed": 23.6,
+   "cpa": 10.852,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "00:54"
+   }
+  }
+ },
+ {
+  "id": "R249-normal",
+  "rel": {
+   "course": 142.262,
+   "speed": 6.693
+  },
+  "tgt": {
+   "course": 179.04,
+   "speed": 11.222
+  },
+  "cpa": {
+   "range": 0.279,
+   "brg": 232.262,
+   "tcpa": 71.998,
+   "time": "03:05"
+  },
+  "aspect": -38.767,
+  "bcr": {
+   "range": 0.295,
+   "t": 72.853
+  },
+  "scr": null,
+  "action": {
+   "stbdAlt": 94,
+   "portAlt": 22,
+   "portCourse": 191.4,
+   "course": 307.4,
+   "speed": 7.1,
+   "relCourse": 159.432,
+   "relSpeed": 16.59,
+   "cpa": 2.539,
+   "brg": 249.432,
+   "tcpa": 26.297,
+   "time": "02:22",
+   "resume": {
+    "t": 27.3,
+    "time": "02:23"
+   }
+  }
+ },
+ {
+  "id": "R250-normal",
+  "rel": {
+   "course": 301.127,
+   "speed": 22.746
+  },
+  "tgt": {
+   "course": 306.861,
+   "speed": 21.589
+  },
+  "cpa": {
+   "range": 1.358,
+   "brg": 211.127,
+   "tcpa": 12.543,
+   "time": "02:53"
+  },
+  "aspect": 10.203,
+  "bcr": null,
+  "scr": {
+   "range": 1.574,
+   "t": 14.642
+  }
+ },
+ {
+  "id": "R251-samevel",
+  "rel": {
+   "course": null,
+   "speed": 0.0
+  },
+  "tgt": {
+   "course": 240.2,
+   "speed": 12.1
+  },
+  "cpa": {
+   "steady": true,
+   "range": 1.402
+  },
+  "aspect": 159.533,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R252-samevel",
+  "rel": {
+   "course": null,
+   "speed": 0.0
+  },
+  "tgt": {
+   "course": 200.7,
+   "speed": 20.6
+  },
+  "cpa": {
+   "steady": true,
+   "range": 4.175
+  },
+  "aspect": 12.473,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R253-midnight",
+  "rel": {
+   "course": 262.366,
+   "speed": 20.3
+  },
+  "tgt": {
+   "course": 263.261,
+   "speed": 19.563
+  },
+  "cpa": {
+   "passed": true,
+   "range": 2.872
+  },
+  "aspect": 111.154,
+  "bcr": null,
+  "scr": {
+   "range": 6.965,
+   "t": 15.838
+  }
+ },
+ {
+  "id": "R254-normal",
+  "rel": {
+   "course": 298.96,
+   "speed": 14.736
+  },
+  "tgt": {
+   "course": 289.755,
+   "speed": 8.811
+  },
+  "cpa": {
+   "range": 1.726,
+   "brg": 28.96,
+   "tcpa": 34.964,
+   "time": "01:48"
+  },
+  "aspect": -2.163,
+  "bcr": null,
+  "scr": {
+   "range": 7.594,
+   "t": 65.077
+  },
+  "action": {
+   "course": 217.0,
+   "speed": 6.2,
+   "relCourse": 330.09,
+   "relSpeed": 9.148,
+   "cpa": 5.917,
+   "brg": 60.09,
+   "tcpa": 42.355,
+   "time": "01:55",
+   "resume": {
+    "t": 16.2,
+    "time": "01:29"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R255-normal",
+  "rel": {
+   "course": 109.193,
+   "speed": 36.978
+  },
+  "tgt": {
+   "course": 102.574,
+   "speed": 23.712
+  },
+  "cpa": {
+   "range": 1.909,
+   "brg": 199.193,
+   "tcpa": 6.117,
+   "time": "15:22"
+  },
+  "aspect": -20.237,
+  "bcr": null,
+  "scr": {
+   "range": 9.569,
+   "t": 21.332
+  }
+ },
+ {
+  "id": "R256-normal",
+  "rel": {
+   "course": 35.658,
+   "speed": 12.654
+  },
+  "tgt": {
+   "course": 63.074,
+   "speed": 6.199
+  },
+  "cpa": {
+   "range": 1.689,
+   "brg": 305.658,
+   "tcpa": 29.771,
+   "time": "19:32"
+  },
+  "aspect": -12.364,
+  "bcr": null,
+  "scr": {
+   "range": 4.555,
+   "t": 49.83
+  },
+  "action": {
+   "course": 193.9,
+   "speed": 3.9,
+   "relCourse": 44.433,
+   "relSpeed": 9.233,
+   "cpa": 0.711,
+   "brg": 314.433,
+   "tcpa": 41.999,
+   "time": "19:44",
+   "resume": {
+    "t": 54.2,
+    "time": "19:56"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R257-collision",
+  "rel": {
+   "course": 257.8,
+   "speed": 17.25
+  },
+  "tgt": {
+   "course": 310.819,
+   "speed": 25.01
+  },
+  "cpa": {
+   "range": 0.0,
+   "brg": null,
+   "tcpa": 22.803,
+   "time": "23:42"
+  },
+  "aspect": -53.019,
+  "bcr": {
+   "range": 0.0,
+   "t": 22.803
+  },
+  "scr": null,
+  "action": {
+   "stbdAlt": 56,
+   "portAlt": 33,
+   "portCourse": 321.1,
+   "course": 50.1,
+   "speed": 20.1,
+   "relCourse": 275.744,
+   "relSpeed": 34.52,
+   "cpa": 2.02,
+   "brg": 5.744,
+   "tcpa": 10.841,
+   "time": "23:30",
+   "resume": {
+    "t": 11.3,
+    "time": "23:30"
+   }
+  }
+ },
+ {
+  "id": "R258-normal",
+  "rel": {
+   "course": 128.929,
+   "speed": 3.146
+  },
+  "tgt": {
+   "course": 183.536,
+   "speed": 7.136
+  },
+  "cpa": {
+   "range": 0.412,
+   "brg": 218.929,
+   "tcpa": 21.536,
+   "time": "22:01"
+  },
+  "aspect": -74.651,
+  "bcr": {
+   "range": 0.418,
+   "t": 22.869
+  },
+  "scr": null
+ },
+ {
+  "id": "R259-normal",
+  "rel": {
+   "course": 12.706,
+   "speed": 14.127
+  },
+  "tgt": {
+   "course": 356.514,
+   "speed": 18.986
+  },
+  "cpa": {
+   "range": 0.905,
+   "brg": 102.706,
+   "tcpa": 29.426,
+   "time": "19:22"
+  },
+  "aspect": 8.75,
+  "bcr": null,
+  "scr": {
+   "range": 1.145,
+   "t": 26.445
+  },
+  "action": {
+   "course": 320.5,
+   "speed": 0.2,
+   "relCourse": 356.872,
+   "relSpeed": 18.825,
+   "cpa": 1.02,
+   "brg": 266.872,
+   "tcpa": 22.032,
+   "time": "19:15",
+   "resume": {
+    "t": 22.3,
+    "time": "19:15"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R260-normal",
+  "rel": {
+   "course": 108.51,
+   "speed": 22.03
+  },
+  "tgt": {
+   "course": 128.709,
+   "speed": 12.318
+  },
+  "cpa": {
+   "passed": true,
+   "range": 3.06
+  },
+  "aspect": -170.703,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 266.4,
+   "course": 266.4,
+   "speed": 11.3,
+   "relCourse": 108.51,
+   "relSpeed": 22.03,
+   "cpa": 3.06,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "13:41"
+   }
+  }
+ },
+ {
+  "id": "R261-midnight",
+  "rel": {
+   "course": 10.662,
+   "speed": 36.853
+  },
+  "tgt": {
+   "course": 346.153,
+   "speed": 18.845
+  },
+  "cpa": {
+   "passed": true,
+   "range": 3.824
+  },
+  "aspect": 117.826,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 212.3,
+   "speed": 21.2,
+   "relCourse": 10.662,
+   "relSpeed": 36.853,
+   "cpa": 5.462,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "00:02"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R262-normal",
+  "rel": {
+   "course": 119.392,
+   "speed": 23.895
+  },
+  "tgt": {
+   "course": 115.388,
+   "speed": 4.81
+  },
+  "cpa": {
+   "range": 1.249,
+   "brg": 29.392,
+   "tcpa": 17.093,
+   "time": "11:55"
+  },
+  "aspect": 14.398,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 300.4,
+   "speed": null,
+   "cpa": null,
+   "tcpa": null,
+   "time": null,
+   "resume": null,
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R263-normal",
+  "rel": {
+   "course": 185.191,
+   "speed": 1.864
+  },
+  "tgt": {
+   "course": 181.531,
+   "speed": 1.375
+  },
+  "cpa": {
+   "range": 8.46,
+   "brg": 95.191,
+   "tcpa": 136.491,
+   "time": "17:05"
+  },
+  "aspect": 67.041,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 15.3,
+   "course": 15.3,
+   "speed": 0.5,
+   "relCourse": 185.191,
+   "relSpeed": 1.864,
+   "cpa": 8.46,
+   "brg": 95.191,
+   "tcpa": 136.491,
+   "time": "17:05",
+   "resume": {
+    "t": 0.1,
+    "time": "14:49"
+   }
+  }
+ },
+ {
+  "id": "R264-normal",
+  "rel": {
+   "course": 123.683,
+   "speed": 20.214
+  },
+  "tgt": {
+   "course": 186.66,
+   "speed": 12.966
+  },
+  "cpa": {
+   "range": 0.397,
+   "brg": 33.683,
+   "tcpa": 20.144,
+   "time": "04:27"
+  },
+  "aspect": -59.63,
+  "bcr": null,
+  "scr": {
+   "range": 0.632,
+   "t": 21.605
+  }
+ },
+ {
+  "id": "R265-normal",
+  "rel": {
+   "course": 304.701,
+   "speed": 15.62
+  },
+  "tgt": {
+   "course": 275.498,
+   "speed": 11.973
+  },
+  "cpa": {
+   "range": 0.523,
+   "brg": 34.701,
+   "tcpa": 17.303,
+   "time": "03:07"
+  },
+  "aspect": 22.577,
+  "bcr": null,
+  "scr": {
+   "range": 0.699,
+   "t": 19.081
+  }
+ },
+ {
+  "id": "R266-normal",
+  "rel": {
+   "course": 306.825,
+   "speed": 40.814
+  },
+  "tgt": {
+   "course": 312.372,
+   "speed": 21.526
+  },
+  "cpa": {
+   "range": 2.215,
+   "brg": 36.825,
+   "tcpa": 0.575,
+   "time": "01:18"
+  },
+  "aspect": -85.532,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 120.7,
+   "speed": 3.6,
+   "relCourse": 310.707,
+   "relSpeed": 25.062,
+   "cpa": 4.304,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "01:23"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R267-midnight",
+  "rel": {
+   "course": 268.08,
+   "speed": 23.188
+  },
+  "tgt": {
+   "course": 315.121,
+   "speed": 16.816
+  },
+  "cpa": {
+   "range": 0.577,
+   "brg": 178.08,
+   "tcpa": 4.258,
+   "time": "00:04"
+  },
+  "aspect": -27.721,
+  "bcr": null,
+  "scr": {
+   "range": 0.797,
+   "t": 5.68
+  }
+ },
+ {
+  "id": "R268-normal",
+  "rel": {
+   "course": 34.182,
+   "speed": 34.696
+  },
+  "tgt": {
+   "course": 24.83,
+   "speed": 15.986
+  },
+  "cpa": {
+   "range": 0.3,
+   "brg": 304.182,
+   "tcpa": 2.155,
+   "time": "10:37"
+  },
+  "aspect": 22.897,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 222.0,
+   "speed": null,
+   "cpa": null,
+   "tcpa": null,
+   "time": null,
+   "resume": null,
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R269-normal",
+  "rel": {
+   "course": 345.078,
+   "speed": 22.682
+  },
+  "tgt": {
+   "course": 10.886,
+   "speed": 7.451
+  },
+  "cpa": {
+   "range": 0.554,
+   "brg": 75.078,
+   "tcpa": 4.233,
+   "time": "14:54"
+  },
+  "aspect": -44.889,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R270-normal",
+  "rel": {
+   "course": 148.377,
+   "speed": 10.174
+  },
+  "tgt": {
+   "course": 285.907,
+   "speed": 4.349
+  },
+  "cpa": {
+   "range": 4.396,
+   "brg": 58.377,
+   "tcpa": 9.388,
+   "time": "10:40"
+  },
+  "aspect": -67.433,
+  "bcr": null,
+  "scr": {
+   "range": 20.511,
+   "t": 127.542
+  },
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 316.0,
+   "course": 316.0,
+   "speed": 13.7,
+   "relCourse": 148.377,
+   "relSpeed": 10.174,
+   "cpa": 4.396,
+   "brg": 58.377,
+   "tcpa": 3.388,
+   "time": "10:40",
+   "resume": {
+    "t": 0.1,
+    "time": "10:37"
+   }
+  }
+ },
+ {
+  "id": "R271-normal",
+  "rel": {
+   "course": 78.55,
+   "speed": 19.648
+  },
+  "tgt": {
+   "course": 279.917,
+   "speed": 5.238
+  },
+  "cpa": {
+   "passed": true,
+   "range": 6.113
+  },
+  "aspect": -32.114,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 263.0,
+   "speed": 24.6,
+   "relCourse": 78.55,
+   "relSpeed": 19.648,
+   "cpa": 6.113,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "07:35"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R272-fixed",
+  "rel": {
+   "course": 149.78,
+   "speed": 0.8
+  },
+  "tgt": {
+   "course": 97.819,
+   "speed": 0.0
+  },
+  "cpa": {
+   "passed": true,
+   "range": 5.223
+  },
+  "aspect": null,
+  "bcr": null,
+  "scr": null,
+  "ground": {
+   "course": 329.78,
+   "speed": 0.8,
+   "set": 277.819,
+   "drift": 0.0
+  },
+  "action": {
+   "course": 330.0,
+   "speed": 2.1,
+   "relCourse": 149.992,
+   "relSpeed": 2.1,
+   "cpa": 5.223,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "15:54"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R273-normal",
+  "rel": {
+   "course": 56.159,
+   "speed": 17.869
+  },
+  "tgt": {
+   "course": 318.028,
+   "speed": 7.633
+  },
+  "cpa": {
+   "range": 10.061,
+   "brg": 326.159,
+   "tcpa": 0.929,
+   "time": "19:43"
+  },
+  "aspect": -173.443,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 233.0,
+   "speed": 5.3,
+   "relCourse": 354.383,
+   "relSpeed": 8.907,
+   "cpa": 10.174,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "19:48"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R274-normal",
+  "rel": {
+   "course": 300.358,
+   "speed": 33.837
+  },
+  "tgt": {
+   "course": 314.32,
+   "speed": 10.908
+  },
+  "cpa": {
+   "range": 0.426,
+   "brg": 210.358,
+   "tcpa": 4.84,
+   "time": "20:46"
+  },
+  "aspect": -5.095,
+  "bcr": null,
+  "scr": {
+   "range": 3.786,
+   "t": 11.511
+  }
+ },
+ {
+  "id": "R275-normal",
+  "rel": {
+   "course": 258.269,
+   "speed": 15.32
+  },
+  "tgt": {
+   "course": 258.343,
+   "speed": 22.62
+  },
+  "cpa": {
+   "passed": true,
+   "range": 2.156
+  },
+  "aspect": -97.167,
+  "bcr": {
+   "range": 529.749,
+   "t": 2073.708
+  },
+  "scr": null,
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 258.5,
+   "course": 258.5,
+   "speed": 7.3,
+   "relCourse": 258.269,
+   "relSpeed": 15.32,
+   "cpa": 2.795,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 1.2,
+    "time": "05:10"
+   }
+  }
+ },
+ {
+  "id": "R276-normal",
+  "rel": {
+   "course": 10.648,
+   "speed": 17.326
+  },
+  "tgt": {
+   "course": 39.27,
+   "speed": 15.291
+  },
+  "cpa": {
+   "range": 4.318,
+   "brg": 280.648,
+   "tcpa": 6.686,
+   "time": "03:15"
+  },
+  "aspect": 37.288,
+  "bcr": null,
+  "scr": {
+   "range": 4.893,
+   "t": 14.655
+  },
+  "action": {
+   "course": 128.7,
+   "speed": 8.3,
+   "relCourse": 10.648,
+   "relSpeed": 17.326,
+   "cpa": 4.318,
+   "brg": 280.648,
+   "tcpa": 6.686,
+   "time": "03:15",
+   "resume": {
+    "t": 0.1,
+    "time": "03:08"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R277-normal",
+  "rel": {
+   "course": 218.355,
+   "speed": 9.402
+  },
+  "tgt": {
+   "course": 162.275,
+   "speed": 1.629
+  },
+  "cpa": {
+   "passed": true,
+   "range": 5.257
+  },
+  "aspect": -143.223,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 47.4,
+   "course": 47.4,
+   "speed": 8.6,
+   "relCourse": 218.355,
+   "relSpeed": 9.402,
+   "cpa": 5.703,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "17:56"
+   }
+  }
+ },
+ {
+  "id": "R278-collision",
+  "rel": {
+   "course": 157.3,
+   "speed": 19.142
+  },
+  "tgt": {
+   "course": 204.401,
+   "speed": 18.357
+  },
+  "cpa": {
+   "range": 0.0,
+   "brg": null,
+   "tcpa": 25.414,
+   "time": "18:35"
+  },
+  "aspect": -47.101,
+  "bcr": {
+   "range": 0.0,
+   "t": 25.414
+  },
+  "scr": null,
+  "action": {
+   "stbdAlt": 46,
+   "portAlt": 62,
+   "portCourse": 211.6,
+   "course": 319.6,
+   "speed": 15.0,
+   "relCourse": 175.655,
+   "relSpeed": 28.221,
+   "cpa": 2.553,
+   "brg": 265.655,
+   "tcpa": 16.361,
+   "time": "18:26",
+   "resume": {
+    "t": 16.9,
+    "time": "18:27"
+   }
+  }
+ },
+ {
+  "id": "R279-normal",
+  "rel": {
+   "course": 50.377,
+   "speed": 11.495
+  },
+  "tgt": {
+   "course": 84.393,
+   "speed": 7.646
+  },
+  "cpa": {
+   "range": 9.782,
+   "brg": 140.377,
+   "tcpa": 17.567,
+   "time": "06:22"
+  },
+  "aspect": -105.031,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R280-normal",
+  "rel": {
+   "course": 13.252,
+   "speed": 12.245
+  },
+  "tgt": {
+   "course": 275.405,
+   "speed": 12.428
+  },
+  "cpa": {
+   "range": 0.092,
+   "brg": 283.252,
+   "tcpa": 6.44,
+   "time": "21:53"
+  },
+  "aspect": 101.835,
+  "bcr": {
+   "range": 0.138,
+   "t": 5.931
+  },
+  "scr": null
+ },
+ {
+  "id": "R281-normal",
+  "rel": {
+   "course": 58.972,
+   "speed": 19.052
+  },
+  "tgt": {
+   "course": 103.194,
+   "speed": 10.755
+  },
+  "cpa": {
+   "passed": true,
+   "range": 2.138
+  },
+  "aspect": -163.388,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 205.5,
+   "course": 205.5,
+   "speed": 13.6,
+   "relCourse": 58.972,
+   "relSpeed": 19.052,
+   "cpa": 3.489,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "00:57"
+   }
+  }
+ },
+ {
+  "id": "R282-normal",
+  "rel": {
+   "course": 168.329,
+   "speed": 15.533
+  },
+  "tgt": {
+   "course": 331.973,
+   "speed": 9.1
+  },
+  "cpa": {
+   "range": 4.774,
+   "brg": 78.329,
+   "tcpa": 14.564,
+   "time": "13:53"
+  },
+  "aspect": -111.945,
+  "bcr": null,
+  "scr": {
+   "range": 45.455,
+   "t": 189.174
+  },
+  "action": {
+   "course": 71.0,
+   "speed": 24.4,
+   "relCourse": 270.187,
+   "relSpeed": 27.347,
+   "cpa": 3.151,
+   "brg": 0.187,
+   "tcpa": 9.251,
+   "time": "13:53",
+   "resume": {
+    "t": 0.1,
+    "time": "13:44"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R283-opening",
+  "rel": {
+   "course": 139.846,
+   "speed": 18.044
+  },
+  "tgt": {
+   "course": 130.529,
+   "speed": 16.27
+  },
+  "cpa": {
+   "passed": true,
+   "range": 3.221
+  },
+  "aspect": 150.164,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "course": 12.8,
+   "speed": 1.0,
+   "relCourse": 133.557,
+   "relSpeed": 16.759,
+   "cpa": 3.221,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "20:20"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R284-normal",
+  "rel": {
+   "course": 279.454,
+   "speed": 1.284
+  },
+  "tgt": {
+   "course": 350.42,
+   "speed": 9.538
+  },
+  "cpa": {
+   "range": 2.387,
+   "brg": 189.454,
+   "tcpa": 44.7,
+   "time": "04:46"
+  },
+  "aspect": -2.797,
+  "bcr": null,
+  "scr": {
+   "range": 2.436,
+   "t": 22.092
+  }
+ },
+ {
+  "id": "R285-normal",
+  "rel": {
+   "course": 38.578,
+   "speed": 9.271
+  },
+  "tgt": {
+   "course": 58.003,
+   "speed": 12.805
+  },
+  "cpa": {
+   "range": 10.224,
+   "brg": 128.578,
+   "tcpa": 15.437,
+   "time": "11:51"
+  },
+  "aspect": -96.294,
+  "bcr": {
+   "range": 12.244,
+   "t": 59.032
+  },
+  "scr": null
+ },
+ {
+  "id": "R286-normal",
+  "rel": {
+   "course": 162.916,
+   "speed": 4.689
+  },
+  "tgt": {
+   "course": 175.416,
+   "speed": 11.908
+  },
+  "cpa": {
+   "range": 7.179,
+   "brg": 72.916,
+   "tcpa": 92.85,
+   "time": "19:46"
+  },
+  "aspect": 32.191,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R287-midnight",
+  "rel": {
+   "course": 244.95,
+   "speed": 26.115
+  },
+  "tgt": {
+   "course": 200.589,
+   "speed": 2.636
+  },
+  "cpa": {
+   "passed": true,
+   "range": 1.353
+  },
+  "aspect": 137.634,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R288-normal",
+  "rel": {
+   "course": 175.344,
+   "speed": 8.706
+  },
+  "tgt": {
+   "course": 0.399,
+   "speed": 2.301
+  },
+  "cpa": {
+   "passed": true,
+   "range": 6.979
+  },
+  "aspect": -44.44,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R289-stationary",
+  "rel": {
+   "course": 133.9,
+   "speed": 19.6
+  },
+  "tgt": {
+   "course": 149.116,
+   "speed": 0.0
+  },
+  "cpa": {
+   "passed": true,
+   "range": 2.827
+  },
+  "aspect": 174.923,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R290-normal",
+  "rel": {
+   "course": 44.002,
+   "speed": 35.724
+  },
+  "tgt": {
+   "course": 45.106,
+   "speed": 15.029
+  },
+  "cpa": {
+   "range": 2.188,
+   "brg": 134.002,
+   "tcpa": 5.703,
+   "time": "21:05"
+  },
+  "aspect": -33.894,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R291-opening",
+  "rel": {
+   "course": 345.702,
+   "speed": 15.957
+  },
+  "tgt": {
+   "course": 291.924,
+   "speed": 1.346
+  },
+  "cpa": {
+   "passed": true,
+   "range": 1.723
+  },
+  "aspect": -117.452,
+  "bcr": null,
+  "scr": {
+   "range": 3.677,
+   "t": 7.387
+  },
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 169.8,
+   "course": 169.8,
+   "speed": 15.2,
+   "relCourse": 345.702,
+   "relSpeed": 15.957,
+   "cpa": 1.723,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 1.1,
+    "time": "05:18"
+   }
+  }
+ },
+ {
+  "id": "R292-normal",
+  "rel": {
+   "course": 153.219,
+   "speed": 12.195
+  },
+  "tgt": {
+   "course": 70.895,
+   "speed": 2.221
+  },
+  "cpa": {
+   "range": 10.258,
+   "brg": 243.219,
+   "tcpa": 4.076,
+   "time": "01:59"
+  },
+  "aspect": -3.059,
+  "bcr": null,
+  "scr": {
+   "range": 56.391,
+   "t": 276.898
+  }
+ },
+ {
+  "id": "R293-collision",
+  "rel": {
+   "course": 300.8,
+   "speed": 9.116
+  },
+  "tgt": {
+   "course": 246.489,
+   "speed": 12.622
+  },
+  "cpa": {
+   "range": 0.0,
+   "brg": null,
+   "tcpa": 36.7,
+   "time": "13:31"
+  },
+  "aspect": 54.311,
+  "bcr": {
+   "range": 0.0,
+   "t": 36.7
+  },
+  "scr": null,
+  "action": {
+   "course": 201.1,
+   "speed": 2.4,
+   "relCourse": 255.368,
+   "relSpeed": 11.069,
+   "cpa": 3.323,
+   "brg": 165.368,
+   "tcpa": 17.742,
+   "time": "13:18",
+   "resume": {
+    "t": 22.9,
+    "time": "13:23"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R294-midnight",
+  "rel": {
+   "course": 118.881,
+   "speed": 26.92
+  },
+  "tgt": {
+   "course": 91.599,
+   "speed": 15.221
+  },
+  "cpa": {
+   "range": 0.508,
+   "brg": 208.881,
+   "tcpa": 2.444,
+   "time": "00:13"
+  },
+  "aspect": 2.424,
+  "bcr": null,
+  "scr": {
+   "range": 1.099,
+   "t": 4.617
+  },
+  "action": {
+   "course": 326.4,
+   "speed": 6.2,
+   "relCourse": 106.685,
+   "relSpeed": 19.466,
+   "cpa": 0.265,
+   "brg": 196.685,
+   "tcpa": 3.634,
+   "time": "00:15",
+   "resume": {
+    "t": 8.2,
+    "time": "00:19"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R295-normal",
+  "rel": {
+   "course": 306.222,
+   "speed": 14.251
+  },
+  "tgt": {
+   "course": 314.191,
+   "speed": 11.856
+  },
+  "cpa": {
+   "range": 3.811,
+   "brg": 36.222,
+   "tcpa": 8.92,
+   "time": "22:35"
+  },
+  "aspect": -68.896,
+  "bcr": null,
+  "scr": null,
+  "action": {
+   "stbdAlt": 0,
+   "portAlt": 0,
+   "portCourse": 93.0,
+   "course": 93.0,
+   "speed": 3.0,
+   "relCourse": 306.222,
+   "relSpeed": 14.251,
+   "cpa": 3.811,
+   "brg": 36.222,
+   "tcpa": 2.92,
+   "time": "22:35",
+   "resume": {
+    "t": 0.1,
+    "time": "22:32"
+   }
+  }
+ },
+ {
+  "id": "R296-normal",
+  "rel": {
+   "course": 115.531,
+   "speed": 14.319
+  },
+  "tgt": {
+   "course": 107.373,
+   "speed": 6.333
+  },
+  "cpa": {
+   "range": 1.926,
+   "brg": 25.531,
+   "tcpa": 17.978,
+   "time": "10:38"
+  },
+  "aspect": 32.333,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R297-midnight",
+  "rel": {
+   "course": 229.831,
+   "speed": 28.083
+  },
+  "tgt": {
+   "course": 248.032,
+   "speed": 5.742
+  },
+  "cpa": {
+   "range": 1.799,
+   "brg": 139.831,
+   "tcpa": 2.444,
+   "time": "00:13"
+  },
+  "aspect": 39.338,
+  "bcr": null,
+  "scr": {
+   "range": 22.766,
+   "t": 50.933
+  },
+  "action": {
+   "course": 45.3,
+   "speed": 7.5,
+   "relCourse": 235.137,
+   "relSpeed": 12.987,
+   "cpa": 2.45,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "00:17"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "R298-near000",
+  "rel": {
+   "course": 300.799,
+   "speed": 12.452
+  },
+  "tgt": {
+   "course": 50.75,
+   "speed": 10.077
+  },
+  "cpa": {
+   "passed": true,
+   "range": 4.465
+  },
+  "aspect": 129.777,
+  "bcr": null,
+  "scr": null
+ },
+ {
+  "id": "R299-normal",
+  "rel": {
+   "course": 237.707,
+   "speed": 10.97
+  },
+  "tgt": {
+   "course": 228.197,
+   "speed": 9.404
+  },
+  "cpa": {
+   "range": 2.159,
+   "brg": 327.707,
+   "tcpa": 2.257,
+   "time": "19:56"
+  },
+  "aspect": -69.671,
+  "bcr": null,
+  "scr": {
+   "range": 3.196,
+   "t": 15.146
+  },
+  "action": {
+   "course": 31.0,
+   "speed": 2.3,
+   "relCourse": 224.842,
+   "relSpeed": 11.621,
+   "cpa": 2.135,
+   "brg": 314.842,
+   "tcpa": 1.798,
+   "time": "19:59",
+   "resume": {
+    "t": 0.1,
+    "time": "19:57"
+   },
+   "portCourse": null
+  }
+ }
+]

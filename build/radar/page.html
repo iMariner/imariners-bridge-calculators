@@ -1,0 +1,161 @@
+    <section class="tool" id="radar-plot" hidden>
+      <div class="tool-head">
+        <h1>Radar Plotting</h1>
+        <p>Type the bearing and range of a target at two or more times. You get CPA, TCPA, the target's course and speed, aspect, the action to keep clear and when to resume, with the plot and the steps to draw it by hand.</p>
+      </div>
+
+      <div class="grid rp-grid">
+        <form class="card" id="rp-form" autocomplete="off" onsubmit="return false">
+          <h2>Own ship</h2>
+          <div class="row2">
+            <div class="field">
+              <label for="rp-course">Course</label>
+              <div class="input-wrap"><input id="rp-course" type="text" inputmode="decimal" placeholder="000" maxlength="5"><span class="unit">°T</span></div>
+              <div class="hint" id="rp-course-msg"></div>
+            </div>
+            <div class="field">
+              <label for="rp-speed">Speed</label>
+              <div class="input-wrap"><input id="rp-speed" type="text" inputmode="decimal" placeholder="12.0" maxlength="5"><span class="unit">kn</span></div>
+              <div class="hint" id="rp-speed-msg"></div>
+            </div>
+          </div>
+          <div class="field">
+            <span class="label" id="rp-bt-label">Bearings are</span>
+            <div class="segmented" role="radiogroup" aria-labelledby="rp-bt-label">
+              <input type="radio" name="rp-bt" id="rp-bt-true" value="true" checked><label for="rp-bt-true">True (north up)</label>
+              <input type="radio" name="rp-bt" id="rp-bt-rel" value="rel"><label for="rp-bt-rel">Relative (head up)</label>
+            </div>
+          </div>
+          <div class="row2">
+            <div class="field" id="rp-hd-f">
+              <label for="rp-heading">Heading</label>
+              <div class="input-wrap"><input id="rp-heading" type="text" inputmode="decimal" placeholder="= course" maxlength="5"><span class="unit">°T</span></div>
+              <div class="hint" id="rp-heading-msg">Blank = same as course</div>
+            </div>
+            <div class="field" id="rp-ge-f">
+              <label for="rp-ge">Gyro error</label>
+              <div class="input-wrap"><input id="rp-ge" type="text" inputmode="decimal" placeholder="0.0" maxlength="5"><span class="unit">°</span></div>
+              <div class="hint" id="rp-ge-msg">Low +, high −</div>
+            </div>
+            <div class="field">
+              <label for="rp-cpa">Safe CPA</label>
+              <div class="input-wrap"><input id="rp-cpa" type="text" inputmode="decimal" placeholder="2.0" maxlength="4"><span class="unit">NM</span></div>
+              <div class="hint" id="rp-cpa-msg"></div>
+            </div>
+          </div>
+
+          <h2 class="rp-h2">Targets</h2>
+          <div class="segmented rp-tabs" role="radiogroup" aria-label="Target">
+            <input type="radio" name="rp-tg" id="rp-tg-A" value="A" checked><label for="rp-tg-A">A</label>
+            <input type="radio" name="rp-tg" id="rp-tg-B" value="B"><label for="rp-tg-B">B</label>
+            <input type="radio" name="rp-tg" id="rp-tg-C" value="C"><label for="rp-tg-C">C</label>
+          </div>
+          <table class="rp-obs" id="rp-obs">
+            <thead><tr><th class="rp-c-n"></th><th>Time</th><th><span id="rp-brg-h">Bearing °T</span></th><th>Range NM</th></tr></thead>
+            <tbody id="rp-obs-body"></tbody>
+          </table>
+          <div class="rp-obs-foot">
+            <button type="button" class="btn" id="rp-addrow">Add a plot</button>
+            <label class="rp-fixed"><input type="checkbox" id="rp-fixed"> Fixed object (buoy, light, land)</label>
+          </div>
+          <p class="hint" id="rp-obs-msg">Times as 10:06 or 1006. Plot every 6 minutes if you can; 3 plots show if the target alters.</p>
+
+          <h2 class="rp-h2">Action to keep clear</h2>
+          <div class="field">
+            <div class="segmented rp-acts" role="radiogroup" aria-label="Action">
+              <input type="radio" name="rp-act" id="rp-act-none" value="none" checked><label for="rp-act-none">None</label>
+              <input type="radio" name="rp-act" id="rp-act-fc" value="fc"><label for="rp-act-fc">Find course</label>
+              <input type="radio" name="rp-act" id="rp-act-fs" value="fs"><label for="rp-act-fs">Find speed</label>
+              <input type="radio" name="rp-act" id="rp-act-me" value="me"><label for="rp-act-me">My action</label>
+            </div>
+          </div>
+          <div id="rp-act-box" hidden>
+            <div class="row2">
+              <div class="field">
+                <label for="rp-at">Time of action</label>
+                <div class="input-wrap"><input id="rp-at" type="text" inputmode="numeric" placeholder="hh:mm" maxlength="5"></div>
+                <div class="hint" id="rp-at-msg">Blank = 6 min after the last plot</div>
+              </div>
+              <div class="field" id="rp-want-f">
+                <label for="rp-want">Wanted CPA</label>
+                <div class="input-wrap"><input id="rp-want" type="text" inputmode="decimal" placeholder="= safe CPA" maxlength="4"><span class="unit">NM</span></div>
+                <div class="hint" id="rp-want-msg"></div>
+              </div>
+            </div>
+            <div class="row2" id="rp-me-f">
+              <div class="field">
+                <label for="rp-nc">New course</label>
+                <div class="input-wrap"><input id="rp-nc" type="text" inputmode="decimal" placeholder="= course" maxlength="5"><span class="unit">°T</span></div>
+                <div class="hint" id="rp-nc-msg"></div>
+              </div>
+              <div class="field">
+                <label for="rp-ns">New speed</label>
+                <div class="input-wrap"><input id="rp-ns" type="text" inputmode="decimal" placeholder="= speed" maxlength="5"><span class="unit">kn</span></div>
+                <div class="hint" id="rp-ns-msg"></div>
+              </div>
+            </div>
+          </div>
+          <div class="actions">
+            <button type="button" class="btn" id="rp-example">Load example</button>
+            <button type="button" class="btn" id="rp-clear">Clear</button>
+            <button type="button" class="btn primary" id="rp-print">Print / Save PDF</button>
+          </div>
+        </form>
+
+        <div class="rp-right">
+          <div class="card" aria-live="polite">
+            <h2 id="rp-res-h">Target A</h2>
+            <div id="rp-empty" class="empty">Enter own course and speed, and the time, bearing and range of the target at two or more times.</div>
+            <div id="rp-out" hidden>
+              <div class="callout" id="rp-verdict"></div>
+              <div class="hero rp-hero">
+                <div class="readout-box"><div class="readout-label">CPA</div><div class="readout" id="rp-cpa-v">—</div><div class="readout-sub" id="rp-cpa-s"></div></div>
+                <div class="readout-box"><div class="readout-label">TCPA</div><div class="readout" id="rp-tcpa-v">—</div><div class="readout-sub" id="rp-tcpa-s"></div></div>
+                <div class="readout-box"><div class="readout-label">Target course</div><div class="readout" id="rp-tc-v">—</div><div class="readout-sub" id="rp-tc-s"></div></div>
+                <div class="readout-box"><div class="readout-label">Aspect</div><div class="readout" id="rp-asp-v">—</div><div class="readout-sub" id="rp-asp-s"></div></div>
+              </div>
+              <table class="wk u-mt-3" id="rp-wk"></table>
+              <div class="callout warn u-mt-3" id="rp-warn" hidden></div>
+            </div>
+          </div>
+
+          <div class="card" id="rp-act-card" hidden>
+            <h2>Action</h2>
+            <div class="callout" id="rp-act-verdict"></div>
+            <table class="dt rp-act-tbl" id="rp-act-tbl"></table>
+            <ul class="rp-rules" id="rp-rules"></ul>
+          </div>
+
+          <div class="card" id="rp-plot-card" hidden>
+            <h2>Plot</h2>
+            <svg class="rp-plot" id="rp-plot" viewBox="0 0 640 640" role="img" aria-label="Radar plot"></svg>
+            <div class="rp-key" id="rp-key"></div>
+          </div>
+
+          <details class="card ge-fold" id="rp-steps-card" hidden><summary>Step by step: draw it by hand</summary><div class="rp-steps" id="rp-steps"></div></details>
+        </div>
+      </div>
+
+      <div class="print-sheet" id="rp-sheet">
+        <div class="ps-grid" id="rp-ps-info"></div>
+        <h3 class="ps-h">Plots</h3>
+        <table class="dt rp-ps-obs" id="rp-ps-obs"></table>
+        <h3 class="ps-h">Results</h3>
+        <table class="dt rp-ps-res" id="rp-ps-res"></table>
+        <div id="rp-ps-act"></div>
+        <div class="ps-note" id="rp-ps-warn"></div>
+        <div class="ps-remarks">Remarks:</div>
+        <div class="ps-sign"><div>Officer of the watch<span>Name, signature, date</span></div><div>Master<span>Name, signature, date</span></div></div>
+        <p class="ps-note">Computed with iMariners Bridge Calculators. Planning aid only, not for navigation. Page 2: plot. Page 3 (optional): how to draw it by hand.</p>
+        <div class="rp-ps-page">
+          <div class="ps-plot-head"><strong>Radar plot</strong><span id="rp-ps-phead"></span></div>
+          <svg class="rp-plot rp-ps-plot" id="rp-ps-plot" viewBox="0 0 640 640" role="img" aria-label="Radar plot"></svg>
+          <div class="ps-note" id="rp-ps-key"></div>
+        </div>
+        <div class="rp-ps-page">
+          <div class="ps-plot-head"><strong>Draw it by hand</strong><span id="rp-ps-dhead"></span></div>
+          <p class="ps-note">Optional page: the steps to draw this plot on a blank radar plotting sheet. Throw it away if not needed.</p>
+          <div class="rp-steps" id="rp-ps-steps"></div>
+        </div>
+      </div>
+    </section>

@@ -1,0 +1,491 @@
+[
+ {
+  "id": "P1310-R1",
+  "rel": {
+   "course": 235.959,
+   "speed": 15.123
+  },
+  "tgt": {
+   "course": 235.959,
+   "speed": 15.123
+  },
+  "cpa": {
+   "range": 0.934,
+   "brg": 325.959,
+   "tcpa": 23.515,
+   "time": "10:36"
+  },
+  "aspect": -8.959,
+  "bcr": null,
+  "scr": {
+   "range": 3.851,
+   "t": 38.339
+  }
+ },
+ {
+  "id": "P1310-R6",
+  "rel": {
+   "course": 162.625,
+   "speed": 20.608
+  },
+  "tgt": {
+   "course": 218.146,
+   "speed": 1.111
+  },
+  "cpa": {
+   "range": 12.873,
+   "brg": 72.625,
+   "tcpa": 18.789,
+   "time": "12:55"
+  },
+  "aspect": null,
+  "bcr": null,
+  "scr": {
+   "range": 281.061,
+   "t": 836.233
+  },
+  "ground": {
+   "course": 342.625,
+   "speed": 20.608,
+   "set": 38.146,
+   "drift": 1.111
+  }
+ },
+ {
+  "id": "P1310-R8",
+  "rel": {
+   "course": 271.573,
+   "speed": 10.697
+  },
+  "tgt": {
+   "course": 313.911,
+   "speed": 14.842
+  },
+  "cpa": {
+   "range": 2.204,
+   "brg": 1.573,
+   "tcpa": 27.036,
+   "time": "02:39"
+  },
+  "aspect": -66.911,
+  "bcr": {
+   "range": 2.205,
+   "t": 27.376
+  },
+  "scr": null
+ },
+ {
+  "id": "P1310-MB1",
+  "rel": {
+   "course": 130.163,
+   "speed": 10.112
+  },
+  "tgt": {
+   "course": 130.163,
+   "speed": 10.112
+  },
+  "cpa": {
+   "range": 3.455,
+   "brg": 220.163,
+   "tcpa": 17.105,
+   "time": "09:37"
+  },
+  "aspect": -50.163,
+  "bcr": null,
+  "scr": {
+   "range": 4.521,
+   "t": 34.409
+  }
+ },
+ {
+  "id": "P1310-MB2",
+  "rel": {
+   "course": 57.478,
+   "speed": 20.632
+  },
+  "tgt": {
+   "course": 99.667,
+   "speed": 26.777
+  },
+  "cpa": {
+   "range": 3.011,
+   "brg": 327.478,
+   "tcpa": 13.732,
+   "time": "11:28"
+  },
+  "aspect": -9.667,
+  "bcr": null,
+  "scr": {
+   "range": 3.014,
+   "t": 14.117
+  }
+ },
+ {
+  "id": "P1310-MB3",
+  "rel": {
+   "course": 221.397,
+   "speed": 27.788
+  },
+  "tgt": {
+   "course": 253.979,
+   "speed": 24.455
+  },
+  "cpa": {
+   "range": 1.778,
+   "brg": 311.397,
+   "tcpa": 13.05,
+   "time": "10:19"
+  },
+  "aspect": -48.979,
+  "bcr": {
+   "range": 2.026,
+   "t": 10.956
+  },
+  "scr": null
+ },
+ {
+  "id": "P1310-MB6",
+  "rel": {
+   "course": 333.0,
+   "speed": 16.5
+  },
+  "tgt": {
+   "course": 286.763,
+   "speed": 10.0
+  },
+  "cpa": {
+   "range": 0.0,
+   "brg": null,
+   "tcpa": 30.364,
+   "time": "18:06"
+  },
+  "aspect": 46.237,
+  "bcr": {
+   "range": 0.0,
+   "t": 30.364
+  },
+  "scr": null,
+  "action": {
+   "course": 212.0,
+   "speed": 12.0,
+   "relCourse": 346.168,
+   "relSpeed": 13.451,
+   "cpa": 1.464,
+   "brg": 76.168,
+   "tcpa": 27.907,
+   "time": "18:11",
+   "resume": {
+    "t": 29.4,
+    "time": "18:12"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "P1310-MB7",
+  "rel": {
+   "course": 333.0,
+   "speed": 17.0
+  },
+  "tgt": {
+   "course": 288.762,
+   "speed": 10.352
+  },
+  "cpa": {
+   "range": 0.0,
+   "brg": null,
+   "tcpa": 29.294,
+   "time": "18:05"
+  },
+  "aspect": 44.238,
+  "bcr": {
+   "range": 0.0,
+   "t": 29.294
+  },
+  "scr": null,
+  "action": {
+   "stbdAlt": 23,
+   "portAlt": 24,
+   "portCourse": 166.0,
+   "course": 213.0,
+   "speed": 12.0,
+   "relCourse": 346.296,
+   "relSpeed": 13.786,
+   "cpa": 1.518,
+   "brg": 76.296,
+   "tcpa": 27.955,
+   "time": "18:10",
+   "resume": {
+    "t": 28.4,
+    "time": "18:10"
+   }
+  }
+ },
+ {
+  "id": "P1310-MB14A",
+  "rel": {
+   "course": 230.0,
+   "speed": 15.0
+  },
+  "tgt": {
+   "course": 312.033,
+   "speed": 15.47
+  },
+  "cpa": {
+   "range": 0.0,
+   "brg": null,
+   "tcpa": 30.0,
+   "time": "10:36"
+  },
+  "aspect": -82.033,
+  "bcr": {
+   "range": 0.0,
+   "t": 30.0
+  },
+  "scr": null,
+  "action": {
+   "course": 65.0,
+   "speed": 15.0,
+   "relCourse": 279.102,
+   "relSpeed": 25.405,
+   "cpa": 5.669,
+   "brg": 9.102,
+   "tcpa": 11.597,
+   "time": "10:18",
+   "resume": {
+    "t": 6.3,
+    "time": "10:12"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "P1310-MB14B",
+  "rel": {
+   "course": 107.926,
+   "speed": 25.417
+  },
+  "tgt": {
+   "course": 63.274,
+   "speed": 27.076
+  },
+  "cpa": {
+   "range": 4.248,
+   "brg": 17.926,
+   "tcpa": 10.002,
+   "time": "10:16"
+  },
+  "aspect": 89.726,
+  "bcr": {
+   "range": 4.465,
+   "t": 6.758
+  },
+  "scr": null,
+  "action": {
+   "course": 65.0,
+   "speed": 15.0,
+   "relCourse": 61.133,
+   "relSpeed": 12.091,
+   "cpa": 6.0,
+   "tcpa": null,
+   "time": null,
+   "passed": true,
+   "resume": {
+    "t": 0.1,
+    "time": "10:06"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "P1310-MB14C",
+  "rel": {
+   "course": 81.484,
+   "speed": 23.363
+  },
+  "tgt": {
+   "course": 44.564,
+   "speed": 32.928
+  },
+  "cpa": {
+   "range": 3.568,
+   "brg": 171.484,
+   "tcpa": 12.389,
+   "time": "10:18"
+  },
+  "aspect": 0.436,
+  "bcr": null,
+  "scr": {
+   "range": 3.607,
+   "t": 11.017
+  },
+  "action": {
+   "course": 65.0,
+   "speed": 15.0,
+   "relCourse": 29.054,
+   "relSpeed": 19.585,
+   "cpa": 1.648,
+   "brg": 299.054,
+   "tcpa": 17.674,
+   "time": "10:24",
+   "resume": {
+    "t": 0.1,
+    "time": "10:06"
+   },
+   "portCourse": null
+  }
+ },
+ {
+  "id": "RYA-Q1",
+  "rel": {
+   "course": 320.0,
+   "speed": 10.0
+  },
+  "tgt": {
+   "course": 250.0,
+   "speed": 6.84
+  },
+  "cpa": {
+   "range": 0.0,
+   "brg": null,
+   "tcpa": 12.0,
+   "time": "10:34"
+  },
+  "aspect": 70.0,
+  "bcr": {
+   "range": 0.0,
+   "t": 12.0
+  },
+  "scr": null
+ },
+ {
+  "id": "RYA-Q2",
+  "rel": {
+   "course": 182.503,
+   "speed": 13.011
+  },
+  "tgt": {
+   "course": 167.437,
+   "speed": 8.881
+  },
+  "cpa": {
+   "range": 0.779,
+   "brg": 272.503,
+   "tcpa": 4.208,
+   "time": "13:17"
+  },
+  "aspect": -25.437,
+  "bcr": null,
+  "scr": {
+   "range": 1.688,
+   "t": 11.113
+  }
+ },
+ {
+  "id": "RYA-Q3",
+  "rel": {
+   "course": 107.583,
+   "speed": 24.904
+  },
+  "tgt": {
+   "course": 60.589,
+   "speed": 25.252
+  },
+  "cpa": {
+   "range": 1.69,
+   "brg": 197.583,
+   "tcpa": 9.788,
+   "time": "21:12"
+  },
+  "aspect": 24.411,
+  "bcr": null,
+  "scr": {
+   "range": 1.83,
+   "t": 11.481
+  }
+ },
+ {
+  "id": "RYA-Q4",
+  "rel": {
+   "course": 179.506,
+   "speed": 10.024
+  },
+  "tgt": {
+   "course": 350.5,
+   "speed": 10.038
+  },
+  "cpa": {
+   "range": 0.548,
+   "brg": 89.506,
+   "tcpa": 41.771,
+   "time": "12:04"
+  },
+  "aspect": -166.5,
+  "bcr": null,
+  "scr": {
+   "range": 6.98,
+   "t": 83.423
+  }
+ },
+ {
+  "id": "RYA-Q5",
+  "rel": {
+   "course": 239.501,
+   "speed": 17.207
+  },
+  "tgt": {
+   "course": 224.122,
+   "speed": 14.547
+  },
+  "cpa": {
+   "range": 0.361,
+   "brg": 149.501,
+   "tcpa": 3.991,
+   "time": "14:56"
+  },
+  "aspect": 32.878,
+  "bcr": {
+   "range": 0.468,
+   "t": 2.954
+  },
+  "scr": null
+ },
+ {
+  "id": "RYA-Q6",
+  "rel": {
+   "course": 195.916,
+   "speed": 11.713
+  },
+  "tgt": {
+   "course": 173.463,
+   "speed": 13.059
+  },
+  "cpa": {
+   "range": 1.202,
+   "brg": 285.916,
+   "tcpa": 6.861,
+   "time": "02:37"
+  },
+  "aspect": -19.463,
+  "bcr": null,
+  "scr": {
+   "range": 1.206,
+   "t": 6.422
+  },
+  "action": {
+   "course": 65.0,
+   "speed": 5.0,
+   "relCourse": 191.411,
+   "relSpeed": 15.391,
+   "cpa": 1.094,
+   "brg": 281.411,
+   "tcpa": 5.574,
+   "time": "02:36",
+   "resume": {
+    "t": 0.1,
+    "time": "02:30"
+   },
+   "portCourse": null
+  }
+ }
+]
