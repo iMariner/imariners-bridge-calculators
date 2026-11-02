@@ -341,6 +341,8 @@
       $("sf-ps-log").textContent = t;
       var qn = $("sf-f-q").textContent + ($("sf-f-q-sub").textContent ? " (" + $("sf-f-q-sub").textContent + ")" : "");
       $("sf-ps-warn").textContent = "Quality: " + qn + (r.warnings.length ? ". Warnings: " + r.warnings.join(" ") : ". No warnings.");
+
+      drawSteps(r, v, false);
     }
     function sheetLine(r, v) {
       var sh = Ships.active(), i = last.inp, ic = i.ic, s = r.sights[0];
@@ -354,6 +356,54 @@
       else { $("sf-ps-l1").textContent = "DR latitude"; $("sf-ps-l2").textContent = "Longitude by chronometer"; $("sf-ps-lat").textContent = Geo.lat(s.ap.lat); $("sf-ps-lon").textContent = r.lonChron === null ? "not usable" : Geo.lon(r.lonChron); }
       $("sf-ps-log").textContent = $("sf-log").textContent;
       $("sf-ps-warn").textContent = r.warnings.length ? "Warnings: " + r.warnings.join(" ") : "No warnings.";
+
+      drawSteps(r, v, true);
+    }
+    /* page 3 of the print: the same plot as numbered steps for a blank plotting sheet (owner: optional page, can be thrown away) */
+    function drawSteps(r, v, single) {
+      var inp = last.inp, box = $("sf-ps-steps"), n = 1, R = Math.PI / 180, t5 = function (ms) { return localOf(ms, v.zone).slice(0, 5); };
+      var drF = single ? null : (r.dr || SightFix.drAt(inp.dr, r.time)), all = [];
+      function pos(p) { return Geo.lat(p.lat) + " " + Geo.lon(p.lon); }
+      function rel(a, b) { var dl = b.lon - a.lon; dl -= 360 * Math.round(dl / 360); var x = dl * 60 * Math.cos((a.lat + b.lat) / 2 * R), y = (b.lat - a.lat) * 60; return { c: (Math.atan2(x, y) / R + 360) % 360, d: Math.hypot(x, y) }; }
+      function block(title, items) { box.appendChild(el("h4", "", title)); var ol = el("ol"); ol.start = n; items.forEach(function (t) { ol.appendChild(el("li", "", t)); n++; }); box.appendChild(ol); }
+      box.innerHTML = "";
+      r.sights.forEach(function (s) { all.push(s.ap); }); if (drF) all.push(drF, r.fix);
+      var la = all.map(function (p) { return p.lat; }), lo = all.map(function (p) { return p.lon; }), mid = { lat: (Math.max.apply(null, la) + Math.min.apply(null, la)) / 2, lon: (Math.max.apply(null, lo) + Math.min.apply(null, lo)) / 2 };
+      var ns = (Math.max.apply(null, la) - Math.min.apply(null, la)) * 60, ew = (Math.max.apply(null, lo) - Math.min.apply(null, lo)) * 60 * Math.cos(mid.lat * R);
+      block("Set up the sheet", [
+        "Mark the middle parallel " + Geo.lat(mid.lat) + " and the middle meridian " + Geo.lon(mid.lon) + ". Set the longitude scale for latitude " + Math.round(Math.abs(mid.lat)) + "°" + (mid.lat >= 0 ? "N" : "S") + ".",
+        "The drawing covers about " + Math.max(1, Math.round(ew)) + " NM east-west and " + Math.max(1, Math.round(ns)) + " NM north-south: choose a scale so it all fits."]);
+      r.sights.forEach(function (s, i) {
+        var it = [], k = i + 1, lat = s.name === "Latitude", z = s.zn * R, tw = s.a >= 0;
+        if (lat) {
+          var pl = s.ap.lat + s.a / 60;
+          it.push("Plot the DR " + pos(s.ap) + ".", "Observed latitude " + Geo.lat(pl) + " (" + Math.abs(s.a).toFixed(1) + "' " + (s.a >= 0 ? "N" : "S") + " of the DR). Draw this parallel of latitude: it is the position line, one arrowhead each end.");
+        } else {
+          var itp = { lat: s.ap.lat + s.a * Math.cos(z) / 60 }; itp.lon = s.ap.lon + s.a * Math.sin(z) / (60 * Math.cos((s.ap.lat + itp.lat) / 2 * R));
+          var l1 = p3(s.zn + 90), l2 = p3(s.zn + 270), lp = +l1 < +l2 ? l1 + "°/" + l2 + "°" : l2 + "°/" + l1 + "°";
+          it.push("Plot the assumed position AP " + k + ": " + pos(s.ap) + ".",
+            "From AP " + k + " draw the azimuth Zn " + p3(s.zn) + "°.",
+            "Intercept " + Math.abs(s.a).toFixed(1) + "' " + (tw ? "towards (T): measure it along Zn " + p3(s.zn) + "°" : "away (A): measure it the other way, " + p3(s.zn + 180) + "°") + ". Mark the end: this is the ITP, " + pos(itp) + ".",
+            "Through the ITP draw the position line at right angles to the azimuth: " + lp + ". One arrowhead each end.");
+        }
+        if (drF) {
+          var from = inp.sights[i] && inp.sights[i].dr && isFinite(inp.sights[i].dr.lat) ? inp.sights[i].dr : SightFix.drAt(inp.dr, s.ms), m = rel(from, drF);
+          if (m.d >= 0.3) it.push("Transfer it for the run " + t5(s.ms) + " to " + t5(r.time) + ": " + p3(m.c) + "° " + m.d.toFixed(1) + " NM. Move any point of the line that far, draw a parallel line through it, two arrowheads each end.");
+          else it.push("No run to the fix time: the line stays where it is.");
+        }
+        block("Sight " + k + ": " + (lat ? "meridian altitude" : s.name) + " at " + t5(s.ms), it);
+      });
+      if (single) {
+        var s0 = r.sights[0], fin = r.lonChron === null && r.latChron !== undefined ? "Where the position line cuts the DR meridian " + Geo.lon(s0.ap.lon) + " is the observed latitude " + Geo.lat(r.latChron) + "." : r.lonChron === null ? "One position line only: the ship is somewhere on it, near the ITP." : "Where the position line cuts the DR parallel " + Geo.lat(s0.ap.lat) + " is the longitude by chronometer " + Geo.lon(r.lonChron) + ".";
+        block("Result", [fin, "Check: it should match the result on page 1."]);
+        $("sf-ps-dhead").textContent = s0.name + " position line at " + t5(r.time) + " ship's time";
+      } else {
+        var dd = rel(drF, r.fix);
+        block("Fix", ["Plot the DR at " + t5(r.time) + ": " + pos(drF) + ".",
+          "Where the " + (r.sights.length > 2 ? "lines cross (or the middle of the cocked hat)" : "two lines cross") + " is the fix at " + t5(r.time) + ".",
+          "Check: it should read " + pos(r.fix) + ", " + dd.d.toFixed(1) + " NM " + p3(dd.c) + "° from the DR."]);
+        $("sf-ps-dhead").textContent = "fix " + pos(r.fix) + " at " + t5(r.time) + " ship's time";
+      }
     }
     function last_dr_ms(r) { return last.inp.dr.ms; }
     function last_hs(i) { var s = last.inp.sights[i]; return s.hs === undefined ? "" : alt(s.hs); }

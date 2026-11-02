@@ -54,6 +54,11 @@ table.sf-res td.num { font-family: var(--font-mono); font-size: var(--fs-md); }
   #sf-sheet .ps-grid div { padding: .8mm 2.4mm; }
   .sf-plot, #sf-ps-plot { --surface: #fff; --text: #000; --muted: #555; --border: #ccc; --border-strong: #000; --accent: #000; --danger: #000; --accent-rgb: 0, 0, 0; --sp-c0: #0b6e79; --sp-c1: #b35a00; --sp-c2: #1f4fa8; --sp-c3: #17803d; }
   #sf-sheet .ps-page2 { break-before: page; page-break-before: always; }
+  #sf-sheet .ps-page3 { break-before: page; page-break-before: always; }
+  #sf-sheet .ps-steps { margin-top: 2mm; font-size: 10pt; line-height: 1.45; }
+  #sf-sheet .ps-steps h4 { margin: 3.5mm 0 1mm; font-size: 10.5pt; }
+  #sf-sheet .ps-steps ol { margin: 0; padding-left: 7mm; }
+  #sf-sheet .ps-steps li { margin-bottom: 1.4mm; break-inside: avoid; }
   #sf-sheet .ps-plotbig { height: 248mm; margin-top: 2mm; }
   #sf-sheet .ps-plot-head { display: flex; justify-content: space-between; gap: 4mm; font-size: 9pt; border-bottom: 1px solid #000; padding-bottom: 1mm; }
 }
