@@ -20,7 +20,7 @@ const TOOLS = [
   ['daily-reports', "0"],
   ['heel-draught', "0"],
   ['anchor-depth', "0"],
-  ['ship', "0"],
+  ['catzoc', "document.getElementById('cz-example').click()"], ['ship', "0"],
   ['design', "0"]
 ];
 (async () => {

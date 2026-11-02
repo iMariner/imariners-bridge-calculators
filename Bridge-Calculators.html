@@ -439,6 +439,48 @@ table.dt.ps-steps td { padding: .45mm 1.5mm; border-bottom: 1px solid #ddd; }
 .ps-sign div { border-top: 1px solid #000; padding-top: 1.5mm; font-size: 9pt; font-weight: var(--fw-semibold); }
 .ps-sign span { display: block; font-weight: var(--fw-regular); color: #555; font-size: 7.5pt; }
 
+/* Tool: CATZOC (Zones of Confidence) */
+table.dt.cz-table td, table.dt.cz-table th { text-align: left; vertical-align: top; }
+table.dt.cz-table td { padding-top: var(--sp-2); padding-bottom: var(--sp-2); border-bottom: 1px solid var(--border); }
+.cz-table td.cz-sym { width: 5.5em; }
+.cz-table td.cz-cat { font-family: var(--font-mono); font-weight: var(--fw-bold); font-size: var(--fs-lg); white-space: nowrap; }
+.cz-table td.cz-cat span { display: block; font-family: var(--font-sans); font-weight: var(--fw-regular); font-size: var(--fs-xs); color: var(--muted); }
+.cz-table tr.cz-good td.cz-cat { box-shadow: inset var(--sp-1) 0 0 var(--take); }
+.cz-table tr.cz-med td.cz-cat { box-shadow: inset var(--sp-1) 0 0 var(--accent); }
+.cz-table tr.cz-poor td.cz-cat { box-shadow: inset var(--sp-1) 0 0 var(--danger); }
+table.dt.cz-table tr.hit td { background: var(--hit); font-weight: var(--fw-regular); }
+.cz-grid > .card { margin-top: 0; }
+.cz-symbol { display: block; width: 4.5em; height: auto; color: var(--muted); }
+.cz-wrap { overflow-x: auto; }
+.cz-notes { margin: var(--sp-3) 0 0; padding-left: var(--sp-5); color: var(--muted); font-size: var(--fs-sm); }
+.cz-notes li + li { margin-top: var(--sp-1); }
+.cz-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--sp-5); }
+.cz-zoc { grid-template-columns: repeat(6, 1fr); }
+.cz-zoc label + input + label { border-left: 1px solid var(--border); }
+table.dt.cz-depth td, table.dt.cz-depth th { text-align: center; }
+table.dt.cz-depth td:first-child, table.dt.cz-depth th:first-child { text-align: right; }
+.cz-depth td.hit { background: var(--hit); font-weight: var(--fw-bold); }
+.cz-guide { margin: 0; padding-left: var(--sp-5); }
+.cz-guide li + li { margin-top: var(--sp-2); }
+.cz-src { margin-top: var(--sp-3); }
+@media (max-width: 960px) { .cz-grid { grid-template-columns: minmax(0, 1fr); } }
+@media print {
+  #cz-sheet { font-size: 8.2pt; line-height: 1.3; }
+  #cz-sheet table { width: 100%; border-collapse: collapse; }
+  #cz-sheet .ps-cz-table th, #cz-sheet .ps-cz-table td { border: 1px solid #999; padding: .8mm 1.4mm; text-align: left; vertical-align: top; }
+  #cz-sheet .ps-cz-table th { background: #e3e9f2; font-size: 7.5pt; }
+  #cz-sheet .ps-cz-table td.cz-cat { font-weight: var(--fw-bold); font-size: 11pt; white-space: nowrap; }
+  #cz-sheet .ps-cz-table td.cz-cat span { display: block; font-weight: var(--fw-regular); font-size: 7pt; color: #444; }
+  #cz-sheet .cz-symbol { width: 12mm; color: #333; }
+  #cz-sheet .ps-cz-depth th, #cz-sheet .ps-cz-depth td { border: 1px solid #999; padding: .35mm 1mm; text-align: center; }
+  #cz-sheet .ps-cz-depth th { background: #e3e9f2; }
+  #cz-sheet .ps-cz-depth td.hit { background: #e3e9f2; font-weight: var(--fw-bold); }
+  #cz-sheet ul { margin: 1mm 0 0; padding-left: 4.5mm; }
+  #cz-sheet li { margin-top: .3mm; }
+  #cz-sheet .ps-h { margin: 2.5mm 0 1mm; }
+  #cz-sheet .ps-cz-check { border: 1.5px solid #000; border-radius: 1.5mm; padding: 1.8mm 3mm; margin-top: 2.5mm; font-size: 9pt; }
+}
+
 @media (max-width: 1360px) {
   .result-layout { grid-template-columns: minmax(0, 1fr); }
   .rose-wrap svg { max-width: 260px; }
@@ -1238,6 +1280,10 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
     <a href="#charts-pubs" data-tool-link="charts-pubs">
       <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z"/><path d="M9 3v15M15 6v15"/></svg>
       Routeing &amp; Pilots
+    </a>
+    <a href="#catzoc" data-tool-link="catzoc">
+      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18l-9 15z"/><path d="M9 9.5h.01M15 9.5h.01M12 13h.01"/></svg>
+      CATZOC
     </a>
     <a href="#course-speed" data-tool-link="course-speed">
       <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="19" r="2"/><circle cx="19" cy="5" r="2"/><path d="M6.5 17.5L17.5 6.5" stroke-dasharray="3 3"/></svg>
@@ -2948,6 +2994,92 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
         <p class="cp-src small muted">Source: Admiralty Sailing Directions coverage diagram. Check the latest edition in NP 131 or the Admiralty catalogue.</p>
       </div>
     </section>
+
+    <section class="tool" id="catzoc" hidden>
+      <div class="tool-head">
+        <h1>CATZOC: Zones of Confidence</h1>
+        <p>How far you can trust the depths and positions on an ENC, shown in ECDIS as stars. From IHO S-67 (2020) and S-57 Supplement 3 (2014).</p>
+      </div>
+
+      <div class="card">
+        <h2>Zones of Confidence (CATZOC)</h2>
+        <div class="cz-wrap"><table class="dt cz-table" id="cz-table"></table></div>
+        <ul class="cz-notes">
+          <li>All of position, depth and seafloor coverage must be met for a category.</li>
+          <li>Position accuracy: at 95 % confidence, the total error of the charted sounding (survey, datum change, digitizing).</li>
+          <li>Depth accuracy = a + (b × depth) / 100 at 95 % confidence. For ZOC B, C and D it may be estimated, not computed.</li>
+          <li>A significant seafloor feature rises above the charted depth by more than 2 m in depths under 40 m, or by more than 10 % of the depth deeper than 40 m.</li>
+          <li>Controlled, systematic survey: planned survey lines on a datum that can be converted to WGS 84. Modern survey echo-sounder: high precision single beam, generally made after 1970.</li>
+        </ul>
+      </div>
+
+      <div class="cz-grid u-mt-4">
+        <form class="card" id="cz-form" autocomplete="off" onsubmit="return false">
+          <h2>Check a charted depth</h2>
+          <div class="field">
+            <label for="cz-depth">Charted depth</label>
+            <div class="input-wrap"><input id="cz-depth" type="text" inputmode="decimal" placeholder="e.g. 20" maxlength="7"><span class="unit">m</span></div>
+            <div class="hint" id="cz-depth-msg">The sounding or contour on the ENC</div>
+          </div>
+          <div class="field">
+            <span class="label" id="cz-zoc-label">ZOC of the area (stars in ECDIS)</span>
+            <div class="segmented cz-zoc" role="radiogroup" aria-labelledby="cz-zoc-label">
+              <input type="radio" name="cz-zoc" id="cz-z-A1" value="A1"><label for="cz-z-A1">A1</label>
+              <input type="radio" name="cz-zoc" id="cz-z-A2" value="A2"><label for="cz-z-A2">A2</label>
+              <input type="radio" name="cz-zoc" id="cz-z-B" value="B"><label for="cz-z-B">B</label>
+              <input type="radio" name="cz-zoc" id="cz-z-C" value="C"><label for="cz-z-C">C</label>
+              <input type="radio" name="cz-zoc" id="cz-z-D" value="D"><label for="cz-z-D">D</label>
+              <input type="radio" name="cz-zoc" id="cz-z-U" value="U"><label for="cz-z-U">U</label>
+            </div>
+          </div>
+          <div id="cz-empty" class="empty">Enter a charted depth and pick the ZOC.</div>
+          <div id="cz-out" hidden>
+            <div class="hero">
+              <div class="readout-box">
+                <div class="readout-label">Depth may be out by</div>
+                <div class="readout" id="cz-acc">—</div>
+                <div class="readout-sub" id="cz-acc-sub"></div>
+              </div>
+              <div class="readout-box">
+                <div class="readout-label">Position may be out by</div>
+                <div class="readout" id="cz-pos">—</div>
+                <div class="readout-sub" id="cz-pos-sub"></div>
+              </div>
+            </div>
+            <div class="formula-line mono" id="cz-formula"></div>
+            <div class="callout warn u-mt-3" id="cz-warn" hidden></div>
+          </div>
+          <div class="actions">
+            <button type="button" class="btn" id="cz-example">Load example</button>
+            <button type="button" class="btn" id="cz-clear">Clear</button>
+            <button type="button" class="btn primary" id="cz-print">Print / Save PDF</button>
+          </div>
+        </form>
+
+        <div class="card">
+          <h2>Depth accuracy at each depth</h2>
+          <div class="cz-wrap"><table class="dt cz-depth" id="cz-depth-table"></table></div>
+          <p class="small muted cz-src">± metres at 95 % confidence, from the formula in the table above (IHO S-67 Table 4-4). In ZOC C, D and U, and possibly B, uncharted dangers may be shallower than these figures.</p>
+        </div>
+      </div>
+
+      <div class="card u-mt-4">
+        <h2>Using CATZOC on the bridge</h2>
+        <ul class="cz-guide" id="cz-guide"></ul>
+        <p class="small muted cz-src">Source: IHO S-67 Ed. 1.0.0 (September 2020), Mariners' Guide to Accuracy of Depth Information in ENC, with its Annex A table from IHO S-57 Ed. 3.1 Supplement 3 (June 2014). Check national guidance and your company's UKC policy too.</p>
+      </div>
+
+      <div class="print-sheet" id="cz-sheet">
+        <table class="ps-cz-table" id="cz-ps-table"></table>
+        <div class="ps-cz-check" id="cz-ps-check" hidden></div>
+        <h3 class="ps-h">Depth accuracy at each depth (± m, 95 %)</h3>
+        <table class="ps-cz-depth" id="cz-ps-depth"></table>
+        <h3 class="ps-h">Using CATZOC on the bridge</h3>
+        <ul id="cz-ps-guide"></ul>
+        <p class="ps-note">Depth accuracy = a + (b × depth) / 100 at 95 % confidence. Significant seafloor feature: more than 2 m above the charted depth under 40 m, more than 10 % of the depth deeper than 40 m. Source: IHO S-67 Ed. 1.0.0 (Sep 2020) and S-57 Ed. 3.1 Supplement 3 (Jun 2014).</p>
+      </div>
+    </section>
+
     <section class="tool" id="design" hidden>
       <div class="tool-head">
         <h1>Design System</h1>
@@ -9727,7 +9859,133 @@ ul.sr-lines-ul { list-style: none; padding-left: 0; }
   /* SREP-END */
 
   /* Tool registry and routing */
-  var TOOLS = { "ship-reporting": initShipReporting, "sight-fix": initSightFix, "charts-pubs": initChartsPubs, "true-wind": initTrueWind, "true-az": initTrueAz, "gyro-error": initGyro, "dev-card": initDevCard, "course-speed": initCourseSpeed, "eta": initEta, "heel-draught": initHeel, "anchor-depth": initAnchor, "ship": initShipPage, "design": initDesign, "daily-reports": initDaily, "sun-times": initSunTimes, "special-areas": initAreas };
+
+  /* CATZOC-BEGIN: IHO Zones of Confidence (S-67 Annex A = S-57 Ed 3.1 Supplement 3) and the depth / position accuracy of a charted depth */
+  var CATZOC = (function () {
+    var Z = [
+      { c: "A1", stars: 6, conf: "Good", pos: "± 5 m + 5% depth", dep: "0.50 m + 1% depth", a: 0.5, b: 1, pm: 5, pp: 5,
+        cov: "Full area search undertaken. Significant seafloor features detected and depths measured.",
+        sur: "Controlled, systematic survey, high position and depth accuracy achieved using DGPS and a multi-beam, channel or mechanical sweep system." },
+      { c: "A2", stars: 5, conf: "Good", pos: "± 20 m", dep: "1.00 m + 2% depth", a: 1, b: 2, pm: 20, pp: 0,
+        cov: "Full area search undertaken. Significant seafloor features detected and depths measured.",
+        sur: "Controlled, systematic survey achieving position and depth accuracy less than ZOC A1 and using a modern survey echo-sounder and a sonar or mechanical sweep system." },
+      { c: "B", stars: 4, conf: "Medium", pos: "± 50 m", dep: "1.00 m + 2% depth", a: 1, b: 2, pm: 50, pp: 0,
+        cov: "Full area search not achieved; uncharted features, hazardous to surface navigation are not expected but may exist.",
+        sur: "Controlled, systematic survey achieving similar depth but lesser position accuracies than ZOC A2, using a modern survey echo-sounder, but no sonar or mechanical sweep system." },
+      { c: "C", stars: 3, conf: "Poor", pos: "± 500 m", dep: "2.00 m + 5% depth", a: 2, b: 5, pm: 500, pp: 0,
+        cov: "Full area search not achieved, depth anomalies may be expected.",
+        sur: "Low accuracy survey or data collected on an opportunity basis such as soundings on passage." },
+      { c: "D", stars: 2, conf: "Poor", pos: "Worse than ZOC C", dep: "Worse than ZOC C", a: null, b: null, pm: null, pp: 0,
+        cov: "Full area search not achieved, large depth anomalies may be expected.",
+        sur: "Poor quality data or data that cannot be quality assessed due to lack of information." },
+      { c: "U", stars: 0, conf: "Poor", pos: "", dep: "", a: null, b: null, pm: null, pp: 0,
+        cov: "Unassessed. The quality of the bathymetric data has yet to be assessed.", sur: "" }
+    ];
+    function get(c) { for (var i = 0; i < Z.length; i++) if (Z[i].c === c) return Z[i]; return null; }
+    function depthAcc(c, d) { var z = get(c); return z && z.a !== null ? z.a + z.b * d / 100 : null; }     /* ± m at 95 %, IHO formula a + b·d/100 */
+    function posAcc(c, d) { var z = get(c); return z && z.pm !== null ? z.pm + z.pp * d / 100 : null; }     /* ± m at 95 % */
+    return { list: Z, get: get, depthAcc: depthAcc, posAcc: posAcc, DEPTHS: [0, 10, 20, 30, 40, 50, 75, 100] };
+  })();
+  /* CATZOC-END */
+
+  /* Tool: CATZOC */
+  function initCatzoc() {
+    var KEY = "bridgeCalc.catzoc", f = { depth: $("cz-depth") };
+    var GUIDE = [
+      "Quick reference: 5 stars or more = high accuracy depths. 4 stars = medium. 3 stars or fewer, or U = poor: take care.",
+      "Turn on the ZOC display (the ECDIS “Accuracy” or “information on chart display” layer) when you plan a passage and whenever you change the route. It clutters the screen, so it can be off while navigating.",
+      "When planning, allow isolated dangers and shallow soundings to be out by: ZOC A1 and A2 up to 20 m in position and at least 0.5 to 1 m in depth; ZOC B up to 50 m and at least 1 m; ZOC C, D and U up to 500 m and at least 2 m.",
+      "Use the position accuracy of the area when you set the cross track distance for the ECDIS route check.",
+      "ZOC A1 and A2: navigate with confidence. ZOC B: an uncharted danger to surface navigation is unlikely but possible. ZOC C: take care, uncharted dangers may be expected, above all near reefs, rocks and moving seabed. ZOC D: a very high degree of caution. Treat ZOC U like ZOC D.",
+      "In ZOC C, D and U the real depth may be much shallower than charted, and rocks, reefs, wrecks or obstructions may be missing from the chart.",
+      "CATZOC does not say when the survey was made or whether the seabed moves. A Pick Report may show the survey date. Watch sand waves, dredged channels, bars and estuaries.",
+      "A Pick Report on a danger may give its own position or sounding accuracy (QUAPOS, POSACC, SOUACC). If not, assume it may be out of position and shallower as its CATZOC says.",
+      "Do not over-scale: use the 1:1 display where you can. A ZOC symbol may be cut at the edge of an area, which can look like a wrong symbol.",
+      "Most charted water is not A1 or A2. Of 14 million km² of coastal ENC from 32 nations: A1 2.5 %, A2 3.0 %, B 38.5 %, C 27.8 %, D 12.5 %, U 15.7 %. Singapore and Malacca Straits: C 76.2 %, U 18.5 %."
+    ];
+
+    function symbol(z) {                                              /* the ECDIS ZOC symbol: stars in an inverted triangle (A1, A2, B) or a bar (C, D), U in a bar */
+      var svg = svgEl("svg", { "class": "cz-symbol", viewBox: "0 0 64 52", role: "img", "aria-label": z.c === "U" ? "Symbol U" : z.stars + " stars" });
+      function star(x, y) { var r = 3.6; for (var k = 0; k < 3; k++) { var a = k * Math.PI / 3 + Math.PI / 2; svgEl("line", { x1: (x - r * Math.cos(a)).toFixed(2), y1: (y - r * Math.sin(a)).toFixed(2), x2: (x + r * Math.cos(a)).toFixed(2), y2: (y + r * Math.sin(a)).toFixed(2), stroke: "currentColor", "stroke-width": 1.6, "stroke-linecap": "round" }, svg); } }
+      var rows = { A1: [3, 2, 1], A2: [3, 2], B: [3, 1] }[z.c];
+      if (rows) {
+        svgEl("path", { d: "M6 6 H58 Q61 6 59.5 8.6 L33.7 47.2 Q32 49.8 30.3 47.2 L4.5 8.6 Q3 6 6 6 Z", fill: "none", stroke: "currentColor", "stroke-width": 2 }, svg);
+        rows.forEach(function (n, r) { for (var i = 0; i < n; i++) star(32 + (i - (n - 1) / 2) * 12, 14 + r * 10); });
+      } else {
+        svgEl("rect", { x: 3, y: 16, width: 58, height: 20, rx: 10, ry: 10, fill: "none", stroke: "currentColor", "stroke-width": 2 }, svg);
+        if (z.c === "U") { var t = svgEl("text", { x: 32, y: 31.5, "text-anchor": "middle", fill: "currentColor", "font-weight": 700, "font-size": 15 }, svg); t.textContent = "U"; }
+        else for (var i = 0; i < z.stars; i++) star(32 + (i - (z.stars - 1) / 2) * 13, 26);
+      }
+      return svg;
+    }
+    function fillTable(tb, print) {
+      while (tb.firstChild) tb.removeChild(tb.firstChild);
+      var hr = tb.createTHead().insertRow();
+      ["ECDIS", "ZOC", "Position accuracy", "Depth accuracy", "Seafloor coverage", "Typical survey"].forEach(function (h) { var th = document.createElement("th"); th.textContent = h; hr.appendChild(th); });
+      var body = tb.createTBody(), sel = zoc();
+      CATZOC.list.forEach(function (z) {
+        var tr = body.insertRow(); tr.className = "cz-" + (z.conf === "Good" ? "good" : z.conf === "Medium" ? "med" : "poor") + (z.c === sel && !print ? " hit" : "");
+        var c0 = tr.insertCell(); c0.className = "cz-sym"; c0.appendChild(symbol(z));
+        var c1 = tr.insertCell(); c1.className = "cz-cat"; c1.textContent = z.c; var sp = document.createElement("span"); sp.textContent = (z.stars ? z.stars + " stars, " : "") + z.conf.toLowerCase(); c1.appendChild(sp);
+        if (z.c === "U") { var cu = tr.insertCell(); cu.colSpan = 4; cu.textContent = z.cov; return; }
+        [z.pos, z.dep, z.cov, z.sur].forEach(function (t) { tr.insertCell().textContent = t; });
+      });
+    }
+    function fillDepth(tb, d0, c0) {
+      while (tb.firstChild) tb.removeChild(tb.firstChild);
+      var hr = tb.createTHead().insertRow();
+      ["Depth (m)", "A1", "A2", "B", "C", "D", "U"].forEach(function (h) { var th = document.createElement("th"); th.textContent = h; hr.appendChild(th); });
+      var body = tb.createTBody(), depths = CATZOC.DEPTHS.slice();
+      if (d0 !== null && depths.indexOf(d0) < 0) { depths.push(d0); depths.sort(function (a, b) { return a - b; }); }
+      depths.forEach(function (d) {
+        var tr = body.insertRow(); tr.insertCell().textContent = fmt(d);
+        ["A1", "A2", "B", "C"].forEach(function (c) { var td = tr.insertCell(); td.textContent = CATZOC.depthAcc(c, d).toFixed(1); if (d === d0 && c === c0) td.className = "hit"; });
+        var tdD = tr.insertCell(); tdD.textContent = ">" + CATZOC.depthAcc("C", d).toFixed(1); if (d === d0 && c0 === "D") tdD.className = "hit";
+        var tdU = tr.insertCell(); tdU.textContent = "unknown"; if (d === d0 && c0 === "U") tdU.className = "hit";
+      });
+    }
+    function fmt(d) { return Math.round(d * 10) % 10 ? d.toFixed(1) : String(Math.round(d)); }
+    function zoc() { var r = document.querySelector('input[name="cz-zoc"]:checked'); return r ? r.value : ""; }
+    function save() { store.set(KEY, { depth: f.depth.value, zoc: zoc() }); }
+    function render() {
+      save();
+      var d = parseNum(f.depth), c = zoc(), bad = d !== null && (isNaN(d) || d < 0 || d > 11000);
+      setHint("cz-depth-msg", bad ? "Enter 0 – 11000 m" : "The sounding or contour on the ENC", bad, f.depth);
+      var ok = !bad && d !== null && c, dd = ok ? d : null;
+      fillTable($("cz-table"), false); fillDepth($("cz-depth-table"), dd, ok ? c : ""); fillDepth($("cz-ps-depth"), dd, ok ? c : "");
+      $("cz-out").hidden = !ok; $("cz-empty").hidden = !!ok; $("cz-ps-check").hidden = !ok;
+      if (!ok) return;
+      var acc = CATZOC.depthAcc(c, d), pos = CATZOC.posAcc(c, d), cAcc = CATZOC.depthAcc("C", d), z = CATZOC.get(c), warn = "";
+      if (acc !== null) {
+        $("cz-acc").innerHTML = "± " + acc.toFixed(1) + "<small>m</small>";
+        $("cz-acc-sub").textContent = "real depth " + Math.max(0, d - acc).toFixed(1) + " to " + (d + acc).toFixed(1) + " m (95 %)";
+        $("cz-formula").textContent = c + ": " + z.a.toFixed(2) + " + " + z.b + " × " + fmt(d) + " / 100 = ± " + acc.toFixed(2) + " m";
+      } else {
+        $("cz-acc").innerHTML = (c === "D" ? "> " + cAcc.toFixed(1) : "?") + "<small>m</small>";
+        $("cz-acc-sub").textContent = c === "D" ? "worse than ZOC C: real depth may be under " + Math.max(0, d - cAcc).toFixed(1) + " m" : "not assessed: treat like ZOC D";
+        $("cz-formula").textContent = c === "D" ? "ZOC D is worse than ZOC C (2.00 + 5 × " + fmt(d) + " / 100 = ± " + cAcc.toFixed(2) + " m)" : "ZOC U: the data quality has not been assessed";
+      }
+      if (pos !== null) { $("cz-pos").innerHTML = "± " + Math.round(pos) + "<small>m</small>"; $("cz-pos-sub").textContent = (pos / 185.2).toFixed(pos < 185.2 ? 2 : 1) + " cables" + (c === "A1" ? " (5 m + 5 % of the depth)" : ""); }
+      else { $("cz-pos").innerHTML = (c === "D" ? "> 500" : "?") + "<small>m</small>"; $("cz-pos-sub").textContent = c === "D" ? "worse than ZOC C (2.7 cables)" : "not assessed"; }
+      if (c === "C" || c === "D" || c === "U") warn = "ZOC " + c + ": uncharted dangers may be shallower than this. " + (c === "C" ? "Take care, above all near reefs, rocks and moving seabed." : "A very high degree of caution.");
+      else if (c === "B") warn = "ZOC B: an uncharted danger to surface navigation is unlikely but possible.";
+      $("cz-warn").hidden = !warn; $("cz-warn").textContent = warn;
+      $("cz-ps-check").textContent = "Charted depth " + fmt(d) + " m in ZOC " + c + ": depth may be out by " + $("cz-acc").textContent.replace("m", " m") + " (" + $("cz-acc-sub").textContent + "); position by " + $("cz-pos").textContent.replace("m", " m") + ".";
+    }
+
+    var saved = store.get(KEY);
+    if (isObj(saved)) { f.depth.value = typeof saved.depth === "string" ? saved.depth : ""; var r0 = $("cz-z-" + saved.zoc); if (r0) r0.checked = true; }
+    function list(ul) { while (ul.firstChild) ul.removeChild(ul.firstChild); GUIDE.forEach(function (t) { var li = document.createElement("li"); li.textContent = t; ul.appendChild(li); }); }
+    list($("cz-guide")); list($("cz-ps-guide")); fillTable($("cz-ps-table"), true);
+    f.depth.addEventListener("input", render);
+    Array.prototype.forEach.call(document.querySelectorAll('input[name="cz-zoc"]'), function (r) { r.addEventListener("change", render); });
+    $("cz-example").addEventListener("click", function () { f.depth.value = "20"; $("cz-z-C").checked = true; render(); });
+    $("cz-clear").addEventListener("click", function () { f.depth.value = ""; Array.prototype.forEach.call(document.querySelectorAll('input[name="cz-zoc"]'), function (r) { r.checked = false; }); render(); f.depth.focus(); });
+    $("cz-print").addEventListener("click", function () { window.print(); });
+    render();
+  }
+
+  var TOOLS = { "catzoc": initCatzoc, "ship-reporting": initShipReporting, "sight-fix": initSightFix, "charts-pubs": initChartsPubs, "true-wind": initTrueWind, "true-az": initTrueAz, "gyro-error": initGyro, "dev-card": initDevCard, "course-speed": initCourseSpeed, "eta": initEta, "heel-draught": initHeel, "anchor-depth": initAnchor, "ship": initShipPage, "design": initDesign, "daily-reports": initDaily, "sun-times": initSunTimes, "special-areas": initAreas };
   var started = {};
 
   /* Page chrome: breadcrumb in the top bar, small label above each page title, drawer on narrow screens */
